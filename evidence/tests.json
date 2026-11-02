@@ -1,0 +1,48 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "case": "factory",
+      "passed": true,
+      "positions": [
+        [
+          140,
+          275,
+          200,
+          303
+        ]
+      ],
+      "flash_reads": [
+        {
+          "offset": "0x6028",
+          "length": 121304,
+          "destination": "0x81000000"
+        }
+      ],
+      "framebuffer_matches": true,
+      "opaque_logo_checksum_read": false
+    },
+    {
+      "case": "custom",
+      "passed": true,
+      "positions": [
+        [
+          20,
+          530,
+          120,
+          304
+        ]
+      ],
+      "flash_reads": [
+        {
+          "offset": "0x6028",
+          "length": 73176,
+          "destination": "0x81000000"
+        }
+      ],
+      "framebuffer_matches": true,
+      "opaque_logo_checksum_read": false
+    }
+  ],
+  "scope": "Actual boot0 logo parser, framebuffer clear and RGB565 drawing loop executed in Unicorn. SPI read/printf/display-hardware init/delay stubbed. Exact position/pixels and continuation to main-header selection verified; not full ROM/DRAM/panel cold boot."
+}

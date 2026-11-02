@@ -1,0 +1,54 @@
+{
+  "version": "1.0",
+  "variant": "continuous",
+  "status": "OFFLINE, NOT PHYSICALLY INSTALLED/TESTED",
+  "main_sha256": "697d160047e9f040b31acd79d5b0febb940bc712f15eb6e2d91d997a5608011d",
+  "full_sha256": "c19a240615bb7fa1fce28dbb93e1a0d059190eafecba66256bfb3d511d2c6251",
+  "label": "highspeedv2",
+  "sound": "1321 Hz PWM approximation; not MP3 playback",
+  "physical_speed_regression_tested": false,
+  "changes_vs_beta3": [
+    {
+      "address": "0x80051978",
+      "offset": 334232,
+      "old": "446961672042657461000000",
+      "new": "686967687370656564763200"
+    },
+    {
+      "address": "0x80060928",
+      "offset": 395592,
+      "old": "10402de92c409fe52c009fe5011ca0e3a41081e30020a0e3d37fffeb000084e50110a0e3101080e510009fe50d10a0e3501080e5",
+      "new": "02402de9501097e5000051e30000a0030a00cb05030051e30d10a0c3501087c50a00dbe50280bde80d00a0e3500087e51eff2fe1"
+    },
+    {
+      "address": "0x80003a5c",
+      "offset": 14972,
+      "old": "0a00dbe5",
+      "new": "b17301eb"
+    },
+    {
+      "address": "0x80003a78",
+      "offset": 15000,
+      "old": "aa7301eb",
+      "new": "b47301eb"
+    },
+    {
+      "address": "0x80010718",
+      "offset": 67384,
+      "old": "00c0a0e124009fe5001090e501005ce11eff2f1118009fe5501090e5030051e31eff2f910010a0e30500a0e3c0d9ffea6c09068014c75a80",
+      "new": "0f502de90a80cbe50000dbe5030050e30700db050e0050030500001a500097e5030050e3020000da0010a0e30500a0e3bfd9ffeb0f90bde8"
+    },
+    {
+      "address": "0x80003a28",
+      "offset": 14920,
+      "old": "0a80cbe5",
+      "new": "3a3300eb"
+    },
+    {
+      "address": "0x80003864",
+      "offset": 14468,
+      "old": "0a80cbe5",
+      "new": "ab3300eb"
+    }
+  ]
+}

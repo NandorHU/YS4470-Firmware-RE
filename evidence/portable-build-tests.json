@@ -1,0 +1,67 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "variant": "continuous",
+      "case": "bad-input",
+      "passed": true
+    },
+    {
+      "variant": "continuous",
+      "case": "truncated-input",
+      "passed": true
+    },
+    {
+      "variant": "continuous",
+      "case": "bad-old-bytes",
+      "passed": true
+    },
+    {
+      "variant": "continuous",
+      "case": "bad-output-hash",
+      "passed": true
+    },
+    {
+      "variant": "continuous",
+      "case": "overlap",
+      "passed": true
+    },
+    {
+      "variant": "continuous",
+      "case": "exact-output-and-Beta3-critical-paths",
+      "passed": true,
+      "output_sha256": "c19a240615bb7fa1fce28dbb93e1a0d059190eafecba66256bfb3d511d2c6251"
+    },
+    {
+      "variant": "timed",
+      "case": "bad-input",
+      "passed": true
+    },
+    {
+      "variant": "timed",
+      "case": "truncated-input",
+      "passed": true
+    },
+    {
+      "variant": "timed",
+      "case": "bad-old-bytes",
+      "passed": true
+    },
+    {
+      "variant": "timed",
+      "case": "bad-output-hash",
+      "passed": true
+    },
+    {
+      "variant": "timed",
+      "case": "overlap",
+      "passed": true
+    },
+    {
+      "variant": "timed",
+      "case": "exact-output-and-Beta3-critical-paths",
+      "passed": true,
+      "output_sha256": "f7f89f3388d7dfb538a79de79af351718878d26823a87f25432bbae4be4c5b58"
+    }
+  ]
+}

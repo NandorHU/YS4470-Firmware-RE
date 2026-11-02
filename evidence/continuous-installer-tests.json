@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "case": "success",
+      "passed": true,
+      "exit_code": 0,
+      "result": {
+        "Success": true,
+        "Action": "InstallV1",
+        "FullFlashSHA256": "c19a240615bb7fa1fce28dbb93e1a0d059190eafecba66256bfb3d511d2c6251",
+        "RegionSHA256": "b37a99df069236efd2cd12165cadfad7d473d316a5c4bc1ef028e3e42c48899a",
+        "BlocksWritten": 6,
+        "Timestamp": "2026-11-02T20:25:50.5739516+01:00",
+        "BootIssued": false
+      },
+      "simulation_log": "SIMULATION-20261102-202548-985"
+    },
+    {
+      "case": "restore-working",
+      "passed": true,
+      "exit_code": 0,
+      "result": {
+        "Success": true,
+        "Action": "RestoreBeta3",
+        "FullFlashSHA256": "2ce9c1693a9726a2fe042620debd7705e77cfec58d98e8729bb6ec1ade4a9d0f",
+        "RegionSHA256": "aaf72639ebbc6e3e92e00306fd7a90bba6fb676bcb762370005c7163847849f3",
+        "BlocksWritten": 6,
+        "Timestamp": "2026-11-02T20:25:52.9435771+01:00",
+        "BootIssued": false
+      },
+      "simulation_log": "SIMULATION-20261102-202551-360"
+    },
+    {
+      "case": "readback-corrupt",
+      "passed": true,
+      "exit_code": 1,
+      "result": {
+        "Success": false,
+        "Phase": "Bajtegyezes ellenorzese",
+        "Overall": 90,
+        "Error": "Visszaellenorzesi hiba: 0x7. Maradjon FEL modban; naplok megorzendoek.\r\nAt C:\\Users\\nandi\\Documents\\Codex\\2026-11-01\\telep-tsd-s-konfigur-ld-a\\outputs\\ys4470-v1.0-github\\out\\continuous\\simula\r\ntion\\readback-corrupt.ps1:112 char:18\r\n+ ... $bad -ge 0){throw ('Visszaellenorzesi hiba: 0x{0:x}. Maradjon FEL mod ...\r\n+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : OperationStopped: (Visszaellenorze...k megorzendoek.:String) [], RuntimeException\r\n    + FullyQualifiedErrorId : Visszaellenorzesi hiba: 0x7. Maradjon FEL modban; naplok megorzendoek.\r\n \r\n",
+        "BootIssued": false
+      },
+      "simulation_log": "SIMULATION-20261102-202553-719"
+    }
+  ],
+  "scope": "Actual production PowerShell control flow with native device enumeration/Run-Fel replaced in a temporary copy. File-backed virtual16MiB flash only, no USB calls. Success all expected aligned sectors, full readback match, injected readback corruption rejects success/100 percent."
+}

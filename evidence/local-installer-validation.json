@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "variant": "continuous",
+      "local_file_hash_validation": true,
+      "usb_calls": false
+    },
+    {
+      "variant": "timed",
+      "local_file_hash_validation": true,
+      "usb_calls": false
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "status": "OFFLINE; not flashed; bootloader positioning change needs separate physical approval",
+  "source_art": "selected-original.png",
+  "source_sha256": "c5f82b1d523d49005737c8a1aa3c6f065319aa54fe570f84335fd1b965f20058",
+  "boot_sha256": "87034ceb925f8a217ac9590a4f61aff6b4c32bccb2a3175857622354172ae7bb",
+  "logo_sha256": "04528330dcdebde61f68c5373807d3aaf56468963f9b0f8c3ad0d69a960bf461",
+  "boot_length": 22016,
+  "logo_length": 73216,
+  "logo_capacity": 303104,
+  "logical_display": [
+    854,
+    480
+  ],
+  "logical_tile": [
+    304,
+    120
+  ],
+  "logical_tile_origin": [
+    530,
+    340
+  ],
+  "native_bitmap": [
+    120,
+    304
+  ],
+  "native_origin": [
+    20,
+    530
+  ],
+  "pixel_offset": 40,
+  "format": "RGB565 little endian, row-major",
+  "boot_checksum": "0x2ddd1b5e",
+  "boot_edits": [
+    {
+      "offset": "0x45c",
+      "original": "0xe1a010a0",
+      "modified": "0xe2401014",
+      "purpose": "native y=854-image_height-20"
+    },
+    {
+      "offset": "0x464",
+      "original": "0xe1a000a0",
+      "modified": "0xe3a00014",
+      "purpose": "native x=20"
+    }
+  ],
+  "logo_checksum_note": "Opaque original field preserved; not read by the emulated factory loader path"
+}

@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "steady_measurements": 1000,
+  "pwm_start_events_during_steady_contact": 1,
+  "timer_allocations": 0,
+  "tests": [
+    "1321Hz selection through original sound gate",
+    "1000 valid results: no PWM stop/restart",
+    "ordinary invalid result stops tone",
+    "raw OPEN sentinel stops tone",
+    "13-cycle original KeyTask watchdog",
+    "contact restarts after watchdog",
+    "superseding short beep preserved",
+    "other-mode sentinel unchanged",
+    "highspeedv2 string and terminator fit original 12-byte allocation"
+  ],
+  "stubs": [
+    "float conversion/formatting",
+    "volume conversion",
+    "PWM endpoint 0x800060d0"
+  ],
+  "executed": [
+    "original diode branch",
+    "original sound gate and tone selector",
+    "original KeyTask countdown",
+    "new refresh/stop hooks"
+  ],
+  "scope": "Function-level ARM emulation; no UART/ADC/LCD or real hardware timing validation",
+  "steady_instruction_count_with_keycycle_average": 33.5
+}
