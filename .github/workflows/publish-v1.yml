@@ -28,18 +28,26 @@ jobs:
           SHA256='326712f3c97240a28383de042be799e7f9bb820ef0c94c271254845d5e525f52'
           NAME='YS4470-highspeedv2-1.0-Windows.zip'
           TAG='v1.0'
-          NOTES='''## YS-4470 highspeedv2 – 1.0
+          NOTES='''## YS-4470 highspeedv2 — 1.0
           
-          - A Beta3 gyorsított diódamérése és kijelzőfrissítése.
-          - Folyamatos, 1321 Hz-es dióda-hang; highspeedv2 kapcsolófelirat.
-          - Visszafogott logó és felirat a jobb alsó sarokban indításkor.
-          - Teljes mentéssel/visszaolvasással védett, százalékos Windows FEL-telepítő előállítása és Beta3-visszaállítás.
+          - Retains Beta3's faster diode measurement and display updates.
+          - Continuous 1321 Hz diode tone and the `highspeedv2` switch label.
+          - A compact logo and caption in the bottom-right corner during startup.
+          - Reproducible Windows FEL installer preparation and Beta3 rollback, with full backups, complete readback verification, and percentage progress.
           
-          Az 1.0 continuous fizikailag telepítve; a teljes 16 MiB visszaolvasás bájtra egyezik a célképpel. A felhasználó szerint az 1.0 jól működik. A számszerű késésmérés és teljes metrológiai regresszió nincs elvégezve.
+          **Verified on the owner's device:** version 1.0 continuous was installed, the entire 16 MiB flash readback matched the intended image byte for byte, and the owner confirmed that version 1.0 works well. Quantitative latency measurements and complete metrological regression testing remain outstanding.
           
-          **Letöltés:** YS4470-highspeedv2-1.0-Windows.zip. A kész fő firmware, bootloader és indulókép a firmware/ könyvtárban található. Telepítés előtt olvasd el az OLVASS-EL.txt fájlt: a tesztelt telepítő előállításához saját, hash-ellenőrzött Beta3-mentés és sunxi-fel.exe szükséges. A gyári frissítővel történő telepítés nincs igazolva. A csomag nem tartalmaz személyes flash-mentést vagy natív külső eszközprogramot.
+          ### Download and installation
           
-          Firmware-forrás alapcommit: 30600195b40af4c6bd179e696518320d9abb4740. A bináris build kizárólag Release-melléklet, nincs a forrásfában.
+          Download **YS4470-highspeedv2-1.0-Windows.zip** below. The `firmware/` directory contains the compiled main firmware, bootloader, and boot image. The `project/` directory contains the reproducible installer project.
+          
+          Read `OLVASS-EL.txt` before installation. Preparing the tested installer requires your own exact, hash-verified Beta3 full backup and the pinned `sunxi-fel.exe`. Unknown device states are rejected. Installation through the factory updater has not been verified. This build modifies the bootloader as well as the main firmware, so interrupted writing may require FEL recovery.
+          
+          The package contains no personal full flash backup, device logs, or external native executable tools. Compiled builds are distributed only as Release assets, outside the source tree. `SHA256SUMS.txt` provides the archive checksum.
+          
+          Firmware source baseline: `30600195b40af4c6bd179e696518320d9abb4740`.
+          
+          Archive SHA-256: `326712f3c97240a28383de042be799e7f9bb820ef0c94c271254845d5e525f52`.
           '''
           def validate(data):
               if hashlib.sha256(data).hexdigest()!=SHA256:raise ValueError('Release ZIP SHA-256 mismatch')
@@ -83,7 +91,7 @@ jobs:
                   if not url.startswith('https://uploads.github.com/repos/'+REPO+'/releases/'):raise ValueError('Unexpected upload destination')
                   asset=api(url,'POST',content,raw=True)
                   if asset['size']!=len(content) or asset.get('digest')!=digest:raise ValueError('Uploaded asset mismatch')
-              api('/releases/'+str(release['id']),'PATCH',dict(draft=False,prerelease=False,make_latest='true'))
+              api('/releases/'+str(release['id']),'PATCH',dict(body=NOTES,draft=False,prerelease=False,make_latest='true'))
               actual=api('/releases/'+str(release['id']))
               if actual['draft'] or actual['tag_name']!=TAG:raise ValueError('Release not published')
               for name,content in assets:
