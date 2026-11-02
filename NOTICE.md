@@ -1,7 +1,7 @@
-# Eredet és terjedelem
+# Provenance and scope
 
-A projekt készülékspecifikus bináris deltapatch-ekből, build-/telepítőszkriptekből, tesztleírásokból és a felhasználó által adott indulóképből áll. A teljes gyártói firmware-forrás nem áll rendelkezésre.
+This project contains device-specific binary patches, build and installation scripts, tests, and supporting assets. The manufacturer's complete firmware source code is not available.
 
-A forráscsomag nem tartalmaz teljes gyártói firmware-t, készülékről olvasott flash-mentést, sunxi-fel futtatható állományt vagy külső Python-csomagokat. Az ezekhez tartozó jogok és licencek az eredeti jogosultaknál maradnak. A felhasználó által átadott grafika szerzői jogi státuszára nem teszünk külön állítást. Ez a dokumentum nem ad általános újralicencelést mások anyagaira.
+The public source package excludes complete firmware backups read from the device, the sunxi-fel executable, and external Python packages. Rights and licenses for third-party materials remain with their respective rights holders. This notice does not grant a blanket license for third-party materials.
 
-A natív telepítő az előző munkamenetben használt sunxi-fel.exe pontos hash-ét ellenőrzi: `da14ffa7243767d9c8c5579618171fde2956c4b37b82139bb519932aba6e9375`. Más buildet automatikusan nem fogad el. A hash rögzítése az ismert eszközváltozat ellenőrzése, nem független kódaudit.
+The native installer pins the previously used sunxi-fel.exe to SHA-256 da14ffa7243767d9c8c5579618171fde2956c4b37b82139bb519932aba6e9375. This verifies the expected tool build; it does not constitute an independent security audit.
