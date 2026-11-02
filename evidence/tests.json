@@ -44,5 +44,5 @@
       "opaque_logo_checksum_read": false
     }
   ],
-  "scope": "Actual boot0 logo parser, framebuffer clear and RGB565 drawing loop executed in Unicorn. SPI read/printf/display-hardware init/delay stubbed. Exact position/pixels and continuation to main-header selection verified; not full ROM/DRAM/panel cold boot."
+  "scope": "Actual boot0 loading, framebuffer initialization and transfer code executed in Unicorn. SPI read/printf/display-hardware init/delay stubbed. Output data and continuation to main-header selection verified; not a full ROM/DRAM/panel cold boot."
 }

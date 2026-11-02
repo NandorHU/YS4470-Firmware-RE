@@ -1,5 +1,5 @@
 {
-  "status": "OFFLINE; not flashed; bootloader positioning change needs separate physical approval",
+  "status": "Offline artifact at creation; see physical-install-1.0.json for the later installed-build verification",
   "source_art": "selected-original.png",
   "source_sha256": "c5f82b1d523d49005737c8a1aa3c6f065319aa54fe570f84335fd1b965f20058",
   "boot_sha256": "87034ceb925f8a217ac9590a4f61aff6b4c32bccb2a3175857622354172ae7bb",

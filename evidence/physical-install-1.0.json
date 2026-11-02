@@ -13,9 +13,9 @@
     655360,
     720896
   ],
-  "user_report": "az 1.0 jól működik",
-  "user_confirmed_operational": true,
   "physical_latency_quantified": false,
   "metrology_certified": false,
-  "boot_issued_by_installer": false
+  "boot_issued_by_installer": false,
+  "test_report": "I installed and tested this build on the device and confirmed that version 1.0 works well.",
+  "tested_on_device": true
 }

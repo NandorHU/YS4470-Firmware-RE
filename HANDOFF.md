@@ -1,13 +1,14 @@
-# Folytatás és GitHub-átadás – YS-4470 1.0
+# YS-4470 1.0 - continuation notes
 
-Célrepó: https://github.com/NandorHU/YS4470-Firmware-RE
+Repository: https://github.com/NandorHU/YS4470-Firmware-RE
+Release: https://github.com/NandorHU/YS4470-Firmware-RE/releases/tag/v1.0
 
-A projekt célját, jelenlegi állapotát, fontos címeit és következő lépéseit a README.md és PROJECT-STATUS.md rögzíti. A felhasználó engedélyezte a forráscsomag feltöltését ebbe a repóba.
+The README and PROJECT-STATUS.md describe the goal, current implementation, research addresses, and next steps.
 
-Az 1.0 continuous fizikailag telepítve. A teljes 16 MiB visszaolvasás a célképpel bájtra egyezik; a felhasználó visszajelezte: „az 1.0 jól működik”. Az evidence/physical-install-1.0.json tartalmazza az ellenőrzés eredményét. A régebbi offline tesztek és manifestek keletkezéskori státuszukat őrzik; a jelenlegi állapotot ez a fizikai bizonyíték és a PROJECT-STATUS.md adja meg.
+I installed and tested the 1.0 continuous build. A complete 16 MiB readback matched the intended image byte for byte, and the build works well on the tested device. The physical verification record is in evidence/physical-install-1.0.json. Earlier offline manifests retain their creation-time status.
 
-A felhasználó a mérési sebességet fontosabbnak tartja a folyamatos hangnál. Az 1.0 várakozást és extra mérési parancsot nem vezet be, a Beta3 lényegi időzítési és kijelzőgyorsító kódját megtartja; fizikai késésmérés még szükséges. Külön timed visszalépési változat megmarad.
+Measurement speed takes priority over continuous sound. The patch adds no sleep or extra measurement command and retains the core Beta3 timing and display optimizations. Objective physical latency measurements are still needed. A separate timed-tone fallback remains available.
 
-Csak a GitHub-forráscsomag tartalma kerüljön a tárolóba. A teljes flash-mentések, out/inputs/tools könyvtárak, USB-naplók és a LOCAL-INSTALLERS.zip maradjanak helyben. A hordozható build.py saját, hash-ellenőrzött Beta3-mentést igényel. A projekt nem a gyártói teljes firmware-forrás.
+Compiled firmware belongs in Release assets only. Keep full flash backups, USB logs, native external executables, and local out/inputs/tools directories private. The portable build requires an exact hash-verified Beta3 full backup. This project provides binary patches, not the manufacturer's complete source code.
 
-Az 1.0 működő állapot; új kísérleti firmware vagy fizikai teszt külön felhasználói engedélyt igényel. Következő kutatási irány az objektív késésmérés és a teljes mérési módregresszió. Nem igazolt nagyobb pontosság, új méréstartomány vagy maximális hardversebesség.
+Further experimental device writes and physical tests require explicit approval. Next steps are latency measurements and complete mode regression; improved accuracy, new ranges, and maximum hardware speed have not been established.

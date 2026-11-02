@@ -1,10 +1,10 @@
-# 1.0 – 2026-11-02
+# 1.0 - November 2, 2026
 
-Első számozott build a fizikailag ellenőrzött Beta3 alapjain.
+First numbered build based on the tested Beta3 firmware.
 
-- Angol kapcsolónév: highspeedv2.
-- Jobb alsó indulókép, két pozicionáló bootloader-utasítás és helyes boot0 checksum.
-- Folyamatos dióda-hang, új érvényes eredménnyel frissített véges watchdoggal; külön időzített hangú alternatíva.
-- Reprodukálható, hash-védett build; natív Windows telepítés és Beta3-visszaállítás, teljes flash-ellenőrzéssel és százalékos kijelzéssel.
+- English switch label changed to highspeedv2.
+- Retains the diode-response and display-update improvements.
+- Adds continuous diode sound with a finite, measurement-refreshed watchdog; the timed-tone fallback remains available.
+- Reproducible hash-verified build and Windows FEL installer preparation, complete readback verification, percentage progress, and Beta3 rollback.
 
-Állapot: continuous változat fizikailag felírva, teljes visszaolvasással ellenőrizve; a felhasználó szerint az 1.0 jól működik. Teljes regresszió és számszerű késésmérés még nem történt. A buildszám a csomag verziója; a készülék gyártói verziószövegét nem írja át.
+I installed and tested this build on the device. The full flash readback matched the intended image, and version 1.0 works well. Quantitative latency measurements and complete regression testing remain outstanding. The build version identifies this package; the manufacturer's displayed version string is unchanged.

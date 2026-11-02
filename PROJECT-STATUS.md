@@ -1,29 +1,30 @@
-# YS-4470 – projektcél és folytatható állapot
+# YS-4470 - project status
 
-A fő cél a későn reagáló diódamérés javítása: a kijelző és a hang is kövesse gyorsabban a mérőszondák kontaktusát. Az 1.0 tartalmazza a Beta3 gyorsítását, a highspeedv2 feliratot, a folyamatos dióda-hangot és a jobb alsó indulóképet.
+## Goal
 
-## Elért eredmények
+Reduce the delay between probe contact, diode measurement updates, and the audible indication while retaining the existing measurement hardware and factory commands. Version 1.0 includes the Beta3 responsiveness improvements, the highspeedv2 switch label, and continuous diode sound.
 
-- A gyári firmware és két teljes flash-mentés kiinduló hash-e ellenőrzött; az eredetik megőrizve.
-- Ghidra/ARM elemzés alapján feltárt válaszkezelés, dióda-érvényességi ág, hangindítás/ismétlésgátlás és bootloader képfeldolgozás.
-- A Beta2 teljes válaszra váró határidő-javítása és a Beta3 felesleges, azonos szövegű kijelzőfrissítést kihagyó javítása működik. A felhasználó gyorsulást jelzett.
-- Az 1.0 continuous fizikailag telepítve. A teljes visszaolvasás önálló ellenőrzése is pontos egyezést adott. A felhasználó: „az 1.0 jól működik”.
-- A forráscsomag reprodukálható deltapatch-eket, telepítőt, visszaállítót, dokumentációt és tesztbizonyítékot tartalmaz. Saját teljes flash-mentés nincs a GitHubra szánt csomagban.
+## Progress
 
-## Fontos címek
+- I preserved the original firmware and verified the initial full flash backups.
+- Ghidra analysis, ARM disassembly, and function-level emulation established the relevant response-processing, diode-validity, sound-control, and firmware-loading paths.
+- I tested Beta2/Beta3 and observed faster response with correct display updates.
+- I installed and tested the 1.0 continuous build. The full 16 MiB flash readback matched the intended image byte for byte, and the build works well on the tested device.
+- Reproducible binary patches, installer preparation, rollback, tests, and verification records are available. Compiled builds are distributed as Release assets only; private full backups are excluded.
 
-- 0x80003a0c: dióda-eredmény érvényességi ága; 0x80003a74: eredeti hangkapu hívása.
-- 0x80006e4c: hangkapu; 0x805abf06: mérési ismétlésgátló latch.
-- 0x805ac764: hangállapot/watchdog számláló; 0x8000553c: eredeti KeyTask számlálókezelés.
-- 0x80060928: 1.0 watchdog-frissítő; 0x80060950: hangindítás utáni számlálóbeállítás.
-- 0x80010718: a közös OPEN és érvénytelen ág scope-olt hangleállítása.
-- 0x8000f568: Beta3 azonos-kijelzőszöveg ellenőrző wrapper.
-- 0x80058750: Beta2 dióda-válaszhatáridő helper.
-- 0x80051978: highspeedv2 angol felirat, 12 bájt lezáró nullával.
-- boot0 fájloffset 0x45c és 0x464: indulókép pozíciója; flash boot0@0, logo@0x6000, main@0x50000.
+## Research addresses
 
-## Korlátok és következő munka
+- 0x80003a0c: diode-validity branch; 0x80003a74: original sound-gate call.
+- 0x80006e4c: sound gate; 0x805abf06: measurement repeat-suppression latch.
+- 0x805ac764: sound-state/watchdog counter; 0x8000553c: original KeyTask countdown.
+- 0x80060928: 1.0 watchdog refresh; 0x80060950: post-start counter initialization.
+- 0x80010718: scoped stop handling for OPEN and invalid measurement paths.
+- 0x8000f568: Beta3 identical-label-text wrapper.
+- 0x80058750: Beta2 diode-response deadline helper.
+- 0x80051978: highspeedv2 English label, including its NUL terminator in 12 bytes.
 
-A fizikai működés visszaigazolása nem teljes regresszió vagy pontossági minősítés. A kontaktus–hang késés számszerű összehasonlításához mérés szükséges; az emuláció nem helyettesíti az ADC/UART/panel tényleges időzítését. A watchdog névleges 13 KeyTask-ciklusos tartalék leállítása és a rövid billentyűhang elsőbbsége dokumentált szélső eseteket hagy. Az időzített hangú 1.0 alternatíva megmarad visszalépési lehetőségként.
+## Limits and next steps
 
-A következő munka objektív késésmérés és hosszabb dióda-kontaktusteszt, majd más mérési módok ellenőrzése. Új firmware-írás vagy fizikai teszt külön felhasználói jóváhagyást igényel. A készülék jelenlegi működő 1.0-ját további kísérleti gyorsítással automatikusan nem módosítjuk.
+My functional test is not a complete measurement-accuracy or reliability qualification. Objective contact-to-sound/display latency, extended watchdog edge cases, regression of all measurement modes, and analog accuracy still need testing. Function-level emulation does not establish actual ADC/UART/panel timing. The timed-tone fallback remains available.
+
+Further experimental firmware writing and physical tests require explicit approval. The current working 1.0 build is preserved while additional improvements are investigated.

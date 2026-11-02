@@ -24,30 +24,27 @@ jobs:
           import base64,hashlib,io,json,os,sys,urllib.request,urllib.error,zipfile
           from pathlib import Path
           REPO='NandorHU/YS4470-Firmware-RE'
-          BLOB='de985ef3e51a40b93e9c0dfe3da7da9a616d1ec7'
-          SHA256='326712f3c97240a28383de042be799e7f9bb820ef0c94c271254845d5e525f52'
+          BLOB='5659f725bb28258db56fb64d88affaadbb2e58d0'
+          SHA256='d336adcb687a1f53695cf1cf98419265f284f97ded2690449f2553fe1e50c038'
           NAME='YS4470-highspeedv2-1.0-Windows.zip'
           TAG='v1.0'
-          NOTES='''## YS-4470 highspeedv2 — 1.0
+          NOTES='''## YS-4470 highspeedv2 - 1.0
           
           - Retains Beta3's faster diode measurement and display updates.
-          - Continuous 1321 Hz diode tone and the `highspeedv2` switch label.
-          - A compact logo and caption in the bottom-right corner during startup.
+          - Continuous 1321 Hz diode tone and the highspeedv2 switch label.
           - Reproducible Windows FEL installer preparation and Beta3 rollback, with full backups, complete readback verification, and percentage progress.
           
-          **Verified on the owner's device:** version 1.0 continuous was installed, the entire 16 MiB flash readback matched the intended image byte for byte, and the owner confirmed that version 1.0 works well. Quantitative latency measurements and complete metrological regression testing remain outstanding.
+          **I tested this build on the device and confirmed that version 1.0 works well.** The complete 16 MiB flash readback matched the intended image byte for byte. Quantitative latency measurements and complete measurement-accuracy regression testing remain outstanding.
           
           ### Download and installation
           
-          Download **YS4470-highspeedv2-1.0-Windows.zip** below. The `firmware/` directory contains the compiled main firmware, bootloader, and boot image. The `project/` directory contains the reproducible installer project.
+          Download YS4470-highspeedv2-1.0-Windows.zip below. Compiled firmware components are in firmware/; the reproducible installer project is in project/.
           
-          Read `OLVASS-EL.txt` before installation. Preparing the tested installer requires your own exact, hash-verified Beta3 full backup and the pinned `sunxi-fel.exe`. Unknown device states are rejected. Installation through the factory updater has not been verified. This build modifies the bootloader as well as the main firmware, so interrupted writing may require FEL recovery.
+          Read OLVASS-EL.txt before installation. Preparing the tested installer requires your own exact, hash-verified Beta3 full backup and the pinned sunxi-fel.exe. Unknown device states are rejected. Installation through the factory updater has not been verified. The build also modifies the bootloader; interrupted writing may require FEL recovery.
           
-          The package contains no personal full flash backup, device logs, or external native executable tools. Compiled builds are distributed only as Release assets, outside the source tree. `SHA256SUMS.txt` provides the archive checksum.
+          The package contains no personal full flash backup, device logs, or external native executable tools. Compiled builds are available only as Release assets, outside the source tree. SHA256SUMS.txt provides the archive checksum.
           
-          Firmware source baseline: `30600195b40af4c6bd179e696518320d9abb4740`.
-          
-          Archive SHA-256: `326712f3c97240a28383de042be799e7f9bb820ef0c94c271254845d5e525f52`.
+          Firmware source baseline: 30600195b40af4c6bd179e696518320d9abb4740.
           '''
           def validate(data):
               if hashlib.sha256(data).hexdigest()!=SHA256:raise ValueError('Release ZIP SHA-256 mismatch')
@@ -69,7 +66,9 @@ jobs:
                   headers['Content-Type']='application/octet-stream' if raw else 'application/json'
                   if not raw:data=json.dumps(data).encode()
               request=urllib.request.Request(url,data=data,headers=headers,method=method)
-              with urllib.request.urlopen(request,timeout=90) as response:return json.load(response)
+              with urllib.request.urlopen(request,timeout=90) as response:
+                  body=response.read()
+                  return json.loads(body) if body else None
           def publish():
               blob=api('/git/blobs/'+BLOB)
               if blob.get('encoding')!='base64':raise ValueError('Expected base64 blob')
@@ -85,8 +84,10 @@ jobs:
               for name,content in assets:
                   digest='sha256:'+hashlib.sha256(content).hexdigest()
                   if name in existing:
-                      if existing[name].get('digest')!=digest:raise ValueError('Existing release asset differs; refusing overwrite: '+name)
-                      continue
+                      if existing[name].get('digest')==digest:continue
+                      approved_previous={'YS4470-highspeedv2-1.0-Windows.zip':'sha256:326712f3c97240a28383de042be799e7f9bb820ef0c94c271254845d5e525f52','SHA256SUMS.txt':'sha256:c5898949bc40f43991c03b1e838111787489b8d22d549a09b0427bffb4296b1d'}
+                      if existing[name].get('digest')!=approved_previous.get(name):raise ValueError('Unexpected existing asset; refusing replacement')
+                      api('/releases/assets/'+str(existing[name]['id']),'DELETE')
                   url=release['upload_url'].split('{')[0]+'?name='+name
                   if not url.startswith('https://uploads.github.com/repos/'+REPO+'/releases/'):raise ValueError('Unexpected upload destination')
                   asset=api(url,'POST',content,raw=True)
@@ -97,6 +98,12 @@ jobs:
               for name,content in assets:
                   a=next(a for a in actual['assets'] if a['name']==name)
                   if a.get('digest')!='sha256:'+hashlib.sha256(content).hexdigest():raise ValueError('Final remote digest mismatch')
+              # Keep the release's source-code downloads on the same documentation revision.
+              tag=api('/git/ref/tags/'+TAG)
+              tag_sha=tag['object']['sha']
+              if tag_sha!=os.environ['GITHUB_SHA']:
+                  if tag_sha!='b87adb2f5c482f383770cb64c7407e05227cb363':raise ValueError('Unexpected release tag; refusing update')
+                  api('/git/refs/tags/'+TAG,'PATCH',dict(sha=os.environ['GITHUB_SHA'],force=False))
               print('Published and verified:',actual['html_url'])
           if __name__=='__main__':
               if len(sys.argv)==3 and sys.argv[1]=='--verify-only':
