@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "variant": "continuous",
+  "physical_install_success": true,
+  "independent_full_readback_byte_match": true,
+  "full_flash_sha256": "c19a240615bb7fa1fce28dbb93e1a0d059190eafecba66256bfb3d511d2c6251",
+  "backup_before_sha256": "2ce9c1693a9726a2fe042620debd7705e77cfec58d98e8729bb6ec1ade4a9d0f",
+  "changed_sector_offsets": [
+    0,
+    65536,
+    327680,
+    393216,
+    655360,
+    720896
+  ],
+  "user_report": "az 1.0 jól működik",
+  "user_confirmed_operational": true,
+  "physical_latency_quantified": false,
+  "metrology_certified": false,
+  "boot_issued_by_installer": false
+}

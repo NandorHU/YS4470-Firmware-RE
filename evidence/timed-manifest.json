@@ -1,0 +1,18 @@
+{
+  "version": "1.0",
+  "variant": "timed",
+  "status": "OFFLINE, NOT PHYSICALLY INSTALLED/TESTED",
+  "main_sha256": "89a5bb79ec304a57a758e33bf89d6d7b3848982573460a476fb53e7412877729",
+  "full_sha256": "f7f89f3388d7dfb538a79de79af351718878d26823a87f25432bbae4be4c5b58",
+  "label": "highspeedv2",
+  "sound": "1321 Hz PWM approximation; not MP3 playback",
+  "physical_speed_regression_tested": false,
+  "changes_vs_beta3": [
+    {
+      "address": "0x80051978",
+      "offset": 334232,
+      "old": "446961672042657461000000",
+      "new": "686967687370656564763200"
+    }
+  ]
+}

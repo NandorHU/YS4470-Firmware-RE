@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "image": "original",
+      "jump_address": "0x80000000",
+      "payload_matches": true,
+      "reads": [
+        {
+          "flash_offset": "0x50020",
+          "destination": "0x80000000",
+          "length": 5943264
+        }
+      ]
+    },
+    {
+      "image": "candidate",
+      "jump_address": "0x80000000",
+      "payload_matches": true,
+      "reads": [
+        {
+          "flash_offset": "0x50020",
+          "destination": "0x80000000",
+          "length": 5943264
+        }
+      ]
+    },
+    {
+      "image": "header_checksum_altered",
+      "jump_address": "0x80000000",
+      "payload_matches": true,
+      "reads": [
+        {
+          "flash_offset": "0x50020",
+          "destination": "0x80000000",
+          "length": 5943264
+        }
+      ]
+    }
+  ],
+  "scope": "modified positioning bootloader raw offset0x344 signature-match through main-image jump; SPI read/printf/delay stubbed; not full cold boot"
+}
