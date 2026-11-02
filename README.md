@@ -18,7 +18,6 @@ Ami még hátravan: a kontaktustól a kijelzésig/hangig tartó idő objektív m
 
 - Megmarad a Beta3 gyorsított dióda-lekérdezése, teljes válaszra váró javított határideje és az ismétlődő kijelzőszöveg felesleges újrarajzolásának elhagyása.
 - A kapcsoló angol felirata pontosan `highspeedv2`. Az eredeti 12 bájtos helyen, lezáró nullával együtt elfér. Más nyelvek feliratai nem változtak.
-- Jobb alsó, kis méretű logó és „rebuilt by www.konzol-szerviz.hu” felirat. 854×480-as látható kép, 480×854-es natív RGB565 tárolás. Statikus indulókép, nem animáció.
 - `continuous`: 1321 Hz-es folyamatos dióda-hang az eredeti érvényes mérési ágban; nyitott/érvénytelen bemenet leállítja. Nem ad várakozást vagy extra mérési parancsot a mérési ciklushoz.
 - `timed`: visszalépési változat a Beta3 bevált, névleg 420 tickes egyszeri hangjával. Ugyanaz az új felirat és indulókép.
 
