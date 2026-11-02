@@ -1,6 +1,6 @@
 # YS-4470 firmware 1.0 — highspeedv2
 
-Firmware improvements for the Mr. Yang YS-4470, built on the physically tested Beta3 version. **Version 1.0 continuous has been installed on the device. A complete 16 MiB flash readback matched the intended image byte for byte, and the owner confirmed that version 1.0 works well.** This is an operational confirmation, not a complete accuracy or reliability certification.
+Firmware improvements for the Mr. Yang YS-4470**Version 1.0 continuous has been installed on the device. A complete 16 MiB flash readback matched the intended image byte for byte, and the owner confirmed that version 1.0 works well.** This is an operational confirmation, not a complete accuracy or reliability certification.
 
 **[Download version 1.0 from Releases](https://github.com/NandorHU/YS4470-Firmware-RE/releases/tag/v1.0).** Compiled firmware is distributed as Release assets only; it is not tracked in the source tree.
 
