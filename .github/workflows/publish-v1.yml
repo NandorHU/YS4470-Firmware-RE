@@ -1,0 +1,96 @@
+name: Publish verified YS-4470 1.0 release
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/publish-v1.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: publish-ys4470-v1
+  cancel-in-progress: false
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Verify firmware package and publish Release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_SHA: ${{ github.sha }}
+        shell: python
+        run: |
+          """One-time GitHub Actions release publication, no third-party packages."""
+          import base64,hashlib,io,json,os,sys,urllib.request,urllib.error,zipfile
+          from pathlib import Path
+          REPO='NandorHU/YS4470-Firmware-RE'
+          BLOB='de985ef3e51a40b93e9c0dfe3da7da9a616d1ec7'
+          SHA256='326712f3c97240a28383de042be799e7f9bb820ef0c94c271254845d5e525f52'
+          NAME='YS4470-highspeedv2-1.0-Windows.zip'
+          TAG='v1.0'
+          NOTES='''## YS-4470 highspeedv2 – 1.0
+          
+          - A Beta3 gyorsított diódamérése és kijelzőfrissítése.
+          - Folyamatos, 1321 Hz-es dióda-hang; highspeedv2 kapcsolófelirat.
+          - Visszafogott logó és felirat a jobb alsó sarokban indításkor.
+          - Teljes mentéssel/visszaolvasással védett, százalékos Windows FEL-telepítő előállítása és Beta3-visszaállítás.
+          
+          Az 1.0 continuous fizikailag telepítve; a teljes 16 MiB visszaolvasás bájtra egyezik a célképpel. A felhasználó szerint az 1.0 jól működik. A számszerű késésmérés és teljes metrológiai regresszió nincs elvégezve.
+          
+          **Letöltés:** YS4470-highspeedv2-1.0-Windows.zip. A kész fő firmware, bootloader és indulókép a firmware/ könyvtárban található. Telepítés előtt olvasd el az OLVASS-EL.txt fájlt: a tesztelt telepítő előállításához saját, hash-ellenőrzött Beta3-mentés és sunxi-fel.exe szükséges. A gyári frissítővel történő telepítés nincs igazolva. A csomag nem tartalmaz személyes flash-mentést vagy natív külső eszközprogramot.
+          
+          Firmware-forrás alapcommit: 30600195b40af4c6bd179e696518320d9abb4740. A bináris build kizárólag Release-melléklet, nincs a forrásfában.
+          '''
+          def validate(data):
+              if hashlib.sha256(data).hexdigest()!=SHA256:raise ValueError('Release ZIP SHA-256 mismatch')
+              with zipfile.ZipFile(io.BytesIO(data)) as z:
+                  if z.testzip() is not None:raise ValueError('Corrupt ZIP')
+                  for n in z.namelist():
+                      parts=Path(n).parts
+                      if any(p in ['inputs','out','tools','simulation'] or p.startswith('run-') for p in parts) or '..' in parts:raise ValueError('Unexpected private/archive path')
+                  expected={'firmware/f1c100s-1.0.bin','firmware/boot0-1.0.bin','firmware/logo-1.0.bin'}
+                  if {n for n in z.namelist() if n.endswith('.bin')}!=expected:raise ValueError('Unexpected firmware list')
+                  if hashlib.sha256(z.read('firmware/f1c100s-1.0.bin')).hexdigest()!='697d160047e9f040b31acd79d5b0febb940bc712f15eb6e2d91d997a5608011d':raise ValueError('Wrong main firmware')
+                  for line in z.read('CHECKSUMS.sha256').decode().splitlines():
+                      digest,name=line.split('  ',1)
+                      if hashlib.sha256(z.read(name)).hexdigest()!=digest:raise ValueError('File checksum mismatch: '+name)
+          def api(path,method='GET',data=None,raw=False):
+              url=path if path.startswith('https://uploads.github.com/') else 'https://api.github.com/repos/'+REPO+path
+              headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','User-Agent':'YS4470-release-1.0'}
+              if data is not None:
+                  headers['Content-Type']='application/octet-stream' if raw else 'application/json'
+                  if not raw:data=json.dumps(data).encode()
+              request=urllib.request.Request(url,data=data,headers=headers,method=method)
+              with urllib.request.urlopen(request,timeout=90) as response:return json.load(response)
+          def publish():
+              blob=api('/git/blobs/'+BLOB)
+              if blob.get('encoding')!='base64':raise ValueError('Expected base64 blob')
+              data=base64.b64decode(blob['content']);validate(data)
+              try:
+                  release=api('/releases/tags/'+TAG)
+                  if release['name']!='YS-4470 highspeedv2 1.0':raise ValueError('Existing release title mismatch; refusing overwrite')
+              except urllib.error.HTTPError as error:
+                  if error.code!=404:raise
+                  release=api('/releases','POST',dict(tag_name=TAG,target_commitish=os.environ['GITHUB_SHA'],name='YS-4470 highspeedv2 1.0',body=NOTES,draft=True,prerelease=False))
+              assets=[(NAME,data),('SHA256SUMS.txt',(SHA256+'  '+NAME+'\n').encode())]
+              existing={a['name']:a for a in release.get('assets',[])}
+              for name,content in assets:
+                  digest='sha256:'+hashlib.sha256(content).hexdigest()
+                  if name in existing:
+                      if existing[name].get('digest')!=digest:raise ValueError('Existing release asset differs; refusing overwrite: '+name)
+                      continue
+                  url=release['upload_url'].split('{')[0]+'?name='+name
+                  if not url.startswith('https://uploads.github.com/repos/'+REPO+'/releases/'):raise ValueError('Unexpected upload destination')
+                  asset=api(url,'POST',content,raw=True)
+                  if asset['size']!=len(content) or asset.get('digest')!=digest:raise ValueError('Uploaded asset mismatch')
+              api('/releases/'+str(release['id']),'PATCH',dict(draft=False,prerelease=False,make_latest='true'))
+              actual=api('/releases/'+str(release['id']))
+              if actual['draft'] or actual['tag_name']!=TAG:raise ValueError('Release not published')
+              for name,content in assets:
+                  a=next(a for a in actual['assets'] if a['name']==name)
+                  if a.get('digest')!='sha256:'+hashlib.sha256(content).hexdigest():raise ValueError('Final remote digest mismatch')
+              print('Published and verified:',actual['html_url'])
+          if __name__=='__main__':
+              if len(sys.argv)==3 and sys.argv[1]=='--verify-only':
+                  validate(Path(sys.argv[2]).read_bytes());print('PASS: archive SHA256, firmware bytes, per-file hashes and private-data exclusion')
+              else:publish()
