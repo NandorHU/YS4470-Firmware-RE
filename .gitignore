@@ -1,0 +1,10 @@
+out/
+inputs/
+tools/
+__pycache__/
+*.bin
+*.exe
+*.dll
+*.zip
+run-*/
+*-console.txt
