@@ -1,19 +1,23 @@
 # Function database
 
-Only functions or code regions with a direct published evidence path are listed. “Role” is an observed/derived role, not an original symbol name.
+Only directly evidenced locations are listed. “Role” means an observed role in archived instrumentation or a published test; it is not an original symbol name.
 
-| Address | Role | Evidence and limits |
+| Address | Role / confidence | Evidence and limits |
 |---|---|---|
-| `0x80003a0c` | Diode-result validity branch | Project status and archived ARM sound test enter this address with valid/invalid floating results. |
-| `0x80003a74` | Original diode sound-gate call site | Project status; later patch test dispatches PWM through the original path. |
-| `0x80006e4c` | Sound gate | Project status and archived test use it as the sound-control route. |
-| `0x8000553c` | KeyTask tone/watchdog countdown | Archived test executes 13 cycles and observes tone stop on the 13th. Scheduler period remains unmeasured. |
-| `0x80010718` | Scoped OPEN/invalid-result stop hook location | Existing project status identifies this patched path; semantics only verified in function-level emulation. |
-| `0x8000f568` | Same-label display wrapper | Existing status identifies it; no full GUI reconstruction has been performed. |
-| `0x80058750` | Diode response deadline helper | Existing status identifies it; factory protocol and timeout units are still unknown. |
-| `0x80060928` | 1.0 watchdog-refresh hook | Patch-specific code, not a factory symbol. |
-| `0x80060950` | 1.0 post-start watchdog initialization | Patch-specific code, not a factory symbol. |
+| `0x80003a0c` | Diode-result validity branch — exercised | Published ARM test enters it with valid/invalid inputs. |
+| `0x80003a74` | Diode sound-gate call site — exercised | Published sound test follows the original gate path. |
+| `0x80006e4c` | Sound gate — exercised | Published sound test identifies this route. |
+| `0x8000553c` | KeyTask countdown handling — exercised | Test observes stop on the 13th cycle; the real period is unknown. |
+| `0x800045e0` | Measurement transport TX instrumentation site | Diagnostic patch replaces a call here; protocol semantics remain unverified. |
+| `0x80004738` | Measurement transport RX instrumentation site | Diagnostic patch replaces code here; raw buffer format is unknown. |
+| `0x800037fc` | Candidate result-consume site | Instrumented call site only. |
+| `0x8005d048` | Candidate GUI-update site | Instrumented branch site only. |
+| `0x80010648` | Candidate diagnostic-report site | Instrumented call site only. |
+| `0x8000740c` | Candidate IRQ-side site | Instrumented branch site only. |
+| `0x8000f568` | Same-label display wrapper — patch code | Not a factory symbol. |
+| `0x80058750` | Response-deadline helper — patch code | Not a factory symbol. |
+| `0x80060928`, `0x80060950` | 1.0 sound watchdog hooks — patch code | Not factory symbols. |
 
-## Naming policy
+## Naming rule
 
-Addresses remain primary identifiers until a supplied original image permits independent disassembly and cross-version comparison. Do not promote patch-hook labels to factory function names.
+Use addresses until an original hashed image supports disassembly and cross-version comparison. Do not turn patch labels or instrumentation sites into factory function names.
