@@ -1,0 +1,47 @@
+{
+  "analysis_date": "2026-11-04",
+  "scope": "Static byte comparison between the offline reply-audio parent and offline E1 profile build. No device write or physical latency claim.",
+  "inputs": {
+    "parent_reply_audio_sha256": "9890a3c671987b0aa75a505e4f389532ca102f9dcf306394daa45a9328bc91e1",
+    "e1_profiles_sha256": "2edde777ff35a85cca31264e4c62c1a8d7427aa608db03f7c52f247900fd2a2c"
+  },
+  "byte_comparisons": [
+    {
+      "region": "factory Highspeed event handler",
+      "start": "0x8000d294",
+      "end_exclusive": "0x8000d3a0",
+      "identical": true
+    },
+    {
+      "region": "factory Highspeed diode period selector",
+      "start": "0x8005d1a0",
+      "end_exclusive": "0x8005d260",
+      "identical": true
+    },
+    {
+      "region": "profile Gauge-task hook",
+      "start": "0x80005d04",
+      "end_exclusive": "0x80005d10",
+      "identical": false
+    },
+    {
+      "region": "profile GUI callback hook",
+      "start": "0x8005d048",
+      "end_exclusive": "0x8005d050",
+      "identical": false
+    },
+    {
+      "region": "profile GUI-constructor hook",
+      "start": "0x80051c0c",
+      "end_exclusive": "0x80051c10",
+      "identical": false
+    }
+  ],
+  "profile_semantics_from_builder": {
+    "Base": "original FSM once; no Direct, Auto, or Ready behavior selected",
+    "Direct": "adds accepted-reply direct-audio behavior; no Auto or Ready behavior selected",
+    "Auto": "Direct plus idle autopoll request path",
+    "Ready": "Auto plus bounded immediate state 5 then state 7 dispatch after the original FSM pass"
+  },
+  "conclusion": "The profile build does not directly replace the Highspeed handler or its selector. Static evidence supports only that profiles differ in added task/UI work; it does not prove the cause of physical responsiveness differences."
+}
