@@ -1,0 +1,39 @@
+{
+  "analysis_date": "2026-11-04",
+  "input": {
+    "kind": "factory_3.8_main_image",
+    "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+    "length": 5943296,
+    "published": false
+  },
+  "method": {
+    "tool": "Ghidra 12.1.4 headless",
+    "language": "ARM:LE:32:v5t:default",
+    "raw_image_base": "0x7fffffe0",
+    "scope": "bounded static disassembly at known ARM instruction addresses",
+    "limitations": [
+      "Full automatic analysis encountered ARM/Thumb context conflicts and was not used as evidence.",
+      "No target execution, device access, transport capture, or analog measurement was performed."
+    ]
+  },
+  "verified_rx_parser": {
+    "entry": "0x80004738",
+    "value": "signed little-endian 24-bit integer from frame bytes [1..3]",
+    "range_code": "for the non-0x1b control path, frame byte [4] capped to 6",
+    "retry_state": {
+      "address": "0x805aae8c",
+      "counter_offset": "0x01",
+      "selector_offset": "0x08"
+    },
+    "result_state": {
+      "address": "0x805ac714",
+      "value_offset": "0x1c",
+      "code_offset": "0x20"
+    },
+    "sentinel_path": {
+      "selectors": ["0x0d", "0x0e"],
+      "unsigned_threshold": "0x1389",
+      "stored_value": "0x007fffff"
+    }
+  }
+}
