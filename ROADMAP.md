@@ -2,20 +2,22 @@
 
 ## Completed baseline
 
-- [x] Record the published boot-to-main-image mapping and its evidence boundary.
-- [x] Separate patch-specific hooks from factory-code claims in the RE documentation.
+- [x] Record boot0 → main-image mapping and evidence boundary.
+- [x] Record the available factory-3.8 main-image SHA-256 identity.
+- [x] Record six instrumented entry sites for the candidate measurement response path.
+- [x] Separate verified factory locations from patch-only code.
 
 ## Next single technical task
 
-- [ ] Import a legally held, hash-recorded original firmware 3.6 or 3.8 image into Ghidra/REA using ARM little-endian mapping: file header at flash `0x50000`, payload load address `0x80000000`, link base candidate `0x7fffffe0`. Verify the image header and reset/task entry points before naming any functions.
+- [ ] Obtain the hash-matching original 3.8 main image (read-only) and import it into Ghidra/REA: ARM little-endian payload at `0x80000000`, link-base candidate `0x7fffffe0`. Verify header/load behavior, then disassemble and cross-reference RX `0x80004738` through consume `0x800037fc`.
 
 ## Subsequent milestones
 
-- [ ] Build a cross-version function/address map for 3.6 and 3.8.
-- [ ] Trace measurement transport receive → result parser → mode dispatch.
-- [ ] Recover ADC/range-control peripheral accesses and calibration data.
-- [ ] Recover GUI/key/timer/interrupt task graph.
-- [ ] Specify and implement a clean-room, independently compilable firmware architecture.
-- [ ] Validate only with explicit authorization and reversible test procedures.
+- [ ] Establish equivalent mapping for 3.6.
+- [ ] Recover raw transport reply format and result parser.
+- [ ] Map ADC/range-control/calibration references.
+- [ ] Recover GUI/key/timer/IRQ task graph.
+- [ ] Specify a clean-room, independently compilable architecture.
+- [ ] Validate only with explicit authorization and reversible procedures.
 
-No new device write is part of this roadmap.
+No device write is authorized by this roadmap.
