@@ -1,22 +1,35 @@
 # Measurement algorithms
 
-## Demonstrated diode/sound control flow
+## Factory 3.8 reply parser
 
-The checked-in ARM test establishes only these bounded patched-path behaviors:
+Static Ghidra disassembly at `0x80004738` establishes this exact representation:
 
-1. It enters the diode-result branch at `0x80003a0c`.
-2. A valid candidate yields one PWM-start request through the original sound route.
-3. 1,000 repeated valid candidates cause no repeated PWM stop/restart in the emulation.
-4. Invalid and tested OPEN paths request stop.
-5. The KeyTask path stops after 13 countdown cycles without refresh.
-6. A competing short beep with counter <=3 remains protected.
+~~~text
+u24 = frame[1] | frame[2] << 8 | frame[3] << 16
+value = (u24 & 0x800000) ? (u24 | 0xff000000) : u24
+~~~
 
-The test stubs formatting/conversion, PWM hardware, UART/ADC, and LCD behavior. It cannot establish wall-clock latency, thresholds, analog accuracy, or protocol correctness.
+For a parser control value other than `0x1b`, it derives:
 
-## Newly bounded investigation path
+~~~text
+code = min(frame[4], 6)
+~~~
 
-Archived diagnostic instrumentation marks TX `0x800045e0`, RX `0x80004738`, consume `0x800037fc`, GUI `0x8005d048`, report `0x80010648`, and IRQ `0x8000740c`. With the matching 3.8 image, these are the ordered starting points for recovering the raw reply → parsed result → display path.
+When a retry byte at `0x805aae8c+1` is nonzero, it decrements it and resumes at `0x80004518`. After retry completion, selector `*(u32 *)(0x805aae8c+8)` controls a special condition:
 
-## Not reconstructed
+~~~text
+if selector in {0x0d, 0x0e} and unsigned(value) >= 0x1389:
+    *(u32 *)(0x805ac714+0x1c) = 0x007fffff
+    *(u32 *)(0x805ac714+0x20) = r7   # source semantics still unknown
+else:
+    *(u32 *)(0x805ac714+0x1c) = value
+    *(u32 *)(0x805ac714+0x20) = code
+~~~
 
-Voltage, resistance, continuity, diode thresholds, autorange, calibration, sampling, and filtering remain unknown.
+The `r7` source, 5001's physical unit, and sentinel `0x007fffff`'s presentation meaning are open. It must not yet be called an ADC threshold or OPEN code.
+
+## Existing bounded diode/sound evidence
+
+Prior function-level tests show the patched diode path suppresses redundant PWM start/stop across 1,000 valid results; invalid and tested OPEN paths request stop; a watchdog expires after 13 KeyTask cycles. Those tests do not establish real timing, ADC behavior, or metrology.
+
+Resistance, voltage, continuity, autorange, calibration, filtering, and scaling remain unreconstructed.
