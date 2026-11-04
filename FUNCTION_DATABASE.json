@@ -1,0 +1,26 @@
+{
+  "schema": "ys4470.function-database.v1",
+  "generated_utc_date": "2026-11-04",
+  "architecture": {"cpu": "ARM926EJ-S", "instruction_set": "ARM v5T / Thumb considered", "link_base": "0x7fffffe0"},
+  "versions": {
+    "V3_8": {"status": "analyzed locally", "input_kind": "original raw payload", "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"},
+    "Beta3": {"status": "analyzed locally", "input_kind": "modified raw payload"},
+    "V3_6": {"status": "not located in this workspace", "input_kind": "expected original; no comparison claim"},
+    "V1_0_current": {"status": "locally inventoried only", "input_kind": "private eGON-wrapped image; cross-version pairing provisional"}
+  },
+  "functions": [
+    {"id": "result_dispatch", "addresses": {"V3_8": "0x800037bc", "Beta3": "0x800037bc"}, "confidence": "confirmed", "role": "Measurement-result dispatch region", "relationships": ["calls beta3_result_observer at 0x800037fc in Beta3"], "evidence": ["ARM disassembly", "raw diff V3_8 vs Beta3"]},
+    {"id": "diode_validity_branch", "addresses": {"V3_8": "0x80003a0c", "Beta3": "0x80003a0c"}, "confidence": "confirmed", "role": "Diode/continuity result branch region", "relationships": ["contains established sound-gate call site 0x80003a74"], "evidence": ["prior ARM trace", "Beta3 helper return-address comparison"]},
+    {"id": "measurement_fsm", "addresses": {"V3_8": "0x80004490", "Beta3": "0x80004490"}, "confidence": "confirmed", "role": "Request/reply measurement state machine", "relationships": ["state 5 parser at 0x80004738", "transaction_builder"], "evidence": ["ARM state-table trace"]},
+    {"id": "transaction_builder", "addresses": {"V3_8": "0x8000489c", "Beta3": "0x8000489c"}, "confidence": "confirmed", "role": "Rebuilds/queues transaction state", "evidence": ["ARM trace"]},
+    {"id": "key_task_countdown", "addresses": {"V3_8": "0x8000553c", "Beta3": "0x8000553c"}, "confidence": "confirmed", "role": "Key-task countdown region", "evidence": ["seeded PyGhidra inventory"]},
+    {"id": "main_adc_task_candidate", "addresses": {"V3_8": "0x80005a78", "Beta3": "0x80005a78"}, "confidence": "hypothesis", "role": "Candidate MainADCTask entry", "evidence": ["existing project annotation; requires dynamic/emulation validation"]},
+    {"id": "gauge_task_candidate", "addresses": {"V3_8": "0x80005b6c", "Beta3": "0x80005b6c"}, "confidence": "hypothesis", "role": "Candidate gauge/UI task entry", "evidence": ["existing project annotation"]},
+    {"id": "sound_control_gate", "addresses": {"V3_8": "0x80006e4c", "Beta3": "0x80006e4c"}, "confidence": "confirmed", "role": "Sound request gate; clamps selector to 1..10 and calls lower sound routine", "relationships": ["called at 0x80003a74"], "evidence": ["PyGhidra decompilation", "ARM disassembly"]},
+    {"id": "uart_rx_isr", "addresses": {"V3_8": "0x800073bc", "Beta3": "0x800073bc"}, "confidence": "confirmed", "role": "UART receive interrupt handler", "evidence": ["prior ARM trace; buffer 0x805b408c, bound 200"]},
+    {"id": "highspeed_event_handler", "addresses": {"V3_8": "0x8000d294", "Beta3": "0x8000d294"}, "confidence": "confirmed", "role": "High-speed event handler", "evidence": ["prior static trace"]},
+    {"id": "beta3_sound_override", "addresses": {"Beta3": "0x80010754"}, "confidence": "confirmed", "role": "Call-site-specific sound parameter override helper", "relationships": ["patched in at 0x80006e80", "tests caller return address 0x80003a78", "sets r6 to 0x529 only on equality"], "evidence": ["Beta3 ARM disassembly", "raw diff"]},
+    {"id": "beta3_result_observer", "addresses": {"Beta3": "0x80060130"}, "confidence": "confirmed_static_behavior", "role": "Preserves original result load and tracks result/context changes in Beta3 state block", "relationships": ["called at 0x800037fc", "state root 0x800600ac"], "evidence": ["Beta3 ARM disassembly", "raw diff"]},
+    {"id": "highspeed_diode_period_selector_region", "addresses": {"V3_8": "0x8005d1a0", "Beta3": "0x8005d1a0"}, "confidence": "hypothesis", "role": "Candidate high-speed diode period selection data/region", "evidence": ["existing project annotation; no physical parameter proof"]}
+  ]
+}
