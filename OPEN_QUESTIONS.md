@@ -1,18 +1,22 @@
 # Open questions
 
-## Image acquisition
+## Parser and state
 
-1. Can the original 3.8 main image with SHA-256 `7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290` be made available locally for read-only analysis?
-2. Which hash and image correspond to factory 3.6?
-3. Do 3.6/3.8 share the 32-byte header, load address `0x80000000`, and link base `0x7fffffe0`?
+1. What does the pre-parser `r1 == 0x1b` control path represent, and why does it force its derived code to zero?
+2. What concrete object/meaning is at `0x805aae8c`, especially byte +1 and word +8?
+3. What produces `r7` for the special sentinel store at `0x805ac734`?
+4. Is `0x007fffff` an overrange, OPEN, or another presentation sentinel? The static parser alone does not prove this.
+5. What physical unit and mode behavior correspond to the unsigned 5001 threshold?
 
-## Technical questions
+## Transport and algorithms
 
-- What raw data enters RX near `0x80004738`, and how does it reach consume near `0x800037fc`?
-- What peripheral registers implement ADC/range control/PWM/LCD/keys?
-- What is the real scheduler period behind the 13-cycle watchdog?
-- What values distinguish diode-valid, OPEN, continuity, and invalid results?
-- Where are autorange, calibration, and numeric conversion implemented?
-- What are the full GUI, timer, IRQ, and task graphs?
+- What fills the raw frame pointer consumed at `0x80004738`, and what is frame byte 0?
+- Does `0x80004518` retransmit, wait, or dispatch the next command?
+- Which peripheral/register path implements ADC acquisition and range switching?
+- How do 3.6 and 3.8 differ in reply format and parser behavior?
+- Where are voltage, resistance, continuity, autorange, calibration, and display conversion implemented?
 
-Close a question only with an image hash plus reproducible disassembly, emulator trace, or physical observation.
+## Tooling
+
+- Can targeted ARM blocks be analyzed without ARM/Thumb context conflicts, or should a second raw-ARM disassembler be configured for cross-checking?
+- REA’s Windows Ghidra adapter cannot import raw ARM images; direct Ghidra headless import is the current reproducible path.
