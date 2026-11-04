@@ -1,22 +1,24 @@
 # Open questions
 
+## Highspeed/profile comparison
+
+1. Does Base + highspeedv2 remain fastest in repeated controlled tests, and which metric—first fresh reply, display, or sound—is improved?
+2. Does Direct’s accepted-reply sound work add observable Gauge-task latency compared with Base?
+3. Does Auto’s idle request path generate extra queue/bus occupancy under diode contact?
+4. Does Ready’s bounded 5→7 dispatch affect request ordering or GUI freshness under realistic UART timing?
+5. What is the actual duration of a 200/100 Highspeed selector tick, and which scheduler/task owns it?
+
 ## Parser and state
 
-1. What does the pre-parser `r1 == 0x1b` control path represent, and why does it force its derived code to zero?
-2. What concrete object/meaning is at `0x805aae8c`, especially byte +1 and word +8?
-3. What produces `r7` for the special sentinel store at `0x805ac734`?
-4. Is `0x007fffff` an overrange, OPEN, or another presentation sentinel? The static parser alone does not prove this.
-5. What physical unit and mode behavior correspond to the unsigned 5001 threshold?
+- What does pre-parser `r1 == 0x1b` mean?
+- What are `0x805aae8c+1`, selector `+8`, and the special `r7` source?
+- Is `0x007fffff` overrange, OPEN, or another display sentinel?
+- What fills the raw frame pointer and what is frame byte 0?
+- Does `0x80004518` retransmit, wait, or dispatch another phase?
 
-## Transport and algorithms
+## Broader RE
 
-- What fills the raw frame pointer consumed at `0x80004738`, and what is frame byte 0?
-- Does `0x80004518` retransmit, wait, or dispatch the next command?
-- Which peripheral/register path implements ADC acquisition and range switching?
-- How do 3.6 and 3.8 differ in reply format and parser behavior?
+- Which peripheral/register path implements ADC and range switching?
+- How do 3.6 and 3.8 differ?
 - Where are voltage, resistance, continuity, autorange, calibration, and display conversion implemented?
-
-## Tooling
-
-- Can targeted ARM blocks be analyzed without ARM/Thumb context conflicts, or should a second raw-ARM disassembler be configured for cross-checking?
-- REA’s Windows Ghidra adapter cannot import raw ARM images; direct Ghidra headless import is the current reproducible path.
+- How can raw ARM blocks be cross-checked without Ghidra’s ARM/Thumb context conflicts?
