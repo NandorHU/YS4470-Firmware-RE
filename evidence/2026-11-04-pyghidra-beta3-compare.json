@@ -1,0 +1,53 @@
+{
+  "schema": "ys4470.re.evidence.v1",
+  "date": "2026-11-04",
+  "scope": "bounded static analysis; no physical-device operation in this session",
+  "analysis_environment": {
+    "ghidra": "12.1.4",
+    "pyghidra": "3.1.0",
+    "jpype1": "1.5.2",
+    "language": "ARM:LE:32:v5t",
+    "link_base": "0x7fffffe0",
+    "method": "evidence-seeded bounded inventory; not a complete automatic ARM/Thumb recovery"
+  },
+  "inputs": {
+    "V3_8": {"status": "analyzed locally", "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"},
+    "Beta3": {"status": "analyzed locally"},
+    "V3_6": {"status": "not found in currently accessible workspace; no result inferred"},
+    "V1_0_current": {"status": "private local input; provisional inventory only; excluded from public binary evidence"}
+  },
+  "tests": [
+    {"name": "PyGhidra V3.8 inventory", "result": "passed", "artifact": "local V3_8_inventory.json"},
+    {"name": "PyGhidra Beta3 inventory", "result": "passed", "artifact": "local Beta3_inventory.json"},
+    {"name": "Version-aware inventory comparison", "result": "passed", "artifact": "local function_compare.json"},
+    {"name": "Raw equal-layout V3.8/Beta3 diff", "result": "passed", "artifact": "local V3_8_vs_Beta3_raw_diff.json"},
+    {"name": "FEL safe-policy/parser self-test", "result": "passed", "device_io": false}
+  ],
+  "v3_8_vs_beta3": {
+    "modified_contiguous_ranges": 65,
+    "modified_bytes": 931,
+    "confirmed_static_changes": [
+      {
+        "address": "0x80006e80",
+        "factory_instruction": "ldrh r6,[r0,#-2]",
+        "beta3_instruction": "bl 0x80010754",
+        "helper_behavior": "Retains original ldrh. If saved caller return address equals 0x80003a78, loads r6 = 0x529; otherwise leaves original table value.",
+        "conclusion": "A call-site-specific sound parameter is overridden at the sound-gate call after 0x80003a74. Physical unit and latency effect are not yet proven."
+      },
+      {
+        "address": "0x800037fc",
+        "factory_instruction": "ldr r0,[r7,#0x1c]",
+        "beta3_instruction": "bl 0x80060130",
+        "helper_behavior": "Restores original load into r0, records context/result changes under state root 0x800600ac, conditionally increments a counter.",
+        "conclusion": "Beta3 adds an observer/state update while preserving the original result value for subsequent dispatch; UI semantics remain unproven."
+      }
+    ],
+    "unresolved_changed_areas": ["0x80003344", "0x800045e0", "0x8000461c", "0x80004738", "0x8000740c", "0x8000f568", "0x80010718", "0x800585xx", "0x800600xx"]
+  },
+  "fel": {
+    "historical_project_evidence_date": "2026-11-02",
+    "historical_observations": ["Allwinner F1C100s FEL enumeration", "Winbond EFh/40h 16 MiB SPI flash identification"],
+    "current_session_usb_io": false,
+    "safe_module": "tools/fel_readonly_probe.py"
+  }
+}
