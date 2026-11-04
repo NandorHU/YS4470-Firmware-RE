@@ -2,34 +2,36 @@
 
 ## Factory 3.8 reply parser
 
-Static Ghidra disassembly at `0x80004738` establishes this exact representation:
+At `0x80004738`:
 
 ~~~text
 u24 = frame[1] | frame[2] << 8 | frame[3] << 16
 value = (u24 & 0x800000) ? (u24 | 0xff000000) : u24
+code = min(frame[4], 6)             # only outside control path 0x1b
 ~~~
 
-For a parser control value other than `0x1b`, it derives:
+A retry byte at `0x805aae8c+1` resumes `0x80004518`. Selector `*(u32 *)(0x805aae8c+8)` chooses a special output for values >= `0x1389`:
 
 ~~~text
-code = min(frame[4], 6)
+selector in {0x0d, 0x0e} -> store 0x007fffff at 0x805ac714+0x1c
+otherwise                 -> store value at 0x805ac714+0x1c
 ~~~
 
-When a retry byte at `0x805aae8c+1` is nonzero, it decrements it and resumes at `0x80004518`. After retry completion, selector `*(u32 *)(0x805aae8c+8)` controls a special condition:
+The 5001 unit and sentinel UI meaning remain unknown.
 
-~~~text
-if selector in {0x0d, 0x0e} and unsigned(value) >= 0x1389:
-    *(u32 *)(0x805ac714+0x1c) = 0x007fffff
-    *(u32 *)(0x805ac714+0x20) = r7   # source semantics still unknown
-else:
-    *(u32 *)(0x805ac714+0x1c) = value
-    *(u32 *)(0x805ac714+0x20) = code
-~~~
+## Highspeed and profile comparison
 
-The `r7` source, 5001's physical unit, and sentinel `0x007fffff`'s presentation meaning are open. It must not yet be called an ADC threshold or OPEN code.
+The E1 profile build preserves the factory Highspeed event-handler and diode period-selector bytes. Existing evidence describes the selector’s diode branches as 200 ticks OFF and 100 ticks ON, but the tick duration is unknown.
 
-## Existing bounded diode/sound evidence
+Static profile semantics:
 
-Prior function-level tests show the patched diode path suppresses redundant PWM start/stop across 1,000 valid results; invalid and tested OPEN paths request stop; a watchdog expires after 13 KeyTask cycles. Those tests do not establish real timing, ADC behavior, or metrology.
+| Profile | Direct audio | Autopoll | Immediate extra FSM work |
+|---|---:|---:|---:|
+| Base | no | no | no |
+| Direct | yes | no | no |
+| Auto | yes | yes | no |
+| Ready | yes | yes | bounded 5→7 after original pass |
 
-Resistance, voltage, continuity, autorange, calibration, filtering, and scaling remain unreconstructed.
+Therefore Base has the least added experimental acquisition work. This does not prove it is physically fastest or establish why a user perceives it that way.
+
+Voltage, resistance, continuity, autorange, calibration, filtering, and scaling remain unreconstructed.
