@@ -1,0 +1,15 @@
+# Hardware map
+
+## SoC-level verified sources
+
+The F1C100S documentation identifies an ARM926EJ-S core and USB download capability in boot ROM. The Linux device tree maps CCU, interrupt controller, PIO, timers, and UART0–2; exact mappings used in this project are in `MEMORY_MAP.md`.
+
+## Current firmware correlations
+
+- The firmware has a receive ISR at `0x800073bc`, but the active UART peripheral instance is not yet proven.
+- The sound gate at `0x80006e4c` ultimately invokes a lower-level routine at `0x800060d0`; a timer/PWM/codec ownership link is not yet proven.
+- Beta3 changes a sound-call parameter for the diode/continuity branch. It does not, by itself, prove which hardware peripheral produces the audible output.
+
+## FEL status
+
+A historical project test identifies an F1C100S in FEL mode and a 16 MiB Winbond SPI flash. The only committed FEL automation is restricted to enumeration and SPI-flash identification. No write, erase, RAM code, or peripheral-register operation is authorized.
