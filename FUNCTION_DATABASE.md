@@ -39,3 +39,14 @@ The two observer helpers are not evidence of a protocol or parse-result change. 
 | FSMPhaseField_0x30 | `0x805ac694+0x30` | hypothesis | Written/reset control field; direct consumer not yet recovered |
 
 The literal-object tracer is bounded and direct-only. Its absence of a direct `LDR` is not a whole-program negative proof.
+
+
+## 2026-11-05 PIO helper classification
+
+| ID | Address | Confidence | Static role |
+|---|---:|---|---|
+| PIOBitClear | `0x800031b8` | confirmed | Clears bit `r1` of MMIO word `[r0+0x10]` |
+| PIOBitSet | `0x800031cc` | confirmed | Sets bit `r1` of MMIO word `[r0+0x10]` |
+| MeasurementFSM state-1 GPIO selector | `0x80004504` | confirmed static behavior | Selects a bit2/bit3 PIO pattern for two command-ID groups before transaction send |
+
+The former scheduler hypothesis for `0x800031b8` is rejected. These helpers do not directly consume FSM field `+0x30`.
