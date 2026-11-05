@@ -1,0 +1,52 @@
+{
+  "schema": "ys4470.evidence.measurement-command-1b-1d.v1",
+  "date": "2026-11-05",
+  "firmware_versions": {
+    "V3.8": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+    "Beta3": "9869d746a3caee881595c0352c7c32d6ede98a28f5c188a5b1f3362567a1e5b2"
+  },
+  "descriptor_table": "0x8006367c",
+  "transaction_path": {
+    "builder": "0x8000489c",
+    "fsm_state_1_descriptor_send": "0x800045e0 -> 0x80005e84 -> UART2",
+    "limit": "The path establishes descriptor transport, not external-device command semantics."
+  },
+  "commands": {
+    "0x1b": {
+      "entry_address": "0x80063754",
+      "source_hex": "5e",
+      "checksum": "5e",
+      "wire_hex": "5e5e",
+      "identical_in_V3_8_and_Beta3": true,
+      "state_3_expected_reply_header": "5e"
+    },
+    "0x1d": {
+      "entry_address": "0x80063764",
+      "source_hex": "60",
+      "checksum": "60",
+      "wire_hex": "6060",
+      "identical_in_V3_8_and_Beta3": true,
+      "state_3_expected_reply_header": "60"
+    }
+  },
+  "static_caller_evidence": {
+    "input_dispatcher": "0x80004390",
+    "direct_0x1b_builder_call": "0x80004454",
+    "task_dispatcher": "0x80005b70",
+    "task_case_3_sequence": ["0x1d"],
+    "task_case_4_sequence": ["0x1b"],
+    "task_case_2_tail": "0x1d after two input-derived bytes",
+    "task_case_5_sequence": ["0x0c", "0x22", "0x13", "0x1d"],
+    "limit": "Dispatcher case values are observed software values, not user-visible measurement-mode names."
+  },
+  "cross_check": {
+    "uart2_bringup_sequence": "6060",
+    "observation": "The UART2 bring-up sequence has the same bytes as descriptor command 0x1d. Equality of bytes does not prove equal protocol purpose."
+  },
+  "artifacts": {
+    "descriptor_export": "work/pyghidra-output/v38_beta3_measurement_descriptors_1b_1d.json",
+    "caller_trace_tool": "tools/trace_measurement_command_sequences.py",
+    "caller_trace_report": "work/pyghidra-output/v38_measurement_command_sequences.json"
+  }
+}
+
