@@ -147,9 +147,16 @@
         "Beta3": "0x800073bc"
       },
       "confidence": "confirmed",
-      "role": "UART receive interrupt handler",
+      "role": "UART2 receive ISR; reads a byte after status condition and appends to bounded parser buffer",
       "evidence": [
-        "prior ARM trace; buffer 0x805b408c, bound 200"
+        "prior ARM trace; buffer 0x805b408c, bound 200",
+        "bounded UART2 trace 2026-11-05",
+        "uart2_transport_assertions"
+      ],
+      "relationships": [
+        "uses UART2 base 0x01c25800",
+        "tests +0x08 then reads +0x00",
+        "writes 0x805b408c; count 0x805ab938 capped at 200"
       ]
     },
     {
@@ -374,13 +381,24 @@
         "V3_8": "0x80006dc8",
         "Beta3": "0x80006dc8"
       },
-      "confidence": "hypothesis",
-      "role": "Candidate one-byte output primitive reached from measurement transaction sender",
+      "confidence": "confirmed_static_behavior",
+      "role": "UART selector byte transmitter; measurement sender passes selector 2 for UART2",
       "evidence": [
-        "call-site trace from 0x80005e84"
+        "call-site trace from 0x80005e84",
+        "bounded UART2 trace 2026-11-05",
+        "uart2_transport_assertions"
       ],
       "limits": [
-        "Must trace callee before assigning UART/GPIO/SPI role."
+        "UART2 pinmux, baud, line configuration, and external peer remain unresolved."
+      ],
+      "aliases": [
+        "MeasurementUARTSendByte"
+      ],
+      "relationships": [
+        "selector 0/1/2 resolves UART0/1/2 bases",
+        "measurement sender passes r0=2",
+        "waits for bit 1 at selected base+0x7c",
+        "writes r1 to selected base+0x00"
       ]
     }
   ],
@@ -404,6 +422,11 @@
       "date": "2026-11-05",
       "evidence": "evidence/2026-11-05-command-descriptors-09-0f.json",
       "summary": "Decoded 09–0f source/checksum frames; corrected source-count versus wire-length interpretation; V3.8/Beta3 frames identical."
+    },
+    {
+      "date": "2026-11-05",
+      "evidence": "evidence/2026-11-05-uart2-transport-trace.json",
+      "summary": "Confirmed command-frame TX and RX ISR share UART2 at 0x01c25800; captured polling and bounded-buffer behavior."
     }
   ]
 }
