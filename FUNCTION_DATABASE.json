@@ -159,7 +159,12 @@
       "confidence": "confirmed",
       "role": "High-speed event handler",
       "evidence": [
-        "prior static trace"
+        "prior static trace",
+        "literal-object trace 2026-11-05"
+      ],
+      "relationships": [
+        "reads/toggles 0x805abefc+0x02",
+        "writes 0x805abefc+0x07 on distinct branches"
       ]
     },
     {
@@ -265,6 +270,24 @@
       "limits": [
         "Field unit and relationship to physical timing are unresolved."
       ]
+    },
+    {
+      "id": "measurement_fsm_driver_task",
+      "addresses": {
+        "V3_8": "0x80005b70",
+        "Beta3": "0x80005b70"
+      },
+      "confidence": "confirmed_static_behavior",
+      "role": "Task path that builds measurement transactions and invokes the request/reply FSM",
+      "relationships": [
+        "calls TransactionBuilder at 0x8000489c",
+        "calls MeasurementFSM at 0x80005d04",
+        "reads measurement FSM object 0x805ac694+0x34 in traced path"
+      ],
+      "evidence": [
+        "bounded PyGhidra context 2026-11-05",
+        "raw ARM literal-object trace"
+      ]
     }
   ],
   "session_updates": [
@@ -272,6 +295,11 @@
       "date": "2026-11-05",
       "evidence": "evidence/2026-11-05-beta3-fsm-patch-trace.json",
       "summary": "Three FSM deltas classified: two observer wrappers and one conditional phase-3 field selector."
+    },
+    {
+      "date": "2026-11-05",
+      "evidence": "evidence/2026-11-05-literal-object-trace.json",
+      "summary": "Bounded PC-literal traces show direct writers/resetters for FSM +0x30 and control-byte access paths; no direct +0x30 reader found in traced windows."
     }
   ]
 }
