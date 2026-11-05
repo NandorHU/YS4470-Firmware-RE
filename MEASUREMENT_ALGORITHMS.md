@@ -56,3 +56,10 @@ V3.8 and Beta3 produce identical frames for all seven IDs. Their physical measur
 The command frame built by `0x80005e84` is sent byte-by-byte through UART2. The send primitive waits on `UART2+0x7c` bit 1, then writes to `UART2+0x00`. RX ISR `0x800073bc` receives from the same UART2 base and appends bytes to the parser buffer.
 
 Thus the FSM's descriptor command, PIO selection, and response parser form one static UART2 transaction path. No baud, framing, or response-to-command mapping is claimed yet.
+
+
+## UART2 transaction bring-up
+
+Before regular command frames, the firmware initializes UART2 and transmits two startup bytes `60 60`. It supplies a baud argument of 19200 to the divisor calculation and programs `0x0249` into the UART divisor latches. The PIO mux path sets PE7/PE8 to function 3, consistent with UART2 TX/RX.
+
+This establishes a configured UART2 command/response link, not the semantic meaning of `60 60` or the external device protocol reset behavior.
