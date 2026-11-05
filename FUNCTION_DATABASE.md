@@ -60,3 +60,13 @@ The former scheduler hypothesis for `0x800031b8` is rejected. These helpers do n
 | MeasurementByteOutput_candidate | `0x80006dc8` | hypothesis | Called by the send helper with each prepared byte; transport/peripheral role remains open |
 
 The descriptor count byte is the number of source bytes. It is not a count that includes the checksum.
+
+
+## 2026-11-05 UART2 transport
+
+| ID | Address | Confidence | Static role |
+|---|---:|---|---|
+| MeasurementUARTSendByte | `0x80006dc8` | confirmed | Selector-based UART TX primitive; measurement sender selects UART2 and waits at `+0x7c` before writing `+0x00` |
+| UART_RX_ISR | `0x800073bc` | confirmed | UART2 receive ISR; conditionally reads `+0x00`, stores byte in `0x805b408c`, caps count at 200 |
+
+This replaces the former “byte-output candidate” uncertainty for the measurement sender path. The line configuration and external device remain unknown.
