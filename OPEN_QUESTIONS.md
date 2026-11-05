@@ -32,3 +32,10 @@ The direct PC-literal-object paths have been tested; do not repeat that direct s
 - Which F1C100S PIO port/pins correspond to MMIO word `0x01c208c4`?
 - What external circuit responds to the two-bit patterns?
 - Continue indirect tracing of `0x805ac694+0x30`; the `0x800031b8` route has been disproven as a scheduler path.
+
+
+## 2026-11-05 descriptor questions
+
+- Which response/state paths associate descriptor IDs 09–0f with user-visible measurement modes?
+- What peripheral or software transport is implemented by byte-output candidate `0x80006dc8`?
+- Why do parser selector handling and descriptor IDs 0d/0e intersect, if they do? No association is assumed yet.
