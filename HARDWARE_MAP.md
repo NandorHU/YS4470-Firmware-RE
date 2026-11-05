@@ -23,3 +23,10 @@ The new FSM trace is wholly static. It narrows a control-field change but does n
 ## 2026-11-05 static-state boundary
 
 The recovered objects are firmware RAM structures. The access trace identifies no MMIO register, timer instance, PWM, or buzzer peripheral. Therefore the 30→40 selector remains a software-state change with no asserted hardware timing unit.
+
+
+## PIO control evidence — 2026-11-05
+
+The measurement FSM controls bits 2 and 3 of the MMIO word at `0x01c208c4` (derived from PIO argument `0x01c208b4` plus helper offset `0x10`). It clears both during transaction construction, then chooses either bit3=1/bit2=0 or bit3=0/bit2=1 for specific command-ID groups.
+
+This is a static PIO-control result only. It does not identify a GPIO port/pin, analog switch, range relay, buzzer line, or the electrical polarity at the board.
