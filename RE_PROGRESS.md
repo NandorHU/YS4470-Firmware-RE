@@ -111,3 +111,18 @@ See `evidence/2026-11-04-pyghidra-beta3-compare.json` for machine-readable sessi
 1. Trace RX-buffer count `0x805ab938` and buffer `0x805b408c` reset/completion paths into parser state 5.
 2. Derive the complete UART2 frame-boundary rule before mapping response bytes to measurement values.
 3. Treat 19200 as the firmware's requested argument; calculate actual baud only after validating the active UART clock source.
+
+
+## 2026-11-05: UART2 RX lifecycle and state-5 gate
+
+- New repeatable PyGhidra tool: `tools/trace_uart2_rx_lifecycle.py`.
+- It identified direct bounded reset anchors for RX count `0x805ab938`: `0x80003f24`, `0x80003f44`, `0x80004558`, and `0x80005f30`. ISR `0x800073bc` stores each byte into `0x805b408c + count`, then increments the count.
+- For FSM command `0x1b`, state 3 requires at least five received bytes and byte 0 = `0x5e`; for `0x1d`, it requires at least five and byte 0 = `0x60`. Only then does it select state 5.
+- State 5 reads bytes 1..3 as a signed little-endian 24-bit value. This is a parser-entry rule for two commands, not a generic UART2 framing rule.
+- Test: `py_compile`, tool self-test, and 26 raw-instruction assertions passed. No physical I/O occurred.
+
+### Revised exact continuation point
+
+1. Locate descriptor-table entries and callers for command IDs `0x1b` and `0x1d`; export their exact UART2 wire frames.
+2. Trace the signed result destination from state 5 into its consumers and UI/measurement-mode selection.
+3. Do not reuse the five-byte/header condition for IDs 09–0f unless their own control flow proves it.
