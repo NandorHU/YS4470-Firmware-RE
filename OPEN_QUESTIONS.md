@@ -39,3 +39,11 @@ The direct PC-literal-object paths have been tested; do not repeat that direct s
 - Which response/state paths associate descriptor IDs 09–0f with user-visible measurement modes?
 - What peripheral or software transport is implemented by byte-output candidate `0x80006dc8`?
 - Why do parser selector handling and descriptor IDs 0d/0e intersect, if they do? No association is assumed yet.
+
+
+## 2026-11-05 UART2 questions
+
+- Where are UART2 pinmux, divisor, line-control, and interrupt-enable registers configured?
+- Which external IC/device is attached to UART2, and what are its documented frame semantics?
+- Which RX frame values correspond to descriptor IDs 09–0f?
+- Does the FSM `+0x30` field define a timeout for this UART2 transaction, and if so where is it consumed?
