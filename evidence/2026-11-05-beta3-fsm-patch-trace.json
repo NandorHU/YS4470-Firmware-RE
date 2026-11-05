@@ -1,0 +1,42 @@
+{
+  "schema": "ys4470.re.evidence.v1",
+  "date": "2026-11-05",
+  "scope": "bounded static V3.8/Beta3 analysis; no physical-device operation",
+  "inputs": {
+    "V3_8": {
+      "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+    },
+    "Beta3": {
+      "status": "analyzed locally; binary not published by this evidence"
+    }
+  },
+  "tool": "tools/trace_beta3_fsm_patches.py",
+  "test": "trace_assertions=passed; phase3 selector cases=5",
+  "fsm_deltas": [
+    {
+      "address": "0x800045e0",
+      "V3_8": "bl 0x80005e84",
+      "Beta3": "bl 0x800586ec",
+      "static_effect": "Saves r0/r1/r12/lr; stores *(u32 *)(0x805abbbc+0xc) at 0x800600ac+8; increments u32 at +0x38; restores registers; tail-branches to original 0x80005e84.",
+      "classification": "observer wrapper; original call inputs and target preserved"
+    },
+    {
+      "address": "0x80004738",
+      "V3_8": "ldrb r4,[r12,#1]",
+      "Beta3": "bl 0x8005871c",
+      "static_effect": "Saves r0/r1/r12/lr; stores *(u32 *)(0x805abbbc+0xc) at 0x800600ac+0x3c; increments u32 at +0x2c; restores registers; executes original ldrb r4,[r12,#1]; returns.",
+      "classification": "parser observer wrapper; original first parse load preserved"
+    },
+    {
+      "address": "0x8000461c",
+      "V3_8": "mov r0,#0x1e",
+      "Beta3": "bl 0x80058750",
+      "static_effect": "Returns 0x28 only when bytes [0x805abefc+0], [+7], [+2] equal 3, 0x0e, 1; otherwise returns 0x1e. Caller writes result to 0x805ac694+0x30 then enters FSM state 3.",
+      "classification": "conditional phase-3 budget selection; field unit/physical timing not yet proven"
+    }
+  ],
+  "constraints": [
+    "No claim of reduced diode/continuity acoustic delay follows from these patches.",
+    "No hardware, FEL, USB, flash, RAM-code, or firmware-write action occurred."
+  ]
+}
