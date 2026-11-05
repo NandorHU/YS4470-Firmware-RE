@@ -89,6 +89,9 @@ def collect_windows(image_path: Path, project_root: Path, ghidra_dir: Path) -> d
                     "target_window": [] if target is None else disassembly_window(flat, target, 24),
                 }
             contexts = {
+                "scheduler_control": disassembly_window(flat, 0x80003000, 112),
+                "scheduler_dispatcher": disassembly_window(flat, 0x80003180, 128),
+                "measurement_fsm_state1": disassembly_window(flat, 0x80004504, 76),
                 "fsm_timeout_setup": disassembly_window(flat, 0x800045F0, 34),
                 "transaction_builder_and_following": disassembly_window(flat, 0x8000482C, 84),
                 "measurement_fsm_task": disassembly_window(flat, 0x80005B70, 88),
