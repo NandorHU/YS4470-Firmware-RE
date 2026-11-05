@@ -1,0 +1,44 @@
+{
+  "schema": "ys4470.re.evidence.v1",
+  "date": "2026-11-05",
+  "scope": "bounded static V3.8/Beta3 command descriptor analysis; no physical-device operation",
+  "tools": [
+    "tools/extract_measurement_descriptors.py",
+    "tools/trace_beta3_fsm_patches.py"
+  ],
+  "tests": [
+    "extract_measurement_descriptors.py --self-test: passed",
+    "descriptor_and_send_assertions: passed"
+  ],
+  "descriptor_table": "0x8006367c",
+  "send_helper": {
+    "address": "0x80005e84",
+    "static_behavior": [
+      "uses descriptor byte+4 as source_length",
+      "copies that many source bytes",
+      "appends their 8-bit sum",
+      "sends source_length+1 bytes by repeated calls to 0x80006dc8"
+    ]
+  },
+  "command_frames": {
+    "0x09": "58035b",
+    "0x0a": "58045c",
+    "0x0b": "580159",
+    "0x0c": "58075f",
+    "0x0d": "580961",
+    "0x0e": "580a62",
+    "0x0f": "580b63"
+  },
+  "comparison": {
+    "versions": [
+      "V3.8",
+      "Beta3"
+    ],
+    "identical_wire_frames_for_ids": "0x09..0x0f"
+  },
+  "limits": [
+    "Command IDs are not assigned physical measurement names.",
+    "No claim is made about the electrical transport implemented by 0x80006dc8.",
+    "No hardware I/O occurred."
+  ]
+}
