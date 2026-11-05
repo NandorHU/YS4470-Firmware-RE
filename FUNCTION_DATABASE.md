@@ -28,3 +28,14 @@ Function names are identities, not address identities. The inventory exporter co
 | Beta3Phase3BudgetSelector | `0x80058750` | confirmed static behavior | Returns 40 only for the documented three-byte condition; otherwise 30; caller writes the value to FSM object `+0x30` before state 3 |
 
 The two observer helpers are not evidence of a protocol or parse-result change. The selector changes an FSM field, but no physical time unit or buzzer-latency conclusion is made.
+
+
+## 2026-11-05 object-trace additions
+
+| ID | Address | Confidence | Static role |
+|---|---:|---|---|
+| MeasurementFSMDriverTask | `0x80005b70` | confirmed static behavior | Decodes an input/event, queues transactions through `0x8000489c`, and calls `MeasurementFSM` at `0x80005d04` |
+| HighspeedEventHandler | `0x8000d294` | confirmed static behavior | Toggles `0x805abefc+2`; writes `+7` in its active branches |
+| FSMPhaseField_0x30 | `0x805ac694+0x30` | hypothesis | Written/reset control field; direct consumer not yet recovered |
+
+The literal-object tracer is bounded and direct-only. Its absence of a direct `LDR` is not a whole-program negative proof.
