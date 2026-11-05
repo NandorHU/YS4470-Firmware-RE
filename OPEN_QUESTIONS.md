@@ -15,3 +15,12 @@
 The patches at `0x800045e0` and `0x80004738` are observer wrappers, not changed frame construction or changed signed-24-bit parsing. The `0x8000461c` patch conditionally changes the state-3 `+0x30` field from 30 to 40.
 
 Remaining: identify every read/decrement of `0x805ac694+0x30`, determine the meaning of control bytes at `0x805abefc+0/+2/+7`, and trace the field to a physical timer or protocol cadence before claiming a latency effect.
+
+
+## 2026-11-05 narrowed questions
+
+- Which indirect callback, scheduler, or alias consumes `0x805ac694+0x30` after the FSM writes it?
+- Which writer establishes `0x805abefc+0 = 3` for the Beta3 30→40 condition?
+- What semantic mode/event does HighspeedEventHandler's `+2` toggle represent?
+
+The direct PC-literal-object paths have been tested; do not repeat that direct scan before pursuing interprocedural flow.
