@@ -75,3 +75,13 @@ The signed-24-bit parser at `0x80004738` has a now-proven entry gate, but only f
 4. It then enters state 5, which constructs a little-endian signed 24-bit value from bytes 1..3.
 
 The rule has not been demonstrated for descriptor IDs 09–0f or for other UART2 messages. Header bytes and command IDs are protocol facts, not yet names of diode, continuity, voltage, or any other physical measurement.
+
+
+## Wire frames for state-5 command paths
+
+| Command ID | Source bytes | Checksum | UART2 wire frame | State-3 expected header |
+|---:|---|---|---|---|
+| '0x1b' | '5e' | '5e' | '5e 5e' | '5e' |
+| '0x1d' | '60' | '60' | '60 60' | '60' |
+
+The direct descriptor result is identical in V3.8 and Beta3. Static dispatchers select these IDs in several software cases, but those cases are not yet correlated with rotary-switch positions, UI labels, diode/continuity behavior, or ADC modes.
