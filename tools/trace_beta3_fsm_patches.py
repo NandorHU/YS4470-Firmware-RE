@@ -90,7 +90,14 @@ def collect_windows(image_path: Path, project_root: Path, ghidra_dir: Path) -> d
                 }
             contexts = {
                 "fsm_timeout_setup": disassembly_window(flat, 0x800045F0, 34),
+                "transaction_builder_and_following": disassembly_window(flat, 0x8000482C, 84),
+                "measurement_fsm_task": disassembly_window(flat, 0x80005B70, 88),
+                "measurement_fsm_caller_pre": disassembly_window(flat, 0x80005C60, 48),
                 "measurement_fsm_caller": disassembly_window(flat, 0x80005D00, 40),
+                "profile_control_setup": disassembly_window(flat, 0x8000CFE8, 58),
+                "profile_control_writer_a": disassembly_window(flat, 0x8000CE7C, 58),
+                "highspeed_event_handler": disassembly_window(flat, 0x8000D294, 76),
+                "profile_control_writer_b": disassembly_window(flat, 0x8000D53C, 58),
             }
         finally:
             program.endTransaction(transaction, True)
