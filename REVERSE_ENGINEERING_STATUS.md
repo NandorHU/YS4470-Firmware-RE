@@ -43,3 +43,10 @@ The task beginning at `0x80005b70` drives `TransactionBuilder` and `MeasurementF
 The suspected scheduler helper at `0x800031b8` is now classified as a PIO bit-clear helper; `0x800031cc` is its bit-set counterpart. Both modify `[r0+0x10]` using bit number `r1`.
 
 `TransactionBuilder` supplies `r0=0x01c208b4` and clears bits 3 and 2. FSM state 1 supplies the same PIO sub-block and selects one of two bit patterns before sending a descriptor-table command: IDs `0x0b..0x0f` select bit3=1/bit2=0, while IDs `0x09..0x0a` select bit3=0/bit2=1. This proves a command-dependent two-bit PIO control path, but not pin names, electrical function, or measurement-mode mapping.
+
+
+## 2026-11-05: descriptor framing for PIO-selected commands
+
+The seven descriptors at `0x8006367c + 8*id` for IDs `0x09..0x0f` are now decoded in V3.8 and Beta3. Every entry supplies two source bytes. Send helper `0x80005e84` copies those bytes, appends their 8-bit sum, and calls `0x80006dc8` once per resulting three-byte frame.
+
+Frames are identical in V3.8 and Beta3: `58035b`, `58045c`, `580159`, `58075f`, `580961`, `580a62`, and `580b63` for IDs 09 through 0f respectively. Therefore the Beta3 changes do not alter these command frames.
