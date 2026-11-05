@@ -400,6 +400,48 @@
         "waits for bit 1 at selected base+0x7c",
         "writes r1 to selected base+0x00"
       ]
+    },
+    {
+      "id": "uart_configure",
+      "addresses": {
+        "V3_8": "0x80006bb8",
+        "Beta3": "0x80006bb8"
+      },
+      "confidence": "confirmed_static_behavior",
+      "role": "Generic UART configuration routine for UART selector 0..2",
+      "relationships": [
+        "selector 2 uses UART2 base 0x01c25800",
+        "configures PIO pin fields 7/8 to function 3 for UART2",
+        "programs control/FIFO/divisor/LCR fields",
+        "optional interrupt-registration path when argument r3 is 1"
+      ],
+      "evidence": [
+        "bounded PyGhidra UART init trace 2026-11-05",
+        "uart2_init_assertions"
+      ],
+      "limits": [
+        "Exact interrupt registration contract and active clock source remain unresolved."
+      ]
+    },
+    {
+      "id": "uart2_bringup_callsite",
+      "addresses": {
+        "V3_8": "0x80005e3c",
+        "Beta3": "0x80005e3c"
+      },
+      "confidence": "confirmed_static_behavior",
+      "role": "Measurement UART2 initialization caller",
+      "relationships": [
+        "calls uart_configure with selector=2, baud argument=19200, interrupt flag=1",
+        "sends startup bytes 0x60,0x60 via UART2 afterwards"
+      ],
+      "evidence": [
+        "bounded PyGhidra UART init trace 2026-11-05",
+        "uart2_init_assertions"
+      ],
+      "limits": [
+        "Purpose of 0x60 0x60 startup sequence is unresolved."
+      ]
     }
   ],
   "session_updates": [
@@ -427,6 +469,11 @@
       "date": "2026-11-05",
       "evidence": "evidence/2026-11-05-uart2-transport-trace.json",
       "summary": "Confirmed command-frame TX and RX ISR share UART2 at 0x01c25800; captured polling and bounded-buffer behavior."
+    },
+    {
+      "date": "2026-11-05",
+      "evidence": "evidence/2026-11-05-uart2-init-trace.json",
+      "summary": "Recovered UART2 PE7/PE8 mux function, requested 19200 baud input, divisor 0x0249 programming, LCR final field, and 0x60 0x60 startup bytes."
     }
   ]
 }
