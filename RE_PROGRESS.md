@@ -67,3 +67,18 @@ See `evidence/2026-11-04-pyghidra-beta3-compare.json` for machine-readable sessi
 1. Decode `0x8006367c + 8*id` descriptors for IDs `0x09..0x0f` and map their sent bytes/lengths.
 2. Derive PIO register port/pin semantics from verified SoC documentation and firmware initialization; do not infer electrical board function.
 3. Independently continue the indirect consumer search for `0x805ac694+0x30`; PIOBitClear is excluded.
+
+
+## 2026-11-05: command descriptors 09–0f decoded
+
+- Added `tools/extract_measurement_descriptors.py`; its synthetic self-test passed.
+- Table `0x8006367c`, IDs 09–0f: each entry holds a two-byte source pointer/count. `0x80005e84` appends the modulo-256 sum and emits three bytes through `0x80006dc8`.
+- Verified frames are identical V3.8/Beta3: `58035b`, `58045c`, `580159`, `58075f`, `580961`, `580a62`, `580b63`.
+- The previous interpretation that the third adjacent pool byte belonged to each descriptor was corrected: it is the first byte of the next two-byte record; checksum is runtime-generated.
+- Test: frame expectations plus send-helper instruction assertions passed. No physical I/O occurred.
+
+### Revised exact continuation point
+
+1. Trace byte-output candidate `0x80006dc8` and determine its transport/peripheral contract.
+2. Correlate IDs 09–0f with reply parser behavior, preserving the unproven status of their physical measurement names.
+3. Keep the FSM `+0x30` indirect-consumer analysis separate from this now-confirmed PIO/frame path.
