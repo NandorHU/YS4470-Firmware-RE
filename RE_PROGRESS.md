@@ -82,3 +82,17 @@ See `evidence/2026-11-04-pyghidra-beta3-compare.json` for machine-readable sessi
 1. Trace byte-output candidate `0x80006dc8` and determine its transport/peripheral contract.
 2. Correlate IDs 09–0f with reply parser behavior, preserving the unproven status of their physical measurement names.
 3. Keep the FSM `+0x30` indirect-consumer analysis separate from this now-confirmed PIO/frame path.
+
+
+## 2026-11-05: UART2 transport resolved
+
+- `0x80006dc8` is confirmed as the measurement UART byte transmitter. Selector 2 chooses `0x01c25800` (UART2); it polls `+0x7c` bit 1, then writes the byte to `+0x00`.
+- The descriptor sender explicitly passes selector 2. Therefore every decoded command frame in this path is sent through UART2.
+- RX ISR `0x800073bc` uses the same base, tests `UART2+0x08` bit 2, reads `+0x00`, and appends to buffer `0x805b408c` with a 200-byte cap.
+- Test: UART2 TX/RX static assertions passed. No physical I/O occurred.
+
+### Revised exact continuation point
+
+1. Locate UART2 initialization and pinmux/clock configuration; identify divisor, LCR/FCR/IER writes with evidence.
+2. Trace RX-buffer completion from `0x805b408c` into FSM parser state 5 and map frame boundaries.
+3. Revisit FSM `+0x30` only after a UART2 transaction timeout/check path is found.
