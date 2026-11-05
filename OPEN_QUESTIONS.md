@@ -24,3 +24,11 @@ Remaining: identify every read/decrement of `0x805ac694+0x30`, determine the mea
 - What semantic mode/event does HighspeedEventHandler's `+2` toggle represent?
 
 The direct PC-literal-object paths have been tested; do not repeat that direct scan before pursuing interprocedural flow.
+
+
+## 2026-11-05 PIO questions
+
+- Which command descriptors at `0x8006367c` correspond to IDs 0x09–0x0f, and what protocol payload does each send?
+- Which F1C100S PIO port/pins correspond to MMIO word `0x01c208c4`?
+- What external circuit responds to the two-bit patterns?
+- Continue indirect tracing of `0x805ac694+0x30`; the `0x800031b8` route has been disproven as a scheduler path.
