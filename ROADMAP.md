@@ -33,3 +33,8 @@ Trace the event/scheduler path originating at `0x800031b8` and its callbacks to 
 ## Updated next bounded task (2026-11-05, after PIO trace)
 
 Decode the descriptor records at `0x8006367c + 8*command_id` for IDs `0x09..0x0f`. Establish command bytes/lengths, link the two observed PIO patterns to protocol commands, and only then attempt a measurement-mode mapping. Keep the unresolved FSM `+0x30` indirect-consumer search separate.
+
+
+## Updated next bounded task (2026-11-05, after descriptor decoding)
+
+Trace `0x80006dc8` to identify the byte transport and its completion/timing contract. Then follow response parsing for descriptor IDs `0x09..0x0f`, especially 0d/0e, to map a command/PIO/frame path to observed measurement behavior without guessing UI labels.
