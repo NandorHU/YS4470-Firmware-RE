@@ -61,3 +61,16 @@ The SoC PIO base is documented at `0x01c20800`; exact port/pin and register sema
 | temporary buffer via literal at `0x80005f10` | send-buffer root | Send helper copies source bytes, writes checksum at source-count offset, then emits source-count+1 bytes |
 
 The final checksum byte is constructed at runtime; it is not the following table-pool byte.
+
+
+## UART2 transport path (2026-11-05)
+
+| Address/range | Classification | Verified use |
+|---|---|---|
+| `0x01c25800` | F1C100S UART2 base | Measurement TX selects it; RX ISR reads it |
+| `0x01c2587c` | UART2 status/readiness word | TX waits until bit 1 is set |
+| `0x01c25800 + 0x00` | UART2 data register | TX writes each byte; RX reads low byte |
+| `0x01c25808` | UART2 status/interrupt-related word | RX ISR tests bit 2 before reading data |
+| `0x805b408c` | UART2 RX byte buffer | ISR appends bytes, bounded by count `0x805ab938 < 200` |
+
+The UART2 base is consistent with the F1C100S Linux device tree; register behavior above is primarily firmware disassembly evidence.
