@@ -73,3 +73,12 @@ A bounded PC-literal trace now connects the UART2 RX count at `0x805ab938`, the 
 The precise parser-admission rule is now proven for command IDs `0x1b` and `0x1d` only. FSM state 1 stores required count 5 and selects state 3. State 3 admits state 5 only when received count is at least 5 and buffer byte 0 is `0x5e` for command `0x1b`, or `0x60` for command `0x1d`. State 5 at `0x80004738` then combines bytes 1..3 little-endian and sign-extends bit 23.
 
 This is a static state-5 parser-entry condition, not a general UART2 end-of-frame specification and not a protocol-semantic identification of either command.
+
+
+## 2026-11-05: state-5 command frames and dispatchers
+
+Descriptor export proves the two commands that enter the signed-24-bit state-5 path. Command '0x1b' has one source byte '5e' and wire frame '5e5e'; command '0x1d' has source '60' and wire frame '6060'. The checksum equals the one-byte source in both cases. V3.8 and Beta3 frames are byte-identical.
+
+The TransactionBuilder at '0x8000489c' stores command words for FSM state 1, which indexes descriptor table '0x8006367c' and sends through UART2. Input dispatcher '0x80004390' has a direct '[0x1b]' build path; task dispatcher '0x80005b70' constructs '[0x1d]' for software case 3, '[0x1b]' for case 4, an input-derived two-byte prefix plus '0x1d' for case 2, and '[0x0c,0x22,0x13,0x1d]' for case 5.
+
+The same bytes '6060' are also sent by UART2 bring-up. Byte equality alone does not establish that the startup sequence and command '0x1d' have the same external-device meaning. Dispatcher cases are software values, not proven user-visible measurement modes.
