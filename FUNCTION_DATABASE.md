@@ -50,3 +50,13 @@ The literal-object tracer is bounded and direct-only. Its absence of a direct `L
 | MeasurementFSM state-1 GPIO selector | `0x80004504` | confirmed static behavior | Selects a bit2/bit3 PIO pattern for two command-ID groups before transaction send |
 
 The former scheduler hypothesis for `0x800031b8` is rejected. These helpers do not directly consume FSM field `+0x30`.
+
+
+## 2026-11-05 descriptor send path
+
+| ID | Address | Confidence | Static role |
+|---|---:|---|---|
+| MeasurementTransactionSend | `0x80005e84` | confirmed static behavior | Copies descriptor source bytes, computes an 8-bit sum, appends it, then invokes `0x80006dc8` once for each wire byte |
+| MeasurementByteOutput_candidate | `0x80006dc8` | hypothesis | Called by the send helper with each prepared byte; transport/peripheral role remains open |
+
+The descriptor count byte is the number of source bytes. It is not a count that includes the checksum.
