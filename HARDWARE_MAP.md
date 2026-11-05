@@ -56,3 +56,8 @@ The initialization requests baud argument 19200 and programs divisor `0x0249`; i
 No UART2 hardware register in the ISR declares a complete application frame. The ISR appends individual bytes in RAM and increments `0x805ab938`; the MeasurementFSM later applies a software rule for command IDs `0x1b/0x1d`: at least five bytes plus header `0x5e` or `0x60` respectively.
 
 Therefore no new peripheral, ADC, timer, buzzer, or physical measurement mapping is asserted. This result is a firmware RAM/protocol gate, not evidence of a hardware end-of-frame signal.
+
+
+## Identical UART2 byte sequence caveat — 2026-11-05
+
+Descriptor command '0x1d' sends '60 60', the same two bytes emitted immediately after UART2 initialization. This confirms a shared byte sequence at the UART2 boundary only. It does **not** prove that initialization and command '0x1d' have the same meaning, affect the same external state, or identify any analog hardware function.
