@@ -64,3 +64,12 @@ The RX ISR at `0x800073bc` uses the same `0x01c25800` base: it tests a status wo
 UART2 bring-up is now statically traced. Call site `0x80005e3c` invokes generic UART init `0x80006bb8` with selector 2, a literal clock argument `720000000`, explicit baud argument `19200`, and interrupt-path flag 1. The init code configures PIO pin fields 7 and 8 at function value 3; the F1C100S pinctrl source maps PE7/PE8 function 3 to UART2 TX/RX.
 
 The code shifts the clock argument to 180000000, divides by 19200, shifts the quotient by four, and programs divisor `0x0249` (DLL 49, DLM 02) under DLAB. It writes LCR low bits as 3 after clearing its low five bits. Post-initialization it emits `60 60` on UART2. Actual live baud remains conditional on the active input clock.
+
+
+## 2026-11-05: UART2 RX lifecycle and state-5 admission
+
+A bounded PC-literal trace now connects the UART2 RX count at `0x805ab938`, the RX buffer at `0x805b408c`, and the MeasurementFSM parser. The ISR at `0x800073bc` uses the current count as a buffer offset, writes one received byte, then increments and stores the count. Direct reset anchors found in the bounded trace are `0x80003f24`, `0x80003f44`, FSM state 1 at `0x80004558`, and synchronous command helper `0x80005f30`; this is not a complete alias-analysis claim.
+
+The precise parser-admission rule is now proven for command IDs `0x1b` and `0x1d` only. FSM state 1 stores required count 5 and selects state 3. State 3 admits state 5 only when received count is at least 5 and buffer byte 0 is `0x5e` for command `0x1b`, or `0x60` for command `0x1d`. State 5 at `0x80004738` then combines bytes 1..3 little-endian and sign-extends bit 23.
+
+This is a static state-5 parser-entry condition, not a general UART2 end-of-frame specification and not a protocol-semantic identification of either command.
