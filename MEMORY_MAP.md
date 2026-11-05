@@ -87,3 +87,15 @@ The UART2 base is consistent with the F1C100S Linux device tree; register behavi
 | `0x01c25800 + 0x10` | UART2 modem-control offset | Init writes zero |
 
 The F1C100S pinctrl driver documents PE7/PE8 function 3 as UART2 TX/RX: [Linux source](https://github.com/torvalds/linux/blob/master/drivers/pinctrl/sunxi/pinctrl-suniv-f1c100s.c).
+
+
+## UART2 RX parser storage (2026-11-05)
+
+| Address/range | Classification | Verified use |
+|---|---|---|
+| `0x805ab938` | UART2 RX byte count | ISR uses it as the next buffer offset and increments it; direct reset anchors include `0x80003f24`, `0x80003f44`, `0x80004558`, and `0x80005f30` |
+| `0x805b408c + 0` | parser header byte | FSM state 3 requires `0x5e` for command `0x1b` or `0x60` for `0x1d` |
+| `0x805b408c + 1..3` | signed measurement-value field | FSM state 5 combines little-endian bytes and sign-extends bit 23 |
+| `0x805b408c + 4` | parser selector input | State 5 bounds values >= 7 to 6; physical meaning remains unresolved |
+
+For the two state-3 command paths, parser admission requires RX count >= 5. This storage layout must not be generalized to every UART2 exchange without tracing their separate FSM paths.
