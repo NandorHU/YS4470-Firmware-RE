@@ -91,3 +91,14 @@ The line code writes LCR low field `0x03`; standard 16550 semantics identify thi
 | SynchronousCommandResponseWait | `0x80005f20` | confirmed static behavior | Clears RX count, sends a descriptor, and polls for its first source byte; retransmits after its bounded wait expires |
 
 The UART RX ISR is only an append producer. The state-3 rule is not promoted to a universal UART frame boundary, and the semantic purpose of command IDs `0x1b` and `0x1d` remains unresolved.
+
+
+## 2026-11-05 command-1b/1d sequence construction
+
+| ID | Address | Confidence | Static role |
+|---|---:|---|---|
+| MeasurementCommandInputDispatcher | '0x80004390' | confirmed static behavior | Builds TransactionBuilder command lists from an input record; includes direct '[0x1b]' and lists ending in '0x1d' |
+| MeasurementCommandTaskDispatcher | '0x80005b70' | confirmed static behavior | Repeats the sequence selection after task input decode; case 3 builds '[0x1d]', case 4 builds '[0x1b]', case 5 builds '[0x0c,0x22,0x13,0x1d]' |
+| TransactionBuilder | '0x8000489c' | confirmed static behavior | Stores up to four command words for FSM state 1, which resolves descriptors and sends their UART2 frames |
+
+Descriptor frames: '0x1b -> 5e5e'; '0x1d -> 6060'. These facts identify software command routing only. Neither dispatcher case nor byte value is assigned a physical measurement name.
