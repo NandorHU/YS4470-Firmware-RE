@@ -53,3 +53,8 @@ Trace the RX-buffer frame-completion path: identify every writer/reset of `0x805
 ## Updated next bounded task (2026-11-05, after RX lifecycle trace)
 
 Trace the descriptor-table entries and callers for FSM command IDs `0x1b` and `0x1d`. Establish their transmitted frames, their state-3 headers (`0x5e`/`0x60`), and the consumers of the signed-24-bit result without assigning a physical measurement name prematurely. Keep descriptors 09–0f separate until their own response path is proven.
+
+
+## Updated next bounded task (2026-11-05, after command-1b/1d extraction)
+
+Trace the state-5 result stores and their consumers: resolve the literals at '0x8000481c..0x80004820', follow the signed value and selector written at '0x800047b4..0x800047b8', and connect them to a UI/result structure. Do not infer diode, continuity, or any physical range name from dispatcher case values without a proven downstream mapping.
