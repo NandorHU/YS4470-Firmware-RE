@@ -42,3 +42,10 @@ The descriptor send helper calls `0x80006dc8` once per framed byte, but its peri
 The firmware sends descriptor frames through **UART2** at `0x01c25800`; the corresponding RX ISR receives from the same base. This is now a confirmed firmware transport link, not merely a candidate UART.
 
 Unresolved hardware facts: which F1C100S pins are muxed for UART2, electrical level/interface, baud/format, and the identity of the external measurement controller. The shared UART2 result does not imply direct access to ADC registers.
+
+
+## UART2 pins and configuration — 2026-11-05
+
+Firmware writes function value 3 into the PIO fields for **PE7** and **PE8**. The F1C100S pinctrl definition maps those functions to **UART2 TX** and **UART2 RX** respectively. [Linux F1C100S pinctrl source](https://github.com/torvalds/linux/blob/master/drivers/pinctrl/sunxi/pinctrl-suniv-f1c100s.c)
+
+The initialization requests baud argument 19200 and programs divisor `0x0249`; it then transmits startup sequence `60 60`. Exact applied baud is not asserted without independently proving the live UART clock source.
