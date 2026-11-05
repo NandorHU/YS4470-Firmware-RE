@@ -55,3 +55,14 @@ The direct PC-literal-object paths have been tested; do not repeat that direct s
 - Does the first `0x60 0x60` UART2 sequence reset, synchronize, or select the external measurement device?
 - Which interrupt controller line/vector reaches the UART2 RX ISR after init?
 - What condition marks an RX frame complete before FSM state 5 parses it?
+
+
+## 2026-11-05 RX lifecycle answers and remaining limits
+
+Resolved: the static condition for state-5 parser entry is now known for command IDs `0x1b` and `0x1d`: RX count >= 5 plus byte-0 header `0x5e`/`0x60`. The UART ISR itself does not supply a semantic end-of-frame signal.
+
+Remaining:
+- What protocol operations and external-device modes do IDs `0x1b`, `0x1d`, headers `0x5e`, and `0x60` represent?
+- Which command/response path supplies signed values to each user-visible measurement mode?
+- What frame-completion logic applies to descriptor IDs 09–0f and non-state-5 UART2 messages?
+- What timer unit/clock source determines state-3 timeout behavior and actual UART baud?
