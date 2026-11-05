@@ -39,3 +39,14 @@ Hardware addresses are static mapping information, not authorization to touch a 
 | `0x805abefc + 0x07` | control byte | Read by Beta3 selector; written by several original branches including `0x8000d340` and `0x8000d380` |
 
 Evidence is from `evidence/2026-11-05-literal-object-trace.json`, not a runtime memory capture.
+
+
+## Measurement-FSM PIO control (2026-11-05)
+
+| Address/range | Classification | Verified access |
+|---|---|---|
+| `0x01c208b4` | PIO sub-block pointer used by FSM | Passed as `r0` to PIO bit helpers |
+| `0x01c208c4` | `0x01c208b4 + 0x10` MMIO word | Bits 2 and 3 are set/cleared by transaction paths |
+| `0x8006367c` | command descriptor table | Indexed by FSM command ID before `0x80005e84` send call |
+
+The SoC PIO base is documented at `0x01c20800`; exact port/pin and register semantic for this sub-block remain open.
