@@ -70,3 +70,13 @@ The descriptor count byte is the number of source bytes. It is not a count that 
 | UART_RX_ISR | `0x800073bc` | confirmed | UART2 receive ISR; conditionally reads `+0x00`, stores byte in `0x805b408c`, caps count at 200 |
 
 This replaces the former “byte-output candidate” uncertainty for the measurement sender path. The line configuration and external device remain unknown.
+
+
+## 2026-11-05 UART2 initialization
+
+| ID | Address | Confidence | Static role |
+|---|---:|---|---|
+| UARTConfigure | `0x80006bb8` | confirmed static behavior | Configures selected UART base, PIO mux, FIFO/control fields, divisor latch, LCR, and optional interrupt path |
+| UART2BringupCallsite | `0x80005e3c` | confirmed static behavior | Passes selector 2, requested 19200 baud, and interrupt flag 1; sends two `0x60` bytes after init |
+
+The line code writes LCR low field `0x03`; standard 16550 semantics identify this as eight data bits with parity disabled/one stop bit, but the firmware result is documented first as the exact register write.
