@@ -49,3 +49,10 @@ Unresolved hardware facts: which F1C100S pins are muxed for UART2, electrical le
 Firmware writes function value 3 into the PIO fields for **PE7** and **PE8**. The F1C100S pinctrl definition maps those functions to **UART2 TX** and **UART2 RX** respectively. [Linux F1C100S pinctrl source](https://github.com/torvalds/linux/blob/master/drivers/pinctrl/sunxi/pinctrl-suniv-f1c100s.c)
 
 The initialization requests baud argument 19200 and programs divisor `0x0249`; it then transmits startup sequence `60 60`. Exact applied baud is not asserted without independently proving the live UART clock source.
+
+
+## UART2 RX completion boundary — 2026-11-05
+
+No UART2 hardware register in the ISR declares a complete application frame. The ISR appends individual bytes in RAM and increments `0x805ab938`; the MeasurementFSM later applies a software rule for command IDs `0x1b/0x1d`: at least five bytes plus header `0x5e` or `0x60` respectively.
+
+Therefore no new peripheral, ADC, timer, buzzer, or physical measurement mapping is asserted. This result is a firmware RAM/protocol gate, not evidence of a hardware end-of-frame signal.
