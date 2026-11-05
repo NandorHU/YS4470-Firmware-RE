@@ -66,3 +66,14 @@ Remaining:
 - Which command/response path supplies signed values to each user-visible measurement mode?
 - What frame-completion logic applies to descriptor IDs 09–0f and non-state-5 UART2 messages?
 - What timer unit/clock source determines state-3 timeout behavior and actual UART baud?
+
+
+## 2026-11-05 command-1b/1d questions
+
+Resolved: '0x1b' and '0x1d' transmit '5e5e' and '6060' respectively, with matching state-3 reply-header gates. Both frames are unchanged in Beta3.
+
+Remaining:
+- What external protocol operation is represented by repeated '5e' or '60' bytes?
+- Why does UART bring-up also emit '6060'?
+- Which input-record/dispatcher case corresponds to each physical measurement mode?
+- Which consumers use the state-5 signed result after the parser stores it?
