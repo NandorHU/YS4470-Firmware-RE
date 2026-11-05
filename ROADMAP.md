@@ -38,3 +38,8 @@ Decode the descriptor records at `0x8006367c + 8*command_id` for IDs `0x09..0x0f
 ## Updated next bounded task (2026-11-05, after descriptor decoding)
 
 Trace `0x80006dc8` to identify the byte transport and its completion/timing contract. Then follow response parsing for descriptor IDs `0x09..0x0f`, especially 0d/0e, to map a command/PIO/frame path to observed measurement behavior without guessing UI labels.
+
+
+## Updated next bounded task (2026-11-05, after UART2 trace)
+
+Trace UART2 initialization: locate the writes to `0x01c25800` register offsets (divisor/LCR/FCR/IER and pinmux setup), then trace the RX-buffer completion path from `0x805b408c` into parser state 5. This should establish wire configuration and command/response transaction boundaries without hardware interaction.
