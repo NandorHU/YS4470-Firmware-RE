@@ -32,3 +32,20 @@ Consequently, the field is still an interval/budget candidate rather than a prov
 Before the send routine at `0x80005e84`, FSM state 1 indexes descriptor table `0x8006367c` with command ID. For IDs `0x0b..0x0f`, it sets PIO bit 3 and clears bit 2; for IDs `0x09..0x0a`, it clears bit 3 and sets bit 2. TransactionBuilder initially clears both.
 
 This is a concrete range/mode-control candidate, but command IDs have not yet been mapped to physical measurements. It must not be labeled as diode, continuity, or autorange control until table payloads and board wiring provide evidence.
+
+
+## Static command framing for IDs 09–0f
+
+For the command IDs associated with the two observed PIO patterns, the table stores two source bytes. The send helper appends the modulo-256 sum of those bytes:
+
+| ID | Source | Checksum | Wire frame |
+|---:|---|---:|---|
+| 09 | `58 03` | `5b` | `58 03 5b` |
+| 0a | `58 04` | `5c` | `58 04 5c` |
+| 0b | `58 01` | `59` | `58 01 59` |
+| 0c | `58 07` | `5f` | `58 07 5f` |
+| 0d | `58 09` | `61` | `58 09 61` |
+| 0e | `58 0a` | `62` | `58 0a 62` |
+| 0f | `58 0b` | `63` | `58 0b 63` |
+
+V3.8 and Beta3 produce identical frames for all seven IDs. Their physical measurement-mode meaning remains unknown.
