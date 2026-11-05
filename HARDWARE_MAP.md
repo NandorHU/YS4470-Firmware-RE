@@ -18,3 +18,8 @@ A historical project test identifies an F1C100S in FEL mode and a 16 MiB Winbond
 ## 2026-11-05 boundary
 
 The new FSM trace is wholly static. It narrows a control-field change but does not connect `0x805ac694+0x30` to any timer, PWM, UART, or buzzer peripheral. No hardware-map entry is promoted from this result.
+
+
+## 2026-11-05 static-state boundary
+
+The recovered objects are firmware RAM structures. The access trace identifies no MMIO register, timer instance, PWM, or buzzer peripheral. Therefore the 30→40 selector remains a software-state change with no asserted hardware timing unit.
