@@ -36,3 +36,19 @@ See `evidence/2026-11-04-pyghidra-beta3-compare.json` for machine-readable sessi
 1. Locate the read/decrement/check path for `0x805ac694+0x30` and establish its unit from code, not assumption.
 2. Trace writers of `0x805abefc+0`, `+2`, and `+7`, then attach descriptive names only with proof.
 3. Continue V3.6 intake once its original binary is accessible; do not substitute Beta3 for that requested comparison.
+
+
+## 2026-11-05: direct object-access trace
+
+- Added `tools/trace_arm_literal_object.py`: raw ARM PC-literal-load tracer with a bounded simple-MOV alias window. Its self-test passed.
+- `0x805ac694` has four verified PC-literal loads: `0x80004494`, `0x80004850`, `0x800048a0`, and `0x80005b94`.
+- Direct trace: FSM writes field `+0x30` at `0x80004608`, `0x80004620`, and `0x8000466c`; TransactionBuilder clears it at `0x800048d4`. No direct `LDR [object+0x30]` was found in the bounded windows. This is not an indirect-flow absence proof.
+- The task at `0x80005b70` uses FSM object field `+0x34` as a gate and invokes both `TransactionBuilder` and `MeasurementFSM`.
+- `HighspeedEventHandler` `0x8000d294` proves that control byte `0x805abefc+2` is toggled 0/1 and that `+7` receives branch-specific values. It does not prove the semantic names of those fields.
+- Tests: source self-test, generated V3.8 object traces, and assertions all passed. No physical I/O occurred.
+
+### Revised exact continuation point
+
+1. Trace `0x800031b8` and any callback/task registration that can consume the FSM object indirectly, with attention to `+0x30`.
+2. Trace a concrete source of control byte `0x805abefc+0 = 3`, especially the non-immediate write at `0x8000d74c`.
+3. Keep V3.6 intake pending its original binary path; no Beta3 result substitutes for V3.6/V3.8 comparison.
