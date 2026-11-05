@@ -50,3 +50,14 @@ Evidence is from `evidence/2026-11-05-literal-object-trace.json`, not a runtime 
 | `0x8006367c` | command descriptor table | Indexed by FSM command ID before `0x80005e84` send call |
 
 The SoC PIO base is documented at `0x01c20800`; exact port/pin and register semantic for this sub-block remain open.
+
+
+## Command descriptor storage (2026-11-05)
+
+| Address/range | Classification | Evidence |
+|---|---|---|
+| `0x8006367c` | 8-byte command descriptor table | Entry layout: source pointer (u32), source count (u8), three zero tail bytes |
+| `0x80063654..0x80063661` | source-byte pool for IDs 09–0f | Seven adjacent two-byte sequences, each beginning with `0x58` |
+| temporary buffer via literal at `0x80005f10` | send-buffer root | Send helper copies source bytes, writes checksum at source-count offset, then emits source-count+1 bytes |
+
+The final checksum byte is constructed at runtime; it is not the following table-pool byte.
