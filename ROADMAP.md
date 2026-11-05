@@ -43,3 +43,8 @@ Trace `0x80006dc8` to identify the byte transport and its completion/timing cont
 ## Updated next bounded task (2026-11-05, after UART2 trace)
 
 Trace UART2 initialization: locate the writes to `0x01c25800` register offsets (divisor/LCR/FCR/IER and pinmux setup), then trace the RX-buffer completion path from `0x805b408c` into parser state 5. This should establish wire configuration and command/response transaction boundaries without hardware interaction.
+
+
+## Updated next bounded task (2026-11-05, after UART2 initialization)
+
+Trace the RX-buffer frame-completion path: identify every writer/reset of `0x805ab938` and every caller that invokes parser state 5 at `0x80004738`. Output a verified frame-boundary rule before assigning command/response semantics to UART2 frames.
