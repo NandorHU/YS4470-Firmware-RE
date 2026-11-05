@@ -63,3 +63,15 @@ Thus the FSM's descriptor command, PIO selection, and response parser form one s
 Before regular command frames, the firmware initializes UART2 and transmits two startup bytes `60 60`. It supplies a baud argument of 19200 to the divisor calculation and programs `0x0249` into the UART divisor latches. The PIO mux path sets PE7/PE8 to function 3, consistent with UART2 TX/RX.
 
 This establishes a configured UART2 command/response link, not the semantic meaning of `60 60` or the external device protocol reset behavior.
+
+
+## State-5 measurement-value admission
+
+The signed-24-bit parser at `0x80004738` has a now-proven entry gate, but only for transaction command IDs `0x1b` and `0x1d`.
+
+1. State 1 sets required RX count to 5 and enters state 3 for these command IDs.
+2. State 3 waits until `0x805ab938 >= 5`.
+3. It requires RX buffer byte 0 to be `0x5e` for `0x1b`, or `0x60` for `0x1d`.
+4. It then enters state 5, which constructs a little-endian signed 24-bit value from bytes 1..3.
+
+The rule has not been demonstrated for descriptor IDs 09–0f or for other UART2 messages. Header bytes and command IDs are protocol facts, not yet names of diode, continuity, voltage, or any other physical measurement.
