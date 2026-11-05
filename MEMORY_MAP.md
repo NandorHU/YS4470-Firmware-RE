@@ -27,3 +27,15 @@ Hardware addresses are static mapping information, not authorization to touch a 
 | `0x805abbbc + 0x0c` | firmware context source | Read by both FSM observer helpers and copied to the Beta3 observer state |
 | `0x805abefc + 0/+2/+7` | control-byte tuple | Tested by `0x80058750` to select 30 versus 40 for the FSM `+0x30` field |
 | `0x805ac694 + 0x30` | FSM phase budget/interval candidate | Receives values 80, 30/40, 50, or 100 in the local FSM paths; unit unresolved |
+
+
+## Direct object-access evidence (2026-11-05)
+
+| Address/range | Classification | Verified direct accesses |
+|---|---|---|
+| `0x805ac694 + 0x30` | FSM phase field, unit unresolved | Writes at `0x80004608`, `0x80004620`, `0x8000466c`; clear at `0x800048d4`; no direct LDR in the bounded literal-load trace |
+| `0x805ac694 + 0x34` | FSM/task flag | Read by the task at `0x80005be4` and `0x80005cc0`; initialized by TransactionBuilder |
+| `0x805abefc + 0x02` | control byte | Read/written by `HighspeedEventHandler` at `0x8000d294` |
+| `0x805abefc + 0x07` | control byte | Read by Beta3 selector; written by several original branches including `0x8000d340` and `0x8000d380` |
+
+Evidence is from `evidence/2026-11-05-literal-object-trace.json`, not a runtime memory capture.
