@@ -18,3 +18,8 @@ Trace and classify the Beta3 request/reply FSM deltas at `0x800045e0`, `0x800046
 - Validate ADC task, range logic, resistance/voltage/current/capacitance algorithms.
 - Reconstruct GUI, settings, storage, calibration, and update flow.
 - Build a separately compilable functional reconstruction with test fixtures; never replace or flash original firmware automatically.
+
+
+## Updated next bounded task (2026-11-05)
+
+Find the consumer(s) of `0x805ac694+0x30` and prove whether the field is decremented by a scheduler tick, checked as a protocol timeout, or exported to another subsystem. Then map the three selector bytes at `0x805abefc+0/+2/+7` to their writers. This is the shortest path to establishing whether the Beta3 30→40 change affects measurement cadence rather than only metadata.
