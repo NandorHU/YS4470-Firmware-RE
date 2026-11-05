@@ -35,3 +35,10 @@ This is a static PIO-control result only. It does not identify a GPIO port/pin, 
 ## Protocol-output boundary — 2026-11-05
 
 The descriptor send helper calls `0x80006dc8` once per framed byte, but its peripheral ownership has not been recovered. The output must remain described as a firmware byte-output path, not as UART, GPIO bit-bang, SPI, or a specific external IC interface until `0x80006dc8` is traced.
+
+
+## Measurement UART — 2026-11-05
+
+The firmware sends descriptor frames through **UART2** at `0x01c25800`; the corresponding RX ISR receives from the same base. This is now a confirmed firmware transport link, not merely a candidate UART.
+
+Unresolved hardware facts: which F1C100S pins are muxed for UART2, electrical level/interface, baud/format, and the identity of the external measurement controller. The shared UART2 result does not imply direct access to ADC registers.
