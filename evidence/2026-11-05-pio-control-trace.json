@@ -1,0 +1,60 @@
+{
+  "schema": "ys4470.re.evidence.v1",
+  "date": "2026-11-05",
+  "scope": "bounded static V3.8 analysis; no physical-device operation",
+  "tool": "tools/trace_beta3_fsm_patches.py",
+  "test": "pio_control_trace_assertions=passed",
+  "pio_bit_helpers": {
+    "clear": {
+      "address": "0x800031b8",
+      "behavior": "Loads [r0+0x10], clears bit r1, stores it back."
+    },
+    "set": {
+      "address": "0x800031cc",
+      "behavior": "Loads [r0+0x10], sets bit r1, stores it back."
+    }
+  },
+  "transaction_builder": {
+    "address": "0x8000482c",
+    "pio_argument": "0x01c208b4",
+    "sequence": [
+      "clear bit 3 via 0x800031b8",
+      "clear bit 2 via 0x800031b8"
+    ],
+    "effective_register": "0x01c208c4"
+  },
+  "measurement_fsm_state1": {
+    "entry": "0x80004504",
+    "descriptor_table": "0x8006367c",
+    "pio_argument": "0x01c208b4",
+    "groups": [
+      {
+        "command_ids": [
+          "0x0b",
+          "0x0c",
+          "0x0d",
+          "0x0e",
+          "0x0f"
+        ],
+        "actions": [
+          "set bit 3",
+          "clear bit 2"
+        ]
+      },
+      {
+        "command_ids": [
+          "0x09",
+          "0x0a"
+        ],
+        "actions": [
+          "clear bit 3",
+          "set bit 2"
+        ]
+      }
+    ],
+    "send_path": "Loads descriptor pointer and byte[4], calls 0x80005e84, then 0x80061f84.",
+    "limits": "Command-ID measurement meanings, exact pin/port identity, and electrical effect are not yet proven."
+  },
+  "correction": "0x800031b8 is a PIO bit-clear helper, not a scheduler/callback dispatcher; it is not evidence of an FSM +0x30 consumer.",
+  "no_physical_io": true
+}
