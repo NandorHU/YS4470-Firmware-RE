@@ -57,3 +57,10 @@ Frames are identical in V3.8 and Beta3: `58035b`, `58045c`, `580159`, `58075f`, 
 The command-frame transport is now statically connected end-to-end. `MeasurementTransactionSend` calls `0x80006dc8` with selector 2. That routine selects literal base `0x01c25800` (UART2), waits for readiness bit 1 at `UART2+0x7c`, then writes the byte to `UART2+0x00`.
 
 The RX ISR at `0x800073bc` uses the same `0x01c25800` base: it tests a status word at `+0x08`, reads the low byte at `+0x00`, and appends it to `0x805b408c` up to 200 bytes. UART2 pinmux, baud/line parameters, and the external peer are not yet recovered.
+
+
+## 2026-11-05: UART2 pinmux and line configuration
+
+UART2 bring-up is now statically traced. Call site `0x80005e3c` invokes generic UART init `0x80006bb8` with selector 2, a literal clock argument `720000000`, explicit baud argument `19200`, and interrupt-path flag 1. The init code configures PIO pin fields 7 and 8 at function value 3; the F1C100S pinctrl source maps PE7/PE8 function 3 to UART2 TX/RX.
+
+The code shifts the clock argument to 180000000, divides by 19200, shifts the quotient by four, and programs divisor `0x0249` (DLL 49, DLM 02) under DLAB. It writes LCR low bits as 3 after clearing its low five bits. Post-initialization it emits `60 60` on UART2. Actual live baud remains conditional on the active input clock.
