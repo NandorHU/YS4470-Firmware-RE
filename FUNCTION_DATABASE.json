@@ -500,6 +500,47 @@
       "limits": [
         "Caller-level protocol purpose and units of its wait loop are unresolved."
       ]
+    },
+    {
+      "id": "measurement_command_input_dispatcher",
+      "addresses": {
+        "V3_8": "0x80004390"
+      },
+      "confidence": "confirmed_static_behavior",
+      "role": "Builds TransactionBuilder command lists from a decoded input record",
+      "relationships": [
+        "input case 4 builds [0x1b]",
+        "input cases 3, 2, and 5 construct lists containing terminal command 0x1d",
+        "case 5 list is [0x0c,0x22,0x13,0x1d]"
+      ],
+      "evidence": [
+        "evidence/2026-11-05-measurement-command-1b-1d.json",
+        "bounded PyGhidra TransactionBuilder caller trace"
+      ],
+      "limits": [
+        "Input case codes are not mapped to physical measurement modes."
+      ]
+    },
+    {
+      "id": "measurement_command_task_dispatcher",
+      "addresses": {
+        "V3_8": "0x80005b70"
+      },
+      "confidence": "confirmed_static_behavior",
+      "role": "Task-level counterpart that selects and starts command sequences",
+      "relationships": [
+        "case 3 builds [0x1d]",
+        "case 4 builds [0x1b]",
+        "case 2 stores two input-derived values followed by 0x1d",
+        "case 5 builds [0x0c,0x22,0x13,0x1d]"
+      ],
+      "evidence": [
+        "evidence/2026-11-05-measurement-command-1b-1d.json",
+        "measurement_command_sequence_assertions"
+      ],
+      "limits": [
+        "The upstream decoder and UI/physical meaning of cases remain unresolved."
+      ]
     }
   ],
   "session_updates": [
@@ -537,6 +578,11 @@
       "date": "2026-11-05",
       "evidence": "evidence/2026-11-05-uart2-rx-lifecycle-trace.json",
       "summary": "Established bounded RX-count reset/increment anchors and the command-0x1b/0x1d state-5 parser-admission rule."
+    },
+    {
+      "date": "2026-11-05",
+      "evidence": "evidence/2026-11-05-measurement-command-1b-1d.json",
+      "summary": "Exported identical V3.8/Beta3 0x1b and 0x1d UART2 frames and established static command-list dispatcher cases."
     }
   ]
 }
