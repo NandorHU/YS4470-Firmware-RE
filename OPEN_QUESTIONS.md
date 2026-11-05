@@ -47,3 +47,11 @@ The direct PC-literal-object paths have been tested; do not repeat that direct s
 - Which external IC/device is attached to UART2, and what are its documented frame semantics?
 - Which RX frame values correspond to descriptor IDs 09–0f?
 - Does the FSM `+0x30` field define a timeout for this UART2 transaction, and if so where is it consumed?
+
+
+## 2026-11-05 UART2 initialization questions
+
+- What exact CCU/UART input clock is active when divisor `0x0249` is programmed, and what resulting baud does it produce?
+- Does the first `0x60 0x60` UART2 sequence reset, synchronize, or select the external measurement device?
+- Which interrupt controller line/vector reaches the UART2 RX ISR after init?
+- What condition marks an RX frame complete before FSM state 5 parses it?
