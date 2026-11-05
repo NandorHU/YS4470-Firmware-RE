@@ -68,10 +68,12 @@
       "role": "Request/reply measurement state machine",
       "relationships": [
         "state 5 parser at 0x80004738",
-        "transaction_builder"
+        "transaction_builder",
+        "state-1 PIO selector: command-dependent bits 2/3 using 0x01c208b4"
       ],
       "evidence": [
-        "ARM state-table trace"
+        "ARM state-table trace",
+        "PIO control trace 2026-11-05"
       ]
     },
     {
@@ -288,6 +290,61 @@
         "bounded PyGhidra context 2026-11-05",
         "raw ARM literal-object trace"
       ]
+    },
+    {
+      "id": "pio_bit_clear",
+      "addresses": {
+        "V3_8": "0x800031b8",
+        "Beta3": "0x800031b8"
+      },
+      "confidence": "confirmed_static_behavior",
+      "role": "Clears bit r1 in MMIO word [r0+0x10]",
+      "relationships": [
+        "used by TransactionBuilder with r0=0x01c208b4, r1=3 then 2",
+        "used by MeasurementFSM state 1"
+      ],
+      "evidence": [
+        "bounded PyGhidra trace 2026-11-05",
+        "PIO control assertions"
+      ]
+    },
+    {
+      "id": "pio_bit_set",
+      "addresses": {
+        "V3_8": "0x800031cc",
+        "Beta3": "0x800031cc"
+      },
+      "confidence": "confirmed_static_behavior",
+      "role": "Sets bit r1 in MMIO word [r0+0x10]",
+      "relationships": [
+        "used by MeasurementFSM state 1 with r0=0x01c208b4"
+      ],
+      "evidence": [
+        "bounded PyGhidra trace 2026-11-05",
+        "PIO control assertions"
+      ]
+    },
+    {
+      "id": "measurement_fsm_state1_gpio_selector",
+      "addresses": {
+        "V3_8": "0x80004504",
+        "Beta3": "0x80004504"
+      },
+      "confidence": "confirmed_static_behavior",
+      "role": "Loads command descriptor, selects PIO bits 2/3 for two command-ID groups, sends descriptor",
+      "relationships": [
+        "IDs 0x0b..0x0f: bit3 set/bit2 clear",
+        "IDs 0x09..0x0a: bit3 clear/bit2 set",
+        "descriptor table 0x8006367c",
+        "send routine 0x80005e84"
+      ],
+      "evidence": [
+        "bounded PyGhidra trace 2026-11-05",
+        "PIO control assertions"
+      ],
+      "limits": [
+        "Command IDs and electrical PIO function remain unproven."
+      ]
     }
   ],
   "session_updates": [
@@ -300,6 +357,11 @@
       "date": "2026-11-05",
       "evidence": "evidence/2026-11-05-literal-object-trace.json",
       "summary": "Bounded PC-literal traces show direct writers/resetters for FSM +0x30 and control-byte access paths; no direct +0x30 reader found in traced windows."
+    },
+    {
+      "date": "2026-11-05",
+      "evidence": "evidence/2026-11-05-pio-control-trace.json",
+      "summary": "Corrected 0x800031b8 from scheduler hypothesis to PIO bit-clear helper; mapped two FSM command-ID PIO patterns."
     }
   ]
 }
