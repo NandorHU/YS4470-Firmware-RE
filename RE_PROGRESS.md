@@ -1,6 +1,6 @@
 # Reverse-engineering progress
 
-**Last verified update:** 2026-11-04  
+**Last verified update:** 2026-11-05  
 **Development branch:** `re/2026-11-04-pyghidra-fel`
 
 ## This session: verified results
@@ -21,3 +21,18 @@
 4. Perform a fresh live FEL probe only when the device is intentionally connected; retain its captured output as dated evidence. Never expand the probe to writing, arbitrary memory reads, or RAM code execution without explicit approval.
 
 See `evidence/2026-11-04-pyghidra-beta3-compare.json` for machine-readable session evidence, `FUNCTION_DATABASE.json` for the cross-version function database, and `FEL_ANALYSIS_PLAN.md` for the safety-gated hardware plan.
+
+
+## 2026-11-05: FSM deltas classified
+
+- `0x800045e0`: V3.8 calls `0x80005e84`; Beta3 calls `0x800586ec`, which records `*(u32 *)(0x805abbbc+0xc)` at `0x800600ac+8`, increments `+0x38`, restores `r0/r1/r12/lr`, and tail-branches to the same original target. **Observer only.**
+- `0x80004738`: V3.8 starts parsing with `ldrb r4,[r12,#1]`; Beta3 helper `0x8005871c` records context at `+0x3c`, increments `+0x2c`, restores registers, and executes that exact original load. **Observer only.**
+- `0x8000461c`: V3.8 writes fixed 30 to FSM object `0x805ac694+0x30`; Beta3 helper `0x80058750` selects 40 only for control tuple `(3, 0x0e, 1)`, otherwise 30. **Semantic change in an unresolved FSM phase-budget/interval field.**
+- Test: bounded PyGhidra trace exported successfully; raw control-flow assertions and five selector cases passed.
+- No physical device, USB, FEL, flash, firmware, or RAM-code operation occurred.
+
+### Revised exact continuation point
+
+1. Locate the read/decrement/check path for `0x805ac694+0x30` and establish its unit from code, not assumption.
+2. Trace writers of `0x805abefc+0`, `+2`, and `+7`, then attach descriptive names only with proof.
+3. Continue V3.6 intake once its original binary is accessible; do not substitute Beta3 for that requested comparison.
