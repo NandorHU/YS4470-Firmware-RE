@@ -74,3 +74,16 @@ The final checksum byte is constructed at runtime; it is not the following table
 | `0x805b408c` | UART2 RX byte buffer | ISR appends bytes, bounded by count `0x805ab938 < 200` |
 
 The UART2 base is consistent with the F1C100S Linux device tree; register behavior above is primarily firmware disassembly evidence.
+
+
+## UART2 initialization state (2026-11-05)
+
+| Address/range | Classification | Verified use |
+|---|---|---|
+| `0x01c20890` / `+0x04` | PIO configuration words | Firmware programs pin indices 7 and 8 to function 3 for UART2 bring-up |
+| `0x01c25800 + 0x00/+0x04` | UART2 divisor/data register offsets | Under DLAB, init writes DLL `0x49` and DLM `0x02` |
+| `0x01c25800 + 0x08` | UART2 control/FIFO offset | Init writes `0x37` |
+| `0x01c25800 + 0x0c` | UART2 line-control offset | DLAB is toggled; final low field is `0x03` |
+| `0x01c25800 + 0x10` | UART2 modem-control offset | Init writes zero |
+
+The F1C100S pinctrl driver documents PE7/PE8 function 3 as UART2 TX/RX: [Linux source](https://github.com/torvalds/linux/blob/master/drivers/pinctrl/sunxi/pinctrl-suniv-f1c100s.c).
