@@ -28,3 +28,8 @@ Find the consumer(s) of `0x805ac694+0x30` and prove whether the field is decreme
 ## Updated next bounded task (2026-11-05, after literal trace)
 
 Trace the event/scheduler path originating at `0x800031b8` and its callbacks to find an indirect consumer of FSM object `+0x30`. In parallel, follow the dynamic write at `0x8000d74c` and related writers until a proven `0x805abefc+0 = 3` source is found. Preserve the distinction between a static state-field value and physical time.
+
+
+## Updated next bounded task (2026-11-05, after PIO trace)
+
+Decode the descriptor records at `0x8006367c + 8*command_id` for IDs `0x09..0x0f`. Establish command bytes/lengths, link the two observed PIO patterns to protocol commands, and only then attempt a measurement-mode mapping. Keep the unresolved FSM `+0x30` indirect-consumer search separate.
