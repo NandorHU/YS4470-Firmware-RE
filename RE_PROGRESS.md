@@ -126,3 +126,17 @@ See `evidence/2026-11-04-pyghidra-beta3-compare.json` for machine-readable sessi
 1. Locate descriptor-table entries and callers for command IDs `0x1b` and `0x1d`; export their exact UART2 wire frames.
 2. Trace the signed result destination from state 5 into its consumers and UI/measurement-mode selection.
 3. Do not reuse the five-byte/header condition for IDs 09–0f unless their own control flow proves it.
+
+
+## 2026-11-05: state-5 command frames and dispatch
+
+- Exported V3.8 and Beta3 descriptors: '0x1b -> 5e 5e'; '0x1d -> 60 60'. Both are one-byte source plus additive checksum and are identical across the two versions.
+- TransactionBuilder receives command lists from input dispatcher '0x80004390' and task dispatcher '0x80005b70'. The latter proves case 3 → '[0x1d]', case 4 → '[0x1b]', and case 5 → '[0x0c,0x22,0x13,0x1d]'; a case-2 list ends in '0x1d' after two input-derived values.
+- '0x1d' wire bytes equal the UART2 bring-up bytes '60 60'; equality is recorded as a protocol observation, not a semantic conclusion.
+- Test: descriptor exporter self-test, command-sequence tracer self-test, Python compilation, two-version frame assertions, and seven direct TransactionBuilder-call scan passed. No physical I/O occurred.
+
+### Revised exact continuation point
+
+1. Resolve state-5 result-target literals at '0x8000481c..0x80004820' and trace writes at '0x800047b4..0x800047b8'.
+2. Identify consumers that map the signed value/selector to UI or measurement state.
+3. Preserve dispatcher case tags as unlabelled software values until a downstream physical/UI mapping is proven.
