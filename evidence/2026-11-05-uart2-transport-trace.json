@@ -1,0 +1,32 @@
+{
+  "schema": "ys4470.re.evidence.v1",
+  "date": "2026-11-05",
+  "scope": "bounded static V3.8 analysis; no physical-device operation",
+  "tool": "tools/trace_beta3_fsm_patches.py",
+  "test": "uart2_transport_assertions=passed",
+  "transmit": {
+    "function": "0x80006dc8",
+    "selectors": {
+      "0": "0x01c25000",
+      "1": "0x01c25400",
+      "2": "0x01c25800"
+    },
+    "measurement_sender_callsite": "0x80005ef4 sets r0=2 before 0x80005ef8 calls 0x80006dc8",
+    "behavior": [
+      "waits until bit 1 at selected_base+0x7c is set",
+      "writes byte argument r1 to selected_base+0x00"
+    ]
+  },
+  "receive": {
+    "function": "0x800073bc",
+    "base": "0x01c25800",
+    "behavior": [
+      "tests a status word at UART2+0x08",
+      "reads UART2+0x00 low byte when condition passes",
+      "appends byte to buffer 0x805b408c",
+      "limits count in 0x805ab938 to 200"
+    ]
+  },
+  "conclusion": "The measurement descriptor sender and measurement RX ISR use UART2. UART2 pinmux, line parameters, and external peer remain unresolved.",
+  "no_physical_io": true
+}
