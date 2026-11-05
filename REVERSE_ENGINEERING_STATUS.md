@@ -50,3 +50,10 @@ The suspected scheduler helper at `0x800031b8` is now classified as a PIO bit-cl
 The seven descriptors at `0x8006367c + 8*id` for IDs `0x09..0x0f` are now decoded in V3.8 and Beta3. Every entry supplies two source bytes. Send helper `0x80005e84` copies those bytes, appends their 8-bit sum, and calls `0x80006dc8` once per resulting three-byte frame.
 
 Frames are identical in V3.8 and Beta3: `58035b`, `58045c`, `580159`, `58075f`, `580961`, `580a62`, and `580b63` for IDs 09 through 0f respectively. Therefore the Beta3 changes do not alter these command frames.
+
+
+## 2026-11-05: UART2 measurement transport confirmed
+
+The command-frame transport is now statically connected end-to-end. `MeasurementTransactionSend` calls `0x80006dc8` with selector 2. That routine selects literal base `0x01c25800` (UART2), waits for readiness bit 1 at `UART2+0x7c`, then writes the byte to `UART2+0x00`.
+
+The RX ISR at `0x800073bc` uses the same `0x01c25800` base: it tests a status word at `+0x08`, reads the low byte at `+0x00`, and appends it to `0x805b408c` up to 200 bytes. UART2 pinmux, baud/line parameters, and the external peer are not yet recovered.
