@@ -25,3 +25,10 @@ The nearby FSM also writes 0x50, 0x32, or 0x64 to the same field, supporting a p
 The phase-3 selector output is stored at `0x805ac694+0x30`. Direct static tracing establishes initialization/reset sites, but not a direct reader: 80 is written on one command path, 30/40 before state 3, 50/100 on a later reply path, and TransactionBuilder clears the field. The nearby driver task reads `+0x34`, not `+0x30`.
 
 Consequently, the field is still an interval/budget candidate rather than a proven timer. This result rules out a direct, locally visible countdown load but not consumption through callbacks, aliases, or another task.
+
+
+## Command-dependent PIO selection
+
+Before the send routine at `0x80005e84`, FSM state 1 indexes descriptor table `0x8006367c` with command ID. For IDs `0x0b..0x0f`, it sets PIO bit 3 and clears bit 2; for IDs `0x09..0x0a`, it clears bit 3 and sets bit 2. TransactionBuilder initially clears both.
+
+This is a concrete range/mode-control candidate, but command IDs have not yet been mapped to physical measurements. It must not be labeled as diode, continuity, or autorange control until table payloads and board wiring provide evidence.
