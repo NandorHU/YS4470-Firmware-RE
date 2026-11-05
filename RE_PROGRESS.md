@@ -96,3 +96,18 @@ See `evidence/2026-11-04-pyghidra-beta3-compare.json` for machine-readable sessi
 1. Locate UART2 initialization and pinmux/clock configuration; identify divisor, LCR/FCR/IER writes with evidence.
 2. Trace RX-buffer completion from `0x805b408c` into FSM parser state 5 and map frame boundaries.
 3. Revisit FSM `+0x30` only after a UART2 transaction timeout/check path is found.
+
+
+## 2026-11-05: UART2 bring-up decoded
+
+- UART init call site `0x80005e3c` passes UART selector 2, literal clock argument 720000000, baud argument 19200, and interrupt flag 1 to `0x80006bb8`.
+- Generic init configures PIO pin fields 7 and 8 at function 3; F1C100S Linux pinctrl maps PE7/PE8 function 3 to UART2 TX/RX.
+- It computes/programs divisor `0x0249` (DLL=49, DLM=02), writes FIFO/control values, toggles DLAB, and finishes LCR lower field at 3.
+- The post-init UART2 startup sequence is `60 60`.
+- Test: UART2 initialization assertions passed. No physical I/O occurred.
+
+### Revised exact continuation point
+
+1. Trace RX-buffer count `0x805ab938` and buffer `0x805b408c` reset/completion paths into parser state 5.
+2. Derive the complete UART2 frame-boundary rule before mapping response bytes to measurement values.
+3. Treat 19200 as the firmware's requested argument; calculate actual baud only after validating the active UART clock source.
