@@ -1,0 +1,43 @@
+{
+  "schema": "ys4470.re.evidence.v1",
+  "date": "2026-11-05",
+  "scope": "bounded static V3.8 analysis; no physical-device operation",
+  "tool": "tools/trace_beta3_fsm_patches.py",
+  "test": "uart2_init_assertions=passed",
+  "uart2_bringup_callsite": {
+    "address": "0x80005e3c",
+    "arguments": {
+      "uart_selector": 2,
+      "clock_argument": 720000000,
+      "baud_argument": 19200,
+      "install_interrupt_path": 1
+    },
+    "post_init_bytes": "6060",
+    "post_init_transport": "two calls to 0x80006dc8 with selector 2"
+  },
+  "generic_uart_init": {
+    "address": "0x80006bb8",
+    "uart2_base": "0x01c25800",
+    "pinmux": [
+      "programs PIO configuration fields for pin indices 7 and 8 to function 3",
+      "F1C100S pinctrl documentation maps PE7/PE8 function 3 to UART2 TX/RX"
+    ],
+    "register_sequence": [
+      "writes 0x03 at +0x04 before divisor programming",
+      "writes 0x37 at +0x08 and 0x00 at +0x10",
+      "sets LCR DLAB bit (+0x0c bit7), writes divisor low/high at +0x00/+0x04, clears DLAB",
+      "clears LCR low five bits then writes 0x03"
+    ],
+    "divisor_calculation": {
+      "value_before_divide": 180000000,
+      "baud_argument": 19200,
+      "quotient": 9375,
+      "divisor": 585,
+      "divisor_hex": "0x0249",
+      "dll": "0x49",
+      "dlm": "0x02"
+    }
+  },
+  "conclusion": "UART2 PE7/PE8 function-3 pinmux and requested 19200 baud divisor programming are statically evidenced. Actual baud depends on the live UART input clock; external peer remains unresolved.",
+  "no_physical_io": true
+}
