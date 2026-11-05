@@ -1,0 +1,49 @@
+{
+  "schema": "ys4470.re.evidence.v1",
+  "date": "2026-11-05",
+  "scope": "bounded static V3.8 analysis; no physical-device operation",
+  "tools": [
+    "tools/trace_beta3_fsm_patches.py",
+    "tools/trace_arm_literal_object.py"
+  ],
+  "test_results": [
+    "trace_arm_literal_object.py --self-test: passed",
+    "V3.8 0x805ac694 trace: 4 PC-literal loads",
+    "V3.8 0x805abefc trace: 24 PC-literal loads",
+    "literal_object_trace_assertions: passed"
+  ],
+  "measurement_fsm_object": {
+    "address": "0x805ac694",
+    "raw_literal_occurrences": [
+      "0x80004808",
+      "0x80004890",
+      "0x80004930",
+      "0x80005d1c"
+    ],
+    "verified_pc_literal_loads": [
+      "0x80004494 -> r9",
+      "0x80004850 -> r2",
+      "0x800048a0 -> r3",
+      "0x80005b94 -> r7"
+    ],
+    "field_0x30_direct_evidence": [
+      "0x80004608: FSM writes 0x50",
+      "0x80004620: FSM writes factory 0x1e / Beta3 selector output 0x1e or 0x28",
+      "0x8000466c: FSM writes 0x32 or 0x64",
+      "0x800048d4: TransactionBuilder clears the field"
+    ],
+    "bounded_negative_result": "Within 96 ARM words after each verified PC-literal load, no direct ldr [object+0x30] was found. This is not a whole-program absence proof; aliases/interprocedural consumers remain open.",
+    "direct_task_access": "The task at 0x80005b70 loads the object to r7 and reads only +0x34 in its traced path."
+  },
+  "control_object": {
+    "address": "0x805abefc",
+    "tuple_used_by_beta3_selector": "byte[0]==3 && byte[7]==0x0e && byte[2]==1",
+    "verified_original_writer_behavior": [
+      "0x8000d294 HighspeedEventHandler reads and toggles byte[2] between 0 and 1.",
+      "The same handler writes byte[7] to 0x22 or 0x0c on distinct branches.",
+      "Other original paths directly write byte[0] with at least 1, 2, or 4; direct source of value 3 not yet proven."
+    ],
+    "limits": "Field names and UI/measurement semantics are intentionally unresolved."
+  },
+  "exact_next_step": "Trace consumers of the +0x30 FSM field through callbacks/aliases, starting with the scheduler/dispatcher paths, and trace a proven writer of control byte[0]=3."
+}
