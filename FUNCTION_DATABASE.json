@@ -336,7 +336,8 @@
         "IDs 0x0b..0x0f: bit3 set/bit2 clear",
         "IDs 0x09..0x0a: bit3 clear/bit2 set",
         "descriptor table 0x8006367c",
-        "send routine 0x80005e84"
+        "send routine 0x80005e84",
+        "IDs 0x09..0x0f use V3.8/Beta3-identical source/checksum wire frames"
       ],
       "evidence": [
         "bounded PyGhidra trace 2026-11-05",
@@ -344,6 +345,42 @@
       ],
       "limits": [
         "Command IDs and electrical PIO function remain unproven."
+      ]
+    },
+    {
+      "id": "measurement_transaction_send",
+      "addresses": {
+        "V3_8": "0x80005e84",
+        "Beta3": "0x80005e84"
+      },
+      "confidence": "confirmed_static_behavior",
+      "role": "Copies descriptor source bytes, appends their u8 additive checksum, calls byte-output routine for each wire byte",
+      "relationships": [
+        "input r0=source pointer; r1=source count",
+        "writes checksum at send-buffer[source_count]",
+        "calls 0x80006dc8 source_count+1 times"
+      ],
+      "evidence": [
+        "bounded PyGhidra send trace 2026-11-05",
+        "descriptor_and_send_assertions"
+      ],
+      "limits": [
+        "Underlying transport/peripheral used by 0x80006dc8 is unresolved."
+      ]
+    },
+    {
+      "id": "measurement_byte_output_candidate",
+      "addresses": {
+        "V3_8": "0x80006dc8",
+        "Beta3": "0x80006dc8"
+      },
+      "confidence": "hypothesis",
+      "role": "Candidate one-byte output primitive reached from measurement transaction sender",
+      "evidence": [
+        "call-site trace from 0x80005e84"
+      ],
+      "limits": [
+        "Must trace callee before assigning UART/GPIO/SPI role."
       ]
     }
   ],
@@ -362,6 +399,11 @@
       "date": "2026-11-05",
       "evidence": "evidence/2026-11-05-pio-control-trace.json",
       "summary": "Corrected 0x800031b8 from scheduler hypothesis to PIO bit-clear helper; mapped two FSM command-ID PIO patterns."
+    },
+    {
+      "date": "2026-11-05",
+      "evidence": "evidence/2026-11-05-command-descriptors-09-0f.json",
+      "summary": "Decoded 09–0f source/checksum frames; corrected source-count versus wire-length interpretation; V3.8/Beta3 frames identical."
     }
   ]
 }
