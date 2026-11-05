@@ -89,10 +89,14 @@ def collect_windows(image_path: Path, project_root: Path, ghidra_dir: Path) -> d
                     "target_window": [] if target is None else disassembly_window(flat, target, 24),
                 }
             contexts = {
+                "uart_divisor_helper": disassembly_window(flat, 0x800019D0, 120),
                 "scheduler_control": disassembly_window(flat, 0x80003000, 112),
                 "scheduler_dispatcher": disassembly_window(flat, 0x80003180, 128),
                 "measurement_fsm_state1": disassembly_window(flat, 0x80004504, 76),
+                "uart2_init_callsite": disassembly_window(flat, 0x80005E20, 28),
                 "measurement_transaction_send": disassembly_window(flat, 0x80005E84, 100),
+                "uart_init_context": disassembly_window(flat, 0x80006B80, 128),
+                "uart2_init": disassembly_window(flat, 0x80006C50, 128),
                 "measurement_byte_output": disassembly_window(flat, 0x80006DC8, 128),
                 "uart_rx_isr": disassembly_window(flat, 0x800073BC, 128),
                 "fsm_timeout_setup": disassembly_window(flat, 0x800045F0, 34),
