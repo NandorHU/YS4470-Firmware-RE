@@ -30,3 +30,8 @@ The recovered objects are firmware RAM structures. The access trace identifies n
 The measurement FSM controls bits 2 and 3 of the MMIO word at `0x01c208c4` (derived from PIO argument `0x01c208b4` plus helper offset `0x10`). It clears both during transaction construction, then chooses either bit3=1/bit2=0 or bit3=0/bit2=1 for specific command-ID groups.
 
 This is a static PIO-control result only. It does not identify a GPIO port/pin, analog switch, range relay, buzzer line, or the electrical polarity at the board.
+
+
+## Protocol-output boundary — 2026-11-05
+
+The descriptor send helper calls `0x80006dc8` once per framed byte, but its peripheral ownership has not been recovered. The output must remain described as a firmware byte-output path, not as UART, GPIO bit-bang, SPI, or a specific external IC interface until `0x80006dc8` is traced.
