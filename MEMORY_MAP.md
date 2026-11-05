@@ -99,3 +99,15 @@ The F1C100S pinctrl driver documents PE7/PE8 function 3 as UART2 TX/RX: [Linux s
 | `0x805b408c + 4` | parser selector input | State 5 bounds values >= 7 to 6; physical meaning remains unresolved |
 
 For the two state-3 command paths, parser admission requires RX count >= 5. This storage layout must not be generalized to every UART2 exchange without tracing their separate FSM paths.
+
+
+## State-5 command descriptors (2026-11-05)
+
+| Address/range | Classification | Verified use |
+|---|---|---|
+| '0x80063754' | descriptor entry for command '0x1b' | points to '0x80063678', source length 1, source '5e', UART2 wire '5e5e' |
+| '0x80063764' | descriptor entry for command '0x1d' | points to '0x80063679', source length 1, source '60', UART2 wire '6060' |
+| '0x80063678..0x80063679' | one-byte source pool | source values for the two state-5 command descriptors |
+| '0x805ac694 + 0x04..+0x10' | TransactionBuilder command-word slots | builder copies up to four command IDs here before FSM state 1 reads them |
+
+V3.8 and Beta3 descriptor entries and wire frames for both IDs are identical.
