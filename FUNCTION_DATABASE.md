@@ -80,3 +80,14 @@ This replaces the former “byte-output candidate” uncertainty for the measure
 | UART2BringupCallsite | `0x80005e3c` | confirmed static behavior | Passes selector 2, requested 19200 baud, and interrupt flag 1; sends two `0x60` bytes after init |
 
 The line code writes LCR low field `0x03`; standard 16550 semantics identify this as eight data bits with parity disabled/one stop bit, but the firmware result is documented first as the exact register write.
+
+
+## 2026-11-05 UART2 RX lifecycle and parser gate
+
+| ID | Address | Confidence | Static role |
+|---|---:|---|---|
+| MeasurementFSMState3FrameGate | `0x800046dc` | confirmed static behavior | For command IDs `0x1b/0x1d`, waits for RX count >= 5, validates byte-0 header (`0x5e/0x60` respectively), then selects state 5 |
+| MeasurementFSMState5Signed24Parse | `0x80004738` | confirmed static behavior | Combines RX bytes 1..3 little-endian, sign-extends bit 23, and handles byte 4 as a bounded selector input |
+| SynchronousCommandResponseWait | `0x80005f20` | confirmed static behavior | Clears RX count, sends a descriptor, and polls for its first source byte; retransmits after its bounded wait expires |
+
+The UART RX ISR is only an append producer. The state-3 rule is not promoted to a universal UART frame boundary, and the semantic purpose of command IDs `0x1b` and `0x1d` remains unresolved.
