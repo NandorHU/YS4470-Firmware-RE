@@ -48,3 +48,8 @@ Trace UART2 initialization: locate the writes to `0x01c25800` register offsets (
 ## Updated next bounded task (2026-11-05, after UART2 initialization)
 
 Trace the RX-buffer frame-completion path: identify every writer/reset of `0x805ab938` and every caller that invokes parser state 5 at `0x80004738`. Output a verified frame-boundary rule before assigning command/response semantics to UART2 frames.
+
+
+## Updated next bounded task (2026-11-05, after RX lifecycle trace)
+
+Trace the descriptor-table entries and callers for FSM command IDs `0x1b` and `0x1d`. Establish their transmitted frames, their state-3 headers (`0x5e`/`0x60`), and the consumers of the signed-24-bit result without assigning a physical measurement name prematurely. Keep descriptors 09–0f separate until their own response path is proven.
