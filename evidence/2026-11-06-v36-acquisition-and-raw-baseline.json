@@ -1,0 +1,37 @@
+{
+  "schema": "ys4470.v36-acquisition-and-raw-baseline.v1",
+  "acquisition_date_utc": "2026-11-06",
+  "safety": {
+    "upgrade_invoked": false,
+    "physical_device_operation": false,
+    "firmware_binary_committed": false
+  },
+  "updater_manifest": {
+    "package": "Project_February_V3.6_V02.26.6",
+    "file": "f1c100s.bin",
+    "bytes": 5943296,
+    "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+  },
+  "comparison": {
+    "tool": "tools/diff_raw_images.py",
+    "link_base": "0x7fffffe0",
+    "v38_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+    "different_ranges": 10,
+    "different_bytes": 20,
+    "details": "evidence/2026-11-06-v36-v38-raw-diff.json"
+  },
+  "table_trace": {
+    "tool": "tools/trace_arm_literal_object.py",
+    "self_test": "passed",
+    "object_address": "0x80063acc",
+    "literal_load": "0x80042d98",
+    "window_words": 128,
+    "direct_accesses": 0,
+    "details": "evidence/2026-11-06-v36-v38-table-reference.json"
+  },
+  "limitations": [
+    "No V3.6 PyGhidra seed inventory was exported in this acquisition task.",
+    "Changed table semantics remain unresolved.",
+    "Raw equality does not establish live measurement or audio behavior."
+  ]
+}
