@@ -104,3 +104,7 @@ For the visible state-5 path:
 4. If it is greater than or equal, publish sentinel '0x007fffff' and selector 0; otherwise publish the normal parsed value and selector.
 
 Case-2 command setup supplies the control word from an input-derived value and includes terminal command '0x1d'. This is a reproducible software relationship, but input/command names and physical electrical interpretation remain unknown.
+
+## 2026-11-06 V3.6/V3.8 algorithm baseline
+
+Raw comparison of the two original releases found no changed instruction bytes. The only payload-data delta is nine unclassified 32-bit values at `0x80063ac8`; consequently this evidence neither proves a measurement-algorithm change nor rules out a behavior change caused by configuration data. The previously recovered UART2/FSM/result rules are byte-identical candidates for V3.6 pending a seeded PyGhidra export.
