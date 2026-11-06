@@ -169,3 +169,17 @@ See `evidence/2026-11-04-pyghidra-beta3-compare.json` for machine-readable sessi
 1. Trace ResultDispatch's sentinel branch and its call to SoundControlGate '0x80006e4c'.
 2. Establish the sound-gate argument values and first hardware-facing operation without claiming audible behavior.
 3. Separately map the upstream case-2 input field to a UI/measuring mode.
+
+## 2026-11-06: original V3.6 retrieved safely and raw-compared
+
+- Inspected the running Mr.Yang updater without activating **Upgrade**. Its firmware-list manifest named `Project_February_V3.6_V02.26.6` and supplied the expected SHA-256.
+- Retrieved original `f1c100s.bin` into a local non-public input directory. Verification passed: **5,943,296 bytes**, SHA-256 `7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9`.
+- Ran `tools/diff_raw_images.py` against verified V3.8: **10 ranges / 20 bytes**. Four bytes are at eGON-header offset `0x0c`; 16 bytes alter nine unclassified 32-bit table cells at linked `0x80063ac8..0x80063ae8`.
+- Ran `tools/trace_arm_literal_object.py` self-test and bounded trace. V3.8 `0x80042d98` PC-loads literal table address `0x80063acc`; no direct table field access appears in the next 128 ARM words. This is bounded, not a global negative result.
+- No physical I/O, FEL operation, device-memory access, firmware flashing, bootloader change, or RAM code execution occurred. The firmware binary itself is deliberately excluded from GitHub.
+
+### Revised exact continuation point
+
+1. Restore/use the existing PyGhidra environment to export a bounded V3.6 seed inventory, then run the inventory comparator against V3.8.
+2. Trace the function containing `0x80042d98` until the V3.6/V3.8 table data has a narrow evidence-backed role.
+3. Continue the pending ResultDispatch sentinel → SoundControlGate argument/peripheral trace as a separate task; do not conflate it with the V3.6 data delta.
