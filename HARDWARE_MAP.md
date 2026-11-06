@@ -71,3 +71,7 @@ ResultDispatch checks the software sentinel '0x007fffff' from result object '+0x
 ## Saturation is software state — 2026-11-06
 
 The '0x0d/0x0e' selector and '0x1389' threshold are evaluated entirely in RAM/state-5 code before a sentinel is written to the result object. The bounded trace introduces no ADC register, comparator, GPIO, PWM, timer, or buzzer peripheral access. Accordingly, the branch must remain a software saturation/display/control rule until a separate hardware/protocol mapping is proven.
+
+## 2026-11-06 updater-mediated firmware intake
+
+The Mr.Yang updater's read-only firmware-list request exposed the V3.6 package and SHA-256 manifest. The image was retrieved directly from that manifest and verified before analysis. **Upgrade was not invoked**, the updater reported no USB/FEL-ready device, and no physical hardware operation, firmware write, RAM execution, flash access, or device-memory read was performed.
