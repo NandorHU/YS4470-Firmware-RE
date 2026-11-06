@@ -138,3 +138,7 @@ No unit, calibration scale, or physical over-range meaning is assigned to thresh
 ## 2026-11-06 V3.6/V3.8 raw-diff anchors
 
 The original V3.6/V3.8 images share link base `0x7fffffe0` and length 5,943,296 bytes. Their only non-header changes fall in a data-looking region after literal `EnumKey*` strings: nine 32-bit cells beginning at `0x80063ac8` (file offset `0x63ac8`). The linked range is deliberately recorded as **unclassified data**, not as code, calibration, a key map, or a measurement table. V3.8 code at `0x80042d98` loads literal pointer `0x80063acc`; the local consumer is still unresolved.
+
+## 2026-11-06 observed flash anchors (live FEL backup)
+
+A non-public, read-only 16 MiB SPI backup establishes these observed anchors: main eGON header at flash 0x50000; header magic eGON.EXE; declared main-image span 0x5aafc0 bytes (5,943,296); main payload begins at 0x50020 and spans 5,943,264 bytes. The main span byte-matches the local E2 modified image. Other flash regions have not yet been classified as boot assets, settings, calibration, or unused space.
