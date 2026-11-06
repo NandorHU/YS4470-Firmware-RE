@@ -63,3 +63,8 @@ Trace the state-5 result stores and their consumers: resolve the literals at '0x
 ## Updated next bounded task (2026-11-06, after result-flow trace)
 
 Trace the special state-5 saturation branch backward: resolve the object at '0x805aae8c+0x08', prove which command/config values select IDs 0x0d/0x0e, and determine when threshold '0x1389' causes sentinel '0x007fffff'. Then separately trace ResultDispatch's SoundControlGate call conditions without equating them to a physical buzzer event.
+
+
+## Updated next bounded task (2026-11-06, after saturation-path reconstruction)
+
+Trace the ResultDispatch sentinel branch at '0x800037fc..0x80003854' into SoundControlGate '0x80006e4c' and its immediate callees. Prove call arguments, gate conditions, and the first hardware-facing sound-control operation. Keep the distinction between a sentinel-triggered software call and audible buzzer behavior.
