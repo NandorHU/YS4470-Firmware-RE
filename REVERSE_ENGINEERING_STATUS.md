@@ -128,3 +128,13 @@ The installed Capstone/Unicorn environment now executes original V3.6 and V3.8 A
 New bounded result: control byte `0x805aae8c+1` is a sample-discard countdown. Any nonzero entry value is decremented and neither result field is updated, even when it becomes zero. Command `0x1b` forces selector zero; `0x1d` clamps RX byte 4 to 0..6. The existing unsigned saturation comparison means negative signed-24 values also become sentinel `0x007fffff` when control word `+8` is 13/14 and the discard counter is zero.
 
 Evidence: [ARM926 parser experiment](evidence/2026-11-06-state5-arm926-emulation.json); reproduction: `tools/ARM_EMULATION.md`. Frame admission, the common FSM epilogue, peripheral behavior, and physical timing remain outside this experiment.
+
+## 2026-11-06: discard count producers and persistent lifecycle
+
+Original input dispatcher `0x80004390` sets control byte `0x805aae8d` to **2** in software cases 2 and 5 (stores at `0x80004468` and `0x800043ec`). Case 2 sets control word +8 from input byte +4 and passes [input[4], normalized input[5], 0x1d]; case 5 sets +8 to 0x22 and passes [0x0c,0x22,0x13,0x1d]. Cases 3/4 leave these control fields unchanged.
+
+The producer and parser were executed with persistent RAM in both originals: 1,184 producer cases, 96 four-entry lifecycle scenarios (384 parser entries), and 16 task-guard cases passed. The first two admitted state-5 entries retain previous result fields, and the third can publish. This is a response count, not an established time interval.
+
+Task guard `0x80005bb8` immediately admits only cases 3/4. Cases 2/5 take a deferred-copy branch and the later static path can call the input dispatcher at `0x80005cf4`. Thus duplicate case-2/5 store blocks in the task are not proof of normal immediate execution. A false candidate at `0x80005e60` was rejected because r4 is reloaded with UART startup buffer `0x805b4154` first.
+
+Evidence: [producer/lifecycle experiment](evidence/2026-11-06-state5-discard-lifecycle.json). Original 5,952-case parser regression fingerprints remained unchanged; no hardware I/O occurred.

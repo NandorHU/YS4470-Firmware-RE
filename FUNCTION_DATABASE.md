@@ -148,3 +148,15 @@ The PyGhidra exporter paired 13 evidence-labelled seeds between original V3.6 an
 | Unsigned saturation | `0x80004784..0x800047ac` | Control word 13/14 plus unsigned value >=5001 publishes sentinel and zero selector |
 
 These are regions of MeasurementFSM, not newly discovered standalone functions. The complete 34-instruction slice passed 2,976 cases per original version on Unicorn ARM926; see [execution evidence](evidence/2026-11-06-state5-arm926-emulation.json). The counter initialization and physical measurement mapping remain unresolved.
+
+## 2026-11-06: input dispatcher initializes the discard window
+
+| Region within dispatcher | Original V3.6/V3.8 site | Proven effect |
+|---|---|---|
+| software case 2 | `0x80004464..0x80004468` | control +8 = input byte 4; discard byte +1 = 2 |
+| software case 5 | `0x800043e4..0x800043ec` | control +8 = 0x22; discard byte +1 = 2 |
+| task selection guard | `0x80005bb8..0x80005bd4` | cases 3/4 enter the immediate branch; other cases reach the deferred-copy call |
+
+Case-2 secondary input is normalized to 0x19 unless it lies in 0x13..0x18. Both count-initializing command lists end in 0x1d. The persistent producer-to-parser experiment preserves the old result for two admitted responses and publishes on the third; it stops before TransactionBuilder and does not execute queue scheduling. See [evidence](evidence/2026-11-06-state5-discard-lifecycle.json) and `tools/STATE5_DISCARD_LIFECYCLE.md`.
+
+The raw task stores at 0x80005c60/0x80005c80 remain static code observations; the verified task guard does not directly reach them for input cases 2/5. Physical mode names remain open.

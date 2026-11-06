@@ -532,7 +532,8 @@
     {
       "id": "measurement_command_input_dispatcher",
       "addresses": {
-        "V3_8": "0x80004390"
+        "V3_8": "0x80004390",
+        "V3_6": "0x80004390"
       },
       "confidence": "confirmed_static_behavior",
       "role": "Builds TransactionBuilder command lists from a decoded input record",
@@ -544,16 +545,33 @@
       "evidence": [
         "evidence/2026-11-05-measurement-command-1b-1d.json",
         "bounded PyGhidra TransactionBuilder caller trace",
-        "evidence/2026-11-06-state5-saturation-path.json"
+        "evidence/2026-11-06-state5-saturation-path.json",
+        "evidence/2026-11-06-state5-discard-lifecycle.json"
       ],
       "limits": [
         "Input case codes are not mapped to physical measurement modes."
-      ]
+      ],
+      "discard_lifecycle_validation": {
+        "cpu_model": "UC_CPU_ARM_926",
+        "versions": [
+          "V3.6",
+          "V3.8"
+        ],
+        "producer_cases_per_version": 592,
+        "lifecycle_scenarios_per_version": 48,
+        "parser_entries_per_scenario": 4,
+        "task_guard_cases_per_version": 8,
+        "limits": [
+          "TransactionBuilder, queue transport and shared parser epilogue are not executed.",
+          "Task guard execution begins at 0x80005bb8; later deferred invocation is static evidence."
+        ]
+      }
     },
     {
       "id": "measurement_command_task_dispatcher",
       "addresses": {
-        "V3_8": "0x80005b70"
+        "V3_8": "0x80005b70",
+        "V3_6": "0x80005b70"
       },
       "confidence": "confirmed_static_behavior",
       "role": "Task-level counterpart that selects and starts command sequences",
@@ -566,11 +584,44 @@
       "evidence": [
         "evidence/2026-11-05-measurement-command-1b-1d.json",
         "measurement_command_sequence_assertions",
-        "evidence/2026-11-06-state5-saturation-path.json"
+        "evidence/2026-11-06-state5-saturation-path.json",
+        "evidence/2026-11-06-state5-discard-lifecycle.json"
       ],
       "limits": [
         "The upstream decoder and UI/physical meaning of cases remain unresolved."
-      ]
+      ],
+      "discard_lifecycle_validation": {
+        "cpu_model": "UC_CPU_ARM_926",
+        "versions": [
+          "V3.6",
+          "V3.8"
+        ],
+        "producer_cases_per_version": 592,
+        "lifecycle_scenarios_per_version": 48,
+        "parser_entries_per_scenario": 4,
+        "task_guard_cases_per_version": 8,
+        "limits": [
+          "TransactionBuilder, queue transport and shared parser epilogue are not executed.",
+          "Task guard execution begins at 0x80005bb8; later deferred invocation is static evidence."
+        ]
+      },
+      "routing_correction": {
+        "guard": "0x80005bb8",
+        "immediate_software_cases": [
+          3,
+          4
+        ],
+        "deferred_cases_verified": [
+          0,
+          1,
+          2,
+          5,
+          6,
+          7
+        ],
+        "deferred_input_dispatcher_call": "0x80005cf4",
+        "interpretation": "Static task-local case-2/5 stores do not establish normal immediate execution from this guard."
+      }
     },
     {
       "id": "result_text_preparation_candidate",
@@ -663,12 +714,37 @@
         "entry count 1 becomes 0 but still discards this sample"
       ],
       "evidence": [
-        "evidence/2026-11-06-state5-arm926-emulation.json"
+        "evidence/2026-11-06-state5-arm926-emulation.json",
+        "evidence/2026-11-06-state5-discard-lifecycle.json"
       ],
       "limits": [
         "Counter producers and measurement-mode meaning are unresolved.",
         "No elapsed-time unit is established."
-      ]
+      ],
+      "producers": {
+        "evidence": "evidence/2026-11-06-state5-discard-lifecycle.json",
+        "input_dispatcher": "0x80004390",
+        "stores": [
+          {
+            "software_case": 2,
+            "address": "0x80004468",
+            "value": 2,
+            "control_word_source": "input byte +4"
+          },
+          {
+            "software_case": 5,
+            "address": "0x800043ec",
+            "value": 2,
+            "control_word_value": "0x22"
+          }
+        ],
+        "cases_preserving_control": [
+          3,
+          4
+        ],
+        "verified_effect": "first two state-5 entries retain published value/selector; third may publish",
+        "limitation": "Response count is proven; physical mode and time interval are unknown."
+      }
     }
   ],
   "session_updates": [
@@ -788,5 +864,17 @@
     "capstone_distribution": "5.0.9",
     "capstone_runtime": "5.0.7",
     "requirements": "tools/analysis-requirements.txt"
+  },
+  "bounded_experiments": {
+    "state5_discard_lifecycle_2026_11_06": {
+      "evidence": "evidence/2026-11-06-state5-discard-lifecycle.json",
+      "producer_cases": 1184,
+      "lifecycle_scenarios": 96,
+      "persistent_parser_entries": 384,
+      "task_guard_cases": 16,
+      "failed": 0,
+      "original_parser_regression_cases": 5952,
+      "original_parser_regression_fingerprints_unchanged": true
+    }
   }
 }

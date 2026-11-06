@@ -228,3 +228,23 @@ See `evidence/2026-11-04-pyghidra-beta3-compare.json` for machine-readable sessi
 2. Retain the parser harness as regression coverage; avoid repeating the completed V3.6/V3.8 parser analysis.
 3. Then trace SoundControlGate at 0x80006e4c into 0x800060d0 to identify the first hardware-facing operation.
 4. UART-TTL capture remains deferred until the user can connect the adapter.
+
+## 2026-11-06: count=2 producers and persistent parser lifecycle
+
+- Verified original input-dispatcher case 2 stores control +8 from record byte 4 and count=2 at 0x80004468; case 5 stores control 0x22 and count=2 at 0x800043ec.
+- Case-2 commands are [record[4], normalize(record[5]), 0x1d]; case 5 uses [0x0c,0x22,0x13,0x1d]. Secondary-byte normalization retains 0x13..0x18 and otherwise selects 0x19. Cases 3/4 preserve the control fields.
+- Added trace_state5_discard_lifecycle.py and a reproduction note. Extended the existing parser harness with explicit persistent-RAM mode while preserving default behavior.
+- Tests passed across V3.6/V3.8: **1,184 producer cases; 96 lifecycle scenarios / 384 parser entries; 16 task-guard cases**. Results and relevant raw-window hashes match between originals.
+- Persistent state proves the publication pattern: first response discarded (2→1), second discarded (1→0), third and fourth publish.
+- Corrected task interpretation: the normal guard only directly admits cases 3/4. Cases 2/5 reach a deferred-copy branch, with a later static input-dispatcher call at 0x80005cf4. Duplicate task store blocks alone do not establish immediate execution.
+- Rejected false literal-scan candidate 0x80005e60: r4 was reloaded with UART startup RAM pointer 0x805b4154.
+- Original 5,952 parser regression cases passed with unchanged result fingerprints. No physical device operation occurred.
+
+### Exact next continuation point
+
+1. Trace helper 0x80006778, its r0/r1/r2 record construction, and direct call sites that submit software cases 2/5. Seek a proven UI/event association for input bytes +4/+5.
+2. Trace terminal 0x1d polling/repetition and cadence before interpreting count=2 as a time delay.
+3. Retain the validated parser/lifecycle harnesses; independent sound-control tracing still begins at 0x80006e4c → 0x800060d0.
+4. Keep UART-TTL capture deferred until the user can connect the adapter.
+
+Evidence: `evidence/2026-11-06-state5-discard-lifecycle.json`; method: `tools/STATE5_DISCARD_LIFECYCLE.md`.

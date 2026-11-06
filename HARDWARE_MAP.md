@@ -90,3 +90,7 @@ The local Ghidra 12.1.4 bundled PyGhidra wheel is now installed and exercised wi
 ## 2026-11-06: ARM926 software execution environment
 
 Unicorn 2.1.4 is installed with explicit ARM926 CPU selection; Capstone distribution 5.0.9 reports runtime version 5.0.7, and both identities are recorded in the evidence. The state-5 experiment maps no MMIO and no ADC/UART/device model. All 5,952 passed cases are software execution evidence only. No device operation was performed in this session.
+
+## 2026-11-06: response-count semantics, software evidence
+
+The control byte initialized to 2 is decremented on admitted state-5 responses rather than by a demonstrated hardware timer. The two suppressed samples cannot be converted into milliseconds until cadence is proven. The apparent extra +1 writer in UART bring-up is a separate RAM buffer at 0x805b4154; no new GPIO, MMIO ownership, physical measurement mode, or UART wire observation is inferred. This session used host-side ARM926 execution only.

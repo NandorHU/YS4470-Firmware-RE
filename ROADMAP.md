@@ -84,3 +84,7 @@ Trace SoundControlGate at 0x80006e4c into direct callee 0x800060d0 and continue 
 ## Updated next bounded task (2026-11-06, after real-byte ARM926 execution)
 
 Trace the writers of sample-discard byte `0x805aae8d`, starting from the verified control-object literal loads. Determine what sets/reset its initial count and which input modes can reach it. Reuse the new 5,952-case parser harness for regression rather than redoing parser disassembly. The separate SoundControlGate → 0x800060d0 hardware-control trace remains pending.
+
+## Updated next bounded task (2026-11-06, after countdown lifecycle)
+
+Trace the record-building helper at 0x80006778 and its direct callers. Establish which input events produce software cases 2/5, and which source values fill record bytes +4/+5. Preserve physical measurement names as hypotheses until a UI/string or explicit hardware mapping supports them. Reuse the completed lifecycle/parser harnesses; do not repeat their disassembly. SoundControlGate → 0x800060d0 remains a separate pending hardware-control task.
