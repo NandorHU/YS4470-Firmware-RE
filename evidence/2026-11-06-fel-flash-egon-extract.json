@@ -1,0 +1,11 @@
+{
+  "schema": "ys4470.egon.extract.v1",
+  "source_bytes": 16777216,
+  "source_sha256": "ab1e0c4539a2e3e053af78b39c1be5d3b4d3c2934dc96b29d4fd5a9395008be3",
+  "header_offset": "0x50000",
+  "declared_image_bytes": 5943296,
+  "payload_offset": "0x50020",
+  "payload_bytes": 5943264,
+  "payload_sha256": "4708beb05841b42543714d460e0f7928e2fe72aab7479a40cfa757ce7ef511d2",
+  "write_scope": "new derived payload only; source image opened read-only"
+}
