@@ -98,3 +98,11 @@ The state-5 saturation branch reads control object '0x805aae8c+0x08', not the cu
 Both the input dispatcher ('0x80004390') and task dispatcher ('0x80005b70') case-2 paths write an input-derived value to the control field. The task case-2 sequence has terminal command '0x1d'. In contrast, visible case-5 setup writes constant '0x22' to the control field, which cannot satisfy this branch's '0x0d/0x0e' comparison.
 
 The relevant dispatcher, saturation, and literal ranges are byte-identical in V3.8 and Beta3. This proves a shared static saturation rule; it does not assign the input values, command cases, or sentinel to a physical measurement type.
+
+## 2026-11-06: original V3.6 acquisition and bytewise baseline
+
+The running Mr.Yang updater listed package `Project_February_V3.6_V02.26.6`. Its original `f1c100s.bin` was downloaded without invoking **Upgrade**, saved outside the public repository, and verified against the updater manifest: **5,943,296 bytes**, SHA-256 `7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9`.
+
+A raw equal-layout comparison against the original V3.8 image found **10 contiguous difference ranges totaling 20 bytes**. Four bytes are eGON-header data at file offset `0x0000000c`; the remaining 16 changed bytes occur within nine 32-bit values starting at linked address `0x80063ac8`, immediately after `EnumKey*` text. The semantic role of that table remains unassigned. One static ARM PC-literal load reaches table base `0x80063acc` from `0x80042d98`; the bounded tracer found no direct field access within its 128-word window.
+
+No changed instruction bytes were observed in this raw diff. This is strong evidence that the known V3.8 code paths are byte-identical in V3.6, but it is not a substitute for the scheduled V3.6 PyGhidra seeded-inventory export or a claim about hardware behavior.
