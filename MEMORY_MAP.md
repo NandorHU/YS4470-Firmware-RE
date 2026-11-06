@@ -134,3 +134,7 @@ Direct consumer tracing is bounded to PC-literal object paths; it is not an alia
 | '0x805ac714 + 0x20' | result selector | receives zero on the saturation path |
 
 No unit, calibration scale, or physical over-range meaning is assigned to threshold '0x1389' or sentinel '0x007fffff'.
+
+## 2026-11-06 V3.6/V3.8 raw-diff anchors
+
+The original V3.6/V3.8 images share link base `0x7fffffe0` and length 5,943,296 bytes. Their only non-header changes fall in a data-looking region after literal `EnumKey*` strings: nine 32-bit cells beginning at `0x80063ac8` (file offset `0x63ac8`). The linked range is deliberately recorded as **unclassified data**, not as code, calibration, a key map, or a measurement table. V3.8 code at `0x80042d98` loads literal pointer `0x80063acc`; the local consumer is still unresolved.
