@@ -1,0 +1,48 @@
+{
+  "schema": "ys4470.fel-device-acquisition.v1",
+  "acquisition_date_utc": "2026-11-06",
+  "scope": "FEL BootROM and SPI-flash read-only investigation",
+  "safety": {
+    "firmware_flash_write": false,
+    "bootloader_write": false,
+    "ram_code_execution": false,
+    "runtime_firmware_observation": false,
+    "local_backup_published": false
+  },
+  "usb_enumeration": {
+    "hardware_id": "USB\\VID_1F3A&PID_EFE8",
+    "sunxi_fel_list_line": "USB device 001:018   Allwinner F1C100s",
+    "windows_binding": "WinUSB / libwdi",
+    "driver_version": "6.1.7600.16385"
+  },
+  "tool": {
+    "source": "installed Mr.Yang plugin",
+    "version": "sunxi-fel v1.4.1-104-g11a9d20-dirty",
+    "sha256": "626a16c6fa8ff9638a52222452d7bed7f5922537f530494be4ba0845bca23203",
+    "commands_used": [
+      "--list",
+      "spiflash-info",
+      "spiflash-read 0 0x1000000 <local-nonpublic-backup>"
+    ]
+  },
+  "spi_flash": {
+    "manufacturer": "Winbond (EFh)",
+    "model": "40h",
+    "bytes": 16777216,
+    "local_backup_sha256": "ab1e0c4539a2e3e053af78b39c1be5d3b4d3c2934dc96b29d4fd5a9395008be3"
+  },
+  "main_image": {
+    "flash_offset": "0x50000",
+    "egon_magic": "eGON.EXE",
+    "declared_image_bytes": 5943296,
+    "full_image_sha256": "b04fb5bca7a052abfc5b1621bf50e03fd4f8116bf5cef849f1994e44d4b603b1",
+    "payload_sha256": "4708beb05841b42543714d460e0f7928e2fe72aab7479a40cfa757ce7ef511d2",
+    "exact_local_match": "beta-diode-profiles-e2/f1c100s-profiles-OFFLINE.bin"
+  },
+  "limitations": [
+    "FEL is BootROM transport and does not observe the firmware while it is running.",
+    "The active E2 image is a modified build, not an original V3.6 or V3.8 reference image.",
+    "No interpretation of measurements, buzzer behavior, or calibration was made from the flash identity alone."
+  ]
+}
+
