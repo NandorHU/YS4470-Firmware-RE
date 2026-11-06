@@ -92,3 +92,15 @@ The direct descriptor result is identical in V3.8 and Beta3. Static dispatchers 
 After state-5 admission, the parser publishes its signed 24-bit value at result object '+0x1c' and a byte-4-derived bounded selector at '+0x20'. For a special threshold path it publishes '0x007fffff' instead of the parsed value.
 
 ResultDispatch consumes both fields and has a sentinel branch that calls SoundControlGate. Separate text-formatting candidates also consume them, including one with a nearby '%.3f' format string. This connects parser output to presentation/control software without assigning a physical unit or measurement name.
+
+
+## State-5 saturation rule
+
+For the visible state-5 path:
+
+1. Read control word '0x805aae8c+0x08'.
+2. Continue with saturation only if it is '0x0d' or '0x0e'.
+3. Compare the parsed signed result as an unsigned value to '0x1389'.
+4. If it is greater than or equal, publish sentinel '0x007fffff' and selector 0; otherwise publish the normal parsed value and selector.
+
+Case-2 command setup supplies the control word from an input-derived value and includes terminal command '0x1d'. This is a reproducible software relationship, but input/command names and physical electrical interpretation remain unknown.
