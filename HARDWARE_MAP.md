@@ -75,3 +75,10 @@ The '0x0d/0x0e' selector and '0x1389' threshold are evaluated entirely in RAM/st
 ## 2026-11-06 updater-mediated firmware intake
 
 The Mr.Yang updater's read-only firmware-list request exposed the V3.6 package and SHA-256 manifest. The image was retrieved directly from that manifest and verified before analysis. **Upgrade was not invoked**, the updater reported no USB/FEL-ready device, and no physical hardware operation, firmware write, RAM execution, flash access, or device-memory read was performed.
+
+## 2026-11-06 live FEL/flash verification
+
+- BootROM enumerated USB\VID_1F3A&PID_EFE8 as Allwinner F1C100S through the installed WinUSB/libwdi binding.
+- The compatible updater-bundled sunxi-fel enumerated the device and reported a Winbond EFh:40h SPI flash of 16 MiB.
+- A full spiflash-read backup completed and was SHA-256 verified locally; it is non-public. No spiflash-write, boot, SPL, U-Boot, arbitrary RAM write, or execution command was issued.
+- This confirms a recoverable baseline for future explicitly scoped device experiments, but FEL remains unavailable for observing memory while the normal firmware executes.
