@@ -130,3 +130,7 @@ The recovered rule and bounded setup paths are raw-identical in V3.8 and Beta3. 
 Original V3.6 is now a verified local, non-public input: `Project_February_V3.6_V02.26.6/f1c100s.bin`, SHA-256 `7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9`, 5,943,296 bytes.
 
 A whole-image raw comparison against V3.8 found only 20 changed bytes: an eGON-header word at offset `0x0c` and 16 bytes among the nine 32-bit cells beginning at `0x80063ac8`. Therefore the established V3.8 function addresses remain the initial V3.6 pairing coordinates, but each function is still marked V3.8/Beta3 until the reproducible V3.6 PyGhidra inventory is exported. No V3.6 function label or physical behavior is inferred solely from byte equality.
+
+## 2026-11-06 active-device image identity
+
+The live device complete eGON main image at flash offset 0x50000 is byte-identical to local modified build beta-diode-profiles-e2/f1c100s-profiles-OFFLINE.bin (full-image SHA-256 b04fb5bca7a052abfc5b1621bf50e03fd4f8116bf5cef849f1994e44d4b603b1). This establishes the address base for later, explicitly E2-scoped hardware experiments. It does **not** promote E2-only behavior into an original V3.6/V3.8 function claim.
