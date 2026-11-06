@@ -154,3 +154,18 @@ See `evidence/2026-11-04-pyghidra-beta3-compare.json` for machine-readable sessi
 1. Trace the special state-5 branch via '0x805aae8c+0x08' and identify its command/config source.
 2. Determine when threshold '0x1389' yields sentinel '0x007fffff'.
 3. Trace ResultDispatch's conditional SoundControlGate call without claiming a physical buzzer behavior until hardware/control evidence exists.
+
+
+## 2026-11-06: state-5 saturation path
+
+- State 5 reads '0x805aae8c+0x08'; only control values '0x0d'/'0x0e' proceed to its special path.
+- If unsigned parsed value >= '0x1389', it publishes '0x007fffff' at result '+0x1c' and selector zero at '+0x20'.
+- Case-2 setup in both dispatchers writes an input-derived control value; the task-level command list ends in '0x1d'. Visible case-5 setup writes '0x22' instead.
+- V3.8/Beta3 raw comparisons: input dispatcher, task dispatcher, state-5 saturation code, and literal ranges are identical.
+- Test: tracer compilation/self-test and 20 instruction/literal assertions passed. No physical I/O occurred.
+
+### Revised exact continuation point
+
+1. Trace ResultDispatch's sentinel branch and its call to SoundControlGate '0x80006e4c'.
+2. Establish the sound-gate argument values and first hardware-facing operation without claiming audible behavior.
+3. Separately map the upstream case-2 input field to a UI/measuring mode.
