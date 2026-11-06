@@ -1,0 +1,107 @@
+{
+  "schema": "ys4470.raw-diff.v1",
+  "left": {
+    "name": "f1c100s.bin",
+    "bytes": 5943296,
+    "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+  },
+  "right": {
+    "name": "f1c100s.bin",
+    "bytes": 5943296,
+    "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+  },
+  "link_base": "0x7fffffe0",
+  "different_ranges": [
+    {
+      "file_offset_start": "0xc",
+      "file_offset_end_exclusive": "0x10",
+      "arm_address_start": "0x7fffffec",
+      "arm_address_end_exclusive": "0x7ffffff0",
+      "length": 4,
+      "left_sha256": "f58da8bba80cda0e4a912feba0a74ec49e0f5e6a738867058e6c44d4fd997c2e",
+      "right_sha256": "8e536fd0c97c06bf89f74579ad236443f83697dfc8bb3357aff7ecad25842dd6"
+    },
+    {
+      "file_offset_start": "0x63ac8",
+      "file_offset_end_exclusive": "0x63ac9",
+      "arm_address_start": "0x80063aa8",
+      "arm_address_end_exclusive": "0x80063aa9",
+      "length": 1,
+      "left_sha256": "d4b0c0a4a8cc6c257aed34d16d39dd3c2d3539ed67fd4badd40aef16c1591715",
+      "right_sha256": "380918b946a526640a40df5dced6516794f3d97bbd9e6bb553d037c4439f31c3"
+    },
+    {
+      "file_offset_start": "0x63acc",
+      "file_offset_end_exclusive": "0x63acd",
+      "arm_address_start": "0x80063aac",
+      "arm_address_end_exclusive": "0x80063aad",
+      "length": 1,
+      "left_sha256": "8d36bbb3d6fbf24f38ba020d9ceeef5d4562f5f26629f66b076ff395c438695e",
+      "right_sha256": "68aa2e2ee5dff96e3355e6c7ee373e3d6a4e17f75f9518d843709c0c9bc3e3d4"
+    },
+    {
+      "file_offset_start": "0x63ad0",
+      "file_offset_end_exclusive": "0x63ad2",
+      "arm_address_start": "0x80063ab0",
+      "arm_address_end_exclusive": "0x80063ab2",
+      "length": 2,
+      "left_sha256": "e0b9f48b5ff727a86f3d4f2210df0893a715d52b42193d10c34d95051dc43462",
+      "right_sha256": "c8c7c6f1b5dff2e76bca822f7f36f5ede27816434b94f43f913cc50b06dd68ce"
+    },
+    {
+      "file_offset_start": "0x63ad4",
+      "file_offset_end_exclusive": "0x63ad6",
+      "arm_address_start": "0x80063ab4",
+      "arm_address_end_exclusive": "0x80063ab6",
+      "length": 2,
+      "left_sha256": "5af66d821c729810a755dfdd72dcf4f4d4fe8a48aacfa4ef49011782bf73d67c",
+      "right_sha256": "b056b849cb698b72bc51481723bd58dcd9c95026ef046ae37f1ab8c849fcd760"
+    },
+    {
+      "file_offset_start": "0x63ad8",
+      "file_offset_end_exclusive": "0x63ada",
+      "arm_address_start": "0x80063ab8",
+      "arm_address_end_exclusive": "0x80063aba",
+      "length": 2,
+      "left_sha256": "817a8eb3e78d86de4f46ae089354acb4d63c0cbeb60f17af47d5b7c926497f9b",
+      "right_sha256": "6f7ea90e6a7a8070e67fd81801ee45eca8abc6ebbeac2e3e11c299a1a19d8cfd"
+    },
+    {
+      "file_offset_start": "0x63adc",
+      "file_offset_end_exclusive": "0x63ade",
+      "arm_address_start": "0x80063abc",
+      "arm_address_end_exclusive": "0x80063abe",
+      "length": 2,
+      "left_sha256": "7aa397df66304bab4fe275afe0507a01844e7fda848b4e194a9402d010721839",
+      "right_sha256": "941aafdb82cc1e4ae7b845826b523c7483993b2abbb2681b60bd71d44fc7fd36"
+    },
+    {
+      "file_offset_start": "0x63ae0",
+      "file_offset_end_exclusive": "0x63ae2",
+      "arm_address_start": "0x80063ac0",
+      "arm_address_end_exclusive": "0x80063ac2",
+      "length": 2,
+      "left_sha256": "886c11f0bb15860ae655e57588eee578d826f002718fb358b2eb0a57d348749c",
+      "right_sha256": "0404009fb37bedba9fc337347bc2d29ba5bcf35c42f46eafa45a876a241e6d1e"
+    },
+    {
+      "file_offset_start": "0x63ae4",
+      "file_offset_end_exclusive": "0x63ae6",
+      "arm_address_start": "0x80063ac4",
+      "arm_address_end_exclusive": "0x80063ac6",
+      "length": 2,
+      "left_sha256": "9463032690a1c438b12121380f92228ec853410ac63c8179a00ed95e9ee958e5",
+      "right_sha256": "47a2fabbe3a776e48546ec6f745120bbb900f30e04edad2c3f9e8d041b6625fe"
+    },
+    {
+      "file_offset_start": "0x63ae8",
+      "file_offset_end_exclusive": "0x63aea",
+      "arm_address_start": "0x80063ac8",
+      "arm_address_end_exclusive": "0x80063aca",
+      "length": 2,
+      "left_sha256": "acd39e3b134081aa994a03eb05c665b7c44eb2e6a304b86b0af7f0dffe870363",
+      "right_sha256": "1092f3da081f46047853850eaeeae92393bc1e307b2916a1e6ed70b100fbb2d5"
+    }
+  ],
+  "different_byte_count": 20
+}
