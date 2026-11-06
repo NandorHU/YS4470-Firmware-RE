@@ -114,3 +114,9 @@ A live, non-destructive FEL session enumerated one Allwinner F1C100s device at U
 The flash eGON main image begins at 0x50000, declares 5,943,296 bytes, and its complete SHA-256 is b04fb5bca7a052abfc5b1621bf50e03fd4f8116bf5cef849f1994e44d4b603b1. It byte-matches the local modified artifact beta-diode-profiles-e2/f1c100s-profiles-OFFLINE.bin; the payload SHA-256 is 4708beb05841b42543714d460e0f7928e2fe72aab7479a40cfa757ce7ef511d2. This supersedes earlier historical assumptions about the active image.
 
 No flash or bootloader write, RAM code execution, or running-firmware memory observation was performed. FEL is treated as BootROM transport, not a runtime debugger.
+
+## 2026-11-06: V3.6/V3.8 PyGhidra seed comparison
+
+PyGhidra 3.1.0 was installed from the local Ghidra 12.1.4 bundled wheel, using JPype 1.5.2. A bounded ARMv5T seed inventory ran successfully on the verified original V3.6 and V3.8 inputs at link base 0x7fffffe0. All 13 evidence-labelled exports have identical exported assembly fingerprints, identical first-64-byte windows, and identical first-512-byte windows across the two versions. The paired set includes MeasurementFSM, TransactionBuilder, ResultDispatch, SoundControlGate, UART_RX_ISR, DiodeValidityBranch, and MainADCTask_candidate.
+
+This function-level result is consistent with the earlier whole-image raw result of 20 non-instruction-byte differences. It covers only the bounded seeds, not every inferred function boundary or live behavior. Full machine-readable inventories and the comparator output are committed as dated evidence.
