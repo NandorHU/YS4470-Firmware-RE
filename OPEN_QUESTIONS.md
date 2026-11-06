@@ -97,3 +97,8 @@ Remaining:
 - What upstream input-record field supplies the case-2 control value, and which user-visible selection sets it to '0x0d' or '0x0e'?
 - Does sentinel '0x007fffff' mean over-range, open circuit, or another protocol condition?
 - Under what exact configuration does ResultDispatch's sentinel branch call SoundControlGate, and what output does that gate produce?
+
+## Added 2026-11-06: V3.6 data delta
+
+- What is the semantic role of the nine modified 32-bit cells at `0x80063ac8..0x80063ae8`? The surrounding `EnumKey*` text and a pointer load from `0x80042d98` establish a data-region association only; do not call it calibration, timing, key mapping, or an algorithm parameter without a consumer trace.
+- Run and retain the V3.6 seeded PyGhidra inventory, then compare its known function windows against V3.8. Raw equality is a strong baseline, not a complete function-boundary proof.
