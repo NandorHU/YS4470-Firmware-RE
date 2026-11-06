@@ -106,3 +106,11 @@ The running Mr.Yang updater listed package `Project_February_V3.6_V02.26.6`. Its
 A raw equal-layout comparison against the original V3.8 image found **10 contiguous difference ranges totaling 20 bytes**. Four bytes are eGON-header data at file offset `0x0000000c`; the remaining 16 changed bytes occur within nine 32-bit values starting at linked address `0x80063ac8`, immediately after `EnumKey*` text. The semantic role of that table remains unassigned. One static ARM PC-literal load reaches table base `0x80063acc` from `0x80042d98`; the bounded tracer found no direct field access within its 128-word window.
 
 No changed instruction bytes were observed in this raw diff. This is strong evidence that the known V3.8 code paths are byte-identical in V3.6, but it is not a substitute for the scheduled V3.6 PyGhidra seeded-inventory export or a claim about hardware behavior.
+
+## 2026-11-06: live FEL identity and recoverable flash baseline
+
+A live, non-destructive FEL session enumerated one Allwinner F1C100s device at USB\VID_1F3A&PID_EFE8. The active WinUSB binding was verified and the SPI flash identified as Winbond model 40h, 16,777,216 bytes. A complete read-only 16 MiB image was backed up locally (SHA-256 ab1e0c4539a2e3e053af78b39c1be5d3b4d3c2934dc96b29d4fd5a9395008be3); the binary is intentionally not published because it may contain device-specific data.
+
+The flash eGON main image begins at 0x50000, declares 5,943,296 bytes, and its complete SHA-256 is b04fb5bca7a052abfc5b1621bf50e03fd4f8116bf5cef849f1994e44d4b603b1. It byte-matches the local modified artifact beta-diode-profiles-e2/f1c100s-profiles-OFFLINE.bin; the payload SHA-256 is 4708beb05841b42543714d460e0f7928e2fe72aab7479a40cfa757ce7ef511d2. This supersedes earlier historical assumptions about the active image.
+
+No flash or bootloader write, RAM code execution, or running-firmware memory observation was performed. FEL is treated as BootROM transport, not a runtime debugger.
