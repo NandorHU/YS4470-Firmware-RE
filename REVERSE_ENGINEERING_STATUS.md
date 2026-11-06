@@ -89,3 +89,12 @@ The same bytes '6060' are also sent by UART2 bring-up. Byte equality alone does 
 State 5 writes its signed result to result object '0x805ac714+0x1c' and its bounded selector to '+0x20'. Its special threshold path writes sentinel '0x007fffff'. A bounded direct-access trace proves that ResultDispatch at '0x800037c0' reads both fields; its sentinel branch conditionally calls SoundControlGate '0x80006e4c'.
 
 Two separate formatting/rendering candidates also directly consume these fields: '0x80045264' and '0x8005dc3c'. The latter has nearby '%.3f' formatting data. This establishes software dataflow from UART state-5 parsing toward presentation and one conditional sound-control gate; it does not identify the final drawing primitive, physical measurement mode, or buzzer timing.
+
+
+## 2026-11-06: state-5 saturation control reconstructed
+
+The state-5 saturation branch reads control object '0x805aae8c+0x08', not the current state-5 command ID. It accepts only values '0x0d' or '0x0e'. When the unsigned parsed value is at least '0x1389', it replaces result object '0x805ac714+0x1c' with sentinel '0x007fffff' and stores selector zero at '+0x20'. Otherwise it preserves the parsed signed value and the byte-4-derived selector.
+
+Both the input dispatcher ('0x80004390') and task dispatcher ('0x80005b70') case-2 paths write an input-derived value to the control field. The task case-2 sequence has terminal command '0x1d'. In contrast, visible case-5 setup writes constant '0x22' to the control field, which cannot satisfy this branch's '0x0d/0x0e' comparison.
+
+The relevant dispatcher, saturation, and literal ranges are byte-identical in V3.8 and Beta3. This proves a shared static saturation rule; it does not assign the input values, command cases, or sentinel to a physical measurement type.
