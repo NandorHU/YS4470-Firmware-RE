@@ -116,3 +116,16 @@ The currently flashed device image is confirmed as modified beta-diode-profiles-
 ## 2026-11-06 original-version comparison scope
 
 The bounded PyGhidra V3.6/V3.8 comparison found identical exports for the currently seeded MeasurementFSM, MainADCTask_candidate, DiodeValidityBranch, ResultDispatch, SoundControlGate, UART_RX_ISR, and related support regions. Therefore no algorithm change is evidenced for those bounded code bodies. This does not classify the nine changed data cells or establish physical measurement equivalence.
+
+## 2026-11-06: executable state-5 reconstruction
+
+Executed the original 34-instruction parser slice against its high-level arithmetic reconstruction on Unicorn ARM926 in V3.6 and V3.8. All 5,952 cases passed, covering signed-24 boundaries, 5000/5001, selector 6/7, all selector bytes, all byte-valued control modes and countdowns, and 512 deterministic random cases per version.
+
+The exact publication rule is now:
+
+1. Decode signed little-endian 24-bit value; use selector 0 for command 1b or min(RX[4],6) for command 1d.
+2. If control byte +1 was nonzero on entry, decrement it and retain the prior published value and selector. Entry value 1 also discards this sample.
+3. Otherwise, control word +8 of 13/14 replaces every value whose **unsigned 32-bit representation** is >=5001 with 0x007fffff and selector 0. This includes every negative decoded value.
+4. Other cases publish the decoded value and selector.
+
+The counter's physical meaning and initialization are unresolved. These synthetic tests do not prove that every tested input tuple is reachable in normal operation or identify units, ADC conversion, or audible timing. Evidence: [state-5 ARM926 experiment](evidence/2026-11-06-state5-arm926-emulation.json).

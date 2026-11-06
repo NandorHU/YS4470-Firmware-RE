@@ -4,6 +4,8 @@ The aim of this list is to prioritize evidence quality and repeatability, not to
 
 ## Active now
 
+- **Unicorn 2.1.4 + Capstone:** installed under `work/analysis-python`; explicit ARM926 emulation of original V3.6/V3.8 state-5 code passed 5,952 cases. Pinned packages and reproduction steps are in `tools/analysis-requirements.txt` and `tools/ARM_EMULATION.md`. Capstone distribution/runtime report 5.0.9/5.0.7 respectively.
+
 - **PyGhidra 3.1.0 + Ghidra 12.1.4:** installed locally from Ghidra's bundled wheel, with JPype 1.5.2. It now exports bounded ARMv5T seed inventories and compares V3.6/V3.8 without modifying source images.
 - **Verified FEL read-only path:** the device can be enumerated and its 16 MiB SPI flash can be backed up with `sunxi-fel`; this is BootROM access, not a running-firmware debugger.
 - **Raw-image diff and bounded ARM tracers:** use these before a broad analyzer where a narrow question is available.
@@ -15,7 +17,6 @@ The aim of this list is to prioritize evidence quality and repeatability, not to
 
 ## Install only when the next bounded task needs it
 
-- **Unicorn Engine plus Capstone:** install for a small, proven-contract harness around the state-5 signed-24 parser or sound gate. Do not emulate the entire meter first.
 - **Rizin/rz-diff:** useful if a later firmware differs in many code regions. The V3.6/V3.8 raw delta is only 20 data/header bytes, so it is not currently the bottleneck.
 - **Binwalk/ImHex:** useful for manual classification of the non-main regions of the verified 16 MiB flash backup. They are optional because the existing eGON extractor already identified the main image.
 - **Ghidra Version Tracking:** use when pairing functions from a genuinely diverged release rather than V3.6/V3.8, whose seeded code exports are currently identical.

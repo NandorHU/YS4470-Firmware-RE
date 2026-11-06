@@ -1,0 +1,509 @@
+{
+  "schema": "ys4470.state5-arm926-emulation.v1",
+  "toolchain": {
+    "unicorn": "2.1.4",
+    "cpu_model": "UC_CPU_ARM_926",
+    "capstone_distribution": "5.0.9",
+    "capstone_runtime": "5.0.7"
+  },
+  "entry": "0x80004738",
+  "stop_before": "0x80004518",
+  "seed": 4470,
+  "cases_per_version": 2976,
+  "random_cases": 512,
+  "contract": {
+    "r12": "0x805b408c",
+    "r1": "0x1b or 0x1d",
+    "r7": 0,
+    "control_holdoff_byte": "0x805aae8d",
+    "control_mode_word": "0x805aae94",
+    "result_value_word": "0x805ac730",
+    "result_selector_word": "0x805ac734"
+  },
+  "limits": [
+    "State-3 count/header admission and shared state-7 epilogue are excluded.",
+    "Synthetic RAM inputs; no ADC, UART, timing, interrupts, or MMIO modeled.",
+    "Instruction-address coverage is not full path or hardware coverage.",
+    "This bounded experiment does not identify physical measurement units or modes."
+  ],
+  "versions": [
+    {
+      "version": "V3.6",
+      "input_sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+      "parser_slice_sha256": "1829fba7d5c088407533345799b6b0b8ebe94568a6e463c8b53eb4aa412f550c",
+      "cases_passed": 2976,
+      "cases_failed": 0,
+      "results_sha256": "13f46a098194cdbac4cf57a74ff06d62c717ab94dc463801781125994008b39e",
+      "instruction_addresses_visited": 34,
+      "assembly": [
+        {
+          "address": "0x80004738",
+          "assembly": "ldrb r4, [ip, #1]"
+        },
+        {
+          "address": "0x8000473c",
+          "assembly": "ldrb r3, [ip, #2]"
+        },
+        {
+          "address": "0x80004740",
+          "assembly": "ldrb r0, [ip, #3]"
+        },
+        {
+          "address": "0x80004744",
+          "assembly": "orr r3, r4, r3, lsl #8"
+        },
+        {
+          "address": "0x80004748",
+          "assembly": "orr r0, r3, r0, lsl #16"
+        },
+        {
+          "address": "0x8000474c",
+          "assembly": "tst r0, #0x800000"
+        },
+        {
+          "address": "0x80004750",
+          "assembly": "addne r0, r0, #0xff000000"
+        },
+        {
+          "address": "0x80004754",
+          "assembly": "cmp r1, #0x1b"
+        },
+        {
+          "address": "0x80004758",
+          "assembly": "moveq r1, #0"
+        },
+        {
+          "address": "0x8000475c",
+          "assembly": "beq #0x8000476c"
+        },
+        {
+          "address": "0x80004760",
+          "assembly": "ldrb r1, [ip, #4]"
+        },
+        {
+          "address": "0x80004764",
+          "assembly": "cmp r1, #7"
+        },
+        {
+          "address": "0x80004768",
+          "assembly": "movge r1, #6"
+        },
+        {
+          "address": "0x8000476c",
+          "assembly": "ldr ip, [pc, #0xa8]"
+        },
+        {
+          "address": "0x80004770",
+          "assembly": "ldrb r3, [ip, #1]"
+        },
+        {
+          "address": "0x80004774",
+          "assembly": "cmp r3, #0"
+        },
+        {
+          "address": "0x80004778",
+          "assembly": "subne r0, r3, #1"
+        },
+        {
+          "address": "0x8000477c",
+          "assembly": "strbne r0, [ip, #1]"
+        },
+        {
+          "address": "0x80004780",
+          "assembly": "bne #0x80004518"
+        },
+        {
+          "address": "0x80004784",
+          "assembly": "ldr r3, [ip, #8]"
+        },
+        {
+          "address": "0x80004788",
+          "assembly": "ldr ip, [pc, #0x90]"
+        },
+        {
+          "address": "0x8000478c",
+          "assembly": "cmp r3, #0xe"
+        },
+        {
+          "address": "0x80004790",
+          "assembly": "cmpne r3, #0xd"
+        },
+        {
+          "address": "0x80004794",
+          "assembly": "bne #0x800047b4"
+        },
+        {
+          "address": "0x80004798",
+          "assembly": "ldr r3, [pc, #0x84]"
+        },
+        {
+          "address": "0x8000479c",
+          "assembly": "cmp r0, r3"
+        },
+        {
+          "address": "0x800047a0",
+          "assembly": "blo #0x800047b4"
+        },
+        {
+          "address": "0x800047a4",
+          "assembly": "ldr r0, [pc, #0x7c]"
+        },
+        {
+          "address": "0x800047a8",
+          "assembly": "str r0, [ip, #0x1c]"
+        },
+        {
+          "address": "0x800047ac",
+          "assembly": "str r7, [ip, #0x20]"
+        },
+        {
+          "address": "0x800047b0",
+          "assembly": "b #0x80004518"
+        },
+        {
+          "address": "0x800047b4",
+          "assembly": "str r0, [ip, #0x1c]"
+        },
+        {
+          "address": "0x800047b8",
+          "assembly": "str r1, [ip, #0x20]"
+        },
+        {
+          "address": "0x800047bc",
+          "assembly": "b #0x80004518"
+        }
+      ],
+      "examples": [
+        {
+          "input": {
+            "raw24": 5000,
+            "command": 29,
+            "selector": 7,
+            "control": 13,
+            "holdoff": 0
+          },
+          "result": {
+            "value_u32": 5000,
+            "selector": 6,
+            "holdoff": 0,
+            "published": true
+          }
+        },
+        {
+          "input": {
+            "raw24": 5001,
+            "command": 29,
+            "selector": 7,
+            "control": 13,
+            "holdoff": 0
+          },
+          "result": {
+            "value_u32": 8388607,
+            "selector": 0,
+            "holdoff": 0,
+            "published": true
+          }
+        },
+        {
+          "input": {
+            "raw24": 16777215,
+            "command": 29,
+            "selector": 7,
+            "control": 13,
+            "holdoff": 0
+          },
+          "result": {
+            "value_u32": 8388607,
+            "selector": 0,
+            "holdoff": 0,
+            "published": true
+          }
+        },
+        {
+          "input": {
+            "raw24": 16777215,
+            "command": 29,
+            "selector": 255,
+            "control": 34,
+            "holdoff": 0
+          },
+          "result": {
+            "value_u32": 4294967295,
+            "selector": 6,
+            "holdoff": 0,
+            "published": true
+          }
+        },
+        {
+          "input": {
+            "raw24": 1,
+            "command": 27,
+            "selector": 255,
+            "control": 0,
+            "holdoff": 0
+          },
+          "result": {
+            "value_u32": 1,
+            "selector": 0,
+            "holdoff": 0,
+            "published": true
+          }
+        },
+        {
+          "input": {
+            "raw24": 1,
+            "command": 29,
+            "selector": 255,
+            "control": 0,
+            "holdoff": 1
+          },
+          "result": {
+            "value_u32": 2712847316,
+            "selector": 1432778632,
+            "holdoff": 0,
+            "published": false
+          }
+        }
+      ]
+    },
+    {
+      "version": "V3.8",
+      "input_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+      "parser_slice_sha256": "1829fba7d5c088407533345799b6b0b8ebe94568a6e463c8b53eb4aa412f550c",
+      "cases_passed": 2976,
+      "cases_failed": 0,
+      "results_sha256": "13f46a098194cdbac4cf57a74ff06d62c717ab94dc463801781125994008b39e",
+      "instruction_addresses_visited": 34,
+      "assembly": [
+        {
+          "address": "0x80004738",
+          "assembly": "ldrb r4, [ip, #1]"
+        },
+        {
+          "address": "0x8000473c",
+          "assembly": "ldrb r3, [ip, #2]"
+        },
+        {
+          "address": "0x80004740",
+          "assembly": "ldrb r0, [ip, #3]"
+        },
+        {
+          "address": "0x80004744",
+          "assembly": "orr r3, r4, r3, lsl #8"
+        },
+        {
+          "address": "0x80004748",
+          "assembly": "orr r0, r3, r0, lsl #16"
+        },
+        {
+          "address": "0x8000474c",
+          "assembly": "tst r0, #0x800000"
+        },
+        {
+          "address": "0x80004750",
+          "assembly": "addne r0, r0, #0xff000000"
+        },
+        {
+          "address": "0x80004754",
+          "assembly": "cmp r1, #0x1b"
+        },
+        {
+          "address": "0x80004758",
+          "assembly": "moveq r1, #0"
+        },
+        {
+          "address": "0x8000475c",
+          "assembly": "beq #0x8000476c"
+        },
+        {
+          "address": "0x80004760",
+          "assembly": "ldrb r1, [ip, #4]"
+        },
+        {
+          "address": "0x80004764",
+          "assembly": "cmp r1, #7"
+        },
+        {
+          "address": "0x80004768",
+          "assembly": "movge r1, #6"
+        },
+        {
+          "address": "0x8000476c",
+          "assembly": "ldr ip, [pc, #0xa8]"
+        },
+        {
+          "address": "0x80004770",
+          "assembly": "ldrb r3, [ip, #1]"
+        },
+        {
+          "address": "0x80004774",
+          "assembly": "cmp r3, #0"
+        },
+        {
+          "address": "0x80004778",
+          "assembly": "subne r0, r3, #1"
+        },
+        {
+          "address": "0x8000477c",
+          "assembly": "strbne r0, [ip, #1]"
+        },
+        {
+          "address": "0x80004780",
+          "assembly": "bne #0x80004518"
+        },
+        {
+          "address": "0x80004784",
+          "assembly": "ldr r3, [ip, #8]"
+        },
+        {
+          "address": "0x80004788",
+          "assembly": "ldr ip, [pc, #0x90]"
+        },
+        {
+          "address": "0x8000478c",
+          "assembly": "cmp r3, #0xe"
+        },
+        {
+          "address": "0x80004790",
+          "assembly": "cmpne r3, #0xd"
+        },
+        {
+          "address": "0x80004794",
+          "assembly": "bne #0x800047b4"
+        },
+        {
+          "address": "0x80004798",
+          "assembly": "ldr r3, [pc, #0x84]"
+        },
+        {
+          "address": "0x8000479c",
+          "assembly": "cmp r0, r3"
+        },
+        {
+          "address": "0x800047a0",
+          "assembly": "blo #0x800047b4"
+        },
+        {
+          "address": "0x800047a4",
+          "assembly": "ldr r0, [pc, #0x7c]"
+        },
+        {
+          "address": "0x800047a8",
+          "assembly": "str r0, [ip, #0x1c]"
+        },
+        {
+          "address": "0x800047ac",
+          "assembly": "str r7, [ip, #0x20]"
+        },
+        {
+          "address": "0x800047b0",
+          "assembly": "b #0x80004518"
+        },
+        {
+          "address": "0x800047b4",
+          "assembly": "str r0, [ip, #0x1c]"
+        },
+        {
+          "address": "0x800047b8",
+          "assembly": "str r1, [ip, #0x20]"
+        },
+        {
+          "address": "0x800047bc",
+          "assembly": "b #0x80004518"
+        }
+      ],
+      "examples": [
+        {
+          "input": {
+            "raw24": 5000,
+            "command": 29,
+            "selector": 7,
+            "control": 13,
+            "holdoff": 0
+          },
+          "result": {
+            "value_u32": 5000,
+            "selector": 6,
+            "holdoff": 0,
+            "published": true
+          }
+        },
+        {
+          "input": {
+            "raw24": 5001,
+            "command": 29,
+            "selector": 7,
+            "control": 13,
+            "holdoff": 0
+          },
+          "result": {
+            "value_u32": 8388607,
+            "selector": 0,
+            "holdoff": 0,
+            "published": true
+          }
+        },
+        {
+          "input": {
+            "raw24": 16777215,
+            "command": 29,
+            "selector": 7,
+            "control": 13,
+            "holdoff": 0
+          },
+          "result": {
+            "value_u32": 8388607,
+            "selector": 0,
+            "holdoff": 0,
+            "published": true
+          }
+        },
+        {
+          "input": {
+            "raw24": 16777215,
+            "command": 29,
+            "selector": 255,
+            "control": 34,
+            "holdoff": 0
+          },
+          "result": {
+            "value_u32": 4294967295,
+            "selector": 6,
+            "holdoff": 0,
+            "published": true
+          }
+        },
+        {
+          "input": {
+            "raw24": 1,
+            "command": 27,
+            "selector": 255,
+            "control": 0,
+            "holdoff": 0
+          },
+          "result": {
+            "value_u32": 1,
+            "selector": 0,
+            "holdoff": 0,
+            "published": true
+          }
+        },
+        {
+          "input": {
+            "raw24": 1,
+            "command": 29,
+            "selector": 255,
+            "control": 0,
+            "holdoff": 1
+          },
+          "result": {
+            "value_u32": 2712847316,
+            "selector": 1432778632,
+            "holdoff": 0,
+            "published": false
+          }
+        }
+      ]
+    }
+  ]
+}

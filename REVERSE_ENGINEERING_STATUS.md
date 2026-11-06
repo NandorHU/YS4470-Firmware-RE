@@ -120,3 +120,11 @@ No flash or bootloader write, RAM code execution, or running-firmware memory obs
 PyGhidra 3.1.0 was installed from the local Ghidra 12.1.4 bundled wheel, using JPype 1.5.2. A bounded ARMv5T seed inventory ran successfully on the verified original V3.6 and V3.8 inputs at link base 0x7fffffe0. All 13 evidence-labelled exports have identical exported assembly fingerprints, identical first-64-byte windows, and identical first-512-byte windows across the two versions. The paired set includes MeasurementFSM, TransactionBuilder, ResultDispatch, SoundControlGate, UART_RX_ISR, DiodeValidityBranch, and MainADCTask_candidate.
 
 This function-level result is consistent with the earlier whole-image raw result of 20 non-instruction-byte differences. It covers only the bounded seeds, not every inferred function boundary or live behavior. Full machine-readable inventories and the comparator output are committed as dated evidence.
+
+## 2026-11-06: original state-5 parser executed on ARM926
+
+The installed Capstone/Unicorn environment now executes original V3.6 and V3.8 ARM instructions at `0x80004738..0x800047bc`, using the explicit Unicorn ARM926 CPU model. **2,976 synthetic cases per version (5,952 total) passed** against the independent high-level reconstruction, with identical result fingerprints between versions. All 34 instruction addresses were visited. The harness checks the expected output fields, exact write sets, source SHA-256, and the factory `r7=0` prologue.
+
+New bounded result: control byte `0x805aae8c+1` is a sample-discard countdown. Any nonzero entry value is decremented and neither result field is updated, even when it becomes zero. Command `0x1b` forces selector zero; `0x1d` clamps RX byte 4 to 0..6. The existing unsigned saturation comparison means negative signed-24 values also become sentinel `0x007fffff` when control word `+8` is 13/14 and the discard counter is zero.
+
+Evidence: [ARM926 parser experiment](evidence/2026-11-06-state5-arm926-emulation.json); reproduction: `tools/ARM_EMULATION.md`. Frame admission, the common FSM epilogue, peripheral behavior, and physical timing remain outside this experiment.
