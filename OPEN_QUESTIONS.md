@@ -102,3 +102,9 @@ Remaining:
 
 - What is the semantic role of the nine modified 32-bit cells at `0x80063ac8..0x80063ae8`? The surrounding `EnumKey*` text and a pointer load from `0x80042d98` establish a data-region association only; do not call it calibration, timing, key mapping, or an algorithm parameter without a consumer trace.
 - Run and retain the V3.6 seeded PyGhidra inventory, then compare its known function windows against V3.8. Raw equality is a strong baseline, not a complete function-boundary proof.
+
+## Added 2026-11-06: live-device boundary
+
+- What are the non-main regions of the verified 16 MiB SPI backup: boot asset, persistent settings, calibration, log, or unused flash? Classify from image structure before treating any region as safe test storage.
+- A full backup proves recovery capability, but what minimal reversible E2 instrumentation would record a useful parser, sound, or ADC event without overwriting calibration or boot data?
+- If original V3.6/V3.8 physical behavior is required, which verified original package and complete flash layout are needed before replacing the currently confirmed E2-modified main image?
