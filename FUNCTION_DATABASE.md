@@ -134,3 +134,7 @@ A whole-image raw comparison against V3.8 found only 20 changed bytes: an eGON-h
 ## 2026-11-06 active-device image identity
 
 The live device complete eGON main image at flash offset 0x50000 is byte-identical to local modified build beta-diode-profiles-e2/f1c100s-profiles-OFFLINE.bin (full-image SHA-256 b04fb5bca7a052abfc5b1621bf50e03fd4f8116bf5cef849f1994e44d4b603b1). This establishes the address base for later, explicitly E2-scoped hardware experiments. It does **not** promote E2-only behavior into an original V3.6/V3.8 function claim.
+
+## 2026-11-06 V3.6/V3.8 bounded function pairing
+
+The PyGhidra exporter paired 13 evidence-labelled seeds between original V3.6 and V3.8. Every pair exported at the same address with identical assembly fingerprint and identical first 64/512 bytes. This includes all currently named core measurement, result, sound, and UART seeds. The result establishes a reusable V3.6 baseline for these functions; it does not assert that all unnamed firmware functions or all data tables are identical.
