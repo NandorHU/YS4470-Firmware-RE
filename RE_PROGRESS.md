@@ -140,3 +140,17 @@ See `evidence/2026-11-04-pyghidra-beta3-compare.json` for machine-readable sessi
 1. Resolve state-5 result-target literals at '0x8000481c..0x80004820' and trace writes at '0x800047b4..0x800047b8'.
 2. Identify consumers that map the signed value/selector to UI or measurement state.
 3. Preserve dispatcher case tags as unlabelled software values until a downstream physical/UI mapping is proven.
+
+
+## 2026-11-06: state-5 result flow
+
+- State 5 publishes value/sentinel at '0x805ac714+0x1c' and selector at '+0x20'. The special path can store '0x007fffff'.
+- ResultDispatch '0x800037c0' reads both fields. Its sentinel branch conditionally calls SoundControlGate '0x80006e4c'.
+- Static text/formatting consumers at '0x80045264' and '0x8005dc3c' also read the result fields; the latter has a nearby '%.3f' literal.
+- Test: new PyGhidra result-flow tracer compiled; self-test and 16 instruction/literal assertions passed. No physical I/O occurred.
+
+### Revised exact continuation point
+
+1. Trace the special state-5 branch via '0x805aae8c+0x08' and identify its command/config source.
+2. Determine when threshold '0x1389' yields sentinel '0x007fffff'.
+3. Trace ResultDispatch's conditional SoundControlGate call without claiming a physical buzzer behavior until hardware/control evidence exists.
