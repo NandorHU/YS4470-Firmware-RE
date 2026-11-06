@@ -58,3 +58,8 @@ Trace the descriptor-table entries and callers for FSM command IDs `0x1b` and `0
 ## Updated next bounded task (2026-11-05, after command-1b/1d extraction)
 
 Trace the state-5 result stores and their consumers: resolve the literals at '0x8000481c..0x80004820', follow the signed value and selector written at '0x800047b4..0x800047b8', and connect them to a UI/result structure. Do not infer diode, continuity, or any physical range name from dispatcher case values without a proven downstream mapping.
+
+
+## Updated next bounded task (2026-11-06, after result-flow trace)
+
+Trace the special state-5 saturation branch backward: resolve the object at '0x805aae8c+0x08', prove which command/config values select IDs 0x0d/0x0e, and determine when threshold '0x1389' causes sentinel '0x007fffff'. Then separately trace ResultDispatch's SoundControlGate call conditions without equating them to a physical buzzer event.
