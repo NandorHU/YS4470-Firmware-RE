@@ -1,0 +1,41 @@
+{
+  "schema": "ys4470.evidence.state5-saturation-path.v1",
+  "date": "2026-11-06",
+  "firmware": {
+    "V3.8_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+    "Beta3_sha256": "9869d746a3caee881595c0352c7c32d6ede98a28f5c188a5b1f3362567a1e5b2",
+    "link_base": "0x7fffffe0"
+  },
+  "method": "Bounded PC-literal object tracing, fixed PyGhidra ARMv5T windows, and raw V3.8/Beta3 range comparison. No firmware execution or hardware access.",
+  "control_object": {
+    "address": "0x805aae8c",
+    "selector_count_field": "+0x01",
+    "saturation_control_field": "+0x08"
+  },
+  "rule": {
+    "state_5_reads_control_field_at": "0x80004784",
+    "accepted_control_values": ["0x0d", "0x0e"],
+    "threshold": "unsigned parsed value >= 0x1389",
+    "result_object": "0x805ac714",
+    "replacement": "result +0x1c = 0x007fffff; selector +0x20 = 0",
+    "normal_path": "stores parsed signed value and byte-4-derived selector"
+  },
+  "dispatcher_relation": {
+    "input_dispatcher": "0x80004390 case 2 writes input-derived r1 to control +0x08",
+    "task_dispatcher": "0x80005b70 case 2 writes input-derived r1 to control +0x08 and constructs a three-word sequence ending in r5=0x1d",
+    "case_5_contrast": "case 5 writes control +0x08 = 0x22, so it cannot satisfy the visible 0x0d/0x0e saturation selector check",
+    "limit": "Dispatcher cases and input fields are not mapped to physical measurement modes."
+  },
+  "cross_version_raw_ranges": {
+    "input_dispatcher_0x80004390_0x8000448c": "identical",
+    "task_dispatcher_0x80005b90_0x80005ca4": "identical",
+    "state5_saturation_0x80004760_0x800047c0": "identical",
+    "state5_literals_0x8000481c_0x8000482c": "identical"
+  },
+  "artifacts": {
+    "tool": "tools/trace_state5_saturation_path.py",
+    "full_local_report": "work/pyghidra-output/v38_state5_saturation_path.json",
+    "test_result": "state5_saturation_path_assertions=passed; checks=20"
+  }
+}
+
