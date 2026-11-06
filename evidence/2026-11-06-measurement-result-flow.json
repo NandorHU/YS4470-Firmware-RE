@@ -1,0 +1,43 @@
+{
+  "schema": "ys4470.evidence.measurement-result-flow.v1",
+  "date": "2026-11-06",
+  "firmware": {
+    "version": "V3.8",
+    "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+    "link_base": "0x7fffffe0"
+  },
+  "method": "Bounded ARM PC-literal object tracing and fixed PyGhidra ARMv5T windows; 16 raw instruction/literal assertions passed. No firmware execution or hardware access.",
+  "result_object": {
+    "address": "0x805ac714",
+    "value_field": "+0x1c",
+    "selector_field": "+0x20",
+    "state_5_writer": "0x80004788..0x800047b8",
+    "special_saturation_value": "0x007fffff",
+    "special_path_limit": "The saturation assignment is guarded by the state-5 command/config field and a threshold comparison; it is not assigned a physical measurement name."
+  },
+  "consumers": {
+    "result_dispatch": {
+      "address": "0x800037c0",
+      "reads": ["+0x20", "+0x1c"],
+      "saturation_branch": "compares value with 0x007fffff and conditionally calls SoundControlGate 0x80006e4c",
+      "limit": "This proves dataflow to a text/dispatch and sound-control call path, not a buzzer timing rule."
+    },
+    "text_preparation_candidate": {
+      "address": "0x80045264",
+      "reads": ["+0x20", "+0x1c"],
+      "limit": "Downstream formatting/drawing callee is not classified in this trace."
+    },
+    "highspeed_formatting_candidate": {
+      "address": "0x8005dc3c",
+      "reads": ["+0x20", "+0x1c"],
+      "format_literal_nearby": "%.3f",
+      "limit": "The candidate name describes static formatting context, not a complete GUI reconstruction."
+    }
+  },
+  "artifacts": {
+    "tool": "tools/trace_measurement_result_flow.py",
+    "full_local_report": "work/pyghidra-output/v38_measurement_result_flow.json",
+    "test_result": "measurement_result_flow_assertions=passed; checks=16"
+  }
+}
+
