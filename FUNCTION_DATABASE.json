@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.function-database.v1",
-  "generated_utc_date": "2026-11-05",
+  "generated_utc_date": "2026-11-06",
   "architecture": {
     "cpu": "ARM926EJ-S",
     "instruction_set": "ARM v5T / Thumb considered",
@@ -17,8 +17,12 @@
       "input_kind": "modified raw payload"
     },
     "V3_6": {
-      "status": "not located in this workspace",
-      "input_kind": "expected original; no comparison claim"
+      "status": "verified local original; raw baseline completed",
+      "input_kind": "original raw payload (kept non-public)",
+      "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+      "bytes": 5943296,
+      "package": "Project_February_V3.6_V02.26.6",
+      "acquisition": "Mr.Yang updater manifest, read-only retrieval; Upgrade was not invoked"
     },
     "V1_0_current": {
       "status": "locally inventoried only",
@@ -660,5 +664,19 @@
       "evidence": "evidence/2026-11-06-state5-saturation-path.json",
       "summary": "Recovered V3.8/Beta3-identical state-5 saturation selector, threshold, sentinel write, and case-2 control setup relationship."
     }
-  ]
+  ],
+  "version_comparisons": {
+    "V3_6_vs_V3_8": {
+      "method": "equal-layout raw byte comparison at link base 0x7fffffe0",
+      "evidence": "evidence/2026-11-06-v36-v38-raw-diff.json",
+      "different_ranges": 10,
+      "different_bytes": 20,
+      "observations": [
+        "Header data differs at file offset 0x0000000c.",
+        "All remaining differences are among nine 32-bit cells at linked 0x80063ac8..0x80063ae8 after EnumKey* text; semantic role unknown.",
+        "No changed instruction bytes were observed; seeded PyGhidra inventory pairing remains pending."
+      ],
+      "confidence": "observed raw bytes; table role unresolved"
+    }
+  }
 }
