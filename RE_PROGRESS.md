@@ -183,3 +183,17 @@ See `evidence/2026-11-04-pyghidra-beta3-compare.json` for machine-readable sessi
 1. Restore/use the existing PyGhidra environment to export a bounded V3.6 seed inventory, then run the inventory comparator against V3.8.
 2. Trace the function containing `0x80042d98` until the V3.6/V3.8 table data has a narrow evidence-backed role.
 3. Continue the pending ResultDispatch sentinel → SoundControlGate argument/peripheral trace as a separate task; do not conflate it with the V3.6 data delta.
+
+## 2026-11-06: live FEL transport and full flash identity
+
+- Live USB/PnP verified FEL BootROM hardware ID USB\VID_1F3A&PID_EFE8; Windows binds it to WinUSB/libwdi. The updater was closed to eliminate a potential handle conflict.
+- The updater-bundled sunxi-fel v1.4.1-104-g11a9d20-dirty enumerated one Allwinner F1C100s device and identified a Winbond EFh:40h 16 MiB SPI flash.
+- Read-only spiflash-read 0 0x1000000 produced a full local backup, SHA-256 ab1e0c4539a2e3e053af78b39c1be5d3b4d3c2934dc96b29d4fd5a9395008be3. The backup and its derived payload remain local/non-public.
+- eGON extraction: main image at 0x50000, declared size 5,943,296. Full image SHA-256 b04fb5bca7a052abfc5b1621bf50e03fd4f8116bf5cef849f1994e44d4b603b1 is an exact match for beta-diode-profiles-e2/f1c100s-profiles-OFFLINE.bin; payload SHA-256 4708beb05841b42543714d460e0f7928e2fe72aab7479a40cfa757ce7ef511d2.
+- No device write occurred: no spiflash-write, boot/SPL/U-Boot operation, RAM write/execution, or normal-firmware memory capture.
+
+### Revised exact continuation point
+
+1. Classify the rest of the backed-up 16 MiB flash image before using any region for future instrumentation or storage.
+2. Restore and run bounded V3.6 PyGhidra inventory, then compare it against V3.8; retain the already established raw 20-byte delta.
+3. If a physical experiment is needed, design it first against the confirmed E2 image and only use a recovery-tested, narrowly scoped image change after recording the exact restore path.
