@@ -76,3 +76,7 @@ Run the existing bounded PyGhidra seed inventory on the verified original V3.6 i
 ## Updated next bounded task (2026-11-06, after live FEL identification)
 
 Use the verified local flash backup to classify the regions outside the main eGON image, beginning with header and signature scans plus known package assets. In parallel, restore the bounded PyGhidra V3.6 inventory environment and compare V3.6/V3.8 known function windows. Do not flash any image merely to accelerate analysis: the current device is confirmed E2-modified, and its backup must remain the recovery baseline.
+
+## Updated next bounded task (2026-11-06, after PyGhidra V3.6/V3.8 baseline)
+
+Trace SoundControlGate at 0x80006e4c into direct callee 0x800060d0 and continue until the first hardware-facing sound-control operation is proven. The relevant bounded V3.6/V3.8 exports are identical, so perform this once against V3.8 and carry the evidence to V3.6 only within that bounded scope. Keep passive UART-TTL capture as a separate future validation task.
