@@ -140,7 +140,7 @@ def main() -> None:
         "limits": [
             "Only bounded seeded bodies are compared in this first pass.",
             "A different fingerprint can be a real change or a changed function boundary; inspect assembly before semantic claims.",
-            "No claim about V3.6 is possible until its original binary is supplied to this inventory pipeline.",
+            "Only versions present in inputs have comparison evidence; absent versions cannot be inferred.",
         ],
     }
     args.out.parent.mkdir(parents=True, exist_ok=True)
