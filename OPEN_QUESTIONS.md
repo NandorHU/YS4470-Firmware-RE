@@ -77,3 +77,13 @@ Remaining:
 - Why does UART bring-up also emit '6060'?
 - Which input-record/dispatcher case corresponds to each physical measurement mode?
 - Which consumers use the state-5 signed result after the parser stores it?
+
+
+## 2026-11-06 result-flow questions
+
+Resolved: state-5 output fields are '+0x1c' (value/sentinel) and '+0x20' (selector) in object '0x805ac714'; ResultDispatch and two formatting candidates consume them. The ResultDispatch sentinel branch calls SoundControlGate.
+
+Remaining:
+- Which exact drawing/UI primitive consumes the prepared text from the two formatting paths?
+- Which command/config condition selects the state-5 saturation path?
+- Does the ResultDispatch-to-SoundControlGate path generate audible diode/continuity behavior, and under which proven input conditions?
