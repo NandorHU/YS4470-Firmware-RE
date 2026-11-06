@@ -82,3 +82,7 @@ The Mr.Yang updater's read-only firmware-list request exposed the V3.6 package a
 - The compatible updater-bundled sunxi-fel enumerated the device and reported a Winbond EFh:40h SPI flash of 16 MiB.
 - A full spiflash-read backup completed and was SHA-256 verified locally; it is non-public. No spiflash-write, boot, SPL, U-Boot, arbitrary RAM write, or execution command was issued.
 - This confirms a recoverable baseline for future explicitly scoped device experiments, but FEL remains unavailable for observing memory while the normal firmware executes.
+
+## 2026-11-06 analysis-environment acceleration
+
+The local Ghidra 12.1.4 bundled PyGhidra wheel is now installed and exercised with original V3.6/V3.8 inputs. This is offline software analysis only and creates no additional hardware or FEL capability. The optional passive UART-TTL capture plan is recorded in ACCELERATION_OPTIONS.md; no TTL connection has been made.
