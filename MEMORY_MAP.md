@@ -155,3 +155,12 @@ The bounded PyGhidra inventories confirm identical code fingerprints at the exis
 - `0x805ac730` / `0x805ac734`: result value/selector words; preserved on every tested nonzero-countdown input.
 
 The emulator maps only the code/literal page and these three RAM pages; code is guest read/execute-only and RX guest read-only. It verifies that the only guest writes are countdown byte or the two result words. This memory contract was exercised on both original images, not on the physical device. The flash-span hexadecimal typo above was corrected to 0x5ab000.
+
+## 2026-11-06: discard-counter writers and UART alias distinction
+
+- Control `0x805aae8c+1` (`0x805aae8d`) receives 2 at input-dispatcher stores `0x800043ec` / `0x80004468`.
+- Control `+8` (`0x805aae94`) receives input byte +4 in software case 2, or 0x22 in case 5. It is preserved, together with the discard byte, in tested cases 3/4.
+- Task control `+0` is a deferred-record flag: visible stores set it at `0x80005bdc` and clear it at `0x80005cec`. Deferred invocation also checks FSM +0x34.
+- `0x805b4154` is the separate UART startup buffer loaded into r4 at `0x80005e50`; the store at 0x80005e60 goes to its byte +1, not to the discard counter.
+
+The write scan remains a bounded candidate search. Whole-object resets and indirect aliases have not been excluded.

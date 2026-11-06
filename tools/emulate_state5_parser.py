@@ -98,12 +98,16 @@ class ParserMachine:
         self.writes.append((address, size))
 
     def execute(self, raw24: int, command: int, selector: int,
-                control: int, holdoff: int) -> dict:
+                control: int, holdoff: int, *, preserve_state: bool = False) -> dict:
         mu = self.mu
-        mu.mem_write(CONTROL, b"\0" * 16)
-        mu.mem_write(CONTROL + 1, bytes([holdoff]))
-        mu.mem_write(CONTROL + 8, struct.pack("<I", control))
-        mu.mem_write(RESULT + 0x1C, struct.pack("<II", INITIAL_VALUE, INITIAL_SELECTOR))
+        if not preserve_state:
+            mu.mem_write(CONTROL, b"\0" * 16)
+            mu.mem_write(CONTROL + 1, bytes([holdoff]))
+            mu.mem_write(CONTROL + 8, struct.pack("<I", control))
+            mu.mem_write(RESULT + 0x1C, struct.pack("<II", INITIAL_VALUE, INITIAL_SELECTOR))
+        elif (mu.mem_read(CONTROL + 1, 1)[0] != holdoff or
+              struct.unpack("<I", mu.mem_read(CONTROL + 8, 4))[0] != control):
+            raise ValueError("preserved control state does not match the supplied contract")
         header = 0x5E if command == 0x1B else 0x60
         mu.mem_write(RX, bytes([header]) + raw24.to_bytes(3, "little") + bytes([selector]))
         mu.reg_write(UC_ARM_REG_CPSR, 0x13)  # ARM state, supervisor mode.

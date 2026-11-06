@@ -48,3 +48,12 @@ the package version as the runtime string. Unicorn is 2.1.4.
 
 No input binary is bundled with this code. Reports contain hashes, assembly,
 synthetic examples, and verification results, not device-specific flash dumps.
+
+## Producer-to-parser lifecycle extension
+
+`trace_state5_discard_lifecycle.py` executes the original input dispatcher up
+to TransactionBuilder, captures its arguments, and then retains control and
+result RAM across parser entries. `ParserMachine.execute(...,
+preserve_state=True)` enables that explicit persistent-state contract; the
+default isolated-case behavior is unchanged. See `STATE5_DISCARD_LIFECYCLE.md`
+for the count=2 producers, deferred task routing, and reproduction steps.

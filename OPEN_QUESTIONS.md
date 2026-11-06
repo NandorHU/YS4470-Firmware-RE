@@ -120,3 +120,10 @@ Remaining:
 - Locate every producer/reset of control byte `0x805aae8c+1` and the input events that initialize it. Bounded execution proves sample suppression, but neither mode nor a physical time unit.
 - Which physical/protocol paths can deliver negative signed-24 values while control word +8 is 13/14? Synthetic execution proves sentinel replacement; reachability and user-visible effects remain unknown.
 - Preserve the boundary of the new harness: state-3 frame admission, shared state-7 update, scheduling, and interrupts are not emulated.
+
+## Updated 2026-11-06: discard count origin established
+
+- The input dispatcher initializes count=2 in software cases 2/5; cases 3/4 preserve it. Which UI or upstream event producers submit these records? Start with record-building helper 0x80006778 and its callers, mapping r0→record word +0, r1→byte +4, r2→byte +5.
+- How many terminal 0x1d response cycles follow the initial command list, and what drives their cadence? This is needed to translate two discarded responses into any physical latency.
+- The task's direct case-2/5 blocks are excluded by the tested normal selection guard. Alternate entries and later indirect flow remain unproven.
+- Direct literal tracing is not complete alias analysis: the UART startup-buffer candidate was rejected, and whole-object reset/clear paths remain to inspect.

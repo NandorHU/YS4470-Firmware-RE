@@ -129,3 +129,11 @@ The exact publication rule is now:
 4. Other cases publish the decoded value and selector.
 
 The counter's physical meaning and initialization are unresolved. These synthetic tests do not prove that every tested input tuple is reachable in normal operation or identify units, ADC conversion, or audible timing. Evidence: [state-5 ARM926 experiment](evidence/2026-11-06-state5-arm926-emulation.json).
+
+## 2026-11-06: discard-window initialization and publication sequence
+
+Input-dispatcher cases 2 and 5 initialize the discard count to two. Case 2 passes commands [input byte 4, normalize(input byte 5), 0x1d] and writes input byte 4 to control +8. Normalization retains 0x13..0x18; all other byte values become 0x19. Case 5 writes control 0x22 and passes [0x0c,0x22,0x13,0x1d].
+
+Persistent execution confirms the sequence count 2→1 (old result retained), 1→0 (old result retained), 0→0 (publish), then another publication on the fourth admitted state-5 entry. This was checked across 96 scenarios, including threshold and negative values. Cases 3/4 preserve the existing control fields in the tested input dispatcher.
+
+The task normally defers cases 2/5 before invoking this dispatcher later; its duplicate stores must not be treated as ordinary immediate routing. Whether sample suppression serves analog settling remains a hypothesis. The tests do not establish physical modes or delay in milliseconds. Evidence: [lifecycle report](evidence/2026-11-06-state5-discard-lifecycle.json).
