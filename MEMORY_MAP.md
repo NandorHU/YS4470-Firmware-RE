@@ -122,3 +122,15 @@ V3.8 and Beta3 descriptor entries and wire frames for both IDs are identical.
 | '0x80004820' | state-5 literal | points to result object '0x805ac714' |
 
 Direct consumer tracing is bounded to PC-literal object paths; it is not an alias-complete inventory.
+
+
+## State-5 saturation-control object (2026-11-06)
+
+| Address/range | Classification | Verified use |
+|---|---|---|
+| '0x805aae8c + 0x01' | state-5 countdown byte | parser decrements it when nonzero before publishing a result |
+| '0x805aae8c + 0x08' | saturation-control word | dispatchers write it; state 5 compares it against '0x0d' and '0x0e' |
+| '0x805ac714 + 0x1c' | result/sentinel field | receives '0x007fffff' when the saturation control and threshold conditions hold |
+| '0x805ac714 + 0x20' | result selector | receives zero on the saturation path |
+
+No unit, calibration scale, or physical over-range meaning is assigned to threshold '0x1389' or sentinel '0x007fffff'.
