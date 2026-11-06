@@ -124,3 +124,9 @@ The field consumers are confirmed; names ending in '_candidate' do not assert a 
 | MeasurementCommandTaskDispatcher case-2 | '0x80005c58' | confirmed static behavior | Writes input-derived r1 to control '+0x08' while building a command list with terminal '0x1d' |
 
 The recovered rule and bounded setup paths are raw-identical in V3.8 and Beta3. They remain software/protocol facts, not physical range or diode/continuity labels.
+
+## 2026-11-06 V3.6 version baseline
+
+Original V3.6 is now a verified local, non-public input: `Project_February_V3.6_V02.26.6/f1c100s.bin`, SHA-256 `7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9`, 5,943,296 bytes.
+
+A whole-image raw comparison against V3.8 found only 20 changed bytes: an eGON-header word at offset `0x0c` and 16 bytes among the nine 32-bit cells beginning at `0x80063ac8`. Therefore the established V3.8 function addresses remain the initial V3.6 pairing coordinates, but each function is still marked V3.8/Beta3 until the reproducible V3.6 PyGhidra inventory is exported. No V3.6 function label or physical behavior is inferred solely from byte equality.
