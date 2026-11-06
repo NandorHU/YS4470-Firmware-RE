@@ -68,3 +68,7 @@ Trace the special state-5 saturation branch backward: resolve the object at '0x8
 ## Updated next bounded task (2026-11-06, after saturation-path reconstruction)
 
 Trace the ResultDispatch sentinel branch at '0x800037fc..0x80003854' into SoundControlGate '0x80006e4c' and its immediate callees. Prove call arguments, gate conditions, and the first hardware-facing sound-control operation. Keep the distinction between a sentinel-triggered software call and audible buzzer behavior.
+
+## Updated next bounded task (2026-11-06, after V3.6 intake)
+
+Run the existing bounded PyGhidra seed inventory on the verified original V3.6 input and compare it with V3.8. Separately trace the literal-pool consumer beginning at `0x80042d98` to classify the nine changed V3.6/V3.8 data cells. Keep the already scheduled ResultDispatch → SoundControlGate trace independent; do not infer buzzer timing or a physical measurement mode from the version-data delta.
