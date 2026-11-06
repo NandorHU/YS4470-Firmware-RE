@@ -1,0 +1,779 @@
+{
+  "schema": "ys4470.pyghidra.function-compare.v1",
+  "comparison_method": "Functions are paired by explicit evidence-labelled proposed_name; raw address equality is not required.",
+  "present_versions": [
+    "V3.6",
+    "V3.8"
+  ],
+  "missing_expected_versions": [],
+  "inputs": {
+    "V3.6": {
+      "bytes": 5943296,
+      "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+      "link_base": "0x7fffffe0",
+      "analysis_mode": "bounded-seeded"
+    },
+    "V3.8": {
+      "bytes": 5943296,
+      "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+      "link_base": "0x7fffffe0",
+      "analysis_mode": "bounded-seeded"
+    }
+  },
+  "functions": [
+    {
+      "function": "Beta3ResultValueHook_candidate",
+      "classification": "identical-in-exported-body",
+      "fixed_window_classification": "identical-first-64-bytes",
+      "fingerprint_groups": [
+        {
+          "assembly_sha256": "5f5c3515f8a2720724c7dcee8a19e6036154085a2c0bf37e9e8d7d1c5fdf88f5",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "fixed_window_groups": [
+        {
+          "sha256": "bba99bf5b914ff65ff4ad153283033bdd0a0f0cbf0c357fe9d7eff4b4645d694",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "versions": [
+        {
+          "version": "V3.6",
+          "address": "0x80060130",
+          "status": "exported",
+          "instruction_count": 21,
+          "assembly_sha256": "5f5c3515f8a2720724c7dcee8a19e6036154085a2c0bf37e9e8d7d1c5fdf88f5",
+          "fixed_window_sha256": "bba99bf5b914ff65ff4ad153283033bdd0a0f0cbf0c357fe9d7eff4b4645d694",
+          "fixed_window_512_sha256": "680e42e650b2a3e117cb87e73c763f5c3d473666b0054846044a0fcb2c4db463",
+          "direct_call_targets": []
+        },
+        {
+          "version": "V3.8",
+          "address": "0x80060130",
+          "status": "exported",
+          "instruction_count": 21,
+          "assembly_sha256": "5f5c3515f8a2720724c7dcee8a19e6036154085a2c0bf37e9e8d7d1c5fdf88f5",
+          "fixed_window_sha256": "bba99bf5b914ff65ff4ad153283033bdd0a0f0cbf0c357fe9d7eff4b4645d694",
+          "fixed_window_512_sha256": "680e42e650b2a3e117cb87e73c763f5c3d473666b0054846044a0fcb2c4db463",
+          "direct_call_targets": []
+        }
+      ]
+    },
+    {
+      "function": "Beta3SoundTableHook_candidate",
+      "classification": "identical-in-exported-body",
+      "fixed_window_classification": "identical-first-64-bytes",
+      "fingerprint_groups": [
+        {
+          "assembly_sha256": "da744d7e5b796696c0f83631141f85fc1f4031fcfadac01783f5676432144a18",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "fixed_window_groups": [
+        {
+          "sha256": "f2590f89c80278a69e89914e85de8ae85cf9be418a627e531a332979993b2925",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "versions": [
+        {
+          "version": "V3.6",
+          "address": "0x80010754",
+          "status": "exported",
+          "instruction_count": 10,
+          "assembly_sha256": "da744d7e5b796696c0f83631141f85fc1f4031fcfadac01783f5676432144a18",
+          "fixed_window_sha256": "f2590f89c80278a69e89914e85de8ae85cf9be418a627e531a332979993b2925",
+          "fixed_window_512_sha256": "d633d7966c6e8ce128e7d2307f4853c29eb7ee4ea2401f4d797dc3d667bd0cc2",
+          "direct_call_targets": []
+        },
+        {
+          "version": "V3.8",
+          "address": "0x80010754",
+          "status": "exported",
+          "instruction_count": 10,
+          "assembly_sha256": "da744d7e5b796696c0f83631141f85fc1f4031fcfadac01783f5676432144a18",
+          "fixed_window_sha256": "f2590f89c80278a69e89914e85de8ae85cf9be418a627e531a332979993b2925",
+          "fixed_window_512_sha256": "d633d7966c6e8ce128e7d2307f4853c29eb7ee4ea2401f4d797dc3d667bd0cc2",
+          "direct_call_targets": []
+        }
+      ]
+    },
+    {
+      "function": "DiodeValidityBranch",
+      "classification": "identical-in-exported-body",
+      "fixed_window_classification": "identical-first-64-bytes",
+      "fingerprint_groups": [
+        {
+          "assembly_sha256": "1cc384c2d1932cafbb30dc8ab6d1d954b65733e34c8abf5690739e96d031ebcd",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "fixed_window_groups": [
+        {
+          "sha256": "e87ee8a4df35f42b920e4227ecde57ea1fb91b7f4d293e8b381bcd02dfb9510b",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "versions": [
+        {
+          "version": "V3.6",
+          "address": "0x80003a0c",
+          "status": "exported",
+          "instruction_count": 31,
+          "assembly_sha256": "1cc384c2d1932cafbb30dc8ab6d1d954b65733e34c8abf5690739e96d031ebcd",
+          "fixed_window_sha256": "e87ee8a4df35f42b920e4227ecde57ea1fb91b7f4d293e8b381bcd02dfb9510b",
+          "fixed_window_512_sha256": "06b1c6bc6021d11f82ab7f42714f328882573d98ebcfa6df0d2608f38d2cc8a4",
+          "direct_call_targets": [
+            "80000544",
+            "80006e4c",
+            "80062d2c"
+          ]
+        },
+        {
+          "version": "V3.8",
+          "address": "0x80003a0c",
+          "status": "exported",
+          "instruction_count": 31,
+          "assembly_sha256": "1cc384c2d1932cafbb30dc8ab6d1d954b65733e34c8abf5690739e96d031ebcd",
+          "fixed_window_sha256": "e87ee8a4df35f42b920e4227ecde57ea1fb91b7f4d293e8b381bcd02dfb9510b",
+          "fixed_window_512_sha256": "06b1c6bc6021d11f82ab7f42714f328882573d98ebcfa6df0d2608f38d2cc8a4",
+          "direct_call_targets": [
+            "80000544",
+            "80006e4c",
+            "80062d2c"
+          ]
+        }
+      ]
+    },
+    {
+      "function": "GaugeTask_candidate",
+      "classification": "identical-in-exported-body",
+      "fixed_window_classification": "identical-first-64-bytes",
+      "fingerprint_groups": [
+        {
+          "assembly_sha256": "5061abb41f6ed23676e0f63aa7a969328f07fc9f32775dbb7932e3faee115087",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "fixed_window_groups": [
+        {
+          "sha256": "33188e51b1926f1d5fc87dc9855ad02870daf7e7e88e1772e38a5ad961fa9dae",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "versions": [
+        {
+          "version": "V3.6",
+          "address": "0x80005b6c",
+          "status": "exported",
+          "instruction_count": 123,
+          "assembly_sha256": "5061abb41f6ed23676e0f63aa7a969328f07fc9f32775dbb7932e3faee115087",
+          "fixed_window_sha256": "33188e51b1926f1d5fc87dc9855ad02870daf7e7e88e1772e38a5ad961fa9dae",
+          "fixed_window_512_sha256": "5c4f3ed09b6b56d5736d223e5aede4f1ba1ad8278945598cf4cd443c2062d8bd",
+          "direct_call_targets": [
+            "80000a98",
+            "80003dd8",
+            "80004390",
+            "80004490",
+            "8000489c",
+            "80042840",
+            "800618dc",
+            "80062204"
+          ]
+        },
+        {
+          "version": "V3.8",
+          "address": "0x80005b6c",
+          "status": "exported",
+          "instruction_count": 123,
+          "assembly_sha256": "5061abb41f6ed23676e0f63aa7a969328f07fc9f32775dbb7932e3faee115087",
+          "fixed_window_sha256": "33188e51b1926f1d5fc87dc9855ad02870daf7e7e88e1772e38a5ad961fa9dae",
+          "fixed_window_512_sha256": "5c4f3ed09b6b56d5736d223e5aede4f1ba1ad8278945598cf4cd443c2062d8bd",
+          "direct_call_targets": [
+            "80000a98",
+            "80003dd8",
+            "80004390",
+            "80004490",
+            "8000489c",
+            "80042840",
+            "800618dc",
+            "80062204"
+          ]
+        }
+      ]
+    },
+    {
+      "function": "HighspeedDiodePeriodSelector_region",
+      "classification": "identical-in-exported-body",
+      "fixed_window_classification": "identical-first-64-bytes",
+      "fingerprint_groups": [
+        {
+          "assembly_sha256": "5438154b157aeb131a61865c3ec78e8f654940821fcad3a76eadfb6cc1ea85e5",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "fixed_window_groups": [
+        {
+          "sha256": "6f07fd1e98463689f37c3a441f81a0d38e66214954dd4aa406f8d13bba56056d",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "versions": [
+        {
+          "version": "V3.6",
+          "address": "0x8005d1a0",
+          "status": "exported",
+          "instruction_count": 45,
+          "assembly_sha256": "5438154b157aeb131a61865c3ec78e8f654940821fcad3a76eadfb6cc1ea85e5",
+          "fixed_window_sha256": "6f07fd1e98463689f37c3a441f81a0d38e66214954dd4aa406f8d13bba56056d",
+          "fixed_window_512_sha256": "658f37278557dc9e794e4ed903bcaf22057c2d18605f680790e110e3f31d7ff4",
+          "direct_call_targets": [
+            "8000326c",
+            "800037c0",
+            "80003c5c",
+            "80006e4c",
+            "80040b84",
+            "800616e4"
+          ]
+        },
+        {
+          "version": "V3.8",
+          "address": "0x8005d1a0",
+          "status": "exported",
+          "instruction_count": 45,
+          "assembly_sha256": "5438154b157aeb131a61865c3ec78e8f654940821fcad3a76eadfb6cc1ea85e5",
+          "fixed_window_sha256": "6f07fd1e98463689f37c3a441f81a0d38e66214954dd4aa406f8d13bba56056d",
+          "fixed_window_512_sha256": "658f37278557dc9e794e4ed903bcaf22057c2d18605f680790e110e3f31d7ff4",
+          "direct_call_targets": [
+            "8000326c",
+            "800037c0",
+            "80003c5c",
+            "80006e4c",
+            "80040b84",
+            "800616e4"
+          ]
+        }
+      ]
+    },
+    {
+      "function": "HighspeedEventHandler",
+      "classification": "identical-in-exported-body",
+      "fixed_window_classification": "identical-first-64-bytes",
+      "fingerprint_groups": [
+        {
+          "assembly_sha256": "7c5c725d13f628fd11ebeb1e1d321c2bfcc172a99aa2a94fbe1aab3423b5ff5d",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "fixed_window_groups": [
+        {
+          "sha256": "584ecce87c8de5c46117ed1b44bfc5631ad1d02c2feafdf40d8535cf96386cdf",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "versions": [
+        {
+          "version": "V3.6",
+          "address": "0x8000d294",
+          "status": "exported",
+          "instruction_count": 71,
+          "assembly_sha256": "7c5c725d13f628fd11ebeb1e1d321c2bfcc172a99aa2a94fbe1aab3423b5ff5d",
+          "fixed_window_sha256": "584ecce87c8de5c46117ed1b44bfc5631ad1d02c2feafdf40d8535cf96386cdf",
+          "fixed_window_512_sha256": "32215f016865bb813e269525358dbd3b3403857ec3c677406d62276ef382ef74",
+          "direct_call_targets": [
+            "80003d74",
+            "80006778",
+            "80024ca4",
+            "8003a718",
+            "80040b4c",
+            "80040b78",
+            "80040b84"
+          ]
+        },
+        {
+          "version": "V3.8",
+          "address": "0x8000d294",
+          "status": "exported",
+          "instruction_count": 71,
+          "assembly_sha256": "7c5c725d13f628fd11ebeb1e1d321c2bfcc172a99aa2a94fbe1aab3423b5ff5d",
+          "fixed_window_sha256": "584ecce87c8de5c46117ed1b44bfc5631ad1d02c2feafdf40d8535cf96386cdf",
+          "fixed_window_512_sha256": "32215f016865bb813e269525358dbd3b3403857ec3c677406d62276ef382ef74",
+          "direct_call_targets": [
+            "80003d74",
+            "80006778",
+            "80024ca4",
+            "8003a718",
+            "80040b4c",
+            "80040b78",
+            "80040b84"
+          ]
+        }
+      ]
+    },
+    {
+      "function": "KeyTaskCountdown",
+      "classification": "identical-in-exported-body",
+      "fixed_window_classification": "identical-first-64-bytes",
+      "fingerprint_groups": [
+        {
+          "assembly_sha256": "3346006864cc7a1a240968bc4b496559cd4bfb54018ffc573eb291c114dcb597",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "fixed_window_groups": [
+        {
+          "sha256": "04000e1d4939986eeda851fc9407a68a99a03732dce97a32ddc23e4d4bb3ffe4",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "versions": [
+        {
+          "version": "V3.6",
+          "address": "0x8000553c",
+          "status": "exported",
+          "instruction_count": 21,
+          "assembly_sha256": "3346006864cc7a1a240968bc4b496559cd4bfb54018ffc573eb291c114dcb597",
+          "fixed_window_sha256": "04000e1d4939986eeda851fc9407a68a99a03732dce97a32ddc23e4d4bb3ffe4",
+          "fixed_window_512_sha256": "8f82f5b76abca7311f14e51edd5f923e94f5e390fb395e2e6dfc092c37d5c035",
+          "direct_call_targets": [
+            "8000241c",
+            "80006e4c",
+            "800085c4",
+            "80060fbc"
+          ]
+        },
+        {
+          "version": "V3.8",
+          "address": "0x8000553c",
+          "status": "exported",
+          "instruction_count": 21,
+          "assembly_sha256": "3346006864cc7a1a240968bc4b496559cd4bfb54018ffc573eb291c114dcb597",
+          "fixed_window_sha256": "04000e1d4939986eeda851fc9407a68a99a03732dce97a32ddc23e4d4bb3ffe4",
+          "fixed_window_512_sha256": "8f82f5b76abca7311f14e51edd5f923e94f5e390fb395e2e6dfc092c37d5c035",
+          "direct_call_targets": [
+            "8000241c",
+            "80006e4c",
+            "800085c4",
+            "80060fbc"
+          ]
+        }
+      ]
+    },
+    {
+      "function": "MainADCTask_candidate",
+      "classification": "identical-in-exported-body",
+      "fixed_window_classification": "identical-first-64-bytes",
+      "fingerprint_groups": [
+        {
+          "assembly_sha256": "1a70556f2c320d40483c64df1ae91d88fa0d8d0cdabdc0c087eabccc9205c432",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "fixed_window_groups": [
+        {
+          "sha256": "43050c7edf1b26b72cd06ce65572218fc897e2160ab49c4d2de8bf4d03be3ca9",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "versions": [
+        {
+          "version": "V3.6",
+          "address": "0x80005a78",
+          "status": "exported",
+          "instruction_count": 5,
+          "assembly_sha256": "1a70556f2c320d40483c64df1ae91d88fa0d8d0cdabdc0c087eabccc9205c432",
+          "fixed_window_sha256": "43050c7edf1b26b72cd06ce65572218fc897e2160ab49c4d2de8bf4d03be3ca9",
+          "fixed_window_512_sha256": "8d0091f3f7580618ea84258160cfe0ef8d6a70c7e7710740901e7371e6da212f",
+          "direct_call_targets": [
+            "80004d60",
+            "80005a8c",
+            "80060fbc"
+          ]
+        },
+        {
+          "version": "V3.8",
+          "address": "0x80005a78",
+          "status": "exported",
+          "instruction_count": 5,
+          "assembly_sha256": "1a70556f2c320d40483c64df1ae91d88fa0d8d0cdabdc0c087eabccc9205c432",
+          "fixed_window_sha256": "43050c7edf1b26b72cd06ce65572218fc897e2160ab49c4d2de8bf4d03be3ca9",
+          "fixed_window_512_sha256": "8d0091f3f7580618ea84258160cfe0ef8d6a70c7e7710740901e7371e6da212f",
+          "direct_call_targets": [
+            "80004d60",
+            "80005a8c",
+            "80060fbc"
+          ]
+        }
+      ]
+    },
+    {
+      "function": "MeasurementFSM",
+      "classification": "identical-in-exported-body",
+      "fixed_window_classification": "identical-first-64-bytes",
+      "fingerprint_groups": [
+        {
+          "assembly_sha256": "0bdfbe10ac5060c3be9f67dc9a90948774c6aae50868ee260c55313b23f934dc",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "fixed_window_groups": [
+        {
+          "sha256": "83bc313f3ff22aae04188b6fe4beed356ae93a245073150fab19462b1971ca69",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "versions": [
+        {
+          "version": "V3.6",
+          "address": "0x80004490",
+          "status": "exported",
+          "instruction_count": 46,
+          "assembly_sha256": "0bdfbe10ac5060c3be9f67dc9a90948774c6aae50868ee260c55313b23f934dc",
+          "fixed_window_sha256": "83bc313f3ff22aae04188b6fe4beed356ae93a245073150fab19462b1971ca69",
+          "fixed_window_512_sha256": "daefe0e6d6b41935ba62efa243f2caf2cfa8b30bdfc97fc9b4b502376d1e612f",
+          "direct_call_targets": [
+            "800031b8"
+          ]
+        },
+        {
+          "version": "V3.8",
+          "address": "0x80004490",
+          "status": "exported",
+          "instruction_count": 46,
+          "assembly_sha256": "0bdfbe10ac5060c3be9f67dc9a90948774c6aae50868ee260c55313b23f934dc",
+          "fixed_window_sha256": "83bc313f3ff22aae04188b6fe4beed356ae93a245073150fab19462b1971ca69",
+          "fixed_window_512_sha256": "daefe0e6d6b41935ba62efa243f2caf2cfa8b30bdfc97fc9b4b502376d1e612f",
+          "direct_call_targets": [
+            "800031b8"
+          ]
+        }
+      ]
+    },
+    {
+      "function": "ResultDispatch_entry",
+      "classification": "identical-in-exported-body",
+      "fixed_window_classification": "identical-first-64-bytes",
+      "fingerprint_groups": [
+        {
+          "assembly_sha256": "78fc50280ac079ad3afd5e0a585e6ab3b5357504e0b27d9a45c4f4afef7779d9",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "fixed_window_groups": [
+        {
+          "sha256": "5c29fccbb2e1ec8ba337e6cb344030e5cb43db6f7ce7997079d3b262ff2fd188",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "versions": [
+        {
+          "version": "V3.6",
+          "address": "0x800037bc",
+          "status": "exported",
+          "instruction_count": 271,
+          "assembly_sha256": "78fc50280ac079ad3afd5e0a585e6ab3b5357504e0b27d9a45c4f4afef7779d9",
+          "fixed_window_sha256": "5c29fccbb2e1ec8ba337e6cb344030e5cb43db6f7ce7997079d3b262ff2fd188",
+          "fixed_window_512_sha256": "be3cda0f613adc9fcc12d897c91272e3723f3ba44cb92f229ead88914e85b48e",
+          "direct_call_targets": [
+            "80000544",
+            "80000b4c",
+            "80006e4c",
+            "80007c88",
+            "800427ec",
+            "80062d2c",
+            "80062e7c",
+            "8006300c",
+            "800630a4"
+          ]
+        },
+        {
+          "version": "V3.8",
+          "address": "0x800037bc",
+          "status": "exported",
+          "instruction_count": 271,
+          "assembly_sha256": "78fc50280ac079ad3afd5e0a585e6ab3b5357504e0b27d9a45c4f4afef7779d9",
+          "fixed_window_sha256": "5c29fccbb2e1ec8ba337e6cb344030e5cb43db6f7ce7997079d3b262ff2fd188",
+          "fixed_window_512_sha256": "be3cda0f613adc9fcc12d897c91272e3723f3ba44cb92f229ead88914e85b48e",
+          "direct_call_targets": [
+            "80000544",
+            "80000b4c",
+            "80006e4c",
+            "80007c88",
+            "800427ec",
+            "80062d2c",
+            "80062e7c",
+            "8006300c",
+            "800630a4"
+          ]
+        }
+      ]
+    },
+    {
+      "function": "SoundControlGate",
+      "classification": "identical-in-exported-body",
+      "fixed_window_classification": "identical-first-64-bytes",
+      "fingerprint_groups": [
+        {
+          "assembly_sha256": "b16dbb34e8f57f2a51557f8e72e7adae26b1e318eae849919ca3279620f85c8c",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "fixed_window_groups": [
+        {
+          "sha256": "749bc8d4921b3ea5afb782ce6808867843051286ff109f6dd731610d6256e2b8",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "versions": [
+        {
+          "version": "V3.6",
+          "address": "0x80006e4c",
+          "status": "exported",
+          "instruction_count": 42,
+          "assembly_sha256": "b16dbb34e8f57f2a51557f8e72e7adae26b1e318eae849919ca3279620f85c8c",
+          "fixed_window_sha256": "749bc8d4921b3ea5afb782ce6808867843051286ff109f6dd731610d6256e2b8",
+          "fixed_window_512_sha256": "c38611e2da68e678f26ff2b614d27bec57b14dd5078b1c617d08345575ba2900",
+          "direct_call_targets": [
+            "800060d0",
+            "800630a4"
+          ]
+        },
+        {
+          "version": "V3.8",
+          "address": "0x80006e4c",
+          "status": "exported",
+          "instruction_count": 42,
+          "assembly_sha256": "b16dbb34e8f57f2a51557f8e72e7adae26b1e318eae849919ca3279620f85c8c",
+          "fixed_window_sha256": "749bc8d4921b3ea5afb782ce6808867843051286ff109f6dd731610d6256e2b8",
+          "fixed_window_512_sha256": "c38611e2da68e678f26ff2b614d27bec57b14dd5078b1c617d08345575ba2900",
+          "direct_call_targets": [
+            "800060d0",
+            "800630a4"
+          ]
+        }
+      ]
+    },
+    {
+      "function": "TransactionBuilder",
+      "classification": "identical-in-exported-body",
+      "fixed_window_classification": "identical-first-64-bytes",
+      "fingerprint_groups": [
+        {
+          "assembly_sha256": "f4afb53c0c9c0fbb38a3b434626575bfb94e1890d5e9896d0dad84f3f26ac7db",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "fixed_window_groups": [
+        {
+          "sha256": "2e53c5efe295687e6ad9a5d00fc47042665f30de41657f040d3a5781fe9ed0dd",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "versions": [
+        {
+          "version": "V3.6",
+          "address": "0x8000489c",
+          "status": "exported",
+          "instruction_count": 37,
+          "assembly_sha256": "f4afb53c0c9c0fbb38a3b434626575bfb94e1890d5e9896d0dad84f3f26ac7db",
+          "fixed_window_sha256": "2e53c5efe295687e6ad9a5d00fc47042665f30de41657f040d3a5781fe9ed0dd",
+          "fixed_window_512_sha256": "1c990553cb93343e0d7ee73b15e77b14e4a39b4cdf927afae3f42f54f9b4c4f1",
+          "direct_call_targets": []
+        },
+        {
+          "version": "V3.8",
+          "address": "0x8000489c",
+          "status": "exported",
+          "instruction_count": 37,
+          "assembly_sha256": "f4afb53c0c9c0fbb38a3b434626575bfb94e1890d5e9896d0dad84f3f26ac7db",
+          "fixed_window_sha256": "2e53c5efe295687e6ad9a5d00fc47042665f30de41657f040d3a5781fe9ed0dd",
+          "fixed_window_512_sha256": "1c990553cb93343e0d7ee73b15e77b14e4a39b4cdf927afae3f42f54f9b4c4f1",
+          "direct_call_targets": []
+        }
+      ]
+    },
+    {
+      "function": "UART_RX_ISR",
+      "classification": "identical-in-exported-body",
+      "fixed_window_classification": "identical-first-64-bytes",
+      "fingerprint_groups": [
+        {
+          "assembly_sha256": "0b8a626b4a930b37bde2429424c0ecd5cde9cfd7549169e050f50f5e76dcd41a",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "fixed_window_groups": [
+        {
+          "sha256": "ffeab3e0b4c6bdc20ac5748d0e863038405fc9c77fdb76b1237720032bd56f53",
+          "versions": [
+            "V3.6",
+            "V3.8"
+          ]
+        }
+      ],
+      "versions": [
+        {
+          "version": "V3.6",
+          "address": "0x800073bc",
+          "status": "exported",
+          "instruction_count": 23,
+          "assembly_sha256": "0b8a626b4a930b37bde2429424c0ecd5cde9cfd7549169e050f50f5e76dcd41a",
+          "fixed_window_sha256": "ffeab3e0b4c6bdc20ac5748d0e863038405fc9c77fdb76b1237720032bd56f53",
+          "fixed_window_512_sha256": "4ad4063217308d3cb04a3239892f5483c9314afea4ad2a5290d07019dcf17e10",
+          "direct_call_targets": []
+        },
+        {
+          "version": "V3.8",
+          "address": "0x800073bc",
+          "status": "exported",
+          "instruction_count": 23,
+          "assembly_sha256": "0b8a626b4a930b37bde2429424c0ecd5cde9cfd7549169e050f50f5e76dcd41a",
+          "fixed_window_sha256": "ffeab3e0b4c6bdc20ac5748d0e863038405fc9c77fdb76b1237720032bd56f53",
+          "fixed_window_512_sha256": "4ad4063217308d3cb04a3239892f5483c9314afea4ad2a5290d07019dcf17e10",
+          "direct_call_targets": []
+        }
+      ]
+    }
+  ],
+  "pairwise_exported_body": {
+    "V3.6__V3.8": {
+      "identical": [
+        "Beta3ResultValueHook_candidate",
+        "Beta3SoundTableHook_candidate",
+        "DiodeValidityBranch",
+        "GaugeTask_candidate",
+        "HighspeedDiodePeriodSelector_region",
+        "HighspeedEventHandler",
+        "KeyTaskCountdown",
+        "MainADCTask_candidate",
+        "MeasurementFSM",
+        "ResultDispatch_entry",
+        "SoundControlGate",
+        "TransactionBuilder",
+        "UART_RX_ISR"
+      ],
+      "different_or_missing": []
+    }
+  },
+  "pairwise_first_64": {
+    "V3.6__V3.8": {
+      "identical": [
+        "Beta3ResultValueHook_candidate",
+        "Beta3SoundTableHook_candidate",
+        "DiodeValidityBranch",
+        "GaugeTask_candidate",
+        "HighspeedDiodePeriodSelector_region",
+        "HighspeedEventHandler",
+        "KeyTaskCountdown",
+        "MainADCTask_candidate",
+        "MeasurementFSM",
+        "ResultDispatch_entry",
+        "SoundControlGate",
+        "TransactionBuilder",
+        "UART_RX_ISR"
+      ],
+      "different": []
+    }
+  },
+  "pairwise_first_512": {
+    "V3.6__V3.8": {
+      "identical": [
+        "Beta3ResultValueHook_candidate",
+        "Beta3SoundTableHook_candidate",
+        "DiodeValidityBranch",
+        "GaugeTask_candidate",
+        "HighspeedDiodePeriodSelector_region",
+        "HighspeedEventHandler",
+        "KeyTaskCountdown",
+        "MainADCTask_candidate",
+        "MeasurementFSM",
+        "ResultDispatch_entry",
+        "SoundControlGate",
+        "TransactionBuilder",
+        "UART_RX_ISR"
+      ],
+      "different_or_missing": []
+    }
+  },
+  "limits": [
+    "Only bounded seeded bodies are compared in this first pass.",
+    "A different fingerprint can be a real change or a changed function boundary; inspect assembly before semantic claims.",
+    "Only versions present in inputs have comparison evidence; absent versions cannot be inferred."
+  ]
+}
