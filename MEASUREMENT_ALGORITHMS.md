@@ -108,3 +108,7 @@ Case-2 command setup supplies the control word from an input-derived value and i
 ## 2026-11-06 V3.6/V3.8 algorithm baseline
 
 Raw comparison of the two original releases found no changed instruction bytes. The only payload-data delta is nine unclassified 32-bit values at `0x80063ac8`; consequently this evidence neither proves a measurement-algorithm change nor rules out a behavior change caused by configuration data. The previously recovered UART2/FSM/result rules are byte-identical candidates for V3.6 pending a seeded PyGhidra export.
+
+## 2026-11-06 active-hardware scope correction
+
+The currently flashed device image is confirmed as modified beta-diode-profiles-e2, not an original V3.6/V3.8 image. Any future physical measurement observation from this device must be labelled **E2-modified build** unless the verified original image is deliberately restored. The FEL backup provides recovery evidence; it does not itself expose ADC, diode, continuity, or buzzer runtime values.
