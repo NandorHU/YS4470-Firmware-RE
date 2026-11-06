@@ -102,3 +102,14 @@ The UART RX ISR is only an append producer. The state-3 rule is not promoted to 
 | TransactionBuilder | '0x8000489c' | confirmed static behavior | Stores up to four command words for FSM state 1, which resolves descriptors and sends their UART2 frames |
 
 Descriptor frames: '0x1b -> 5e5e'; '0x1d -> 6060'. These facts identify software command routing only. Neither dispatcher case nor byte value is assigned a physical measurement name.
+
+
+## 2026-11-06 result-object consumers
+
+| ID | Address | Confidence | Static role |
+|---|---:|---|---|
+| ResultDispatch | '0x800037c0' | confirmed static behavior | Reads result value '+0x1c' and selector '+0x20'; its sentinel branch conditionally calls SoundControlGate |
+| ResultTextPreparation_candidate | '0x80045264' | confirmed static data access | Reads selector and conditionally value while preparing a bounded text-formatting path |
+| HighspeedResultFormatting_candidate | '0x8005dc3c' | confirmed static data access | Reads selector/value; nearby literal '%.3f' anchors numeric formatting context |
+
+The field consumers are confirmed; names ending in '_candidate' do not assert a complete GUI function or a physical measurement assignment.
