@@ -108,3 +108,9 @@ Remaining:
 - What are the non-main regions of the verified 16 MiB SPI backup: boot asset, persistent settings, calibration, log, or unused flash? Classify from image structure before treating any region as safe test storage.
 - A full backup proves recovery capability, but what minimal reversible E2 instrumentation would record a useful parser, sound, or ADC event without overwriting calibration or boot data?
 - If original V3.6/V3.8 physical behavior is required, which verified original package and complete flash layout are needed before replacing the currently confirmed E2-modified main image?
+
+## Updated 2026-11-06: V3.6/V3.8 comparison status
+
+- The first 13 bounded seed exports are identical V3.6/V3.8. Which unseeded functions reference the nine changed data cells near 0x80063ac8, and do they affect a user-visible behavior?
+- Extend function discovery only from evidence-backed call/target seeds; do not turn equal bounded exports into a whole-image semantic proof.
+- Passive UART-TTL capture remains a future high-value input when the adapter can be connected safely in normal firmware mode.
