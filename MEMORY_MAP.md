@@ -111,3 +111,14 @@ For the two state-3 command paths, parser admission requires RX count >= 5. This
 | '0x805ac694 + 0x04..+0x10' | TransactionBuilder command-word slots | builder copies up to four command IDs here before FSM state 1 reads them |
 
 V3.8 and Beta3 descriptor entries and wire frames for both IDs are identical.
+
+
+## Measurement result object (2026-11-06)
+
+| Address/range | Classification | Verified use |
+|---|---|---|
+| '0x805ac714 + 0x1c' | signed result / saturation field | state 5 writes parsed value or sentinel '0x007fffff'; ResultDispatch and two formatting candidates read it |
+| '0x805ac714 + 0x20' | bounded selector field | state 5 writes the byte-4-derived selector; ResultDispatch and formatting candidates read it |
+| '0x80004820' | state-5 literal | points to result object '0x805ac714' |
+
+Direct consumer tracing is bounded to PC-literal object paths; it is not an alias-complete inventory.
