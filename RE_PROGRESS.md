@@ -197,3 +197,17 @@ See `evidence/2026-11-04-pyghidra-beta3-compare.json` for machine-readable sessi
 1. Classify the rest of the backed-up 16 MiB flash image before using any region for future instrumentation or storage.
 2. Restore and run bounded V3.6 PyGhidra inventory, then compare it against V3.8; retain the already established raw 20-byte delta.
 3. If a physical experiment is needed, design it first against the confirmed E2 image and only use a recovery-tested, narrowly scoped image change after recording the exact restore path.
+
+## 2026-11-06: PyGhidra restored and V3.6/V3.8 seeds compared
+
+- Installed PyGhidra 3.1.0 from the local Ghidra 12.1.4 bundle into an isolated project directory; no external package download was used. Import test passed with JPype 1.5.2.
+- Ran the bounded ARMv5T inventory exporter on verified original V3.6 and V3.8 inputs. It produced assembly, decompiler, direct-call, and fixed-window evidence for all 13 seeds.
+- Comparator test passed: 13 of 13 exported bodies identical; no changed or missing seed. The first 64-byte and first 512-byte fingerprints are also identical for every pair.
+- Corrected compare_inventories.py stale limitation text so future reports do not claim V3.6 is unavailable when it is an input.
+- Added ACCELERATION_OPTIONS.md. It records the deferred passive UART-TTL capture method and the install criteria for Unicorn/Capstone, Rizin, Binwalk/ImHex, and Version Tracking.
+
+### Revised exact continuation point
+
+1. Trace SoundControlGate direct callee 0x800060d0 to its first hardware-facing register access, retaining explicit call arguments and gating conditions.
+2. Trace the single known pointer into the V3.6/V3.8 nine-cell changed data region at 0x80042d98.
+3. When available, use receive-only 3.3 V USB-TTL capture on confirmed UART2 TX during normal firmware boot; retain raw logs as protocol evidence.
