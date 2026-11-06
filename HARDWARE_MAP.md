@@ -66,3 +66,8 @@ Descriptor command '0x1d' sends '60 60', the same two bytes emitted immediately 
 ## Result-to-sound software boundary — 2026-11-06
 
 ResultDispatch checks the software sentinel '0x007fffff' from result object '+0x1c' and conditionally calls SoundControlGate. This establishes a firmware control-flow relationship between result handling and a sound-control routine. It does not identify a buzzer peripheral transition, sound duration, threshold semantics, or a physical measurement condition.
+
+
+## Saturation is software state — 2026-11-06
+
+The '0x0d/0x0e' selector and '0x1389' threshold are evaluated entirely in RAM/state-5 code before a sentinel is written to the result object. The bounded trace introduces no ADC register, comparator, GPIO, PWM, timer, or buzzer peripheral access. Accordingly, the branch must remain a software saturation/display/control rule until a separate hardware/protocol mapping is proven.
