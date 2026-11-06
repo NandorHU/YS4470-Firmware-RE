@@ -113,3 +113,14 @@ Descriptor frames: '0x1b -> 5e5e'; '0x1d -> 6060'. These facts identify software
 | HighspeedResultFormatting_candidate | '0x8005dc3c' | confirmed static data access | Reads selector/value; nearby literal '%.3f' anchors numeric formatting context |
 
 The field consumers are confirmed; names ending in '_candidate' do not assert a complete GUI function or a physical measurement assignment.
+
+
+## 2026-11-06 state-5 saturation gate
+
+| ID | Address | Confidence | Static role |
+|---|---:|---|---|
+| State5SaturationGate | '0x80004784' | confirmed static behavior | Reads control '+0x08'; for values '0x0d/0x0e' and unsigned value >= '0x1389', stores sentinel '0x007fffff' and selector 0 |
+| MeasurementCommandInputDispatcher case-2 | '0x80004464' | confirmed static behavior | Writes input-derived r1 to saturation control '+0x08' |
+| MeasurementCommandTaskDispatcher case-2 | '0x80005c58' | confirmed static behavior | Writes input-derived r1 to control '+0x08' while building a command list with terminal '0x1d' |
+
+The recovered rule and bounded setup paths are raw-identical in V3.8 and Beta3. They remain software/protocol facts, not physical range or diode/continuity labels.
