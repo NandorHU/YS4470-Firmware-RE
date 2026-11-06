@@ -678,5 +678,26 @@
       ],
       "confidence": "observed raw bytes; table role unresolved"
     }
+  },
+  "live_device_observations": {
+    "2026-11-06_fel_readonly": {
+      "evidence": "evidence/2026-11-06-fel-device-acquisition.json",
+      "transport": "Allwinner F1C100S FEL BootROM over WinUSB",
+      "spi_flash": {
+        "manufacturer": "Winbond (EFh)",
+        "model": "40h",
+        "bytes": 16777216,
+        "local_backup_sha256": "ab1e0c4539a2e3e053af78b39c1be5d3b4d3c2934dc96b29d4fd5a9395008be3"
+      },
+      "active_main_image": {
+        "flash_offset": "0x50000",
+        "full_image_sha256": "b04fb5bca7a052abfc5b1621bf50e03fd4f8116bf5cef849f1994e44d4b603b1",
+        "exact_local_match": "beta-diode-profiles-e2/f1c100s-profiles-OFFLINE.bin"
+      },
+      "limitations": [
+        "FEL session did not observe running firmware or create function-level runtime evidence.",
+        "Active image is a modified E2 build and is not an original-firmware identity."
+      ]
+    }
   }
 }
