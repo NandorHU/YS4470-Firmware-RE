@@ -32,14 +32,20 @@
         "V3_8": "0x800037bc",
         "Beta3": "0x800037bc"
       },
-      "confidence": "confirmed",
+      "confidence": "confirmed_static_behavior",
       "role": "Measurement-result dispatch region",
       "relationships": [
-        "calls beta3_result_observer at 0x800037fc in Beta3"
+        "calls beta3_result_observer at 0x800037fc in Beta3",
+        "reads result object fields +0x1c and +0x20",
+        "conditionally calls sound_control_gate from sentinel-value branch"
       ],
       "evidence": [
         "ARM disassembly",
-        "raw diff V3_8 vs Beta3"
+        "raw diff V3_8 vs Beta3",
+        "evidence/2026-11-06-measurement-result-flow.json"
+      ],
+      "limits": [
+        "Conditional call does not prove a physical buzzer event or timing."
       ]
     },
     {
@@ -541,6 +547,42 @@
       "limits": [
         "The upstream decoder and UI/physical meaning of cases remain unresolved."
       ]
+    },
+    {
+      "id": "result_text_preparation_candidate",
+      "addresses": {
+        "V3_8": "0x80045264"
+      },
+      "confidence": "confirmed_static_data_access",
+      "role": "Result selector/value text-preparation candidate",
+      "relationships": [
+        "reads result object +0x20",
+        "conditionally reads +0x1c"
+      ],
+      "evidence": [
+        "evidence/2026-11-06-measurement-result-flow.json"
+      ],
+      "limits": [
+        "Downstream drawing callee and user-visible label remain unresolved."
+      ]
+    },
+    {
+      "id": "highspeed_result_formatting_candidate",
+      "addresses": {
+        "V3_8": "0x8005dc3c"
+      },
+      "confidence": "confirmed_static_data_access",
+      "role": "Result selector/value numeric-formatting candidate",
+      "relationships": [
+        "reads result object +0x20 and +0x1c",
+        "nearby literal is %.3f"
+      ],
+      "evidence": [
+        "evidence/2026-11-06-measurement-result-flow.json"
+      ],
+      "limits": [
+        "No complete GUI or physical-mode identification is asserted."
+      ]
     }
   ],
   "session_updates": [
@@ -583,6 +625,11 @@
       "date": "2026-11-05",
       "evidence": "evidence/2026-11-05-measurement-command-1b-1d.json",
       "summary": "Exported identical V3.8/Beta3 0x1b and 0x1d UART2 frames and established static command-list dispatcher cases."
+    },
+    {
+      "date": "2026-11-06",
+      "evidence": "evidence/2026-11-06-measurement-result-flow.json",
+      "summary": "Traced state-5 result fields to ResultDispatch, conditional SoundControlGate call, and two text/formatting candidates."
     }
   ]
 }
