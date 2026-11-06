@@ -82,3 +82,10 @@ Descriptor export proves the two commands that enter the signed-24-bit state-5 p
 The TransactionBuilder at '0x8000489c' stores command words for FSM state 1, which indexes descriptor table '0x8006367c' and sends through UART2. Input dispatcher '0x80004390' has a direct '[0x1b]' build path; task dispatcher '0x80005b70' constructs '[0x1d]' for software case 3, '[0x1b]' for case 4, an input-derived two-byte prefix plus '0x1d' for case 2, and '[0x0c,0x22,0x13,0x1d]' for case 5.
 
 The same bytes '6060' are also sent by UART2 bring-up. Byte equality alone does not establish that the startup sequence and command '0x1d' have the same external-device meaning. Dispatcher cases are software values, not proven user-visible measurement modes.
+
+
+## 2026-11-06: state-5 result-object flow
+
+State 5 writes its signed result to result object '0x805ac714+0x1c' and its bounded selector to '+0x20'. Its special threshold path writes sentinel '0x007fffff'. A bounded direct-access trace proves that ResultDispatch at '0x800037c0' reads both fields; its sentinel branch conditionally calls SoundControlGate '0x80006e4c'.
+
+Two separate formatting/rendering candidates also directly consume these fields: '0x80045264' and '0x8005dc3c'. The latter has nearby '%.3f' formatting data. This establishes software dataflow from UART state-5 parsing toward presentation and one conditional sound-control gate; it does not identify the final drawing primitive, physical measurement mode, or buzzer timing.
