@@ -521,7 +521,8 @@
       ],
       "evidence": [
         "evidence/2026-11-05-measurement-command-1b-1d.json",
-        "bounded PyGhidra TransactionBuilder caller trace"
+        "bounded PyGhidra TransactionBuilder caller trace",
+        "evidence/2026-11-06-state5-saturation-path.json"
       ],
       "limits": [
         "Input case codes are not mapped to physical measurement modes."
@@ -542,7 +543,8 @@
       ],
       "evidence": [
         "evidence/2026-11-05-measurement-command-1b-1d.json",
-        "measurement_command_sequence_assertions"
+        "measurement_command_sequence_assertions",
+        "evidence/2026-11-06-state5-saturation-path.json"
       ],
       "limits": [
         "The upstream decoder and UI/physical meaning of cases remain unresolved."
@@ -582,6 +584,28 @@
       ],
       "limits": [
         "No complete GUI or physical-mode identification is asserted."
+      ]
+    },
+    {
+      "id": "state5_saturation_gate",
+      "addresses": {
+        "V3_8": "0x80004784",
+        "Beta3": "0x80004784"
+      },
+      "confidence": "confirmed_static_behavior",
+      "role": "State-5 result saturation gate",
+      "relationships": [
+        "reads control object 0x805aae8c+0x08",
+        "requires value 0x0d or 0x0e",
+        "when parsed value is unsigned >= 0x1389 stores 0x007fffff at result +0x1c and zero at +0x20"
+      ],
+      "evidence": [
+        "evidence/2026-11-06-state5-saturation-path.json",
+        "20 instruction/literal assertions",
+        "raw V3.8/Beta3 equality over saturation range"
+      ],
+      "limits": [
+        "Control values, threshold, and sentinel have no physical measurement meaning assigned."
       ]
     }
   ],
@@ -630,6 +654,11 @@
       "date": "2026-11-06",
       "evidence": "evidence/2026-11-06-measurement-result-flow.json",
       "summary": "Traced state-5 result fields to ResultDispatch, conditional SoundControlGate call, and two text/formatting candidates."
+    },
+    {
+      "date": "2026-11-06",
+      "evidence": "evidence/2026-11-06-state5-saturation-path.json",
+      "summary": "Recovered V3.8/Beta3-identical state-5 saturation selector, threshold, sentinel write, and case-2 control setup relationship."
     }
   ]
 }
