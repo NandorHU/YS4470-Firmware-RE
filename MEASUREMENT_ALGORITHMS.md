@@ -85,3 +85,10 @@ The rule has not been demonstrated for descriptor IDs 09–0f or for other UART2
 | '0x1d' | '60' | '60' | '60 60' | '60' |
 
 The direct descriptor result is identical in V3.8 and Beta3. Static dispatchers select these IDs in several software cases, but those cases are not yet correlated with rotary-switch positions, UI labels, diode/continuity behavior, or ADC modes.
+
+
+## State-5 result publication and consumers
+
+After state-5 admission, the parser publishes its signed 24-bit value at result object '+0x1c' and a byte-4-derived bounded selector at '+0x20'. For a special threshold path it publishes '0x007fffff' instead of the parsed value.
+
+ResultDispatch consumes both fields and has a sentinel branch that calls SoundControlGate. Separate text-formatting candidates also consume them, including one with a nearby '%.3f' format string. This connects parser output to presentation/control software without assigning a physical unit or measurement name.
