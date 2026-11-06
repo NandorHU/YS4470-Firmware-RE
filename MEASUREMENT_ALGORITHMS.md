@@ -112,3 +112,7 @@ Raw comparison of the two original releases found no changed instruction bytes. 
 ## 2026-11-06 active-hardware scope correction
 
 The currently flashed device image is confirmed as modified beta-diode-profiles-e2, not an original V3.6/V3.8 image. Any future physical measurement observation from this device must be labelled **E2-modified build** unless the verified original image is deliberately restored. The FEL backup provides recovery evidence; it does not itself expose ADC, diode, continuity, or buzzer runtime values.
+
+## 2026-11-06 original-version comparison scope
+
+The bounded PyGhidra V3.6/V3.8 comparison found identical exports for the currently seeded MeasurementFSM, MainADCTask_candidate, DiodeValidityBranch, ResultDispatch, SoundControlGate, UART_RX_ISR, and related support regions. Therefore no algorithm change is evidenced for those bounded code bodies. This does not classify the nine changed data cells or establish physical measurement equivalence.
