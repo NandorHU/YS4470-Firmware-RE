@@ -72,3 +72,7 @@ Trace the ResultDispatch sentinel branch at '0x800037fc..0x80003854' into SoundC
 ## Updated next bounded task (2026-11-06, after V3.6 intake)
 
 Run the existing bounded PyGhidra seed inventory on the verified original V3.6 input and compare it with V3.8. Separately trace the literal-pool consumer beginning at `0x80042d98` to classify the nine changed V3.6/V3.8 data cells. Keep the already scheduled ResultDispatch → SoundControlGate trace independent; do not infer buzzer timing or a physical measurement mode from the version-data delta.
+
+## Updated next bounded task (2026-11-06, after live FEL identification)
+
+Use the verified local flash backup to classify the regions outside the main eGON image, beginning with header and signature scans plus known package assets. In parallel, restore the bounded PyGhidra V3.6 inventory environment and compare V3.6/V3.8 known function windows. Do not flash any image merely to accelerate analysis: the current device is confirmed E2-modified, and its backup must remain the recovery baseline.
