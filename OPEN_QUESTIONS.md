@@ -87,3 +87,13 @@ Remaining:
 - Which exact drawing/UI primitive consumes the prepared text from the two formatting paths?
 - Which command/config condition selects the state-5 saturation path?
 - Does the ResultDispatch-to-SoundControlGate path generate audible diode/continuity behavior, and under which proven input conditions?
+
+
+## 2026-11-06 saturation-path questions
+
+Resolved: control '+0x08' values '0x0d/0x0e' plus unsigned parsed value >= '0x1389' cause state 5 to publish sentinel '0x007fffff'. The visible code is identical in V3.8 and Beta3.
+
+Remaining:
+- What upstream input-record field supplies the case-2 control value, and which user-visible selection sets it to '0x0d' or '0x0e'?
+- Does sentinel '0x007fffff' mean over-range, open circuit, or another protocol condition?
+- Under what exact configuration does ResultDispatch's sentinel branch call SoundControlGate, and what output does that gate produce?
