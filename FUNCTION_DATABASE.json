@@ -676,7 +676,31 @@
         "All remaining differences are among nine 32-bit cells at linked 0x80063ac8..0x80063ae8 after EnumKey* text; semantic role unknown.",
         "No changed instruction bytes were observed; seeded PyGhidra inventory pairing remains pending."
       ],
-      "confidence": "observed raw bytes; table role unresolved"
+      "confidence": "observed raw bytes; table role unresolved",
+      "pyghidra_seed_export": {
+        "evidence": "evidence/2026-11-06-v36-v38-pyghidra-function-compare.json",
+        "analysis_mode": "bounded-seeded ARM:LE:32:v5t",
+        "toolchain": "Ghidra 12.1.4 / PyGhidra 3.1.0 / JPype 1.5.2",
+        "paired_count": 13,
+        "identical_exported_bodies": [
+          "Beta3ResultValueHook_candidate",
+          "Beta3SoundTableHook_candidate",
+          "DiodeValidityBranch",
+          "GaugeTask_candidate",
+          "HighspeedDiodePeriodSelector_region",
+          "HighspeedEventHandler",
+          "KeyTaskCountdown",
+          "MainADCTask_candidate",
+          "MeasurementFSM",
+          "ResultDispatch_entry",
+          "SoundControlGate",
+          "TransactionBuilder",
+          "UART_RX_ISR"
+        ],
+        "different_or_missing": [],
+        "observed": "All paired exports also have identical first 64 and 512 bytes.",
+        "limitation": "Bounded seed evidence; it does not prove identity of all unnamed functions or runtime behavior."
+      }
     }
   },
   "live_device_observations": {
