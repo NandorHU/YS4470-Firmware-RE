@@ -1,6 +1,6 @@
 # Reverse-engineering progress
 
-**Last verified update:** 2026-11-05  
+**Last verified update:** 2026-11-06  
 **Development branch:** `re/2026-11-04-pyghidra-fel`
 
 ## This session: verified results
@@ -211,3 +211,20 @@ See `evidence/2026-11-04-pyghidra-beta3-compare.json` for machine-readable sessi
 1. Trace SoundControlGate direct callee 0x800060d0 to its first hardware-facing register access, retaining explicit call arguments and gating conditions.
 2. Trace the single known pointer into the V3.6/V3.8 nine-cell changed data region at 0x80042d98.
 3. When available, use receive-only 3.3 V USB-TTL capture on confirmed UART2 TX during normal firmware boot; retain raw logs as protocol evidence.
+
+## 2026-11-06: Capstone/Unicorn installed and original parser executed
+
+- Completed the isolated environment installation check: Capstone distribution 5.0.9 (runtime reports 5.0.7), Unicorn 2.1.4. ARM926 smoke test passed.
+- Added `tools/emulate_state5_parser.py`, pinned requirements, and `tools/ARM_EMULATION.md`. The harness verifies original hashes, maps a limited code/RAM contract, selects UC_CPU_ARM_926, and executes original ARM bytes without stubbing instructions.
+- **V3.6: 2,976/2,976 passed; V3.8: 2,976/2,976 passed.** All outputs have identical fingerprints across versions. All 34 instruction addresses were visited; exact write sets were also checked.
+- New result: control byte +1 decrements and discards each sample while nonzero on entry. Count 1 → 0 still discards that sample. Command 1b forces selector zero; 1d caps byte 4 at 6.
+- Confirmed that the unsigned saturation gate converts negative values to sentinel too, only for control word 13/14 with zero discard counter.
+- Replaced the per-case emulation wall timer with a 64-instruction bound; the complete rerun finished successfully in about one second.
+- Evidence: `evidence/2026-11-06-state5-arm926-emulation.json`. No physical device I/O occurred.
+
+### Exact next continuation point
+
+1. Trace producers of `0x805aae8d` (control object +1) and the input modes/events that load the discard count.
+2. Retain the parser harness as regression coverage; avoid repeating the completed V3.6/V3.8 parser analysis.
+3. Then trace SoundControlGate at 0x80006e4c into 0x800060d0 to identify the first hardware-facing operation.
+4. UART-TTL capture remains deferred until the user can connect the adapter.

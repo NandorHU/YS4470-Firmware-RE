@@ -114,3 +114,9 @@ Remaining:
 - The first 13 bounded seed exports are identical V3.6/V3.8. Which unseeded functions reference the nine changed data cells near 0x80063ac8, and do they affect a user-visible behavior?
 - Extend function discovery only from evidence-backed call/target seeds; do not turn equal bounded exports into a whole-image semantic proof.
 - Passive UART-TTL capture remains a future high-value input when the adapter can be connected safely in normal firmware mode.
+
+## Added 2026-11-06: sample-discard counter producers
+
+- Locate every producer/reset of control byte `0x805aae8c+1` and the input events that initialize it. Bounded execution proves sample suppression, but neither mode nor a physical time unit.
+- Which physical/protocol paths can deliver negative signed-24 values while control word +8 is 13/14? Synthetic execution proves sentinel replacement; reachability and user-visible effects remain unknown.
+- Preserve the boundary of the new harness: state-3 frame admission, shared state-7 update, scheduling, and interrupts are not emulated.

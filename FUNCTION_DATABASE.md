@@ -138,3 +138,13 @@ The live device complete eGON main image at flash offset 0x50000 is byte-identic
 ## 2026-11-06 V3.6/V3.8 bounded function pairing
 
 The PyGhidra exporter paired 13 evidence-labelled seeds between original V3.6 and V3.8. Every pair exported at the same address with identical assembly fingerprint and identical first 64/512 bytes. This includes all currently named core measurement, result, sound, and UART seeds. The result establishes a reusable V3.6 baseline for these functions; it does not assert that all unnamed firmware functions or all data tables are identical.
+
+## 2026-11-06: bounded execution of state-5 parser
+
+| Region | Original V3.6/V3.8 address | Verified behavior |
+|---|---|---|
+| Signed-24 parse and selector | `0x80004738..0x80004768` | RX bytes 1..3 are sign-extended; command 1b sets selector 0, command 1d caps byte 4 at 6 |
+| Sample-discard gate | `0x80004770..0x80004780` | Nonzero control byte +1 decrements and skips both result stores |
+| Unsigned saturation | `0x80004784..0x800047ac` | Control word 13/14 plus unsigned value >=5001 publishes sentinel and zero selector |
+
+These are regions of MeasurementFSM, not newly discovered standalone functions. The complete 34-instruction slice passed 2,976 cases per original version on Unicorn ARM926; see [execution evidence](evidence/2026-11-06-state5-arm926-emulation.json). The counter initialization and physical measurement mapping remain unresolved.

@@ -80,3 +80,7 @@ Use the verified local flash backup to classify the regions outside the main eGO
 ## Updated next bounded task (2026-11-06, after PyGhidra V3.6/V3.8 baseline)
 
 Trace SoundControlGate at 0x80006e4c into direct callee 0x800060d0 and continue until the first hardware-facing sound-control operation is proven. The relevant bounded V3.6/V3.8 exports are identical, so perform this once against V3.8 and carry the evidence to V3.6 only within that bounded scope. Keep passive UART-TTL capture as a separate future validation task.
+
+## Updated next bounded task (2026-11-06, after real-byte ARM926 execution)
+
+Trace the writers of sample-discard byte `0x805aae8d`, starting from the verified control-object literal loads. Determine what sets/reset its initial count and which input modes can reach it. Reuse the new 5,952-case parser harness for regression rather than redoing parser disassembly. The separate SoundControlGate → 0x800060d0 hardware-control trace remains pending.

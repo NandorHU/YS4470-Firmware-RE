@@ -86,3 +86,7 @@ The Mr.Yang updater's read-only firmware-list request exposed the V3.6 package a
 ## 2026-11-06 analysis-environment acceleration
 
 The local Ghidra 12.1.4 bundled PyGhidra wheel is now installed and exercised with original V3.6/V3.8 inputs. This is offline software analysis only and creates no additional hardware or FEL capability. The optional passive UART-TTL capture plan is recorded in ACCELERATION_OPTIONS.md; no TTL connection has been made.
+
+## 2026-11-06: ARM926 software execution environment
+
+Unicorn 2.1.4 is installed with explicit ARM926 CPU selection; Capstone distribution 5.0.9 reports runtime version 5.0.7, and both identities are recorded in the evidence. The state-5 experiment maps no MMIO and no ADC/UART/device model. All 5,952 passed cases are software execution evidence only. No device operation was performed in this session.

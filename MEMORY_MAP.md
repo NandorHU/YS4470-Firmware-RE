@@ -141,8 +141,17 @@ The original V3.6/V3.8 images share link base `0x7fffffe0` and length 5,943,296 
 
 ## 2026-11-06 observed flash anchors (live FEL backup)
 
-A non-public, read-only 16 MiB SPI backup establishes these observed anchors: main eGON header at flash 0x50000; header magic eGON.EXE; declared main-image span 0x5aafc0 bytes (5,943,296); main payload begins at 0x50020 and spans 5,943,264 bytes. The main span byte-matches the local E2 modified image. Other flash regions have not yet been classified as boot assets, settings, calibration, or unused space.
+A non-public, read-only 16 MiB SPI backup establishes these observed anchors: main eGON header at flash 0x50000; header magic eGON.EXE; declared main-image span 0x5ab000 bytes (5,943,296); main payload begins at 0x50020 and spans 5,943,264 bytes. The main span byte-matches the local E2 modified image. Other flash regions have not yet been classified as boot assets, settings, calibration, or unused space.
 
 ## 2026-11-06 V3.6/V3.8 code-address confirmation
 
 The bounded PyGhidra inventories confirm identical code fingerprints at the existing link-base addresses for 13 named seeds, including 0x800037bc, 0x80003a0c, 0x80004490, 0x8000489c, 0x80005a78, 0x80006e4c, and 0x800073bc. This reinforces the use of the V3.8 address map for corresponding V3.6 seed analysis, while leaving unexported regions and the nine changed data cells separately classified.
+
+## 2026-11-06: state-5 execution contract
+
+- `0x805b408c+1..+3`: synthetic signed-24 input bytes; `+4`: selector for command 1d.
+- `0x805aae8d` (control object +1): a byte sample-discard countdown. Nonzero values decrement before either result field can be updated.
+- `0x805aae94` (control +8): control word tested against 13/14.
+- `0x805ac730` / `0x805ac734`: result value/selector words; preserved on every tested nonzero-countdown input.
+
+The emulator maps only the code/literal page and these three RAM pages; code is guest read/execute-only and RX guest read-only. It verifies that the only guest writes are countdown byte or the two result words. This memory contract was exercised on both original images, not on the physical device. The flash-span hexadecimal typo above was corrected to 0x5ab000.

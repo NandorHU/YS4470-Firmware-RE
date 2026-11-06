@@ -476,7 +476,8 @@
     {
       "id": "measurement_fsm_state5_signed24_parse",
       "addresses": {
-        "V3_8": "0x80004738"
+        "V3_8": "0x80004738",
+        "V3_6": "0x80004738"
       },
       "confidence": "confirmed_static_behavior",
       "role": "Signed little-endian 24-bit parser",
@@ -486,11 +487,28 @@
         "uses byte 4 as bounded selector input"
       ],
       "evidence": [
-        "evidence/2026-11-05-uart2-rx-lifecycle-trace.json"
+        "evidence/2026-11-05-uart2-rx-lifecycle-trace.json",
+        "evidence/2026-11-06-state5-arm926-emulation.json"
       ],
       "limits": [
         "Destination semantics and measurement-mode association remain unresolved."
-      ]
+      ],
+      "bounded_emulation": {
+        "cpu_model": "UC_CPU_ARM_926",
+        "versions": [
+          "V3.6",
+          "V3.8"
+        ],
+        "entry": "0x80004738",
+        "stop_before": "0x80004518",
+        "cases_per_version": 2976,
+        "cases_failed": 0,
+        "instruction_addresses_visited": 34,
+        "limitations": [
+          "State-3 admission and shared epilogue excluded.",
+          "Synthetic RAM; hardware, timing and interrupts unmodeled."
+        ]
+      }
     },
     {
       "id": "synchronous_command_response_wait",
@@ -594,7 +612,8 @@
       "id": "state5_saturation_gate",
       "addresses": {
         "V3_8": "0x80004784",
-        "Beta3": "0x80004784"
+        "Beta3": "0x80004784",
+        "V3_6": "0x80004784"
       },
       "confidence": "confirmed_static_behavior",
       "role": "State-5 result saturation gate",
@@ -606,10 +625,49 @@
       "evidence": [
         "evidence/2026-11-06-state5-saturation-path.json",
         "20 instruction/literal assertions",
-        "raw V3.8/Beta3 equality over saturation range"
+        "raw V3.8/Beta3 equality over saturation range",
+        "evidence/2026-11-06-state5-arm926-emulation.json"
       ],
       "limits": [
         "Control values, threshold, and sentinel have no physical measurement meaning assigned."
+      ],
+      "bounded_emulation": {
+        "cpu_model": "UC_CPU_ARM_926",
+        "versions": [
+          "V3.6",
+          "V3.8"
+        ],
+        "entry": "0x80004738",
+        "stop_before": "0x80004518",
+        "cases_per_version": 2976,
+        "cases_failed": 0,
+        "instruction_addresses_visited": 34,
+        "limitations": [
+          "State-3 admission and shared epilogue excluded.",
+          "Synthetic RAM; hardware, timing and interrupts unmodeled."
+        ]
+      }
+    },
+    {
+      "id": "state5_sample_discard_gate",
+      "kind": "region_within_MeasurementFSM",
+      "addresses": {
+        "V3_6": "0x80004770",
+        "V3_8": "0x80004770"
+      },
+      "confidence": "confirmed_bounded_emulation",
+      "role": "Decrements a nonzero byte at control +1 and leaves previous result value/selector unchanged",
+      "relationships": [
+        "reads/writes 0x805aae8d",
+        "branches to shared exit 0x80004518 before result stores",
+        "entry count 1 becomes 0 but still discards this sample"
+      ],
+      "evidence": [
+        "evidence/2026-11-06-state5-arm926-emulation.json"
+      ],
+      "limits": [
+        "Counter producers and measurement-mode meaning are unresolved.",
+        "No elapsed-time unit is established."
       ]
     }
   ],
@@ -723,5 +781,12 @@
         "Active image is a modified E2 build and is not an original-firmware identity."
       ]
     }
+  },
+  "analysis_environment": {
+    "unicorn": "2.1.4",
+    "unicorn_cpu_model": "UC_CPU_ARM_926",
+    "capstone_distribution": "5.0.9",
+    "capstone_runtime": "5.0.7",
+    "requirements": "tools/analysis-requirements.txt"
   }
 }
