@@ -1,0 +1,36 @@
+{
+  "schema": "ys4470.arm-literal-object-trace.v1",
+  "method": "ARM immediate PC-literal load scan plus bounded simple-MOV alias window; incomplete by design",
+  "input": {
+    "name": "f1c100s.bin",
+    "bytes": 5943296,
+    "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+  },
+  "link_base": "0x7fffffe0",
+  "object_address": "0x80063acc",
+  "wanted_offsets": [
+    "0x0",
+    "0x4",
+    "0x8",
+    "0xc",
+    "0x10",
+    "0x14",
+    "0x18",
+    "0x1c",
+    "0x20",
+    "0x24"
+  ],
+  "window_words": 128,
+  "raw_literal_occurrences": [
+    "0x80042f1c"
+  ],
+  "pc_literal_loads": [
+    {
+      "load_address": "0x80042d98",
+      "raw_word": "0x359fa17c",
+      "destination_register": "r10",
+      "literal_address": "0x80042f1c",
+      "direct_accesses": []
+    }
+  ]
+}
