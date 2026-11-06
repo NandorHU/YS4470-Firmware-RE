@@ -61,3 +61,8 @@ Therefore no new peripheral, ADC, timer, buzzer, or physical measurement mapping
 ## Identical UART2 byte sequence caveat — 2026-11-05
 
 Descriptor command '0x1d' sends '60 60', the same two bytes emitted immediately after UART2 initialization. This confirms a shared byte sequence at the UART2 boundary only. It does **not** prove that initialization and command '0x1d' have the same meaning, affect the same external state, or identify any analog hardware function.
+
+
+## Result-to-sound software boundary — 2026-11-06
+
+ResultDispatch checks the software sentinel '0x007fffff' from result object '+0x1c' and conditionally calls SoundControlGate. This establishes a firmware control-flow relationship between result handling and a sound-control routine. It does not identify a buzzer peripheral transition, sound duration, threshold semantics, or a physical measurement condition.
