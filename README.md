@@ -1,14 +1,29 @@
-# YS-4470 firmware 1.0 — highspeedv2
+# YS-4470 firmware reverse engineering
+
+## Join the current reverse-engineering work
+
+The current goal is full V3.6/V3.8 analysis and independent firmware reconstruction.
+The active work is on [`re/2026-11-04-pyghidra-fel`](https://github.com/NandorHU/YS4470-Firmware-RE/tree/re/2026-11-04-pyghidra-fel); `main` is an older snapshot.
+Start with [CONTRIBUTING.md](CONTRIBUTING.md), the
+[current handoff](collaboration/CURRENT_HANDOFF.md) and the
+[task registry](collaboration/TASK_REGISTRY.json). People using any AI tool may
+contribute in their own branches/forks; the existing Codex agent coordinates.
+
+The SHA-256-verified [original V3.6/V3.8 application images](original-firmware/README.md)
+are now included for reproducible analysis at the owner's request. Personal
+full-flash backups remain private. Modified 1.0 firmware remains a separate Release.
+
+## Earlier 1.0 patch release
 
 Firmware improvements for the Mr. Yang YS-4470. **I tested this build on the device and confirmed that version 1.0 works well. The complete 16 MiB flash readback matched the intended image byte for byte.** This confirms operation on the tested device; it is not a complete accuracy or reliability certification.
 
-**[Download version 1.0 from Releases](https://github.com/NandorHU/YS4470-Firmware-RE/releases/tag/v1.0).** Compiled firmware is distributed as Release assets only; it is not tracked in the source tree.
+**[Download version 1.0 from Releases](https://github.com/NandorHU/YS4470-Firmware-RE/releases/tag/v1.0).** Modified release firmware is distributed as Release assets. The two original analysis inputs are published separately under `original-firmware/`.
 
 ## Project goal
 
 Reverse engineer and improve the existing firmware, primarily to reduce the delay between probe contact, the displayed diode measurement, and the audible indication. The project also provides reproducible offline patches, input-hash and original-byte validation, a verified Windows FEL installation process, and rollback support.
 
-The original measurement hardware and factory measurement commands are retained. New measurement ranges and improved measurement accuracy have not been demonstrated. This is a binary patch project: the manufacturer's complete firmware source code is not available.
+The original measurement hardware and factory measurement commands are retained. New measurement ranges and improved measurement accuracy have not been demonstrated. The 1.0 release described below is a binary patch milestone; the ongoing research aims at full reconstruction. The manufacturer's complete firmware source code is not available.
 
 ## Current status — November 2, 2026
 

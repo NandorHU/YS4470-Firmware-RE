@@ -19,9 +19,17 @@ These instructions apply to the entire repository.
 
 ## Firmware evidence and preservation
 
-- Preserve original firmware and its SHA-256 identities. Do not upload private firmware or device backups as part of a handoff.
+- Preserve original firmware and its SHA-256 identities. The owner explicitly authorized publication of the two SHA-256-pinned original V3.6/V3.8 application images on 2026-11-07; see original-firmware/manifest.json. Do not upload any other private firmware, personal full-flash backups, calibration/device dumps or credentials as part of a handoff.
 - Support technical claims with firmware version, binary address, code or artifact references, and actual test results. Mark unproven function names and roles as hypotheses.
 - Follow the project's existing physical-device restrictions; this coordination policy does not grant permission to flash firmware or execute unreviewed device code.
 
 Coordination policy recorded from the project owner's instruction on 2026-11-07.
 
+## Shared task ownership and onboarding
+
+- Read CONTRIBUTING.md, collaboration/CURRENT_HANDOFF.md and the live upstream collaboration/TASK_REGISTRY.json before selecting work. Any relevant subsystem may be proposed; contributors may use any AI tool or work manually.
+- The registry on `re/2026-11-04-pyghidra-fel` is the ownership authority. Issue requests and fork/local copies do not assign tasks. The coordinator records one owner and publishes status changes against the latest branch head; do not overwrite concurrent registry updates.
+- External contributors request a bounded scope using collaboration/TASK_REQUEST_TEMPLATE.md. Work starts after the coordinator publishes ownership. COORD-FSM-TIMEOUT is reserved; do not duplicate it.
+- Use contributions/<TASK-ID>/ for isolated code, evidence and STATUS.md. Keep central databases/status documents coordinator-owned; return proposed deltas with collaboration/HANDOFF_TEMPLATE.md.
+- At each coordinator session, read current registry and open GitHub issues/PRs before assigning or integrating work. A claim remains pending until explicitly recorded. Review/integrate on the development branch; never infer task release from silence.
+- Reuse completed experiments and preserve their limits. Follow the input manifest; the original images and modified Release inputs are not interchangeable.

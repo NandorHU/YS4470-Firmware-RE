@@ -211,3 +211,32 @@ Removed the preceding model's top-level event-builder and renderer stubs. Origin
 Across originals,2396 checks pass:72 queue,2304 renderer,6 critical,4 initialization and10 linked callback steps. The five-callback stored-result example persists with five real event copies in an original-code-constructed queue. No parser entry occurs, discard remains2, filter fill reaches3 and emulated active becomes1. The tested queue/renderer paths preserve protected freshness/filter state. Fourteen real Ghidra exports and9 guard tests pass. Blocking/waiter paths, full GUI, asynchronous logs and live timing remain open.
 
 Next: Prove FSM+0x30's cached reader0x800044a8 through r5 and elapsed-tick branches0x800046a8/0x800046c4/0x80004720 using real getter0x80061f84 and the verified critical helpers. Test threshold boundaries and32-bit tick wrap before assigning units or interpreting Beta3's30-to40 change. Keep blocked queues, waiters and remaining GUI/log leaves separate.
+
+## 2026-11-07: shared contribution entry point and original-input publication
+
+The owner requested that contributors using their own AI resources can join any
+relevant subsystem while the current Codex agent remains coordinator. See
+[CONTRIBUTING.md](CONTRIBUTING.md), [current handoff](collaboration/CURRENT_HANDOFF.md),
+[task registry](collaboration/TASK_REGISTRY.json) and the task/AI/handoff templates.
+Six bounded tasks are available, the FSM timeout/tick task is reserved to the
+coordinator, and passive hardware capture is blocked pending real access/evidence.
+Only the registry on the integration branch assigns ownership; issue requests,
+forks and PRs do not constitute accepted work. No external agent was assigned or
+launched by this publication.
+
+The owner also explicitly requested publication of original V3.6/V3.8 application
+images. The two 5,943,296-byte inputs are preserved unchanged under
+original-firmware/V3.6 and V3.8 with the existing SHA-256 identities in
+[manifest.json](original-firmware/manifest.json). Personal 16 MiB recovery backups
+remain private. The 1.0 Release image remains distinct. All publication work is
+on the development branch; main is not changed.
+
+This is coordination/input-access work, not a new firmware-function proof or
+completion-percentage increment. The next technical experiment remains the
+cached FSM+0x30 read at0x800044a8, elapsed-tick branches0x800046a8/0x800046c4/0x80004720
+and tick getter0x80061f84, including threshold and32-bit-wrap boundaries.
+
+Publication validation from an isolated checkout: nine existing provenance tests
+pass, and all 2,396 original-byte checks reproduce the previously committed
+fingerprints using the two repository input paths. The 61 checked relative links
+resolve. Details: `evidence/2026-11-07-collaboration-publication.json`.
