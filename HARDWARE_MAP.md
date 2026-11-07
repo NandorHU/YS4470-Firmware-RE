@@ -115,3 +115,12 @@ Original V3.6/V3.8 pass 792 gate/PWM cases, 160 Fast CONT result-qualifier cases
 First peripheral read: instruction 0x80003034 reads PIO 0x01c20800. PA2 mux bits8..11 become3 and PA2 pull bits4..5 at +0x1c become0. [F1C100S pinctrl](https://github.com/torvalds/linux/blob/master/drivers/pinctrl/sunxi/pinctrl-suniv-f1c100s.c) maps PA2/function3 to PWM0. PWM fields agree with [sun4i PWM layout](https://github.com/torvalds/linux/blob/master/drivers/pwm/pwm-sun4i.c): enable bit4, polarity bit5, clock gate bit6, prescaler low4. All tested sound frequencies use prescaler15 and a nominal 24 MHz code literal. Actual source clock, wiring and acoustic delay remain unmeasured.
 
 Address correction (2026-11-07): file word offsets 0x63ac8..0x63ae8 map to linked 0x80063aa8..0x80063ac8 at base 0x7fffffe0. Earlier prose was displaced by 0x20; raw-diff JSON was correct. Pointer load 0x80042d98 reaches the unchanged PWM prescaler table at 0x80063acc, not the changed nine-cell block. The changed block remains unclassified.
+
+
+## 2026-11-07: pinned F1C100S reference pipeline integrated
+
+Reference acquisition/licensing: `references/f1c100s/README.md` and `sources.lock.json`. Subsystem register anchors and identification methods: `references/f1c100s/F1C100S_REFERENCE_MAP.md` / `register-map.json`. Runner/method: `tools/analyze_f1c100s_references.py` / `tools/F1C100S_REFERENCE_ANALYSIS.md`.
+
+All fifteen requested subsystem areas now have reference register anchors and concrete identification methods in F1C100S_REFERENCE_MAP.md. The map includes CPU/vector/boot, INTC, timers/watchdog, GPIO, PWM, UART, SPI/TWI, DMA, LCD/framebuffer, CCU/reset and cache/MMU/DRAM. Internal KEYADC/RTP are kept distinct from the established external measurement UART2 protocol. FNIRSI FPGA/ADC wiring is not transferred to YS-4470.
+
+Watchdog helpers are tested against inert RAM shadows only. No real watchdog, FEL, flash, bootloader or RAM-code operation occurred. Unlicensed/proprietary-SDK comparison artifacts are not copied into the reconstructed firmware.

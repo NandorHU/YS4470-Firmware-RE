@@ -157,3 +157,10 @@ Original V3.6/V3.8 pass 792 gate/PWM cases, 160 Fast CONT result-qualifier cases
 Resolved: Fast CONT result qualification, gate arguments, first peripheral-facing sound access and PWM-off semantics. Open: helper0x80007c88 three-slot history/range selection; fresh-response versus call cadence; actual clock/acoustic delay; user-visible labels for duty word +0x0c and sound-enable word +0x10. Modified nine-cell version data remains unclassified; it is not the PWM prescaler table.
 
 Address correction (2026-11-07): file word offsets 0x63ac8..0x63ae8 map to linked 0x80063aa8..0x80063ac8 at base 0x7fffffe0. Earlier prose was displaced by 0x20; raw-diff JSON was correct. Pointer load 0x80042d98 reaches the unchanged PWM prescaler table at 0x80063acc, not the changed nine-cell block. The changed block remains unclassified.
+
+
+## 2026-11-07: pinned F1C100S reference pipeline integrated
+
+Reference acquisition/licensing: `references/f1c100s/README.md` and `sources.lock.json`. Subsystem register anchors and identification methods: `references/f1c100s/F1C100S_REFERENCE_MAP.md` / `register-map.json`. Runner/method: `tools/analyze_f1c100s_references.py` / `tools/F1C100S_REFERENCE_ANALYSIS.md`.
+
+New reference track: resolve INTC vector/handler indirection around0x80005260/0x80005274 and timer setup around0x800071a8 using path-aware CFGs and original-code tests. Validate reference inconsistencies against exact-chip documentation. Extend comparison to resolved literal values and relocation targets, genuine boundaries, Thumb and indirect calls before strengthening identity claims. Current normalized/masked comparison finds no accepted candidates among97 functions per image. Preserve the pending Fast CONT helper0x80007c88 task and physical-cadence/acoustic-delay questions.

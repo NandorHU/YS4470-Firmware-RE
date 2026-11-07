@@ -204,3 +204,10 @@ Original V3.6/V3.8 pass 792 gate/PWM cases, 160 Fast CONT result-qualifier cases
 | 0x01c21000 / +4 | PWM control / period-duty word |
 
 Address correction (2026-11-07): file word offsets 0x63ac8..0x63ae8 map to linked 0x80063aa8..0x80063ac8 at base 0x7fffffe0. Earlier prose was displaced by 0x20; raw-diff JSON was correct. Pointer load 0x80042d98 reaches the unchanged PWM prescaler table at 0x80063acc, not the changed nine-cell block. The changed block remains unclassified.
+
+
+## 2026-11-07: pinned F1C100S reference pipeline integrated
+
+Reference acquisition/licensing: `references/f1c100s/README.md` and `sources.lock.json`. Subsystem register anchors and identification methods: `references/f1c100s/F1C100S_REFERENCE_MAP.md` / `register-map.json`. Runner/method: `tools/analyze_f1c100s_references.py` / `tools/F1C100S_REFERENCE_ANALYSIS.md`.
+
+Reference inventory contains34 block bases,361 literal register-enum entries in15 groups and428 annotated offset claims. They retain source/line provenance and are distinct from verified YS addresses. The new executed watchdog accesses are TIMER base0x01c20c00 plus0xb0 (keyed control) and0xb8 (mode). Exception-vector, ROM, SRAM, DRAM/framebuffer candidates and reference header inconsistencies are documented in the subsystem map. The upstream BROM artifact is65,535 bytes; it is not asserted to be a complete chip dump.

@@ -202,3 +202,15 @@ Original V3.6/V3.8 pass 792 gate/PWM cases, 160 Fast CONT result-qualifier cases
 Helper 0x80007c88 is a pending history/range-selection candidate; its full algorithm has not been executed in this harness.
 
 Address correction (2026-11-07): file word offsets 0x63ac8..0x63ae8 map to linked 0x80063aa8..0x80063ac8 at base 0x7fffffe0. Earlier prose was displaced by 0x20; raw-diff JSON was correct. Pointer load 0x80042d98 reaches the unchanged PWM prescaler table at 0x80063acc, not the changed nine-cell block. The changed block remains unclassified.
+
+
+## 2026-11-07: pinned F1C100S reference pipeline integrated
+
+Reference acquisition/licensing: `references/f1c100s/README.md` and `sources.lock.json`. Subsystem register anchors and identification methods: `references/f1c100s/F1C100S_REFERENCE_MAP.md` / `register-map.json`. Runner/method: `tools/analyze_f1c100s_references.py` / `tools/F1C100S_REFERENCE_ANALYSIS.md`.
+
+| V3.6/V3.8 entry | Bounded proven behavior | Evidence |
+|---|---|---|
+| 0x800085c4 | WDG_CTRL at0x01c20cb0 read-modify-write: old OR0x14af; returns via LR | eight inert-shadow seeds per original; reference timer header/feed key agrees |
+| 0x800085e0 | WDG_MODE at0x01c20cb8 read-modify-write: old OR1; returns via LR | eight inert-shadow seeds per original |
+
+These analysis labels are RE_WatchdogKeyedControlUpdate and RE_WatchdogModeEnable. They do not claim hardware timeout/reset behavior or byte identity with the reference feed routine (which writes a constant). Other MMIO/CP15/BL leads remain candidates in the reference report. No reference function match has been promoted on a similarity score alone. PyGhidra preserves existing names/comments and exports all six proof-backed functions.

@@ -165,3 +165,12 @@ Original V3.6/V3.8 pass 792 gate/PWM cases, 160 Fast CONT result-qualifier cases
 ResultDispatch special path 0x80003910 requires UI mode=4, Fast CONT=1 exactly, and config byte +7=0x22. Sound gate requires settings +0x10=1, clamps selector to 1..10, uses the unchanged tone table at 0x80063968, and programs PA2 function3/PWM0. Off writes zero active duty while PWM enable/clock-gating remain set. Next bounded task: reconstruct helper 0x80007c88 history/range selection and its calls into this verified gate.
 
 Address correction (2026-11-07): file word offsets 0x63ac8..0x63ae8 map to linked 0x80063aa8..0x80063ac8 at base 0x7fffffe0. Earlier prose was displaced by 0x20; raw-diff JSON was correct. Pointer load 0x80042d98 reaches the unchanged PWM prescaler table at 0x80063acc, not the changed nine-cell block. The changed block remains unclassified.
+
+
+## 2026-11-07: pinned F1C100S reference pipeline integrated
+
+Reference acquisition/licensing: `references/f1c100s/README.md` and `sources.lock.json`. Subsystem register anchors and identification methods: `references/f1c100s/F1C100S_REFERENCE_MAP.md` / `register-map.json`. Runner/method: `tools/analyze_f1c100s_references.py` / `tools/F1C100S_REFERENCE_ANALYSIS.md`.
+
+Four user-requested upstream projects are downloaded as clean detached, pinned checkouts. Five driver sources were cross-compiled for ARM926 (Zig0.13.0) and eight prebuilt SDK objects read separately. Among97 eligible reference functions per original, the conservative matching pass finds no new accepted whole-body/normalized candidates; it does not equate shared names, sizes, prologues or MMIO constants.
+
+Per original:142 MMIO-literal leads,129 following-address-use candidates,10 CP15 leads and11,914 raw aligned BL candidates (1,004 target candidates). These are linear ARM hypotheses, not a recovered whole-firmware call graph. Full graphs are stored as deterministic gzip. Two watchdog helper behaviors at0x800085c4/0x800085e0 are independently executed on ARM926:32 total cases pass. Real PyGhidra exports six proof-backed entries per original, with five new RE_ labels and SoundControlGate's existing name retained. Seven positive/negative pipeline tests pass. Firmware originals and the physical device are unchanged.

@@ -172,3 +172,10 @@ Original V3.6/V3.8 pass 792 gate/PWM cases, 160 Fast CONT result-qualifier cases
 Tone requests use table [2000,2222,2444,2666,2888,3110,3332,3554,3776,4000]. period_ns=floor(1e9/frequency); duty uses signed half-setting and original float32 rounding. For selector5/setting90: 2888Hz requested, period346260ns, duty155816ns. Off sets duty0; it does not clear PWM enable. Result qualification and sentinel-off (0,0) call setup are executed; measurement thresholds, formatting and helper0x80007c88 are outside this experiment.
 
 Address correction (2026-11-07): file word offsets 0x63ac8..0x63ae8 map to linked 0x80063aa8..0x80063ac8 at base 0x7fffffe0. Earlier prose was displaced by 0x20; raw-diff JSON was correct. Pointer load 0x80042d98 reaches the unchanged PWM prescaler table at 0x80063acc, not the changed nine-cell block. The changed block remains unclassified.
+
+
+## 2026-11-07: pinned F1C100S reference pipeline integrated
+
+Reference acquisition/licensing: `references/f1c100s/README.md` and `sources.lock.json`. Subsystem register anchors and identification methods: `references/f1c100s/F1C100S_REFERENCE_MAP.md` / `register-map.json`. Runner/method: `tools/analyze_f1c100s_references.py` / `tools/F1C100S_REFERENCE_ANALYSIS.md`.
+
+Reference matching adds hardware-context leads, not new measurement-ADC semantics. UART2 remains the evidenced measurement transport; KEYADC/RTP references do not establish an internal converter role. The completed parser, Fast CONT setting, sound/PWM and new watchdog experiments are separate bounded proofs. Fast CONT helper0x80007c88 history/range-selection reconstruction remains pending; no millisecond/physical latency is assigned.
