@@ -230,3 +230,21 @@ Evidence: `evidence/2026-11-07-intc-timer-path.json`, `evidence/2026-11-07-intc-
 | 0x01c20c00/+4/+0x10/+0x14 | timer IRQ enable/status and timer0 control/interval |
 
 Pure C uses a separate24-byte state structure; that is a reconstruction API layout, not the original split-RAM layout. Factory initial history/count/median are not established by seeding the emulator.
+
+
+## 2026-11-07: stored-result freshness and corrected refresh entries
+
+Evidence: `evidence/2026-11-07-result-freshness.json` / `evidence/2026-11-07-result-freshness-ghidra.json`. Reproduction/scope: `tools/RESULT_FRESHNESS.md`, `tools/trace_result_freshness.py`.
+
+| Address | Verified use in the bounded refresh model |
+|---|---|
+| 0x805abefc+9 (0x805abf05) | initial callback warmup byte:0→1→2;>=2 permits ResultDispatch |
+| 0x805aae8c+1 (0x805aae8d) | independent parser discard byte; callback leaves it unchanged |
+| 0x805ac714+0x1c/+0x20 | shared stored raw result/selector; unchanged during primary counterexample |
+| 0x805abeb8 | root holding the callback handle returned by creation API |
+| handle+0 | word updated with callback period argument25/100/200 |
+| 0x80003af8 | float32 divisor bits0x452f499a =2804.60009765625 |
+| 0x80003afc | unsigned negative-clamp comparison bits0x80800000 |
+| 0x80003b00 | rejection threshold bits0x447a0000 =1000.0 |
+
+The fixture's timer handle and initial raw/history state are synthetic. They are not live SRAM observations or recovered factory initialization values.

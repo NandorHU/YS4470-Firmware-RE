@@ -192,3 +192,16 @@ Selectors from the retained value:0..19→10,20..39→8,40..59→6,60..79→4,80
 Persistent example: stable[5,5,5] establishes selector10; the first two subsequent500 inputs retain that tone, the third establishes median500/off. Alternating500/5 preserves the previous tone through the tested16 unstable inputs. Input1001 resets immediately;1000 takes the regular ring path. There is no independent expiry of the retained median in this helper.
 
 Own C component: `reconstruction/fast_cont.c` / `.h`, no board SDK/libc/peripheral access. Compiled ARM926 C, independent Python and original ARM agree after every tested input, including every history field and full original sound/PWM effect. Contract: index0..2/count0..3. The earlier two-discard parser lifecycle must not be converted into an additive millisecond delay without proving fresh-result coupling.
+
+
+## 2026-11-07: stored-result freshness and corrected refresh entries
+
+Evidence: `evidence/2026-11-07-result-freshness.json` / `evidence/2026-11-07-result-freshness-ghidra.json`. Reproduction/scope: `tools/RESULT_FRESHNESS.md`, `tools/trace_result_freshness.py`.
+
+The callback at0x8005d048 queues event4 for config0x22, independently of a new result. After UI warmup byte+9 reaches2 it calls ResultDispatch. The parser's discard byte is a different address and is not consumed by this path. With stored raw14023 and no parser step, five callback invocations give filter fills0,0,1,2,3 and retained median5/on. Thus three filter calls cannot be counted as three newly published UART samples.
+
+An interleaved admitted-command0x1b sequence proves discard2→1→0 preserves the previous result while callbacks continue filtering it. The next parser entry publishes raw1402300; three callback uses of that one stored publication establish median500/off. The tests do not model an actual UART ISR, queue delivery or scheduler.
+
+Caller conversion: float32(raw)/float32(2804.60009765625), observed negative-bit clamp, reject>=1000.0, then truncate accepted values to0..999. Raw2804600 produces999 after the actual float32 path;2804601 is rejected. The0x007fffff sentinel also bypasses the filter. Both off paths preserve its prior history/median, so returning to an accepted value can reuse that retained state on the next call. This qualifies the earlier standalone helper result: its>1000 reset exists but this accepted caller path does not reach it. Source scalar units remain unassigned.
+
+Renderer/queue/printf/creation side effects are API boundaries. The original memclr, numeric conversion, parser slice, filter and sound/PWM instructions execute. No additive two-discard+three-new-sample or millisecond latency formula follows.

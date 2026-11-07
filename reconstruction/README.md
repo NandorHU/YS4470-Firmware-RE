@@ -27,3 +27,9 @@ inert MMIO shadows. See `tools/FAST_CONT_FILTER.md` and the evidence JSON.
 
 This component requests a sound selector; hardware enable settings, PWM output,
 UI formatting, parser admission and scheduling remain separate responsibilities.
+
+The later original-caller experiment (`tools/RESULT_FRESHNESS.md`) shows an
+accepted argument range0..999 and rejection paths that bypass this helper while
+preserving its state. Its standalone>1000 reset is not the full caller policy.
+Repeated uses of a stored result can fill the ring in the bounded refresh model;
+this component does not certify that its calls represent fresh UART samples.

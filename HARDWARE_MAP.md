@@ -133,3 +133,10 @@ Evidence: `evidence/2026-11-07-intc-timer-path.json`, `evidence/2026-11-07-intc-
 YS uses INTC_VECTOR as a pointer to a handler slot, unlike the reference pending-bit scan/IRQ-number examples. Register routine initializes base to0x805ab944 once; mode0 uses a separate table, modes1..7 the primary table. Priority is cleared/replaced but the caller value is not masked to two bits; invalid high priorities can spill into neighboring fields. No out-of-range IRQ/channel index was executed.
 
 The linked original startup path configures timer0 with24000 cycles, IRQ13 priority3 and registered status handler0x8005bf54, then sets control7. IRQ bridge0x8000230c tests pending bit13 and directly calls tick0x80061fa4, optionally scheduler0x800612f8, bypassing ordinary dispatch on that branch. Tick/scheduler bodies are stubs in the bridge experiment. Inert register shadows do not model clock progress, interrupt clearing or actual exception restoration.
+
+
+## 2026-11-07: stored-result freshness and corrected refresh entries
+
+Evidence: `evidence/2026-11-07-result-freshness.json` / `evidence/2026-11-07-result-freshness-ghidra.json`. Reproduction/scope: `tools/RESULT_FRESHNESS.md`, `tools/trace_result_freshness.py`.
+
+No new device access occurred. This run links a GUI callback to stored measurement data and the already verified sound/PWM path using inert shadows. Callback period arguments25/100/200 are not assigned milliseconds. The nominal1kHz RTOS timer setup alone does not prove callback scheduling, UART sample cadence or acoustic latency. A queued command is not a completed measurement reply in this model.

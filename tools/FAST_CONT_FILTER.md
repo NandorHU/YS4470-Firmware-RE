@@ -76,6 +76,18 @@ python tools/trace_fast_cont_filter.py `
   --out evidence/2026-11-07-fast-cont-filter.json
 ```
 
-Next: trace the ResultDispatch caller and its scheduling/admission contract to
-establish which calls consume a new UART result. Keep the actual device clock
-and acoustic timing as separate hardware validation questions.
+## Caller contract established in the next bounded experiment
+
+`RESULT_FRESHNESS.md` and `evidence/2026-11-07-result-freshness.json` establish
+that ResultDispatch accepts only integer0..999 into this helper. A sentinel or
+scaled value>=1000 bypasses the helper and requests off while retaining its
+history/median. Thus the standalone>1000 reset above exists, but is not reached
+through that caller's accepted-value branch.
+
+The bounded refresh model also refills the ring from one unchanged stored
+result without a parser entry. Its three filter calls do not imply three new
+UART samples. Queue/renderer/printf/creation APIs are explicit stubs there;
+factory power-on state, live cadence and acoustic behavior remain open.
+
+Next: audit the excluded renderer/queue state effects, and bound tick/timeout
+consumers before assigning time units.

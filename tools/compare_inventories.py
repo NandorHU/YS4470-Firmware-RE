@@ -16,6 +16,16 @@ def load(path: Path) -> dict[str, Any]:
     return report
 
 
+def validate_provenance(reports: list[dict[str, Any]]) -> None:
+    versions = [r['version'] for r in reports]
+    if len(versions) != len(set(versions)):
+        raise ValueError('duplicate version labels; no input may be silently overwritten')
+    revisions = {r['import'].get('seed_revision', 'legacy-unversioned') for r in reports}
+    modes = {r['import']['analysis_mode'] for r in reports}
+    if len(revisions) != 1 or len(modes) != 1:
+        raise ValueError('incompatible seed revisions/analysis modes; re-export with matching provenance before inferring firmware changes')
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--report", action="append", type=Path, required=True)
@@ -24,6 +34,10 @@ def main() -> None:
     args = parser.parse_args()
 
     reports = [load(path) for path in args.report]
+    try:
+        validate_provenance(reports)
+    except ValueError as exc:
+        parser.error(str(exc))
     by_version = {report["version"]: report for report in reports}
     names = sorted({fn["proposed_name"] for report in reports for fn in report["functions"]})
     rows = []
@@ -79,6 +93,7 @@ def main() -> None:
                 "sha256": report["input"]["sha256"],
                 "link_base": report["import"]["link_base"],
                 "analysis_mode": report["import"]["analysis_mode"],
+                "seed_revision": report["import"].get("seed_revision", "legacy-unversioned"),
             }
             for report in reports
         },
@@ -151,4 +166,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

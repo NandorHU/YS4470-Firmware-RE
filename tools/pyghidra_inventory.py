@@ -27,7 +27,7 @@ LANGUAGE = "ARM:LE:32:v5t"
 # Roles and confidence are imported from earlier bounded-disassembly evidence.
 # Do not promote candidate names to factory symbols without new evidence.
 SEEDS = (
-    (0x800037BC, "ResultDispatch_entry", "confirmed", "result-dispatch entry"),
+    (0x800037C0, "ResultDispatch_entry", "confirmed", "result-dispatch entry; old0x800037bc was literal data"),
     (0x80003A0C, "DiodeValidityBranch", "confirmed", "diode-result validity branch"),
     (0x80004490, "MeasurementFSM", "confirmed", "eight-state reply/command FSM"),
     (0x8000489C, "TransactionBuilder", "confirmed", "measurement transaction state builder"),
@@ -38,7 +38,7 @@ SEEDS = (
     (0x800073BC, "UART_RX_ISR", "confirmed", "measurement-frame UART receive ISR"),
     (0x8000D294, "HighspeedEventHandler", "confirmed", "factory Highspeed event handler"),
     (0x80010754, "Beta3SoundTableHook_candidate", "hypothesis", "Beta3 target reached from SoundControlGate"),
-    (0x8005D1A0, "HighspeedDiodePeriodSelector_region", "hypothesis", "verified region, function boundary open"),
+    (0x8005D048, "MeasurementRefreshCallback", "confirmed", "refresh callback;0x8005d1a0 is its ResultDispatch call site"),
     (0x80060130, "Beta3ResultValueHook_candidate", "hypothesis", "Beta3 target reached from ResultDispatch_entry"),
 )
 
@@ -231,6 +231,7 @@ def inventory(version: str, raw_path: Path, out_dir: Path, ghidra_dir: Path, ful
             "language": LANGUAGE,
             "link_base": f"0x{LINK_BASE:08x}",
             "analysis_mode": "full" if full_analysis else ("proof-labels-only" if labels_only else "bounded-seeded"),
+            "seed_revision": "not-used" if labels_only else "2026-11-07-corrected-result-refresh-entries",
             "note": "Seed names are labels with explicit confidence; they are not recovered vendor symbols.",
         },
         "functions": functions,
