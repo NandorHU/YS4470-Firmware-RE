@@ -297,3 +297,25 @@ Original V3.6/V3.8 pass 792 gate/PWM cases, 160 Fast CONT result-qualifier cases
 Proved gate conditions and full code path to emulated peripheral registers. Found zero-duty off semantics, unchanged tone/prescaler data, settings duty conversion and state flags. No physical device operation occurred. Next exact point: helper0x80007c88 history/range selection → verified gate; retain response cadence and acoustic latency as open.
 
 Address correction (2026-11-07): file word offsets 0x63ac8..0x63ae8 map to linked 0x80063aa8..0x80063ac8 at base 0x7fffffe0. Earlier prose was displaced by 0x20; raw-diff JSON was correct. Pointer load 0x80042d98 reaches the unchanged PWM prescaler table at 0x80063acc, not the changed nine-cell block. The changed block remains unclassified.
+
+
+## 2026-11-07: pinned F1C100S reference pipeline integrated
+
+Reference acquisition/licensing: `references/f1c100s/README.md` and `sources.lock.json`. Subsystem register anchors and identification methods: `references/f1c100s/F1C100S_REFERENCE_MAP.md` / `register-map.json`. Runner/method: `tools/analyze_f1c100s_references.py` / `tools/F1C100S_REFERENCE_ANALYSIS.md`.
+
+- Downloaded all four requested references into isolated pinned checkouts; canonical LF checkout and source hashes make intake reviewable. Root GPL texts exist for FNIRSI and F1C100s_projects; no root license found in F1C100s_info/f1c_nonos. No reference code enters our reconstructed firmware.
+- Added a working source/register inventory, five-source ARM926 cross-build, ELF/relocation-aware byte comparison, normalized candidate ranking, MMIO-literal/operand survey, CP15 leads and full compressed BL-candidate graphs.97 eligible reference functions per original; zero accepted matching candidates at current thresholds.
+- Per original:142 MMIO literals,129 address-use candidates,10 CP15 leads,11,914 raw BL candidates and1,004 target candidates. Code-survey results match across originals; these counts are not confirmed functions.
+- Used reference watchdog offsets/key to locate and execute two original helper routines.32 inert-shadow cases pass across both originals.
+- Integrated proof-gated labels into existing PyGhidra inventory, fixed the old seed-renaming behavior to preserve analyst/imported names, and exported assembly/decompilation for six proven entries per original. Five new RE_ labels are applied per image; SoundControlGate retains its name.
+- Seven positive/negative tests pass, including mutated body, masked relocation, pointer clobber, branch stop, hash/proof rejection and preservation/idempotence. Actual PyGhidra/JDK runs pass in disposable projects. Validation report: `evidence/2026-11-07-f1c100s-reference/pyghidra-reference-validation.json`.
+- Local Zig compiler required an unsandboxed compile because of Windows sandbox temporary-file/process failures; output/cache stays in workspace. Existing PyGhidra API works with a deprecation warning. No physical device was accessed.
+
+### Exact next continuation point
+
+1. On the reference track, validate INTC dispatcher0x80005260/registration region0x80005274 and timer setup near0x800071a8, including indirect targets and actual function bounds.
+2. On the measurement track, resume Fast CONT helper0x80007c88 history/range selection → already validated sound gate.
+3. Extend reference matching only after resolving constants/callees and adding Thumb/path-aware coverage; never rename from a similarity score alone.
+4. Keep raw firmware/private backups unchanged and hardware cadence/acoustic latency unresolved.
+
+Evidence: `evidence/2026-11-07-f1c100s-reference/reference-analysis.json`; method: `tools/F1C100S_REFERENCE_ANALYSIS.md`.

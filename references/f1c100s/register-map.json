@@ -1,0 +1,4684 @@
+{
+  "schema": "ys4470.f1c100s.reference-registers.v1",
+  "bases": [
+    {
+      "name": "SRAMC",
+      "base": 29360128,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 7
+    },
+    {
+      "name": "DRAMC",
+      "base": 29364224,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 8
+    },
+    {
+      "name": "DMA",
+      "base": 29368320,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 9
+    },
+    {
+      "name": "SPI0",
+      "base": 29380608,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 10
+    },
+    {
+      "name": "SPI1",
+      "base": 29384704,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 11
+    },
+    {
+      "name": "TVE",
+      "base": 29401088,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 12
+    },
+    {
+      "name": "TVD",
+      "base": 29405184,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 13
+    },
+    {
+      "name": "TCON",
+      "base": 29409280,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 14
+    },
+    {
+      "name": "VE",
+      "base": 29417472,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 15
+    },
+    {
+      "name": "SDC0",
+      "base": 29421568,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 16
+    },
+    {
+      "name": "SDC1",
+      "base": 29425664,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 17
+    },
+    {
+      "name": "USB",
+      "base": 29437952,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 18
+    },
+    {
+      "name": "CCU",
+      "base": 29491200,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 19
+    },
+    {
+      "name": "INTC",
+      "base": 29492224,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 20
+    },
+    {
+      "name": "GPIO",
+      "base": 29493248,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 21
+    },
+    {
+      "name": "TIMER",
+      "base": 29494272,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 22
+    },
+    {
+      "name": "PWM",
+      "base": 29495296,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 23
+    },
+    {
+      "name": "OWA",
+      "base": 29496320,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 24
+    },
+    {
+      "name": "RSB",
+      "base": 29497344,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 25
+    },
+    {
+      "name": "I2S",
+      "base": 29499392,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 26
+    },
+    {
+      "name": "CIR",
+      "base": 29502464,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 27
+    },
+    {
+      "name": "KEYADC",
+      "base": 29504512,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 28
+    },
+    {
+      "name": "CODEC",
+      "base": 29506560,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 29
+    },
+    {
+      "name": "RTP",
+      "base": 29509632,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 30
+    },
+    {
+      "name": "UART0",
+      "base": 29511680,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 31
+    },
+    {
+      "name": "UART1",
+      "base": 29512704,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 32
+    },
+    {
+      "name": "UART2",
+      "base": 29513728,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 33
+    },
+    {
+      "name": "I2C0",
+      "base": 29519872,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 34
+    },
+    {
+      "name": "I2C1",
+      "base": 29520896,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 35
+    },
+    {
+      "name": "I2C2",
+      "base": 29521920,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 36
+    },
+    {
+      "name": "CAMERA",
+      "base": 30081024,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 37
+    },
+    {
+      "name": "DEFE",
+      "base": 31457280,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 38
+    },
+    {
+      "name": "DEBE",
+      "base": 31850496,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 39
+    },
+    {
+      "name": "DEIN",
+      "base": 31916032,
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_periph.h",
+      "line": 40
+    }
+  ],
+  "register_enums": [
+    {
+      "enum": "ccu_reg_e",
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_clock.h",
+      "registers": [
+        {
+          "name": "CCU_PLL_CPU_CTRL",
+          "offset": 0,
+          "line": 11
+        },
+        {
+          "name": "CCU_PLL_AUDIO_CTRL",
+          "offset": 8,
+          "line": 12
+        },
+        {
+          "name": "CCU_PLL_VIDEO_CTRL",
+          "offset": 16,
+          "line": 13
+        },
+        {
+          "name": "CCU_PLL_VE_CTRL",
+          "offset": 24,
+          "line": 14
+        },
+        {
+          "name": "CCU_PLL_DDR_CTRL",
+          "offset": 32,
+          "line": 15
+        },
+        {
+          "name": "CCU_PLL_PERIPH_CTRL",
+          "offset": 40,
+          "line": 16
+        },
+        {
+          "name": "CCU_CPU_CFG",
+          "offset": 80,
+          "line": 17
+        },
+        {
+          "name": "CCU_AHB_APB_CFG",
+          "offset": 84,
+          "line": 18
+        },
+        {
+          "name": "CCU_BUS_CLK_GATE0",
+          "offset": 96,
+          "line": 20
+        },
+        {
+          "name": "CCU_BUS_CLK_GATE1",
+          "offset": 100,
+          "line": 21
+        },
+        {
+          "name": "CCU_BUS_CLK_GATE2",
+          "offset": 104,
+          "line": 22
+        },
+        {
+          "name": "CCU_SDMMC0_CLK",
+          "offset": 136,
+          "line": 24
+        },
+        {
+          "name": "CCU_SDMMC1_CLK",
+          "offset": 140,
+          "line": 25
+        },
+        {
+          "name": "CCU_DAUDIO_CLK",
+          "offset": 176,
+          "line": 26
+        },
+        {
+          "name": "CCU_SPDIF_CLK",
+          "offset": 180,
+          "line": 27
+        },
+        {
+          "name": "CCU_I2S_CLK",
+          "offset": 184,
+          "line": 28
+        },
+        {
+          "name": "CCU_USBPHY_CFG",
+          "offset": 204,
+          "line": 29
+        },
+        {
+          "name": "CCU_DRAM_CLK_GATE",
+          "offset": 256,
+          "line": 30
+        },
+        {
+          "name": "CCU_DEBE_CLK",
+          "offset": 260,
+          "line": 31
+        },
+        {
+          "name": "CCU_DEFE_CLK",
+          "offset": 268,
+          "line": 32
+        },
+        {
+          "name": "CCU_TCON_CLK",
+          "offset": 280,
+          "line": 33
+        },
+        {
+          "name": "CCU_DEINTERLACE_CLK",
+          "offset": 284,
+          "line": 34
+        },
+        {
+          "name": "CCU_TVE_CLK",
+          "offset": 288,
+          "line": 35
+        },
+        {
+          "name": "CCU_TVD_CLK",
+          "offset": 292,
+          "line": 36
+        },
+        {
+          "name": "CCU_CSI_CLK",
+          "offset": 308,
+          "line": 37
+        },
+        {
+          "name": "CCU_VE_CLK",
+          "offset": 316,
+          "line": 38
+        },
+        {
+          "name": "CCU_ADDA_CLK",
+          "offset": 320,
+          "line": 39
+        },
+        {
+          "name": "CCU_AVS_CLK",
+          "offset": 324,
+          "line": 40
+        },
+        {
+          "name": "CCU_PLL_STABLE_TIME0",
+          "offset": 512,
+          "line": 42
+        },
+        {
+          "name": "CCU_PLL_STABLE_TIME1",
+          "offset": 516,
+          "line": 43
+        },
+        {
+          "name": "CCU_PLL_CPU_BIAS",
+          "offset": 544,
+          "line": 44
+        },
+        {
+          "name": "CCU_PLL_AUDIO_BIAS",
+          "offset": 548,
+          "line": 45
+        },
+        {
+          "name": "CCU_PLL_VIDEO_BIAS",
+          "offset": 552,
+          "line": 46
+        },
+        {
+          "name": "CCU_PLL_VE_BIAS",
+          "offset": 556,
+          "line": 47
+        },
+        {
+          "name": "CCU_PLL_DDR0_BIAS",
+          "offset": 560,
+          "line": 48
+        },
+        {
+          "name": "CCU_PLL_PERIPH_BIAS",
+          "offset": 564,
+          "line": 49
+        },
+        {
+          "name": "CCU_PLL_CPU_TUN",
+          "offset": 592,
+          "line": 50
+        },
+        {
+          "name": "CCU_PLL_DDR_TUN",
+          "offset": 608,
+          "line": 51
+        },
+        {
+          "name": "CCU_PLL_AUDIO_PAT",
+          "offset": 644,
+          "line": 52
+        },
+        {
+          "name": "CCU_PLL_VIDEO_PAT",
+          "offset": 648,
+          "line": 53
+        },
+        {
+          "name": "CCU_PLL_DDR0_PAT",
+          "offset": 656,
+          "line": 54
+        },
+        {
+          "name": "CCU_BUS_SOFT_RST0",
+          "offset": 704,
+          "line": 56
+        },
+        {
+          "name": "CCU_BUS_SOFT_RST1",
+          "offset": 708,
+          "line": 57
+        },
+        {
+          "name": "CCU_BUS_SOFT_RST2",
+          "offset": 720,
+          "line": 58
+        }
+      ]
+    },
+    {
+      "enum": "tcon_reg_e",
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_de.h",
+      "registers": [
+        {
+          "name": "TCON_CTRL",
+          "offset": 0,
+          "line": 13
+        },
+        {
+          "name": "TCON_INT0",
+          "offset": 4,
+          "line": 14
+        },
+        {
+          "name": "TCON_INT1",
+          "offset": 8,
+          "line": 15
+        },
+        {
+          "name": "TCON_FRM_CTRL",
+          "offset": 16,
+          "line": 16
+        },
+        {
+          "name": "TCON_FRM_SEED",
+          "offset": 20,
+          "line": 17
+        },
+        {
+          "name": "TCON_FRM_TABLE",
+          "offset": 44,
+          "line": 18
+        },
+        {
+          "name": "TCON0_CTRL",
+          "offset": 64,
+          "line": 20
+        },
+        {
+          "name": "TCON0_DCLK",
+          "offset": 68,
+          "line": 21
+        },
+        {
+          "name": "TCON0_TIMING_ACT",
+          "offset": 72,
+          "line": 22
+        },
+        {
+          "name": "TCON0_TIMING_H",
+          "offset": 76,
+          "line": 23
+        },
+        {
+          "name": "TCON0_TIMING_V",
+          "offset": 80,
+          "line": 24
+        },
+        {
+          "name": "TCON0_TIMING_SYNC",
+          "offset": 84,
+          "line": 25
+        },
+        {
+          "name": "TCON0_HV_INTF",
+          "offset": 88,
+          "line": 26
+        },
+        {
+          "name": "TCON0_CPU_INTF",
+          "offset": 96,
+          "line": 27
+        },
+        {
+          "name": "TCON0_CPU_WR_DAT",
+          "offset": 100,
+          "line": 28
+        },
+        {
+          "name": "TCON0_CPU_RD_DAT0",
+          "offset": 104,
+          "line": 29
+        },
+        {
+          "name": "TCON0_CPU_RD_DAT1",
+          "offset": 108,
+          "line": 30
+        },
+        {
+          "name": "TCON0_IO_POLARITY",
+          "offset": 136,
+          "line": 31
+        },
+        {
+          "name": "TCON0_IO_TRISTATE",
+          "offset": 140,
+          "line": 32
+        },
+        {
+          "name": "TCON1_CTRL",
+          "offset": 144,
+          "line": 34
+        },
+        {
+          "name": "TCON1_TIMING_SRC",
+          "offset": 148,
+          "line": 35
+        },
+        {
+          "name": "TCON1_TIMING_SCALE",
+          "offset": 152,
+          "line": 36
+        },
+        {
+          "name": "TCON1_TIMING_OUT",
+          "offset": 156,
+          "line": 37
+        },
+        {
+          "name": "TCON1_TIMING_H",
+          "offset": 160,
+          "line": 38
+        },
+        {
+          "name": "TCON1_TIMING_V",
+          "offset": 164,
+          "line": 39
+        },
+        {
+          "name": "TCON1_TIMING_SYNC",
+          "offset": 168,
+          "line": 40
+        },
+        {
+          "name": "TCON1_IO_POLARITY",
+          "offset": 240,
+          "line": 41
+        },
+        {
+          "name": "TCON1_IO_TRISTATE",
+          "offset": 244,
+          "line": 42
+        },
+        {
+          "name": "TCON_DEBUG",
+          "offset": 252,
+          "line": 44
+        }
+      ]
+    },
+    {
+      "enum": "debe_reg_e",
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_de.h",
+      "registers": [
+        {
+          "name": "DEBE_MODE",
+          "offset": 2048,
+          "line": 48
+        },
+        {
+          "name": "DEBE_BACKCOLOR",
+          "offset": 2052,
+          "line": 49
+        },
+        {
+          "name": "DEBE_LAY_SIZE",
+          "offset": 2064,
+          "line": 50
+        },
+        {
+          "name": "DEBE_LAY_POS",
+          "offset": 2080,
+          "line": 51
+        },
+        {
+          "name": "DEBE_LAY_STRIDE",
+          "offset": 2112,
+          "line": 52
+        },
+        {
+          "name": "DEBE_LAY_ADDR",
+          "offset": 2128,
+          "line": 53
+        },
+        {
+          "name": "DEBE_REGBUF_CTRL",
+          "offset": 2160,
+          "line": 54
+        },
+        {
+          "name": "DEBE_CKEY_MAX",
+          "offset": 2176,
+          "line": 55
+        },
+        {
+          "name": "DEBE_CKEY_MIN",
+          "offset": 2180,
+          "line": 56
+        },
+        {
+          "name": "DEBE_CKEY_CFG",
+          "offset": 2184,
+          "line": 57
+        },
+        {
+          "name": "DEBE_LAY_ATTR0",
+          "offset": 2192,
+          "line": 58
+        },
+        {
+          "name": "DEBE_LAY_ATTR1",
+          "offset": 2208,
+          "line": 59
+        },
+        {
+          "name": "DEBE_HWC_CTRL",
+          "offset": 2264,
+          "line": 60
+        },
+        {
+          "name": "DEBE_HWC_FORMAT",
+          "offset": 2272,
+          "line": 61
+        },
+        {
+          "name": "DEBE_WB_CTRL",
+          "offset": 2288,
+          "line": 62
+        },
+        {
+          "name": "DEBE_WB_ADDR",
+          "offset": 2292,
+          "line": 63
+        },
+        {
+          "name": "DEBE_WB_STRIDE",
+          "offset": 2296,
+          "line": 64
+        },
+        {
+          "name": "DEBE_YUV_IN_CTRL",
+          "offset": 2336,
+          "line": 65
+        },
+        {
+          "name": "DEBE_YUV_ADDR",
+          "offset": 2352,
+          "line": 66
+        },
+        {
+          "name": "DEBE_YUV_STRIDE",
+          "offset": 2368,
+          "line": 67
+        },
+        {
+          "name": "DEBE_COLOR_COEF",
+          "offset": 2384,
+          "line": 68
+        },
+        {
+          "name": "DEBE_PALETTE",
+          "offset": 4096,
+          "line": 69
+        },
+        {
+          "name": "DEBE_HWC_PATTERN",
+          "offset": 5120,
+          "line": 70
+        },
+        {
+          "name": "DEBE_HWC_PALETTE",
+          "offset": 5632,
+          "line": 71
+        }
+      ]
+    },
+    {
+      "enum": "defe_reg_e",
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_de.h",
+      "registers": [
+        {
+          "name": "DEFE_EN",
+          "offset": 0,
+          "line": 75
+        },
+        {
+          "name": "DEFE_FRM_CTRL",
+          "offset": 4,
+          "line": 76
+        },
+        {
+          "name": "DEFE_BYPASS",
+          "offset": 8,
+          "line": 77
+        },
+        {
+          "name": "DEFE_AGTH_SEL",
+          "offset": 12,
+          "line": 78
+        },
+        {
+          "name": "DEFE_INT_LINE",
+          "offset": 16,
+          "line": 79
+        },
+        {
+          "name": "DEFE_ADDR0",
+          "offset": 32,
+          "line": 80
+        },
+        {
+          "name": "DEFE_ADDR1",
+          "offset": 36,
+          "line": 81
+        },
+        {
+          "name": "DEFE_ADDR2",
+          "offset": 40,
+          "line": 82
+        },
+        {
+          "name": "DEFE_FIELD_CTRL",
+          "offset": 44,
+          "line": 83
+        },
+        {
+          "name": "DEFE_TB_OFF0",
+          "offset": 48,
+          "line": 84
+        },
+        {
+          "name": "DEFE_TB_OFF1",
+          "offset": 52,
+          "line": 85
+        },
+        {
+          "name": "DEFE_TB_OFF2",
+          "offset": 56,
+          "line": 86
+        },
+        {
+          "name": "DEFE_STRIDE0",
+          "offset": 64,
+          "line": 87
+        },
+        {
+          "name": "DEFE_STRIDE1",
+          "offset": 68,
+          "line": 88
+        },
+        {
+          "name": "DEFE_STRIDE2",
+          "offset": 72,
+          "line": 89
+        },
+        {
+          "name": "DEFE_IN_FMT",
+          "offset": 76,
+          "line": 90
+        },
+        {
+          "name": "DEFE_WB_ADDR",
+          "offset": 80,
+          "line": 91
+        },
+        {
+          "name": "DEFE_OUT_FMT",
+          "offset": 92,
+          "line": 92
+        },
+        {
+          "name": "DEFE_INT_EN",
+          "offset": 96,
+          "line": 93
+        },
+        {
+          "name": "DEFE_INT_STATUS",
+          "offset": 100,
+          "line": 94
+        },
+        {
+          "name": "DEFE_STATUS",
+          "offset": 104,
+          "line": 95
+        },
+        {
+          "name": "DEFE_CSC_COEF",
+          "offset": 112,
+          "line": 96
+        },
+        {
+          "name": "DEFE_IN_SIZE",
+          "offset": 256,
+          "line": 97
+        },
+        {
+          "name": "DEFE_OUT_SIZE",
+          "offset": 260,
+          "line": 98
+        },
+        {
+          "name": "DEFE_H_FACT",
+          "offset": 264,
+          "line": 99
+        },
+        {
+          "name": "DEFE_V_FACT",
+          "offset": 268,
+          "line": 100
+        },
+        {
+          "name": "DEFE_CH0_H_COEF",
+          "offset": 1024,
+          "line": 101
+        },
+        {
+          "name": "DEFE_CH0_V_COEF",
+          "offset": 1280,
+          "line": 102
+        },
+        {
+          "name": "DEFE_CH1_H_COEF",
+          "offset": 1536,
+          "line": 103
+        },
+        {
+          "name": "DEFE_CH1_V_COEF",
+          "offset": 1792,
+          "line": 104
+        }
+      ]
+    },
+    {
+      "enum": "debe_reg_update_e",
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_de.h",
+      "registers": [
+        {
+          "name": "DE_8080_MODE_18BIT_256K",
+          "offset": 0,
+          "line": 124
+        },
+        {
+          "name": "DE_8080_MODE_16BIT_0",
+          "offset": 1,
+          "line": 125
+        },
+        {
+          "name": "DE_8080_MODE_16BIT_1",
+          "offset": 2,
+          "line": 126
+        },
+        {
+          "name": "DE_8080_MODE_16BIT_2",
+          "offset": 3,
+          "line": 127
+        },
+        {
+          "name": "DE_8080_MODE_16BIT_3",
+          "offset": 4,
+          "line": 128
+        },
+        {
+          "name": "DE_8080_MODE_9BIT",
+          "offset": 5,
+          "line": 129
+        },
+        {
+          "name": "DE_8080_MODE_8BIT_256K",
+          "offset": 6,
+          "line": 130
+        },
+        {
+          "name": "DE_8080_MODE_8BIT_65K",
+          "offset": 7,
+          "line": 131
+        },
+        {
+          "name": "DEBE_UPDATE_MANUAL",
+          "offset": 3,
+          "line": 140
+        },
+        {
+          "name": "DEBE_UPDATE_AUTO",
+          "offset": 0,
+          "line": 141
+        }
+      ]
+    },
+    {
+      "enum": "gpio_reg_e",
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_gpio.h",
+      "registers": [
+        {
+          "name": "GPIO_CFG0",
+          "offset": 0,
+          "line": 22
+        },
+        {
+          "name": "GPIO_CFG1",
+          "offset": 4,
+          "line": 23
+        },
+        {
+          "name": "GPIO_CFG2",
+          "offset": 8,
+          "line": 24
+        },
+        {
+          "name": "GPIO_CFG3",
+          "offset": 12,
+          "line": 25
+        },
+        {
+          "name": "GPIO_DATA",
+          "offset": 16,
+          "line": 26
+        },
+        {
+          "name": "GPIO_DRV0",
+          "offset": 20,
+          "line": 27
+        },
+        {
+          "name": "GPIO_DRV1",
+          "offset": 24,
+          "line": 28
+        },
+        {
+          "name": "GPIO_PUL0",
+          "offset": 28,
+          "line": 29
+        },
+        {
+          "name": "GPIO_PUL1",
+          "offset": 32,
+          "line": 30
+        }
+      ]
+    },
+    {
+      "enum": "gpio_int_reg_e",
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_gpio.h",
+      "registers": [
+        {
+          "name": "GPIO_INT_CFG0",
+          "offset": 0,
+          "line": 34
+        },
+        {
+          "name": "GPIO_INT_CFG1",
+          "offset": 4,
+          "line": 35
+        },
+        {
+          "name": "GPIO_INT_CFG2",
+          "offset": 8,
+          "line": 36
+        },
+        {
+          "name": "GPIO_INT_CFG3",
+          "offset": 12,
+          "line": 37
+        },
+        {
+          "name": "GPIO_INT_CTRL",
+          "offset": 16,
+          "line": 38
+        },
+        {
+          "name": "GPIO_INT_STA",
+          "offset": 20,
+          "line": 39
+        },
+        {
+          "name": "GPIO_INT_DEB",
+          "offset": 24,
+          "line": 40
+        }
+      ]
+    },
+    {
+      "enum": "intc_reg_e",
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_intc.h",
+      "registers": [
+        {
+          "name": "INTC_VECTOR",
+          "offset": 0,
+          "line": 11
+        },
+        {
+          "name": "INTC_BASE_ADDR",
+          "offset": 4,
+          "line": 12
+        },
+        {
+          "name": "INTC_NMI_CTRL",
+          "offset": 12,
+          "line": 13
+        },
+        {
+          "name": "INTC_PEND0",
+          "offset": 16,
+          "line": 14
+        },
+        {
+          "name": "INTC_PEND1",
+          "offset": 20,
+          "line": 15
+        },
+        {
+          "name": "INTC_ENABLE0",
+          "offset": 32,
+          "line": 16
+        },
+        {
+          "name": "INTC_ENABLE1",
+          "offset": 36,
+          "line": 17
+        },
+        {
+          "name": "INTC_MASK0",
+          "offset": 48,
+          "line": 18
+        },
+        {
+          "name": "INTC_MASK1",
+          "offset": 52,
+          "line": 19
+        },
+        {
+          "name": "INTC_RESP0",
+          "offset": 64,
+          "line": 20
+        },
+        {
+          "name": "INTC_RESP1",
+          "offset": 68,
+          "line": 21
+        },
+        {
+          "name": "INTC_FORCE0",
+          "offset": 80,
+          "line": 22
+        },
+        {
+          "name": "INTC_FORCE1",
+          "offset": 84,
+          "line": 23
+        },
+        {
+          "name": "INTC_PRIORITY0",
+          "offset": 96,
+          "line": 24
+        },
+        {
+          "name": "INTC_PRIORITY1",
+          "offset": 100,
+          "line": 25
+        },
+        {
+          "name": "INTC_PRIORITY2",
+          "offset": 104,
+          "line": 26
+        },
+        {
+          "name": "INTC_PRIORITY3",
+          "offset": 108,
+          "line": 27
+        }
+      ]
+    },
+    {
+      "enum": "pwm_reg_e",
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_pwm.h",
+      "registers": [
+        {
+          "name": "PWM0",
+          "offset": 0,
+          "line": 11
+        },
+        {
+          "name": "PWM1",
+          "offset": 1,
+          "line": 12
+        },
+        {
+          "name": "PWM_CTRL",
+          "offset": 0,
+          "line": 16
+        },
+        {
+          "name": "PWM_CH0",
+          "offset": 4,
+          "line": 17
+        },
+        {
+          "name": "PWM_CH1",
+          "offset": 8,
+          "line": 18
+        }
+      ]
+    },
+    {
+      "enum": "sdc_reg_e",
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_sdc.h",
+      "registers": [
+        {
+          "name": "SDC_GCTL",
+          "offset": 0,
+          "line": 11
+        },
+        {
+          "name": "SDC_CKCR",
+          "offset": 4,
+          "line": 12
+        },
+        {
+          "name": "SDC_TMOR",
+          "offset": 8,
+          "line": 13
+        },
+        {
+          "name": "SDC_BWDR",
+          "offset": 12,
+          "line": 14
+        },
+        {
+          "name": "SDC_BKSR",
+          "offset": 16,
+          "line": 15
+        },
+        {
+          "name": "SDC_BYCR",
+          "offset": 20,
+          "line": 16
+        },
+        {
+          "name": "SDC_CMDR",
+          "offset": 24,
+          "line": 17
+        },
+        {
+          "name": "SDC_CAGR",
+          "offset": 28,
+          "line": 18
+        },
+        {
+          "name": "SDC_RESP0",
+          "offset": 32,
+          "line": 19
+        },
+        {
+          "name": "SDC_RESP1",
+          "offset": 36,
+          "line": 20
+        },
+        {
+          "name": "SDC_RESP2",
+          "offset": 40,
+          "line": 21
+        },
+        {
+          "name": "SDC_RESP3",
+          "offset": 44,
+          "line": 22
+        },
+        {
+          "name": "SDC_IMKR",
+          "offset": 48,
+          "line": 23
+        },
+        {
+          "name": "SDC_MISR",
+          "offset": 52,
+          "line": 24
+        },
+        {
+          "name": "SDC_RISR",
+          "offset": 56,
+          "line": 25
+        },
+        {
+          "name": "SDC_STAR",
+          "offset": 60,
+          "line": 26
+        },
+        {
+          "name": "SDC_FWLR",
+          "offset": 64,
+          "line": 27
+        },
+        {
+          "name": "SDC_FUNS",
+          "offset": 68,
+          "line": 28
+        },
+        {
+          "name": "SDC_CBCR",
+          "offset": 72,
+          "line": 29
+        },
+        {
+          "name": "SDC_BBCR",
+          "offset": 76,
+          "line": 30
+        },
+        {
+          "name": "SDC_DBCR",
+          "offset": 80,
+          "line": 31
+        },
+        {
+          "name": "SDC_A12A",
+          "offset": 88,
+          "line": 32
+        },
+        {
+          "name": "SDC_HWRST",
+          "offset": 120,
+          "line": 34
+        },
+        {
+          "name": "SDC_DMAC",
+          "offset": 128,
+          "line": 35
+        },
+        {
+          "name": "SDC_DLBA",
+          "offset": 132,
+          "line": 36
+        },
+        {
+          "name": "SDC_IDST",
+          "offset": 136,
+          "line": 37
+        },
+        {
+          "name": "SDC_IDIE",
+          "offset": 140,
+          "line": 38
+        },
+        {
+          "name": "SDC_THLDC",
+          "offset": 256,
+          "line": 39
+        },
+        {
+          "name": "SDC_DSBD",
+          "offset": 268,
+          "line": 40
+        },
+        {
+          "name": "SDC_FIFO",
+          "offset": 512,
+          "line": 42
+        }
+      ]
+    },
+    {
+      "enum": "tim_reg_e",
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_timer.h",
+      "registers": [
+        {
+          "name": "TIM0",
+          "offset": 0,
+          "line": 11
+        },
+        {
+          "name": "TIM1",
+          "offset": 1,
+          "line": 12
+        },
+        {
+          "name": "TIM2",
+          "offset": 2,
+          "line": 13
+        },
+        {
+          "name": "TIM_IRQ_EN",
+          "offset": 0,
+          "line": 17
+        },
+        {
+          "name": "TIM_IRQ_STA",
+          "offset": 4,
+          "line": 18
+        },
+        {
+          "name": "TIM_0_CTRL",
+          "offset": 16,
+          "line": 19
+        },
+        {
+          "name": "TIM_0_INTV",
+          "offset": 20,
+          "line": 20
+        },
+        {
+          "name": "TIM_0_CUR",
+          "offset": 24,
+          "line": 21
+        },
+        {
+          "name": "TIM_1_CTRL",
+          "offset": 32,
+          "line": 22
+        },
+        {
+          "name": "TIM_1_INTV",
+          "offset": 36,
+          "line": 23
+        },
+        {
+          "name": "TIM_1_CUR",
+          "offset": 40,
+          "line": 24
+        },
+        {
+          "name": "TIM_2_CTRL",
+          "offset": 48,
+          "line": 25
+        },
+        {
+          "name": "TIM_2_INTV",
+          "offset": 52,
+          "line": 26
+        },
+        {
+          "name": "TIM_2_CUR",
+          "offset": 56,
+          "line": 27
+        },
+        {
+          "name": "AVS_CTRL",
+          "offset": 128,
+          "line": 29
+        },
+        {
+          "name": "AVS_CNT0",
+          "offset": 132,
+          "line": 30
+        },
+        {
+          "name": "AVS_CNT1",
+          "offset": 136,
+          "line": 31
+        },
+        {
+          "name": "AVS_DIV",
+          "offset": 140,
+          "line": 32
+        },
+        {
+          "name": "WDG_IRQ_EN",
+          "offset": 160,
+          "line": 34
+        },
+        {
+          "name": "WDG_IRQ_STA",
+          "offset": 164,
+          "line": 35
+        },
+        {
+          "name": "WDG_CTRL",
+          "offset": 176,
+          "line": 36
+        },
+        {
+          "name": "WDG_CFG",
+          "offset": 180,
+          "line": 37
+        },
+        {
+          "name": "WDG_MODE",
+          "offset": 184,
+          "line": 38
+        }
+      ]
+    },
+    {
+      "enum": "tp_reg_e",
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_touch.h",
+      "registers": [
+        {
+          "name": "TP_CTRL0",
+          "offset": 0,
+          "line": 11
+        },
+        {
+          "name": "TP_CTRL1",
+          "offset": 4,
+          "line": 12
+        },
+        {
+          "name": "TP_CTRL2",
+          "offset": 8,
+          "line": 13
+        },
+        {
+          "name": "TP_CTRL3",
+          "offset": 12,
+          "line": 14
+        },
+        {
+          "name": "TP_INT_FIFO_CTRL",
+          "offset": 16,
+          "line": 15
+        },
+        {
+          "name": "TP_INT_FIFO_STAT",
+          "offset": 20,
+          "line": 16
+        },
+        {
+          "name": "TP_COM_DATA",
+          "offset": 28,
+          "line": 17
+        },
+        {
+          "name": "TP_DATA",
+          "offset": 36,
+          "line": 18
+        }
+      ]
+    },
+    {
+      "enum": "tvd_reg_e",
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_tvd.h",
+      "registers": [
+        {
+          "name": "TVD_REG_000",
+          "offset": 0,
+          "line": 11
+        },
+        {
+          "name": "TVD_REG_004",
+          "offset": 4,
+          "line": 12
+        },
+        {
+          "name": "TVD_REG_008",
+          "offset": 8,
+          "line": 13
+        },
+        {
+          "name": "TVD_REG_00C",
+          "offset": 12,
+          "line": 14
+        },
+        {
+          "name": "TVD_REG_010",
+          "offset": 16,
+          "line": 15
+        },
+        {
+          "name": "TVD_REG_014",
+          "offset": 20,
+          "line": 16
+        },
+        {
+          "name": "TVD_REG_018",
+          "offset": 24,
+          "line": 17
+        },
+        {
+          "name": "TVD_REG_01C",
+          "offset": 28,
+          "line": 18
+        },
+        {
+          "name": "TVD_REG_040",
+          "offset": 64,
+          "line": 20
+        },
+        {
+          "name": "TVD_REG_048",
+          "offset": 72,
+          "line": 21
+        },
+        {
+          "name": "TVD_REG_04C",
+          "offset": 76,
+          "line": 22
+        },
+        {
+          "name": "TVD_REG_050",
+          "offset": 80,
+          "line": 23
+        },
+        {
+          "name": "TVD_REG_054",
+          "offset": 84,
+          "line": 24
+        },
+        {
+          "name": "TVD_REG_058",
+          "offset": 88,
+          "line": 25
+        },
+        {
+          "name": "TVD_REG_05C",
+          "offset": 92,
+          "line": 26
+        },
+        {
+          "name": "TVD_REG_060",
+          "offset": 96,
+          "line": 27
+        },
+        {
+          "name": "TVD_REG_064",
+          "offset": 100,
+          "line": 28
+        },
+        {
+          "name": "TVD_REG_068",
+          "offset": 104,
+          "line": 29
+        },
+        {
+          "name": "TVD_REG_06C",
+          "offset": 108,
+          "line": 30
+        },
+        {
+          "name": "TVD_REG_070",
+          "offset": 112,
+          "line": 31
+        },
+        {
+          "name": "TVD_DMA_ADDR_Y",
+          "offset": 128,
+          "line": 33
+        },
+        {
+          "name": "TVD_DMA_ADDR_C",
+          "offset": 132,
+          "line": 34
+        },
+        {
+          "name": "TVD_DMA_CFG",
+          "offset": 136,
+          "line": 35
+        },
+        {
+          "name": "TVD_DMA_SIZE",
+          "offset": 140,
+          "line": 36
+        },
+        {
+          "name": "TVD_DMA_STRIDE",
+          "offset": 144,
+          "line": 37
+        },
+        {
+          "name": "TVD_DMA_IRQ0",
+          "offset": 148,
+          "line": 38
+        },
+        {
+          "name": "TVD_DMA_IRQ1",
+          "offset": 156,
+          "line": 39
+        },
+        {
+          "name": "TVD_REG_0B0",
+          "offset": 176,
+          "line": 41
+        },
+        {
+          "name": "TVD_REG_0B4",
+          "offset": 180,
+          "line": 42
+        },
+        {
+          "name": "TVD_REG_E04",
+          "offset": 3588,
+          "line": 44
+        },
+        {
+          "name": "TVD_REG_E0C",
+          "offset": 3596,
+          "line": 45
+        },
+        {
+          "name": "TVD_REG_E2C",
+          "offset": 3628,
+          "line": 46
+        },
+        {
+          "name": "TVD_REG_E30",
+          "offset": 3632,
+          "line": 47
+        },
+        {
+          "name": "TVD_STATE_0",
+          "offset": 3648,
+          "line": 49
+        },
+        {
+          "name": "TVD_STATE_1",
+          "offset": 3652,
+          "line": 50
+        },
+        {
+          "name": "TVD_STATE_2",
+          "offset": 3656,
+          "line": 51
+        },
+        {
+          "name": "TVD_STATE_3",
+          "offset": 3660,
+          "line": 52
+        },
+        {
+          "name": "TVD_STATE_4",
+          "offset": 3664,
+          "line": 53
+        },
+        {
+          "name": "TVD_REG_F08",
+          "offset": 3848,
+          "line": 55
+        },
+        {
+          "name": "TVD_REG_F0C",
+          "offset": 3852,
+          "line": 56
+        },
+        {
+          "name": "TVD_REG_F10",
+          "offset": 3856,
+          "line": 57
+        },
+        {
+          "name": "TVD_REG_F14",
+          "offset": 3860,
+          "line": 58
+        },
+        {
+          "name": "TVD_REG_F18",
+          "offset": 3864,
+          "line": 59
+        },
+        {
+          "name": "TVD_REG_F1C",
+          "offset": 3868,
+          "line": 60
+        },
+        {
+          "name": "TVD_REG_F20",
+          "offset": 3872,
+          "line": 61
+        },
+        {
+          "name": "TVD_REG_F24",
+          "offset": 3876,
+          "line": 62
+        },
+        {
+          "name": "TVD_REG_F28",
+          "offset": 3880,
+          "line": 63
+        },
+        {
+          "name": "TVD_REG_F2C",
+          "offset": 3884,
+          "line": 64
+        },
+        {
+          "name": "TVD_REG_F30",
+          "offset": 3888,
+          "line": 65
+        },
+        {
+          "name": "TVD_REG_F34",
+          "offset": 3892,
+          "line": 66
+        },
+        {
+          "name": "TVD_REG_F38",
+          "offset": 3896,
+          "line": 67
+        },
+        {
+          "name": "TVD_REG_F3C",
+          "offset": 3900,
+          "line": 68
+        },
+        {
+          "name": "TVD_REG_F40",
+          "offset": 3904,
+          "line": 69
+        },
+        {
+          "name": "TVD_REG_F44",
+          "offset": 3908,
+          "line": 70
+        },
+        {
+          "name": "TVD_REG_F48",
+          "offset": 3912,
+          "line": 71
+        },
+        {
+          "name": "TVD_REG_F4C",
+          "offset": 3916,
+          "line": 72
+        },
+        {
+          "name": "TVD_REG_F50",
+          "offset": 3920,
+          "line": 73
+        },
+        {
+          "name": "TVD_REG_F54",
+          "offset": 3924,
+          "line": 74
+        },
+        {
+          "name": "TVD_REG_F58",
+          "offset": 3928,
+          "line": 75
+        },
+        {
+          "name": "TVD_REG_F5C",
+          "offset": 3932,
+          "line": 76
+        },
+        {
+          "name": "TVD_REG_F60",
+          "offset": 3936,
+          "line": 77
+        },
+        {
+          "name": "TVD_REG_F64",
+          "offset": 3940,
+          "line": 78
+        },
+        {
+          "name": "TVD_REG_F68",
+          "offset": 3944,
+          "line": 79
+        },
+        {
+          "name": "TVD_REG_F6C",
+          "offset": 3948,
+          "line": 80
+        },
+        {
+          "name": "TVD_REG_F70",
+          "offset": 3952,
+          "line": 81
+        },
+        {
+          "name": "TVD_REG_F74",
+          "offset": 3956,
+          "line": 82
+        },
+        {
+          "name": "TVD_REG_F78",
+          "offset": 3960,
+          "line": 83
+        },
+        {
+          "name": "TVD_REG_F7C",
+          "offset": 3964,
+          "line": 84
+        },
+        {
+          "name": "TVD_REG_F80",
+          "offset": 3968,
+          "line": 85
+        },
+        {
+          "name": "TVD_REG_F84",
+          "offset": 3972,
+          "line": 86
+        }
+      ]
+    },
+    {
+      "enum": "tve_reg_e",
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_tve.h",
+      "registers": [
+        {
+          "name": "TVE_ENABLE",
+          "offset": 0,
+          "line": 11
+        },
+        {
+          "name": "TVE_CFG1",
+          "offset": 4,
+          "line": 12
+        },
+        {
+          "name": "TVE_DAC1",
+          "offset": 8,
+          "line": 13
+        },
+        {
+          "name": "TVE_NOTCH_DELAY",
+          "offset": 12,
+          "line": 14
+        },
+        {
+          "name": "TVE_CHROMA_FREQ",
+          "offset": 16,
+          "line": 15
+        },
+        {
+          "name": "TVE_FB_PORCH",
+          "offset": 20,
+          "line": 16
+        },
+        {
+          "name": "TVE_HD_VS",
+          "offset": 24,
+          "line": 17
+        },
+        {
+          "name": "TVE_LINE_NUM",
+          "offset": 28,
+          "line": 18
+        },
+        {
+          "name": "TVE_LEVEL",
+          "offset": 32,
+          "line": 19
+        },
+        {
+          "name": "TVE_DAC2",
+          "offset": 36,
+          "line": 20
+        },
+        {
+          "name": "TVE_AUTO_EN",
+          "offset": 48,
+          "line": 21
+        },
+        {
+          "name": "TVE_AUTO_ISR",
+          "offset": 52,
+          "line": 22
+        },
+        {
+          "name": "TVE_AUTO_SR",
+          "offset": 56,
+          "line": 23
+        },
+        {
+          "name": "TVE_AUTO_DEB",
+          "offset": 60,
+          "line": 24
+        },
+        {
+          "name": "TVE_CSC1",
+          "offset": 64,
+          "line": 25
+        },
+        {
+          "name": "TVE_CSC2",
+          "offset": 68,
+          "line": 26
+        },
+        {
+          "name": "TVE_CSC3",
+          "offset": 72,
+          "line": 27
+        },
+        {
+          "name": "TVE_CSC4",
+          "offset": 76,
+          "line": 28
+        },
+        {
+          "name": "TVE_REG_0F8",
+          "offset": 248,
+          "line": 29
+        },
+        {
+          "name": "TVE_REG_0FC",
+          "offset": 252,
+          "line": 30
+        },
+        {
+          "name": "TVE_CB_RESET",
+          "offset": 256,
+          "line": 31
+        },
+        {
+          "name": "TVE_VS_NUM",
+          "offset": 260,
+          "line": 32
+        },
+        {
+          "name": "TVE_FILTER",
+          "offset": 264,
+          "line": 33
+        },
+        {
+          "name": "TVE_CBCR_LEVEL",
+          "offset": 268,
+          "line": 34
+        },
+        {
+          "name": "TVE_TINT_PHASE",
+          "offset": 272,
+          "line": 35
+        },
+        {
+          "name": "TVE_B_WIDTH",
+          "offset": 276,
+          "line": 36
+        },
+        {
+          "name": "TVE_CBCR_GAIN",
+          "offset": 280,
+          "line": 37
+        },
+        {
+          "name": "TVE_SYNC_LEVEL",
+          "offset": 284,
+          "line": 38
+        },
+        {
+          "name": "TVE_WHITE_LEVEL",
+          "offset": 288,
+          "line": 39
+        },
+        {
+          "name": "TVE_ACT_LINE",
+          "offset": 292,
+          "line": 40
+        },
+        {
+          "name": "TVE_CHROMA_BW",
+          "offset": 296,
+          "line": 41
+        },
+        {
+          "name": "TVE_CFG2",
+          "offset": 300,
+          "line": 42
+        },
+        {
+          "name": "TVE_RESYNC",
+          "offset": 304,
+          "line": 43
+        },
+        {
+          "name": "TVE_SLAVE",
+          "offset": 308,
+          "line": 44
+        },
+        {
+          "name": "TVE_CFG3",
+          "offset": 312,
+          "line": 45
+        },
+        {
+          "name": "TVE_CFG4",
+          "offset": 316,
+          "line": 46
+        }
+      ]
+    },
+    {
+      "enum": "uart_reg_e",
+      "source": "nminaylov/F1C100s_projects:f1c100s/drivers/inc/f1c100s_uart.h",
+      "registers": [
+        {
+          "name": "UART_RBR",
+          "offset": 0,
+          "line": 15
+        },
+        {
+          "name": "UART_THR",
+          "offset": 0,
+          "line": 16
+        },
+        {
+          "name": "UART_DLL",
+          "offset": 0,
+          "line": 17
+        },
+        {
+          "name": "UART_IER",
+          "offset": 4,
+          "line": 18
+        },
+        {
+          "name": "UART_DLH",
+          "offset": 4,
+          "line": 19
+        },
+        {
+          "name": "UART_IIR",
+          "offset": 8,
+          "line": 20
+        },
+        {
+          "name": "UART_FCR",
+          "offset": 8,
+          "line": 21
+        },
+        {
+          "name": "UART_LCR",
+          "offset": 12,
+          "line": 22
+        },
+        {
+          "name": "UART_MCR",
+          "offset": 16,
+          "line": 23
+        },
+        {
+          "name": "UART_LSR",
+          "offset": 20,
+          "line": 24
+        },
+        {
+          "name": "UART_MSR",
+          "offset": 24,
+          "line": 25
+        },
+        {
+          "name": "UART_SCR",
+          "offset": 28,
+          "line": 26
+        },
+        {
+          "name": "UART_USR",
+          "offset": 124,
+          "line": 28
+        },
+        {
+          "name": "UART_TFL",
+          "offset": 128,
+          "line": 29
+        },
+        {
+          "name": "UART_RFL",
+          "offset": 132,
+          "line": 30
+        },
+        {
+          "name": "UART_HSK",
+          "offset": 136,
+          "line": 31
+        },
+        {
+          "name": "UART_HALT",
+          "offset": 164,
+          "line": 32
+        },
+        {
+          "name": "UART_DBG_DLL",
+          "offset": 176,
+          "line": 33
+        },
+        {
+          "name": "UART_DBG_DLH",
+          "offset": 180,
+          "line": 34
+        }
+      ]
+    }
+  ],
+  "annotated_offsets": {
+    "source": "minilogic/f1c_nonos:drv/f1c100s.h",
+    "entries": [
+      {
+        "section": "SYS",
+        "name": "CTRL",
+        "offset": 0,
+        "line": 25
+      },
+      {
+        "section": "DRAM CONTROLLER",
+        "name": "SCONR",
+        "offset": 0,
+        "line": 31
+      },
+      {
+        "section": "DRAM CONTROLLER",
+        "name": "STMG",
+        "offset": 4,
+        "line": 32
+      },
+      {
+        "section": "DRAM CONTROLLER",
+        "name": "SCTLR",
+        "offset": 12,
+        "line": 33
+      },
+      {
+        "section": "DRAM CONTROLLER",
+        "name": "SREFR",
+        "offset": 16,
+        "line": 34
+      },
+      {
+        "section": "DRAM CONTROLLER",
+        "name": "SEXTMR",
+        "offset": 20,
+        "line": 35
+      },
+      {
+        "section": "DRAM CONTROLLER",
+        "name": "DDLYR",
+        "offset": 36,
+        "line": 36
+      },
+      {
+        "section": "DRAM CONTROLLER",
+        "name": "DADRR",
+        "offset": 40,
+        "line": 37
+      },
+      {
+        "section": "DRAM CONTROLLER",
+        "name": "DVALR",
+        "offset": 44,
+        "line": 38
+      },
+      {
+        "section": "DRAM CONTROLLER",
+        "name": "DRPTR",
+        "offset": 48,
+        "line": 39
+      },
+      {
+        "section": "DRAM CONTROLLER",
+        "name": "SEFR",
+        "offset": 64,
+        "line": 40
+      },
+      {
+        "section": "DRAM CONTROLLER",
+        "name": "MAE",
+        "offset": 68,
+        "line": 41
+      },
+      {
+        "section": "DRAM CONTROLLER",
+        "name": "ASPR",
+        "offset": 72,
+        "line": 42
+      },
+      {
+        "section": "DRAM CONTROLLER",
+        "name": "SDLY",
+        "offset": 76,
+        "line": 43
+      },
+      {
+        "section": "DRAM CONTROLLER",
+        "name": "MCR",
+        "offset": 256,
+        "line": 44
+      },
+      {
+        "section": "DRAM CONTROLLER",
+        "name": "BWCR",
+        "offset": 320,
+        "line": 45
+      },
+      {
+        "section": "DRAM PAD",
+        "name": "DRV",
+        "offset": 0,
+        "line": 51
+      },
+      {
+        "section": "DRAM PAD",
+        "name": "PUL",
+        "offset": 4,
+        "line": 52
+      },
+      {
+        "section": "CCU",
+        "name": "PLL_CPU_CTRL",
+        "offset": 0,
+        "line": 58
+      },
+      {
+        "section": "CCU",
+        "name": "PLL_AUDIO_CTRL",
+        "offset": 8,
+        "line": 60
+      },
+      {
+        "section": "CCU",
+        "name": "PLL_VIDEO_CTRL",
+        "offset": 16,
+        "line": 62
+      },
+      {
+        "section": "CCU",
+        "name": "PLL_VE_CTRL",
+        "offset": 24,
+        "line": 64
+      },
+      {
+        "section": "CCU",
+        "name": "PLL_DDR_CTRL",
+        "offset": 32,
+        "line": 66
+      },
+      {
+        "section": "CCU",
+        "name": "PLL_PERIPH_CTRL",
+        "offset": 40,
+        "line": 68
+      },
+      {
+        "section": "CCU",
+        "name": "CPU_CLK_SRC",
+        "offset": 80,
+        "line": 70
+      },
+      {
+        "section": "CCU",
+        "name": "AHB_APB_CFG",
+        "offset": 84,
+        "line": 71
+      },
+      {
+        "section": "CCU",
+        "name": "BUS_CLK_GATING0",
+        "offset": 96,
+        "line": 73
+      },
+      {
+        "section": "CCU",
+        "name": "BUS_CLK_GATING1",
+        "offset": 100,
+        "line": 74
+      },
+      {
+        "section": "CCU",
+        "name": "BUS_CLK_GATING2",
+        "offset": 104,
+        "line": 75
+      },
+      {
+        "section": "CCU",
+        "name": "SDMMC0_CLK",
+        "offset": 136,
+        "line": 77
+      },
+      {
+        "section": "CCU",
+        "name": "SDMMC1_CLK",
+        "offset": 140,
+        "line": 78
+      },
+      {
+        "section": "CCU",
+        "name": "DAUDIO_CLK",
+        "offset": 176,
+        "line": 80
+      },
+      {
+        "section": "CCU",
+        "name": "OWA_CLK",
+        "offset": 180,
+        "line": 81
+      },
+      {
+        "section": "CCU",
+        "name": "CIR_CLK",
+        "offset": 184,
+        "line": 82
+      },
+      {
+        "section": "CCU",
+        "name": "USBPHY_CFG",
+        "offset": 204,
+        "line": 84
+      },
+      {
+        "section": "CCU",
+        "name": "DRAM_GATING",
+        "offset": 256,
+        "line": 86
+      },
+      {
+        "section": "CCU",
+        "name": "BE_CLK",
+        "offset": 260,
+        "line": 87
+      },
+      {
+        "section": "CCU",
+        "name": "FE_CLK",
+        "offset": 268,
+        "line": 89
+      },
+      {
+        "section": "CCU",
+        "name": "TCON_CLK",
+        "offset": 280,
+        "line": 91
+      },
+      {
+        "section": "CCU",
+        "name": "DI_CLK",
+        "offset": 284,
+        "line": 92
+      },
+      {
+        "section": "CCU",
+        "name": "TVE_CLK",
+        "offset": 288,
+        "line": 93
+      },
+      {
+        "section": "CCU",
+        "name": "TVD_CLK",
+        "offset": 292,
+        "line": 94
+      },
+      {
+        "section": "CCU",
+        "name": "CSI_CLK",
+        "offset": 308,
+        "line": 96
+      },
+      {
+        "section": "CCU",
+        "name": "VE_CLK",
+        "offset": 316,
+        "line": 98
+      },
+      {
+        "section": "CCU",
+        "name": "AC_DIG_CLK",
+        "offset": 320,
+        "line": 99
+      },
+      {
+        "section": "CCU",
+        "name": "AVS_CLK",
+        "offset": 324,
+        "line": 100
+      },
+      {
+        "section": "CCU",
+        "name": "PLL_STABLE0",
+        "offset": 512,
+        "line": 102
+      },
+      {
+        "section": "CCU",
+        "name": "PLL_STABLE1",
+        "offset": 516,
+        "line": 103
+      },
+      {
+        "section": "CCU",
+        "name": "PLL_CPU_BIAS",
+        "offset": 544,
+        "line": 105
+      },
+      {
+        "section": "CCU",
+        "name": "PLL_AUDIO_BIAS",
+        "offset": 548,
+        "line": 106
+      },
+      {
+        "section": "CCU",
+        "name": "PLL_VIDEO_BIAS",
+        "offset": 552,
+        "line": 107
+      },
+      {
+        "section": "CCU",
+        "name": "PLL_VE_BIAS",
+        "offset": 556,
+        "line": 108
+      },
+      {
+        "section": "CCU",
+        "name": "PLL_DDR_BIAS",
+        "offset": 560,
+        "line": 109
+      },
+      {
+        "section": "CCU",
+        "name": "PLL_PERIPH_BIAS",
+        "offset": 564,
+        "line": 110
+      },
+      {
+        "section": "CCU",
+        "name": "PLL_CPU_TUNING",
+        "offset": 592,
+        "line": 112
+      },
+      {
+        "section": "CCU",
+        "name": "PLL_DDR_TUNING",
+        "offset": 608,
+        "line": 114
+      },
+      {
+        "section": "CCU",
+        "name": "PLL_AUDIO_PAT",
+        "offset": 644,
+        "line": 116
+      },
+      {
+        "section": "CCU",
+        "name": "PLL_VIDEO_PAT",
+        "offset": 648,
+        "line": 117
+      },
+      {
+        "section": "CCU",
+        "name": "PLL_DDR_PAT",
+        "offset": 656,
+        "line": 119
+      },
+      {
+        "section": "CCU",
+        "name": "BUS_SOFT_RST0",
+        "offset": 704,
+        "line": 121
+      },
+      {
+        "section": "CCU",
+        "name": "BUS_SOFT_RST1",
+        "offset": 708,
+        "line": 122
+      },
+      {
+        "section": "CCU",
+        "name": "BUS_SOFT_RST2",
+        "offset": 720,
+        "line": 124
+      },
+      {
+        "section": "DMA",
+        "name": "IE",
+        "offset": 0,
+        "line": 130
+      },
+      {
+        "section": "DMA",
+        "name": "IS",
+        "offset": 4,
+        "line": 131
+      },
+      {
+        "section": "DMA",
+        "name": "PTY",
+        "offset": 8,
+        "line": 132
+      },
+      {
+        "section": "DMA",
+        "name": "CFG",
+        "offset": 0,
+        "line": 137
+      },
+      {
+        "section": "DMA",
+        "name": "SRC",
+        "offset": 4,
+        "line": 138
+      },
+      {
+        "section": "DMA",
+        "name": "DST",
+        "offset": 8,
+        "line": 139
+      },
+      {
+        "section": "DMA",
+        "name": "CNT",
+        "offset": 12,
+        "line": 140
+      },
+      {
+        "section": "DMA",
+        "name": "CFG",
+        "offset": 0,
+        "line": 148
+      },
+      {
+        "section": "DMA",
+        "name": "SRC",
+        "offset": 4,
+        "line": 149
+      },
+      {
+        "section": "DMA",
+        "name": "DST",
+        "offset": 8,
+        "line": 150
+      },
+      {
+        "section": "DMA",
+        "name": "CNT",
+        "offset": 12,
+        "line": 151
+      },
+      {
+        "section": "DMA",
+        "name": "PAR",
+        "offset": 24,
+        "line": 153
+      },
+      {
+        "section": "DMA",
+        "name": "DAT",
+        "offset": 28,
+        "line": 154
+      },
+      {
+        "section": "INTC",
+        "name": "VECTOR",
+        "offset": 0,
+        "line": 170
+      },
+      {
+        "section": "INTC",
+        "name": "BASE_ADDR",
+        "offset": 4,
+        "line": 171
+      },
+      {
+        "section": "INTC",
+        "name": "RSV",
+        "offset": 8,
+        "line": 172
+      },
+      {
+        "section": "INTC",
+        "name": "NMI_CTRL",
+        "offset": 12,
+        "line": 173
+      },
+      {
+        "section": "INTC",
+        "name": "PEND",
+        "offset": 16,
+        "line": 174
+      },
+      {
+        "section": "INTC",
+        "name": "EN",
+        "offset": 32,
+        "line": 175
+      },
+      {
+        "section": "INTC",
+        "name": "MASK",
+        "offset": 48,
+        "line": 176
+      },
+      {
+        "section": "INTC",
+        "name": "FF",
+        "offset": 80,
+        "line": 178
+      },
+      {
+        "section": "INTC",
+        "name": "PRIO",
+        "offset": 96,
+        "line": 179
+      },
+      {
+        "section": "PIO",
+        "name": "CFG0",
+        "offset": 0,
+        "line": 185
+      },
+      {
+        "section": "PIO",
+        "name": "CFG1",
+        "offset": 4,
+        "line": 186
+      },
+      {
+        "section": "PIO",
+        "name": "CFG2",
+        "offset": 8,
+        "line": 187
+      },
+      {
+        "section": "PIO",
+        "name": "CFG3",
+        "offset": 12,
+        "line": 188
+      },
+      {
+        "section": "PIO",
+        "name": "DAT",
+        "offset": 16,
+        "line": 189
+      },
+      {
+        "section": "PIO",
+        "name": "DRV0",
+        "offset": 20,
+        "line": 190
+      },
+      {
+        "section": "PIO",
+        "name": "DRV1",
+        "offset": 24,
+        "line": 191
+      },
+      {
+        "section": "PIO",
+        "name": "PUL0",
+        "offset": 28,
+        "line": 192
+      },
+      {
+        "section": "PIO",
+        "name": "PUL1",
+        "offset": 32,
+        "line": 193
+      },
+      {
+        "section": "TIMER",
+        "name": "IE",
+        "offset": 0,
+        "line": 217
+      },
+      {
+        "section": "TIMER",
+        "name": "IS",
+        "offset": 4,
+        "line": 218
+      },
+      {
+        "section": "TIMER",
+        "name": "T0_CTRL",
+        "offset": 16,
+        "line": 220
+      },
+      {
+        "section": "TIMER",
+        "name": "T0_INTV",
+        "offset": 20,
+        "line": 221
+      },
+      {
+        "section": "TIMER",
+        "name": "T0_CURV",
+        "offset": 24,
+        "line": 222
+      },
+      {
+        "section": "TIMER",
+        "name": "T1_CTRL",
+        "offset": 32,
+        "line": 224
+      },
+      {
+        "section": "TIMER",
+        "name": "T1_INTV",
+        "offset": 36,
+        "line": 225
+      },
+      {
+        "section": "TIMER",
+        "name": "T1_CURV",
+        "offset": 40,
+        "line": 226
+      },
+      {
+        "section": "TIMER",
+        "name": "T2_CTRL",
+        "offset": 48,
+        "line": 228
+      },
+      {
+        "section": "TIMER",
+        "name": "T2_INTV",
+        "offset": 52,
+        "line": 229
+      },
+      {
+        "section": "TIMER",
+        "name": "T2_CURV",
+        "offset": 56,
+        "line": 230
+      },
+      {
+        "section": "TIMER",
+        "name": "AVS_CTRL",
+        "offset": 128,
+        "line": 232
+      },
+      {
+        "section": "TIMER",
+        "name": "AVS_CNT0",
+        "offset": 132,
+        "line": 233
+      },
+      {
+        "section": "TIMER",
+        "name": "AVS_CNT1",
+        "offset": 136,
+        "line": 234
+      },
+      {
+        "section": "TIMER",
+        "name": "AVS_DIV",
+        "offset": 140,
+        "line": 235
+      },
+      {
+        "section": "TIMER",
+        "name": "WDOG_IE",
+        "offset": 160,
+        "line": 237
+      },
+      {
+        "section": "TIMER",
+        "name": "WDOG_IS",
+        "offset": 164,
+        "line": 238
+      },
+      {
+        "section": "TIMER",
+        "name": "WDOG_CTRL",
+        "offset": 176,
+        "line": 240
+      },
+      {
+        "section": "TIMER",
+        "name": "WDOG_CFG",
+        "offset": 180,
+        "line": 241
+      },
+      {
+        "section": "TIMER",
+        "name": "WDOG_MODE",
+        "offset": 184,
+        "line": 242
+      },
+      {
+        "section": "PWM",
+        "name": "CTRL",
+        "offset": 0,
+        "line": 248
+      },
+      {
+        "section": "PWM",
+        "name": "CH0_PERIOD",
+        "offset": 4,
+        "line": 249
+      },
+      {
+        "section": "PWM",
+        "name": "CH1_PERIOD",
+        "offset": 8,
+        "line": 250
+      },
+      {
+        "section": "SPI",
+        "name": "GC",
+        "offset": 4,
+        "line": 257
+      },
+      {
+        "section": "SPI",
+        "name": "TC",
+        "offset": 8,
+        "line": 258
+      },
+      {
+        "section": "SPI",
+        "name": "IE",
+        "offset": 16,
+        "line": 260
+      },
+      {
+        "section": "SPI",
+        "name": "IS",
+        "offset": 20,
+        "line": 261
+      },
+      {
+        "section": "SPI",
+        "name": "FC",
+        "offset": 24,
+        "line": 262
+      },
+      {
+        "section": "SPI",
+        "name": "FS",
+        "offset": 28,
+        "line": 263
+      },
+      {
+        "section": "SPI",
+        "name": "WC",
+        "offset": 32,
+        "line": 264
+      },
+      {
+        "section": "SPI",
+        "name": "CC",
+        "offset": 36,
+        "line": 265
+      },
+      {
+        "section": "SPI",
+        "name": "MBC",
+        "offset": 48,
+        "line": 267
+      },
+      {
+        "section": "SPI",
+        "name": "MTC",
+        "offset": 52,
+        "line": 268
+      },
+      {
+        "section": "SPI",
+        "name": "BCC",
+        "offset": 56,
+        "line": 269
+      },
+      {
+        "section": "ADC",
+        "name": "CTRL",
+        "offset": 0,
+        "line": 287
+      },
+      {
+        "section": "ADC",
+        "name": "INTC",
+        "offset": 4,
+        "line": 288
+      },
+      {
+        "section": "ADC",
+        "name": "INTS",
+        "offset": 8,
+        "line": 289
+      },
+      {
+        "section": "ADC",
+        "name": "DATA",
+        "offset": 12,
+        "line": 290
+      },
+      {
+        "section": "TVE",
+        "name": "ENABLE",
+        "offset": 0,
+        "line": 296
+      },
+      {
+        "section": "TVE",
+        "name": "CFG1",
+        "offset": 4,
+        "line": 297
+      },
+      {
+        "section": "TVE",
+        "name": "DAC1",
+        "offset": 8,
+        "line": 298
+      },
+      {
+        "section": "TVE",
+        "name": "NOTCH_DELAY",
+        "offset": 12,
+        "line": 299
+      },
+      {
+        "section": "TVE",
+        "name": "CHROMA_FREQ",
+        "offset": 16,
+        "line": 300
+      },
+      {
+        "section": "TVE",
+        "name": "FB_PORCH",
+        "offset": 20,
+        "line": 301
+      },
+      {
+        "section": "TVE",
+        "name": "HD_VS",
+        "offset": 24,
+        "line": 302
+      },
+      {
+        "section": "TVE",
+        "name": "LINE_NUM",
+        "offset": 28,
+        "line": 303
+      },
+      {
+        "section": "TVE",
+        "name": "LEVEL",
+        "offset": 32,
+        "line": 304
+      },
+      {
+        "section": "TVE",
+        "name": "DAC2",
+        "offset": 36,
+        "line": 305
+      },
+      {
+        "section": "TVE",
+        "name": "AUTO_EN",
+        "offset": 48,
+        "line": 307
+      },
+      {
+        "section": "TVE",
+        "name": "AUTO_ISR",
+        "offset": 52,
+        "line": 308
+      },
+      {
+        "section": "TVE",
+        "name": "AUTO_SR",
+        "offset": 56,
+        "line": 309
+      },
+      {
+        "section": "TVE",
+        "name": "AUTO_DEB",
+        "offset": 60,
+        "line": 310
+      },
+      {
+        "section": "TVE",
+        "name": "CSC1",
+        "offset": 64,
+        "line": 311
+      },
+      {
+        "section": "TVE",
+        "name": "CSC2",
+        "offset": 68,
+        "line": 312
+      },
+      {
+        "section": "TVE",
+        "name": "CSC3",
+        "offset": 72,
+        "line": 313
+      },
+      {
+        "section": "TVE",
+        "name": "CSC4",
+        "offset": 76,
+        "line": 314
+      },
+      {
+        "section": "TVE",
+        "name": "CB_RESET",
+        "offset": 256,
+        "line": 316
+      },
+      {
+        "section": "TVE",
+        "name": "VS_NUM",
+        "offset": 260,
+        "line": 317
+      },
+      {
+        "section": "TVE",
+        "name": "FILTER",
+        "offset": 264,
+        "line": 318
+      },
+      {
+        "section": "TVE",
+        "name": "CBCR_LEVEL",
+        "offset": 268,
+        "line": 319
+      },
+      {
+        "section": "TVE",
+        "name": "TINT_PHASE",
+        "offset": 272,
+        "line": 320
+      },
+      {
+        "section": "TVE",
+        "name": "B_WIDTH",
+        "offset": 276,
+        "line": 321
+      },
+      {
+        "section": "TVE",
+        "name": "CBCR_GAIN",
+        "offset": 280,
+        "line": 322
+      },
+      {
+        "section": "TVE",
+        "name": "SYNC_LEVEL",
+        "offset": 284,
+        "line": 323
+      },
+      {
+        "section": "TVE",
+        "name": "WHITE_LEVEL",
+        "offset": 288,
+        "line": 324
+      },
+      {
+        "section": "TVE",
+        "name": "ACT_LINE",
+        "offset": 292,
+        "line": 325
+      },
+      {
+        "section": "TVE",
+        "name": "CHROMA_BW",
+        "offset": 296,
+        "line": 326
+      },
+      {
+        "section": "TVE",
+        "name": "CFG2",
+        "offset": 300,
+        "line": 327
+      },
+      {
+        "section": "TVE",
+        "name": "SLAVE",
+        "offset": 308,
+        "line": 329
+      },
+      {
+        "section": "TVE",
+        "name": "CFG3",
+        "offset": 312,
+        "line": 330
+      },
+      {
+        "section": "TVE",
+        "name": "CFG4",
+        "offset": 316,
+        "line": 331
+      },
+      {
+        "section": "TCON",
+        "name": "CTRL",
+        "offset": 0,
+        "line": 337
+      },
+      {
+        "section": "TCON",
+        "name": "INT0",
+        "offset": 4,
+        "line": 338
+      },
+      {
+        "section": "TCON",
+        "name": "INT1",
+        "offset": 8,
+        "line": 339
+      },
+      {
+        "section": "TCON",
+        "name": "FRM_CTRL",
+        "offset": 16,
+        "line": 341
+      },
+      {
+        "section": "TCON",
+        "name": "FRM_SEED",
+        "offset": 20,
+        "line": 342
+      },
+      {
+        "section": "TCON",
+        "name": "FRM_TBL",
+        "offset": 44,
+        "line": 343
+      },
+      {
+        "section": "TCON",
+        "name": "T0_CTRL",
+        "offset": 64,
+        "line": 345
+      },
+      {
+        "section": "TCON",
+        "name": "T0_CLK",
+        "offset": 68,
+        "line": 346
+      },
+      {
+        "section": "TCON",
+        "name": "T0_TIMING",
+        "offset": 72,
+        "line": 347
+      },
+      {
+        "section": "TCON",
+        "name": "T0_HV_TIMING",
+        "offset": 88,
+        "line": 348
+      },
+      {
+        "section": "TCON",
+        "name": "T0_CPU_IF",
+        "offset": 96,
+        "line": 350
+      },
+      {
+        "section": "TCON",
+        "name": "T0_CPU_WR",
+        "offset": 100,
+        "line": 351
+      },
+      {
+        "section": "TCON",
+        "name": "T0_CPU_RD",
+        "offset": 104,
+        "line": 352
+      },
+      {
+        "section": "TCON",
+        "name": "T0_CPU_RDNX",
+        "offset": 108,
+        "line": 353
+      },
+      {
+        "section": "TCON",
+        "name": "T0_IO_CTRL",
+        "offset": 136,
+        "line": 355
+      },
+      {
+        "section": "TCON",
+        "name": "T1_CTRL",
+        "offset": 144,
+        "line": 356
+      },
+      {
+        "section": "TCON",
+        "name": "T1_TIMING",
+        "offset": 148,
+        "line": 357
+      },
+      {
+        "section": "TCON",
+        "name": "T1_IO_CTRL",
+        "offset": 240,
+        "line": 359
+      },
+      {
+        "section": "TCON",
+        "name": "DBG_INFO",
+        "offset": 252,
+        "line": 361
+      },
+      {
+        "section": "DEFE",
+        "name": "ENABLE",
+        "offset": 0,
+        "line": 367
+      },
+      {
+        "section": "DEFE",
+        "name": "FRM_CTRL",
+        "offset": 4,
+        "line": 368
+      },
+      {
+        "section": "DEFE",
+        "name": "BYPASS",
+        "offset": 8,
+        "line": 369
+      },
+      {
+        "section": "DEFE",
+        "name": "AGTH_SEL",
+        "offset": 12,
+        "line": 370
+      },
+      {
+        "section": "DEFE",
+        "name": "LINE_INT_CTRL",
+        "offset": 16,
+        "line": 371
+      },
+      {
+        "section": "DEFE",
+        "name": "BUF_ADDR",
+        "offset": 32,
+        "line": 373
+      },
+      {
+        "section": "DEFE",
+        "name": "FIELD_CTRL",
+        "offset": 44,
+        "line": 374
+      },
+      {
+        "section": "DEFE",
+        "name": "TB_OFFSET",
+        "offset": 48,
+        "line": 375
+      },
+      {
+        "section": "DEFE",
+        "name": "STRIDE",
+        "offset": 64,
+        "line": 377
+      },
+      {
+        "section": "DEFE",
+        "name": "IN_FMT",
+        "offset": 76,
+        "line": 378
+      },
+      {
+        "section": "DEFE",
+        "name": "WB_ADDR",
+        "offset": 80,
+        "line": 379
+      },
+      {
+        "section": "DEFE",
+        "name": "OUT_FMT",
+        "offset": 92,
+        "line": 381
+      },
+      {
+        "section": "DEFE",
+        "name": "INT_EN",
+        "offset": 96,
+        "line": 382
+      },
+      {
+        "section": "DEFE",
+        "name": "INT_STAT",
+        "offset": 100,
+        "line": 383
+      },
+      {
+        "section": "DEFE",
+        "name": "STAT",
+        "offset": 104,
+        "line": 384
+      },
+      {
+        "section": "DEFE",
+        "name": "CSC_COEF",
+        "offset": 112,
+        "line": 386
+      },
+      {
+        "section": "DEFE",
+        "name": "IN_SIZE",
+        "offset": 256,
+        "line": 388
+      },
+      {
+        "section": "DEFE",
+        "name": "OUT_SIZE",
+        "offset": 260,
+        "line": 389
+      },
+      {
+        "section": "DEFE",
+        "name": "HOR_FACTOR",
+        "offset": 264,
+        "line": 390
+      },
+      {
+        "section": "DEFE",
+        "name": "VER_FACTOR",
+        "offset": 268,
+        "line": 391
+      },
+      {
+        "section": "DEFE",
+        "name": "CH0_H_PHASE",
+        "offset": 272,
+        "line": 393
+      },
+      {
+        "section": "DEFE",
+        "name": "CH0_V_PHASE0",
+        "offset": 276,
+        "line": 394
+      },
+      {
+        "section": "DEFE",
+        "name": "CH0_V_PHASE1",
+        "offset": 280,
+        "line": 395
+      },
+      {
+        "section": "DEFE",
+        "name": "CH0_H_COEF",
+        "offset": 1024,
+        "line": 399
+      },
+      {
+        "section": "DEFE",
+        "name": "CH0_V_COEF",
+        "offset": 1280,
+        "line": 401
+      },
+      {
+        "section": "DEFE",
+        "name": "CH1_H_COEF",
+        "offset": 1536,
+        "line": 403
+      },
+      {
+        "section": "DEFE",
+        "name": "CH1_V_COEF",
+        "offset": 1792,
+        "line": 405
+      },
+      {
+        "section": "DEBE",
+        "name": "MODE_CTRL",
+        "offset": 2048,
+        "line": 411
+      },
+      {
+        "section": "DEBE",
+        "name": "BACKCOLOR",
+        "offset": 2052,
+        "line": 412
+      },
+      {
+        "section": "DEBE",
+        "name": "DISP_SIZE",
+        "offset": 2056,
+        "line": 413
+      },
+      {
+        "section": "DEBE",
+        "name": "LAY_SIZE",
+        "offset": 2064,
+        "line": 415
+      },
+      {
+        "section": "DEBE",
+        "name": "LAY_POS",
+        "offset": 2080,
+        "line": 416
+      },
+      {
+        "section": "DEBE",
+        "name": "LAY_STRIDE",
+        "offset": 2112,
+        "line": 418
+      },
+      {
+        "section": "DEBE",
+        "name": "LAY_FB_ADDRL",
+        "offset": 2128,
+        "line": 419
+      },
+      {
+        "section": "DEBE",
+        "name": "LAY_FB_ADDRH",
+        "offset": 2144,
+        "line": 420
+      },
+      {
+        "section": "DEBE",
+        "name": "REG_CTRL",
+        "offset": 2160,
+        "line": 421
+      },
+      {
+        "section": "DEBE",
+        "name": "COLOR_KEY_MAX",
+        "offset": 2176,
+        "line": 423
+      },
+      {
+        "section": "DEBE",
+        "name": "COLOR_KEY_MIN",
+        "offset": 2180,
+        "line": 424
+      },
+      {
+        "section": "DEBE",
+        "name": "COLOR_KEY_CFG",
+        "offset": 2184,
+        "line": 425
+      },
+      {
+        "section": "DEBE",
+        "name": "LAY_ATTR0",
+        "offset": 2192,
+        "line": 427
+      },
+      {
+        "section": "DEBE",
+        "name": "LAY_ATTR1",
+        "offset": 2208,
+        "line": 428
+      },
+      {
+        "section": "DEBE",
+        "name": "HWC_CTRL",
+        "offset": 2264,
+        "line": 430
+      },
+      {
+        "section": "DEBE",
+        "name": "HWC_FORMAT",
+        "offset": 2272,
+        "line": 432
+      },
+      {
+        "section": "DEBE",
+        "name": "WB_CTRL",
+        "offset": 2288,
+        "line": 434
+      },
+      {
+        "section": "DEBE",
+        "name": "WB_ADDR",
+        "offset": 2292,
+        "line": 435
+      },
+      {
+        "section": "DEBE",
+        "name": "WB_STRIDE",
+        "offset": 2296,
+        "line": 436
+      },
+      {
+        "section": "DEBE",
+        "name": "YUV_IN_CTRL",
+        "offset": 2336,
+        "line": 438
+      },
+      {
+        "section": "DEBE",
+        "name": "YUV_ADDR",
+        "offset": 2352,
+        "line": 440
+      },
+      {
+        "section": "DEBE",
+        "name": "YUV_STRIDE",
+        "offset": 2368,
+        "line": 442
+      },
+      {
+        "section": "DEBE",
+        "name": "COLOR_COEF",
+        "offset": 2384,
+        "line": 444
+      },
+      {
+        "section": "DEBE",
+        "name": "PALETTE",
+        "offset": 4096,
+        "line": 446
+      },
+      {
+        "section": "DEBE",
+        "name": "HWC_PATTERN",
+        "offset": 5120,
+        "line": 447
+      },
+      {
+        "section": "DEBE",
+        "name": "HWC_PALETTE",
+        "offset": 5632,
+        "line": 448
+      },
+      {
+        "section": "DEBE",
+        "name": "DAC_DPC",
+        "offset": 0,
+        "line": 454
+      },
+      {
+        "section": "DEBE",
+        "name": "DAC_FIFOC",
+        "offset": 4,
+        "line": 455
+      },
+      {
+        "section": "DEBE",
+        "name": "DAC_FIFOS",
+        "offset": 8,
+        "line": 456
+      },
+      {
+        "section": "DEBE",
+        "name": "DAC_TXDATA",
+        "offset": 0,
+        "line": 457
+      },
+      {
+        "section": "DEBE",
+        "name": "ADC_FIFOC",
+        "offset": 16,
+        "line": 458
+      },
+      {
+        "section": "DEBE",
+        "name": "ADC_FIFOS",
+        "offset": 20,
+        "line": 459
+      },
+      {
+        "section": "DEBE",
+        "name": "ADC_RXDATA",
+        "offset": 24,
+        "line": 460
+      },
+      {
+        "section": "DEBE",
+        "name": "DAC_MIXER_CTRL",
+        "offset": 32,
+        "line": 462
+      },
+      {
+        "section": "DEBE",
+        "name": "ADC_MIXER_CTRL",
+        "offset": 36,
+        "line": 463
+      },
+      {
+        "section": "DEBE",
+        "name": "ADC_DAC_TUNE",
+        "offset": 40,
+        "line": 464
+      },
+      {
+        "section": "DEBE",
+        "name": "CAL_CTRL0",
+        "offset": 44,
+        "line": 465
+      },
+      {
+        "section": "DEBE",
+        "name": "CAL_CTRL1",
+        "offset": 52,
+        "line": 467
+      },
+      {
+        "section": "DEBE",
+        "name": "DAC_CNT",
+        "offset": 64,
+        "line": 469
+      },
+      {
+        "section": "DEBE",
+        "name": "ADC_CNT",
+        "offset": 68,
+        "line": 470
+      },
+      {
+        "section": "DEBE",
+        "name": "DAC_DBG",
+        "offset": 72,
+        "line": 471
+      },
+      {
+        "section": "DEBE",
+        "name": "ADC_DBG",
+        "offset": 76,
+        "line": 472
+      },
+      {
+        "section": "DEBE",
+        "name": "ADC_DAP_CTRL",
+        "offset": 112,
+        "line": 474
+      },
+      {
+        "section": "DEBE",
+        "name": "ADC_DAP_LCTRL",
+        "offset": 116,
+        "line": 475
+      },
+      {
+        "section": "DEBE",
+        "name": "ADC_DAP_RCTRL",
+        "offset": 120,
+        "line": 476
+      },
+      {
+        "section": "DEBE",
+        "name": "ADC_DAP_PARA",
+        "offset": 124,
+        "line": 477
+      },
+      {
+        "section": "DEBE",
+        "name": "ADC_DAP_LAC",
+        "offset": 128,
+        "line": 478
+      },
+      {
+        "section": "DEBE",
+        "name": "ADC_DAP_LDAT",
+        "offset": 132,
+        "line": 479
+      },
+      {
+        "section": "DEBE",
+        "name": "ADC_DAP_RAC",
+        "offset": 136,
+        "line": 480
+      },
+      {
+        "section": "DEBE",
+        "name": "ADC_DAP_RDAT",
+        "offset": 140,
+        "line": 481
+      },
+      {
+        "section": "DEBE",
+        "name": "ADC_DAP_HPFC",
+        "offset": 144,
+        "line": 482
+      },
+      {
+        "section": "DEBE",
+        "name": "ADC_DAP_LINAC",
+        "offset": 148,
+        "line": 483
+      },
+      {
+        "section": "DEBE",
+        "name": "ADC_DAP_RINAC",
+        "offset": 152,
+        "line": 484
+      },
+      {
+        "section": "DEBE",
+        "name": "ADC_DAP_OPT",
+        "offset": 156,
+        "line": 485
+      },
+      {
+        "section": "UART",
+        "name": "RBR",
+        "offset": 0,
+        "line": 492
+      },
+      {
+        "section": "UART",
+        "name": "THR",
+        "offset": 0,
+        "line": 493
+      },
+      {
+        "section": "UART",
+        "name": "DLL",
+        "offset": 0,
+        "line": 494
+      },
+      {
+        "section": "UART",
+        "name": "IER",
+        "offset": 4,
+        "line": 497
+      },
+      {
+        "section": "UART",
+        "name": "DLH",
+        "offset": 4,
+        "line": 498
+      },
+      {
+        "section": "UART",
+        "name": "IIR",
+        "offset": 8,
+        "line": 501
+      },
+      {
+        "section": "UART",
+        "name": "FCR",
+        "offset": 8,
+        "line": 502
+      },
+      {
+        "section": "UART",
+        "name": "LCR",
+        "offset": 12,
+        "line": 504
+      },
+      {
+        "section": "UART",
+        "name": "MCR",
+        "offset": 16,
+        "line": 505
+      },
+      {
+        "section": "UART",
+        "name": "LSR",
+        "offset": 20,
+        "line": 506
+      },
+      {
+        "section": "UART",
+        "name": "MSR",
+        "offset": 24,
+        "line": 507
+      },
+      {
+        "section": "UART",
+        "name": "SCH",
+        "offset": 28,
+        "line": 508
+      },
+      {
+        "section": "UART",
+        "name": "USR",
+        "offset": 124,
+        "line": 510
+      },
+      {
+        "section": "UART",
+        "name": "TFL",
+        "offset": 128,
+        "line": 511
+      },
+      {
+        "section": "UART",
+        "name": "RFL",
+        "offset": 132,
+        "line": 512
+      },
+      {
+        "section": "UART",
+        "name": "HALT",
+        "offset": 164,
+        "line": 514
+      },
+      {
+        "section": "TWI",
+        "name": "ADDR",
+        "offset": 0,
+        "line": 522
+      },
+      {
+        "section": "TWI",
+        "name": "XADDR",
+        "offset": 4,
+        "line": 523
+      },
+      {
+        "section": "TWI",
+        "name": "DATA",
+        "offset": 8,
+        "line": 524
+      },
+      {
+        "section": "TWI",
+        "name": "CTRL",
+        "offset": 12,
+        "line": 525
+      },
+      {
+        "section": "TWI",
+        "name": "STAT",
+        "offset": 16,
+        "line": 526
+      },
+      {
+        "section": "TWI",
+        "name": "CCR",
+        "offset": 20,
+        "line": 527
+      },
+      {
+        "section": "TWI",
+        "name": "SRST",
+        "offset": 24,
+        "line": 528
+      },
+      {
+        "section": "TWI",
+        "name": "EFR",
+        "offset": 28,
+        "line": 529
+      },
+      {
+        "section": "TWI",
+        "name": "LCR",
+        "offset": 32,
+        "line": 530
+      },
+      {
+        "section": "SD",
+        "name": "GCTL",
+        "offset": 0,
+        "line": 538
+      },
+      {
+        "section": "SD",
+        "name": "CKC",
+        "offset": 4,
+        "line": 539
+      },
+      {
+        "section": "SD",
+        "name": "TMO",
+        "offset": 8,
+        "line": 540
+      },
+      {
+        "section": "SD",
+        "name": "BWD",
+        "offset": 12,
+        "line": 541
+      },
+      {
+        "section": "SD",
+        "name": "BKS",
+        "offset": 16,
+        "line": 542
+      },
+      {
+        "section": "SD",
+        "name": "BYC",
+        "offset": 20,
+        "line": 543
+      },
+      {
+        "section": "SD",
+        "name": "CMD",
+        "offset": 24,
+        "line": 544
+      },
+      {
+        "section": "SD",
+        "name": "ARG",
+        "offset": 28,
+        "line": 545
+      },
+      {
+        "section": "SD",
+        "name": "IMK",
+        "offset": 48,
+        "line": 550
+      },
+      {
+        "section": "SD",
+        "name": "MIS",
+        "offset": 52,
+        "line": 551
+      },
+      {
+        "section": "SD",
+        "name": "RIS",
+        "offset": 56,
+        "line": 552
+      },
+      {
+        "section": "SD",
+        "name": "STA",
+        "offset": 60,
+        "line": 553
+      },
+      {
+        "section": "SD",
+        "name": "FWL",
+        "offset": 64,
+        "line": 554
+      },
+      {
+        "section": "SD",
+        "name": "FUNS",
+        "offset": 68,
+        "line": 555
+      },
+      {
+        "section": "SD",
+        "name": "A12A",
+        "offset": 88,
+        "line": 557
+      },
+      {
+        "section": "SD",
+        "name": "NTSR",
+        "offset": 92,
+        "line": 558
+      },
+      {
+        "section": "SD",
+        "name": "HWRST",
+        "offset": 120,
+        "line": 560
+      },
+      {
+        "section": "SD",
+        "name": "DMAC",
+        "offset": 128,
+        "line": 562
+      },
+      {
+        "section": "SD",
+        "name": "DLBA",
+        "offset": 132,
+        "line": 563
+      },
+      {
+        "section": "SD",
+        "name": "IDST",
+        "offset": 136,
+        "line": 564
+      },
+      {
+        "section": "SD",
+        "name": "IDIE",
+        "offset": 140,
+        "line": 565
+      },
+      {
+        "section": "SD",
+        "name": "THLDC",
+        "offset": 256,
+        "line": 567
+      },
+      {
+        "section": "SD",
+        "name": "DSBD",
+        "offset": 268,
+        "line": 569
+      },
+      {
+        "section": "SD",
+        "name": "FIFO",
+        "offset": 512,
+        "line": 571
+      },
+      {
+        "section": "VE",
+        "name": "CTRL",
+        "offset": 0,
+        "line": 578
+      },
+      {
+        "section": "VE",
+        "name": "RST",
+        "offset": 4,
+        "line": 579
+      },
+      {
+        "section": "VE",
+        "name": "VERSION",
+        "offset": 240,
+        "line": 581
+      },
+      {
+        "section": "VE",
+        "name": "PHDR",
+        "offset": 0,
+        "line": 586
+      },
+      {
+        "section": "VE",
+        "name": "VOPHDR",
+        "offset": 4,
+        "line": 587
+      },
+      {
+        "section": "VE",
+        "name": "SIZE",
+        "offset": 8,
+        "line": 588
+      },
+      {
+        "section": "VE",
+        "name": "FRAME_SIZE",
+        "offset": 12,
+        "line": 589
+      },
+      {
+        "section": "VE",
+        "name": "MBA",
+        "offset": 16,
+        "line": 590
+      },
+      {
+        "section": "VE",
+        "name": "CTRL",
+        "offset": 20,
+        "line": 591
+      },
+      {
+        "section": "VE",
+        "name": "TRIG",
+        "offset": 24,
+        "line": 592
+      },
+      {
+        "section": "VE",
+        "name": "STATUS",
+        "offset": 28,
+        "line": 593
+      },
+      {
+        "section": "VE",
+        "name": "TRBTRD_FIELD",
+        "offset": 32,
+        "line": 594
+      },
+      {
+        "section": "VE",
+        "name": "TRBTRD_FRAME",
+        "offset": 36,
+        "line": 595
+      },
+      {
+        "section": "VE",
+        "name": "VLD_ADDR",
+        "offset": 40,
+        "line": 596
+      },
+      {
+        "section": "VE",
+        "name": "VLD_OFFSET",
+        "offset": 44,
+        "line": 597
+      },
+      {
+        "section": "VE",
+        "name": "VLD_LEN",
+        "offset": 48,
+        "line": 598
+      },
+      {
+        "section": "VE",
+        "name": "VLD_END",
+        "offset": 52,
+        "line": 599
+      },
+      {
+        "section": "VE",
+        "name": "MBH_ADDR",
+        "offset": 56,
+        "line": 600
+      },
+      {
+        "section": "VE",
+        "name": "DCAC_ADDR",
+        "offset": 60,
+        "line": 601
+      },
+      {
+        "section": "VE",
+        "name": "BLK_OFFSET",
+        "offset": 64,
+        "line": 602
+      },
+      {
+        "section": "VE",
+        "name": "NCF_ADDR",
+        "offset": 68,
+        "line": 603
+      },
+      {
+        "section": "VE",
+        "name": "REC_LUMA",
+        "offset": 72,
+        "line": 604
+      },
+      {
+        "section": "VE",
+        "name": "REC_CHROMA",
+        "offset": 76,
+        "line": 605
+      },
+      {
+        "section": "VE",
+        "name": "FWD_LUMA",
+        "offset": 80,
+        "line": 606
+      },
+      {
+        "section": "VE",
+        "name": "FWD_CHROMA",
+        "offset": 84,
+        "line": 607
+      },
+      {
+        "section": "VE",
+        "name": "BACK_LUMA",
+        "offset": 88,
+        "line": 608
+      },
+      {
+        "section": "VE",
+        "name": "BACK_CHROMA",
+        "offset": 92,
+        "line": 609
+      },
+      {
+        "section": "VE",
+        "name": "IQ_MIN_INPUT",
+        "offset": 128,
+        "line": 611
+      },
+      {
+        "section": "VE",
+        "name": "QP_INPUT",
+        "offset": 132,
+        "line": 612
+      },
+      {
+        "section": "VE",
+        "name": "JPEG_SIZE",
+        "offset": 184,
+        "line": 614
+      },
+      {
+        "section": "VE",
+        "name": "JPEG_MCU",
+        "offset": 188,
+        "line": 615
+      },
+      {
+        "section": "VE",
+        "name": "JPEG_RES_INT",
+        "offset": 192,
+        "line": 616
+      },
+      {
+        "section": "VE",
+        "name": "ROT_LUMA",
+        "offset": 204,
+        "line": 618
+      },
+      {
+        "section": "VE",
+        "name": "ROT_CHROMA",
+        "offset": 208,
+        "line": 619
+      },
+      {
+        "section": "VE",
+        "name": "ROT_SCALE_CTRL",
+        "offset": 212,
+        "line": 620
+      },
+      {
+        "section": "VE",
+        "name": "JPEG_MCU_START",
+        "offset": 216,
+        "line": 621
+      },
+      {
+        "section": "VE",
+        "name": "JPEG_MCU_END",
+        "offset": 220,
+        "line": 622
+      },
+      {
+        "section": "VE",
+        "name": "RAM_WRITE_PTR",
+        "offset": 224,
+        "line": 623
+      },
+      {
+        "section": "VE",
+        "name": "RAM_WRITE_DATA",
+        "offset": 228,
+        "line": 624
+      },
+      {
+        "section": "VE",
+        "name": "PIC_SIZE",
+        "offset": 0,
+        "line": 629
+      },
+      {
+        "section": "VE",
+        "name": "PIC_STRIDE",
+        "offset": 4,
+        "line": 630
+      },
+      {
+        "section": "VE",
+        "name": "CTRL",
+        "offset": 8,
+        "line": 631
+      },
+      {
+        "section": "VE",
+        "name": "TRIG",
+        "offset": 12,
+        "line": 632
+      },
+      {
+        "section": "VE",
+        "name": "SCALER_SIZE",
+        "offset": 44,
+        "line": 634
+      },
+      {
+        "section": "VE",
+        "name": "SCALER_OFFSET_Y",
+        "offset": 48,
+        "line": 635
+      },
+      {
+        "section": "VE",
+        "name": "SCALER_OFFSET_C",
+        "offset": 52,
+        "line": 636
+      },
+      {
+        "section": "VE",
+        "name": "SCALER_FACTOR",
+        "offset": 56,
+        "line": 637
+      },
+      {
+        "section": "VE",
+        "name": "OUTPUT_LUMA",
+        "offset": 112,
+        "line": 639
+      },
+      {
+        "section": "VE",
+        "name": "OUTPUT_CHROMA",
+        "offset": 116,
+        "line": 640
+      },
+      {
+        "section": "VE",
+        "name": "PIC_LUMA",
+        "offset": 120,
+        "line": 641
+      },
+      {
+        "section": "VE",
+        "name": "PIC_CHROMA",
+        "offset": 124,
+        "line": 642
+      },
+      {
+        "section": "VE",
+        "name": "SRAM_INDEX",
+        "offset": 224,
+        "line": 644
+      },
+      {
+        "section": "VE",
+        "name": "SRAM_DATA",
+        "offset": 228,
+        "line": 645
+      },
+      {
+        "section": "VE",
+        "name": "PARAM",
+        "offset": 4,
+        "line": 650
+      },
+      {
+        "section": "VE",
+        "name": "QP",
+        "offset": 8,
+        "line": 651
+      },
+      {
+        "section": "VE",
+        "name": "MOTION_EST",
+        "offset": 16,
+        "line": 653
+      },
+      {
+        "section": "VE",
+        "name": "CTRL",
+        "offset": 20,
+        "line": 654
+      },
+      {
+        "section": "VE",
+        "name": "TRIG",
+        "offset": 24,
+        "line": 655
+      },
+      {
+        "section": "VE",
+        "name": "STATUS",
+        "offset": 28,
+        "line": 656
+      },
+      {
+        "section": "VE",
+        "name": "BASIC_BITS",
+        "offset": 32,
+        "line": 657
+      },
+      {
+        "section": "VE",
+        "name": "H264_MAD",
+        "offset": 80,
+        "line": 659
+      },
+      {
+        "section": "VE",
+        "name": "H264_RES_BITS",
+        "offset": 84,
+        "line": 660
+      },
+      {
+        "section": "VE",
+        "name": "H264_HDR_BITS",
+        "offset": 88,
+        "line": 661
+      },
+      {
+        "section": "VE",
+        "name": "H264_STATIST",
+        "offset": 92,
+        "line": 662
+      },
+      {
+        "section": "VE",
+        "name": "H264_UNK_BUF",
+        "offset": 96,
+        "line": 663
+      },
+      {
+        "section": "VE",
+        "name": "VLE_ADDR",
+        "offset": 128,
+        "line": 665
+      },
+      {
+        "section": "VE",
+        "name": "VLE_END",
+        "offset": 132,
+        "line": 666
+      },
+      {
+        "section": "VE",
+        "name": "VLE_OFFSET",
+        "offset": 136,
+        "line": 667
+      },
+      {
+        "section": "VE",
+        "name": "VLE_MAX",
+        "offset": 140,
+        "line": 668
+      },
+      {
+        "section": "VE",
+        "name": "VLE_LENGTH",
+        "offset": 144,
+        "line": 669
+      },
+      {
+        "section": "VE",
+        "name": "REF_LUMA",
+        "offset": 160,
+        "line": 671
+      },
+      {
+        "section": "VE",
+        "name": "REF_CHROMA",
+        "offset": 164,
+        "line": 672
+      },
+      {
+        "section": "VE",
+        "name": "REC_LUMA",
+        "offset": 176,
+        "line": 674
+      },
+      {
+        "section": "VE",
+        "name": "REC_CHROMA",
+        "offset": 180,
+        "line": 675
+      },
+      {
+        "section": "VE",
+        "name": "REF_SLUMA",
+        "offset": 184,
+        "line": 676
+      },
+      {
+        "section": "VE",
+        "name": "REC_SLUMA",
+        "offset": 188,
+        "line": 677
+      },
+      {
+        "section": "VE",
+        "name": "MB_INFO",
+        "offset": 192,
+        "line": 678
+      },
+      {
+        "section": "VE",
+        "name": "SRAM_INDEX",
+        "offset": 224,
+        "line": 680
+      },
+      {
+        "section": "VE",
+        "name": "SRAM_DATA",
+        "offset": 228,
+        "line": 681
+      },
+      {
+        "section": "MUSB",
+        "name": "POWER",
+        "offset": 64,
+        "line": 692
+      },
+      {
+        "section": "MUSB",
+        "name": "DEVCTL",
+        "offset": 65,
+        "line": 693
+      },
+      {
+        "section": "MUSB",
+        "name": "EP_IDX",
+        "offset": 66,
+        "line": 694
+      },
+      {
+        "section": "MUSB",
+        "name": "VEND0",
+        "offset": 67,
+        "line": 695
+      },
+      {
+        "section": "MUSB",
+        "name": "EP_IS",
+        "offset": 68,
+        "line": 696
+      },
+      {
+        "section": "MUSB",
+        "name": "EP_IE",
+        "offset": 72,
+        "line": 697
+      },
+      {
+        "section": "MUSB",
+        "name": "BUS_IS",
+        "offset": 76,
+        "line": 698
+      },
+      {
+        "section": "MUSB",
+        "name": "BUS_IE",
+        "offset": 80,
+        "line": 699
+      },
+      {
+        "section": "MUSB",
+        "name": "FRAME",
+        "offset": 84,
+        "line": 700
+      },
+      {
+        "section": "MUSB",
+        "name": "TXMAXP",
+        "offset": 128,
+        "line": 703
+      },
+      {
+        "section": "MUSB",
+        "name": "TXCSR",
+        "offset": 130,
+        "line": 704
+      },
+      {
+        "section": "MUSB",
+        "name": "RXMAXP",
+        "offset": 132,
+        "line": 705
+      },
+      {
+        "section": "MUSB",
+        "name": "RXCSR",
+        "offset": 134,
+        "line": 706
+      },
+      {
+        "section": "MUSB",
+        "name": "RXCOUNT",
+        "offset": 136,
+        "line": 707
+      },
+      {
+        "section": "MUSB",
+        "name": "res1",
+        "offset": 138,
+        "line": 708
+      },
+      {
+        "section": "MUSB",
+        "name": "TXTYPE",
+        "offset": 140,
+        "line": 709
+      },
+      {
+        "section": "MUSB",
+        "name": "TXINTERVAL",
+        "offset": 141,
+        "line": 710
+      },
+      {
+        "section": "MUSB",
+        "name": "RXTYPE",
+        "offset": 142,
+        "line": 711
+      },
+      {
+        "section": "MUSB",
+        "name": "RXINTERVAL",
+        "offset": 143,
+        "line": 712
+      },
+      {
+        "section": "MUSB",
+        "name": "TXFIFOSZ",
+        "offset": 144,
+        "line": 714
+      },
+      {
+        "section": "MUSB",
+        "name": "TXFIFOADDR",
+        "offset": 146,
+        "line": 715
+      },
+      {
+        "section": "MUSB",
+        "name": "RXFIFOSZ",
+        "offset": 148,
+        "line": 716
+      },
+      {
+        "section": "MUSB",
+        "name": "RXFIFOADDR",
+        "offset": 150,
+        "line": 717
+      },
+      {
+        "section": "MUSB",
+        "name": "TXFUNCADDR",
+        "offset": 152,
+        "line": 719
+      },
+      {
+        "section": "MUSB",
+        "name": "res4",
+        "offset": 153,
+        "line": 720
+      },
+      {
+        "section": "MUSB",
+        "name": "TXHUBADDR",
+        "offset": 154,
+        "line": 721
+      },
+      {
+        "section": "MUSB",
+        "name": "TXHUBPORT",
+        "offset": 155,
+        "line": 722
+      },
+      {
+        "section": "MUSB",
+        "name": "RXFUNCADDR",
+        "offset": 156,
+        "line": 723
+      },
+      {
+        "section": "MUSB",
+        "name": "res5",
+        "offset": 157,
+        "line": 724
+      },
+      {
+        "section": "MUSB",
+        "name": "RXHUBADDR",
+        "offset": 158,
+        "line": 725
+      },
+      {
+        "section": "MUSB",
+        "name": "RXHUBPORT",
+        "offset": 159,
+        "line": 726
+      },
+      {
+        "section": "MUSB",
+        "name": "CONFIGDATA",
+        "offset": 192,
+        "line": 729
+      },
+      {
+        "section": "MUSB",
+        "name": "ISCR",
+        "offset": 1024,
+        "line": 731
+      },
+      {
+        "section": "MUSB",
+        "name": "PHYCTL",
+        "offset": 1028,
+        "line": 732
+      },
+      {
+        "section": "MUSB",
+        "name": "PHYBIST",
+        "offset": 1032,
+        "line": 733
+      },
+      {
+        "section": "MUSB",
+        "name": "PHYTUNE",
+        "offset": 1036,
+        "line": 734
+      }
+    ]
+  },
+  "limits": [
+    "Reference definitions are claims, not verified YS-4470 register accesses.",
+    "minilogic DRAM/PIO/DDMA definitions contain inconsistencies; annotations are not struct-offset validation.",
+    "Internal KEYADC/RTP do not identify the external measurement ADC."
+  ]
+}

@@ -112,10 +112,12 @@ def decompile(program: Any, function: Any, monitor: Any) -> str | None:
         interface.dispose()
 
 
-def inventory(version: str, raw_path: Path, out_dir: Path, ghidra_dir: Path, full_analysis: bool) -> dict[str, Any]:
+def inventory(version: str, raw_path: Path, out_dir: Path, ghidra_dir: Path, full_analysis: bool, reference_report: Path | None = None) -> dict[str, Any]:
     import pyghidra
 
     raw_bytes = raw_path.read_bytes()
+    from reference_ghidra_labels import validated_labels, apply_labels
+    approved_labels = validated_labels(reference_report, version, raw_bytes) if reference_report else []
     pyghidra.start(install_dir=ghidra_dir)
     project_root = out_dir / "ghidra-projects"
     project_root.mkdir(parents=True, exist_ok=True)
@@ -168,7 +170,11 @@ def inventory(version: str, raw_path: Path, out_dir: Path, ghidra_dir: Path, ful
                     )
                     continue
                 try:
-                    function.setName(proposed_name, __import__("ghidra.program.model.symbol", fromlist=["SourceType"]).SourceType.USER_DEFINED)
+                    source_type = __import__("ghidra.program.model.symbol", fromlist=["SourceType"]).SourceType
+                    # Preserve analyst/imported labels. These seeds are analysis
+                    # labels, not recovered vendor symbols.
+                    if function.getSymbol().getSource() == source_type.DEFAULT:
+                        function.setName(proposed_name, source_type.ANALYSIS)
                 except Exception:
                     # Existing Ghidra name is kept; exported proposed_name remains the traceable label.
                     pass
@@ -194,6 +200,23 @@ def inventory(version: str, raw_path: Path, out_dir: Path, ghidra_dir: Path, ful
                         "decompiled_c": decompile(program, function, flat.getMonitor()),
                     }
                 )
+            reference_labels = apply_labels(program, flat, approved_labels)
+            reference_function_exports = []
+            for label in reference_labels:
+                entry = flat.toAddr(label['address'].removeprefix('0x'))
+                function = program.getFunctionManager().getFunctionAt(entry)
+                if function is None:
+                    continue
+                instructions, calls = instruction_records(program, function)
+                reference_function_exports.append({
+                    'address': label['address'], 'name': str(function.getName()),
+                    'label_status': label['status'], 'confidence': label['confidence'],
+                    'evidence': label['evidence'], 'comment': function.getComment(),
+                    'body_end': str(function.getBody().getMaxAddress()),
+                    'assembly': instructions, 'direct_call_targets': calls,
+                    'decompiled_c': decompile(program, function, flat.getMonitor()),
+                    'limits': ['Ghidra inferred body; original-byte proof applies only to documented execution scope.'],
+                })
         finally:
             program.endTransaction(transaction, True)
         # PyGhidra owns an import transaction for this context; reports are the
@@ -211,6 +234,8 @@ def inventory(version: str, raw_path: Path, out_dir: Path, ghidra_dir: Path, ful
             "note": "Seed names are labels with explicit confidence; they are not recovered vendor symbols.",
         },
         "functions": functions,
+        "reference_labels": reference_labels,
+        "reference_function_exports": reference_function_exports,
     }
 
 
@@ -220,6 +245,7 @@ def main() -> None:
     parser.add_argument("--ghidra", type=Path, required=True)
     parser.add_argument("--out-dir", type=Path, required=True)
     parser.add_argument("--full-analysis", action="store_true")
+    parser.add_argument("--reference-report", type=Path, help="Proof-gated reference-analysis.json; preserves existing analyst names")
     args = parser.parse_args()
 
     args.out_dir.mkdir(parents=True, exist_ok=True)
@@ -228,7 +254,7 @@ def main() -> None:
         if not raw_path.is_file():
             failures.append({"version": version, "path": str(raw_path), "status": "missing-input"})
             continue
-        report = inventory(version, raw_path, args.out_dir, args.ghidra, args.full_analysis)
+        report = inventory(version, raw_path, args.out_dir, args.ghidra, args.full_analysis, args.reference_report)
         destination = args.out_dir / f"{version.replace('.', '_')}_inventory.json"
         destination.write_text(json.dumps(report, indent=2), encoding="utf-8")
         print(f"wrote {destination}")
@@ -239,4 +265,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

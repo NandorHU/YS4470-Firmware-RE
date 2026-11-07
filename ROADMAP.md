@@ -107,3 +107,10 @@ Original V3.6/V3.8 pass 792 gate/PWM cases, 160 Fast CONT result-qualifier cases
 Next: reconstruct/test helper0x80007c88 with persistent histories, invalid/threshold values and range-table choices; feed its calls into the now-validated gate. Do not rerun completed parser, Fast CONT setting or gate analysis. Reference-based SoC signature tooling is an authorized parallel workstream within the continuing project.
 
 Address correction (2026-11-07): file word offsets 0x63ac8..0x63ae8 map to linked 0x80063aa8..0x80063ac8 at base 0x7fffffe0. Earlier prose was displaced by 0x20; raw-diff JSON was correct. Pointer load 0x80042d98 reaches the unchanged PWM prescaler table at 0x80063acc, not the changed nine-cell block. The changed block remains unclassified.
+
+
+## 2026-11-07: pinned F1C100S reference pipeline integrated
+
+Reference acquisition/licensing: `references/f1c100s/README.md` and `sources.lock.json`. Subsystem register anchors and identification methods: `references/f1c100s/F1C100S_REFERENCE_MAP.md` / `register-map.json`. Runner/method: `tools/analyze_f1c100s_references.py` / `tools/F1C100S_REFERENCE_ANALYSIS.md`.
+
+Immediate reference continuation: validate INTC dispatch0x80005260 and registration region0x80005274, then timer setup near0x800071a8. These are candidates, not established full function bounds. Use the register map and exported graph to choose paths; resolve literals/relocations before matching more functions. Carry forward Fast CONT helper0x80007c88 persistent-history tests as the pending measurement task. Reuse completed parser/setting/PWM harnesses; no full-device emulation or firmware installation is authorized by a similarity lead.

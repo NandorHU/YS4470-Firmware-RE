@@ -949,6 +949,46 @@
       "limits": [
         "Emulated MMIO shadows; no physical clock/acoustic verification."
       ]
+    },
+    {
+      "id": "watchdog_keyed_control_update",
+      "addresses": {
+        "V3_6": "0x800085c4",
+        "V3_8": "0x800085c4"
+      },
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Read-modify-write watchdog control with keyed OR mask",
+      "relationships": [
+        "reads/writes 0x01c20cb0; new=old OR 0x14af"
+      ],
+      "evidence": [
+        "evidence/2026-11-07-f1c100s-reference/reference-analysis.json",
+        "references/f1c100s/register-map.json",
+        "evidence/2026-11-07-f1c100s-reference/pyghidra-reference-validation.json"
+      ],
+      "limits": [
+        "Eight inert-shadow seed cases per original; no hardware watchdog/reset timing or reference whole-function identity proven."
+      ]
+    },
+    {
+      "id": "watchdog_mode_enable",
+      "addresses": {
+        "V3_6": "0x800085e0",
+        "V3_8": "0x800085e0"
+      },
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Set watchdog mode bit0 by read-modify-write",
+      "relationships": [
+        "reads/writes 0x01c20cb8; new=old OR 0x1"
+      ],
+      "evidence": [
+        "evidence/2026-11-07-f1c100s-reference/reference-analysis.json",
+        "references/f1c100s/register-map.json",
+        "evidence/2026-11-07-f1c100s-reference/pyghidra-reference-validation.json"
+      ],
+      "limits": [
+        "Eight inert-shadow seed cases per original; no hardware watchdog/reset timing or reference whole-function identity proven."
+      ]
     }
   ],
   "session_updates": [
@@ -1006,6 +1046,11 @@
       "date": "2026-11-07",
       "evidence": "evidence/2026-11-07-sound-pwm-path.json",
       "summary": "SoundControlGate to PA2/PWM0 original ARM926 execution and version-data address correction."
+    },
+    {
+      "date": "2026-11-07",
+      "evidence": "evidence/2026-11-07-f1c100s-reference/reference-analysis.json",
+      "summary": "Pinned F1C100S reference inventory, cross-build/matching/MMIO pipeline, two bounded watchdog helpers and proof-gated PyGhidra labels."
     }
   ],
   "version_comparisons": {
@@ -1153,5 +1198,28 @@
       },
       "evidence": "evidence/2026-11-07-fast-cont-setting.json"
     }
+  },
+  "reference_analysis": {
+    "date": "2026-11-07",
+    "evidence": "evidence/2026-11-07-f1c100s-reference/reference-analysis.json",
+    "validation": "evidence/2026-11-07-f1c100s-reference/pyghidra-reference-validation.json",
+    "source_lock": "references/f1c100s/sources.lock.json",
+    "register_map": "references/f1c100s/register-map.json",
+    "reference_source_builds": 5,
+    "upstream_prebuilt_objects": 8,
+    "eligible_functions_per_original": 97,
+    "accepted_reference_matches": 0,
+    "per_original": {
+      "mmio_literal_candidates": 142,
+      "following_access_candidates": 129,
+      "cp15_candidates": 10,
+      "linear_bl_candidates": 11914,
+      "call_target_candidates": 1004
+    },
+    "bounded_watchdog_cases": 32,
+    "unit_tests": 7,
+    "pyghidra_reference_exports": 12,
+    "scope": "ARM aligned candidate survey0x80000000..0x80063800; not whole-firmware/Thumb/indirect proof",
+    "next": "INTC dispatch0x80005260/registration0x80005274 and timer region0x800071a8; Fast CONT helper0x80007c88 remains pending"
   }
 }
