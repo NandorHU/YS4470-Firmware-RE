@@ -135,3 +135,14 @@ Remaining:
 - Establish the API contract of queue boundary 0x80061acc before naming its r2 argument (0 for event 3, 10 otherwise).
 - The 31 direct aligned ARM BL candidates do not cover Thumb or indirect event submitters. Keep unsupported call-graph coverage explicit.
 - The helper initializes only record bytes 0..5; determine whether any other record fields are used downstream.
+
+## Updated 2026-11-07: Fast CONT identified
+
+The former naming/default/storage questions for 0x805ac788 are answered: Fast CONT, invalid-record default 1, CRC32-protected record at flash 0xf00000. The historical E2 snapshot has value 1 and valid CRC.
+
+Remaining bounded questions:
+- Follow the additional Fast CONT read at 0x80003878 in ResultDispatch: how does it change result-to-sound handling?
+- Trace SoundControlGate 0x80006e4c through 0x800060d0 to the first peripheral-facing operation.
+- What is the physical difference between the Fast CONT command list and the ordinary Buzzer list, and what drives their response cadence?
+- When is settings save 0x800082c0 invoked after a UI change? The record format is proven, but the full save-trigger policy is not.
+- Inspect later loader metadata updates and remaining settings fields separately; do not treat the whole 0xf00000 sector as classified.

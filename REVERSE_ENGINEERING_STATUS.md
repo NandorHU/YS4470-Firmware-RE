@@ -146,3 +146,11 @@ Completed and re-verified the carry-over event-source experiment from 2026-11-06
 The Diode-side event setup passes (2,0x0e,0x19) to event-record builder 0x80006778. The Buzzer-side setup passes the same tuple unless word 0x805ac788 equals exactly 1, in which case it passes (5,0x22,0x13). Both record paths feed the previously proven count=2 dispatcher behavior. The setting's user-visible meaning remains unknown.
 
 Tests across original V3.6/V3.8: 900 event-builder cases, 64 GUI branch cases, 96 linked parser entries, 12 label/registration slices, and 18 mode-switch cases passed. Source/result fingerprints match between versions and the read-only 2026-11-07 rerun matched the saved evidence. Physical timing and analog measurement behavior remain unvalidated.
+
+## 2026-11-07: Fast CONT identified, initialized and persisted
+
+The previously unnamed word at 0x805ac788 is the **Fast CONT** option. English label assignment at 0x8004557c targets GUI label +0x320; checkbox +0x31c registers handler 0x8005a3bc. Executing the original handler and its state getter proves that widget state bit 0 is normalized to 0/1 and stored to this word.
+
+The invalid-record default path sets Fast CONT to 1. The configuration record is 72 bytes at flash offset 0xf00000, with CRC32 over its first 68 bytes and little-endian checksum at +0x44. Original save and validation loops match independent zlib CRC32. The historical private 2026-11-06 E2 backup contains a valid record with Fast CONT=1.
+
+Across V3.6/V3.8, 524 widget-state cases, 48 save cases, 48 valid loads, 144 damaged records rejected, 12 default cases, eight restore cases, six GUI binding slices and 14 checkbox-to-event checks passed. No physical device operation occurred. The result names the Buzzer-path selector, not its physical timing. See [evidence](evidence/2026-11-07-fast-cont-setting.json) and `tools/FAST_CONT_SETTING.md`.

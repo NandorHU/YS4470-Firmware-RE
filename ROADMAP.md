@@ -92,3 +92,7 @@ Trace the record-building helper at 0x80006778 and its direct callers. Establish
 ## Updated next bounded task (2026-11-07, after GUI event-source linkage)
 
 Trace settings word 0x805ac788 through writers/defaults/storage and seek its GUI label. This is the shortest next step to explain why the Buzzer UI can select either [0x0e,0x19,0x1d] or [0x0c,0x22,0x13,0x1d]. Reuse the validated event-builder/dispatcher/parser harnesses. Queue timing and SoundControlGate hardware ownership remain separate pending tasks.
+
+## Updated next bounded task (2026-11-07, after Fast CONT identification)
+
+Trace the Fast CONT-dependent result consumer starting at 0x80003870/0x80003878, then connect its sound-gate conditions and arguments to 0x80006e4c → 0x800060d0. Recover the first peripheral-facing sound operation without assigning a millisecond delay or acoustic outcome. The named setting/default/record format is now established; reuse the Fast CONT and event-source harnesses rather than repeating that work.

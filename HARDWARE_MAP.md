@@ -98,3 +98,9 @@ The control byte initialized to 2 is decremented on admitted state-5 responses r
 ## 2026-11-07: GUI naming versus hardware observation
 
 The event sources are now associated with the firmware's literal Diode/Buzzer labels through label assignment, callback registration, and handler code. This does not identify new pins, ADC frontend behavior, or actual buzzer timing. Event-builder queue argument r2=10 remains an untyped software argument, not 10 milliseconds. The verification ran on host-side ARM926 emulation only.
+
+## 2026-11-07: Fast CONT snapshot and storage boundary
+
+The 2026-11-06 E2-modified 16 MiB backup contains a valid CRC-protected settings record at flash offset 0xf00000 with Fast CONT=1. This was read from the existing local dump, not from a new live FEL session. The original settings write routine was emulated only up to its storage call; no flash, GPIO, USB, or sound-control hardware operation was issued.
+
+The UI label Fast CONT identifies the branch selector. Its electrical effect and audible response time remain separate hardware/algorithm questions.

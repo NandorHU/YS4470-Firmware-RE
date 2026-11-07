@@ -151,3 +151,13 @@ The established count=2 path now has a static GUI source:
 The event-record builder and the selected GUI tails execute original ARM instructions; decoded records are then handed to the already tested dispatcher and parser harness. Both dispatcher lists set count=2, so the first two admitted parser entries retain the previous result. Control +8 is 0x0e for the first route and 0x22 for the special Buzzer route; this also changes whether the unsigned saturation gate is eligible.
 
 This is a verified software route with UI-label association. Queue transport, complete GUI dispatch, physical mode behavior, sample cadence, and acoustic latency are not measured. The flag is intentionally not called a speed, calibration, or buzzer-enable setting until its writers are recovered.
+
+## 2026-11-07: name and persistence of the Buzzer branch flag
+
+The selector previously described only as settings word 0x805ac788 is **Fast CONT**. Its GUI handler reads widget state bit 0, stores normalized 0/1, and invokes the sound gate for UI feedback. The invalid-settings default is 1, and the historical E2 backup also stores 1 with valid CRC.
+
+Fast CONT=1 selects Buzzer event (5,0x22,0x13), yielding command list [0x0c,0x22,0x13,0x1d]. Fast CONT=0 selects event (2,0x0e,0x19), yielding [0x0e,0x19,0x1d]. Both feed the already proven two-response discard rule; naming the option does not establish the latency of either path.
+
+Configuration uses a 72-byte record with CRC32 over the first 68 bytes and checksum at +0x44. Independent zlib calculation matches the original CRC loops; 144 single-bit-damaged records were rejected across the two originals.
+
+An edge distinction is preserved: valid CRC does not impose a 0/1 field range. Synthetic stored values 2/0xffffffff restore a checked widget, but the Buzzer consumer requires exact 1 for its special route. Normal checkbox interaction normalizes the value. The observed device snapshot has the canonical value 1.
