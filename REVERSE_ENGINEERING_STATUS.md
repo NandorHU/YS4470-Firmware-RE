@@ -4,7 +4,7 @@ The project is actively reconstructing the original YS-4470 firmware; it is not 
 
 ## Current continuation (2026-11-07)
 
-INTC/timer proof and a separately compiled Fast CONT C component are complete within the documented bounded scopes. Audit real renderer0x8000326c and enqueue path0x80006778 for side effects excluded from the refresh model. Then prove FSM+0x30's cached read at0x800044a8 (r1=sb via ADD#0), its elapsed-tick comparisons and tick getter0x80061f84; do not assign milliseconds before that contract is validated.
+INTC/timer proof and a separately compiled Fast CONT C component are complete within the documented bounded scopes. Prove FSM+0x30's cached reader0x800044a8 through r5 and elapsed-tick branches0x800046a8/0x800046c4/0x80004720 using real getter0x80061f84 and the verified critical helpers. Test threshold boundaries and32-bit tick wrap before assigning units or interpreting Beta3's30-to40 change. Keep blocked queues, waiters and remaining GUI/log leaves separate.
 
 ## Confirmed static foundation
 
@@ -200,3 +200,14 @@ The original refresh callback0x8005d048 can refill the filter from one unchanged
 The caller divides signed raw data by float32 bits0x452f499a, clamps negative finite values to0 and rejects>=1000 before the filter. Accepted helper arguments are0..999. Sentinel/upper-limit paths request off while preserving history/median. The helper's standalone>1000 reset is therefore not the policy of this caller. 752 bounded cases/steps across originals pass with matching fingerprints;10 real Ghidra exports and9 guard/provenance tests pass.
 
 Corrected old analysis seeds:0x800037bc is literal0x805abf10, not a function entry;0x8005d1a0 is a callsite inside callback0x8005d048. Historical comparisons remain saved seed/window evidence. New exports record seed revision and the comparison tool rejects incompatible provenance. Next: Audit real renderer0x8000326c and enqueue path0x80006778 for side effects excluded from the refresh model. Then prove FSM+0x30's cached read at0x800044a8 (r1=sb via ADD#0), its elapsed-tick comparisons and tick getter0x80061f84; do not assign milliseconds before that contract is validated.
+
+
+## 2026-11-07: original queue/renderer state execution
+
+Evidence: `evidence/2026-11-07-refresh-side-effects.json` and `evidence/2026-11-07-refresh-side-effects-ghidra.json`; runner/method: `tools/trace_refresh_side_effects.py` / `tools/REFRESH_SIDE_EFFECTS.md`.
+
+Removed the preceding model's top-level event-builder and renderer stubs. Original queue initializer0x800029dc requests10 slots of68 bytes, stores its handle at0x805aae90, and calls constructor0x80061838. Constructor/list initialization, available send/copy, full zero-wait rejection and critical enter/exit now execute; only the heap allocation return is modeled. Renderer control and helpers0x8000406c/4114/425c/4290/4314/2e44 also execute, with graphics/text/log leaves explicit.
+
+Across originals,2396 checks pass:72 queue,2304 renderer,6 critical,4 initialization and10 linked callback steps. The five-callback stored-result example persists with five real event copies in an original-code-constructed queue. No parser entry occurs, discard remains2, filter fill reaches3 and emulated active becomes1. The tested queue/renderer paths preserve protected freshness/filter state. Fourteen real Ghidra exports and9 guard tests pass. Blocking/waiter paths, full GUI, asynchronous logs and live timing remain open.
+
+Next: Prove FSM+0x30's cached reader0x800044a8 through r5 and elapsed-tick branches0x800046a8/0x800046c4/0x80004720 using real getter0x80061f84 and the verified critical helpers. Test threshold boundaries and32-bit tick wrap before assigning units or interpreting Beta3's30-to40 change. Keep blocked queues, waiters and remaining GUI/log leaves separate.

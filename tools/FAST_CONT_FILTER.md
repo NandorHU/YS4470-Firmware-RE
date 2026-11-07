@@ -89,5 +89,7 @@ result without a parser entry. Its three filter calls do not imply three new
 UART samples. Queue/renderer/printf/creation APIs are explicit stubs there;
 factory power-on state, live cadence and acoustic behavior remain open.
 
-Next: audit the excluded renderer/queue state effects, and bound tick/timeout
-consumers before assigning time units.
+The renderer/queue-core audit is now in `REFRESH_SIDE_EFFECTS.md`: original
+constructor, send/copy, critical and renderer state code preserve the repeated
+stored-result example. Low-level graphics/text/log models and blocking queues
+remain separate. Next: bound tick/timeout consumers before assigning time units.

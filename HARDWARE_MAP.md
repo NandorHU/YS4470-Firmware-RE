@@ -140,3 +140,10 @@ The linked original startup path configures timer0 with24000 cycles, IRQ13 prior
 Evidence: `evidence/2026-11-07-result-freshness.json` / `evidence/2026-11-07-result-freshness-ghidra.json`. Reproduction/scope: `tools/RESULT_FRESHNESS.md`, `tools/trace_result_freshness.py`.
 
 No new device access occurred. This run links a GUI callback to stored measurement data and the already verified sound/PWM path using inert shadows. Callback period arguments25/100/200 are not assigned milliseconds. The nominal1kHz RTOS timer setup alone does not prove callback scheduling, UART sample cadence or acoustic latency. A queued command is not a completed measurement reply in this model.
+
+
+## 2026-11-07: original queue/renderer state execution
+
+Evidence: `evidence/2026-11-07-refresh-side-effects.json` and `evidence/2026-11-07-refresh-side-effects-ghidra.json`; runner/method: `tools/trace_refresh_side_effects.py` / `tools/REFRESH_SIDE_EFFECTS.md`.
+
+Original critical helpers manipulate guest CPSR IRQ-mask bit7 and nesting word0x805abbf8. Valid nesting0/1/2 paths pass on explicit ARM926. This does not inject hardware IRQs or prove concurrent scheduling. Queue/renderer code writes normal RAM, not newly observed MMIO. No device, flash, live UART or acoustic operation occurred; callback periods and wait10 remain unassigned physical time units.

@@ -248,3 +248,22 @@ Evidence: `evidence/2026-11-07-result-freshness.json` / `evidence/2026-11-07-res
 | 0x80003b00 | rejection threshold bits0x447a0000 =1000.0 |
 
 The fixture's timer handle and initial raw/history state are synthetic. They are not live SRAM observations or recovered factory initialization values.
+
+
+## 2026-11-07: original queue/renderer state execution
+
+Evidence: `evidence/2026-11-07-refresh-side-effects.json` and `evidence/2026-11-07-refresh-side-effects-ghidra.json`; runner/method: `tools/trace_refresh_side_effects.py` / `tools/REFRESH_SIDE_EFFECTS.md`.
+
+| Storage | Observed layout/use |
+|---|---|
+| 0x805aae90 | measurement queue handle (CONTROL+4), written by initializer0x800029dc |
+| queue+0/+4/+8/+0xc | data start/end/write/read-side pointers |
+| queue+0x10/+0x24 | waiting-list fields, empty in tested paths |
+| queue+0x38/+0x3c/+0x40 | occupied count/capacity/item size |
+| queue+0x44/+0x45/+0x4c | signed lock bytes/type byte |
+| queue+0x50 | constructor's contiguous payload start;10*68+80=760-byte request |
+| 0x805abbf8 | critical nesting word |
+| 0x80d46fb8 / 0x80d46ff8 | two64-byte renderer memo buffers |
+| 0x80d47038 / 0x80d47048 | four/eight-word renderer auxiliary histories |
+
+The renderer histories differ from Fast CONT history0x805ac7b8. Runtime queue pointer values in tests are synthetic allocator returns; this is not a live RAM capture. No FEL-safe-region conclusion follows from emulator mappings.

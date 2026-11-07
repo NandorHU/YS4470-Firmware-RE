@@ -2,7 +2,7 @@
 
 ## Current unresolved work (2026-11-07)
 
-1. Audit real renderer0x8000326c and enqueue path0x80006778 for side effects excluded from the refresh model. Then prove FSM+0x30's cached read at0x800044a8 (r1=sb via ADD#0), its elapsed-tick comparisons and tick getter0x80061f84; do not assign milliseconds before that contract is validated.
+1. Prove FSM+0x30's cached reader0x800044a8 through r5 and elapsed-tick branches0x800046a8/0x800046c4/0x80004720 using real getter0x80061f84 and the verified critical helpers. Test threshold boundaries and32-bit tick wrap before assigning units or interpreting Beta3's30-to40 change. Keep blocked queues, waiters and remaining GUI/log leaves separate.
 2. What initializes the filter history/count/retained median at power-on, and what physical scalar unit reaches it?
 3. What is the alternate INTC table's role? Complete exception context restoration remains untested.
 4. Recover remaining ADC scaling, autorange, measurement algorithms, GUI, calibration, storage and update subsystems.
@@ -184,3 +184,12 @@ Resolved in the scoped model: refresh calls can reuse a stored result; UI warmup
 An inspected static FSM reader is now located at0x800044a8: LDR r5,[r1,#0x30], with r1=sb via ADD#0 at0x8000449c. The older simple-MOV literal tracer's bounded negative result was not a global absence proof. Its timing consumers are not executed in this run.
 
 Next: Audit real renderer0x8000326c and enqueue path0x80006778 for side effects excluded from the refresh model. Then prove FSM+0x30's cached read at0x800044a8 (r1=sb via ADD#0), its elapsed-tick comparisons and tick getter0x80061f84; do not assign milliseconds before that contract is validated.
+
+
+## 2026-11-07: original queue/renderer state execution
+
+Evidence: `evidence/2026-11-07-refresh-side-effects.json` and `evidence/2026-11-07-refresh-side-effects-ghidra.json`; runner/method: `tools/trace_refresh_side_effects.py` / `tools/REFRESH_SIDE_EFFECTS.md`.
+
+Resolved in the new bounded scope: real available-queue send/copy and renderer-state code preserve the repeated-result example; queue init requests10*68-byte slots; critical nesting/IRQ-mask behavior is executed. Still open: timed full queues, waiting-task wakeups/context switches, real heap behavior, remaining graphics/text/log leaves and live timing.
+
+Next: Prove FSM+0x30's cached reader0x800044a8 through r5 and elapsed-tick branches0x800046a8/0x800046c4/0x80004720 using real getter0x80061f84 and the verified critical helpers. Test threshold boundaries and32-bit tick wrap before assigning units or interpreting Beta3's30-to40 change. Keep blocked queues, waiters and remaining GUI/log leaves separate.

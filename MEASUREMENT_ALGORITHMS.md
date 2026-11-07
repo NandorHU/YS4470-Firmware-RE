@@ -205,3 +205,14 @@ An interleaved admitted-command0x1b sequence proves discard2→1→0 preserves t
 Caller conversion: float32(raw)/float32(2804.60009765625), observed negative-bit clamp, reject>=1000.0, then truncate accepted values to0..999. Raw2804600 produces999 after the actual float32 path;2804601 is rejected. The0x007fffff sentinel also bypasses the filter. Both off paths preserve its prior history/median, so returning to an accepted value can reuse that retained state on the next call. This qualifies the earlier standalone helper result: its>1000 reset exists but this accepted caller path does not reach it. Source scalar units remain unassigned.
 
 Renderer/queue/printf/creation side effects are API boundaries. The original memclr, numeric conversion, parser slice, filter and sound/PWM instructions execute. No additive two-discard+three-new-sample or millisecond latency formula follows.
+
+
+## 2026-11-07: original queue/renderer state execution
+
+Evidence: `evidence/2026-11-07-refresh-side-effects.json` and `evidence/2026-11-07-refresh-side-effects-ghidra.json`; runner/method: `tools/trace_refresh_side_effects.py` / `tools/REFRESH_SIDE_EFFECTS.md`.
+
+The freshness counterexample now survives original renderer-state and queue-copy execution. In five callbacks, five event4 records are copied to the factory-sized queue; no receiver/parser task is run. Stored raw14023 and discard2 remain unchanged while filter fills[0,0,1,2,3] and retained value5 enables the emulated sound path. An enqueued request is distinct from a published measurement.
+
+The renderer's direct state and helpers preserve UI warmup+9, parser discard+1, raw result/selector, Fast CONT active/index/count/median/history and RX bytes in1152 states per original. Mode0/1/3/4, UI+3 flag, record+0x40 flag, saved-mode match, counters and cold/full auxiliary histories are varied. The raw UI flags are not assigned unproven menu names. Renderer-owned memo/four/eight-value storage changes independently of the Fast CONT ring.
+
+Graphics/text/log leaves and heap allocation remain models. Waiting-task, blocking-queue and asynchronous UI effects are not covered. The C filter component is unchanged; this run strengthens its caller/context evidence rather than claiming a complete GUI or firmware reconstruction.
