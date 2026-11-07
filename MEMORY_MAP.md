@@ -137,7 +137,7 @@ No unit, calibration scale, or physical over-range meaning is assigned to thresh
 
 ## 2026-11-06 V3.6/V3.8 raw-diff anchors
 
-The original V3.6/V3.8 images share link base `0x7fffffe0` and length 5,943,296 bytes. Their only non-header changes fall in a data-looking region after literal `EnumKey*` strings: nine 32-bit cells beginning at `0x80063ac8` (file offset `0x63ac8`). The linked range is deliberately recorded as **unclassified data**, not as code, calibration, a key map, or a measurement table. V3.8 code at `0x80042d98` loads literal pointer `0x80063acc`; the local consumer is still unresolved.
+The original V3.6/V3.8 images share link base `0x7fffffe0` and length 5,943,296 bytes. Their only non-header changes fall in a data-looking region after literal `EnumKey*` strings: nine 32-bit cells beginning at `0x80063aa8` (file offset `0x63ac8`). The linked range is deliberately recorded as **unclassified data**, not as code, calibration, a key map, or a measurement table. V3.8 code at `0x80042d98` loads literal pointer `0x80063acc`; the local consumer is still unresolved.
 
 ## 2026-11-06 observed flash anchors (live FEL backup)
 
@@ -184,3 +184,23 @@ These are synthetic RAM and original instruction observations; no running-device
 - Default block initializes seven words at +0..+0x18; later fields retain their initial RAM pattern in the tested block.
 
 The first record at 0xf00000 is now classified as configuration. This does not classify the remainder of its flash erase sector or make it suitable as instrumentation storage. The full private device dump is preserved.
+
+
+## 2026-11-07: sound gate reaches PWM0 (bounded ARM926 execution)
+
+Evidence: `evidence/2026-11-07-sound-pwm-path.json`; reproducible method: `tools/SOUND_PWM_PATH.md`; runner: `tools/trace_sound_pwm_path.py`.
+
+Original V3.6/V3.8 pass 792 gate/PWM cases, 160 Fast CONT result-qualifier cases and two sentinel-off call setups, with identical fingerprints. Real original instructions execute through 0x80006e4c → 0x800060d0 → pinmux 0x8000302c / PWM configure 0x80042d40; arithmetic helpers are executed, not stubbed. PIO/PWM are RAM shadows, with no physical clock, acoustic result or measured delay.
+
+| Address | Meaning |
+|---|---|
+| 0x805ac780 | settings +0x10; exact value1 enables sound gate |
+| 0x805ac77c | settings +0x0c; halved value controls PWM duty (tested0..100) |
+| 0x805ab924 | sound active flag |
+| 0x805ac764 | result object +0x50; on=3, completed off=0 |
+| 0x80063968 | ten u16 requested frequencies, 2000..4000 Hz |
+| 0x80063acc | unchanged 16-entry PWM prescaler table |
+| 0x01c20800 / 0x01c2081c | PIO PA mux/pull |
+| 0x01c21000 / +4 | PWM control / period-duty word |
+
+Address correction (2026-11-07): file word offsets 0x63ac8..0x63ae8 map to linked 0x80063aa8..0x80063ac8 at base 0x7fffffe0. Earlier prose was displaced by 0x20; raw-diff JSON was correct. Pointer load 0x80042d98 reaches the unchanged PWM prescaler table at 0x80063acc, not the changed nine-cell block. The changed block remains unclassified.

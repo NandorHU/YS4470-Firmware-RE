@@ -174,7 +174,7 @@ See `evidence/2026-11-04-pyghidra-beta3-compare.json` for machine-readable sessi
 
 - Inspected the running Mr.Yang updater without activating **Upgrade**. Its firmware-list manifest named `Project_February_V3.6_V02.26.6` and supplied the expected SHA-256.
 - Retrieved original `f1c100s.bin` into a local non-public input directory. Verification passed: **5,943,296 bytes**, SHA-256 `7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9`.
-- Ran `tools/diff_raw_images.py` against verified V3.8: **10 ranges / 20 bytes**. Four bytes are at eGON-header offset `0x0c`; 16 bytes alter nine unclassified 32-bit table cells at linked `0x80063ac8..0x80063ae8`.
+- Ran `tools/diff_raw_images.py` against verified V3.8: **10 ranges / 20 bytes**. Four bytes are at eGON-header offset `0x0c`; 16 bytes alter nine unclassified 32-bit table cells at linked `0x80063aa8..0x80063ac8`.
 - Ran `tools/trace_arm_literal_object.py` self-test and bounded trace. V3.8 `0x80042d98` PC-loads literal table address `0x80063acc`; no direct table field access appears in the next 128 ARM words. This is bounded, not a global negative result.
 - No physical I/O, FEL operation, device-memory access, firmware flashing, bootloader change, or RAM code execution occurred. The firmware binary itself is deliberately excluded from GitHub.
 
@@ -286,3 +286,14 @@ Evidence created 2026-11-06 and re-verified 2026-11-07: `evidence/2026-11-06-mea
 4. Investigate settings-save call sites later; loader metadata and remaining configuration fields are separate work.
 
 Evidence: `evidence/2026-11-07-fast-cont-setting.json`. Tool/method: `tools/trace_fast_cont_setting.py` and `tools/FAST_CONT_SETTING.md`.
+
+
+## 2026-11-07: sound gate reaches PWM0 (bounded ARM926 execution)
+
+Evidence: `evidence/2026-11-07-sound-pwm-path.json`; reproducible method: `tools/SOUND_PWM_PATH.md`; runner: `tools/trace_sound_pwm_path.py`.
+
+Original V3.6/V3.8 pass 792 gate/PWM cases, 160 Fast CONT result-qualifier cases and two sentinel-off call setups, with identical fingerprints. Real original instructions execute through 0x80006e4c → 0x800060d0 → pinmux 0x8000302c / PWM configure 0x80042d40; arithmetic helpers are executed, not stubbed. PIO/PWM are RAM shadows, with no physical clock, acoustic result or measured delay.
+
+Proved gate conditions and full code path to emulated peripheral registers. Found zero-duty off semantics, unchanged tone/prescaler data, settings duty conversion and state flags. No physical device operation occurred. Next exact point: helper0x80007c88 history/range selection → verified gate; retain response cadence and acoustic latency as open.
+
+Address correction (2026-11-07): file word offsets 0x63ac8..0x63ae8 map to linked 0x80063aa8..0x80063ac8 at base 0x7fffffe0. Earlier prose was displaced by 0x20; raw-diff JSON was correct. Pointer load 0x80042d98 reaches the unchanged PWM prescaler table at 0x80063acc, not the changed nine-cell block. The changed block remains unclassified.

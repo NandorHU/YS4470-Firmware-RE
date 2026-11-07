@@ -107,7 +107,7 @@ Case-2 command setup supplies the control word from an input-derived value and i
 
 ## 2026-11-06 V3.6/V3.8 algorithm baseline
 
-Raw comparison of the two original releases found no changed instruction bytes. The only payload-data delta is nine unclassified 32-bit values at `0x80063ac8`; consequently this evidence neither proves a measurement-algorithm change nor rules out a behavior change caused by configuration data. The previously recovered UART2/FSM/result rules are byte-identical candidates for V3.6 pending a seeded PyGhidra export.
+Raw comparison of the two original releases found no changed instruction bytes. The only payload-data delta is nine unclassified 32-bit values at `0x80063aa8`; consequently this evidence neither proves a measurement-algorithm change nor rules out a behavior change caused by configuration data. The previously recovered UART2/FSM/result rules are byte-identical candidates for V3.6 pending a seeded PyGhidra export.
 
 ## 2026-11-06 active-hardware scope correction
 
@@ -161,3 +161,14 @@ Fast CONT=1 selects Buzzer event (5,0x22,0x13), yielding command list [0x0c,0x22
 Configuration uses a 72-byte record with CRC32 over the first 68 bytes and checksum at +0x44. Independent zlib calculation matches the original CRC loops; 144 single-bit-damaged records were rejected across the two originals.
 
 An edge distinction is preserved: valid CRC does not impose a 0/1 field range. Synthetic stored values 2/0xffffffff restore a checked widget, but the Buzzer consumer requires exact 1 for its special route. Normal checkbox interaction normalizes the value. The observed device snapshot has the canonical value 1.
+
+
+## 2026-11-07: sound gate reaches PWM0 (bounded ARM926 execution)
+
+Evidence: `evidence/2026-11-07-sound-pwm-path.json`; reproducible method: `tools/SOUND_PWM_PATH.md`; runner: `tools/trace_sound_pwm_path.py`.
+
+Original V3.6/V3.8 pass 792 gate/PWM cases, 160 Fast CONT result-qualifier cases and two sentinel-off call setups, with identical fingerprints. Real original instructions execute through 0x80006e4c → 0x800060d0 → pinmux 0x8000302c / PWM configure 0x80042d40; arithmetic helpers are executed, not stubbed. PIO/PWM are RAM shadows, with no physical clock, acoustic result or measured delay.
+
+Tone requests use table [2000,2222,2444,2666,2888,3110,3332,3554,3776,4000]. period_ns=floor(1e9/frequency); duty uses signed half-setting and original float32 rounding. For selector5/setting90: 2888Hz requested, period346260ns, duty155816ns. Off sets duty0; it does not clear PWM enable. Result qualification and sentinel-off (0,0) call setup are executed; measurement thresholds, formatting and helper0x80007c88 are outside this experiment.
+
+Address correction (2026-11-07): file word offsets 0x63ac8..0x63ae8 map to linked 0x80063aa8..0x80063ac8 at base 0x7fffffe0. Earlier prose was displaced by 0x20; raw-diff JSON was correct. Pointer load 0x80042d98 reaches the unchanged PWM prescaler table at 0x80063acc, not the changed nine-cell block. The changed block remains unclassified.

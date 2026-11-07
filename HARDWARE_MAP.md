@@ -104,3 +104,14 @@ The event sources are now associated with the firmware's literal Diode/Buzzer la
 The 2026-11-06 E2-modified 16 MiB backup contains a valid CRC-protected settings record at flash offset 0xf00000 with Fast CONT=1. This was read from the existing local dump, not from a new live FEL session. The original settings write routine was emulated only up to its storage call; no flash, GPIO, USB, or sound-control hardware operation was issued.
 
 The UI label Fast CONT identifies the branch selector. Its electrical effect and audible response time remain separate hardware/algorithm questions.
+
+
+## 2026-11-07: sound gate reaches PWM0 (bounded ARM926 execution)
+
+Evidence: `evidence/2026-11-07-sound-pwm-path.json`; reproducible method: `tools/SOUND_PWM_PATH.md`; runner: `tools/trace_sound_pwm_path.py`.
+
+Original V3.6/V3.8 pass 792 gate/PWM cases, 160 Fast CONT result-qualifier cases and two sentinel-off call setups, with identical fingerprints. Real original instructions execute through 0x80006e4c → 0x800060d0 → pinmux 0x8000302c / PWM configure 0x80042d40; arithmetic helpers are executed, not stubbed. PIO/PWM are RAM shadows, with no physical clock, acoustic result or measured delay.
+
+First peripheral read: instruction 0x80003034 reads PIO 0x01c20800. PA2 mux bits8..11 become3 and PA2 pull bits4..5 at +0x1c become0. [F1C100S pinctrl](https://github.com/torvalds/linux/blob/master/drivers/pinctrl/sunxi/pinctrl-suniv-f1c100s.c) maps PA2/function3 to PWM0. PWM fields agree with [sun4i PWM layout](https://github.com/torvalds/linux/blob/master/drivers/pwm/pwm-sun4i.c): enable bit4, polarity bit5, clock gate bit6, prescaler low4. All tested sound frequencies use prescaler15 and a nominal 24 MHz code literal. Actual source clock, wiring and acoustic delay remain unmeasured.
+
+Address correction (2026-11-07): file word offsets 0x63ac8..0x63ae8 map to linked 0x80063aa8..0x80063ac8 at base 0x7fffffe0. Earlier prose was displaced by 0x20; raw-diff JSON was correct. Pointer load 0x80042d98 reaches the unchanged PWM prescaler table at 0x80063acc, not the changed nine-cell block. The changed block remains unclassified.

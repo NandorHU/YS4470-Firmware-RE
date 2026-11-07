@@ -103,7 +103,7 @@ The relevant dispatcher, saturation, and literal ranges are byte-identical in V3
 
 The running Mr.Yang updater listed package `Project_February_V3.6_V02.26.6`. Its original `f1c100s.bin` was downloaded without invoking **Upgrade**, saved outside the public repository, and verified against the updater manifest: **5,943,296 bytes**, SHA-256 `7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9`.
 
-A raw equal-layout comparison against the original V3.8 image found **10 contiguous difference ranges totaling 20 bytes**. Four bytes are eGON-header data at file offset `0x0000000c`; the remaining 16 changed bytes occur within nine 32-bit values starting at linked address `0x80063ac8`, immediately after `EnumKey*` text. The semantic role of that table remains unassigned. One static ARM PC-literal load reaches table base `0x80063acc` from `0x80042d98`; the bounded tracer found no direct field access within its 128-word window.
+A raw equal-layout comparison against the original V3.8 image found **10 contiguous difference ranges totaling 20 bytes**. Four bytes are eGON-header data at file offset `0x0000000c`; the remaining 16 changed bytes occur within nine 32-bit values starting at linked address `0x80063aa8`, immediately after `EnumKey*` text. The semantic role of that table remains unassigned. One static ARM PC-literal load reaches table base `0x80063acc` from `0x80042d98`; the bounded tracer found no direct field access within its 128-word window.
 
 No changed instruction bytes were observed in this raw diff. This is strong evidence that the known V3.8 code paths are byte-identical in V3.6, but it is not a substitute for the scheduled V3.6 PyGhidra seeded-inventory export or a claim about hardware behavior.
 
@@ -154,3 +154,14 @@ The previously unnamed word at 0x805ac788 is the **Fast CONT** option. English l
 The invalid-record default path sets Fast CONT to 1. The configuration record is 72 bytes at flash offset 0xf00000, with CRC32 over its first 68 bytes and little-endian checksum at +0x44. Original save and validation loops match independent zlib CRC32. The historical private 2026-11-06 E2 backup contains a valid record with Fast CONT=1.
 
 Across V3.6/V3.8, 524 widget-state cases, 48 save cases, 48 valid loads, 144 damaged records rejected, 12 default cases, eight restore cases, six GUI binding slices and 14 checkbox-to-event checks passed. No physical device operation occurred. The result names the Buzzer-path selector, not its physical timing. See [evidence](evidence/2026-11-07-fast-cont-setting.json) and `tools/FAST_CONT_SETTING.md`.
+
+
+## 2026-11-07: sound gate reaches PWM0 (bounded ARM926 execution)
+
+Evidence: `evidence/2026-11-07-sound-pwm-path.json`; reproducible method: `tools/SOUND_PWM_PATH.md`; runner: `tools/trace_sound_pwm_path.py`.
+
+Original V3.6/V3.8 pass 792 gate/PWM cases, 160 Fast CONT result-qualifier cases and two sentinel-off call setups, with identical fingerprints. Real original instructions execute through 0x80006e4c → 0x800060d0 → pinmux 0x8000302c / PWM configure 0x80042d40; arithmetic helpers are executed, not stubbed. PIO/PWM are RAM shadows, with no physical clock, acoustic result or measured delay.
+
+ResultDispatch special path 0x80003910 requires UI mode=4, Fast CONT=1 exactly, and config byte +7=0x22. Sound gate requires settings +0x10=1, clamps selector to 1..10, uses the unchanged tone table at 0x80063968, and programs PA2 function3/PWM0. Off writes zero active duty while PWM enable/clock-gating remain set. Next bounded task: reconstruct helper 0x80007c88 history/range selection and its calls into this verified gate.
+
+Address correction (2026-11-07): file word offsets 0x63ac8..0x63ae8 map to linked 0x80063aa8..0x80063ac8 at base 0x7fffffe0. Earlier prose was displaced by 0x20; raw-diff JSON was correct. Pointer load 0x80042d98 reaches the unchanged PWM prescaler table at 0x80063acc, not the changed nine-cell block. The changed block remains unclassified.

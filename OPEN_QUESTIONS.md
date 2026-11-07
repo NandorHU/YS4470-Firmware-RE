@@ -100,7 +100,7 @@ Remaining:
 
 ## Added 2026-11-06: V3.6 data delta
 
-- What is the semantic role of the nine modified 32-bit cells at `0x80063ac8..0x80063ae8`? The surrounding `EnumKey*` text and a pointer load from `0x80042d98` establish a data-region association only; do not call it calibration, timing, key mapping, or an algorithm parameter without a consumer trace.
+- What is the semantic role of the nine modified 32-bit cells at `0x80063aa8..0x80063ac8`? The surrounding `EnumKey*` text and a pointer load from `0x80042d98` establish a data-region association only; do not call it calibration, timing, key mapping, or an algorithm parameter without a consumer trace.
 - Run and retain the V3.6 seeded PyGhidra inventory, then compare its known function windows against V3.8. Raw equality is a strong baseline, not a complete function-boundary proof.
 
 ## Added 2026-11-06: live-device boundary
@@ -146,3 +146,14 @@ Remaining bounded questions:
 - What is the physical difference between the Fast CONT command list and the ordinary Buzzer list, and what drives their response cadence?
 - When is settings save 0x800082c0 invoked after a UI change? The record format is proven, but the full save-trigger policy is not.
 - Inspect later loader metadata updates and remaining settings fields separately; do not treat the whole 0xf00000 sector as classified.
+
+
+## 2026-11-07: sound gate reaches PWM0 (bounded ARM926 execution)
+
+Evidence: `evidence/2026-11-07-sound-pwm-path.json`; reproducible method: `tools/SOUND_PWM_PATH.md`; runner: `tools/trace_sound_pwm_path.py`.
+
+Original V3.6/V3.8 pass 792 gate/PWM cases, 160 Fast CONT result-qualifier cases and two sentinel-off call setups, with identical fingerprints. Real original instructions execute through 0x80006e4c → 0x800060d0 → pinmux 0x8000302c / PWM configure 0x80042d40; arithmetic helpers are executed, not stubbed. PIO/PWM are RAM shadows, with no physical clock, acoustic result or measured delay.
+
+Resolved: Fast CONT result qualification, gate arguments, first peripheral-facing sound access and PWM-off semantics. Open: helper0x80007c88 three-slot history/range selection; fresh-response versus call cadence; actual clock/acoustic delay; user-visible labels for duty word +0x0c and sound-enable word +0x10. Modified nine-cell version data remains unclassified; it is not the PWM prescaler table.
+
+Address correction (2026-11-07): file word offsets 0x63ac8..0x63ae8 map to linked 0x80063aa8..0x80063ac8 at base 0x7fffffe0. Earlier prose was displaced by 0x20; raw-diff JSON was correct. Pointer load 0x80042d98 reaches the unchanged PWM prescaler table at 0x80063acc, not the changed nine-cell block. The changed block remains unclassified.

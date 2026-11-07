@@ -96,3 +96,14 @@ Trace settings word 0x805ac788 through writers/defaults/storage and seek its GUI
 ## Updated next bounded task (2026-11-07, after Fast CONT identification)
 
 Trace the Fast CONT-dependent result consumer starting at 0x80003870/0x80003878, then connect its sound-gate conditions and arguments to 0x80006e4c → 0x800060d0. Recover the first peripheral-facing sound operation without assigning a millisecond delay or acoustic outcome. The named setting/default/record format is now established; reuse the Fast CONT and event-source harnesses rather than repeating that work.
+
+
+## 2026-11-07: sound gate reaches PWM0 (bounded ARM926 execution)
+
+Evidence: `evidence/2026-11-07-sound-pwm-path.json`; reproducible method: `tools/SOUND_PWM_PATH.md`; runner: `tools/trace_sound_pwm_path.py`.
+
+Original V3.6/V3.8 pass 792 gate/PWM cases, 160 Fast CONT result-qualifier cases and two sentinel-off call setups, with identical fingerprints. Real original instructions execute through 0x80006e4c → 0x800060d0 → pinmux 0x8000302c / PWM configure 0x80042d40; arithmetic helpers are executed, not stubbed. PIO/PWM are RAM shadows, with no physical clock, acoustic result or measured delay.
+
+Next: reconstruct/test helper0x80007c88 with persistent histories, invalid/threshold values and range-table choices; feed its calls into the now-validated gate. Do not rerun completed parser, Fast CONT setting or gate analysis. Reference-based SoC signature tooling is an authorized parallel workstream within the continuing project.
+
+Address correction (2026-11-07): file word offsets 0x63ac8..0x63ae8 map to linked 0x80063aa8..0x80063ac8 at base 0x7fffffe0. Earlier prose was displaced by 0x20; raw-diff JSON was correct. Pointer load 0x80042d98 reaches the unchanged PWM prescaler table at 0x80063acc, not the changed nine-cell block. The changed block remains unclassified.

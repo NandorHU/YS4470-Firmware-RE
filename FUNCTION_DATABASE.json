@@ -138,16 +138,22 @@
       "id": "sound_control_gate",
       "addresses": {
         "V3_8": "0x80006e4c",
-        "Beta3": "0x80006e4c"
+        "Beta3": "0x80006e4c",
+        "V3_6": "0x80006e4c"
       },
-      "confidence": "confirmed",
-      "role": "Sound request gate; clamps selector to 1..10 and calls lower sound routine",
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Enabled sound gate, selector clamp and on/off state",
       "relationships": [
         "called at 0x80003a74"
       ],
       "evidence": [
         "PyGhidra decompilation",
-        "ARM disassembly"
+        "ARM disassembly",
+        "evidence/2026-11-07-sound-pwm-path.json",
+        "tools/SOUND_PWM_PATH.md"
+      ],
+      "limits": [
+        "Emulated MMIO shadows; no physical clock/acoustic verification."
       ]
     },
     {
@@ -895,6 +901,54 @@
       "limits": [
         "The storage API is a stop boundary; no physical write is performed."
       ]
+    },
+    {
+      "id": "sound_pwm_output",
+      "addresses": {
+        "V3_6": "0x800060d0",
+        "V3_8": "0x800060d0"
+      },
+      "role": "Period/duty conversion, PA2 mux and PWM0 output setup",
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "evidence": [
+        "evidence/2026-11-07-sound-pwm-path.json",
+        "tools/SOUND_PWM_PATH.md"
+      ],
+      "limits": [
+        "Emulated MMIO shadows; no physical clock/acoustic verification."
+      ]
+    },
+    {
+      "id": "pio_pin_configure",
+      "addresses": {
+        "V3_6": "0x8000302c",
+        "V3_8": "0x8000302c"
+      },
+      "role": "Pin mux/pull programming; executed for PA2 function3",
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "evidence": [
+        "evidence/2026-11-07-sound-pwm-path.json",
+        "tools/SOUND_PWM_PATH.md"
+      ],
+      "limits": [
+        "Emulated MMIO shadows; no physical clock/acoustic verification."
+      ]
+    },
+    {
+      "id": "pwm_configure",
+      "addresses": {
+        "V3_6": "0x80042d40",
+        "V3_8": "0x80042d40"
+      },
+      "role": "PWM period/prescaler/polarity programming",
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "evidence": [
+        "evidence/2026-11-07-sound-pwm-path.json",
+        "tools/SOUND_PWM_PATH.md"
+      ],
+      "limits": [
+        "Emulated MMIO shadows; no physical clock/acoustic verification."
+      ]
     }
   ],
   "session_updates": [
@@ -947,6 +1001,11 @@
       "date": "2026-11-06",
       "evidence": "evidence/2026-11-06-state5-saturation-path.json",
       "summary": "Recovered V3.8/Beta3-identical state-5 saturation selector, threshold, sentinel write, and case-2 control setup relationship."
+    },
+    {
+      "date": "2026-11-07",
+      "evidence": "evidence/2026-11-07-sound-pwm-path.json",
+      "summary": "SoundControlGate to PA2/PWM0 original ARM926 execution and version-data address correction."
     }
   ],
   "version_comparisons": {
@@ -957,7 +1016,7 @@
       "different_bytes": 20,
       "observations": [
         "Header data differs at file offset 0x0000000c.",
-        "All remaining differences are among nine 32-bit cells at linked 0x80063ac8..0x80063ae8 after EnumKey* text; semantic role unknown.",
+        "Nine modified u32 cells have linked word starts 0x80063aa8..0x80063ac8 (file offsets 0x63ac8..0x63ae8). Role unknown; unchanged PWM prescaler table begins 0x80063acc.",
         "No changed instruction bytes were observed; seeded PyGhidra inventory pairing remains pending."
       ],
       "confidence": "observed raw bytes; table role unresolved",
@@ -1059,6 +1118,14 @@
       "checkbox_to_event_cases": 14,
       "failed": 0,
       "results_sha256_per_version": "3aa5dfa3c7984599935ff35789fc5cac8661fcb5ec6731fc9cc61a4a2b348d29"
+    },
+    "sound_pwm_path": {
+      "evidence": "evidence/2026-11-07-sound-pwm-path.json",
+      "gate_cases": 792,
+      "qualifier_cases": 160,
+      "sentinel_off_calls": 2,
+      "failed": 0,
+      "results_sha256": "3bef57783498bc56b80fabc15cbb93e1faf5a1693fcf4d23869a79d13d3db2e7"
     }
   },
   "configuration_fields": {
