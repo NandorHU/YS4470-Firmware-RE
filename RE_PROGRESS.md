@@ -267,3 +267,22 @@ Evidence: `evidence/2026-11-06-state5-discard-lifecycle.json`; method: `tools/ST
 4. SoundControlGate → 0x800060d0 and deferred UART-TTL capture remain pending.
 
 Evidence created 2026-11-06 and re-verified 2026-11-07: `evidence/2026-11-06-measurement-event-sources.json`. Tool: `tools/trace_measurement_event_sources.py`.
+
+## 2026-11-07: Fast CONT UI option, default and CRC persistence proven
+
+- Identified 0x805ac788 as Fast CONT. English/Chinese label tails target GUI label +0x320; checkbox +0x31c registers 0x8005a3bc with event argument 0x1c.
+- Executed the original checkbox handler and original getter 0x8003752c: widget halfword +0x20 bit 0 becomes normalized 0/1 at settings +0x18, then execution reaches SoundControlGate(5,1).
+- Identified configuration loader 0x80008098 and save routine 0x800082c0. Record: flash offset 0xf00000, 72 bytes, zlib-compatible CRC32 over first 68 bytes, little-endian checksum at +0x44.
+- Invalid-record default block sets Fast CONT=1. The seven-word default block and preserved tail are recorded without assigning unproven field names.
+- Tests passed across V3.6/V3.8: **524 widget states; 48 save cases; 48 valid loads; 144 damaged records rejected; 12 default cases; eight restore cases; six GUI binding slices; 14 checkbox-to-event cases.** Version result fingerprints match.
+- Historical private 2026-11-06 E2 flash backup: valid settings CRC and Fast CONT=1. Raw configuration bytes and the dump remain non-public.
+- No physical device, flash-write, or sound operation occurred. Storage, GUI setters and SoundControlGate are API stop boundaries.
+
+### Exact next continuation point
+
+1. Trace Fast CONT read at 0x80003878 in ResultDispatch and prove its effect on the sound-control branch.
+2. Continue into SoundControlGate 0x80006e4c → 0x800060d0 to identify the first peripheral-facing sound operation.
+3. Retain queue timing units, response cadence and acoustic latency as open until directly established.
+4. Investigate settings-save call sites later; loader metadata and remaining configuration fields are separate work.
+
+Evidence: `evidence/2026-11-07-fast-cont-setting.json`. Tool/method: `tools/trace_fast_cont_setting.py` and `tools/FAST_CONT_SETTING.md`.

@@ -716,7 +716,8 @@
       "evidence": [
         "evidence/2026-11-06-state5-arm926-emulation.json",
         "evidence/2026-11-06-state5-discard-lifecycle.json",
-        "evidence/2026-11-06-measurement-event-sources.json"
+        "evidence/2026-11-06-measurement-event-sources.json",
+        "evidence/2026-11-07-fast-cont-setting.json"
       ],
       "limits": [
         "Counter producers and measurement-mode meaning are unresolved.",
@@ -760,8 +761,9 @@
           19
         ],
         "settings_word": "0x805ac788",
-        "setting_name": "unresolved",
-        "evidence": "evidence/2026-11-06-measurement-event-sources.json"
+        "setting_name": "Fast CONT",
+        "evidence": "evidence/2026-11-06-measurement-event-sources.json",
+        "setting_evidence": "evidence/2026-11-07-fast-cont-setting.json"
       }
     },
     {
@@ -800,7 +802,8 @@
         "Buzzer branch supplies event (5,0x22,0x13) iff word 0x805ac788 == 1; otherwise (2,0x0e,0x19)"
       ],
       "evidence": [
-        "evidence/2026-11-06-measurement-event-sources.json"
+        "evidence/2026-11-06-measurement-event-sources.json",
+        "evidence/2026-11-07-fast-cont-setting.json"
       ],
       "limits": [
         "Complete GUI callback and framework are not emulated.",
@@ -821,11 +824,76 @@
         "Diode and Buzzer event tails agree with GUI callback"
       ],
       "evidence": [
-        "evidence/2026-11-06-measurement-event-sources.json"
+        "evidence/2026-11-06-measurement-event-sources.json",
+        "evidence/2026-11-07-fast-cont-setting.json"
       ],
       "limits": [
         "API preconditions and complete UI effects are not executed.",
         "Function label is analyst-proposed."
+      ]
+    },
+    {
+      "id": "fast_cont_checkbox_handler",
+      "addresses": {
+        "V3_6": "0x8005a3bc",
+        "V3_8": "0x8005a3bc"
+      },
+      "confidence": "confirmed_bounded_emulation_and_ui_binding",
+      "role": "Fast CONT checkbox handler normalizes widget bit 0 to settings word +0x18",
+      "relationships": [
+        "GUI checkbox +0x31c; label +0x320 has Fast CONT / 快速通断",
+        "calls original widget state getter 0x8003752c with mask 1",
+        "writes 0/1 at 0x805ac788",
+        "reaches SoundControlGate with r0=5,r1=1"
+      ],
+      "evidence": [
+        "evidence/2026-11-07-fast-cont-setting.json"
+      ],
+      "limits": [
+        "GUI state setters and sound control implementation are not executed.",
+        "This does not measure acoustic behavior."
+      ]
+    },
+    {
+      "id": "settings_record_load",
+      "addresses": {
+        "V3_6": "0x80008098",
+        "V3_8": "0x80008098"
+      },
+      "confidence": "confirmed_bounded_crc_and_default_execution",
+      "role": "CRC-protected settings record loader and default initializer",
+      "relationships": [
+        "record size 0x48, flash offset 0xf00000",
+        "CRC32 validates bytes +0..+0x43 against little-endian checksum +0x44",
+        "valid record reaches 72-byte copy to 0x805ac770",
+        "invalid-record default block writes Fast CONT=1 then recomputes CRC"
+      ],
+      "evidence": [
+        "evidence/2026-11-07-fast-cont-setting.json"
+      ],
+      "limits": [
+        "Storage read and copy/log/write calls are excluded.",
+        "Default block preserves initial bytes +0x1c..+0x43 in this slice; later metadata changes are not analyzed."
+      ]
+    },
+    {
+      "id": "settings_record_save",
+      "addresses": {
+        "V3_6": "0x800082c0",
+        "V3_8": "0x800082c0"
+      },
+      "confidence": "confirmed_bounded_emulation",
+      "role": "Checksums settings and reaches storage write boundary",
+      "relationships": [
+        "zlib-compatible CRC32 over first 0x44 bytes",
+        "stores checksum at settings +0x44",
+        "0x80006374 arguments: r0=0,r1=0x805ac770,r2=0xf00000,r3=0x48"
+      ],
+      "evidence": [
+        "evidence/2026-11-07-fast-cont-setting.json"
+      ],
+      "limits": [
+        "The storage API is a stop boundary; no physical write is performed."
       ]
     }
   ],
@@ -973,6 +1041,50 @@
       "failed": 0,
       "aligned_direct_arm_bl_candidates_per_version": 31,
       "results_sha256": "79d0dc306702ed86a72cd27754368db7c269f908daa24c06a88bfe32fc6f5bbc"
+    },
+    "fast_cont_setting_2026_11_07": {
+      "evidence": "evidence/2026-11-07-fast-cont-setting.json",
+      "original_versions": [
+        "V3.6",
+        "V3.8"
+      ],
+      "cpu_model": "UC_CPU_ARM_926",
+      "widget_states": 524,
+      "save_cases": 48,
+      "valid_loads": 48,
+      "damaged_records_rejected": 144,
+      "default_cases": 12,
+      "checkbox_restore_cases": 8,
+      "gui_binding_slices": 6,
+      "checkbox_to_event_cases": 14,
+      "failed": 0,
+      "results_sha256_per_version": "3aa5dfa3c7984599935ff35789fc5cac8661fcb5ec6731fc9cc61a4a2b348d29"
+    }
+  },
+  "configuration_fields": {
+    "fast_cont": {
+      "address": "0x805ac788",
+      "settings_object": "0x805ac770",
+      "offset": "0x18",
+      "ui_name": "Fast CONT",
+      "checkbox_handler": "0x8005a3bc",
+      "invalid_record_default": 1,
+      "record": {
+        "flash_offset": "0xf00000",
+        "bytes": 72,
+        "flag_offset": "0x18",
+        "crc_bytes": 68,
+        "checksum_offset": "0x44",
+        "checksum": "little-endian zlib-compatible CRC32"
+      },
+      "ui_restore": "nonzero is checked",
+      "event_selection": "Buzzer special path requires exact value 1",
+      "historical_2026_11_06_E2_snapshot": {
+        "stored_word": 1,
+        "crc_valid": true,
+        "record_sha256": "ed7e2305b56753550b06b204063a1d41f9e4b19e0a4e389682d96e2876297e9d"
+      },
+      "evidence": "evidence/2026-11-07-fast-cont-setting.json"
     }
   }
 }

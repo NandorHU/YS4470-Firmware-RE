@@ -174,3 +174,13 @@ The write scan remains a bounded candidate search. Whole-object resets and indir
 - GUI mode byte 0x805abefc+0 is updated by the tested 0..4 switch slice. Association with labels is static UI evidence.
 
 These are synthetic RAM and original instruction observations; no running-device RAM was captured.
+
+## 2026-11-07: identified settings record
+
+- Settings object base 0x805ac770; word +0x18 / 0x805ac788 = **Fast CONT** (normalized 0/1 by checkbox handler).
+- Settings checksum at object +0x44 / 0x805ac7b4; CRC-covered bytes span +0..+0x43.
+- Flash configuration record starts at 0x00f00000 and is 0x48 bytes long; Fast CONT is at record +0x18, checksum at +0x44.
+- GUI root fields +0x31c and +0x320 hold the associated checkbox and Fast CONT text label.
+- Default block initializes seven words at +0..+0x18; later fields retain their initial RAM pattern in the tested block.
+
+The first record at 0xf00000 is now classified as configuration. This does not classify the remainder of its flash erase sector or make it suitable as instrumentation storage. The full private device dump is preserved.

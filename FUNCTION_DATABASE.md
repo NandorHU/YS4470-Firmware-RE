@@ -173,3 +173,13 @@ The raw task stores at 0x80005c60/0x80005c80 remain static code observations; th
 The event builder passes queue-boundary r2=0 for exact event word 3 and r2=10 for other tested words, with r3=0. No time unit is assigned to that argument. Its stack frame is 0x44 bytes; only the first six record bytes are initialized by the helper. GUI framework and queue implementations were not executed.
 
 Evidence: [event-source experiment](evidence/2026-11-06-measurement-event-sources.json). The 31 aligned direct ARM BL sites are candidates, not an exhaustive Thumb/indirect call graph.
+
+## 2026-11-07: Fast CONT and configuration record functions
+
+| Proposed function | Original V3.6/V3.8 address | Evidence-backed role |
+|---|---|---|
+| FastCONTCheckboxHandler | 0x8005a3bc | Reads checkbox +0x31c state through 0x8003752c, writes 0/1 to settings +0x18, reaches SoundControlGate(5,1) |
+| SettingsRecordLoad | 0x80008098 | Stages 72 bytes from offset 0xf00000; CRC validation leads to copy or default initialization |
+| SettingsRecordSave | 0x800082c0 | Computes CRC32 over 68 settings bytes, stores checksum at +0x44, reaches write boundary with size 72 |
+
+The checkbox-state getter at 0x8003752c reads widget halfword +0x20 and masks bit 0. It and the complete checkbox handler up to SoundControlGate were executed, alongside bounded CRC/default blocks. The storage read/write, copy/log and sound implementations were stop boundaries. Fast CONT defaults to 1 on the tested invalid-record path.
