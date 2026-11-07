@@ -1,0 +1,1461 @@
+{
+  "schema": "ys4470.proof-ghidra-evidence.v1",
+  "date": "2026-11-07",
+  "proof_sha256": "17f76988265694cb873f81784ba3ef0f20224733ed145375f7522f66cf560de7",
+  "versions": [
+    {
+      "version": "V3.6",
+      "input_sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+      "analysis_mode": "proof-labels-only",
+      "inventory_sha256": "1185a4d1832d1ebaea4bbbe19862eed0828da3b98fb395f65e701290e9d5c192",
+      "reference_labels": [
+        {
+          "address": "0x80006e4c",
+          "name": "RE_SoundControlGate",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-fast-cont-filter.json",
+          "guard_bytes": 64,
+          "guard_sha256": "749bc8d4921b3ea5afb782ce6808867843051286ff109f6dd731610d6256e2b8",
+          "status": "named_from_independent_proof",
+          "ghidra_name": "RE_SoundControlGate",
+          "previous_name": "FUN_80006e4c"
+        },
+        {
+          "address": "0x80007c88",
+          "name": "RE_FastContHistoryFilter",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-fast-cont-filter.json",
+          "guard_bytes": 64,
+          "guard_sha256": "ef5a26a47562a4bac92402d8385cfb4bd41b262f0d3aa74ab2462360ee8fcc21",
+          "status": "named_from_independent_proof",
+          "ghidra_name": "RE_FastContHistoryFilter",
+          "previous_name": "FUN_80007c88"
+        }
+      ],
+      "functions": [
+        {
+          "address": "0x80006e4c",
+          "name": "RE_SoundControlGate",
+          "label_status": "named_from_independent_proof",
+          "confidence": 1.0,
+          "evidence": "evidence/2026-11-07-fast-cont-filter.json",
+          "comment": "YS4470 reference proof: bounded_original_ARM926_execution; evidence/2026-11-07-fast-cont-filter.json; proposed RE_SoundControlGate",
+          "body_end": "80006ef3",
+          "assembly": [
+            {
+              "address": "80006e4c",
+              "assembly": "stmdb sp!,{r4,r5,r6,lr}",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e50",
+              "assembly": "ldr r2,[0x80006ef4]",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e54",
+              "assembly": "ldr r3,[r2,#0x10]",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e58",
+              "assembly": "cmp r3,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e5c",
+              "assembly": "ldmiane sp!,{r4,r5,r6,pc}",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e60",
+              "assembly": "cmp r0,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e64",
+              "assembly": "movlt r0,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e68",
+              "assembly": "blt 0x80006e74",
+              "flow_targets": [
+                "80006e74"
+              ]
+            },
+            {
+              "address": "80006e6c",
+              "assembly": "cmp r0,#0xa",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e70",
+              "assembly": "movgt r0,#0xa",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e74",
+              "assembly": "ldr r3,[0x80006ef8]",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e78",
+              "assembly": "ldr r5,[0x80006efc]",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e7c",
+              "assembly": "add r0,r3,r0, lsl #0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e80",
+              "assembly": "ldrh r6,[r0,#-0x2]",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e84",
+              "assembly": "ldr r4,[0x80006f00]",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e88",
+              "assembly": "cmp r1,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e8c",
+              "assembly": "beq 0x80006ec0",
+              "flow_targets": [
+                "80006ec0"
+              ]
+            },
+            {
+              "address": "80006e90",
+              "assembly": "ldr r0,[r4,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e94",
+              "assembly": "cmp r0,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e98",
+              "assembly": "ldmiaeq sp!,{r4,r5,r6,pc}",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e9c",
+              "assembly": "mov r2,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ea0",
+              "assembly": "mov r3,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ea4",
+              "assembly": "mov r1,r6",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ea8",
+              "assembly": "mov r0,r2",
+              "flow_targets": []
+            },
+            {
+              "address": "80006eac",
+              "assembly": "bl 0x800060d0",
+              "flow_targets": [
+                "800060d0"
+              ]
+            },
+            {
+              "address": "80006eb0",
+              "assembly": "mov r0,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80006eb4",
+              "assembly": "str r0,[r4,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80006eb8",
+              "assembly": "str r0,[r5,#0x50]",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ebc",
+              "assembly": "ldmia sp!,{r4,r5,r6,pc}",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ec0",
+              "assembly": "ldr r0,[r2,#0xc]",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ec4",
+              "assembly": "add r0,r0,r0, lsr #0x1f",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ec8",
+              "assembly": "mov r0,r0, asr #0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ecc",
+              "assembly": "bl 0x800630a4",
+              "flow_targets": [
+                "800630a4"
+              ]
+            },
+            {
+              "address": "80006ed0",
+              "assembly": "mov r2,r0",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ed4",
+              "assembly": "mov r3,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ed8",
+              "assembly": "mov r1,r6",
+              "flow_targets": []
+            },
+            {
+              "address": "80006edc",
+              "assembly": "mov r0,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ee0",
+              "assembly": "bl 0x800060d0",
+              "flow_targets": [
+                "800060d0"
+              ]
+            },
+            {
+              "address": "80006ee4",
+              "assembly": "mov r0,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ee8",
+              "assembly": "str r0,[r4,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80006eec",
+              "assembly": "mov r0,#0x3",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ef0",
+              "assembly": "b 0x80006eb8",
+              "flow_targets": [
+                "80006eb8"
+              ]
+            }
+          ],
+          "direct_call_targets": [
+            "800060d0",
+            "800630a4"
+          ],
+          "decompiled_c": "\r\n/* YS4470 reference proof: bounded_original_ARM926_execution;\r\n   evidence/2026-11-07-fast-cont-filter.json; proposed RE_SoundControlGate */\r\n\r\nvoid RE_SoundControlGate(int param_1,int param_2)\r\n\r\n{\r\n  undefined2 uVar1;\r\n  int iVar2;\r\n  int *piVar3;\r\n  undefined4 uVar4;\r\n  \r\n  piVar3 = piRam80006f00;\r\n  iVar2 = iRam80006efc;\r\n  if (*(int *)(iRam80006ef4 + 0x10) != 1) {\r\n    return;\r\n  }\r\n  if (param_1 < 1) {\r\n    param_1 = 1;\r\n  }\r\n  else if (10 < param_1) {\r\n    param_1 = 10;\r\n  }\r\n  uVar1 = *(undefined2 *)(iRam80006ef8 + param_1 * 2 + -2);\r\n  if (param_2 == 1) {\r\n    uVar4 = func_0x800630a4(*(int *)(iRam80006ef4 + 0xc) / 2);\r\n    func_0x800060d0(0,uVar1,uVar4,1);\r\n    *piVar3 = 1;\r\n    uVar4 = 3;\r\n  }\r\n  else {\r\n    if (*piRam80006f00 == 0) {\r\n      return;\r\n    }\r\n    func_0x800060d0(0,uVar1,0,1);\r\n    uVar4 = 0;\r\n    *piVar3 = 0;\r\n  }\r\n  *(undefined4 *)(iVar2 + 0x50) = uVar4;\r\n  return;\r\n}\r\n\r\n",
+          "limits": [
+            "Ghidra inferred body; original-byte proof applies only to documented execution scope."
+          ]
+        },
+        {
+          "address": "0x80007c88",
+          "name": "RE_FastContHistoryFilter",
+          "label_status": "named_from_independent_proof",
+          "confidence": 1.0,
+          "evidence": "evidence/2026-11-07-fast-cont-filter.json",
+          "comment": "YS4470 reference proof: bounded_original_ARM926_execution; evidence/2026-11-07-fast-cont-filter.json; proposed RE_FastContHistoryFilter",
+          "body_end": "80007dcf",
+          "assembly": [
+            {
+              "address": "80007c88",
+              "assembly": "stmdb sp!,{r4,r5,r6,r7}",
+              "flow_targets": []
+            },
+            {
+              "address": "80007c8c",
+              "assembly": "ldr r12,[0x80007dd0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007c90",
+              "assembly": "ldr r4,[0x80007dd4]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007c94",
+              "assembly": "cmp r0,#0x3e8",
+              "flow_targets": []
+            },
+            {
+              "address": "80007c98",
+              "assembly": "ble 0x80007cbc",
+              "flow_targets": [
+                "80007cbc"
+              ]
+            },
+            {
+              "address": "80007c9c",
+              "assembly": "mov r1,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80007ca0",
+              "assembly": "str r1,[r4,#0x8]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007ca4",
+              "assembly": "mov r1,#0x3e8",
+              "flow_targets": []
+            },
+            {
+              "address": "80007ca8",
+              "assembly": "str r1,[r12,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cac",
+              "assembly": "str r1,[r12,#0x4]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cb0",
+              "assembly": "str r1,[r12,#0x8]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cb4",
+              "assembly": "mvn r1,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cb8",
+              "assembly": "str r1,[r4,#0xc]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cbc",
+              "assembly": "ldr r1,[r4,#0x4]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cc0",
+              "assembly": "ldr r2,[0x80007dd8]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cc4",
+              "assembly": "str r0,[r12,r1,lsl #0x2]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cc8",
+              "assembly": "add r0,r1,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007ccc",
+              "assembly": "smull r3,r1,r2,r0",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cd0",
+              "assembly": "sub r1,r1,r1, asr #0x1f",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cd4",
+              "assembly": "sub r1,r1,r1, lsl #0x2",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cd8",
+              "assembly": "add r0,r0,r1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cdc",
+              "assembly": "str r0,[r4,#0x4]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007ce0",
+              "assembly": "ldr r0,[r4,#0x8]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007ce4",
+              "assembly": "cmp r0,#0x3",
+              "flow_targets": []
+            },
+            {
+              "address": "80007ce8",
+              "assembly": "addlt r0,r0,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cec",
+              "assembly": "strlt r0,[r4,#0x8]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cf0",
+              "assembly": "cmp r0,#0x3",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cf4",
+              "assembly": "bne 0x80007d60",
+              "flow_targets": [
+                "80007d60"
+              ]
+            },
+            {
+              "address": "80007cf8",
+              "assembly": "ldr r3,[r12,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cfc",
+              "assembly": "mov r0,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d00",
+              "assembly": "mov r5,r3",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d04",
+              "assembly": "mov r2,r3",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d08",
+              "assembly": "ldr r1,[r12,r0,lsl #0x2]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d0c",
+              "assembly": "add r0,r0,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d10",
+              "assembly": "cmp r1,r3",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d14",
+              "assembly": "movlt r3,r1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d18",
+              "assembly": "cmp r1,r2",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d1c",
+              "assembly": "movgt r2,r1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d20",
+              "assembly": "cmp r0,#0x3",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d24",
+              "assembly": "blt 0x80007d08",
+              "flow_targets": [
+                "80007d08"
+              ]
+            },
+            {
+              "address": "80007d28",
+              "assembly": "mov r0,#0x78",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d2c",
+              "assembly": "smull r7,r1,r3,r0",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d30",
+              "assembly": "mov r0,#0x64",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d34",
+              "assembly": "smull r6,r0,r2,r0",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d38",
+              "assembly": "subs r6,r7,r6",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d3c",
+              "assembly": "sbcs r0,r1,r0",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d40",
+              "assembly": "bcc 0x80007d60",
+              "flow_targets": [
+                "80007d60"
+              ]
+            },
+            {
+              "address": "80007d44",
+              "assembly": "ldr r0,[r12,#0x4]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d48",
+              "assembly": "ldr r1,[r12,#0x8]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d4c",
+              "assembly": "add r0,r0,r5",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d50",
+              "assembly": "add r0,r0,r1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d54",
+              "assembly": "sub r0,r0,r3",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d58",
+              "assembly": "sub r0,r0,r2",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d5c",
+              "assembly": "str r0,[r4,#0xc]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d60",
+              "assembly": "ldr r2,[r4,#0xc]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d64",
+              "assembly": "cmp r2,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d68",
+              "assembly": "ldrge r3,[0x80007ddc]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d6c",
+              "assembly": "movge r0,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d70",
+              "assembly": "blt 0x80007dc0",
+              "flow_targets": [
+                "80007dc0"
+              ]
+            },
+            {
+              "address": "80007d74",
+              "assembly": "add r1,r0,r0, lsl #0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d78",
+              "assembly": "ldr r12,[r3,r1,lsl #0x2]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d7c",
+              "assembly": "cmp r12,r2",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d80",
+              "assembly": "bgt 0x80007db4",
+              "flow_targets": [
+                "80007db4"
+              ]
+            },
+            {
+              "address": "80007d84",
+              "assembly": "add r1,r3,r1, lsl #0x2",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d88",
+              "assembly": "ldr r1,[r1,#0x4]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d8c",
+              "assembly": "cmp r2,r1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d90",
+              "assembly": "bge 0x80007db4",
+              "flow_targets": [
+                "80007db4"
+              ]
+            },
+            {
+              "address": "80007d94",
+              "assembly": "add r0,r0,r0, lsl #0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d98",
+              "assembly": "add r0,r3,r0, lsl #0x2",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d9c",
+              "assembly": "ldrb r0,[r0,#0x8]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007da0",
+              "assembly": "cmp r0,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80007da4",
+              "assembly": "beq 0x80007dc0",
+              "flow_targets": [
+                "80007dc0"
+              ]
+            },
+            {
+              "address": "80007da8",
+              "assembly": "ldmia sp!,{r4,r5,r6,r7}",
+              "flow_targets": []
+            },
+            {
+              "address": "80007dac",
+              "assembly": "mov r1,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007db0",
+              "assembly": "b 0x80006e4c",
+              "flow_targets": [
+                "80006e4c"
+              ]
+            },
+            {
+              "address": "80007db4",
+              "assembly": "add r0,r0,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007db8",
+              "assembly": "cmp r0,#0xb",
+              "flow_targets": []
+            },
+            {
+              "address": "80007dbc",
+              "assembly": "blt 0x80007d74",
+              "flow_targets": [
+                "80007d74"
+              ]
+            },
+            {
+              "address": "80007dc0",
+              "assembly": "ldmia sp!,{r4,r5,r6,r7}",
+              "flow_targets": []
+            },
+            {
+              "address": "80007dc4",
+              "assembly": "mov r1,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80007dc8",
+              "assembly": "mov r0,r1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007dcc",
+              "assembly": "b 0x80006e4c",
+              "flow_targets": [
+                "80006e4c"
+              ]
+            }
+          ],
+          "direct_call_targets": [],
+          "decompiled_c": "\r\n/* YS4470 reference proof: bounded_original_ARM926_execution;\r\n   evidence/2026-11-07-fast-cont-filter.json; proposed RE_FastContHistoryFilter */\r\n\r\nvoid RE_FastContHistoryFilter(int param_1)\r\n\r\n{\r\n  undefined2 uVar1;\r\n  int *piVar2;\r\n  undefined4 uVar3;\r\n  int iVar4;\r\n  uint uVar5;\r\n  int iVar6;\r\n  int iVar7;\r\n  int iVar8;\r\n  uint uVar9;\r\n  int iVar10;\r\n  int iVar11;\r\n  undefined4 unaff_r4;\r\n  undefined4 unaff_r5;\r\n  undefined4 unaff_r6;\r\n  \r\n  iVar10 = iRam80007dd4;\r\n  piVar2 = piRam80007dd0;\r\n  if (1000 < param_1) {\r\n    *(undefined4 *)(iRam80007dd4 + 8) = 0;\r\n    *piVar2 = 1000;\r\n    piVar2[1] = 1000;\r\n    piVar2[2] = 1000;\r\n    *(undefined4 *)(iVar10 + 0xc) = 0xffffffff;\r\n  }\r\n  iVar7 = iRam80007dd8;\r\n  iVar6 = *(int *)(iVar10 + 4);\r\n  piVar2[iVar6] = param_1;\r\n  iVar6 = iVar6 + 1;\r\n  iVar7 = (int)((ulonglong)((longlong)iVar7 * (longlong)iVar6) >> 0x20);\r\n  *(int *)(iVar10 + 4) = iVar6 + (iVar7 - (iVar7 >> 0x1f)) * -3;\r\n  iVar7 = *(int *)(iVar10 + 8);\r\n  if (iVar7 < 3) {\r\n    iVar7 = iVar7 + 1;\r\n    *(int *)(iVar10 + 8) = iVar7;\r\n  }\r\n  if (iVar7 == 3) {\r\n    iVar11 = *piVar2;\r\n    iVar4 = 1;\r\n    iVar7 = iVar11;\r\n    iVar6 = iVar11;\r\n    do {\r\n      iVar8 = piVar2[iVar4];\r\n      iVar4 = iVar4 + 1;\r\n      if (iVar8 < iVar6) {\r\n        iVar6 = iVar8;\r\n      }\r\n      if (iVar7 < iVar8) {\r\n        iVar7 = iVar8;\r\n      }\r\n    } while (iVar4 < 3);\r\n    uVar9 = (uint)((ulonglong)((longlong)iVar6 * 0x78) >> 0x20);\r\n    uVar5 = (uint)((ulonglong)((longlong)iVar7 * 100) >> 0x20);\r\n    if (uVar5 < uVar9 ||\r\n        uVar9 - uVar5 < (uint)((uint)((longlong)iVar7 * 100) <= (uint)((longlong)iVar6 * 0x78))) {\r\n      *(int *)(iVar10 + 0xc) = ((piVar2[1] + iVar11 + piVar2[2]) - iVar6) - iVar7;\r\n    }\r\n  }\r\n  piVar2 = piRam80006f00;\r\n  iVar7 = iRam80006efc;\r\n  iVar10 = *(int *)(iVar10 + 0xc);\r\n  if (-1 < iVar10) {\r\n    iVar6 = 0;\r\n    do {\r\n      if ((*(int *)(iRam80007ddc + iVar6 * 0xc) <= iVar10) &&\r\n         (iVar10 < *(int *)(iRam80007ddc + iVar6 * 0xc + 4))) {\r\n        uVar5 = (uint)*(byte *)(iRam80007ddc + iVar6 * 0xc + 8);\r\n        if (uVar5 != 0) {\r\n          uVar9 = 1;\r\n          goto RE_SoundControlGate;\r\n        }\r\n        break;\r\n      }\r\n      iVar6 = iVar6 + 1;\r\n    } while (iVar6 < 0xb);\r\n  }\r\n  uVar5 = 0;\r\n  uVar9 = uVar5;\r\nRE_SoundControlGate:\r\n  if (*(int *)(iRam80006ef4 + 0x10) != 1) {\r\n    return;\r\n  }\r\n  if (uVar5 == 0) {\r\n    uVar5 = 1;\r\n  }\r\n  else if (10 < uVar5) {\r\n    uVar5 = 10;\r\n  }\r\n  uVar1 = *(undefined2 *)(iRam80006ef8 + uVar5 * 2 + -2);\r\n  if (uVar9 == 1) {\r\n    uVar3 = func_0x800630a4(*(int *)(iRam80006ef4 + 0xc) / 2);\r\n    func_0x800060d0(0,uVar1,uVar3,1,unaff_r4,unaff_r5,unaff_r6);\r\n    *piVar2 = 1;\r\n    uVar3 = 3;\r\n  }\r\n  else {\r\n    if (*piRam80006f00 == 0) {\r\n      return;\r\n    }\r\n    func_0x800060d0(0,uVar1,0,1,unaff_r4,unaff_r5,unaff_r6);\r\n    uVar3 = 0;\r\n    *piVar2 = 0;\r\n  }\r\n  *(undefined4 *)(iVar7 + 0x50) = uVar3;\r\n  return;\r\n}\r\n\r\n",
+          "limits": [
+            "Ghidra inferred body; original-byte proof applies only to documented execution scope."
+          ]
+        }
+      ]
+    },
+    {
+      "version": "V3.8",
+      "input_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+      "analysis_mode": "proof-labels-only",
+      "inventory_sha256": "f3889582ba3ccd0ee913ad0d33bc1a70666498ffccb7e63a0fbe4a9e98a8e586",
+      "reference_labels": [
+        {
+          "address": "0x80006e4c",
+          "name": "RE_SoundControlGate",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-fast-cont-filter.json",
+          "guard_bytes": 64,
+          "guard_sha256": "749bc8d4921b3ea5afb782ce6808867843051286ff109f6dd731610d6256e2b8",
+          "status": "named_from_independent_proof",
+          "ghidra_name": "RE_SoundControlGate",
+          "previous_name": "FUN_80006e4c"
+        },
+        {
+          "address": "0x80007c88",
+          "name": "RE_FastContHistoryFilter",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-fast-cont-filter.json",
+          "guard_bytes": 64,
+          "guard_sha256": "ef5a26a47562a4bac92402d8385cfb4bd41b262f0d3aa74ab2462360ee8fcc21",
+          "status": "named_from_independent_proof",
+          "ghidra_name": "RE_FastContHistoryFilter",
+          "previous_name": "FUN_80007c88"
+        }
+      ],
+      "functions": [
+        {
+          "address": "0x80006e4c",
+          "name": "RE_SoundControlGate",
+          "label_status": "named_from_independent_proof",
+          "confidence": 1.0,
+          "evidence": "evidence/2026-11-07-fast-cont-filter.json",
+          "comment": "YS4470 reference proof: bounded_original_ARM926_execution; evidence/2026-11-07-fast-cont-filter.json; proposed RE_SoundControlGate",
+          "body_end": "80006ef3",
+          "assembly": [
+            {
+              "address": "80006e4c",
+              "assembly": "stmdb sp!,{r4,r5,r6,lr}",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e50",
+              "assembly": "ldr r2,[0x80006ef4]",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e54",
+              "assembly": "ldr r3,[r2,#0x10]",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e58",
+              "assembly": "cmp r3,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e5c",
+              "assembly": "ldmiane sp!,{r4,r5,r6,pc}",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e60",
+              "assembly": "cmp r0,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e64",
+              "assembly": "movlt r0,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e68",
+              "assembly": "blt 0x80006e74",
+              "flow_targets": [
+                "80006e74"
+              ]
+            },
+            {
+              "address": "80006e6c",
+              "assembly": "cmp r0,#0xa",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e70",
+              "assembly": "movgt r0,#0xa",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e74",
+              "assembly": "ldr r3,[0x80006ef8]",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e78",
+              "assembly": "ldr r5,[0x80006efc]",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e7c",
+              "assembly": "add r0,r3,r0, lsl #0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e80",
+              "assembly": "ldrh r6,[r0,#-0x2]",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e84",
+              "assembly": "ldr r4,[0x80006f00]",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e88",
+              "assembly": "cmp r1,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e8c",
+              "assembly": "beq 0x80006ec0",
+              "flow_targets": [
+                "80006ec0"
+              ]
+            },
+            {
+              "address": "80006e90",
+              "assembly": "ldr r0,[r4,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e94",
+              "assembly": "cmp r0,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e98",
+              "assembly": "ldmiaeq sp!,{r4,r5,r6,pc}",
+              "flow_targets": []
+            },
+            {
+              "address": "80006e9c",
+              "assembly": "mov r2,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ea0",
+              "assembly": "mov r3,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ea4",
+              "assembly": "mov r1,r6",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ea8",
+              "assembly": "mov r0,r2",
+              "flow_targets": []
+            },
+            {
+              "address": "80006eac",
+              "assembly": "bl 0x800060d0",
+              "flow_targets": [
+                "800060d0"
+              ]
+            },
+            {
+              "address": "80006eb0",
+              "assembly": "mov r0,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80006eb4",
+              "assembly": "str r0,[r4,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80006eb8",
+              "assembly": "str r0,[r5,#0x50]",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ebc",
+              "assembly": "ldmia sp!,{r4,r5,r6,pc}",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ec0",
+              "assembly": "ldr r0,[r2,#0xc]",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ec4",
+              "assembly": "add r0,r0,r0, lsr #0x1f",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ec8",
+              "assembly": "mov r0,r0, asr #0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ecc",
+              "assembly": "bl 0x800630a4",
+              "flow_targets": [
+                "800630a4"
+              ]
+            },
+            {
+              "address": "80006ed0",
+              "assembly": "mov r2,r0",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ed4",
+              "assembly": "mov r3,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ed8",
+              "assembly": "mov r1,r6",
+              "flow_targets": []
+            },
+            {
+              "address": "80006edc",
+              "assembly": "mov r0,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ee0",
+              "assembly": "bl 0x800060d0",
+              "flow_targets": [
+                "800060d0"
+              ]
+            },
+            {
+              "address": "80006ee4",
+              "assembly": "mov r0,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ee8",
+              "assembly": "str r0,[r4,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80006eec",
+              "assembly": "mov r0,#0x3",
+              "flow_targets": []
+            },
+            {
+              "address": "80006ef0",
+              "assembly": "b 0x80006eb8",
+              "flow_targets": [
+                "80006eb8"
+              ]
+            }
+          ],
+          "direct_call_targets": [
+            "800060d0",
+            "800630a4"
+          ],
+          "decompiled_c": "\r\n/* YS4470 reference proof: bounded_original_ARM926_execution;\r\n   evidence/2026-11-07-fast-cont-filter.json; proposed RE_SoundControlGate */\r\n\r\nvoid RE_SoundControlGate(int param_1,int param_2)\r\n\r\n{\r\n  undefined2 uVar1;\r\n  int iVar2;\r\n  int *piVar3;\r\n  undefined4 uVar4;\r\n  \r\n  piVar3 = piRam80006f00;\r\n  iVar2 = iRam80006efc;\r\n  if (*(int *)(iRam80006ef4 + 0x10) != 1) {\r\n    return;\r\n  }\r\n  if (param_1 < 1) {\r\n    param_1 = 1;\r\n  }\r\n  else if (10 < param_1) {\r\n    param_1 = 10;\r\n  }\r\n  uVar1 = *(undefined2 *)(iRam80006ef8 + param_1 * 2 + -2);\r\n  if (param_2 == 1) {\r\n    uVar4 = func_0x800630a4(*(int *)(iRam80006ef4 + 0xc) / 2);\r\n    func_0x800060d0(0,uVar1,uVar4,1);\r\n    *piVar3 = 1;\r\n    uVar4 = 3;\r\n  }\r\n  else {\r\n    if (*piRam80006f00 == 0) {\r\n      return;\r\n    }\r\n    func_0x800060d0(0,uVar1,0,1);\r\n    uVar4 = 0;\r\n    *piVar3 = 0;\r\n  }\r\n  *(undefined4 *)(iVar2 + 0x50) = uVar4;\r\n  return;\r\n}\r\n\r\n",
+          "limits": [
+            "Ghidra inferred body; original-byte proof applies only to documented execution scope."
+          ]
+        },
+        {
+          "address": "0x80007c88",
+          "name": "RE_FastContHistoryFilter",
+          "label_status": "named_from_independent_proof",
+          "confidence": 1.0,
+          "evidence": "evidence/2026-11-07-fast-cont-filter.json",
+          "comment": "YS4470 reference proof: bounded_original_ARM926_execution; evidence/2026-11-07-fast-cont-filter.json; proposed RE_FastContHistoryFilter",
+          "body_end": "80007dcf",
+          "assembly": [
+            {
+              "address": "80007c88",
+              "assembly": "stmdb sp!,{r4,r5,r6,r7}",
+              "flow_targets": []
+            },
+            {
+              "address": "80007c8c",
+              "assembly": "ldr r12,[0x80007dd0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007c90",
+              "assembly": "ldr r4,[0x80007dd4]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007c94",
+              "assembly": "cmp r0,#0x3e8",
+              "flow_targets": []
+            },
+            {
+              "address": "80007c98",
+              "assembly": "ble 0x80007cbc",
+              "flow_targets": [
+                "80007cbc"
+              ]
+            },
+            {
+              "address": "80007c9c",
+              "assembly": "mov r1,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80007ca0",
+              "assembly": "str r1,[r4,#0x8]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007ca4",
+              "assembly": "mov r1,#0x3e8",
+              "flow_targets": []
+            },
+            {
+              "address": "80007ca8",
+              "assembly": "str r1,[r12,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cac",
+              "assembly": "str r1,[r12,#0x4]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cb0",
+              "assembly": "str r1,[r12,#0x8]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cb4",
+              "assembly": "mvn r1,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cb8",
+              "assembly": "str r1,[r4,#0xc]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cbc",
+              "assembly": "ldr r1,[r4,#0x4]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cc0",
+              "assembly": "ldr r2,[0x80007dd8]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cc4",
+              "assembly": "str r0,[r12,r1,lsl #0x2]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cc8",
+              "assembly": "add r0,r1,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007ccc",
+              "assembly": "smull r3,r1,r2,r0",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cd0",
+              "assembly": "sub r1,r1,r1, asr #0x1f",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cd4",
+              "assembly": "sub r1,r1,r1, lsl #0x2",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cd8",
+              "assembly": "add r0,r0,r1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cdc",
+              "assembly": "str r0,[r4,#0x4]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007ce0",
+              "assembly": "ldr r0,[r4,#0x8]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007ce4",
+              "assembly": "cmp r0,#0x3",
+              "flow_targets": []
+            },
+            {
+              "address": "80007ce8",
+              "assembly": "addlt r0,r0,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cec",
+              "assembly": "strlt r0,[r4,#0x8]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cf0",
+              "assembly": "cmp r0,#0x3",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cf4",
+              "assembly": "bne 0x80007d60",
+              "flow_targets": [
+                "80007d60"
+              ]
+            },
+            {
+              "address": "80007cf8",
+              "assembly": "ldr r3,[r12,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007cfc",
+              "assembly": "mov r0,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d00",
+              "assembly": "mov r5,r3",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d04",
+              "assembly": "mov r2,r3",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d08",
+              "assembly": "ldr r1,[r12,r0,lsl #0x2]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d0c",
+              "assembly": "add r0,r0,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d10",
+              "assembly": "cmp r1,r3",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d14",
+              "assembly": "movlt r3,r1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d18",
+              "assembly": "cmp r1,r2",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d1c",
+              "assembly": "movgt r2,r1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d20",
+              "assembly": "cmp r0,#0x3",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d24",
+              "assembly": "blt 0x80007d08",
+              "flow_targets": [
+                "80007d08"
+              ]
+            },
+            {
+              "address": "80007d28",
+              "assembly": "mov r0,#0x78",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d2c",
+              "assembly": "smull r7,r1,r3,r0",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d30",
+              "assembly": "mov r0,#0x64",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d34",
+              "assembly": "smull r6,r0,r2,r0",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d38",
+              "assembly": "subs r6,r7,r6",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d3c",
+              "assembly": "sbcs r0,r1,r0",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d40",
+              "assembly": "bcc 0x80007d60",
+              "flow_targets": [
+                "80007d60"
+              ]
+            },
+            {
+              "address": "80007d44",
+              "assembly": "ldr r0,[r12,#0x4]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d48",
+              "assembly": "ldr r1,[r12,#0x8]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d4c",
+              "assembly": "add r0,r0,r5",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d50",
+              "assembly": "add r0,r0,r1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d54",
+              "assembly": "sub r0,r0,r3",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d58",
+              "assembly": "sub r0,r0,r2",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d5c",
+              "assembly": "str r0,[r4,#0xc]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d60",
+              "assembly": "ldr r2,[r4,#0xc]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d64",
+              "assembly": "cmp r2,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d68",
+              "assembly": "ldrge r3,[0x80007ddc]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d6c",
+              "assembly": "movge r0,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d70",
+              "assembly": "blt 0x80007dc0",
+              "flow_targets": [
+                "80007dc0"
+              ]
+            },
+            {
+              "address": "80007d74",
+              "assembly": "add r1,r0,r0, lsl #0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d78",
+              "assembly": "ldr r12,[r3,r1,lsl #0x2]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d7c",
+              "assembly": "cmp r12,r2",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d80",
+              "assembly": "bgt 0x80007db4",
+              "flow_targets": [
+                "80007db4"
+              ]
+            },
+            {
+              "address": "80007d84",
+              "assembly": "add r1,r3,r1, lsl #0x2",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d88",
+              "assembly": "ldr r1,[r1,#0x4]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d8c",
+              "assembly": "cmp r2,r1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d90",
+              "assembly": "bge 0x80007db4",
+              "flow_targets": [
+                "80007db4"
+              ]
+            },
+            {
+              "address": "80007d94",
+              "assembly": "add r0,r0,r0, lsl #0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d98",
+              "assembly": "add r0,r3,r0, lsl #0x2",
+              "flow_targets": []
+            },
+            {
+              "address": "80007d9c",
+              "assembly": "ldrb r0,[r0,#0x8]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007da0",
+              "assembly": "cmp r0,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80007da4",
+              "assembly": "beq 0x80007dc0",
+              "flow_targets": [
+                "80007dc0"
+              ]
+            },
+            {
+              "address": "80007da8",
+              "assembly": "ldmia sp!,{r4,r5,r6,r7}",
+              "flow_targets": []
+            },
+            {
+              "address": "80007dac",
+              "assembly": "mov r1,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007db0",
+              "assembly": "b 0x80006e4c",
+              "flow_targets": [
+                "80006e4c"
+              ]
+            },
+            {
+              "address": "80007db4",
+              "assembly": "add r0,r0,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007db8",
+              "assembly": "cmp r0,#0xb",
+              "flow_targets": []
+            },
+            {
+              "address": "80007dbc",
+              "assembly": "blt 0x80007d74",
+              "flow_targets": [
+                "80007d74"
+              ]
+            },
+            {
+              "address": "80007dc0",
+              "assembly": "ldmia sp!,{r4,r5,r6,r7}",
+              "flow_targets": []
+            },
+            {
+              "address": "80007dc4",
+              "assembly": "mov r1,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80007dc8",
+              "assembly": "mov r0,r1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007dcc",
+              "assembly": "b 0x80006e4c",
+              "flow_targets": [
+                "80006e4c"
+              ]
+            }
+          ],
+          "direct_call_targets": [],
+          "decompiled_c": "\r\n/* YS4470 reference proof: bounded_original_ARM926_execution;\r\n   evidence/2026-11-07-fast-cont-filter.json; proposed RE_FastContHistoryFilter */\r\n\r\nvoid RE_FastContHistoryFilter(int param_1)\r\n\r\n{\r\n  undefined2 uVar1;\r\n  int *piVar2;\r\n  undefined4 uVar3;\r\n  int iVar4;\r\n  uint uVar5;\r\n  int iVar6;\r\n  int iVar7;\r\n  int iVar8;\r\n  uint uVar9;\r\n  int iVar10;\r\n  int iVar11;\r\n  undefined4 unaff_r4;\r\n  undefined4 unaff_r5;\r\n  undefined4 unaff_r6;\r\n  \r\n  iVar10 = iRam80007dd4;\r\n  piVar2 = piRam80007dd0;\r\n  if (1000 < param_1) {\r\n    *(undefined4 *)(iRam80007dd4 + 8) = 0;\r\n    *piVar2 = 1000;\r\n    piVar2[1] = 1000;\r\n    piVar2[2] = 1000;\r\n    *(undefined4 *)(iVar10 + 0xc) = 0xffffffff;\r\n  }\r\n  iVar7 = iRam80007dd8;\r\n  iVar6 = *(int *)(iVar10 + 4);\r\n  piVar2[iVar6] = param_1;\r\n  iVar6 = iVar6 + 1;\r\n  iVar7 = (int)((ulonglong)((longlong)iVar7 * (longlong)iVar6) >> 0x20);\r\n  *(int *)(iVar10 + 4) = iVar6 + (iVar7 - (iVar7 >> 0x1f)) * -3;\r\n  iVar7 = *(int *)(iVar10 + 8);\r\n  if (iVar7 < 3) {\r\n    iVar7 = iVar7 + 1;\r\n    *(int *)(iVar10 + 8) = iVar7;\r\n  }\r\n  if (iVar7 == 3) {\r\n    iVar11 = *piVar2;\r\n    iVar4 = 1;\r\n    iVar7 = iVar11;\r\n    iVar6 = iVar11;\r\n    do {\r\n      iVar8 = piVar2[iVar4];\r\n      iVar4 = iVar4 + 1;\r\n      if (iVar8 < iVar6) {\r\n        iVar6 = iVar8;\r\n      }\r\n      if (iVar7 < iVar8) {\r\n        iVar7 = iVar8;\r\n      }\r\n    } while (iVar4 < 3);\r\n    uVar9 = (uint)((ulonglong)((longlong)iVar6 * 0x78) >> 0x20);\r\n    uVar5 = (uint)((ulonglong)((longlong)iVar7 * 100) >> 0x20);\r\n    if (uVar5 < uVar9 ||\r\n        uVar9 - uVar5 < (uint)((uint)((longlong)iVar7 * 100) <= (uint)((longlong)iVar6 * 0x78))) {\r\n      *(int *)(iVar10 + 0xc) = ((piVar2[1] + iVar11 + piVar2[2]) - iVar6) - iVar7;\r\n    }\r\n  }\r\n  piVar2 = piRam80006f00;\r\n  iVar7 = iRam80006efc;\r\n  iVar10 = *(int *)(iVar10 + 0xc);\r\n  if (-1 < iVar10) {\r\n    iVar6 = 0;\r\n    do {\r\n      if ((*(int *)(iRam80007ddc + iVar6 * 0xc) <= iVar10) &&\r\n         (iVar10 < *(int *)(iRam80007ddc + iVar6 * 0xc + 4))) {\r\n        uVar5 = (uint)*(byte *)(iRam80007ddc + iVar6 * 0xc + 8);\r\n        if (uVar5 != 0) {\r\n          uVar9 = 1;\r\n          goto RE_SoundControlGate;\r\n        }\r\n        break;\r\n      }\r\n      iVar6 = iVar6 + 1;\r\n    } while (iVar6 < 0xb);\r\n  }\r\n  uVar5 = 0;\r\n  uVar9 = uVar5;\r\nRE_SoundControlGate:\r\n  if (*(int *)(iRam80006ef4 + 0x10) != 1) {\r\n    return;\r\n  }\r\n  if (uVar5 == 0) {\r\n    uVar5 = 1;\r\n  }\r\n  else if (10 < uVar5) {\r\n    uVar5 = 10;\r\n  }\r\n  uVar1 = *(undefined2 *)(iRam80006ef8 + uVar5 * 2 + -2);\r\n  if (uVar9 == 1) {\r\n    uVar3 = func_0x800630a4(*(int *)(iRam80006ef4 + 0xc) / 2);\r\n    func_0x800060d0(0,uVar1,uVar3,1,unaff_r4,unaff_r5,unaff_r6);\r\n    *piVar2 = 1;\r\n    uVar3 = 3;\r\n  }\r\n  else {\r\n    if (*piRam80006f00 == 0) {\r\n      return;\r\n    }\r\n    func_0x800060d0(0,uVar1,0,1,unaff_r4,unaff_r5,unaff_r6);\r\n    uVar3 = 0;\r\n    *piVar2 = 0;\r\n  }\r\n  *(undefined4 *)(iVar7 + 0x50) = uVar3;\r\n  return;\r\n}\r\n\r\n",
+          "limits": [
+            "Ghidra inferred body; original-byte proof applies only to documented execution scope."
+          ]
+        }
+      ]
+    }
+  ],
+  "assembly_equal_between_originals": true,
+  "limits": [
+    "Fresh disposable projects; exports are the durable artifact.",
+    "Existing analyst names/comments are preserved, not replaced.",
+    "Inferred Ghidra bodies are separate from stated original-code execution scopes."
+  ],
+  "label_pipeline_tests_passed": 8,
+  "test_log": "test_branch_stops_before_later_store (test_reference_pipeline.ReferenceTests.test_branch_stops_before_later_store) ... ok\ntest_emulation_report_schemas_and_unknown_rejection (test_reference_pipeline.ReferenceTests.test_emulation_report_schemas_and_unknown_rejection) ... ok\ntest_label_hash_and_proof_guards (test_reference_pipeline.ReferenceTests.test_label_hash_and_proof_guards) ... ok\ntest_loaded_value_does_not_become_pointer (test_reference_pipeline.ReferenceTests.test_loaded_value_does_not_become_pointer) ... ok\ntest_masked_full_body_and_mutation (test_reference_pipeline.ReferenceTests.test_masked_full_body_and_mutation) ... ok\ntest_mmio_and_control_transfer (test_reference_pipeline.ReferenceTests.test_mmio_and_control_transfer) ... ok\ntest_preserve_existing_names_comments_and_idempotence (test_reference_pipeline.ReferenceTests.test_preserve_existing_names_comments_and_idempotence) ... ok\ntest_relocation_only_is_candidate (test_reference_pipeline.ReferenceTests.test_relocation_only_is_candidate) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.003s\n\nOK\n"
+}

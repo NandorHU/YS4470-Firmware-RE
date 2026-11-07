@@ -87,6 +87,8 @@ two original sentinel-off call setups pass. The arithmetic/PWM oracle is
 independent Python integer and float32 arithmetic. All result fingerprints
 match. Plain RAM shadows do not model clock progression or analog output.
 
-Next: reconstruct and test 0x80007c88's history and range-table selection,
-including when it reaches the now-validated sound gate. Do not equate helper
-invocations with fresh UART responses until call cadence is proven.
+Continuation: helper0x80007c88's history/range selection is now independently
+tested and reconstructed in `reconstruction/fast_cont.c`; see
+`FAST_CONT_FILTER.md`. Its persistent tests execute this full original sound
+path as well. Next: prove helper invocations versus fresh UART responses and
+call cadence before assigning acoustic or measurement timing.

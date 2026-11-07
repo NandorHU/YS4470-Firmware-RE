@@ -101,6 +101,19 @@ class ReferenceTests(unittest.TestCase):
             self.assertTrue(function.comment.startswith('Analyst note\n'))
             self.assertEqual(function.comment.count('YS4470 reference proof:'), 1)
 
+    def test_emulation_report_schemas_and_unknown_rejection(self):
+        raw = bytes(range(128))
+        label = {'address': hex(BASE+32), 'name':'RE_Verified', 'confidence':1.0,
+                 'proof':'bounded_original_ARM926_execution', 'evidence':'test.json',
+                 'guard_bytes':64, 'guard_sha256':hashlib.sha256(raw[32:96]).hexdigest()}
+        for schema in ('ys4470.intc-timer-path.v1','ys4470.fast-cont-filter.v1','unknown'):
+            report = {'schema':schema,'versions':[{'version':'test','input_sha256':hashlib.sha256(raw).hexdigest(),'approved_labels':[label]}]}
+            with patch.object(Path, 'read_text', return_value=json.dumps(report)):
+                if schema == 'unknown':
+                    with self.assertRaises(ValueError): validated_labels(Path('test.json'),'test',raw)
+                else:
+                    self.assertEqual(validated_labels(Path('test.json'),'test',raw),[label])
+
 
 if __name__ == '__main__':
     unittest.main()

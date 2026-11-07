@@ -53,7 +53,25 @@ explicit annotations with provenance rather than claiming compiler offsetof
 validation. P's I2C2 base/IRQ definition is also only a reference claim until
 checked against the exact chip manual; it is not needed by the proven YS paths.
 
-Next reference-specific work: build path-aware CFGs around timer/INTC candidates,
-validate indirect handler targets, then compare MMIO access sequences with
-relocation targets and constants resolved. Thumb, scheduler and state-machine
-recovery remain separate unfinished stages.
+## Applied to original YS-4470 code (2026-11-07 continuation)
+
+The earlier INTC/timer leads now have original-code proof: vector dispatch
+0x80005260, registration0x80005274, configure0x800071a0 (corrected entry),
+enable0x8000725c and status update0x8005bf54. The linked startup programs timer0
+interval24000/control7/IRQ13. Register, branch and ARM/Thumb interworking tests
+pass4446 cases across originals; nominal1kHz depends on the24MHz source.
+
+YS dispatches through the pointer returned by INTC_VECTOR, whereas the reference
+examples use IRQ-number or pending-bit scans. The reference priority masking and
+timer-control sequences also differ. These differences were reconstructed and
+tested, rather than importing a reference driver as if it were factory code.
+
+Methods/evidence: `tools/INTC_TIMER_PATH.md` and
+`evidence/2026-11-07-intc-timer-path.json`. The continued measurement work also
+produced the independently written pure-C `reconstruction/fast_cont.c`, verified
+against original ARM/Python in3958 persistent state steps. Reference code is not
+copied into that component.
+
+Next: bound tick/scheduler bodies and fresh-result admission before assigning
+time units. Wider Thumb discovery, genuine function boundaries, resolved
+relocation/callee matching and remaining subsystems are still unfinished.

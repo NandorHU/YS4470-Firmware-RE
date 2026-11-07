@@ -211,3 +211,22 @@ Address correction (2026-11-07): file word offsets 0x63ac8..0x63ae8 map to linke
 Reference acquisition/licensing: `references/f1c100s/README.md` and `sources.lock.json`. Subsystem register anchors and identification methods: `references/f1c100s/F1C100S_REFERENCE_MAP.md` / `register-map.json`. Runner/method: `tools/analyze_f1c100s_references.py` / `tools/F1C100S_REFERENCE_ANALYSIS.md`.
 
 Reference inventory contains34 block bases,361 literal register-enum entries in15 groups and428 annotated offset claims. They retain source/line provenance and are distinct from verified YS addresses. The new executed watchdog accesses are TIMER base0x01c20c00 plus0xb0 (keyed control) and0xb8 (mode). Exception-vector, ROM, SRAM, DRAM/framebuffer candidates and reference header inconsistencies are documented in the subsystem map. The upstream BROM artifact is65,535 bytes; it is not asserted to be a complete chip dump.
+
+
+## 2026-11-07: reference-guided INTC/timer proof and Fast CONT C reconstruction
+
+Evidence: `evidence/2026-11-07-intc-timer-path.json`, `evidence/2026-11-07-intc-timer-ghidra.json`, `evidence/2026-11-07-fast-cont-filter.json`, and `evidence/2026-11-07-fast-cont-filter-ghidra.json`. Methods: `tools/INTC_TIMER_PATH.md`, `tools/FAST_CONT_FILTER.md`.
+
+| Address | Newly confirmed use |
+|---|---|
+| 0x805ab940 | one-byte INTC base-initialization flag |
+| 0x805ab944 | primary handler table programmed into INTC_BASE_ADDR |
+| 0x805ab9e8 | alternate table selected by registration mode0; its wider role is open |
+| 0x805ab924+0 | existing sound-active flag |
+| 0x805ab924+4/+8/+0xc | Fast CONT ring index / fill count / retained median |
+| 0x805ac7b8 | three signed32 history slots |
+| 0x8006397c | eleven12-byte lower/upper/selector records |
+| 0x01c20400/+4/+0x10/+0x20/+0x60 | INTC vector/base/pending/enable/priority anchors |
+| 0x01c20c00/+4/+0x10/+0x14 | timer IRQ enable/status and timer0 control/interval |
+
+Pure C uses a separate24-byte state structure; that is a reconstruction API layout, not the original split-RAM layout. Factory initial history/count/median are not established by seeding the emulator.

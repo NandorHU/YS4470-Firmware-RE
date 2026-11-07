@@ -2,6 +2,10 @@
 
 The project is actively reconstructing the original YS-4470 firmware; it is not complete and no reconstructed firmware is claimed equivalent yet.
 
+## Current continuation (2026-11-07)
+
+INTC/timer proof and a separately compiled Fast CONT C component are complete within the documented bounded scopes. Trace fresh-result admission from ResultDispatch call0x80003970 into helper0x80007c88. Determine whether repeated calls can reuse one parsed UART result. Separately bound tick/scheduler0x80061fa4/0x800612f8 and the consumer/decrement of FSM field0x805ac694+0x30 before assigning timing units.
+
 ## Confirmed static foundation
 
 - Target CPU: Allwinner F1C100S / ARM926EJ-S. The main raw image is linked at `0x7fffffe0`; its eGON payload entry/load region begins at `0x80000000`.
@@ -15,7 +19,7 @@ The project is actively reconstructing the original YS-4470 firmware; it is not 
 
 PyGhidra inventory tooling and a raw diff pipeline are committed in `tools/`. V3.8 and Beta3 have a first reproducible function-level comparison. Beta3 differs from V3.8 in 65 contiguous regions (931 bytes), including a static, caller-specific sound parameter override and a result-observation helper. See `RE_PROGRESS.md` and the session evidence JSON.
 
-V3.6 is expected but was not accessible in this workspace at the time of analysis. No V3.6 comparison has been fabricated.
+V3.6 is now a verified local original (SHA-2567523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9). Earlier unavailable-input notes below are historical; both originals now have bounded comparative execution evidence.
 
 ## Boundaries
 
@@ -174,3 +178,14 @@ Reference acquisition/licensing: `references/f1c100s/README.md` and `sources.loc
 Four user-requested upstream projects are downloaded as clean detached, pinned checkouts. Five driver sources were cross-compiled for ARM926 (Zig0.13.0) and eight prebuilt SDK objects read separately. Among97 eligible reference functions per original, the conservative matching pass finds no new accepted whole-body/normalized candidates; it does not equate shared names, sizes, prologues or MMIO constants.
 
 Per original:142 MMIO-literal leads,129 following-address-use candidates,10 CP15 leads and11,914 raw aligned BL candidates (1,004 target candidates). These are linear ARM hypotheses, not a recovered whole-firmware call graph. Full graphs are stored as deterministic gzip. Two watchdog helper behaviors at0x800085c4/0x800085e0 are independently executed on ARM926:32 total cases pass. Real PyGhidra exports six proof-backed entries per original, with five new RE_ labels and SoundControlGate's existing name retained. Seven positive/negative pipeline tests pass. Firmware originals and the physical device are unchanged.
+
+
+## 2026-11-07: reference-guided INTC/timer proof and Fast CONT C reconstruction
+
+Evidence: `evidence/2026-11-07-intc-timer-path.json`, `evidence/2026-11-07-intc-timer-ghidra.json`, `evidence/2026-11-07-fast-cont-filter.json`, and `evidence/2026-11-07-fast-cont-filter-ghidra.json`. Methods: `tools/INTC_TIMER_PATH.md`, `tools/FAST_CONT_FILTER.md`.
+
+Applied pinned F1C100S register references to five original routines: INTC vector dispatch0x80005260, registration0x80005274, timer configure0x800071a0, enable0x8000725c and timer0 status update0x8005bf54. Both originals pass4446 combined cases. Startup slice configures interval24000/control7 and IRQ13; nominal1kHz depends on24MHz source, not a measured response cadence. The IRQ bridge gives pending bit13 its own tick/scheduler path.
+
+Continued the existing measurement track: Fast CONT helper0x80007c88 is now reconstructed and runs through the original gate/PWM path. An independent, freestanding C component is compiled for ARM926 and executed separately. Original ARM, Python and compiled C agree on3958 persistent state steps (700 scenarios across both originals). The filter retains the previous median/tone during unstable histories; input>1000 resets it. Physical units, power-on initial state, fresh-reply coupling and acoustic timing remain open. Full firmware reconstruction is still incomplete.
+
+Next: Trace fresh-result admission from ResultDispatch call0x80003970 into helper0x80007c88. Determine whether repeated calls can reuse one parsed UART result. Separately bound tick/scheduler0x80061fa4/0x800612f8 and the consumer/decrement of FSM field0x805ac694+0x30 before assigning timing units.

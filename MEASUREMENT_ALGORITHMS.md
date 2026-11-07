@@ -179,3 +179,16 @@ Address correction (2026-11-07): file word offsets 0x63ac8..0x63ae8 map to linke
 Reference acquisition/licensing: `references/f1c100s/README.md` and `sources.lock.json`. Subsystem register anchors and identification methods: `references/f1c100s/F1C100S_REFERENCE_MAP.md` / `register-map.json`. Runner/method: `tools/analyze_f1c100s_references.py` / `tools/F1C100S_REFERENCE_ANALYSIS.md`.
 
 Reference matching adds hardware-context leads, not new measurement-ADC semantics. UART2 remains the evidenced measurement transport; KEYADC/RTP references do not establish an internal converter role. The completed parser, Fast CONT setting, sound/PWM and new watchdog experiments are separate bounded proofs. Fast CONT helper0x80007c88 history/range-selection reconstruction remains pending; no millisecond/physical latency is assigned.
+
+
+## 2026-11-07: reference-guided INTC/timer proof and Fast CONT C reconstruction
+
+Evidence: `evidence/2026-11-07-intc-timer-path.json`, `evidence/2026-11-07-intc-timer-ghidra.json`, `evidence/2026-11-07-fast-cont-filter.json`, and `evidence/2026-11-07-fast-cont-filter-ghidra.json`. Methods: `tools/INTC_TIMER_PATH.md`, `tools/FAST_CONT_FILTER.md`.
+
+Fast CONT helper0x80007c88 writes a three-value ring; input>1000 resets fill to0/history to1000/median to-1 without resetting the index, then inserts that input. Valid count0 requires three calls before median recalculation. With full history, signed min/max products are compared as unsigned64 values: low*120 >= high*100 in their two's-complement representations. On pass, median-of-three replaces the stored median. On fail, the previous median remains.
+
+Selectors from the retained value:0..19→10,20..39→8,40..59→6,60..79→4,80..99→2; other/unmatched values request off. Each call tailcalls the separately proven sound gate; its settings enable and active-state behavior still apply. The physical scalar unit is unassigned.
+
+Persistent example: stable[5,5,5] establishes selector10; the first two subsequent500 inputs retain that tone, the third establishes median500/off. Alternating500/5 preserves the previous tone through the tested16 unstable inputs. Input1001 resets immediately;1000 takes the regular ring path. There is no independent expiry of the retained median in this helper.
+
+Own C component: `reconstruction/fast_cont.c` / `.h`, no board SDK/libc/peripheral access. Compiled ARM926 C, independent Python and original ARM agree after every tested input, including every history field and full original sound/PWM effect. Contract: index0..2/count0..3. The earlier two-discard parser lifecycle must not be converted into an additive millisecond delay without proving fresh-result coupling.

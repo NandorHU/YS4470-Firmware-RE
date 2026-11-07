@@ -1,0 +1,2080 @@
+{
+  "schema": "ys4470.fast-cont-filter.v1",
+  "date": "2026-11-07",
+  "cpu": "UC_CPU_ARM_926",
+  "range_table_address": "0x8006397c",
+  "range_table": [
+    [
+      0,
+      10,
+      10
+    ],
+    [
+      10,
+      20,
+      10
+    ],
+    [
+      20,
+      30,
+      8
+    ],
+    [
+      30,
+      40,
+      8
+    ],
+    [
+      40,
+      50,
+      6
+    ],
+    [
+      50,
+      60,
+      6
+    ],
+    [
+      60,
+      70,
+      4
+    ],
+    [
+      70,
+      80,
+      4
+    ],
+    [
+      80,
+      90,
+      2
+    ],
+    [
+      90,
+      100,
+      2
+    ],
+    [
+      100,
+      1000,
+      0
+    ]
+  ],
+  "versions": [
+    {
+      "version": "V3.6",
+      "input_sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+      "scenarios_passed": 350,
+      "steps_passed": 1979,
+      "failed": 0,
+      "results_sha256": "e914aefb9e3a20eecb9debdf2dc3865074b0e8c5bafcf4f79e1ec9fbd0da6997",
+      "examples": [
+        {
+          "name": "stable_to_unstable_then_stable",
+          "steps": [
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  1000,
+                  1000
+                ],
+                "next": 1,
+                "count": 1,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  1000
+                ],
+                "next": 2,
+                "count": 2,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  5
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 500,
+              "state": {
+                "history": [
+                  500,
+                  5,
+                  5
+                ],
+                "next": 1,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 500,
+              "state": {
+                "history": [
+                  500,
+                  500,
+                  5
+                ],
+                "next": 2,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 500,
+              "state": {
+                "history": [
+                  500,
+                  500,
+                  500
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 500
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  500,
+                  500
+                ],
+                "next": 1,
+                "count": 3,
+                "last_median": 500
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  500
+                ],
+                "next": 2,
+                "count": 3,
+                "last_median": 500
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  5
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            }
+          ]
+        },
+        {
+          "name": "unstable_keeps_previous_tone",
+          "steps": [
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  1000,
+                  1000
+                ],
+                "next": 1,
+                "count": 1,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  1000
+                ],
+                "next": 2,
+                "count": 2,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  5
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 500,
+              "state": {
+                "history": [
+                  500,
+                  5,
+                  5
+                ],
+                "next": 1,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  500,
+                  5,
+                  5
+                ],
+                "next": 2,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 500,
+              "state": {
+                "history": [
+                  500,
+                  5,
+                  500
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  500
+                ],
+                "next": 1,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 500,
+              "state": {
+                "history": [
+                  5,
+                  500,
+                  500
+                ],
+                "next": 2,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  500,
+                  5
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 500,
+              "state": {
+                "history": [
+                  500,
+                  500,
+                  5
+                ],
+                "next": 1,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  500,
+                  5,
+                  5
+                ],
+                "next": 2,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 500,
+              "state": {
+                "history": [
+                  500,
+                  5,
+                  500
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  500
+                ],
+                "next": 1,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 500,
+              "state": {
+                "history": [
+                  5,
+                  500,
+                  500
+                ],
+                "next": 2,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  500,
+                  5
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 500,
+              "state": {
+                "history": [
+                  500,
+                  500,
+                  5
+                ],
+                "next": 1,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  500,
+                  5,
+                  5
+                ],
+                "next": 2,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 500,
+              "state": {
+                "history": [
+                  500,
+                  5,
+                  500
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  500
+                ],
+                "next": 1,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            }
+          ]
+        },
+        {
+          "name": "open_resets_immediately",
+          "steps": [
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  1000,
+                  1000
+                ],
+                "next": 1,
+                "count": 1,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  1000
+                ],
+                "next": 2,
+                "count": 2,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  5
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 1001,
+              "state": {
+                "history": [
+                  1001,
+                  1000,
+                  1000
+                ],
+                "next": 1,
+                "count": 1,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  1001,
+                  5,
+                  1000
+                ],
+                "next": 2,
+                "count": 2,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  1001,
+                  5,
+                  5
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  5
+                ],
+                "next": 1,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            }
+          ]
+        },
+        {
+          "name": "exact_1000_does_not_reset",
+          "steps": [
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  1000,
+                  1000
+                ],
+                "next": 1,
+                "count": 1,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  1000
+                ],
+                "next": 2,
+                "count": 2,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  5
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 1000,
+              "state": {
+                "history": [
+                  1000,
+                  5,
+                  5
+                ],
+                "next": 1,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 1000,
+              "state": {
+                "history": [
+                  1000,
+                  1000,
+                  5
+                ],
+                "next": 2,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 1000,
+              "state": {
+                "history": [
+                  1000,
+                  1000,
+                  1000
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 1000
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": true
+            }
+          ]
+        },
+        {
+          "name": "mixed_sign_unsigned_comparison",
+          "steps": [
+            {
+              "input": -5,
+              "state": {
+                "history": [
+                  -5,
+                  1000,
+                  1000
+                ],
+                "next": 1,
+                "count": 1,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  -5,
+                  5,
+                  1000
+                ],
+                "next": 2,
+                "count": 2,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 6,
+              "state": {
+                "history": [
+                  -5,
+                  5,
+                  6
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            }
+          ]
+        },
+        {
+          "name": "stability_equal",
+          "steps": [
+            {
+              "input": 100,
+              "state": {
+                "history": [
+                  100,
+                  1000,
+                  1000
+                ],
+                "next": 1,
+                "count": 1,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 100,
+              "state": {
+                "history": [
+                  100,
+                  100,
+                  1000
+                ],
+                "next": 2,
+                "count": 2,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 120,
+              "state": {
+                "history": [
+                  100,
+                  100,
+                  120
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 100
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            }
+          ]
+        },
+        {
+          "name": "stability_fails",
+          "steps": [
+            {
+              "input": 100,
+              "state": {
+                "history": [
+                  100,
+                  1000,
+                  1000
+                ],
+                "next": 1,
+                "count": 1,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 100,
+              "state": {
+                "history": [
+                  100,
+                  100,
+                  1000
+                ],
+                "next": 2,
+                "count": 2,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 121,
+              "state": {
+                "history": [
+                  100,
+                  100,
+                  121
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            }
+          ]
+        }
+      ],
+      "original_helper_sha256": "d3f738f09522452c19ad00418c658a9a538979cee74445ca995cc5374860f01f",
+      "assembly": [
+        "80007c88 push {r4, r5, r6, r7}",
+        "80007c8c ldr ip, [pc, #0x13c]",
+        "80007c90 ldr r4, [pc, #0x13c]",
+        "80007c94 cmp r0, #0x3e8",
+        "80007c98 ble #0x80007cbc",
+        "80007c9c mov r1, #0",
+        "80007ca0 str r1, [r4, #8]",
+        "80007ca4 mov r1, #0x3e8",
+        "80007ca8 str r1, [ip]",
+        "80007cac str r1, [ip, #4]",
+        "80007cb0 str r1, [ip, #8]",
+        "80007cb4 mvn r1, #0",
+        "80007cb8 str r1, [r4, #0xc]",
+        "80007cbc ldr r1, [r4, #4]",
+        "80007cc0 ldr r2, [pc, #0x110]",
+        "80007cc4 str r0, [ip, r1, lsl #2]",
+        "80007cc8 add r0, r1, #1",
+        "80007ccc smull r3, r1, r2, r0",
+        "80007cd0 sub r1, r1, r1, asr #31",
+        "80007cd4 sub r1, r1, r1, lsl #2",
+        "80007cd8 add r0, r0, r1",
+        "80007cdc str r0, [r4, #4]",
+        "80007ce0 ldr r0, [r4, #8]",
+        "80007ce4 cmp r0, #3",
+        "80007ce8 addlt r0, r0, #1",
+        "80007cec strlt r0, [r4, #8]",
+        "80007cf0 cmp r0, #3",
+        "80007cf4 bne #0x80007d60",
+        "80007cf8 ldr r3, [ip]",
+        "80007cfc mov r0, #1",
+        "80007d00 mov r5, r3",
+        "80007d04 mov r2, r3",
+        "80007d08 ldr r1, [ip, r0, lsl #2]",
+        "80007d0c add r0, r0, #1",
+        "80007d10 cmp r1, r3",
+        "80007d14 movlt r3, r1",
+        "80007d18 cmp r1, r2",
+        "80007d1c movgt r2, r1",
+        "80007d20 cmp r0, #3",
+        "80007d24 blt #0x80007d08",
+        "80007d28 mov r0, #0x78",
+        "80007d2c smull r7, r1, r3, r0",
+        "80007d30 mov r0, #0x64",
+        "80007d34 smull r6, r0, r2, r0",
+        "80007d38 subs r6, r7, r6",
+        "80007d3c sbcs r0, r1, r0",
+        "80007d40 blo #0x80007d60",
+        "80007d44 ldr r0, [ip, #4]",
+        "80007d48 ldr r1, [ip, #8]",
+        "80007d4c add r0, r0, r5",
+        "80007d50 add r0, r0, r1",
+        "80007d54 sub r0, r0, r3",
+        "80007d58 sub r0, r0, r2",
+        "80007d5c str r0, [r4, #0xc]",
+        "80007d60 ldr r2, [r4, #0xc]",
+        "80007d64 cmp r2, #0",
+        "80007d68 ldrge r3, [pc, #0x6c]",
+        "80007d6c movge r0, #0",
+        "80007d70 blt #0x80007dc0",
+        "80007d74 add r1, r0, r0, lsl #1",
+        "80007d78 ldr ip, [r3, r1, lsl #2]",
+        "80007d7c cmp ip, r2",
+        "80007d80 bgt #0x80007db4",
+        "80007d84 add r1, r3, r1, lsl #2",
+        "80007d88 ldr r1, [r1, #4]",
+        "80007d8c cmp r2, r1",
+        "80007d90 bge #0x80007db4",
+        "80007d94 add r0, r0, r0, lsl #1",
+        "80007d98 add r0, r3, r0, lsl #2",
+        "80007d9c ldrb r0, [r0, #8]",
+        "80007da0 cmp r0, #0",
+        "80007da4 beq #0x80007dc0",
+        "80007da8 pop {r4, r5, r6, r7}",
+        "80007dac mov r1, #1",
+        "80007db0 b #0x80006e4c",
+        "80007db4 add r0, r0, #1",
+        "80007db8 cmp r0, #0xb",
+        "80007dbc blt #0x80007d74",
+        "80007dc0 pop {r4, r5, r6, r7}",
+        "80007dc4 mov r1, #0",
+        "80007dc8 mov r0, r1",
+        "80007dcc b #0x80006e4c"
+      ],
+      "c_instruction_addresses_visited": 60,
+      "approved_labels": [
+        {
+          "address": "0x80006e4c",
+          "name": "RE_SoundControlGate",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-fast-cont-filter.json",
+          "guard_bytes": 64,
+          "guard_sha256": "749bc8d4921b3ea5afb782ce6808867843051286ff109f6dd731610d6256e2b8"
+        },
+        {
+          "address": "0x80007c88",
+          "name": "RE_FastContHistoryFilter",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-fast-cont-filter.json",
+          "guard_bytes": 64,
+          "guard_sha256": "ef5a26a47562a4bac92402d8385cfb4bd41b262f0d3aa74ab2462360ee8fcc21"
+        }
+      ]
+    },
+    {
+      "version": "V3.8",
+      "input_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+      "scenarios_passed": 350,
+      "steps_passed": 1979,
+      "failed": 0,
+      "results_sha256": "e914aefb9e3a20eecb9debdf2dc3865074b0e8c5bafcf4f79e1ec9fbd0da6997",
+      "examples": [
+        {
+          "name": "stable_to_unstable_then_stable",
+          "steps": [
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  1000,
+                  1000
+                ],
+                "next": 1,
+                "count": 1,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  1000
+                ],
+                "next": 2,
+                "count": 2,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  5
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 500,
+              "state": {
+                "history": [
+                  500,
+                  5,
+                  5
+                ],
+                "next": 1,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 500,
+              "state": {
+                "history": [
+                  500,
+                  500,
+                  5
+                ],
+                "next": 2,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 500,
+              "state": {
+                "history": [
+                  500,
+                  500,
+                  500
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 500
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  500,
+                  500
+                ],
+                "next": 1,
+                "count": 3,
+                "last_median": 500
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  500
+                ],
+                "next": 2,
+                "count": 3,
+                "last_median": 500
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  5
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            }
+          ]
+        },
+        {
+          "name": "unstable_keeps_previous_tone",
+          "steps": [
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  1000,
+                  1000
+                ],
+                "next": 1,
+                "count": 1,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  1000
+                ],
+                "next": 2,
+                "count": 2,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  5
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 500,
+              "state": {
+                "history": [
+                  500,
+                  5,
+                  5
+                ],
+                "next": 1,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  500,
+                  5,
+                  5
+                ],
+                "next": 2,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 500,
+              "state": {
+                "history": [
+                  500,
+                  5,
+                  500
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  500
+                ],
+                "next": 1,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 500,
+              "state": {
+                "history": [
+                  5,
+                  500,
+                  500
+                ],
+                "next": 2,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  500,
+                  5
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 500,
+              "state": {
+                "history": [
+                  500,
+                  500,
+                  5
+                ],
+                "next": 1,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  500,
+                  5,
+                  5
+                ],
+                "next": 2,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 500,
+              "state": {
+                "history": [
+                  500,
+                  5,
+                  500
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  500
+                ],
+                "next": 1,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 500,
+              "state": {
+                "history": [
+                  5,
+                  500,
+                  500
+                ],
+                "next": 2,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  500,
+                  5
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 500,
+              "state": {
+                "history": [
+                  500,
+                  500,
+                  5
+                ],
+                "next": 1,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  500,
+                  5,
+                  5
+                ],
+                "next": 2,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 500,
+              "state": {
+                "history": [
+                  500,
+                  5,
+                  500
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  500
+                ],
+                "next": 1,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            }
+          ]
+        },
+        {
+          "name": "open_resets_immediately",
+          "steps": [
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  1000,
+                  1000
+                ],
+                "next": 1,
+                "count": 1,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  1000
+                ],
+                "next": 2,
+                "count": 2,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  5
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 1001,
+              "state": {
+                "history": [
+                  1001,
+                  1000,
+                  1000
+                ],
+                "next": 1,
+                "count": 1,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  1001,
+                  5,
+                  1000
+                ],
+                "next": 2,
+                "count": 2,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  1001,
+                  5,
+                  5
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  5
+                ],
+                "next": 1,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            }
+          ]
+        },
+        {
+          "name": "exact_1000_does_not_reset",
+          "steps": [
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  1000,
+                  1000
+                ],
+                "next": 1,
+                "count": 1,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  1000
+                ],
+                "next": 2,
+                "count": 2,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  5,
+                  5,
+                  5
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 1000,
+              "state": {
+                "history": [
+                  1000,
+                  5,
+                  5
+                ],
+                "next": 1,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 1000,
+              "state": {
+                "history": [
+                  1000,
+                  1000,
+                  5
+                ],
+                "next": 2,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            },
+            {
+              "input": 1000,
+              "state": {
+                "history": [
+                  1000,
+                  1000,
+                  1000
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 1000
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": true
+            }
+          ]
+        },
+        {
+          "name": "mixed_sign_unsigned_comparison",
+          "steps": [
+            {
+              "input": -5,
+              "state": {
+                "history": [
+                  -5,
+                  1000,
+                  1000
+                ],
+                "next": 1,
+                "count": 1,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 5,
+              "state": {
+                "history": [
+                  -5,
+                  5,
+                  1000
+                ],
+                "next": 2,
+                "count": 2,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 6,
+              "state": {
+                "history": [
+                  -5,
+                  5,
+                  6
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 5
+              },
+              "selector": 10,
+              "gate_action": 1,
+              "sound_active": 1,
+              "shadow_mmio_called": true
+            }
+          ]
+        },
+        {
+          "name": "stability_equal",
+          "steps": [
+            {
+              "input": 100,
+              "state": {
+                "history": [
+                  100,
+                  1000,
+                  1000
+                ],
+                "next": 1,
+                "count": 1,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 100,
+              "state": {
+                "history": [
+                  100,
+                  100,
+                  1000
+                ],
+                "next": 2,
+                "count": 2,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 120,
+              "state": {
+                "history": [
+                  100,
+                  100,
+                  120
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": 100
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            }
+          ]
+        },
+        {
+          "name": "stability_fails",
+          "steps": [
+            {
+              "input": 100,
+              "state": {
+                "history": [
+                  100,
+                  1000,
+                  1000
+                ],
+                "next": 1,
+                "count": 1,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 100,
+              "state": {
+                "history": [
+                  100,
+                  100,
+                  1000
+                ],
+                "next": 2,
+                "count": 2,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            },
+            {
+              "input": 121,
+              "state": {
+                "history": [
+                  100,
+                  100,
+                  121
+                ],
+                "next": 0,
+                "count": 3,
+                "last_median": -1
+              },
+              "selector": 0,
+              "gate_action": 0,
+              "sound_active": 0,
+              "shadow_mmio_called": false
+            }
+          ]
+        }
+      ],
+      "original_helper_sha256": "d3f738f09522452c19ad00418c658a9a538979cee74445ca995cc5374860f01f",
+      "assembly": [
+        "80007c88 push {r4, r5, r6, r7}",
+        "80007c8c ldr ip, [pc, #0x13c]",
+        "80007c90 ldr r4, [pc, #0x13c]",
+        "80007c94 cmp r0, #0x3e8",
+        "80007c98 ble #0x80007cbc",
+        "80007c9c mov r1, #0",
+        "80007ca0 str r1, [r4, #8]",
+        "80007ca4 mov r1, #0x3e8",
+        "80007ca8 str r1, [ip]",
+        "80007cac str r1, [ip, #4]",
+        "80007cb0 str r1, [ip, #8]",
+        "80007cb4 mvn r1, #0",
+        "80007cb8 str r1, [r4, #0xc]",
+        "80007cbc ldr r1, [r4, #4]",
+        "80007cc0 ldr r2, [pc, #0x110]",
+        "80007cc4 str r0, [ip, r1, lsl #2]",
+        "80007cc8 add r0, r1, #1",
+        "80007ccc smull r3, r1, r2, r0",
+        "80007cd0 sub r1, r1, r1, asr #31",
+        "80007cd4 sub r1, r1, r1, lsl #2",
+        "80007cd8 add r0, r0, r1",
+        "80007cdc str r0, [r4, #4]",
+        "80007ce0 ldr r0, [r4, #8]",
+        "80007ce4 cmp r0, #3",
+        "80007ce8 addlt r0, r0, #1",
+        "80007cec strlt r0, [r4, #8]",
+        "80007cf0 cmp r0, #3",
+        "80007cf4 bne #0x80007d60",
+        "80007cf8 ldr r3, [ip]",
+        "80007cfc mov r0, #1",
+        "80007d00 mov r5, r3",
+        "80007d04 mov r2, r3",
+        "80007d08 ldr r1, [ip, r0, lsl #2]",
+        "80007d0c add r0, r0, #1",
+        "80007d10 cmp r1, r3",
+        "80007d14 movlt r3, r1",
+        "80007d18 cmp r1, r2",
+        "80007d1c movgt r2, r1",
+        "80007d20 cmp r0, #3",
+        "80007d24 blt #0x80007d08",
+        "80007d28 mov r0, #0x78",
+        "80007d2c smull r7, r1, r3, r0",
+        "80007d30 mov r0, #0x64",
+        "80007d34 smull r6, r0, r2, r0",
+        "80007d38 subs r6, r7, r6",
+        "80007d3c sbcs r0, r1, r0",
+        "80007d40 blo #0x80007d60",
+        "80007d44 ldr r0, [ip, #4]",
+        "80007d48 ldr r1, [ip, #8]",
+        "80007d4c add r0, r0, r5",
+        "80007d50 add r0, r0, r1",
+        "80007d54 sub r0, r0, r3",
+        "80007d58 sub r0, r0, r2",
+        "80007d5c str r0, [r4, #0xc]",
+        "80007d60 ldr r2, [r4, #0xc]",
+        "80007d64 cmp r2, #0",
+        "80007d68 ldrge r3, [pc, #0x6c]",
+        "80007d6c movge r0, #0",
+        "80007d70 blt #0x80007dc0",
+        "80007d74 add r1, r0, r0, lsl #1",
+        "80007d78 ldr ip, [r3, r1, lsl #2]",
+        "80007d7c cmp ip, r2",
+        "80007d80 bgt #0x80007db4",
+        "80007d84 add r1, r3, r1, lsl #2",
+        "80007d88 ldr r1, [r1, #4]",
+        "80007d8c cmp r2, r1",
+        "80007d90 bge #0x80007db4",
+        "80007d94 add r0, r0, r0, lsl #1",
+        "80007d98 add r0, r3, r0, lsl #2",
+        "80007d9c ldrb r0, [r0, #8]",
+        "80007da0 cmp r0, #0",
+        "80007da4 beq #0x80007dc0",
+        "80007da8 pop {r4, r5, r6, r7}",
+        "80007dac mov r1, #1",
+        "80007db0 b #0x80006e4c",
+        "80007db4 add r0, r0, #1",
+        "80007db8 cmp r0, #0xb",
+        "80007dbc blt #0x80007d74",
+        "80007dc0 pop {r4, r5, r6, r7}",
+        "80007dc4 mov r1, #0",
+        "80007dc8 mov r0, r1",
+        "80007dcc b #0x80006e4c"
+      ],
+      "c_instruction_addresses_visited": 60,
+      "approved_labels": [
+        {
+          "address": "0x80006e4c",
+          "name": "RE_SoundControlGate",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-fast-cont-filter.json",
+          "guard_bytes": 64,
+          "guard_sha256": "749bc8d4921b3ea5afb782ce6808867843051286ff109f6dd731610d6256e2b8"
+        },
+        {
+          "address": "0x80007c88",
+          "name": "RE_FastContHistoryFilter",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-fast-cont-filter.json",
+          "guard_bytes": 64,
+          "guard_sha256": "ef5a26a47562a4bac92402d8385cfb4bd41b262f0d3aa74ab2462360ee8fcc21"
+        }
+      ]
+    }
+  ],
+  "reconstruction": {
+    "source": "reconstruction/fast_cont.c",
+    "source_sha256": "d7e74d8737da6e5eee2073ac1072b41ab16c2471d4a8e4e7d1ec16761b71cc5a",
+    "header_sha256": "25babf97f802e7826fd90a08d035400b34df40a8703efb23b482f20da5a0698b",
+    "object_sha256": "5e778c4cee418fa0e86c869154e438f7f64b6f352c673a7a764590cdd6c9af08",
+    "build": "Zig0.13.0 cc -target arm-freestanding-eabi -mcpu=arm926ej_s -marm -O2 -ffreestanding -fno-builtin -ffunction-sections -std=c11 -Wall -Wextra -Werror -c reconstruction/fast_cont.c"
+  },
+  "limits": [
+    "Valid ring index0..2/count0..3 only; signed32 scalar inputs tested, physical unit unassigned.",
+    "Original helper executes into real gate/arithmetic/pinmux/PWM code using inert RAM MMIO shadows.",
+    "C reconstruction executes separately on ARM926 with no mapped peripheral; not a complete firmware.",
+    "Helper call cadence and relation to fresh UART responses remain open; no acoustic latency measurement."
+  ]
+}
