@@ -90,5 +90,7 @@ match. Plain RAM shadows do not model clock progression or analog output.
 Continuation: helper0x80007c88's history/range selection is now independently
 tested and reconstructed in `reconstruction/fast_cont.c`; see
 `FAST_CONT_FILTER.md`. Its persistent tests execute this full original sound
-path as well. Next: prove helper invocations versus fresh UART responses and
-call cadence before assigning acoustic or measurement timing.
+path as well. The subsequent `RESULT_FRESHNESS.md` experiment proves that the
+bounded callback path can invoke it repeatedly from one stored result, and
+that invalid caller inputs bypass its history reset. Audit excluded GUI/queue
+effects and tick contracts before assigning acoustic or measurement timing.

@@ -12,7 +12,7 @@ PROOF = 'prior_bounded_original_ARM926_execution'
 def validated_labels(report_path: Path, version: str, raw: bytes):
     report = json.loads(report_path.read_text(encoding='utf-8'))
     if report['schema'] not in ('ys4470.f1c100s.reference-analysis.v1', 'ys4470.intc-timer-path.v1',
-                               'ys4470.fast-cont-filter.v1'):
+                               'ys4470.fast-cont-filter.v1', 'ys4470.result-freshness.v1'):
         raise ValueError('unsupported reference report')
     matches = [v for v in report['versions'] if v['version'] == version]
     if len(matches) != 1:

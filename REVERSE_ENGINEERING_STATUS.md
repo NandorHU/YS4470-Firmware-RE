@@ -4,7 +4,7 @@ The project is actively reconstructing the original YS-4470 firmware; it is not 
 
 ## Current continuation (2026-11-07)
 
-INTC/timer proof and a separately compiled Fast CONT C component are complete within the documented bounded scopes. Trace fresh-result admission from ResultDispatch call0x80003970 into helper0x80007c88. Determine whether repeated calls can reuse one parsed UART result. Separately bound tick/scheduler0x80061fa4/0x800612f8 and the consumer/decrement of FSM field0x805ac694+0x30 before assigning timing units.
+INTC/timer proof and a separately compiled Fast CONT C component are complete within the documented bounded scopes. Audit real renderer0x8000326c and enqueue path0x80006778 for side effects excluded from the refresh model. Then prove FSM+0x30's cached read at0x800044a8 (r1=sb via ADD#0), its elapsed-tick comparisons and tick getter0x80061f84; do not assign milliseconds before that contract is validated.
 
 ## Confirmed static foundation
 
@@ -189,3 +189,14 @@ Applied pinned F1C100S register references to five original routines: INTC vecto
 Continued the existing measurement track: Fast CONT helper0x80007c88 is now reconstructed and runs through the original gate/PWM path. An independent, freestanding C component is compiled for ARM926 and executed separately. Original ARM, Python and compiled C agree on3958 persistent state steps (700 scenarios across both originals). The filter retains the previous median/tone during unstable histories; input>1000 resets it. Physical units, power-on initial state, fresh-reply coupling and acoustic timing remain open. Full firmware reconstruction is still incomplete.
 
 Next: Trace fresh-result admission from ResultDispatch call0x80003970 into helper0x80007c88. Determine whether repeated calls can reuse one parsed UART result. Separately bound tick/scheduler0x80061fa4/0x800612f8 and the consumer/decrement of FSM field0x805ac694+0x30 before assigning timing units.
+
+
+## 2026-11-07: stored-result freshness and corrected refresh entries
+
+Evidence: `evidence/2026-11-07-result-freshness.json` / `evidence/2026-11-07-result-freshness-ghidra.json`. Reproduction/scope: `tools/RESULT_FRESHNESS.md`, `tools/trace_result_freshness.py`.
+
+The original refresh callback0x8005d048 can refill the filter from one unchanged stored result in the bounded model. It enqueues a poll, uses UI+9 for an initial two-call warmup, then calls actual ResultDispatch0x800037c0. Five callback invocations produce filter counts[0,0,1,2,3] without any parser entry; parser discard count stays2. This does not establish live callback timing or full GUI/queue behavior: queue, renderer, printf and creation APIs are explicit stubs.
+
+The caller divides signed raw data by float32 bits0x452f499a, clamps negative finite values to0 and rejects>=1000 before the filter. Accepted helper arguments are0..999. Sentinel/upper-limit paths request off while preserving history/median. The helper's standalone>1000 reset is therefore not the policy of this caller. 752 bounded cases/steps across originals pass with matching fingerprints;10 real Ghidra exports and9 guard/provenance tests pass.
+
+Corrected old analysis seeds:0x800037bc is literal0x805abf10, not a function entry;0x8005d1a0 is a callsite inside callback0x8005d048. Historical comparisons remain saved seed/window evidence. New exports record seed revision and the comparison tool rejects incompatible provenance. Next: Audit real renderer0x8000326c and enqueue path0x80006778 for side effects excluded from the refresh model. Then prove FSM+0x30's cached read at0x800044a8 (r1=sb via ADD#0), its elapsed-tick comparisons and tick getter0x80061f84; do not assign milliseconds before that contract is validated.

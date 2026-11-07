@@ -106,13 +106,26 @@ class ReferenceTests(unittest.TestCase):
         label = {'address': hex(BASE+32), 'name':'RE_Verified', 'confidence':1.0,
                  'proof':'bounded_original_ARM926_execution', 'evidence':'test.json',
                  'guard_bytes':64, 'guard_sha256':hashlib.sha256(raw[32:96]).hexdigest()}
-        for schema in ('ys4470.intc-timer-path.v1','ys4470.fast-cont-filter.v1','unknown'):
+        for schema in ('ys4470.intc-timer-path.v1','ys4470.fast-cont-filter.v1','ys4470.result-freshness.v1','unknown'):
             report = {'schema':schema,'versions':[{'version':'test','input_sha256':hashlib.sha256(raw).hexdigest(),'approved_labels':[label]}]}
             with patch.object(Path, 'read_text', return_value=json.dumps(report)):
                 if schema == 'unknown':
                     with self.assertRaises(ValueError): validated_labels(Path('test.json'),'test',raw)
                 else:
                     self.assertEqual(validated_labels(Path('test.json'),'test',raw),[label])
+
+    def test_inventory_provenance_guard(self):
+        from compare_inventories import validate_provenance
+        old={'version':'V3.6','import':{'analysis_mode':'bounded-seeded'}}
+        other={'version':'V3.8','import':{'analysis_mode':'bounded-seeded'}}
+        validate_provenance([old,other])
+        changed=copy.deepcopy(other); changed['import']['seed_revision']='corrected'
+        with self.assertRaises(ValueError): validate_provenance([old,changed])
+        with self.assertRaises(ValueError): validate_provenance([old,old])
+        different_mode=copy.deepcopy(other);different_mode['import']['analysis_mode']='proof-labels-only'
+        with self.assertRaises(ValueError): validate_provenance([old,different_mode])
+        for item in (old,other):item['import']['seed_revision']='corrected'
+        validate_provenance([old,other])
 
 
 if __name__ == '__main__':

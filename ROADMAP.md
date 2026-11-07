@@ -2,11 +2,11 @@
 
 ## Current next bounded task
 
-Trace fresh-result admission from ResultDispatch call0x80003970 into helper0x80007c88. Determine whether repeated calls can reuse one parsed UART result. Separately bound tick/scheduler0x80061fa4/0x800612f8 and the consumer/decrement of FSM field0x805ac694+0x30 before assigning timing units.
+Audit real renderer0x8000326c and enqueue path0x80006778 for side effects excluded from the refresh model. Then prove FSM+0x30's cached read at0x800044a8 (r1=sb via ADD#0), its elapsed-tick comparisons and tick getter0x80061f84; do not assign milliseconds before that contract is validated.
 
 ## Near term
 
-1. Prove helper invocation versus fresh-result admission.
+1. Audit renderer/queue side effects on the bounded stored-result reuse model.
 2. Bound tick/scheduler and FSM timeout consumers.
 3. Continue original measurement scaling/autorange reconstruction and remaining version-patch attribution.
 4. Reuse the completed parser, settings, PWM, INTC/timer and C filter harnesses.
@@ -122,3 +122,12 @@ Evidence: `evidence/2026-11-07-intc-timer-path.json`, `evidence/2026-11-07-intc-
 Completed the previously queued INTC/timer and Fast CONT helper investigations. Reuse4446 hardware/control-flow tests and3958 original/Python/C filter steps; do not redo these disassemblies. New pure-C component is a first verified reconstruction component, not a complete firmware image.
 
 Next bounded task: Trace fresh-result admission from ResultDispatch call0x80003970 into helper0x80007c88. Determine whether repeated calls can reuse one parsed UART result. Separately bound tick/scheduler0x80061fa4/0x800612f8 and the consumer/decrement of FSM field0x805ac694+0x30 before assigning timing units.
+
+
+## 2026-11-07: stored-result freshness and corrected refresh entries
+
+Evidence: `evidence/2026-11-07-result-freshness.json` / `evidence/2026-11-07-result-freshness-ghidra.json`. Reproduction/scope: `tools/RESULT_FRESHNESS.md`, `tools/trace_result_freshness.py`.
+
+Completed the stored-result reuse counterexample and caller conversion contract. Reuse the752-case/step freshness runner, earlier filter C tests and hardware harnesses. Update all future analysis to ResultDispatch0x800037c0 and callback0x8005d048; the old0x800037bc/0x8005d1a0 seeds must not be interpreted as correct function entries.
+
+Next: Audit real renderer0x8000326c and enqueue path0x80006778 for side effects excluded from the refresh model. Then prove FSM+0x30's cached read at0x800044a8 (r1=sb via ADD#0), its elapsed-tick comparisons and tick getter0x80061f84; do not assign milliseconds before that contract is validated.

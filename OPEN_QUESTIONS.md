@@ -2,7 +2,7 @@
 
 ## Current unresolved work (2026-11-07)
 
-1. Trace fresh-result admission from ResultDispatch call0x80003970 into helper0x80007c88. Determine whether repeated calls can reuse one parsed UART result. Separately bound tick/scheduler0x80061fa4/0x800612f8 and the consumer/decrement of FSM field0x805ac694+0x30 before assigning timing units.
+1. Audit real renderer0x8000326c and enqueue path0x80006778 for side effects excluded from the refresh model. Then prove FSM+0x30's cached read at0x800044a8 (r1=sb via ADD#0), its elapsed-tick comparisons and tick getter0x80061f84; do not assign milliseconds before that contract is validated.
 2. What initializes the filter history/count/retained median at power-on, and what physical scalar unit reaches it?
 3. What is the alternate INTC table's role? Complete exception context restoration remains untested.
 4. Recover remaining ADC scaling, autorange, measurement algorithms, GUI, calibration, storage and update subsystems.
@@ -173,3 +173,14 @@ Evidence: `evidence/2026-11-07-intc-timer-path.json`, `evidence/2026-11-07-intc-
 Resolved: INTC vector dispatch/registration, exact timer-configure entry, startup register programming, timer0 status helper, and the Fast CONT history/retained-median algorithm. Still open: original power-on filter state; source scalar's unit; how each helper call relates to new UART data; tick/scheduler internals; FSM+0x30 timing semantics. The alternate registration table's role is unassigned. The nominal timer period is not a live baud/cadence/acoustic measurement.
 
 Next bounded investigation: Trace fresh-result admission from ResultDispatch call0x80003970 into helper0x80007c88. Determine whether repeated calls can reuse one parsed UART result. Separately bound tick/scheduler0x80061fa4/0x800612f8 and the consumer/decrement of FSM field0x805ac694+0x30 before assigning timing units.
+
+
+## 2026-11-07: stored-result freshness and corrected refresh entries
+
+Evidence: `evidence/2026-11-07-result-freshness.json` / `evidence/2026-11-07-result-freshness-ghidra.json`. Reproduction/scope: `tools/RESULT_FRESHNESS.md`, `tools/trace_result_freshness.py`.
+
+Resolved in the scoped model: refresh calls can reuse a stored result; UI warmup and parser discard counters are independent; actual caller arguments are0..999; rejected/sentinel results bypass history reset. Open: real renderer/queue effects on this state and live scheduling/freshness. UI notification states1/2 and factory history initialization are not covered.
+
+An inspected static FSM reader is now located at0x800044a8: LDR r5,[r1,#0x30], with r1=sb via ADD#0 at0x8000449c. The older simple-MOV literal tracer's bounded negative result was not a global absence proof. Its timing consumers are not executed in this run.
+
+Next: Audit real renderer0x8000326c and enqueue path0x80006778 for side effects excluded from the refresh model. Then prove FSM+0x30's cached read at0x800044a8 (r1=sb via ADD#0), its elapsed-tick comparisons and tick getter0x80061f84; do not assign milliseconds before that contract is validated.

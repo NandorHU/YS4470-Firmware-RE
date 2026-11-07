@@ -5,7 +5,7 @@
 
 ## Current continuation (2026-11-07)
 
-Reference-guided INTC/timer validation and Fast CONT C reconstruction are complete in their tested scopes. Trace fresh-result admission from ResultDispatch call0x80003970 into helper0x80007c88. Determine whether repeated calls can reuse one parsed UART result. Separately bound tick/scheduler0x80061fa4/0x800612f8 and the consumer/decrement of FSM field0x805ac694+0x30 before assigning timing units.
+Reference-guided INTC/timer validation and Fast CONT C reconstruction are complete in their tested scopes. Audit real renderer0x8000326c and enqueue path0x80006778 for side effects excluded from the refresh model. Then prove FSM+0x30's cached read at0x800044a8 (r1=sb via ADD#0), its elapsed-tick comparisons and tick getter0x80061f84; do not assign milliseconds before that contract is validated.
 
 ## Initial baseline (historical)
 
@@ -342,3 +342,22 @@ Evidence: `evidence/2026-11-07-intc-timer-path.json`, `evidence/2026-11-07-intc-
 Trace fresh-result admission from ResultDispatch call0x80003970 into helper0x80007c88. Determine whether repeated calls can reuse one parsed UART result. Separately bound tick/scheduler0x80061fa4/0x800612f8 and the consumer/decrement of FSM field0x805ac694+0x30 before assigning timing units.
 
 Relevant entry/context: ResultDispatch special path0x80003910 calls float-to-int helper0x8006300c at0x8000396c then history helper0x80007c88 at0x80003970. Determine invocation/admission freshness before interpreting the three-call filter together with the earlier parser's two-discard lifecycle.
+
+
+## 2026-11-07: stored-result freshness and corrected refresh entries
+
+Evidence: `evidence/2026-11-07-result-freshness.json` / `evidence/2026-11-07-result-freshness-ghidra.json`. Reproduction/scope: `tools/RESULT_FRESHNESS.md`, `tools/trace_result_freshness.py`.
+
+- Continued from f6a160e without redoing the parser/filter reconstruction. Bound actual callback0x8005d048, its creation arguments, warmup field, ResultDispatch call and period-store branches.
+- Executed original callback→memclr→numeric conversion→filter→gate/arithmetic/PIO/PWM with explicit queue/renderer/printf/creation API stubs. Five callback calls consume one unchanged stored raw value: warmup1/2, then filter fill1/2/3. Parser entries remain0 and discard remains2.
+- Interleaved three admitted original command0x1b parser slices with callbacks: first two retain old result, third publishes. One published large value can then be reused by callbacks to form a stable history without further parser entries.
+- Recovered divisor bits0x452f499a, negative clamp and1000.0 upper rejection. Only0..999 reaches the filter through this caller; invalid/sentinel paths request off without resetting history. Standalone helper>1000 behavior is not the whole application policy.
+- Corrected two old coordinates: ResultDispatch entry37c0 (37bc is literal805abf10, with three PC-load consumers); refresh callback5d048 (5d1a0 is its callsite). Kept historical window/export evidence and added seed-revision provenance checks to avoid false firmware-delta classifications.
+- Per original:295 callback matrix,23 persistent callback,3 parser,54 period-branch and1 binding case;752 total across originals. Result fingerprints equal c45e5dbd02c5ae65b2ff2d0e294edefeec89733804a8cbcdf30b9de5eadb462c. Real Ghidra exports five entries per original; nine proof/provenance guard tests pass.
+- No physical device, flash or live timing operation occurred. Synthetic state, explicit API stubs and excluded GUI/notification behavior are documented.
+
+### Exact next continuation point
+
+Audit real renderer0x8000326c and enqueue path0x80006778 for side effects excluded from the refresh model. Then prove FSM+0x30's cached read at0x800044a8 (r1=sb via ADD#0), its elapsed-tick comparisons and tick getter0x80061f84; do not assign milliseconds before that contract is validated.
+
+New static lead: the direct timeout reader missed by the MOV-only alias tracer is0x800044a8; no tick-consumer execution proof is claimed yet. Continue by executing those elapsed-tick branches against a controlled getter, rather than repeating the now-proven filter or refresh tests.

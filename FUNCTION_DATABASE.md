@@ -230,3 +230,18 @@ Evidence: `evidence/2026-11-07-intc-timer-path.json`, `evidence/2026-11-07-intc-
 | 0x80007c88 | three-slot history/stability/retained-median sound selector | 3958 original/Python/compiled-C steps |
 
 Additional control-flow slices:36 IRQ-bridge cases and two linked startup cases. All fingerprints agree between originals. These are bounded behaviors, not blanket live-hardware/function-equivalence claims. Actual PyGhidra exports all five hardware entries and the filter/gate pair. Proof-only inventory mode avoids repeating the13-seed baseline.
+
+
+## 2026-11-07: stored-result freshness and corrected refresh entries
+
+Evidence: `evidence/2026-11-07-result-freshness.json` / `evidence/2026-11-07-result-freshness-ghidra.json`. Reproduction/scope: `tools/RESULT_FRESHNESS.md`, `tools/trace_result_freshness.py`.
+
+| Location | Corrected/proven role |
+|---|---|
+| 0x800037c0 | actual ResultDispatch entry; original memclr/numeric/filter/gate path executes |
+| 0x8005d048 | measurement refresh callback entry; normal notification state0 tested |
+| 0x8005d1a0 | callback's BL ResultDispatch, not a separate period-selector entry |
+| 0x80040b84 | two-instruction word store to callback handle+0; period units unassigned |
+| 0x800037bc | literal0x805abf10; PC-load uses0x80003688/3710/3774 |
+
+New naming evidence exports the corrected dispatch, callback and period store with existing filter/gate entries. Legacy labels are not factory symbols or evidence of genuine function boundaries. The revised13-seed inventory is not compared with the old seed set as if a seed correction were a firmware change.

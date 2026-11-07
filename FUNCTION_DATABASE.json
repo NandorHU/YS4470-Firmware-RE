@@ -33,24 +33,34 @@
     {
       "id": "result_dispatch",
       "addresses": {
-        "V3_8": "0x800037bc",
-        "Beta3": "0x800037bc"
+        "V3_6": "0x800037c0",
+        "V3_8": "0x800037c0",
+        "Beta3": "0x800037c0"
       },
-      "confidence": "confirmed_static_behavior",
-      "role": "Measurement-result dispatch region",
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Actual ResultDispatch entry; original numeric conversion and filter/gate selection",
       "relationships": [
         "calls beta3_result_observer at 0x800037fc in Beta3",
         "reads result object fields +0x1c and +0x20",
-        "conditionally calls sound_control_gate from sentinel-value branch"
+        "conditionally calls sound_control_gate from sentinel-value branch",
+        "called at0x8005d1a0 by refresh callback0x8005d048",
+        "old0x800037bc is literal data, not entry"
       ],
       "evidence": [
         "ARM disassembly",
         "raw diff V3_8 vs Beta3",
-        "evidence/2026-11-06-measurement-result-flow.json"
+        "evidence/2026-11-06-measurement-result-flow.json",
+        "evidence/2026-11-07-result-freshness.json",
+        "evidence/2026-11-07-result-freshness-ghidra.json"
       ],
       "limits": [
-        "Conditional call does not prove a physical buzzer event or timing."
-      ]
+        "Conditional call does not prove a physical buzzer event or timing.",
+        "Fresh execution covers original V3.6/V3.8 Fast CONT path with printf stub; Beta3 entry correction relies on historical identical first64-byte prologue window, not fresh modified-version execution."
+      ],
+      "legacy_seed_addresses": {
+        "V3_8": "0x800037bc",
+        "Beta3": "0x800037bc"
+      }
     },
     {
       "id": "diode_validity_branch",
@@ -231,10 +241,16 @@
         "V3_8": "0x8005d1a0",
         "Beta3": "0x8005d1a0"
       },
-      "confidence": "hypothesis",
-      "role": "Candidate high-speed diode period selection data/region",
+      "confidence": "confirmed_callsite_not_function_entry",
+      "role": "Callsite0x8005d1a0 inside refresh callback; prior highspeed/diode period hypothesis superseded",
       "evidence": [
-        "existing project annotation; no physical parameter proof"
+        "existing project annotation; no physical parameter proof",
+        "evidence/2026-11-07-result-freshness.json"
+      ],
+      "kind": "legacy_callsite_region",
+      "relationships": [
+        "BL to actual ResultDispatch0x800037c0",
+        "containing callback entry0x8005d048"
       ]
     },
     {
@@ -1114,6 +1130,47 @@
       "limits": [
         "Valid index0..2/count0..3; physical unit, power-on state and fresh-result cadence open."
       ]
+    },
+    {
+      "id": "measurement_refresh_callback",
+      "addresses": {
+        "V3_6": "0x8005d048",
+        "V3_8": "0x8005d048"
+      },
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Refresh callback: poll request, two-call warmup, stored-result processing and period selection",
+      "relationships": [
+        "UI object0x805abefc; warmup+9",
+        "event4 enqueued for config0x22; ResultDispatch call0x8005d1a0",
+        "callback handle root0x805abeb8"
+      ],
+      "evidence": [
+        "evidence/2026-11-07-result-freshness.json",
+        "evidence/2026-11-07-result-freshness-ghidra.json"
+      ],
+      "limits": [
+        "Notification state0; queue/renderer/printf/creation APIs stubbed; no live sample cadence proven."
+      ]
+    },
+    {
+      "id": "callback_period_store",
+      "addresses": {
+        "V3_6": "0x80040b84",
+        "V3_8": "0x80040b84"
+      },
+      "bounded_end_exclusive": "0x80040b8c",
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Store argument r1 into handle word+0",
+      "relationships": [
+        "refresh tail passes25/100/200"
+      ],
+      "evidence": [
+        "evidence/2026-11-07-result-freshness.json",
+        "evidence/2026-11-07-result-freshness-ghidra.json"
+      ],
+      "limits": [
+        "Time units and framework scheduling contract unassigned."
+      ]
     }
   ],
   "session_updates": [
@@ -1186,6 +1243,11 @@
       "date": "2026-11-07",
       "evidence": "evidence/2026-11-07-fast-cont-filter.json",
       "summary": "Fast CONT history/retained median reconstructed in pure C;3958 original/Python/compiled-ARM state steps pass."
+    },
+    {
+      "date": "2026-11-07",
+      "evidence": "evidence/2026-11-07-result-freshness.json",
+      "summary": "Stored-result reuse counterexample, caller0..999 contract, corrected dispatch/callback seeds and compatible-provenance comparison guard."
     }
   ],
   "version_comparisons": {
@@ -1222,7 +1284,21 @@
         ],
         "different_or_missing": [],
         "observed": "All paired exports also have identical first 64 and 512 bytes.",
-        "limitation": "Bounded seed evidence; it does not prove identity of all unnamed functions or runtime behavior."
+        "limitation": "Bounded seed evidence; it does not prove identity of all unnamed functions or runtime behavior.",
+        "coordinate_corrections": {
+          "evidence": "evidence/2026-11-07-result-freshness.json",
+          "ResultDispatch_entry": {
+            "old_seed": "0x800037bc",
+            "correct_entry": "0x800037c0",
+            "old_word": "0x805abf10"
+          },
+          "HighspeedDiodePeriodSelector_region": {
+            "old_seed": "0x8005d1a0",
+            "actual_callback": "0x8005d048",
+            "old_role": "BL callsite"
+          },
+          "limit": "Historical exports/windows remain saved observations; old coordinates do not prove genuine function boundaries. New seed revisions must match before comparing."
+        }
       }
     }
   },
@@ -1341,7 +1417,35 @@
         "build": "Zig0.13.0 cc -target arm-freestanding-eabi -mcpu=arm926ej_s -marm -O2 -ffreestanding -fno-builtin -ffunction-sections -std=c11 -Wall -Wextra -Werror -c reconstruction/fast_cont.c"
       },
       "contract": "ring index0..2/count0..3",
-      "next": "Trace fresh-result admission from ResultDispatch call0x80003970 into helper0x80007c88. Determine whether repeated calls can reuse one parsed UART result. Separately bound tick/scheduler0x80061fa4/0x800612f8 and the consumer/decrement of FSM field0x805ac694+0x30 before assigning timing units."
+      "next": "Audit real renderer0x8000326c and enqueue path0x80006778 for side effects excluded from the refresh model. Then prove FSM+0x30's cached read at0x800044a8 (r1=sb via ADD#0), its elapsed-tick comparisons and tick getter0x80061f84; do not assign milliseconds before that contract is validated.",
+      "caller_contract": {
+        "evidence": "evidence/2026-11-07-result-freshness.json",
+        "raw_divisor_bits": "0x452f499a",
+        "helper_argument_range": "0..999",
+        "invalid_behavior": "sentinel or scaled>=1000 bypasses filter, requests off and preserves history",
+        "sample_freshness": "filter calls need not be distinct parser publications in bounded refresh model"
+      }
+    },
+    "result_freshness": {
+      "evidence": "evidence/2026-11-07-result-freshness.json",
+      "ghidra": "evidence/2026-11-07-result-freshness-ghidra.json",
+      "total_cases_and_steps": 752,
+      "per_original": {
+        "callback_matrix": 295,
+        "persistent_callbacks": 23,
+        "admitted_parser_steps": 3,
+        "period_probes": 54,
+        "binding": 1
+      },
+      "results_sha256": "c45e5dbd02c5ae65b2ff2d0e294edefeec89733804a8cbcdf30b9de5eadb462c",
+      "new_result_required_in_tested_callback_path": false,
+      "stubs": [
+        "queue0x80006778",
+        "renderer0x8000326c",
+        "printf0x80000544",
+        "create0x80040894"
+      ],
+      "next": "Audit real renderer0x8000326c and enqueue path0x80006778 for side effects excluded from the refresh model. Then prove FSM+0x30's cached read at0x800044a8 (r1=sb via ADD#0), its elapsed-tick comparisons and tick getter0x80061f84; do not assign milliseconds before that contract is validated."
     }
   },
   "configuration_fields": {
@@ -1391,7 +1495,7 @@
     "unit_tests": 7,
     "pyghidra_reference_exports": 12,
     "scope": "ARM aligned candidate survey0x80000000..0x80063800; not whole-firmware/Thumb/indirect proof",
-    "next": "Trace fresh-result admission from ResultDispatch call0x80003970 into helper0x80007c88. Determine whether repeated calls can reuse one parsed UART result. Separately bound tick/scheduler0x80061fa4/0x800612f8 and the consumer/decrement of FSM field0x805ac694+0x30 before assigning timing units.",
+    "next": "Audit real renderer0x8000326c and enqueue path0x80006778 for side effects excluded from the refresh model. Then prove FSM+0x30's cached read at0x800044a8 (r1=sb via ADD#0), its elapsed-tick comparisons and tick getter0x80061f84; do not assign milliseconds before that contract is validated.",
     "confirmed_semantic_additions": [
       {
         "id": "intc_vector_dispatch",

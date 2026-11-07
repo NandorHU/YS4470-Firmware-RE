@@ -103,3 +103,18 @@ which exports their guarded entries without repeating the13-seed baseline.
 Next: fresh-result admission and tick/scheduler consumers; resolved relocation
 targets and wider Thumb matching remain pending. No full firmware image has
 been reconstructed or physically installed by this workflow.
+
+## Corrected dispatch/refresh seeds and freshness model
+
+The later `RESULT_FRESHNESS.md` experiment locates the actual ResultDispatch
+entry at0x800037c0 (old0x800037bc is a literal) and the refresh callback at
+0x8005d048 (old0x8005d1a0 is its callsite). Historical13-seed outputs remain
+window/export evidence, not proof of genuine boundaries at those old seeds.
+New inventories record a seed revision; comparisons reject incompatible
+revisions/modes and duplicate version labels. Existing analyst names remain
+protected, including when a legacy containing-function boundary blocks a new
+entry; use the reported status rather than silently replacing it.
+
+The new original-code model permits stored-result reuse and bounds the caller
+argument to0..999. It does not measure live UART/GUI timing. Queue/renderer
+effects and tick consumers are the next bounded validation work.
