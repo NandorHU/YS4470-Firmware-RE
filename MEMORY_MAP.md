@@ -164,3 +164,13 @@ The emulator maps only the code/literal page and these three RAM pages; code is 
 - `0x805b4154` is the separate UART startup buffer loaded into r4 at `0x80005e50`; the store at 0x80005e60 goes to its byte +1, not to the discard counter.
 
 The write scan remains a bounded candidate search. Whole-object resets and indirect aliases have not been excluded.
+
+## 2026-11-07: event records and GUI-linked setting
+
+- 0x805aae8c+4 is read by event builder 0x80006778 as an opaque queue handle; null returns early.
+- Event record word +0 receives r0; bytes +4/+5 receive low bytes of r1/r2. A 0x44-byte stack frame is allocated, while bytes +6..+0x43 are untouched by this helper in the experiment.
+- 0x805ac788 = settings object 0x805ac770+0x18: exact value 1 switches the Buzzer-side event tuple. Its persistent source/default and user-visible name are open.
+- GUI root 0x805ac098: object +0x2b8 registers callback 0x8000cfd0; +0x2c0 receives literal Diode (0x80051940), +0x2c4 receives literal Buzzer (0x80051948).
+- GUI mode byte 0x805abefc+0 is updated by the tested 0..4 switch slice. Association with labels is static UI evidence.
+
+These are synthetic RAM and original instruction observations; no running-device RAM was captured.

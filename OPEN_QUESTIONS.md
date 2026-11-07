@@ -127,3 +127,11 @@ Remaining:
 - How many terminal 0x1d response cycles follow the initial command list, and what drives their cadence? This is needed to translate two discarded responses into any physical latency.
 - The task's direct case-2/5 blocks are excluded by the tested normal selection guard. Alternate entries and later indirect flow remain unproven.
 - Direct literal tracing is not complete alias analysis: the UART startup-buffer candidate was rejected, and whole-object reset/clear paths remain to inspect.
+
+## Added 2026-11-07: name the Buzzer branch setting
+
+- Trace writers, default initialization and persistent loading of settings word 0x805ac788 (object 0x805ac770+0x18). Which setting label or action changes it?
+- GUI callback and selection API choose the special (5,0x22,0x13) event only for exact value 1. Determine why it selects this alternate command list.
+- Establish the API contract of queue boundary 0x80061acc before naming its r2 argument (0 for event 3, 10 otherwise).
+- The 31 direct aligned ARM BL candidates do not cover Thumb or indirect event submitters. Keep unsupported call-graph coverage explicit.
+- The helper initializes only record bytes 0..5; determine whether any other record fields are used downstream.

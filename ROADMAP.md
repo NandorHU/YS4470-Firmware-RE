@@ -88,3 +88,7 @@ Trace the writers of sample-discard byte `0x805aae8d`, starting from the verifie
 ## Updated next bounded task (2026-11-06, after countdown lifecycle)
 
 Trace the record-building helper at 0x80006778 and its direct callers. Establish which input events produce software cases 2/5, and which source values fill record bytes +4/+5. Preserve physical measurement names as hypotheses until a UI/string or explicit hardware mapping supports them. Reuse the completed lifecycle/parser harnesses; do not repeat their disassembly. SoundControlGate → 0x800060d0 remains a separate pending hardware-control task.
+
+## Updated next bounded task (2026-11-07, after GUI event-source linkage)
+
+Trace settings word 0x805ac788 through writers/defaults/storage and seek its GUI label. This is the shortest next step to explain why the Buzzer UI can select either [0x0e,0x19,0x1d] or [0x0c,0x22,0x13,0x1d]. Reuse the validated event-builder/dispatcher/parser harnesses. Queue timing and SoundControlGate hardware ownership remain separate pending tasks.

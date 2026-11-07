@@ -137,3 +137,17 @@ Input-dispatcher cases 2 and 5 initialize the discard count to two. Case 2 passe
 Persistent execution confirms the sequence count 2→1 (old result retained), 1→0 (old result retained), 0→0 (publish), then another publication on the fourth admitted state-5 entry. This was checked across 96 scenarios, including threshold and negative values. Cases 3/4 preserve the existing control fields in the tested input dispatcher.
 
 The task normally defers cases 2/5 before invoking this dispatcher later; its duplicate stores must not be treated as ordinary immediate routing. Whether sample suppression serves analog settling remains a hypothesis. The tests do not establish physical modes or delay in milliseconds. Evidence: [lifecycle report](evidence/2026-11-06-state5-discard-lifecycle.json).
+
+## 2026-11-07: Diode/Buzzer UI-to-parser route
+
+The established count=2 path now has a static GUI source:
+
+| UI-associated branch | Setting word 0x805ac788 | Record (word +0, byte +4, byte +5) | Dispatcher command list |
+|---|---|---|---|
+| Diode tail | any tested value | (2,0x0e,0x19) | [0x0e,0x19,0x1d] |
+| Buzzer tail | not equal to 1 | (2,0x0e,0x19) | [0x0e,0x19,0x1d] |
+| Buzzer tail | exactly 1 | (5,0x22,0x13) | [0x0c,0x22,0x13,0x1d] |
+
+The event-record builder and the selected GUI tails execute original ARM instructions; decoded records are then handed to the already tested dispatcher and parser harness. Both dispatcher lists set count=2, so the first two admitted parser entries retain the previous result. Control +8 is 0x0e for the first route and 0x22 for the special Buzzer route; this also changes whether the unsigned saturation gate is eligible.
+
+This is a verified software route with UI-label association. Queue transport, complete GUI dispatch, physical mode behavior, sample cadence, and acoustic latency are not measured. The flag is intentionally not called a speed, calibration, or buzzer-enable setting until its writers are recovered.
