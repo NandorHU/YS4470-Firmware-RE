@@ -124,3 +124,12 @@ Reference acquisition/licensing: `references/f1c100s/README.md` and `sources.loc
 All fifteen requested subsystem areas now have reference register anchors and concrete identification methods in F1C100S_REFERENCE_MAP.md. The map includes CPU/vector/boot, INTC, timers/watchdog, GPIO, PWM, UART, SPI/TWI, DMA, LCD/framebuffer, CCU/reset and cache/MMU/DRAM. Internal KEYADC/RTP are kept distinct from the established external measurement UART2 protocol. FNIRSI FPGA/ADC wiring is not transferred to YS-4470.
 
 Watchdog helpers are tested against inert RAM shadows only. No real watchdog, FEL, flash, bootloader or RAM-code operation occurred. Unlicensed/proprietary-SDK comparison artifacts are not copied into the reconstructed firmware.
+
+
+## 2026-11-07: reference-guided INTC/timer proof and Fast CONT C reconstruction
+
+Evidence: `evidence/2026-11-07-intc-timer-path.json`, `evidence/2026-11-07-intc-timer-ghidra.json`, `evidence/2026-11-07-fast-cont-filter.json`, and `evidence/2026-11-07-fast-cont-filter-ghidra.json`. Methods: `tools/INTC_TIMER_PATH.md`, `tools/FAST_CONT_FILTER.md`.
+
+YS uses INTC_VECTOR as a pointer to a handler slot, unlike the reference pending-bit scan/IRQ-number examples. Register routine initializes base to0x805ab944 once; mode0 uses a separate table, modes1..7 the primary table. Priority is cleared/replaced but the caller value is not masked to two bits; invalid high priorities can spill into neighboring fields. No out-of-range IRQ/channel index was executed.
+
+The linked original startup path configures timer0 with24000 cycles, IRQ13 priority3 and registered status handler0x8005bf54, then sets control7. IRQ bridge0x8000230c tests pending bit13 and directly calls tick0x80061fa4, optionally scheduler0x800612f8, bypassing ordinary dispatch on that branch. Tick/scheduler bodies are stubs in the bridge experiment. Inert register shadows do not model clock progress, interrupt clearing or actual exception restoration.

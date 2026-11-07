@@ -1,14 +1,14 @@
 # Open questions
 
-1. Where is the original V3.6 input registered, and does it use the same raw/eGON layout as V3.8?
-2. What do the Beta3 changes at `0x800045e0`, `0x8000461c`, and `0x80004738` do inside the measurement FSM?
-3. What hardware unit and units correspond to the sound parameter passed through `SoundControlGate` and the lower routine at `0x800060d0`?
-4. Does Beta3 alter acoustic delay, or only the parameter selected after a measurement result?
-5. Is `0x80005a78` actually MainADCTask? Validate with bounded emulation/call context.
-6. Which SoC UART is used by the RX ISR, and what peripheral/bus supplies the measurement frame?
-7. Which Beta3 raw-diff ranges are GUI/profile additions versus measurement protocol modifications?
-8. Can a future explicitly approved FEL read operation be designed without violating boot-ROM/SRAM reservations? No such operation is currently authorized.
+## Current unresolved work (2026-11-07)
 
+1. Trace fresh-result admission from ResultDispatch call0x80003970 into helper0x80007c88. Determine whether repeated calls can reuse one parsed UART result. Separately bound tick/scheduler0x80061fa4/0x800612f8 and the consumer/decrement of FSM field0x805ac694+0x30 before assigning timing units.
+2. What initializes the filter history/count/retained median at power-on, and what physical scalar unit reaches it?
+3. What is the alternate INTC table's role? Complete exception context restoration remains untested.
+4. Recover remaining ADC scaling, autorange, measurement algorithms, GUI, calibration, storage and update subsystems.
+5. Attribute remaining modified-version ranges and the nine changed V3.6/V3.8 data words.
+
+## Historical investigation log
 
 ## Resolved static portion — 2026-11-05
 
@@ -164,3 +164,12 @@ Address correction (2026-11-07): file word offsets 0x63ac8..0x63ae8 map to linke
 Reference acquisition/licensing: `references/f1c100s/README.md` and `sources.lock.json`. Subsystem register anchors and identification methods: `references/f1c100s/F1C100S_REFERENCE_MAP.md` / `register-map.json`. Runner/method: `tools/analyze_f1c100s_references.py` / `tools/F1C100S_REFERENCE_ANALYSIS.md`.
 
 New reference track: resolve INTC vector/handler indirection around0x80005260/0x80005274 and timer setup around0x800071a8 using path-aware CFGs and original-code tests. Validate reference inconsistencies against exact-chip documentation. Extend comparison to resolved literal values and relocation targets, genuine boundaries, Thumb and indirect calls before strengthening identity claims. Current normalized/masked comparison finds no accepted candidates among97 functions per image. Preserve the pending Fast CONT helper0x80007c88 task and physical-cadence/acoustic-delay questions.
+
+
+## 2026-11-07: reference-guided INTC/timer proof and Fast CONT C reconstruction
+
+Evidence: `evidence/2026-11-07-intc-timer-path.json`, `evidence/2026-11-07-intc-timer-ghidra.json`, `evidence/2026-11-07-fast-cont-filter.json`, and `evidence/2026-11-07-fast-cont-filter-ghidra.json`. Methods: `tools/INTC_TIMER_PATH.md`, `tools/FAST_CONT_FILTER.md`.
+
+Resolved: INTC vector dispatch/registration, exact timer-configure entry, startup register programming, timer0 status helper, and the Fast CONT history/retained-median algorithm. Still open: original power-on filter state; source scalar's unit; how each helper call relates to new UART data; tick/scheduler internals; FSM+0x30 timing semantics. The alternate registration table's role is unassigned. The nominal timer period is not a live baud/cadence/acoustic measurement.
+
+Next bounded investigation: Trace fresh-result admission from ResultDispatch call0x80003970 into helper0x80007c88. Determine whether repeated calls can reuse one parsed UART result. Separately bound tick/scheduler0x80061fa4/0x800612f8 and the consumer/decrement of FSM field0x805ac694+0x30 before assigning timing units.

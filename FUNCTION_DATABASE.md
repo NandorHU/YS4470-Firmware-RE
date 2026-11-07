@@ -214,3 +214,19 @@ Reference acquisition/licensing: `references/f1c100s/README.md` and `sources.loc
 | 0x800085e0 | WDG_MODE at0x01c20cb8 read-modify-write: old OR1; returns via LR | eight inert-shadow seeds per original |
 
 These analysis labels are RE_WatchdogKeyedControlUpdate and RE_WatchdogModeEnable. They do not claim hardware timeout/reset behavior or byte identity with the reference feed routine (which writes a constant). Other MMIO/CP15/BL leads remain candidates in the reference report. No reference function match has been promoted on a similarity score alone. PyGhidra preserves existing names/comments and exports all six proof-backed functions.
+
+
+## 2026-11-07: reference-guided INTC/timer proof and Fast CONT C reconstruction
+
+Evidence: `evidence/2026-11-07-intc-timer-path.json`, `evidence/2026-11-07-intc-timer-ghidra.json`, `evidence/2026-11-07-fast-cont-filter.json`, and `evidence/2026-11-07-fast-cont-filter-ghidra.json`. Methods: `tools/INTC_TIMER_PATH.md`, `tools/FAST_CONT_FILTER.md`.
+
+| Entry in V3.6/V3.8 | Proven role | Bounded tests, both originals |
+|---|---|---|
+| 0x80005260 | INTC vector-pointer dereference and BX handler dispatch | 328 ARM/Thumb target cases |
+| 0x80005274 | handler registration/exchange, priority and enable programming | 3304 cases |
+| 0x800071a0 | timer configuration; low8 channel/IRQ flag, interval low32(24*argument) | 720 cases |
+| 0x8000725c | set timer-control enable bit0 | 48 cases |
+| 0x8005bf54 | timer IRQ-status read/OR1/write helper | eight cases |
+| 0x80007c88 | three-slot history/stability/retained-median sound selector | 3958 original/Python/compiled-C steps |
+
+Additional control-flow slices:36 IRQ-bridge cases and two linked startup cases. All fingerprints agree between originals. These are bounded behaviors, not blanket live-hardware/function-equivalence claims. Actual PyGhidra exports all five hardware entries and the filter/gate pair. Proof-only inventory mode avoids repeating the13-seed baseline.

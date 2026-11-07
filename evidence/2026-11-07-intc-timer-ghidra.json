@@ -1,0 +1,1251 @@
+{
+  "schema": "ys4470.proof-ghidra-evidence.v1",
+  "date": "2026-11-07",
+  "proof_sha256": "5ae60a6991cd5b1f3ba44f431e8fd4f190c51ad1b83cf0ec6a579d310e0f530b",
+  "versions": [
+    {
+      "version": "V3.6",
+      "input_sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+      "analysis_mode": "bounded-seeded",
+      "inventory_sha256": "1d861955391d3cf0106f8a38775c7f20a32a918f611bec2bcac203020e806c49",
+      "reference_labels": [
+        {
+          "address": "0x80005274",
+          "name": "RE_INTCRegister",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "guard_bytes": 64,
+          "guard_sha256": "65a53fd4d588250b43c56ec3e03a117701edfca77875a12a094cf5b4d993d664",
+          "status": "named_from_independent_proof",
+          "ghidra_name": "RE_INTCRegister",
+          "previous_name": "FUN_80005274"
+        },
+        {
+          "address": "0x80005260",
+          "name": "RE_INTCVectorDispatch",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "guard_bytes": 64,
+          "guard_sha256": "0a986e575685abaee8907a84522662c31fbc52d3c3853d2a776e241cb5bdcb57",
+          "status": "named_from_independent_proof",
+          "ghidra_name": "RE_INTCVectorDispatch",
+          "previous_name": "FUN_80005260"
+        },
+        {
+          "address": "0x800071a0",
+          "name": "RE_TimerConfigure",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "guard_bytes": 64,
+          "guard_sha256": "cc85078643f398f32c6082b474a9854c32a3c4fc4894fa5a2dfab4ed4f25b0f2",
+          "status": "named_from_independent_proof",
+          "ghidra_name": "RE_TimerConfigure",
+          "previous_name": "FUN_800071a0"
+        },
+        {
+          "address": "0x8000725c",
+          "name": "RE_TimerEnable",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "guard_bytes": 64,
+          "guard_sha256": "b4d894fd8d3b30bf7219e383d15d2996427e0977c4a2062598241303c4bd807f",
+          "status": "named_from_independent_proof",
+          "ghidra_name": "RE_TimerEnable",
+          "previous_name": "FUN_8000725c"
+        },
+        {
+          "address": "0x8005bf54",
+          "name": "RE_Timer0StatusUpdate",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "guard_bytes": 64,
+          "guard_sha256": "9ba6347c0d6dfed3c2d2ebcc64121a8bc97415d74bad76a728d6b5ba6c99745b",
+          "status": "named_from_independent_proof",
+          "ghidra_name": "RE_Timer0StatusUpdate",
+          "previous_name": "FUN_8005bf54"
+        }
+      ],
+      "functions": [
+        {
+          "address": "0x80005274",
+          "name": "RE_INTCRegister",
+          "label_status": "named_from_independent_proof",
+          "confidence": 1.0,
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "comment": "YS4470 reference proof: bounded_original_ARM926_execution; evidence/2026-11-07-intc-timer-path.json; proposed RE_INTCRegister",
+          "body_end": "80005327",
+          "assembly": [
+            {
+              "address": "80005274",
+              "assembly": "stmdb sp!,{r4,r5,r6}",
+              "flow_targets": []
+            },
+            {
+              "address": "80005278",
+              "assembly": "ldr r12,[0x80005328]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000527c",
+              "assembly": "ldrb r6,[r12,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80005280",
+              "assembly": "mov r5,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80005284",
+              "assembly": "cmp r6,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80005288",
+              "assembly": "bne 0x8000529c",
+              "flow_targets": [
+                "8000529c"
+              ]
+            },
+            {
+              "address": "8000528c",
+              "assembly": "strb r5,[r12,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80005290",
+              "assembly": "ldr r6,[0x8000532c]",
+              "flow_targets": []
+            },
+            {
+              "address": "80005294",
+              "assembly": "add r12,r12,#0x4",
+              "flow_targets": []
+            },
+            {
+              "address": "80005298",
+              "assembly": "str r12,[r6,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000529c",
+              "assembly": "cmp r0,#0x8",
+              "flow_targets": []
+            },
+            {
+              "address": "800052a0",
+              "assembly": "ldrcc pc,[pc,r0,lsl #0x2]",
+              "flow_targets": []
+            },
+            {
+              "address": "800052a4",
+              "assembly": "b 0x800052e4",
+              "flow_targets": [
+                "800052e4"
+              ]
+            },
+            {
+              "address": "800052e4",
+              "assembly": "ldr r2,[0x80005338]",
+              "flow_targets": []
+            },
+            {
+              "address": "800052e8",
+              "assembly": "mov r12,r1, lsr #0x4",
+              "flow_targets": []
+            },
+            {
+              "address": "800052ec",
+              "assembly": "ldr r4,[r2,r12,lsl #0x2]!",
+              "flow_targets": []
+            },
+            {
+              "address": "800052f0",
+              "assembly": "mov r12,r1, lsl #0x1c",
+              "flow_targets": []
+            },
+            {
+              "address": "800052f4",
+              "assembly": "mov r12,r12, lsr #0x1b",
+              "flow_targets": []
+            },
+            {
+              "address": "800052f8",
+              "assembly": "mov r6,#0x3",
+              "flow_targets": []
+            },
+            {
+              "address": "800052fc",
+              "assembly": "bic r4,r4,r6, lsl r12",
+              "flow_targets": []
+            },
+            {
+              "address": "80005300",
+              "assembly": "orr r3,r4,r3, lsl r12",
+              "flow_targets": []
+            },
+            {
+              "address": "80005304",
+              "assembly": "str r3,[r2,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80005308",
+              "assembly": "ldr r2,[0x8000533c]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000530c",
+              "assembly": "mov r3,r1, lsr #0x5",
+              "flow_targets": []
+            },
+            {
+              "address": "80005310",
+              "assembly": "ldr r3,[r2,r3,lsl #0x2]!",
+              "flow_targets": []
+            },
+            {
+              "address": "80005314",
+              "assembly": "and r1,r1,#0x1f",
+              "flow_targets": []
+            },
+            {
+              "address": "80005318",
+              "assembly": "orr r1,r3,r5, lsl r1",
+              "flow_targets": []
+            },
+            {
+              "address": "8000531c",
+              "assembly": "str r1,[r2,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80005320",
+              "assembly": "ldmia sp!,{r4,r5,r6}",
+              "flow_targets": []
+            },
+            {
+              "address": "80005324",
+              "assembly": "bx lr",
+              "flow_targets": []
+            }
+          ],
+          "direct_call_targets": [],
+          "decompiled_c": "\r\n/* YS4470 reference proof: bounded_original_ARM926_execution;\r\n   evidence/2026-11-07-intc-timer-path.json; proposed RE_INTCRegister */\r\n\r\nundefined4 RE_INTCRegister(undefined4 param_1,uint param_2,undefined4 param_3,int param_4)\r\n\r\n{\r\n  int iVar1;\r\n  char *pcVar2;\r\n  uint *puVar3;\r\n  \r\n  pcVar2 = pcRam80005328;\r\n  if (*pcRam80005328 == '\\0') {\r\n    *pcRam80005328 = '\\x01';\r\n    *puRam8000532c = pcVar2 + 4;\r\n  }\r\n  switch(param_1) {\r\n  case 0:\r\n    param_1 = *(undefined4 *)(iRam80005330 + param_2 * 4);\r\n    *(undefined4 *)(iRam80005330 + param_2 * 4) = param_3;\r\n    break;\r\n  case 1:\r\n  case 2:\r\n  case 3:\r\n  case 4:\r\n  case 5:\r\n  case 6:\r\n  case 7:\r\n    param_1 = *(undefined4 *)(iRam80005334 + param_2 * 4);\r\n    *(undefined4 *)(iRam80005334 + param_2 * 4) = param_3;\r\n  }\r\n  puVar3 = (uint *)(iRam80005338 + (param_2 >> 4) * 4);\r\n  iVar1 = (param_2 & 0xf) << 1;\r\n  *puVar3 = *puVar3 & ~(3 << iVar1) | param_4 << iVar1;\r\n  puVar3 = (uint *)(iRam8000533c + (param_2 >> 5) * 4);\r\n  *puVar3 = *puVar3 | 1 << (param_2 & 0x1f);\r\n  return param_1;\r\n}\r\n\r\n",
+          "limits": [
+            "Ghidra inferred body; original-byte proof applies only to documented execution scope."
+          ]
+        },
+        {
+          "address": "0x80005260",
+          "name": "RE_INTCVectorDispatch",
+          "label_status": "named_from_independent_proof",
+          "confidence": 1.0,
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "comment": "YS4470 reference proof: bounded_original_ARM926_execution; evidence/2026-11-07-intc-timer-path.json; proposed RE_INTCVectorDispatch",
+          "body_end": "8000526f",
+          "assembly": [
+            {
+              "address": "80005260",
+              "assembly": "ldr r0,[0x80005270]",
+              "flow_targets": []
+            },
+            {
+              "address": "80005264",
+              "assembly": "ldr r0,[r0,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80005268",
+              "assembly": "ldr r0,[r0,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000526c",
+              "assembly": "bx r0",
+              "flow_targets": []
+            }
+          ],
+          "direct_call_targets": [],
+          "decompiled_c": "\r\n/* YS4470 reference proof: bounded_original_ARM926_execution;\r\n   evidence/2026-11-07-intc-timer-path.json; proposed RE_INTCVectorDispatch */\r\n\r\nvoid RE_INTCVectorDispatch(void)\r\n\r\n{\r\n                    /* WARNING: Could not recover jumptable at 0x8000526c. Too many branches */\r\n                    /* WARNING: Treating indirect jump as call */\r\n  (**(code **)*puRam80005270)();\r\n  return;\r\n}\r\n\r\n",
+          "limits": [
+            "Ghidra inferred body; original-byte proof applies only to documented execution scope."
+          ]
+        },
+        {
+          "address": "0x800071a0",
+          "name": "RE_TimerConfigure",
+          "label_status": "named_from_independent_proof",
+          "confidence": 1.0,
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "comment": "YS4470 reference proof: bounded_original_ARM926_execution; evidence/2026-11-07-intc-timer-path.json; proposed RE_TimerConfigure",
+          "body_end": "8000724f",
+          "assembly": [
+            {
+              "address": "800071a0",
+              "assembly": "stmdb sp!,{r0,r1,r2}",
+              "flow_targets": []
+            },
+            {
+              "address": "800071a4",
+              "assembly": "ldrb r2,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071a8",
+              "assembly": "ldr r0,[0x80007250]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071ac",
+              "assembly": "add r3,r0,r2, lsl #0x4",
+              "flow_targets": []
+            },
+            {
+              "address": "800071b0",
+              "assembly": "mov r2,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "800071b4",
+              "assembly": "str r2,[r3,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071b8",
+              "assembly": "ldrb r2,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071bc",
+              "assembly": "add r3,r0,r2, lsl #0x4",
+              "flow_targets": []
+            },
+            {
+              "address": "800071c0",
+              "assembly": "ldrb r2,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071c4",
+              "assembly": "ldr r2,[r0,r2,lsl #0x4]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071c8",
+              "assembly": "str r2,[r3,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071cc",
+              "assembly": "ldrb r2,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071d0",
+              "assembly": "add r3,r0,r2, lsl #0x4",
+              "flow_targets": []
+            },
+            {
+              "address": "800071d4",
+              "assembly": "ldrb r2,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071d8",
+              "assembly": "ldr r2,[r0,r2,lsl #0x4]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071dc",
+              "assembly": "str r2,[r3,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071e0",
+              "assembly": "ldrb r2,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071e4",
+              "assembly": "ldrb r3,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071e8",
+              "assembly": "ldr r3,[r0,r3,lsl #0x4]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071ec",
+              "assembly": "orr r3,r3,#0x4",
+              "flow_targets": []
+            },
+            {
+              "address": "800071f0",
+              "assembly": "str r3,[r0,r2,lsl #0x4]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071f4",
+              "assembly": "ldrb r2,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071f8",
+              "assembly": "ldrb r3,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071fc",
+              "assembly": "add r2,r0,r2, lsl #0x4",
+              "flow_targets": []
+            },
+            {
+              "address": "80007200",
+              "assembly": "ldr r0,[r0,r3,lsl #0x4]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007204",
+              "assembly": "orr r0,r0,#0x2",
+              "flow_targets": []
+            },
+            {
+              "address": "80007208",
+              "assembly": "str r0,[r2,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000720c",
+              "assembly": "add r0,r1,r1, lsl #0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007210",
+              "assembly": "ldrb r1,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007214",
+              "assembly": "mov r0,r0, lsl #0x3",
+              "flow_targets": []
+            },
+            {
+              "address": "80007218",
+              "assembly": "ldr r2,[0x80007254]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000721c",
+              "assembly": "str r0,[r2,r1,lsl #0x4]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007220",
+              "assembly": "ldrb r0,[sp,#0x8]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007224",
+              "assembly": "cmp r0,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007228",
+              "assembly": "addne sp,sp,#0xc",
+              "flow_targets": []
+            },
+            {
+              "address": "8000722c",
+              "assembly": "bxne lr",
+              "flow_targets": []
+            },
+            {
+              "address": "80007230",
+              "assembly": "ldr r1,[0x80007258]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007234",
+              "assembly": "ldr r0,[r1,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007238",
+              "assembly": "ldrb r2,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000723c",
+              "assembly": "mov r3,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007240",
+              "assembly": "orr r0,r0,r3, lsl r2",
+              "flow_targets": []
+            },
+            {
+              "address": "80007244",
+              "assembly": "str r0,[r1,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007248",
+              "assembly": "add sp,sp,#0xc",
+              "flow_targets": []
+            },
+            {
+              "address": "8000724c",
+              "assembly": "bx lr",
+              "flow_targets": []
+            }
+          ],
+          "direct_call_targets": [],
+          "decompiled_c": "\r\n/* WARNING: Restarted to delay deadcode elimination for space: stack */\r\n/* YS4470 reference proof: bounded_original_ARM926_execution;\r\n   evidence/2026-11-07-intc-timer-path.json; proposed RE_TimerConfigure */\r\n\r\nvoid RE_TimerConfigure(byte param_1,int param_2,char param_3)\r\n\r\n{\r\n  int iVar1;\r\n  \r\n  iVar1 = iRam80007250;\r\n  *(undefined4 *)(iRam80007250 + (uint)param_1 * 0x10) = 0;\r\n  *(undefined4 *)(iVar1 + (uint)param_1 * 0x10) = *(undefined4 *)(iVar1 + (uint)param_1 * 0x10);\r\n  *(undefined4 *)(iVar1 + (uint)param_1 * 0x10) = *(undefined4 *)(iVar1 + (uint)param_1 * 0x10);\r\n  *(uint *)(iVar1 + (uint)param_1 * 0x10) = *(uint *)(iVar1 + (uint)param_1 * 0x10) | 4;\r\n  *(uint *)(iVar1 + (uint)param_1 * 0x10) = *(uint *)(iVar1 + (uint)param_1 * 0x10) | 2;\r\n  *(int *)(iRam80007254 + (uint)param_1 * 0x10) = param_2 * 0x18;\r\n  if (param_3 == '\\x01') {\r\n    *puRam80007258 = *puRam80007258 | 1 << param_1;\r\n    return;\r\n  }\r\n  return;\r\n}\r\n\r\n",
+          "limits": [
+            "Ghidra inferred body; original-byte proof applies only to documented execution scope."
+          ]
+        },
+        {
+          "address": "0x8000725c",
+          "name": "RE_TimerEnable",
+          "label_status": "named_from_independent_proof",
+          "confidence": 1.0,
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "comment": "YS4470 reference proof: bounded_original_ARM926_execution; evidence/2026-11-07-intc-timer-path.json; proposed RE_TimerEnable",
+          "body_end": "80007283",
+          "assembly": [
+            {
+              "address": "8000725c",
+              "assembly": "str r0,[sp,#-0x4]!",
+              "flow_targets": []
+            },
+            {
+              "address": "80007260",
+              "assembly": "ldrb r0,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007264",
+              "assembly": "ldr r1,[0x80007284]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007268",
+              "assembly": "ldrb r2,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000726c",
+              "assembly": "add r0,r1,r0, lsl #0x4",
+              "flow_targets": []
+            },
+            {
+              "address": "80007270",
+              "assembly": "ldr r1,[r1,r2,lsl #0x4]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007274",
+              "assembly": "orr r1,r1,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007278",
+              "assembly": "str r1,[r0,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000727c",
+              "assembly": "add sp,sp,#0x4",
+              "flow_targets": []
+            },
+            {
+              "address": "80007280",
+              "assembly": "bx lr",
+              "flow_targets": []
+            }
+          ],
+          "direct_call_targets": [],
+          "decompiled_c": "\r\n/* YS4470 reference proof: bounded_original_ARM926_execution;\r\n   evidence/2026-11-07-intc-timer-path.json; proposed RE_TimerEnable */\r\n\r\nvoid RE_TimerEnable(byte param_1)\r\n\r\n{\r\n  *(uint *)(iRam80007284 + (uint)param_1 * 0x10) =\r\n       *(uint *)(iRam80007284 + (uint)param_1 * 0x10) | 1;\r\n  return;\r\n}\r\n\r\n",
+          "limits": [
+            "Ghidra inferred body; original-byte proof applies only to documented execution scope."
+          ]
+        },
+        {
+          "address": "0x8005bf54",
+          "name": "RE_Timer0StatusUpdate",
+          "label_status": "named_from_independent_proof",
+          "confidence": 1.0,
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "comment": "YS4470 reference proof: bounded_original_ARM926_execution; evidence/2026-11-07-intc-timer-path.json; proposed RE_Timer0StatusUpdate",
+          "body_end": "8005bf67",
+          "assembly": [
+            {
+              "address": "8005bf54",
+              "assembly": "ldr r1,[0x8005bf68]",
+              "flow_targets": []
+            },
+            {
+              "address": "8005bf58",
+              "assembly": "ldr r0,[r1,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "8005bf5c",
+              "assembly": "orr r0,r0,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "8005bf60",
+              "assembly": "str r0,[r1,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "8005bf64",
+              "assembly": "bx lr",
+              "flow_targets": []
+            }
+          ],
+          "direct_call_targets": [],
+          "decompiled_c": "\r\n/* YS4470 reference proof: bounded_original_ARM926_execution;\r\n   evidence/2026-11-07-intc-timer-path.json; proposed RE_Timer0StatusUpdate */\r\n\r\nvoid RE_Timer0StatusUpdate(void)\r\n\r\n{\r\n  *puRam8005bf68 = *puRam8005bf68 | 1;\r\n  return;\r\n}\r\n\r\n",
+          "limits": [
+            "Ghidra inferred body; original-byte proof applies only to documented execution scope."
+          ]
+        }
+      ]
+    },
+    {
+      "version": "V3.8",
+      "input_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+      "analysis_mode": "bounded-seeded",
+      "inventory_sha256": "b1eba0ec244117de9b31998cc5a03b9265eaf742af3795892a516bc941f0e953",
+      "reference_labels": [
+        {
+          "address": "0x80005274",
+          "name": "RE_INTCRegister",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "guard_bytes": 64,
+          "guard_sha256": "65a53fd4d588250b43c56ec3e03a117701edfca77875a12a094cf5b4d993d664",
+          "status": "named_from_independent_proof",
+          "ghidra_name": "RE_INTCRegister",
+          "previous_name": "FUN_80005274"
+        },
+        {
+          "address": "0x80005260",
+          "name": "RE_INTCVectorDispatch",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "guard_bytes": 64,
+          "guard_sha256": "0a986e575685abaee8907a84522662c31fbc52d3c3853d2a776e241cb5bdcb57",
+          "status": "named_from_independent_proof",
+          "ghidra_name": "RE_INTCVectorDispatch",
+          "previous_name": "FUN_80005260"
+        },
+        {
+          "address": "0x800071a0",
+          "name": "RE_TimerConfigure",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "guard_bytes": 64,
+          "guard_sha256": "cc85078643f398f32c6082b474a9854c32a3c4fc4894fa5a2dfab4ed4f25b0f2",
+          "status": "named_from_independent_proof",
+          "ghidra_name": "RE_TimerConfigure",
+          "previous_name": "FUN_800071a0"
+        },
+        {
+          "address": "0x8000725c",
+          "name": "RE_TimerEnable",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "guard_bytes": 64,
+          "guard_sha256": "b4d894fd8d3b30bf7219e383d15d2996427e0977c4a2062598241303c4bd807f",
+          "status": "named_from_independent_proof",
+          "ghidra_name": "RE_TimerEnable",
+          "previous_name": "FUN_8000725c"
+        },
+        {
+          "address": "0x8005bf54",
+          "name": "RE_Timer0StatusUpdate",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "guard_bytes": 64,
+          "guard_sha256": "9ba6347c0d6dfed3c2d2ebcc64121a8bc97415d74bad76a728d6b5ba6c99745b",
+          "status": "named_from_independent_proof",
+          "ghidra_name": "RE_Timer0StatusUpdate",
+          "previous_name": "FUN_8005bf54"
+        }
+      ],
+      "functions": [
+        {
+          "address": "0x80005274",
+          "name": "RE_INTCRegister",
+          "label_status": "named_from_independent_proof",
+          "confidence": 1.0,
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "comment": "YS4470 reference proof: bounded_original_ARM926_execution; evidence/2026-11-07-intc-timer-path.json; proposed RE_INTCRegister",
+          "body_end": "80005327",
+          "assembly": [
+            {
+              "address": "80005274",
+              "assembly": "stmdb sp!,{r4,r5,r6}",
+              "flow_targets": []
+            },
+            {
+              "address": "80005278",
+              "assembly": "ldr r12,[0x80005328]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000527c",
+              "assembly": "ldrb r6,[r12,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80005280",
+              "assembly": "mov r5,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80005284",
+              "assembly": "cmp r6,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80005288",
+              "assembly": "bne 0x8000529c",
+              "flow_targets": [
+                "8000529c"
+              ]
+            },
+            {
+              "address": "8000528c",
+              "assembly": "strb r5,[r12,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80005290",
+              "assembly": "ldr r6,[0x8000532c]",
+              "flow_targets": []
+            },
+            {
+              "address": "80005294",
+              "assembly": "add r12,r12,#0x4",
+              "flow_targets": []
+            },
+            {
+              "address": "80005298",
+              "assembly": "str r12,[r6,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000529c",
+              "assembly": "cmp r0,#0x8",
+              "flow_targets": []
+            },
+            {
+              "address": "800052a0",
+              "assembly": "ldrcc pc,[pc,r0,lsl #0x2]",
+              "flow_targets": []
+            },
+            {
+              "address": "800052a4",
+              "assembly": "b 0x800052e4",
+              "flow_targets": [
+                "800052e4"
+              ]
+            },
+            {
+              "address": "800052e4",
+              "assembly": "ldr r2,[0x80005338]",
+              "flow_targets": []
+            },
+            {
+              "address": "800052e8",
+              "assembly": "mov r12,r1, lsr #0x4",
+              "flow_targets": []
+            },
+            {
+              "address": "800052ec",
+              "assembly": "ldr r4,[r2,r12,lsl #0x2]!",
+              "flow_targets": []
+            },
+            {
+              "address": "800052f0",
+              "assembly": "mov r12,r1, lsl #0x1c",
+              "flow_targets": []
+            },
+            {
+              "address": "800052f4",
+              "assembly": "mov r12,r12, lsr #0x1b",
+              "flow_targets": []
+            },
+            {
+              "address": "800052f8",
+              "assembly": "mov r6,#0x3",
+              "flow_targets": []
+            },
+            {
+              "address": "800052fc",
+              "assembly": "bic r4,r4,r6, lsl r12",
+              "flow_targets": []
+            },
+            {
+              "address": "80005300",
+              "assembly": "orr r3,r4,r3, lsl r12",
+              "flow_targets": []
+            },
+            {
+              "address": "80005304",
+              "assembly": "str r3,[r2,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80005308",
+              "assembly": "ldr r2,[0x8000533c]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000530c",
+              "assembly": "mov r3,r1, lsr #0x5",
+              "flow_targets": []
+            },
+            {
+              "address": "80005310",
+              "assembly": "ldr r3,[r2,r3,lsl #0x2]!",
+              "flow_targets": []
+            },
+            {
+              "address": "80005314",
+              "assembly": "and r1,r1,#0x1f",
+              "flow_targets": []
+            },
+            {
+              "address": "80005318",
+              "assembly": "orr r1,r3,r5, lsl r1",
+              "flow_targets": []
+            },
+            {
+              "address": "8000531c",
+              "assembly": "str r1,[r2,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80005320",
+              "assembly": "ldmia sp!,{r4,r5,r6}",
+              "flow_targets": []
+            },
+            {
+              "address": "80005324",
+              "assembly": "bx lr",
+              "flow_targets": []
+            }
+          ],
+          "direct_call_targets": [],
+          "decompiled_c": "\r\n/* YS4470 reference proof: bounded_original_ARM926_execution;\r\n   evidence/2026-11-07-intc-timer-path.json; proposed RE_INTCRegister */\r\n\r\nundefined4 RE_INTCRegister(undefined4 param_1,uint param_2,undefined4 param_3,int param_4)\r\n\r\n{\r\n  int iVar1;\r\n  char *pcVar2;\r\n  uint *puVar3;\r\n  \r\n  pcVar2 = pcRam80005328;\r\n  if (*pcRam80005328 == '\\0') {\r\n    *pcRam80005328 = '\\x01';\r\n    *puRam8000532c = pcVar2 + 4;\r\n  }\r\n  switch(param_1) {\r\n  case 0:\r\n    param_1 = *(undefined4 *)(iRam80005330 + param_2 * 4);\r\n    *(undefined4 *)(iRam80005330 + param_2 * 4) = param_3;\r\n    break;\r\n  case 1:\r\n  case 2:\r\n  case 3:\r\n  case 4:\r\n  case 5:\r\n  case 6:\r\n  case 7:\r\n    param_1 = *(undefined4 *)(iRam80005334 + param_2 * 4);\r\n    *(undefined4 *)(iRam80005334 + param_2 * 4) = param_3;\r\n  }\r\n  puVar3 = (uint *)(iRam80005338 + (param_2 >> 4) * 4);\r\n  iVar1 = (param_2 & 0xf) << 1;\r\n  *puVar3 = *puVar3 & ~(3 << iVar1) | param_4 << iVar1;\r\n  puVar3 = (uint *)(iRam8000533c + (param_2 >> 5) * 4);\r\n  *puVar3 = *puVar3 | 1 << (param_2 & 0x1f);\r\n  return param_1;\r\n}\r\n\r\n",
+          "limits": [
+            "Ghidra inferred body; original-byte proof applies only to documented execution scope."
+          ]
+        },
+        {
+          "address": "0x80005260",
+          "name": "RE_INTCVectorDispatch",
+          "label_status": "named_from_independent_proof",
+          "confidence": 1.0,
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "comment": "YS4470 reference proof: bounded_original_ARM926_execution; evidence/2026-11-07-intc-timer-path.json; proposed RE_INTCVectorDispatch",
+          "body_end": "8000526f",
+          "assembly": [
+            {
+              "address": "80005260",
+              "assembly": "ldr r0,[0x80005270]",
+              "flow_targets": []
+            },
+            {
+              "address": "80005264",
+              "assembly": "ldr r0,[r0,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80005268",
+              "assembly": "ldr r0,[r0,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000526c",
+              "assembly": "bx r0",
+              "flow_targets": []
+            }
+          ],
+          "direct_call_targets": [],
+          "decompiled_c": "\r\n/* YS4470 reference proof: bounded_original_ARM926_execution;\r\n   evidence/2026-11-07-intc-timer-path.json; proposed RE_INTCVectorDispatch */\r\n\r\nvoid RE_INTCVectorDispatch(void)\r\n\r\n{\r\n                    /* WARNING: Could not recover jumptable at 0x8000526c. Too many branches */\r\n                    /* WARNING: Treating indirect jump as call */\r\n  (**(code **)*puRam80005270)();\r\n  return;\r\n}\r\n\r\n",
+          "limits": [
+            "Ghidra inferred body; original-byte proof applies only to documented execution scope."
+          ]
+        },
+        {
+          "address": "0x800071a0",
+          "name": "RE_TimerConfigure",
+          "label_status": "named_from_independent_proof",
+          "confidence": 1.0,
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "comment": "YS4470 reference proof: bounded_original_ARM926_execution; evidence/2026-11-07-intc-timer-path.json; proposed RE_TimerConfigure",
+          "body_end": "8000724f",
+          "assembly": [
+            {
+              "address": "800071a0",
+              "assembly": "stmdb sp!,{r0,r1,r2}",
+              "flow_targets": []
+            },
+            {
+              "address": "800071a4",
+              "assembly": "ldrb r2,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071a8",
+              "assembly": "ldr r0,[0x80007250]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071ac",
+              "assembly": "add r3,r0,r2, lsl #0x4",
+              "flow_targets": []
+            },
+            {
+              "address": "800071b0",
+              "assembly": "mov r2,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "800071b4",
+              "assembly": "str r2,[r3,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071b8",
+              "assembly": "ldrb r2,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071bc",
+              "assembly": "add r3,r0,r2, lsl #0x4",
+              "flow_targets": []
+            },
+            {
+              "address": "800071c0",
+              "assembly": "ldrb r2,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071c4",
+              "assembly": "ldr r2,[r0,r2,lsl #0x4]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071c8",
+              "assembly": "str r2,[r3,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071cc",
+              "assembly": "ldrb r2,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071d0",
+              "assembly": "add r3,r0,r2, lsl #0x4",
+              "flow_targets": []
+            },
+            {
+              "address": "800071d4",
+              "assembly": "ldrb r2,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071d8",
+              "assembly": "ldr r2,[r0,r2,lsl #0x4]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071dc",
+              "assembly": "str r2,[r3,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071e0",
+              "assembly": "ldrb r2,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071e4",
+              "assembly": "ldrb r3,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071e8",
+              "assembly": "ldr r3,[r0,r3,lsl #0x4]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071ec",
+              "assembly": "orr r3,r3,#0x4",
+              "flow_targets": []
+            },
+            {
+              "address": "800071f0",
+              "assembly": "str r3,[r0,r2,lsl #0x4]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071f4",
+              "assembly": "ldrb r2,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071f8",
+              "assembly": "ldrb r3,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800071fc",
+              "assembly": "add r2,r0,r2, lsl #0x4",
+              "flow_targets": []
+            },
+            {
+              "address": "80007200",
+              "assembly": "ldr r0,[r0,r3,lsl #0x4]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007204",
+              "assembly": "orr r0,r0,#0x2",
+              "flow_targets": []
+            },
+            {
+              "address": "80007208",
+              "assembly": "str r0,[r2,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000720c",
+              "assembly": "add r0,r1,r1, lsl #0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007210",
+              "assembly": "ldrb r1,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007214",
+              "assembly": "mov r0,r0, lsl #0x3",
+              "flow_targets": []
+            },
+            {
+              "address": "80007218",
+              "assembly": "ldr r2,[0x80007254]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000721c",
+              "assembly": "str r0,[r2,r1,lsl #0x4]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007220",
+              "assembly": "ldrb r0,[sp,#0x8]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007224",
+              "assembly": "cmp r0,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007228",
+              "assembly": "addne sp,sp,#0xc",
+              "flow_targets": []
+            },
+            {
+              "address": "8000722c",
+              "assembly": "bxne lr",
+              "flow_targets": []
+            },
+            {
+              "address": "80007230",
+              "assembly": "ldr r1,[0x80007258]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007234",
+              "assembly": "ldr r0,[r1,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007238",
+              "assembly": "ldrb r2,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000723c",
+              "assembly": "mov r3,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007240",
+              "assembly": "orr r0,r0,r3, lsl r2",
+              "flow_targets": []
+            },
+            {
+              "address": "80007244",
+              "assembly": "str r0,[r1,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007248",
+              "assembly": "add sp,sp,#0xc",
+              "flow_targets": []
+            },
+            {
+              "address": "8000724c",
+              "assembly": "bx lr",
+              "flow_targets": []
+            }
+          ],
+          "direct_call_targets": [],
+          "decompiled_c": "\r\n/* WARNING: Restarted to delay deadcode elimination for space: stack */\r\n/* YS4470 reference proof: bounded_original_ARM926_execution;\r\n   evidence/2026-11-07-intc-timer-path.json; proposed RE_TimerConfigure */\r\n\r\nvoid RE_TimerConfigure(byte param_1,int param_2,char param_3)\r\n\r\n{\r\n  int iVar1;\r\n  \r\n  iVar1 = iRam80007250;\r\n  *(undefined4 *)(iRam80007250 + (uint)param_1 * 0x10) = 0;\r\n  *(undefined4 *)(iVar1 + (uint)param_1 * 0x10) = *(undefined4 *)(iVar1 + (uint)param_1 * 0x10);\r\n  *(undefined4 *)(iVar1 + (uint)param_1 * 0x10) = *(undefined4 *)(iVar1 + (uint)param_1 * 0x10);\r\n  *(uint *)(iVar1 + (uint)param_1 * 0x10) = *(uint *)(iVar1 + (uint)param_1 * 0x10) | 4;\r\n  *(uint *)(iVar1 + (uint)param_1 * 0x10) = *(uint *)(iVar1 + (uint)param_1 * 0x10) | 2;\r\n  *(int *)(iRam80007254 + (uint)param_1 * 0x10) = param_2 * 0x18;\r\n  if (param_3 == '\\x01') {\r\n    *puRam80007258 = *puRam80007258 | 1 << param_1;\r\n    return;\r\n  }\r\n  return;\r\n}\r\n\r\n",
+          "limits": [
+            "Ghidra inferred body; original-byte proof applies only to documented execution scope."
+          ]
+        },
+        {
+          "address": "0x8000725c",
+          "name": "RE_TimerEnable",
+          "label_status": "named_from_independent_proof",
+          "confidence": 1.0,
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "comment": "YS4470 reference proof: bounded_original_ARM926_execution; evidence/2026-11-07-intc-timer-path.json; proposed RE_TimerEnable",
+          "body_end": "80007283",
+          "assembly": [
+            {
+              "address": "8000725c",
+              "assembly": "str r0,[sp,#-0x4]!",
+              "flow_targets": []
+            },
+            {
+              "address": "80007260",
+              "assembly": "ldrb r0,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007264",
+              "assembly": "ldr r1,[0x80007284]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007268",
+              "assembly": "ldrb r2,[sp,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000726c",
+              "assembly": "add r0,r1,r0, lsl #0x4",
+              "flow_targets": []
+            },
+            {
+              "address": "80007270",
+              "assembly": "ldr r1,[r1,r2,lsl #0x4]",
+              "flow_targets": []
+            },
+            {
+              "address": "80007274",
+              "assembly": "orr r1,r1,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "80007278",
+              "assembly": "str r1,[r0,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000727c",
+              "assembly": "add sp,sp,#0x4",
+              "flow_targets": []
+            },
+            {
+              "address": "80007280",
+              "assembly": "bx lr",
+              "flow_targets": []
+            }
+          ],
+          "direct_call_targets": [],
+          "decompiled_c": "\r\n/* YS4470 reference proof: bounded_original_ARM926_execution;\r\n   evidence/2026-11-07-intc-timer-path.json; proposed RE_TimerEnable */\r\n\r\nvoid RE_TimerEnable(byte param_1)\r\n\r\n{\r\n  *(uint *)(iRam80007284 + (uint)param_1 * 0x10) =\r\n       *(uint *)(iRam80007284 + (uint)param_1 * 0x10) | 1;\r\n  return;\r\n}\r\n\r\n",
+          "limits": [
+            "Ghidra inferred body; original-byte proof applies only to documented execution scope."
+          ]
+        },
+        {
+          "address": "0x8005bf54",
+          "name": "RE_Timer0StatusUpdate",
+          "label_status": "named_from_independent_proof",
+          "confidence": 1.0,
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "comment": "YS4470 reference proof: bounded_original_ARM926_execution; evidence/2026-11-07-intc-timer-path.json; proposed RE_Timer0StatusUpdate",
+          "body_end": "8005bf67",
+          "assembly": [
+            {
+              "address": "8005bf54",
+              "assembly": "ldr r1,[0x8005bf68]",
+              "flow_targets": []
+            },
+            {
+              "address": "8005bf58",
+              "assembly": "ldr r0,[r1,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "8005bf5c",
+              "assembly": "orr r0,r0,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "8005bf60",
+              "assembly": "str r0,[r1,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "8005bf64",
+              "assembly": "bx lr",
+              "flow_targets": []
+            }
+          ],
+          "direct_call_targets": [],
+          "decompiled_c": "\r\n/* YS4470 reference proof: bounded_original_ARM926_execution;\r\n   evidence/2026-11-07-intc-timer-path.json; proposed RE_Timer0StatusUpdate */\r\n\r\nvoid RE_Timer0StatusUpdate(void)\r\n\r\n{\r\n  *puRam8005bf68 = *puRam8005bf68 | 1;\r\n  return;\r\n}\r\n\r\n",
+          "limits": [
+            "Ghidra inferred body; original-byte proof applies only to documented execution scope."
+          ]
+        }
+      ]
+    }
+  ],
+  "assembly_equal_between_originals": true,
+  "limits": [
+    "Fresh disposable projects; exports are the durable artifact.",
+    "Existing analyst names/comments are preserved, not replaced.",
+    "Inferred Ghidra bodies are separate from stated original-code execution scopes."
+  ]
+}

@@ -989,6 +989,131 @@
       "limits": [
         "Eight inert-shadow seed cases per original; no hardware watchdog/reset timing or reference whole-function identity proven."
       ]
+    },
+    {
+      "id": "intc_vector_dispatch",
+      "addresses": {
+        "V3_6": "0x80005260",
+        "V3_8": "0x80005260"
+      },
+      "bounded_end_exclusive": "0x80005270",
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "INTC vector pointer dereference and ARM/Thumb handler tail dispatch",
+      "relationships": [
+        "reads0x01c20400, then dereferences returned slot pointer",
+        "called by non-timer IRQ bridge at0x80002324"
+      ],
+      "evidence": [
+        "evidence/2026-11-07-intc-timer-path.json",
+        "evidence/2026-11-07-intc-timer-ghidra.json"
+      ],
+      "limits": [
+        "Inert register shadows; IRQ bridge excludes full context save/restore and stubs tick/scheduler bodies."
+      ]
+    },
+    {
+      "id": "intc_register",
+      "addresses": {
+        "V3_6": "0x80005274",
+        "V3_8": "0x80005274"
+      },
+      "bounded_end_exclusive": "0x80005328",
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Handler-table exchange plus INTC priority/enable programming",
+      "relationships": [
+        "initializes INTC_BASE_ADDR to0x805ab944 once using flag0x805ab940",
+        "mode0 table0x805ab9e8; modes1..7 table0x805ab944; modes>=8 do not replace handler"
+      ],
+      "evidence": [
+        "evidence/2026-11-07-intc-timer-path.json",
+        "evidence/2026-11-07-intc-timer-ghidra.json"
+      ],
+      "limits": [
+        "Inert register shadows; IRQ bridge excludes full context save/restore and stubs tick/scheduler bodies."
+      ]
+    },
+    {
+      "id": "timer_configure",
+      "addresses": {
+        "V3_6": "0x800071a0",
+        "V3_8": "0x800071a0"
+      },
+      "bounded_end_exclusive": "0x80007250",
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Configure timer channel/source/reload/interval and optional IRQ enable",
+      "relationships": [
+        "low8 channel and IRQ-enable flag",
+        "interval=low32(24*r1); final control6; separate enable needed"
+      ],
+      "evidence": [
+        "evidence/2026-11-07-intc-timer-path.json",
+        "evidence/2026-11-07-intc-timer-ghidra.json"
+      ],
+      "limits": [
+        "Inert register shadows; IRQ bridge excludes full context save/restore and stubs tick/scheduler bodies."
+      ]
+    },
+    {
+      "id": "timer_enable",
+      "addresses": {
+        "V3_6": "0x8000725c",
+        "V3_8": "0x8000725c"
+      },
+      "bounded_end_exclusive": "0x80007284",
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Set selected timer control bit0",
+      "relationships": [
+        "used by startup call at0x80061814"
+      ],
+      "evidence": [
+        "evidence/2026-11-07-intc-timer-path.json",
+        "evidence/2026-11-07-intc-timer-ghidra.json"
+      ],
+      "limits": [
+        "Inert register shadows; IRQ bridge excludes full context save/restore and stubs tick/scheduler bodies."
+      ]
+    },
+    {
+      "id": "timer0_status_update",
+      "addresses": {
+        "V3_6": "0x8005bf54",
+        "V3_8": "0x8005bf54"
+      },
+      "bounded_end_exclusive": "0x8005bf68",
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Read timer IRQ status and write old OR1",
+      "relationships": [
+        "registered on IRQ13 by startup slice0x800617ec..0x80061818"
+      ],
+      "evidence": [
+        "evidence/2026-11-07-intc-timer-path.json",
+        "evidence/2026-11-07-intc-timer-ghidra.json"
+      ],
+      "limits": [
+        "Inert register shadows; IRQ bridge excludes full context save/restore and stubs tick/scheduler bodies."
+      ]
+    },
+    {
+      "id": "fast_cont_history_filter",
+      "addresses": {
+        "V3_6": "0x80007c88",
+        "V3_8": "0x80007c88"
+      },
+      "bounded_end_exclusive": "0x80007dd0",
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Three-value stability filter with retained median and sound-selector tailcalls",
+      "relationships": [
+        "caller0x80003970 in Fast CONT ResultDispatch branch",
+        "history0x805ac7b8; index/count/retained median at0x805ab924+4/+8/+0xc",
+        "tailcalls sound_control_gate; pure-C reconstruction/fast_cont.c matches tested behavior"
+      ],
+      "evidence": [
+        "evidence/2026-11-07-fast-cont-filter.json",
+        "evidence/2026-11-07-fast-cont-filter-ghidra.json"
+      ],
+      "limits": [
+        "Valid index0..2/count0..3; physical unit, power-on state and fresh-result cadence open."
+      ]
     }
   ],
   "session_updates": [
@@ -1051,6 +1176,16 @@
       "date": "2026-11-07",
       "evidence": "evidence/2026-11-07-f1c100s-reference/reference-analysis.json",
       "summary": "Pinned F1C100S reference inventory, cross-build/matching/MMIO pipeline, two bounded watchdog helpers and proof-gated PyGhidra labels."
+    },
+    {
+      "date": "2026-11-07",
+      "evidence": "evidence/2026-11-07-intc-timer-path.json",
+      "summary": "Reference-guided INTC/timer proof: five entries,4446 control/register tests, real Ghidra exports."
+    },
+    {
+      "date": "2026-11-07",
+      "evidence": "evidence/2026-11-07-fast-cont-filter.json",
+      "summary": "Fast CONT history/retained median reconstructed in pure C;3958 original/Python/compiled-ARM state steps pass."
     }
   ],
   "version_comparisons": {
@@ -1171,6 +1306,42 @@
       "sentinel_off_calls": 2,
       "failed": 0,
       "results_sha256": "3bef57783498bc56b80fabc15cbb93e1faf5a1693fcf4d23869a79d13d3db2e7"
+    },
+    "intc_timer_path": {
+      "evidence": "evidence/2026-11-07-intc-timer-path.json",
+      "total_cases": 4446,
+      "per_original": {
+        "registration": 1652,
+        "dispatch": 164,
+        "timer_configure": 360,
+        "timer_enable": 24,
+        "timer_status_update": 4,
+        "bridge": 18,
+        "startup": 1
+      },
+      "results": {
+        "registration": "ac1cb9765c4841079d87b0d800c9c6f47b4428224a4eb5830f8345133caa6c74",
+        "dispatch": "56efba769e8e5700dc818ba88e0cb965eca08bbed7b566e447ec806d24f5334b",
+        "timer": "a7a7f0d7fee4437ad72c69f37b4fa6fbf3789a24abb99183282cf3960bdd1d3d",
+        "bridge": "340a9165b73f40d85faddfe237be42cc1d90ae07a52a8780fa9141c5a77e211b"
+      },
+      "clock_limit": "Nominal1kHz only if selected source is24MHz; does not establish measurement cadence."
+    },
+    "fast_cont_filter": {
+      "evidence": "evidence/2026-11-07-fast-cont-filter.json",
+      "scenarios": 700,
+      "state_steps": 3958,
+      "results_sha256": "e914aefb9e3a20eecb9debdf2dc3865074b0e8c5bafcf4f79e1ec9fbd0da6997",
+      "comparison": "original ARM + independent Python + separately compiled ARM926 C; original gate/PWM code also executes",
+      "reconstruction": {
+        "source": "reconstruction/fast_cont.c",
+        "source_sha256": "d7e74d8737da6e5eee2073ac1072b41ab16c2471d4a8e4e7d1ec16761b71cc5a",
+        "header_sha256": "25babf97f802e7826fd90a08d035400b34df40a8703efb23b482f20da5a0698b",
+        "object_sha256": "5e778c4cee418fa0e86c869154e438f7f64b6f352c673a7a764590cdd6c9af08",
+        "build": "Zig0.13.0 cc -target arm-freestanding-eabi -mcpu=arm926ej_s -marm -O2 -ffreestanding -fno-builtin -ffunction-sections -std=c11 -Wall -Wextra -Werror -c reconstruction/fast_cont.c"
+      },
+      "contract": "ring index0..2/count0..3",
+      "next": "Trace fresh-result admission from ResultDispatch call0x80003970 into helper0x80007c88. Determine whether repeated calls can reuse one parsed UART result. Separately bound tick/scheduler0x80061fa4/0x800612f8 and the consumer/decrement of FSM field0x805ac694+0x30 before assigning timing units."
     }
   },
   "configuration_fields": {
@@ -1220,6 +1391,32 @@
     "unit_tests": 7,
     "pyghidra_reference_exports": 12,
     "scope": "ARM aligned candidate survey0x80000000..0x80063800; not whole-firmware/Thumb/indirect proof",
-    "next": "INTC dispatch0x80005260/registration0x80005274 and timer region0x800071a8; Fast CONT helper0x80007c88 remains pending"
+    "next": "Trace fresh-result admission from ResultDispatch call0x80003970 into helper0x80007c88. Determine whether repeated calls can reuse one parsed UART result. Separately bound tick/scheduler0x80061fa4/0x800612f8 and the consumer/decrement of FSM field0x805ac694+0x30 before assigning timing units.",
+    "confirmed_semantic_additions": [
+      {
+        "id": "intc_vector_dispatch",
+        "address": "0x80005260"
+      },
+      {
+        "id": "intc_register",
+        "address": "0x80005274"
+      },
+      {
+        "id": "timer_configure",
+        "address": "0x800071a0"
+      },
+      {
+        "id": "timer_enable",
+        "address": "0x8000725c"
+      },
+      {
+        "id": "timer0_status_update",
+        "address": "0x8005bf54"
+      },
+      {
+        "id": "fast_cont_history_filter",
+        "address": "0x80007c88"
+      }
+    ]
   }
 }

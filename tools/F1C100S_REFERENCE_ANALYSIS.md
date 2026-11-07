@@ -90,6 +90,16 @@ On this Windows sandbox, Zig's child-process temporary-file handling required
 unsandboxed local compilation after cache relocation alone failed. Compilation
 and analysis write only into the selected workspace output/cache directories.
 
-Next: keep the pending Fast CONT helper0x80007c88 investigation; for the new
-reference pipeline prioritize path-aware timer/INTC CFGs and resolved relocation
-targets. No new firmware image has been built or physically installed here.
+Continuation: the INTC/timer leads have since been verified by4446 original-code
+cases and five real Ghidra exports per original; see `INTC_TIMER_PATH.md`.
+Fast CONT helper0x80007c88 has also been reconstructed as a freestanding C
+component, agreeing with original ARM/Python in3958 state steps; see
+`FAST_CONT_FILTER.md`. These are semantic/bounded proofs, not newly found whole
+reference-function byte identities. The original reference-match counts above
+remain unchanged.
+
+The existing inventory now accepts these proof reports and `--labels-only`,
+which exports their guarded entries without repeating the13-seed baseline.
+Next: fresh-result admission and tick/scheduler consumers; resolved relocation
+targets and wider Thumb matching remain pending. No full firmware image has
+been reconstructed or physically installed by this workflow.

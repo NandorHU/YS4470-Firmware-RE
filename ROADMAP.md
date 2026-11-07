@@ -2,15 +2,14 @@
 
 ## Current next bounded task
 
-Trace and classify the Beta3 request/reply FSM deltas at `0x800045e0`, `0x8000461c`, and `0x80004738`. Output: a raw instruction-level evidence table that says whether each delta affects frame acceptance, state progression, value parsing, or is unrelated. Do not infer latency from the sound override alone.
+Trace fresh-result admission from ResultDispatch call0x80003970 into helper0x80007c88. Determine whether repeated calls can reuse one parsed UART result. Separately bound tick/scheduler0x80061fa4/0x800612f8 and the consumer/decrement of FSM field0x805ac694+0x30 before assigning timing units.
 
 ## Near term
 
-1. Add the original V3.6 image as a local verified input (preserve original and SHA-256 locally), then run the existing PyGhidra inventory and comparison scripts.
-2. Attribute the remaining 63 V3.8/Beta3 changed ranges and preserve uncertainty where boundaries are unclear.
-3. Map the sound parameter from `0x80006e4c` into its lower routine and peripheral ownership.
-4. Build a minimal Unicorn harness for a bounded parser or sound helper only after its memory/register contract is known.
-5. Correlate GUI/result observer state only after static references are enumerated.
+1. Prove helper invocation versus fresh-result admission.
+2. Bound tick/scheduler and FSM timeout consumers.
+3. Continue original measurement scaling/autorange reconstruction and remaining version-patch attribution.
+4. Reuse the completed parser, settings, PWM, INTC/timer and C filter harnesses.
 
 ## Later milestones
 
@@ -114,3 +113,12 @@ Address correction (2026-11-07): file word offsets 0x63ac8..0x63ae8 map to linke
 Reference acquisition/licensing: `references/f1c100s/README.md` and `sources.lock.json`. Subsystem register anchors and identification methods: `references/f1c100s/F1C100S_REFERENCE_MAP.md` / `register-map.json`. Runner/method: `tools/analyze_f1c100s_references.py` / `tools/F1C100S_REFERENCE_ANALYSIS.md`.
 
 Immediate reference continuation: validate INTC dispatch0x80005260 and registration region0x80005274, then timer setup near0x800071a8. These are candidates, not established full function bounds. Use the register map and exported graph to choose paths; resolve literals/relocations before matching more functions. Carry forward Fast CONT helper0x80007c88 persistent-history tests as the pending measurement task. Reuse completed parser/setting/PWM harnesses; no full-device emulation or firmware installation is authorized by a similarity lead.
+
+
+## 2026-11-07: reference-guided INTC/timer proof and Fast CONT C reconstruction
+
+Evidence: `evidence/2026-11-07-intc-timer-path.json`, `evidence/2026-11-07-intc-timer-ghidra.json`, `evidence/2026-11-07-fast-cont-filter.json`, and `evidence/2026-11-07-fast-cont-filter-ghidra.json`. Methods: `tools/INTC_TIMER_PATH.md`, `tools/FAST_CONT_FILTER.md`.
+
+Completed the previously queued INTC/timer and Fast CONT helper investigations. Reuse4446 hardware/control-flow tests and3958 original/Python/C filter steps; do not redo these disassemblies. New pure-C component is a first verified reconstruction component, not a complete firmware image.
+
+Next bounded task: Trace fresh-result admission from ResultDispatch call0x80003970 into helper0x80007c88. Determine whether repeated calls can reuse one parsed UART result. Separately bound tick/scheduler0x80061fa4/0x800612f8 and the consumer/decrement of FSM field0x805ac694+0x30 before assigning timing units.

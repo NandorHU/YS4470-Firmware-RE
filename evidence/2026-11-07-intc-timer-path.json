@@ -1,0 +1,691 @@
+{
+  "schema": "ys4470.intc-timer-path.v1",
+  "date": "2026-11-07",
+  "cpu": "UC_CPU_ARM_926",
+  "versions": [
+    {
+      "version": "V3.6",
+      "input_sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+      "failed": 0,
+      "registration_cases": 1652,
+      "registration_results_sha256": "ac1cb9765c4841079d87b0d800c9c6f47b4428224a4eb5830f8345133caa6c74",
+      "dispatch_cases": 164,
+      "dispatch_results_sha256": "56efba769e8e5700dc818ba88e0cb965eca08bbed7b566e447ec806d24f5334b",
+      "timer": {
+        "configure_cases": 360,
+        "start_cases": 24,
+        "status_update_cases": 4,
+        "results_sha256": "a7a7f0d7fee4437ad72c69f37b4fa6fbf3789a24abb99183282cf3960bdd1d3d"
+      },
+      "irq_bridge_cases": 18,
+      "irq_bridge_results_sha256": "340a9165b73f40d85faddfe237be42cc1d90ae07a52a8780fa9141c5a77e211b",
+      "startup": {
+        "cases": 1,
+        "entry": "0x800617ec",
+        "stop": "0x80061818",
+        "channel": 0,
+        "interval_ticks": 24000,
+        "control": 7,
+        "irq": 13,
+        "handler": "0x8005bf54",
+        "writes": [
+          [
+            29494288,
+            4,
+            0
+          ],
+          [
+            29494288,
+            4,
+            0
+          ],
+          [
+            29494288,
+            4,
+            0
+          ],
+          [
+            29494288,
+            4,
+            4
+          ],
+          [
+            29494288,
+            4,
+            6
+          ],
+          [
+            29494292,
+            4,
+            24000
+          ],
+          [
+            29494272,
+            4,
+            1
+          ],
+          [
+            2153429312,
+            1,
+            1
+          ],
+          [
+            29492228,
+            4,
+            2153429316
+          ],
+          [
+            2153429368,
+            4,
+            2147860308
+          ],
+          [
+            29492320,
+            4,
+            2909475380
+          ],
+          [
+            29492256,
+            4,
+            19096935
+          ],
+          [
+            29494288,
+            4,
+            7
+          ]
+        ],
+        "nominal_frequency_hz_if_24MHz_source": 1000,
+        "limit": "Stops before RTOS context restore; no timer progression/actual clock or task cadence simulated."
+      },
+      "approved_labels": [
+        {
+          "address": "0x80005274",
+          "name": "RE_INTCRegister",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "guard_bytes": 64,
+          "guard_sha256": "65a53fd4d588250b43c56ec3e03a117701edfca77875a12a094cf5b4d993d664"
+        },
+        {
+          "address": "0x80005260",
+          "name": "RE_INTCVectorDispatch",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "guard_bytes": 64,
+          "guard_sha256": "0a986e575685abaee8907a84522662c31fbc52d3c3853d2a776e241cb5bdcb57"
+        },
+        {
+          "address": "0x800071a0",
+          "name": "RE_TimerConfigure",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "guard_bytes": 64,
+          "guard_sha256": "cc85078643f398f32c6082b474a9854c32a3c4fc4894fa5a2dfab4ed4f25b0f2"
+        },
+        {
+          "address": "0x8000725c",
+          "name": "RE_TimerEnable",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "guard_bytes": 64,
+          "guard_sha256": "b4d894fd8d3b30bf7219e383d15d2996427e0977c4a2062598241303c4bd807f"
+        },
+        {
+          "address": "0x8005bf54",
+          "name": "RE_Timer0StatusUpdate",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "guard_bytes": 64,
+          "guard_sha256": "9ba6347c0d6dfed3c2d2ebcc64121a8bc97415d74bad76a728d6b5ba6c99745b"
+        }
+      ],
+      "windows": {
+        "0x80005260": {
+          "end_exclusive": "0x80005270",
+          "sha256": "33970a7c3c425142c2257ccbda0ba141217339a397918009b297e01fd0e6a750",
+          "assembly": [
+            "80005260 ldr r0, [pc, #8]",
+            "80005264 ldr r0, [r0]",
+            "80005268 ldr r0, [r0]",
+            "8000526c bx r0"
+          ],
+          "note": "Registration window contains an inline jump table; not every word is an instruction."
+        },
+        "0x80005274": {
+          "end_exclusive": "0x80005328",
+          "sha256": "9a8235f43821df106455d773692277b627df745fe51cc322e504dbc8d6c59bd3",
+          "assembly": [
+            "80005274 push {r4, r5, r6}",
+            "80005278 ldr ip, [pc, #0xa8]",
+            "8000527c ldrb r6, [ip]",
+            "80005280 mov r5, #1",
+            "80005284 cmp r6, #0",
+            "80005288 bne #0x8000529c",
+            "8000528c strb r5, [ip]",
+            "80005290 ldr r6, [pc, #0x94]",
+            "80005294 add ip, ip, #4",
+            "80005298 str ip, [r6]",
+            "8000529c cmp r0, #8",
+            "800052a0 ldrlo pc, [pc, r0, lsl #2]",
+            "800052a4 b #0x800052e4",
+            "800052a8 andhi r5, r0, r8, asr #5",
+            "800052ac ldrdhi r5, r6, [r0], -r8",
+            "800052b0 ldrdhi r5, r6, [r0], -r8",
+            "800052b4 ldrdhi r5, r6, [r0], -r8",
+            "800052b8 ldrdhi r5, r6, [r0], -r8",
+            "800052bc ldrdhi r5, r6, [r0], -r8",
+            "800052c0 ldrdhi r5, r6, [r0], -r8",
+            "800052c4 ldrdhi r5, r6, [r0], -r8",
+            "800052c8 ldr ip, [pc, #0x60]",
+            "800052cc ldr r0, [ip, r1, lsl #2]",
+            "800052d0 str r2, [ip, r1, lsl #2]",
+            "800052d4 b #0x800052e4",
+            "800052d8 ldr ip, [pc, #0x54]",
+            "800052dc ldr r0, [ip, r1, lsl #2]",
+            "800052e0 str r2, [ip, r1, lsl #2]",
+            "800052e4 ldr r2, [pc, #0x4c]",
+            "800052e8 lsr ip, r1, #4",
+            "800052ec ldr r4, [r2, ip, lsl #2]!",
+            "800052f0 lsl ip, r1, #0x1c",
+            "800052f4 lsr ip, ip, #0x1b",
+            "800052f8 mov r6, #3",
+            "800052fc bic r4, r4, r6, lsl ip",
+            "80005300 orr r3, r4, r3, lsl ip",
+            "80005304 str r3, [r2]",
+            "80005308 ldr r2, [pc, #0x2c]",
+            "8000530c lsr r3, r1, #5",
+            "80005310 ldr r3, [r2, r3, lsl #2]!",
+            "80005314 and r1, r1, #0x1f",
+            "80005318 orr r1, r3, r5, lsl r1",
+            "8000531c str r1, [r2]",
+            "80005320 pop {r4, r5, r6}",
+            "80005324 bx lr"
+          ],
+          "note": "Registration window contains an inline jump table; not every word is an instruction."
+        },
+        "0x800071a0": {
+          "end_exclusive": "0x80007250",
+          "sha256": "951037bcc2ceba9e01d28a421cf09ae8bfaaaa6bc7eb4f379fb381505303929f",
+          "assembly": [
+            "800071a0 push {r0, r1, r2}",
+            "800071a4 ldrb r2, [sp]",
+            "800071a8 ldr r0, [pc, #0xa0]",
+            "800071ac add r3, r0, r2, lsl #4",
+            "800071b0 mov r2, #0",
+            "800071b4 str r2, [r3]",
+            "800071b8 ldrb r2, [sp]",
+            "800071bc add r3, r0, r2, lsl #4",
+            "800071c0 ldrb r2, [sp]",
+            "800071c4 ldr r2, [r0, r2, lsl #4]",
+            "800071c8 str r2, [r3]",
+            "800071cc ldrb r2, [sp]",
+            "800071d0 add r3, r0, r2, lsl #4",
+            "800071d4 ldrb r2, [sp]",
+            "800071d8 ldr r2, [r0, r2, lsl #4]",
+            "800071dc str r2, [r3]",
+            "800071e0 ldrb r2, [sp]",
+            "800071e4 ldrb r3, [sp]",
+            "800071e8 ldr r3, [r0, r3, lsl #4]",
+            "800071ec orr r3, r3, #4",
+            "800071f0 str r3, [r0, r2, lsl #4]",
+            "800071f4 ldrb r2, [sp]",
+            "800071f8 ldrb r3, [sp]",
+            "800071fc add r2, r0, r2, lsl #4",
+            "80007200 ldr r0, [r0, r3, lsl #4]",
+            "80007204 orr r0, r0, #2",
+            "80007208 str r0, [r2]",
+            "8000720c add r0, r1, r1, lsl #1",
+            "80007210 ldrb r1, [sp]",
+            "80007214 lsl r0, r0, #3",
+            "80007218 ldr r2, [pc, #0x34]",
+            "8000721c str r0, [r2, r1, lsl #4]",
+            "80007220 ldrb r0, [sp, #8]",
+            "80007224 cmp r0, #1",
+            "80007228 addne sp, sp, #0xc",
+            "8000722c bxne lr",
+            "80007230 ldr r1, [pc, #0x20]",
+            "80007234 ldr r0, [r1]",
+            "80007238 ldrb r2, [sp]",
+            "8000723c mov r3, #1",
+            "80007240 orr r0, r0, r3, lsl r2",
+            "80007244 str r0, [r1]",
+            "80007248 add sp, sp, #0xc",
+            "8000724c bx lr"
+          ],
+          "note": "Registration window contains an inline jump table; not every word is an instruction."
+        },
+        "0x8000725c": {
+          "end_exclusive": "0x80007284",
+          "sha256": "ec964ef086a2c8eca0c692750a9b164d3739bd0c5838100f04a3eb09da3fab8f",
+          "assembly": [
+            "8000725c str r0, [sp, #-4]!",
+            "80007260 ldrb r0, [sp]",
+            "80007264 ldr r1, [pc, #0x18]",
+            "80007268 ldrb r2, [sp]",
+            "8000726c add r0, r1, r0, lsl #4",
+            "80007270 ldr r1, [r1, r2, lsl #4]",
+            "80007274 orr r1, r1, #1",
+            "80007278 str r1, [r0]",
+            "8000727c add sp, sp, #4",
+            "80007280 bx lr"
+          ],
+          "note": "Registration window contains an inline jump table; not every word is an instruction."
+        },
+        "0x8000230c": {
+          "end_exclusive": "0x80002364",
+          "sha256": "6daa2273d17c42a2688ab431ec1874cda629f368e891c580ba2017f47bdac14c",
+          "assembly": [
+            "8000230c ldr r1, [pc, #0x8c]",
+            "80002310 ldr r1, [r1]",
+            "80002314 tst r1, #0x2000",
+            "80002318 bne #0x8000232c",
+            "8000231c ldr r2, [pc, #0x80]",
+            "80002320 mov lr, pc",
+            "80002324 bx r2",
+            "80002328 b #0x80002364",
+            "8000232c ldr r0, [pc, #0x74]",
+            "80002330 mov lr, pc",
+            "80002334 bx r0",
+            "80002338 cmp r0, #0",
+            "8000233c beq #0x8000234c",
+            "80002340 ldr r0, [pc, #0x54]",
+            "80002344 mov lr, pc",
+            "80002348 bx r0",
+            "8000234c mov r0, #0",
+            "80002350 ldr r1, [pc, #0x48]",
+            "80002354 str r0, [r1]",
+            "80002358 mov r0, #1",
+            "8000235c ldr r1, [pc, #0x48]",
+            "80002360 str r0, [r1]"
+          ],
+          "note": "Registration window contains an inline jump table; not every word is an instruction."
+        },
+        "0x800617ec": {
+          "end_exclusive": "0x80061818",
+          "sha256": "6500982a461260cf7b6f44bf41821f130ed4e974b2ae205b68fc7230a744a532",
+          "assembly": [
+            "800617ec mov r2, #1",
+            "800617f0 mov r1, #0x3e8",
+            "800617f4 mov r0, #0",
+            "800617f8 bl #0x800071a0",
+            "800617fc ldr r2, [pc, #0x30]",
+            "80061800 mov r3, #3",
+            "80061804 mov r1, #0xd",
+            "80061808 mov r0, #1",
+            "8006180c bl #0x80005274",
+            "80061810 mov r0, #0",
+            "80061814 bl #0x8000725c"
+          ],
+          "note": "Registration window contains an inline jump table; not every word is an instruction."
+        },
+        "0x8005bf54": {
+          "end_exclusive": "0x8005bf68",
+          "sha256": "8686fd99c9eb57de14f6335b61cbf40649301bcaab245be27da95a390c776b9f",
+          "assembly": [
+            "8005bf54 ldr r1, [pc, #0xc]",
+            "8005bf58 ldr r0, [r1]",
+            "8005bf5c orr r0, r0, #1",
+            "8005bf60 str r0, [r1]",
+            "8005bf64 bx lr"
+          ],
+          "note": "Registration window contains an inline jump table; not every word is an instruction."
+        }
+      },
+      "visited_instruction_count": 132
+    },
+    {
+      "version": "V3.8",
+      "input_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+      "failed": 0,
+      "registration_cases": 1652,
+      "registration_results_sha256": "ac1cb9765c4841079d87b0d800c9c6f47b4428224a4eb5830f8345133caa6c74",
+      "dispatch_cases": 164,
+      "dispatch_results_sha256": "56efba769e8e5700dc818ba88e0cb965eca08bbed7b566e447ec806d24f5334b",
+      "timer": {
+        "configure_cases": 360,
+        "start_cases": 24,
+        "status_update_cases": 4,
+        "results_sha256": "a7a7f0d7fee4437ad72c69f37b4fa6fbf3789a24abb99183282cf3960bdd1d3d"
+      },
+      "irq_bridge_cases": 18,
+      "irq_bridge_results_sha256": "340a9165b73f40d85faddfe237be42cc1d90ae07a52a8780fa9141c5a77e211b",
+      "startup": {
+        "cases": 1,
+        "entry": "0x800617ec",
+        "stop": "0x80061818",
+        "channel": 0,
+        "interval_ticks": 24000,
+        "control": 7,
+        "irq": 13,
+        "handler": "0x8005bf54",
+        "writes": [
+          [
+            29494288,
+            4,
+            0
+          ],
+          [
+            29494288,
+            4,
+            0
+          ],
+          [
+            29494288,
+            4,
+            0
+          ],
+          [
+            29494288,
+            4,
+            4
+          ],
+          [
+            29494288,
+            4,
+            6
+          ],
+          [
+            29494292,
+            4,
+            24000
+          ],
+          [
+            29494272,
+            4,
+            1
+          ],
+          [
+            2153429312,
+            1,
+            1
+          ],
+          [
+            29492228,
+            4,
+            2153429316
+          ],
+          [
+            2153429368,
+            4,
+            2147860308
+          ],
+          [
+            29492320,
+            4,
+            2909475380
+          ],
+          [
+            29492256,
+            4,
+            19096935
+          ],
+          [
+            29494288,
+            4,
+            7
+          ]
+        ],
+        "nominal_frequency_hz_if_24MHz_source": 1000,
+        "limit": "Stops before RTOS context restore; no timer progression/actual clock or task cadence simulated."
+      },
+      "approved_labels": [
+        {
+          "address": "0x80005274",
+          "name": "RE_INTCRegister",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "guard_bytes": 64,
+          "guard_sha256": "65a53fd4d588250b43c56ec3e03a117701edfca77875a12a094cf5b4d993d664"
+        },
+        {
+          "address": "0x80005260",
+          "name": "RE_INTCVectorDispatch",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "guard_bytes": 64,
+          "guard_sha256": "0a986e575685abaee8907a84522662c31fbc52d3c3853d2a776e241cb5bdcb57"
+        },
+        {
+          "address": "0x800071a0",
+          "name": "RE_TimerConfigure",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "guard_bytes": 64,
+          "guard_sha256": "cc85078643f398f32c6082b474a9854c32a3c4fc4894fa5a2dfab4ed4f25b0f2"
+        },
+        {
+          "address": "0x8000725c",
+          "name": "RE_TimerEnable",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "guard_bytes": 64,
+          "guard_sha256": "b4d894fd8d3b30bf7219e383d15d2996427e0977c4a2062598241303c4bd807f"
+        },
+        {
+          "address": "0x8005bf54",
+          "name": "RE_Timer0StatusUpdate",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "evidence/2026-11-07-intc-timer-path.json",
+          "guard_bytes": 64,
+          "guard_sha256": "9ba6347c0d6dfed3c2d2ebcc64121a8bc97415d74bad76a728d6b5ba6c99745b"
+        }
+      ],
+      "windows": {
+        "0x80005260": {
+          "end_exclusive": "0x80005270",
+          "sha256": "33970a7c3c425142c2257ccbda0ba141217339a397918009b297e01fd0e6a750",
+          "assembly": [
+            "80005260 ldr r0, [pc, #8]",
+            "80005264 ldr r0, [r0]",
+            "80005268 ldr r0, [r0]",
+            "8000526c bx r0"
+          ],
+          "note": "Registration window contains an inline jump table; not every word is an instruction."
+        },
+        "0x80005274": {
+          "end_exclusive": "0x80005328",
+          "sha256": "9a8235f43821df106455d773692277b627df745fe51cc322e504dbc8d6c59bd3",
+          "assembly": [
+            "80005274 push {r4, r5, r6}",
+            "80005278 ldr ip, [pc, #0xa8]",
+            "8000527c ldrb r6, [ip]",
+            "80005280 mov r5, #1",
+            "80005284 cmp r6, #0",
+            "80005288 bne #0x8000529c",
+            "8000528c strb r5, [ip]",
+            "80005290 ldr r6, [pc, #0x94]",
+            "80005294 add ip, ip, #4",
+            "80005298 str ip, [r6]",
+            "8000529c cmp r0, #8",
+            "800052a0 ldrlo pc, [pc, r0, lsl #2]",
+            "800052a4 b #0x800052e4",
+            "800052a8 andhi r5, r0, r8, asr #5",
+            "800052ac ldrdhi r5, r6, [r0], -r8",
+            "800052b0 ldrdhi r5, r6, [r0], -r8",
+            "800052b4 ldrdhi r5, r6, [r0], -r8",
+            "800052b8 ldrdhi r5, r6, [r0], -r8",
+            "800052bc ldrdhi r5, r6, [r0], -r8",
+            "800052c0 ldrdhi r5, r6, [r0], -r8",
+            "800052c4 ldrdhi r5, r6, [r0], -r8",
+            "800052c8 ldr ip, [pc, #0x60]",
+            "800052cc ldr r0, [ip, r1, lsl #2]",
+            "800052d0 str r2, [ip, r1, lsl #2]",
+            "800052d4 b #0x800052e4",
+            "800052d8 ldr ip, [pc, #0x54]",
+            "800052dc ldr r0, [ip, r1, lsl #2]",
+            "800052e0 str r2, [ip, r1, lsl #2]",
+            "800052e4 ldr r2, [pc, #0x4c]",
+            "800052e8 lsr ip, r1, #4",
+            "800052ec ldr r4, [r2, ip, lsl #2]!",
+            "800052f0 lsl ip, r1, #0x1c",
+            "800052f4 lsr ip, ip, #0x1b",
+            "800052f8 mov r6, #3",
+            "800052fc bic r4, r4, r6, lsl ip",
+            "80005300 orr r3, r4, r3, lsl ip",
+            "80005304 str r3, [r2]",
+            "80005308 ldr r2, [pc, #0x2c]",
+            "8000530c lsr r3, r1, #5",
+            "80005310 ldr r3, [r2, r3, lsl #2]!",
+            "80005314 and r1, r1, #0x1f",
+            "80005318 orr r1, r3, r5, lsl r1",
+            "8000531c str r1, [r2]",
+            "80005320 pop {r4, r5, r6}",
+            "80005324 bx lr"
+          ],
+          "note": "Registration window contains an inline jump table; not every word is an instruction."
+        },
+        "0x800071a0": {
+          "end_exclusive": "0x80007250",
+          "sha256": "951037bcc2ceba9e01d28a421cf09ae8bfaaaa6bc7eb4f379fb381505303929f",
+          "assembly": [
+            "800071a0 push {r0, r1, r2}",
+            "800071a4 ldrb r2, [sp]",
+            "800071a8 ldr r0, [pc, #0xa0]",
+            "800071ac add r3, r0, r2, lsl #4",
+            "800071b0 mov r2, #0",
+            "800071b4 str r2, [r3]",
+            "800071b8 ldrb r2, [sp]",
+            "800071bc add r3, r0, r2, lsl #4",
+            "800071c0 ldrb r2, [sp]",
+            "800071c4 ldr r2, [r0, r2, lsl #4]",
+            "800071c8 str r2, [r3]",
+            "800071cc ldrb r2, [sp]",
+            "800071d0 add r3, r0, r2, lsl #4",
+            "800071d4 ldrb r2, [sp]",
+            "800071d8 ldr r2, [r0, r2, lsl #4]",
+            "800071dc str r2, [r3]",
+            "800071e0 ldrb r2, [sp]",
+            "800071e4 ldrb r3, [sp]",
+            "800071e8 ldr r3, [r0, r3, lsl #4]",
+            "800071ec orr r3, r3, #4",
+            "800071f0 str r3, [r0, r2, lsl #4]",
+            "800071f4 ldrb r2, [sp]",
+            "800071f8 ldrb r3, [sp]",
+            "800071fc add r2, r0, r2, lsl #4",
+            "80007200 ldr r0, [r0, r3, lsl #4]",
+            "80007204 orr r0, r0, #2",
+            "80007208 str r0, [r2]",
+            "8000720c add r0, r1, r1, lsl #1",
+            "80007210 ldrb r1, [sp]",
+            "80007214 lsl r0, r0, #3",
+            "80007218 ldr r2, [pc, #0x34]",
+            "8000721c str r0, [r2, r1, lsl #4]",
+            "80007220 ldrb r0, [sp, #8]",
+            "80007224 cmp r0, #1",
+            "80007228 addne sp, sp, #0xc",
+            "8000722c bxne lr",
+            "80007230 ldr r1, [pc, #0x20]",
+            "80007234 ldr r0, [r1]",
+            "80007238 ldrb r2, [sp]",
+            "8000723c mov r3, #1",
+            "80007240 orr r0, r0, r3, lsl r2",
+            "80007244 str r0, [r1]",
+            "80007248 add sp, sp, #0xc",
+            "8000724c bx lr"
+          ],
+          "note": "Registration window contains an inline jump table; not every word is an instruction."
+        },
+        "0x8000725c": {
+          "end_exclusive": "0x80007284",
+          "sha256": "ec964ef086a2c8eca0c692750a9b164d3739bd0c5838100f04a3eb09da3fab8f",
+          "assembly": [
+            "8000725c str r0, [sp, #-4]!",
+            "80007260 ldrb r0, [sp]",
+            "80007264 ldr r1, [pc, #0x18]",
+            "80007268 ldrb r2, [sp]",
+            "8000726c add r0, r1, r0, lsl #4",
+            "80007270 ldr r1, [r1, r2, lsl #4]",
+            "80007274 orr r1, r1, #1",
+            "80007278 str r1, [r0]",
+            "8000727c add sp, sp, #4",
+            "80007280 bx lr"
+          ],
+          "note": "Registration window contains an inline jump table; not every word is an instruction."
+        },
+        "0x8000230c": {
+          "end_exclusive": "0x80002364",
+          "sha256": "6daa2273d17c42a2688ab431ec1874cda629f368e891c580ba2017f47bdac14c",
+          "assembly": [
+            "8000230c ldr r1, [pc, #0x8c]",
+            "80002310 ldr r1, [r1]",
+            "80002314 tst r1, #0x2000",
+            "80002318 bne #0x8000232c",
+            "8000231c ldr r2, [pc, #0x80]",
+            "80002320 mov lr, pc",
+            "80002324 bx r2",
+            "80002328 b #0x80002364",
+            "8000232c ldr r0, [pc, #0x74]",
+            "80002330 mov lr, pc",
+            "80002334 bx r0",
+            "80002338 cmp r0, #0",
+            "8000233c beq #0x8000234c",
+            "80002340 ldr r0, [pc, #0x54]",
+            "80002344 mov lr, pc",
+            "80002348 bx r0",
+            "8000234c mov r0, #0",
+            "80002350 ldr r1, [pc, #0x48]",
+            "80002354 str r0, [r1]",
+            "80002358 mov r0, #1",
+            "8000235c ldr r1, [pc, #0x48]",
+            "80002360 str r0, [r1]"
+          ],
+          "note": "Registration window contains an inline jump table; not every word is an instruction."
+        },
+        "0x800617ec": {
+          "end_exclusive": "0x80061818",
+          "sha256": "6500982a461260cf7b6f44bf41821f130ed4e974b2ae205b68fc7230a744a532",
+          "assembly": [
+            "800617ec mov r2, #1",
+            "800617f0 mov r1, #0x3e8",
+            "800617f4 mov r0, #0",
+            "800617f8 bl #0x800071a0",
+            "800617fc ldr r2, [pc, #0x30]",
+            "80061800 mov r3, #3",
+            "80061804 mov r1, #0xd",
+            "80061808 mov r0, #1",
+            "8006180c bl #0x80005274",
+            "80061810 mov r0, #0",
+            "80061814 bl #0x8000725c"
+          ],
+          "note": "Registration window contains an inline jump table; not every word is an instruction."
+        },
+        "0x8005bf54": {
+          "end_exclusive": "0x8005bf68",
+          "sha256": "8686fd99c9eb57de14f6335b61cbf40649301bcaab245be27da95a390c776b9f",
+          "assembly": [
+            "8005bf54 ldr r1, [pc, #0xc]",
+            "8005bf58 ldr r0, [r1]",
+            "8005bf5c orr r0, r0, #1",
+            "8005bf60 str r0, [r1]",
+            "8005bf64 bx lr"
+          ],
+          "note": "Registration window contains an inline jump table; not every word is an instruction."
+        }
+      },
+      "visited_instruction_count": 132
+    }
+  ],
+  "reference_sources": [
+    "https://github.com/nminaylov/F1C100s_projects/tree/c11422e99c9f33e8419a5ac4dcab6684c8d38296/f1c100s/drivers",
+    "https://github.com/mikljohansson/fnirsi-1013d-mcp/blob/fa8377b2b1d148f8596a8befe638df79062c2bd8/firmware/scope/interrupt.c",
+    "https://github.com/minilogic/f1c_nonos/blob/73933dbb56d2cbdeb1f260a484bb7c525866616f/src/irq/main.c"
+  ],
+  "limits": [
+    "Inert MMIO RAM shadows, not live hardware or timer/INTC behavior models.",
+    "Tick/scheduler bodies are API stubs in IRQ bridge experiment; full exception context save/restore is excluded.",
+    "Valid IRQ0..40 and timer channels0..2 tested; unsafe out-of-range indices are not executed.",
+    "Mode0 alternate-table semantics remain unnamed; modes>=8 still update priority/enable without replacing a handler.",
+    "The nominal1kHz startup configuration does not prove UART sampling or audible latency."
+  ]
+}

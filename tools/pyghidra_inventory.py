@@ -112,7 +112,7 @@ def decompile(program: Any, function: Any, monitor: Any) -> str | None:
         interface.dispose()
 
 
-def inventory(version: str, raw_path: Path, out_dir: Path, ghidra_dir: Path, full_analysis: bool, reference_report: Path | None = None) -> dict[str, Any]:
+def inventory(version: str, raw_path: Path, out_dir: Path, ghidra_dir: Path, full_analysis: bool, reference_report: Path | None = None, labels_only: bool = False) -> dict[str, Any]:
     import pyghidra
 
     raw_bytes = raw_path.read_bytes()
@@ -143,7 +143,7 @@ def inventory(version: str, raw_path: Path, out_dir: Path, ghidra_dir: Path, ful
                 flat.analyzeAll(program)
 
             functions = []
-            for address, proposed_name, confidence, role in SEEDS:
+            for address, proposed_name, confidence, role in (() if labels_only else SEEDS):
                 file_offset = address - LINK_BASE
                 fixed_window = raw_bytes[file_offset:file_offset + 64]
                 fixed_window_512 = raw_bytes[file_offset:file_offset + 512]
@@ -230,7 +230,7 @@ def inventory(version: str, raw_path: Path, out_dir: Path, ghidra_dir: Path, ful
             "loader": "BinaryLoader",
             "language": LANGUAGE,
             "link_base": f"0x{LINK_BASE:08x}",
-            "analysis_mode": "full" if full_analysis else "bounded-seeded",
+            "analysis_mode": "full" if full_analysis else ("proof-labels-only" if labels_only else "bounded-seeded"),
             "note": "Seed names are labels with explicit confidence; they are not recovered vendor symbols.",
         },
         "functions": functions,
@@ -246,7 +246,10 @@ def main() -> None:
     parser.add_argument("--out-dir", type=Path, required=True)
     parser.add_argument("--full-analysis", action="store_true")
     parser.add_argument("--reference-report", type=Path, help="Proof-gated reference-analysis.json; preserves existing analyst names")
+    parser.add_argument("--labels-only", action="store_true", help="Export proof-labelled entries without repeating the seed inventory")
     args = parser.parse_args()
+    if args.labels_only and not args.reference_report:
+        parser.error("--labels-only requires --reference-report")
 
     args.out_dir.mkdir(parents=True, exist_ok=True)
     failures: list[dict[str, str]] = []
@@ -254,7 +257,7 @@ def main() -> None:
         if not raw_path.is_file():
             failures.append({"version": version, "path": str(raw_path), "status": "missing-input"})
             continue
-        report = inventory(version, raw_path, args.out_dir, args.ghidra, args.full_analysis, args.reference_report)
+        report = inventory(version, raw_path, args.out_dir, args.ghidra, args.full_analysis, args.reference_report, args.labels_only)
         destination = args.out_dir / f"{version.replace('.', '_')}_inventory.json"
         destination.write_text(json.dumps(report, indent=2), encoding="utf-8")
         print(f"wrote {destination}")

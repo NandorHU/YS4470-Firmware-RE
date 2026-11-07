@@ -3,7 +3,11 @@
 **Last verified update:** 2026-11-07  
 **Development branch:** `re/2026-11-04-pyghidra-fel`
 
-## This session: verified results
+## Current continuation (2026-11-07)
+
+Reference-guided INTC/timer validation and Fast CONT C reconstruction are complete in their tested scopes. Trace fresh-result admission from ResultDispatch call0x80003970 into helper0x80007c88. Determine whether repeated calls can reuse one parsed UART result. Separately bound tick/scheduler0x80061fa4/0x800612f8 and the consumer/decrement of FSM field0x805ac694+0x30 before assigning timing units.
+
+## Initial baseline (historical)
 
 - A bounded PyGhidra inventory pipeline now runs with Ghidra 12.1.4, PyGhidra 3.1.0, Jpype1 1.5.2, language `ARM:LE:32:v5t`, and link base `0x7fffffe0`. It exports seeded-function assembly, decompiler output, direct calls, fixed byte-window hashes, and evidence/confidence fields. It intentionally does not represent a full automatic ARM/Thumb analysis.
 - The V3.8-to-Beta3 raw equal-layout comparison found **65 changed ranges totaling 931 bytes**. Therefore Beta3 must not be described as a two-patch firmware.
@@ -319,3 +323,22 @@ Reference acquisition/licensing: `references/f1c100s/README.md` and `sources.loc
 4. Keep raw firmware/private backups unchanged and hardware cadence/acoustic latency unresolved.
 
 Evidence: `evidence/2026-11-07-f1c100s-reference/reference-analysis.json`; method: `tools/F1C100S_REFERENCE_ANALYSIS.md`.
+
+
+## 2026-11-07: reference-guided INTC/timer proof and Fast CONT C reconstruction
+
+Evidence: `evidence/2026-11-07-intc-timer-path.json`, `evidence/2026-11-07-intc-timer-ghidra.json`, `evidence/2026-11-07-fast-cont-filter.json`, and `evidence/2026-11-07-fast-cont-filter-ghidra.json`. Methods: `tools/INTC_TIMER_PATH.md`, `tools/FAST_CONT_FILTER.md`.
+
+- Used the pinned reference INTC/timer definitions to reconstruct five original YS entries; the YS architecture differs from the reference examples, so no driver implementation was copied.
+- Across V3.6/V3.8:3304 registration,328 ARM/Thumb dispatch,720 timer configure,48 enable,8 status update,36 IRQ-bridge and2 startup cases pass (4446 total). Startup programs timer0 interval24000/control7 and IRQ13. Its registered handler0x8005bf54 differs from the bridge's direct tick call0x80061fa4.
+- Continued existing Fast CONT work at0x80007c88. Reconstructed ring/stability/median retention/reset and all11 selector records. Added independent freestanding C source, compiled it for ARM926 and executed that object separately from the original binary.
+- Both originals pass1979 linked state steps each (350 persistent scenarios each), agreeing with Python and compiled C. Original helper continues through the real gate/arithmetic/PIO/PWM code using inert shadows. Results fingerprint: e914aefb9e3a20eecb9debdf2dc3865074b0e8c5bafcf4f79e1ec9fbd0da6997.
+- Proved old-tone retention during instability and reset only on>1000 in this path. Values and call counts do not establish physical units, fresh replies or milliseconds.
+- Real PyGhidra exports10 INTC/timer functions plus4 filter/gate functions across originals. Added --labels-only to skip the13-seed repeat; existing names/comments remain preserved. Eight label-pipeline tests pass.
+- No physical device operation occurred. Source/header/object hashes, original hashes, exact write traces, disassembly and decompilation are saved. Firmware originals and private backups remain intact.
+
+### Exact next continuation point
+
+Trace fresh-result admission from ResultDispatch call0x80003970 into helper0x80007c88. Determine whether repeated calls can reuse one parsed UART result. Separately bound tick/scheduler0x80061fa4/0x800612f8 and the consumer/decrement of FSM field0x805ac694+0x30 before assigning timing units.
+
+Relevant entry/context: ResultDispatch special path0x80003910 calls float-to-int helper0x8006300c at0x8000396c then history helper0x80007c88 at0x80003970. Determine invocation/admission freshness before interpreting the three-call filter together with the earlier parser's two-discard lifecycle.
