@@ -8,3 +8,7 @@ __pycache__/
 *.zip
 run-*/
 *-console.txt
+
+# Explicit owner-approved original analysis inputs; other binary dumps stay ignored.
+!original-firmware/V3.6/f1c100s.bin
+!original-firmware/V3.8/f1c100s.bin

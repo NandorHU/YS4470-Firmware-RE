@@ -1,0 +1,241 @@
+{
+  "schema": "ys4470.task-registry.v1",
+  "revision": 1,
+  "updated": "2026-11-07",
+  "repository": "NandorHU/YS4470-Firmware-RE",
+  "integration_branch": "re/2026-11-04-pyghidra-fel",
+  "research_baseline_commit": "7e173ffdaa7dffd67a2d998f3fa8b28036e99485",
+  "authority": "https://github.com/NandorHU/YS4470-Firmware-RE/blob/re/2026-11-04-pyghidra-fel/collaboration/TASK_REGISTRY.json",
+  "coordinator": "current-codex-coordinator",
+  "claim_policy": "Requests in GitHub issues are pending until the coordinator publishes one owner here; a fork or local copy cannot grant ownership.",
+  "statuses": [
+    "available",
+    "reserved",
+    "in_progress",
+    "review",
+    "completed",
+    "blocked"
+  ],
+  "shared_files_coordinator_only": [
+    "collaboration/TASK_REGISTRY.json",
+    "AGENTS.md",
+    "REVERSE_ENGINEERING_STATUS.md",
+    "RE_PROGRESS.md",
+    "FUNCTION_DATABASE.md",
+    "FUNCTION_DATABASE.json",
+    "MEMORY_MAP.md",
+    "HARDWARE_MAP.md",
+    "MEASUREMENT_ALGORITHMS.md",
+    "OPEN_QUESTIONS.md",
+    "ROADMAP.md"
+  ],
+  "no_external_main_writes": true,
+  "tasks": [
+    {
+      "id": "COORD-FSM-TIMEOUT",
+      "title": "Prove cached FSM timeout/tick contract",
+      "status": "reserved",
+      "owner": "current-codex-coordinator",
+      "claim_issue": null,
+      "branch": "re/2026-11-04-pyghidra-fel",
+      "base_commit": "7e173ffdaa7dffd67a2d998f3fa8b28036e99485",
+      "inputs": [
+        "V3.6",
+        "V3.8"
+      ],
+      "scope": "Next technical task reserved to the coordinator; no new timeout execution is claimed by this onboarding session.",
+      "allowed_paths": [
+        "contributions/COORD-FSM-TIMEOUT/**"
+      ],
+      "anchors": [
+        "0x800044a8",
+        "0x800046a8",
+        "0x800046c4",
+        "0x80004720",
+        "0x80061f84"
+      ],
+      "acceptance": [
+        "Execute the real getter and verified critical helpers.",
+        "Test threshold boundaries and 32-bit tick wrap before assigning units or interpreting Beta3's 30-to-40 change."
+      ]
+    },
+    {
+      "id": "EXT-DATA9",
+      "title": "Classify the nine changed V3.6/V3.8 data cells",
+      "status": "available",
+      "owner": null,
+      "claim_issue": null,
+      "branch": null,
+      "base_commit": null,
+      "inputs": [
+        "V3.6",
+        "V3.8"
+      ],
+      "scope": "Trace consumers of the changed block; keep code identity and changed data separate.",
+      "allowed_paths": [
+        "contributions/EXT-DATA9/**"
+      ],
+      "anchors": [
+        "file offsets 0x63ac8..0x63ae8",
+        "linked 0x80063aa8..0x80063ac8",
+        "unchanged PWM table 0x80063acc"
+      ],
+      "acceptance": [
+        "Reproduce the existing raw delta, then add new consumer evidence rather than another diff report.",
+        "Resolve each claimed reference and distinguish proof from a candidate.",
+        "Do not reclassify the block as PWM prescalers: the verified pointer reaches the next, unchanged table."
+      ]
+    },
+    {
+      "id": "EXT-QUEUE-WAIT",
+      "title": "Bound the full-queue, nonzero-wait send path",
+      "status": "available",
+      "owner": null,
+      "claim_issue": null,
+      "branch": null,
+      "base_commit": null,
+      "inputs": [
+        "V3.6",
+        "V3.8"
+      ],
+      "scope": "Start with full queue, positive wait and no waiting consumers; identify the first tick/scheduler boundary. Do not attempt a whole RTOS.",
+      "allowed_paths": [
+        "contributions/EXT-QUEUE-WAIT/**"
+      ],
+      "anchors": [
+        "0x80061acc",
+        "0x80061838",
+        "0x805aae90"
+      ],
+      "acceptance": [
+        "Preserve the established available-send/full-zero-wait contract.",
+        "Record every remaining scheduler/tick model and exact stop boundary.",
+        "Do not edit or analyze the reserved FSM timeout branch."
+      ]
+    },
+    {
+      "id": "EXT-RECORD-TEXT",
+      "title": "Bound the modeled record-text leaf",
+      "status": "available",
+      "owner": null,
+      "claim_issue": null,
+      "branch": null,
+      "base_commit": null,
+      "inputs": [
+        "V3.6",
+        "V3.8"
+      ],
+      "scope": "Verify entry/bounds and the record-text helper currently modeled by the refresh runner; focus on bounded reads/writes.",
+      "allowed_paths": [
+        "contributions/EXT-RECORD-TEXT/**"
+      ],
+      "anchors": [
+        "candidate entry 0x80003c5c",
+        "caller 0x8000326c"
+      ],
+      "acceptance": [
+        "Provide guarded original-byte scope, input/output and write-boundary evidence.",
+        "Keep remaining widget/log calls explicit; do not claim complete GUI correctness.",
+        "Do not redo the completed renderer state matrix."
+      ]
+    },
+    {
+      "id": "EXT-UART-REFERENCE",
+      "title": "Build one reference-backed UART identification lead",
+      "status": "available",
+      "owner": null,
+      "claim_issue": null,
+      "branch": null,
+      "base_commit": null,
+      "inputs": [
+        "public pinned references; original images for target validation"
+      ],
+      "scope": "Select one pinned UART routine/register sequence and resolve candidate target references. Keep SoC UART separate from any unproven external measurement-ADC identity.",
+      "allowed_paths": [
+        "contributions/EXT-UART-REFERENCE/**"
+      ],
+      "anchors": [
+        "references/f1c100s/sources.lock.json",
+        "references/f1c100s/register-map.json",
+        "evidence/2026-11-07-f1c100s-reference/reference-analysis.json"
+      ],
+      "acceptance": [
+        "Cite the pinned upstream source and its license.",
+        "Resolve literals/relocations and report negative matches as well as any candidate.",
+        "Do not authorize a Ghidra rename from similarity alone; no physical device access."
+      ]
+    },
+    {
+      "id": "EXT-LITERAL-AUDIT",
+      "title": "Audit conservative literal tracking with new negative controls",
+      "status": "available",
+      "owner": null,
+      "claim_issue": null,
+      "branch": null,
+      "base_commit": null,
+      "inputs": [
+        "public source and synthetic ARM fixtures; no firmware required"
+      ],
+      "scope": "Examine shifted/register-offset/writeback/conditional cases not already covered by the nine provenance tests. Change code only after a concrete independently specified failing case.",
+      "allowed_paths": [
+        "contributions/EXT-LITERAL-AUDIT/**"
+      ],
+      "anchors": [
+        "tools/analyze_f1c100s_references.py: follow_literal",
+        "tools/test_reference_pipeline.py"
+      ],
+      "acceptance": [
+        "ADD/SUB immediate and MOV propagation already exist; do not implement a purported missing ADD-zero feature.",
+        "Supply new positive/negative fixtures and the reason each expected result is sound.",
+        "Place a proposed patch in the task directory; do not edit shared tooling until integrated."
+      ]
+    },
+    {
+      "id": "EXT-EVIDENCE-AUDIT",
+      "title": "Audit evidence and address consistency",
+      "status": "available",
+      "owner": null,
+      "claim_issue": null,
+      "branch": null,
+      "base_commit": null,
+      "inputs": [
+        "public documents and evidence; no firmware required"
+      ],
+      "scope": "Cross-check recent function entries, image hashes, proof scope and prose against the machine database and committed evidence.",
+      "allowed_paths": [
+        "contributions/EXT-EVIDENCE-AUDIT/**"
+      ],
+      "anchors": [
+        "FUNCTION_DATABASE.json",
+        "evidence/2026-11-07-refresh-side-effects.json",
+        "evidence/2026-11-07-result-freshness.json"
+      ],
+      "acceptance": [
+        "Report exact artifact/JSON field or line references and proposed corrections.",
+        "Account for corrected entries 0x800037c0/0x8005d048 and base 0x7fffffe0.",
+        "Do not rerun completed disassembly or add an invented completion percentage."
+      ]
+    },
+    {
+      "id": "HW-UART-PASSIVE",
+      "title": "Passive UART capture and board connection validation",
+      "status": "blocked",
+      "owner": null,
+      "claim_issue": null,
+      "branch": null,
+      "base_commit": null,
+      "inputs": [
+        "owner-assisted physical access and verified electrical/pin mapping"
+      ],
+      "scope": "Future hardware validation only. No capture, connection or current USB/FEL availability is claimed by this session.",
+      "allowed_paths": [
+        "contributions/HW-UART-PASSIVE/**"
+      ],
+      "anchors": [],
+      "acceptance": [
+        "Obtain verified pin/voltage information and owner-assisted access before any connection.",
+        "Keep observed capture distinct from FEL/static/emulated state."
+      ]
+    }
+  ]
+}

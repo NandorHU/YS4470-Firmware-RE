@@ -1,3 +1,11 @@
+# Current continuation entry point
+
+Use [collaboration/CURRENT_HANDOFF.md](collaboration/CURRENT_HANDOFF.md),
+[CONTRIBUTING.md](CONTRIBUTING.md) and the live
+[task registry](collaboration/TASK_REGISTRY.json) on `re/2026-11-04-pyghidra-fel`.
+The original analysis inputs are documented in [original-firmware/README.md](original-firmware/README.md).
+The notes below are historical 1.0 release notes, not the current research plan.
+
 # YS-4470 1.0 - continuation notes
 
 Repository: https://github.com/NandorHU/YS4470-Firmware-RE

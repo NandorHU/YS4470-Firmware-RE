@@ -1,0 +1,63 @@
+{
+  "schema": "ys4470.collaboration-publication.v1",
+  "date": "2026-11-07",
+  "source_commit": "7e173ffdaa7dffd67a2d998f3fa8b28036e99485",
+  "integration_branch": "re/2026-11-04-pyghidra-fel",
+  "scope": "Contribution coordination and owner-approved original input publication; no new function proof",
+  "owner_requested_original_publication": true,
+  "originals": [
+    {
+      "version": "V3.6",
+      "path": "original-firmware/V3.6/f1c100s.bin",
+      "package": "Project_February_V3.6_V02.26.6",
+      "size_bytes": 5943296,
+      "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+    },
+    {
+      "version": "V3.8",
+      "path": "original-firmware/V3.8/f1c100s.bin",
+      "package": "Project_March_V3.8_V02.26.6",
+      "size_bytes": 5943296,
+      "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+    }
+  ],
+  "registry": {
+    "tasks": 8,
+    "available": 6,
+    "reserved": 1,
+    "blocked": 1,
+    "external_agents_assigned": 0
+  },
+  "validation": {
+    "relative_links_checked": 61,
+    "missing_links": [],
+    "existing_provenance_tests": {
+      "run": 9,
+      "failed": 0
+    },
+    "original_byte_reproduction": {
+      "total_checks": 2396,
+      "versions": [
+        {
+          "version": "V3.6",
+          "checks": 1198,
+          "failed": 0,
+          "input_sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+          "results_sha256": "52391249227ef0f8d7154815a14b0bb6c174ce93b03631691ec5f1fe0a123156",
+          "matches_published_evidence": true
+        },
+        {
+          "version": "V3.8",
+          "checks": 1198,
+          "failed": 0,
+          "input_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+          "results_sha256": "52391249227ef0f8d7154815a14b0bb6c174ce93b03631691ec5f1fe0a123156",
+          "matches_published_evidence": true
+        }
+      ]
+    },
+    "environment": "Isolated temporary checkout using the already installed pinned analysis dependencies; no reinstall claimed",
+    "device_access": false,
+    "full_personal_backup_uploaded": false
+  }
+}
