@@ -160,3 +160,16 @@ These are regions of MeasurementFSM, not newly discovered standalone functions. 
 Case-2 secondary input is normalized to 0x19 unless it lies in 0x13..0x18. Both count-initializing command lists end in 0x1d. The persistent producer-to-parser experiment preserves the old result for two admitted responses and publishes on the third; it stops before TransactionBuilder and does not execute queue scheduling. See [evidence](evidence/2026-11-06-state5-discard-lifecycle.json) and `tools/STATE5_DISCARD_LIFECYCLE.md`.
 
 The raw task stores at 0x80005c60/0x80005c80 remain static code observations; the verified task guard does not directly reach them for input cases 2/5. Physical mode names remain open.
+
+## 2026-11-07: UI callback and event-record construction
+
+| Function/region | V3.6/V3.8 address | Proven narrow role |
+|---|---|---|
+| MeasurementEventRecordBuilder | 0x80006778 | Returns early for null control +4 handle; otherwise stores r0 as record word +0 and low bytes of r1/r2 at +4/+5 before calling 0x80061acc |
+| DiodeBuzzerUIEventHandler | 0x8000cfd0 | GUI callback bound to object +0x2b8; manipulates Diode/Buzzer label objects +0x2c0/+0x2c4 and constructs the related measurement events |
+| MeasurementModeSelect_candidate | 0x80044e54 | Selection API with preconditions; tested switch slice writes indices 0..4 to mode byte, and its Diode/Buzzer event tails mirror the UI callback |
+| Settings-dependent event branch | 0x8000d084 / 0x800450b4 | Word 0x805ac788 == 1 selects event (5,0x22,0x13) on the Buzzer side; otherwise event (2,0x0e,0x19) |
+
+The event builder passes queue-boundary r2=0 for exact event word 3 and r2=10 for other tested words, with r3=0. No time unit is assigned to that argument. Its stack frame is 0x44 bytes; only the first six record bytes are initialized by the helper. GUI framework and queue implementations were not executed.
+
+Evidence: [event-source experiment](evidence/2026-11-06-measurement-event-sources.json). The 31 aligned direct ARM BL sites are candidates, not an exhaustive Thumb/indirect call graph.

@@ -94,3 +94,7 @@ Unicorn 2.1.4 is installed with explicit ARM926 CPU selection; Capstone distribu
 ## 2026-11-06: response-count semantics, software evidence
 
 The control byte initialized to 2 is decremented on admitted state-5 responses rather than by a demonstrated hardware timer. The two suppressed samples cannot be converted into milliseconds until cadence is proven. The apparent extra +1 writer in UART bring-up is a separate RAM buffer at 0x805b4154; no new GPIO, MMIO ownership, physical measurement mode, or UART wire observation is inferred. This session used host-side ARM926 execution only.
+
+## 2026-11-07: GUI naming versus hardware observation
+
+The event sources are now associated with the firmware's literal Diode/Buzzer labels through label assignment, callback registration, and handler code. This does not identify new pins, ADC frontend behavior, or actual buzzer timing. Event-builder queue argument r2=10 remains an untyped software argument, not 10 milliseconds. The verification ran on host-side ARM926 emulation only.

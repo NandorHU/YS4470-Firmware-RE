@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.function-database.v1",
-  "generated_utc_date": "2026-11-06",
+  "generated_utc_date": "2026-11-07",
   "architecture": {
     "cpu": "ARM926EJ-S",
     "instruction_set": "ARM v5T / Thumb considered",
@@ -715,7 +715,8 @@
       ],
       "evidence": [
         "evidence/2026-11-06-state5-arm926-emulation.json",
-        "evidence/2026-11-06-state5-discard-lifecycle.json"
+        "evidence/2026-11-06-state5-discard-lifecycle.json",
+        "evidence/2026-11-06-measurement-event-sources.json"
       ],
       "limits": [
         "Counter producers and measurement-mode meaning are unresolved.",
@@ -744,7 +745,88 @@
         ],
         "verified_effect": "first two state-5 entries retain published value/selector; third may publish",
         "limitation": "Response count is proven; physical mode and time interval are unknown."
+      },
+      "upstream_ui_link": {
+        "record_builder": "0x80006778",
+        "ui_callback": "0x8000cfd0",
+        "diode_event": [
+          2,
+          14,
+          25
+        ],
+        "buzzer_event_if_setting_equals_1": [
+          5,
+          34,
+          19
+        ],
+        "settings_word": "0x805ac788",
+        "setting_name": "unresolved",
+        "evidence": "evidence/2026-11-06-measurement-event-sources.json"
       }
+    },
+    {
+      "id": "measurement_event_record_builder",
+      "addresses": {
+        "V3_6": "0x80006778",
+        "V3_8": "0x80006778"
+      },
+      "confidence": "confirmed_bounded_emulation",
+      "role": "Builds measurement event record and reaches queue-call boundary",
+      "relationships": [
+        "control object +4 is the handle; zero returns without submitting",
+        "r0 -> record u32 +0; low8(r1) -> byte +4; low8(r2) -> byte +5",
+        "calls 0x80061acc with r2=0 for exact event 3, else 10, and r3=0"
+      ],
+      "evidence": [
+        "evidence/2026-11-06-measurement-event-sources.json"
+      ],
+      "limits": [
+        "Queue call is not executed and its r2 unit is unknown.",
+        "Bytes +6..+0x43 retain the synthetic stack pattern in the tests."
+      ]
+    },
+    {
+      "id": "diode_buzzer_ui_event_handler",
+      "addresses": {
+        "V3_6": "0x8000cfd0",
+        "V3_8": "0x8000cfd0"
+      },
+      "confidence": "confirmed_static_ui_association_and_bounded_execution",
+      "role": "Registered GUI callback associated with literal Diode/Buzzer labels",
+      "relationships": [
+        "registration object +0x2b8 at 0x80051894..0x800518a4, event argument 1",
+        "label objects +0x2c0 Diode and +0x2c4 Buzzer are manipulated by this callback",
+        "Diode tail supplies event (2,0x0e,0x19)",
+        "Buzzer branch supplies event (5,0x22,0x13) iff word 0x805ac788 == 1; otherwise (2,0x0e,0x19)"
+      ],
+      "evidence": [
+        "evidence/2026-11-06-measurement-event-sources.json"
+      ],
+      "limits": [
+        "Complete GUI callback and framework are not emulated.",
+        "UI association does not establish analog measurement semantics or audible behavior."
+      ]
+    },
+    {
+      "id": "measurement_mode_select_candidate",
+      "addresses": {
+        "V3_6": "0x80044e54",
+        "V3_8": "0x80044e54"
+      },
+      "confidence": "confirmed_bounded_region_execution",
+      "role": "Mode-selection API candidate; switch and event tails tested after preconditions",
+      "relationships": [
+        "entry 0x80044ea8 uses r6 as selector; switch accepts 0..4",
+        "valid selector updates byte 0x805abefc+0",
+        "Diode and Buzzer event tails agree with GUI callback"
+      ],
+      "evidence": [
+        "evidence/2026-11-06-measurement-event-sources.json"
+      ],
+      "limits": [
+        "API preconditions and complete UI effects are not executed.",
+        "Function label is analyst-proposed."
+      ]
     }
   ],
   "session_updates": [
@@ -875,6 +957,22 @@
       "failed": 0,
       "original_parser_regression_cases": 5952,
       "original_parser_regression_fingerprints_unchanged": true
+    },
+    "measurement_event_sources_verified_2026_11_07": {
+      "evidence": "evidence/2026-11-06-measurement-event-sources.json",
+      "original_versions": [
+        "V3.6",
+        "V3.8"
+      ],
+      "cpu_model": "UC_CPU_ARM_926",
+      "helper_cases": 900,
+      "gui_branch_cases": 64,
+      "pipeline_parser_entries": 96,
+      "gui_binding_slices": 12,
+      "mode_switch_cases": 18,
+      "failed": 0,
+      "aligned_direct_arm_bl_candidates_per_version": 31,
+      "results_sha256": "79d0dc306702ed86a72cd27754368db7c269f908daa24c06a88bfe32fc6f5bbc"
     }
   }
 }

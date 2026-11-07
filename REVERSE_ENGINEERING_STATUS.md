@@ -138,3 +138,11 @@ The producer and parser were executed with persistent RAM in both originals: 1,1
 Task guard `0x80005bb8` immediately admits only cases 3/4. Cases 2/5 take a deferred-copy branch and the later static path can call the input dispatcher at `0x80005cf4`. Thus duplicate case-2/5 store blocks in the task are not proof of normal immediate execution. A false candidate at `0x80005e60` was rejected because r4 is reloaded with UART startup buffer `0x805b4154` first.
 
 Evidence: [producer/lifecycle experiment](evidence/2026-11-06-state5-discard-lifecycle.json). Original 5,952-case parser regression fingerprints remained unchanged; no hardware I/O occurred.
+
+## 2026-11-07: GUI event source linked to the discard path
+
+Completed and re-verified the carry-over event-source experiment from 2026-11-06. Original GUI registration at 0x80051894..0x800518a4 binds callback 0x8000cfd0 to GUI object +0x2b8 with event argument 1. The same GUI setup assigns literal labels Diode/Buzzer to objects +0x2c0/+0x2c4, which this callback changes. This establishes a static UI association for the formerly unnamed event path.
+
+The Diode-side event setup passes (2,0x0e,0x19) to event-record builder 0x80006778. The Buzzer-side setup passes the same tuple unless word 0x805ac788 equals exactly 1, in which case it passes (5,0x22,0x13). Both record paths feed the previously proven count=2 dispatcher behavior. The setting's user-visible meaning remains unknown.
+
+Tests across original V3.6/V3.8: 900 event-builder cases, 64 GUI branch cases, 96 linked parser entries, 12 label/registration slices, and 18 mode-switch cases passed. Source/result fingerprints match between versions and the read-only 2026-11-07 rerun matched the saved evidence. Physical timing and analog measurement behavior remain unvalidated.

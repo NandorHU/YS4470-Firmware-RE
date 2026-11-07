@@ -1,6 +1,6 @@
 # Reverse-engineering progress
 
-**Last verified update:** 2026-11-06  
+**Last verified update:** 2026-11-07  
 **Development branch:** `re/2026-11-04-pyghidra-fel`
 
 ## This session: verified results
@@ -248,3 +248,22 @@ See `evidence/2026-11-04-pyghidra-beta3-compare.json` for machine-readable sessi
 4. Keep UART-TTL capture deferred until the user can connect the adapter.
 
 Evidence: `evidence/2026-11-06-state5-discard-lifecycle.json`; method: `tools/STATE5_DISCARD_LIFECYCLE.md`.
+
+## 2026-11-07: Diode/Buzzer GUI event sources verified and saved
+
+- Continued the previous unfinished event-source experiment rather than restarting parser analysis. Re-read the development branch at 8ed1177 and re-ran all new experiments without filesystem writes.
+- Identified event builder 0x80006778: opaque handle at control +4, record word +0 = r0, bytes +4/+5 = low8(r1/r2), queue call at 0x80061acc. Null handle returns early; queue r2 is 0 for event 3 and 10 otherwise, with no assigned unit.
+- Found 31 aligned direct ARM BL candidates per original image. Full Thumb/indirect coverage is not claimed.
+- Proved GUI association: literal Diode/Buzzer assignments to root +0x2c0/+0x2c4, callback 0x8000cfd0 registered on root +0x2b8, and handler code manipulating those labels.
+- Diode event tail sends (2,0x0e,0x19). Buzzer sends the same unless settings word 0x805ac788 == 1, then (5,0x22,0x13). The selection API at 0x80044e54 has equivalent tails.
+- Tests passed in V3.6/V3.8: **900 builder cases, 64 GUI branch cases, 96 linked parser entries, 12 GUI binding slices, 18 mode-switch cases**. Both result fingerprints equal 79d0dc306702ed86a72cd27754368db7c269f908daa24c06a88bfe32fc6f5bbc; the read-only rerun matched saved evidence.
+- No physical device or paid external API was used. The complete GUI and queue implementation remain outside the harness.
+
+### Exact next continuation point
+
+1. Trace writers/default/storage of 0x805ac788 and identify the corresponding GUI setting.
+2. Reuse the new event-source harness to verify both setting branches when its provenance is known.
+3. Keep physical cadence, queue argument units, and audible latency open until independently proven.
+4. SoundControlGate → 0x800060d0 and deferred UART-TTL capture remain pending.
+
+Evidence created 2026-11-06 and re-verified 2026-11-07: `evidence/2026-11-06-measurement-event-sources.json`. Tool: `tools/trace_measurement_event_sources.py`.

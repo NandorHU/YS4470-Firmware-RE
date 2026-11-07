@@ -1,0 +1,21 @@
+{
+  "schema": "ys4470.event-source-verification.v1",
+  "verified_date": "2026-11-07",
+  "mode": "read-only in-memory rerun of collect() on pinned originals",
+  "source_report": "evidence/2026-11-06-measurement-event-sources.json",
+  "versions": [
+    "V3.6",
+    "V3.8"
+  ],
+  "totals": {
+    "builder_cases": 900,
+    "gui_branch_cases": 64,
+    "linked_parser_entries": 96,
+    "gui_binding_slices": 12,
+    "mode_switch_cases": 18,
+    "failed": 0
+  },
+  "results_sha256_per_version": "79d0dc306702ed86a72cd27754368db7c269f908daa24c06a88bfe32fc6f5bbc",
+  "saved_results_match": true,
+  "hardware_io": false
+}
