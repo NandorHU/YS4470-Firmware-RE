@@ -106,7 +106,8 @@ class ReferenceTests(unittest.TestCase):
         label = {'address': hex(BASE+32), 'name':'RE_Verified', 'confidence':1.0,
                  'proof':'bounded_original_ARM926_execution', 'evidence':'test.json',
                  'guard_bytes':64, 'guard_sha256':hashlib.sha256(raw[32:96]).hexdigest()}
-        for schema in ('ys4470.intc-timer-path.v1','ys4470.fast-cont-filter.v1','ys4470.result-freshness.v1','unknown'):
+        for schema in ('ys4470.intc-timer-path.v1','ys4470.fast-cont-filter.v1','ys4470.result-freshness.v1',
+                       'ys4470.refresh-side-effects.v1','unknown'):
             report = {'schema':schema,'versions':[{'version':'test','input_sha256':hashlib.sha256(raw).hexdigest(),'approved_labels':[label]}]}
             with patch.object(Path, 'read_text', return_value=json.dumps(report)):
                 if schema == 'unknown':

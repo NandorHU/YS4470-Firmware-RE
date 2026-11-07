@@ -116,5 +116,8 @@ protected, including when a legacy containing-function boundary blocks a new
 entry; use the reported status rather than silently replacing it.
 
 The new original-code model permits stored-result reuse and bounds the caller
-argument to0..999. It does not measure live UART/GUI timing. Queue/renderer
-effects and tick consumers are the next bounded validation work.
+argument to0..999. `REFRESH_SIDE_EFFECTS.md` then executes the original queue
+constructor/send/copy/critical code and renderer state helpers, with2396 checks.
+The queue's factory caller requests10 slots of68 bytes. The repeated-result
+example persists; remaining graphics/text/log/heap leaves and blocking queue
+paths are explicit limitations. Tick consumers are the next bounded timing work.

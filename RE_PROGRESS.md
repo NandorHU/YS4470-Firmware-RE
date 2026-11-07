@@ -5,7 +5,7 @@
 
 ## Current continuation (2026-11-07)
 
-Reference-guided INTC/timer validation and Fast CONT C reconstruction are complete in their tested scopes. Audit real renderer0x8000326c and enqueue path0x80006778 for side effects excluded from the refresh model. Then prove FSM+0x30's cached read at0x800044a8 (r1=sb via ADD#0), its elapsed-tick comparisons and tick getter0x80061f84; do not assign milliseconds before that contract is validated.
+Reference-guided INTC/timer validation and Fast CONT C reconstruction are complete in their tested scopes. Prove FSM+0x30's cached reader0x800044a8 through r5 and elapsed-tick branches0x800046a8/0x800046c4/0x80004720 using real getter0x80061f84 and the verified critical helpers. Test threshold boundaries and32-bit tick wrap before assigning units or interpreting Beta3's30-to40 change. Keep blocked queues, waiters and remaining GUI/log leaves separate.
 
 ## Initial baseline (historical)
 
@@ -361,3 +361,22 @@ Evidence: `evidence/2026-11-07-result-freshness.json` / `evidence/2026-11-07-res
 Audit real renderer0x8000326c and enqueue path0x80006778 for side effects excluded from the refresh model. Then prove FSM+0x30's cached read at0x800044a8 (r1=sb via ADD#0), its elapsed-tick comparisons and tick getter0x80061f84; do not assign milliseconds before that contract is validated.
 
 New static lead: the direct timeout reader missed by the MOV-only alias tracer is0x800044a8; no tick-consumer execution proof is claimed yet. Continue by executing those elapsed-tick branches against a controlled getter, rather than repeating the now-proven filter or refresh tests.
+
+
+## 2026-11-07: original queue/renderer state execution
+
+Evidence: `evidence/2026-11-07-refresh-side-effects.json` and `evidence/2026-11-07-refresh-side-effects-ghidra.json`; runner/method: `tools/trace_refresh_side_effects.py` / `tools/REFRESH_SIDE_EFFECTS.md`.
+
+- Continued from97dbc55 by replacing top-level queue-builder/renderer stubs with original code. Generic queue probes cover available send-to-back, pointer wrap, full wait0 reject and null handle. No waiting tasks or blocking paths are modeled.
+- Located factory queue init0x800029dc. It requests(10,68,0), stores CONTROL+4, and now executes actual constructor0x80061838/list initializer. A modeled heap allocator returns null or a synthetic760-byte region; object/list fields are set by original code.
+- Executed renderer0x8000326c and original state helpers with cold/full auxiliary histories. Exact write guards and snapshots preserve the six protected state regions across1152 cases per original. Recorded coverage:244 renderer,275 helper and52 queue-send instruction addresses; not a whole-firmware coverage metric.
+- Original critical enter/exit execute guest CPSR bit7 and nesting word805abbf8. Valid nesting0/1/2 tests pass. These helpers are now reusable by the next tick-getter experiment.
+- The linked five-callback example still gives filter fill0,0,1,2,3 without a parser entry; five event4 records are actually copied into the original-code-constructed queue, discard stays2 and the emulated active flag becomes1.
+- Across V3.6/V3.8:36 queue+1152 renderer+3 critical+2 constructor+5 callback checks per original =2396 total; fingerprints match52391249227ef0f8d7154815a14b0bb6c174ce93b03631691ec5f1fe0a123156. Real Ghidra exports14 function bodies/labels; nine proof/provenance tests pass.
+- Remaining models: widget/display/text/printf/log leaves and heap allocation. No physical device, live scheduling or time/acoustic measurement. Original firmware/private backups are unchanged.
+
+### Exact next continuation point
+
+Prove FSM+0x30's cached reader0x800044a8 through r5 and elapsed-tick branches0x800046a8/0x800046c4/0x80004720 using real getter0x80061f84 and the verified critical helpers. Test threshold boundaries and32-bit tick wrap before assigning units or interpreting Beta3's30-to40 change. Keep blocked queues, waiters and remaining GUI/log leaves separate.
+
+Start from the original FSM prologue at0x80004490 (ADD-zero alias at449c, cached R5 load at44a8). Preserve the distinction between a logical tick-count threshold and measured milliseconds. Queue wait10 and GUI period25 must not be given time units by analogy alone.

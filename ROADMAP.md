@@ -2,11 +2,11 @@
 
 ## Current next bounded task
 
-Audit real renderer0x8000326c and enqueue path0x80006778 for side effects excluded from the refresh model. Then prove FSM+0x30's cached read at0x800044a8 (r1=sb via ADD#0), its elapsed-tick comparisons and tick getter0x80061f84; do not assign milliseconds before that contract is validated.
+Prove FSM+0x30's cached reader0x800044a8 through r5 and elapsed-tick branches0x800046a8/0x800046c4/0x80004720 using real getter0x80061f84 and the verified critical helpers. Test threshold boundaries and32-bit tick wrap before assigning units or interpreting Beta3's30-to40 change. Keep blocked queues, waiters and remaining GUI/log leaves separate.
 
 ## Near term
 
-1. Audit renderer/queue side effects on the bounded stored-result reuse model.
+1. Prove cached FSM timeout/tick comparisons with the original tick getter.
 2. Bound tick/scheduler and FSM timeout consumers.
 3. Continue original measurement scaling/autorange reconstruction and remaining version-patch attribution.
 4. Reuse the completed parser, settings, PWM, INTC/timer and C filter harnesses.
@@ -131,3 +131,12 @@ Evidence: `evidence/2026-11-07-result-freshness.json` / `evidence/2026-11-07-res
 Completed the stored-result reuse counterexample and caller conversion contract. Reuse the752-case/step freshness runner, earlier filter C tests and hardware harnesses. Update all future analysis to ResultDispatch0x800037c0 and callback0x8005d048; the old0x800037bc/0x8005d1a0 seeds must not be interpreted as correct function entries.
 
 Next: Audit real renderer0x8000326c and enqueue path0x80006778 for side effects excluded from the refresh model. Then prove FSM+0x30's cached read at0x800044a8 (r1=sb via ADD#0), its elapsed-tick comparisons and tick getter0x80061f84; do not assign milliseconds before that contract is validated.
+
+
+## 2026-11-07: original queue/renderer state execution
+
+Evidence: `evidence/2026-11-07-refresh-side-effects.json` and `evidence/2026-11-07-refresh-side-effects-ghidra.json`; runner/method: `tools/trace_refresh_side_effects.py` / `tools/REFRESH_SIDE_EFFECTS.md`.
+
+The queue/renderer core audit is complete within its stated scopes. Reuse the2396-check side-effect runner and previous freshness/filter/INTC harnesses. Do not return to the two top-level stubs as if their original bodies had never been checked. Keep graphics/text/log models and blocking queues explicit.
+
+Next bounded task: Prove FSM+0x30's cached reader0x800044a8 through r5 and elapsed-tick branches0x800046a8/0x800046c4/0x80004720 using real getter0x80061f84 and the verified critical helpers. Test threshold boundaries and32-bit tick wrap before assigning units or interpreting Beta3's30-to40 change. Keep blocked queues, waiters and remaining GUI/log leaves separate.

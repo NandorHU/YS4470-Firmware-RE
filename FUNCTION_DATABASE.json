@@ -794,19 +794,24 @@
         "V3_6": "0x80006778",
         "V3_8": "0x80006778"
       },
-      "confidence": "confirmed_bounded_emulation",
-      "role": "Builds measurement event record and reaches queue-call boundary",
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Builds68-byte event and reaches real queue available-send or zero-wait reject path",
       "relationships": [
         "control object +4 is the handle; zero returns without submitting",
         "r0 -> record u32 +0; low8(r1) -> byte +4; low8(r2) -> byte +5",
-        "calls 0x80061acc with r2=0 for exact event 3, else 10, and r3=0"
+        "calls 0x80061acc with r2=0 for exact event 3, else 10, and r3=0",
+        "factory queue init0x800029dc requests10 items of68 bytes",
+        "calls actual queue send0x80061acc in tested available/full-wait0 cases"
       ],
       "evidence": [
-        "evidence/2026-11-06-measurement-event-sources.json"
+        "evidence/2026-11-06-measurement-event-sources.json",
+        "evidence/2026-11-07-refresh-side-effects.json",
+        "evidence/2026-11-07-refresh-side-effects-ghidra.json"
       ],
       "limits": [
-        "Queue call is not executed and its r2 unit is unknown.",
-        "Bytes +6..+0x43 retain the synthetic stack pattern in the tests."
+        "Original send/copy executes for available and full wait0 paths; blocking sends, waiting tasks and asynchronous consumers remain outside scope.",
+        "Wait argument time unit remains unknown.",
+        "Only word+0 and bytes+4/+5 are semantically assigned here; remaining copied tail bytes are not interpreted."
       ]
     },
     {
@@ -1171,6 +1176,129 @@
       "limits": [
         "Time units and framework scheduling contract unassigned."
       ]
+    },
+    {
+      "id": "measurement_queue_init",
+      "addresses": {
+        "V3_6": "0x800029dc",
+        "V3_8": "0x800029dc"
+      },
+      "bounded_end_exclusive": "0x800029fc",
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Requests measurement queue(10,68,0), stores returned handle at CONTROL+4",
+      "relationships": [
+        "calls queue_create0x80061838; allocator return modeled"
+      ],
+      "evidence": [
+        "evidence/2026-11-07-refresh-side-effects.json",
+        "evidence/2026-11-07-refresh-side-effects-ghidra.json"
+      ],
+      "limits": [
+        "Only the documented fixtures/paths; no complete GUI/RTOS or live-device/timing proof."
+      ]
+    },
+    {
+      "id": "queue_create",
+      "addresses": {
+        "V3_6": "0x80061838",
+        "V3_8": "0x80061838"
+      },
+      "bounded_end_exclusive": "0x800618dc",
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Construct queue metadata, circular buffer and waiting lists",
+      "relationships": [
+        "tested factory length10/itemsize68/type0",
+        "calls modeled heap allocator0x80042aa0; original list init0x80060e48 executes"
+      ],
+      "evidence": [
+        "evidence/2026-11-07-refresh-side-effects.json",
+        "evidence/2026-11-07-refresh-side-effects-ghidra.json"
+      ],
+      "limits": [
+        "Only the documented fixtures/paths; no complete GUI/RTOS or live-device/timing proof."
+      ]
+    },
+    {
+      "id": "result_renderer_core",
+      "addresses": {
+        "V3_6": "0x8000326c",
+        "V3_8": "0x8000326c"
+      },
+      "bounded_end_exclusive": "0x8000378c",
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Renderer state core preserves protected freshness/filter fields in tested states",
+      "relationships": [
+        "calls original state helpers406c/4114/425c/4290/4314/2e44",
+        "graphics/text/log leaves modeled"
+      ],
+      "evidence": [
+        "evidence/2026-11-07-refresh-side-effects.json",
+        "evidence/2026-11-07-refresh-side-effects-ghidra.json"
+      ],
+      "limits": [
+        "Only the documented fixtures/paths; no complete GUI/RTOS or live-device/timing proof."
+      ]
+    },
+    {
+      "id": "queue_send",
+      "addresses": {
+        "V3_6": "0x80061acc",
+        "V3_8": "0x80061acc"
+      },
+      "bounded_end_exclusive": "0x80061cd4",
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Available send-to-back item copy/count/wrap and full wait0 rejection",
+      "relationships": [
+        "real memcpy0x800009c4 and critical helpers execute",
+        "no waiting tasks; blocked sends not executed"
+      ],
+      "evidence": [
+        "evidence/2026-11-07-refresh-side-effects.json",
+        "evidence/2026-11-07-refresh-side-effects-ghidra.json"
+      ],
+      "limits": [
+        "Only the documented fixtures/paths; no complete GUI/RTOS or live-device/timing proof."
+      ]
+    },
+    {
+      "id": "critical_enter",
+      "addresses": {
+        "V3_6": "0x80060efc",
+        "V3_8": "0x80060efc"
+      },
+      "bounded_end_exclusive": "0x80060f1c",
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Mask guest IRQ and increment nesting word0x805abbf8",
+      "relationships": [
+        "valid nesting0..2 tested"
+      ],
+      "evidence": [
+        "evidence/2026-11-07-refresh-side-effects.json",
+        "evidence/2026-11-07-refresh-side-effects-ghidra.json"
+      ],
+      "limits": [
+        "Only the documented fixtures/paths; no complete GUI/RTOS or live-device/timing proof."
+      ]
+    },
+    {
+      "id": "critical_exit",
+      "addresses": {
+        "V3_6": "0x80060f20",
+        "V3_8": "0x80060f20"
+      },
+      "bounded_end_exclusive": "0x80060f58",
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Decrement nesting and enable guest IRQ when zero",
+      "relationships": [
+        "valid nesting0..2 tested; not a concurrency/scheduling model"
+      ],
+      "evidence": [
+        "evidence/2026-11-07-refresh-side-effects.json",
+        "evidence/2026-11-07-refresh-side-effects-ghidra.json"
+      ],
+      "limits": [
+        "Only the documented fixtures/paths; no complete GUI/RTOS or live-device/timing proof."
+      ]
     }
   ],
   "session_updates": [
@@ -1248,6 +1376,11 @@
       "date": "2026-11-07",
       "evidence": "evidence/2026-11-07-result-freshness.json",
       "summary": "Stored-result reuse counterexample, caller0..999 contract, corrected dispatch/callback seeds and compatible-provenance comparison guard."
+    },
+    {
+      "date": "2026-11-07",
+      "evidence": "evidence/2026-11-07-refresh-side-effects.json",
+      "summary": "Original queue construction/send/copy/critical and renderer state code preserve freshness counterexample;2396 checks,14 Ghidra exports."
     }
   ],
   "version_comparisons": {
@@ -1417,7 +1550,7 @@
         "build": "Zig0.13.0 cc -target arm-freestanding-eabi -mcpu=arm926ej_s -marm -O2 -ffreestanding -fno-builtin -ffunction-sections -std=c11 -Wall -Wextra -Werror -c reconstruction/fast_cont.c"
       },
       "contract": "ring index0..2/count0..3",
-      "next": "Audit real renderer0x8000326c and enqueue path0x80006778 for side effects excluded from the refresh model. Then prove FSM+0x30's cached read at0x800044a8 (r1=sb via ADD#0), its elapsed-tick comparisons and tick getter0x80061f84; do not assign milliseconds before that contract is validated.",
+      "next": "Prove FSM+0x30's cached reader0x800044a8 through r5 and elapsed-tick branches0x800046a8/0x800046c4/0x80004720 using real getter0x80061f84 and the verified critical helpers. Test threshold boundaries and32-bit tick wrap before assigning units or interpreting Beta3's30-to40 change. Keep blocked queues, waiters and remaining GUI/log leaves separate.",
       "caller_contract": {
         "evidence": "evidence/2026-11-07-result-freshness.json",
         "raw_divisor_bits": "0x452f499a",
@@ -1445,7 +1578,42 @@
         "printf0x80000544",
         "create0x80040894"
       ],
-      "next": "Audit real renderer0x8000326c and enqueue path0x80006778 for side effects excluded from the refresh model. Then prove FSM+0x30's cached read at0x800044a8 (r1=sb via ADD#0), its elapsed-tick comparisons and tick getter0x80061f84; do not assign milliseconds before that contract is validated."
+      "next": "Prove FSM+0x30's cached reader0x800044a8 through r5 and elapsed-tick branches0x800046a8/0x800046c4/0x80004720 using real getter0x80061f84 and the verified critical helpers. Test threshold boundaries and32-bit tick wrap before assigning units or interpreting Beta3's30-to40 change. Keep blocked queues, waiters and remaining GUI/log leaves separate.",
+      "refinement_evidence": "evidence/2026-11-07-refresh-side-effects.json"
+    },
+    "refresh_side_effects": {
+      "evidence": "evidence/2026-11-07-refresh-side-effects.json",
+      "ghidra": "evidence/2026-11-07-refresh-side-effects-ghidra.json",
+      "total_checks": 2396,
+      "per_original": {
+        "queue": 36,
+        "renderer": 1152,
+        "critical": 3,
+        "queue_init": 2,
+        "callbacks": 5
+      },
+      "results_sha256": "52391249227ef0f8d7154815a14b0bb6c174ce93b03631691ec5f1fe0a123156",
+      "factory_queue": {
+        "init": "0x800029dc",
+        "constructor": "0x80061838",
+        "capacity": 10,
+        "item_bytes": 68,
+        "allocation_bytes": 760,
+        "handle_address": "0x805aae90",
+        "allocator": "modeled0x80042aa0"
+      },
+      "protected_state": "UI+9, CONTROL+1, raw result/selector, Fast CONT state/history, RX",
+      "remaining_models": [
+        "record/widget/display/text/printf/log leaves",
+        "heap allocation"
+      ],
+      "untested": [
+        "blocked queues",
+        "waiting tasks/context switches",
+        "full GUI/asynchronous log consumers",
+        "live timing"
+      ],
+      "next": "Prove FSM+0x30's cached reader0x800044a8 through r5 and elapsed-tick branches0x800046a8/0x800046c4/0x80004720 using real getter0x80061f84 and the verified critical helpers. Test threshold boundaries and32-bit tick wrap before assigning units or interpreting Beta3's30-to40 change. Keep blocked queues, waiters and remaining GUI/log leaves separate."
     }
   },
   "configuration_fields": {
@@ -1495,7 +1663,7 @@
     "unit_tests": 7,
     "pyghidra_reference_exports": 12,
     "scope": "ARM aligned candidate survey0x80000000..0x80063800; not whole-firmware/Thumb/indirect proof",
-    "next": "Audit real renderer0x8000326c and enqueue path0x80006778 for side effects excluded from the refresh model. Then prove FSM+0x30's cached read at0x800044a8 (r1=sb via ADD#0), its elapsed-tick comparisons and tick getter0x80061f84; do not assign milliseconds before that contract is validated.",
+    "next": "Prove FSM+0x30's cached reader0x800044a8 through r5 and elapsed-tick branches0x800046a8/0x800046c4/0x80004720 using real getter0x80061f84 and the verified critical helpers. Test threshold boundaries and32-bit tick wrap before assigning units or interpreting Beta3's30-to40 change. Keep blocked queues, waiters and remaining GUI/log leaves separate.",
     "confirmed_semantic_additions": [
       {
         "id": "intc_vector_dispatch",

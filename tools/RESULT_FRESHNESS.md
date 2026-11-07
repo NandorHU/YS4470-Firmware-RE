@@ -113,8 +113,13 @@ API0x80040894. Renderer/queue side effects are not a full live-system model;
 notification states1/2 and arbitrary GUI activity are excluded. No physical
 device, live UART receive, scheduler clock or acoustic timing was measured.
 
-Next: audit real renderer/queue effects on the model's retained state. For
-timing, the inspected FSM prologue has a direct+0x30 reader at0x800044a8 via
-ADD-zero alias r1=sb; the older MOV-only tracer missed that alias. Bound its
-tick-difference consumers and0x80061f84 before assigning units or interpreting
-the Beta3 timeout change.
+The next `REFRESH_SIDE_EFFECTS.md` experiment removes the top-level queue and
+renderer stubs: original construction/send/copy/critical code and renderer state
+helpers preserve the counterexample across2396 checks. Display/text/log leaves
+and heap allocation remain models; timed full queues and live scheduling are
+not covered.
+
+Next for timing: the inspected FSM prologue has a direct+0x30 reader at
+0x800044a8 via ADD-zero alias r1=sb; the older MOV-only tracer missed that alias.
+Bound its tick-difference consumers and0x80061f84 before assigning units or
+interpreting the Beta3 timeout change.

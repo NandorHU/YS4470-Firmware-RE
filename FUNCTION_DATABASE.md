@@ -245,3 +245,20 @@ Evidence: `evidence/2026-11-07-result-freshness.json` / `evidence/2026-11-07-res
 | 0x800037bc | literal0x805abf10; PC-load uses0x80003688/3710/3774 |
 
 New naming evidence exports the corrected dispatch, callback and period store with existing filter/gate entries. Legacy labels are not factory symbols or evidence of genuine function boundaries. The revised13-seed inventory is not compared with the old seed set as if a seed correction were a firmware change.
+
+
+## 2026-11-07: original queue/renderer state execution
+
+Evidence: `evidence/2026-11-07-refresh-side-effects.json` and `evidence/2026-11-07-refresh-side-effects-ghidra.json`; runner/method: `tools/trace_refresh_side_effects.py` / `tools/REFRESH_SIDE_EFFECTS.md`.
+
+| Original entry, V3.6/V3.8 | New bounded role/evidence |
+|---|---|
+| 0x800029dc | measurement queue init caller: arguments(10,68,0), stores handle at CONTROL+4 |
+| 0x80061838 | queue constructor: allocation size0x50+capacity*itemsize, metadata and list init; allocator modeled |
+| 0x8000326c | renderer/state core,1152 states per original; protected fields unchanged |
+| 0x80006778 | existing event builder now executes into real send/copy; tested scopes expanded |
+| 0x80061acc | available send-to-back and full wait0 reject; no waiting tasks |
+| 0x80060efc | guest IRQ mask/nesting increment |
+| 0x80060f20 | nesting decrement and guest IRQ enable at zero |
+
+Helpers0x80060e48 (list init) and0x800009c4 (memcpy) execute as callees. The seven entry labels are analysis names with bounded proof, not recovered factory symbols. Complex renderer helper algorithms and blocked queue semantics are not promoted to full reconstructions.
