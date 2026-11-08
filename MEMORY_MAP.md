@@ -298,3 +298,8 @@ Both pinned originals have the string GaugeCmdTask\0 at0x80005a10 and function-p
 ## 2026-11-08 application container preservation
 
 The public patcher recognizes a5,943,296-byte application at full-flash offset0x50000 (exclusive end0x5fb000). It changes only the pinned69 continuous/65 timed sparse ranges inside that application. Known original bootloader0x490..0x508 requests payload flash0x50020→RAM0x80000000 for5,943,264 bytes in12 bounded cases. No other flash region, bootloader, logo or unmodified application bytes are changed. See contributions/COORD-PUBLIC-PATCHER/loader-validation.json; cold boot remains outside scope.
+
+
+## 2026-11-08 automatic installation plan
+
+The installer preserves the full16 MiB pre-write snapshot and requires a matching second read. It writes only differing64 KiB sectors wholly inside application0x50000..0x5fafff; all other bytes stay equal. Restoration accepts a confirmed backup/plan and refuses differences outside the earlier planned sectors. These contracts passed fake-transport tests; no physical flash state or new MMIO mapping is inferred.

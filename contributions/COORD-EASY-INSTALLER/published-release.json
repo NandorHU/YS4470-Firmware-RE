@@ -1,0 +1,41 @@
+{
+  "tag": "installer-v1.1.0-beta.2",
+  "url": "https://github.com/NandorHU/YS4470-Firmware-RE/releases/tag/installer-v1.1.0-beta.2",
+  "id": 438367330,
+  "source_commit": "c12fdef3fcb56c1f6b504ac1330f02965e6bc727",
+  "run_id": 42499845896,
+  "assets": [
+    {
+      "name": "build-validation.json",
+      "url": "https://github.com/NandorHU/YS4470-Firmware-RE/releases/download/installer-v1.1.0-beta.2/build-validation.json",
+      "digest": "sha256:f3cf64eeb39df8472419fb4bc06187079b9cea749deb42643e0198aaabc8a648",
+      "bytes": 3951
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "url": "https://github.com/NandorHU/YS4470-Firmware-RE/releases/download/installer-v1.1.0-beta.2/SHA256SUMS.txt",
+      "digest": "sha256:0e7b99ba8ae9b7cde678ee9b0b20f77094549c2957deda6c09db9db1c1259335",
+      "bytes": 222
+    },
+    {
+      "name": "YS4470-Installer-1.1.0-beta.2-Sources.zip",
+      "url": "https://github.com/NandorHU/YS4470-Firmware-RE/releases/download/installer-v1.1.0-beta.2/YS4470-Installer-1.1.0-beta.2-Sources.zip",
+      "digest": "sha256:57d9e6a4ec2f518582d1b1c45f7d1db2f5b65c81424b67b2a766cca52e71b471",
+      "bytes": 17035077
+    },
+    {
+      "name": "YS4470-Installer-1.1.0-beta.2-Windows-x64.zip",
+      "url": "https://github.com/NandorHU/YS4470-Firmware-RE/releases/download/installer-v1.1.0-beta.2/YS4470-Installer-1.1.0-beta.2-Windows-x64.zip",
+      "digest": "sha256:7beb67b4187d63c9756a1e336d29386bbe95b40272402d53b69a2d7743502d72",
+      "bytes": 18586707
+    }
+  ],
+  "public_windows_zip_download_verified": true,
+  "public_zip_sha256": "7beb67b4187d63c9756a1e336d29386bbe95b40272402d53b69a2d7743502d72",
+  "factory_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+  "simulation_tests": 19,
+  "patcher_tests": 14,
+  "physical_device_operations": 0,
+  "gui_visual_check_established": false,
+  "local_llm_request": "Timed out; no findings accepted"
+}

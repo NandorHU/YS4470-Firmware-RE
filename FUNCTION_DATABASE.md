@@ -292,3 +292,8 @@ Six original-hash-bound complete-local-CFG packets cover this wrapper, SoundCont
 ## 2026-11-08 public patcher scope
 
 Function records remain60; no new firmware function role was inferred by the distribution work. The application-only patch data reproduces public1.0 code changes from the pinned originals. The12 loader-window cases at0x490..0x508 validate the read argument contract only, not startup or complete boot. See contributions/COORD-PUBLIC-PATCHER/loader-validation.json.
+
+
+## 2026-11-08 installer release
+
+Function records remain60. Installer1.1.0-beta.2 bundles the known factory image and existing1.0 patch resource; no new firmware role/name is promoted.19 simulated installer/driver-launch tests and14 public patch tests are host-side validation, not new original-function coverage. See contributions/COORD-EASY-INSTALLER/published-release.json.

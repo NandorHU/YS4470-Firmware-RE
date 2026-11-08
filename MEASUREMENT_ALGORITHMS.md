@@ -258,3 +258,8 @@ Original entry0x80003dbc is bound to GaugeCmdTask by the startup argument setup.
 ## 2026-11-08 distribution scope
 
 The factory-input patcher applies the already published1.0 application changes. It does not add a new measurement-speed algorithm or establish why Base+highspeedv2 is perceived faster than other profiles. V3.6's differing factory bytes stay unchanged. Continue the hash-pinned E2 service/FSM/event analysis from contributions/COORD-ADC-CADENCE/STATUS.md.
+
+
+## 2026-11-08 distribution milestone
+
+Installer1.1.0-beta.2 prepares/installs the existing1.0 application using the bundled originalV3.8 or a matched device application. It adds no new measurement algorithm, profile policy or physical speed result. V3.6's version-specific bytes remain intact under the guarded port. The Base+highspeedv2 versus Direct/Auto/Ready question remains with COORD-ADC-CADENCE.

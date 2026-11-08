@@ -1,0 +1,44 @@
+{
+  "version": "1.1.0-beta.2",
+  "compiled_self_test": {
+    "version": "1.1.0-beta.2",
+    "resources_valid": true,
+    "factory_v38_output_sha256": "697d160047e9f040b31acd79d5b0febb940bc712f15eb6e2d91d997a5608011d",
+    "tcl_patchlevel": "8.6.15",
+    "device_access": false
+  },
+  "exe_sha256": "81a7b88ce1803d52e7ae01a797686b86474c7434c9232c3c8728b2fe69a13bff",
+  "assets": [
+    {
+      "name": "SHA256SUMS.txt",
+      "sha256": "0e7b99ba8ae9b7cde678ee9b0b20f77094549c2957deda6c09db9db1c1259335",
+      "bytes": 222
+    },
+    {
+      "name": "YS4470-Installer-1.1.0-beta.2-Sources.zip",
+      "sha256": "57d9e6a4ec2f518582d1b1c45f7d1db2f5b65c81424b67b2a766cca52e71b471",
+      "bytes": 17035077
+    },
+    {
+      "name": "YS4470-Installer-1.1.0-beta.2-Windows-x64.zip",
+      "sha256": "7beb67b4187d63c9756a1e336d29386bbe95b40272402d53b69a2d7743502d72",
+      "bytes": 18586707
+    }
+  ],
+  "physical_device_operations": 0,
+  "validation_scope": "Simulated transport, source regression, packaged EXE resource self-test; not a physical install test.",
+  "simulated_transport_tests_passed": 19,
+  "simulation_test_log": "test_bad_helper_is_never_started (test_driver_ui.DriverTests.test_bad_helper_is_never_started) ... ok\ntest_cancel_does_not_run_helper (test_driver_ui.DriverTests.test_cancel_does_not_run_helper) ... ok\ntest_explicit_driver_action_requests_windows_elevation (test_driver_ui.DriverTests.test_explicit_driver_action_requests_windows_elevation) ... ok\ntest_active_lock_prevents_concurrent_session (test_engine.EngineTests.test_active_lock_prevents_concurrent_session) ... ok\ntest_already_installed_does_not_rewrite (test_engine.EngineTests.test_already_installed_does_not_rewrite) ... ok\ntest_bundled_factory_has_strict_identity (test_engine.EngineTests.test_bundled_factory_has_strict_identity) ... ok\ntest_corrupt_backup_cannot_restore (test_engine.EngineTests.test_corrupt_backup_cannot_restore) ... ok\ntest_explicit_approval_required (test_engine.EngineTests.test_explicit_approval_required) ... ok\ntest_inconsistent_double_read_never_writes (test_engine.EngineTests.test_inconsistent_double_read_never_writes) ... ok\ntest_install_preserves_all_other_regions_and_verifies (test_engine.EngineTests.test_install_preserves_all_other_regions_and_verifies) ... ok\ntest_interrupted_write_can_restore_only_prior_plan (test_engine.EngineTests.test_interrupted_write_can_restore_only_prior_plan) ... ok\ntest_probe_rejects_multiple_or_wrong_devices (test_engine.EngineTests.test_probe_rejects_multiple_or_wrong_devices) ... ok\ntest_readback_failure_never_reports_complete (test_engine.EngineTests.test_readback_failure_never_reports_complete) ... ok\ntest_restore_rejects_changed_calibration_or_other_device (test_engine.EngineTests.test_restore_rejects_changed_calibration_or_other_device) ... ok\ntest_restore_verified_backup (test_engine.EngineTests.test_restore_verified_backup) ... ok\ntest_unknown_application_saves_backup_but_never_writes (test_engine.EngineTests.test_unknown_application_saves_backup_but_never_writes) ... ok\ntest_unknown_device_never_reads_or_writes (test_engine.EngineTests.test_unknown_device_never_reads_or_writes) ... ok\ntest_v36_preserves_its_version_data (test_engine.EngineTests.test_v36_preserves_its_version_data) ... ok\ntest_wrong_native_tool_hash_is_rejected (test_engine.EngineTests.test_wrong_native_tool_hash_is_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 19 tests in 3.453s\n\nOK\n",
+  "runtime_components_checked": [
+    "python312.dll",
+    "_tkinter.pyd",
+    "tcl86t.dll",
+    "tk86t.dll",
+    "VCRUNTIME140.dll",
+    "factory\\V3.8\\f1c100s.bin",
+    "tools\\sunxi-fel.exe",
+    "tools\\zadig-2.9.exe"
+  ],
+  "release_has_no_personal_backup": true,
+  "gui_visual_check": "Not established by automated desktop control; compiled resource/Tcl checks and source inspection only."
+}

@@ -167,3 +167,8 @@ blocked; no external assignment or live hardware test was manufactured.
 ## 2026-11-08 public factory patcher complete
 
 COORD-PUBLIC-PATCHER provides a standard-library CLI, Windows launcher, bilingual instructions, reversible exact-hash sparse application edits and tested public Release provenance. No private backup, boot/logo replacement, device installer or new firmware behavior is shipped. Resume coordinator-owned COORD-ADC-CADENCE from its pinned E2/source checkpoint; the requested four-profile timing matrix remains unfinished.
+
+
+## 2026-11-08 installer milestone completed
+
+COORD-EASY-INSTALLER published the English self-contained1.1.0-beta.2 Release with factoryV3.8, runtime/FEL/driver helper, automatic private backup/verification/recovery, source archives and SHA256SUMS. Clean Windows CI passed19 installer/driver-launch tests and14 patcher tests; no device write occurred. Source tag is installer-v1.1.0-beta.2. The full firmware RE project remains unfinished. Continue coordinator-owned COORD-ADC-CADENCE; do not repeat completed packaging work as firmware research.

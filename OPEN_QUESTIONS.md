@@ -220,3 +220,8 @@ The original GaugeCmdTask wrapper is0x80003dbc;0x80005b6c remains a service cand
 ## 2026-11-08 public-input support / profile checkpoint
 
 The private Beta3 full-backup prerequisite is removed for the two pinned factory applications. Other application hashes remain unsupported pending evidence; request only the inspect text, not personal backups. Mr.Yang-updater installation, V3.6 physical behavior and unknown bootloaders remain unverified. E2 profile input b04fb5bca7a052abfc5b1621bf50e03fd4f8116bf5cef849f1994e44d4b603b1 matches its local manifest; source reproduction and the equal-Highspeed event matrix are still required. No Base-versus-Direct/Auto/Ready cause or new offline speed fix is established yet.
+
+
+## 2026-11-08 installer boundaries and research continuation
+
+The English self-contained Release is public; no manual firmware dump is needed in its normal workflow. Physical validation of the new beta installer/FEL binary, real USB-driver setup, and GUI visual verification remain unestablished. Simulation, compiled-resource/Tcl and runtime-component checks passed. A local LLM extraction request timed out after45s; no draft or claim was accepted. The E2 build reproduction and equal-Highspeed active/requested-profile event matrix are still outstanding; resume the pinned COORD-ADC-CADENCE checkpoint.

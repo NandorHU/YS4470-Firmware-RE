@@ -1,0 +1,8 @@
+{
+  "model": "qwen2.5-coder:14b",
+  "endpoint": "loopback:11435",
+  "source": "installer/engine.py",
+  "source_sha256": "f19c7351e460f91e049bfbc2bc87dc88011ce5597606572b8df29da720f00ce8",
+  "lessons_sha256": "7b135d7b5b1e58e68fa7ba4283902106547b7d76fe9736baacb065a3653217c4",
+  "question": "Quote the exact source condition that refuses writes after two inconsistent backup reads. Explain its effect in one short sentence and give one limit. Return JSON with quote, claim, limit. Do not give line numbers, arithmetic or physical safety guarantees."
+}

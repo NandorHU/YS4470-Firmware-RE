@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 12,
+  "revision": 13,
   "updated": "2026-11-08",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -431,7 +431,7 @@
     {
       "id": "COORD-EASY-INSTALLER",
       "title": "Bundle approved factory V3.8 and a few-click Windows build/install workflow",
-      "status": "in_progress",
+      "status": "completed",
       "owner": "current-codex-coordinator",
       "branch": "re/2026-11-04-pyghidra-fel",
       "base_commit": "024faa8c9cb56fa009630738da7e71d78ba5160d",
@@ -451,7 +451,23 @@
         "Explicit install action, exactly one F1C100s/known16MiB flash, exact application identity and verified backup before writes.",
         "Preserve boot/logo/calibration regions; readback equality and recoverable failure/restore; simulation tests.",
         "Pinned/public dependency provenance and honest new-package physical-test limits."
-      ]
+      ],
+      "completed_on": "2026-11-08",
+      "result_evidence": [
+        "contributions/COORD-EASY-INSTALLER/published-release.json",
+        "contributions/COORD-EASY-INSTALLER/published-build-validation.json"
+      ],
+      "validation": {
+        "installer_and_driver_tests": 19,
+        "public_patcher_tests": 14,
+        "compiled_runtime_components": 8,
+        "public_zip_download_verified": true,
+        "bundled_factory_v38": true,
+        "physical_device_operations": 0
+      },
+      "release_url": "https://github.com/NandorHU/YS4470-Firmware-RE/releases/tag/installer-v1.1.0-beta.2",
+      "source_commit": "c12fdef3fcb56c1f6b504ac1330f02965e6bc727",
+      "workflow_run": 42499845896
     }
   ]
 }
