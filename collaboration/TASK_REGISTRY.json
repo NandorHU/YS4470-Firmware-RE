@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 5,
+  "revision": 6,
   "updated": "2026-11-08",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -314,6 +314,26 @@
       ],
       "review_state": "Source/manifest identities checked; 22/31 token-cutoff replies; synthesis hypotheses quarantined.",
       "next_action": "Only revisit a specific primary-grounded question; do not repeat or ingest the full 31-task draft as proof."
+    },
+    {
+      "id": "COORD-LOCAL-TOOLS",
+      "title": "Install isolated local evaluation/optimization tools and bounded REA access",
+      "status": "in_progress",
+      "owner": "current-codex-coordinator",
+      "branch": "re/2026-11-04-pyghidra-fel",
+      "base_commit": "aa8fb8e22043a3d3cb53d7f723c41f1772de1d2d",
+      "inputs": [
+        "Existing loopback Ollama models and verified firmware artifacts"
+      ],
+      "scope": "Install and smoke-test promptfoo/DSPy with a read-only, scope-limited REA adapter. No paid inference, weight training, firmware writes or unbounded model batches.",
+      "allowed_paths": [
+        "contributions/COORD-LOCAL-TOOLS/**"
+      ],
+      "acceptance": [
+        "Pinned isolated installs and reproducible commands.",
+        "Actual local evaluation and at least one verified REA-backed request.",
+        "Report measured results and limitations without claiming blanket improvement."
+      ]
     }
   ]
 }
