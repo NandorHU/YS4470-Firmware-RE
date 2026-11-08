@@ -262,3 +262,21 @@ Evidence: `evidence/2026-11-07-refresh-side-effects.json` and `evidence/2026-11-
 | 0x80060f20 | nesting decrement and guest IRQ enable at zero |
 
 Helpers0x80060e48 (list init) and0x800009c4 (memcpy) execute as callees. The seven entry labels are analysis names with bounded proof, not recovered factory symbols. Complex renderer helper algorithms and blocked queue semantics are not promoted to full reconstructions.
+
+## 2026-11-08: cached FSM deadlines and real tick snapshot
+
+Evidence: `contributions/COORD-FSM-TIMEOUT/fsm-timeout.json` and `contributions/COORD-FSM-TIMEOUT/fsm-timeout-ghidra.json`. Method/runner: `contributions/COORD-FSM-TIMEOUT/README.md` / `trace_fsm_timeout.py`.
+
+| Original address, V3.6/V3.8 | Established scope |
+|---|---|
+| 0x80004490 | Existing measurement FSM; states2/3/4 now execute from the real entry and match independent Python/compiled C |
+| 0x800044a4 / 0x800044a8 | Loads cached start/+0x30 duration; duration remains in R5 through the deadline branch |
+| 0x800045e4..0x80004628 | Getter timestamp after modeled send returns; command0x1b/0x1d selects required5/duration30, other tested commands duration80 |
+| 0x800046a8 / 0x800046c4 / 0x80004720 | Unsigned modulo elapsed comparisons; expiry routes differ by state |
+| 0x80061f84..0x80061fa0 exclusive | New full tick-snapshot helper: critical enter, load ROOT+0xc, critical exit, return snapshot |
+| 0x80061fa4..0x80061fe8 exclusive | Tick prefix only: unsuspended increment, or tested suspended/deferred early return; not a full routine proof |
+
+New database ID rtos_tick_snapshot links the FSM to the existing critical
+helpers. The FSM's existing Beta3 annotation remains historical: this new
+execution proof covers only the SHA-256-pinned originals. Ghidra's inferred
+whole-function body is not a claim that all FSM states were reconstructed.

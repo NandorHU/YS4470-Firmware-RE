@@ -409,3 +409,27 @@ Publication validation from an isolated checkout: nine existing provenance tests
 pass, and all 2,396 original-byte checks reproduce the previously committed
 fingerprints using the two repository input paths. The 61 checked relative links
 resolve. Details: `evidence/2026-11-07-collaboration-publication.json`.
+
+## 2026-11-08: cached FSM deadlines and real tick snapshot
+
+Evidence: `contributions/COORD-FSM-TIMEOUT/fsm-timeout.json` and `contributions/COORD-FSM-TIMEOUT/fsm-timeout-ghidra.json`. Method/runner: `contributions/COORD-FSM-TIMEOUT/README.md` / `trace_fsm_timeout.py`.
+
+Executed the reserved coordinator task, rather than only updating plans.
+V3.6/V3.8 have 6,651 checks each, fingerprint
+22212642cf8e42e7be6b1829508a6dc593a116be5f6298b63707f4911f5accfe.
+The 6,457 differential cases per original compare original/Python/compiled-C;
+other per-original probes are20 getter,10 tick-prefix,108 transmit setup,
+48 explicit cache interventions and8 duration30/40 comparisons.
+Four Ghidra assembly/decompiler exports and nine existing provenance tests pass.
+
+Recovered cached start/duration, unsigned expiry and wrap behavior, complete
+reply precedence, original duration30/80 setup and conditional ACK settle50/100.
+Added a second freestanding C component. Updated the59-record machine database,
+all continuity documents and live task ownership. Originals remain unchanged.
+
+Environment: scoped write escalation was required by the read-only host.
+The first Ghidra launch lacked its dedicated Java-home directory; creating it
+allowed both exports. Existing open_program deprecation warning remains.
+No new tools, paid API or device access were used.
+
+Next reserved task COORD-ADC-CADENCE: Validate the MainADCTask candidate 0x80005a78 and actual callers of FSM 0x80004490; bound one task-loop iteration and the delay candidate 0x80060fbc before assigning a polling cadence. Keep GUI callback periods, live clock frequency and acoustic latency separate.

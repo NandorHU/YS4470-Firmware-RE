@@ -240,3 +240,32 @@ Publication validation from an isolated checkout: nine existing provenance tests
 pass, and all 2,396 original-byte checks reproduce the previously committed
 fingerprints using the two repository input paths. The 61 checked relative links
 resolve. Details: `evidence/2026-11-07-collaboration-publication.json`.
+
+## 2026-11-08: cached FSM deadlines and real tick snapshot
+
+Evidence: `contributions/COORD-FSM-TIMEOUT/fsm-timeout.json` and `contributions/COORD-FSM-TIMEOUT/fsm-timeout-ghidra.json`. Method/runner: `contributions/COORD-FSM-TIMEOUT/README.md` / `trace_fsm_timeout.py`.
+
+Original V3.6/V3.8 pass 13,302 checks with identical result fingerprints. Of these,
+12,914 compare original ARM926 instructions, an independent Python transition
+specification and independently compiled freestanding C. The remaining probes
+cover the real tick getter/critical helpers, tick-advance prefix, original
+transmit setup, cache interventions and a clearly marked budget40 fixture.
+Four real Ghidra assembly/decompiler exports and nine provenance tests pass.
+
+FSM+0x2c is a start-counter snapshot; +0x30 is a duration loaded into R5 once per
+invocation, not a decremented countdown in the tested wait paths. Unsigned
+modulo-32-bit elapsed >= duration expires. State3 accepts an already complete,
+valid-header reply before reading the deadline. Original command IDs0x1b/0x1d
+seed duration30/required5 after the send call; other tested setup commands seed80.
+ACK for IDs9..15 starts a new duration50, or100 for13/14, in state4.
+
+The tick getter0x80061f84 reads0x805abbc8 under the original critical helpers.
+PIO writes are inert shadows; UART send is an explicit leaf model. The tick
+prefix is stopped before full RTOS wrap/ready-list handling. No Beta3 image,
+physical tick frequency, real UART or acoustic delay was measured.
+
+A second pure-C component, reconstruction/fsm_timeout.c/.h, is independently
+buildable but reconstructs only timed states2/3/4. The function database now has
+59 records of differing confidence; this is not a completion percentage.
+
+Next reserved task COORD-ADC-CADENCE: Validate the MainADCTask candidate 0x80005a78 and actual callers of FSM 0x80004490; bound one task-loop iteration and the delay candidate 0x80060fbc before assigning a polling cadence. Keep GUI callback periods, live clock frequency and acoustic latency separate.

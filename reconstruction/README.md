@@ -33,3 +33,22 @@ accepted argument range0..999 and rejection paths that bypass this helper while
 preserving its state. Its standalone>1000 reset is not the full caller policy.
 Repeated uses of a stored result can fill the ring in the bounded refresh model;
 this component does not certify that its calls represent fresh UART samples.
+
+## Timed measurement-FSM component
+
+`fsm_timeout.c` / `fsm_timeout.h` independently reconstruct timed states2/3/4
+of original entry0x80004490. They use an explicit semantic struct, not the original
+RAM layout. The pure step takes an RX observation and raw tick snapshot, returns
+requested tick/GPIO effects, and performs no actual I/O or critical section.
+
+```powershell
+./work/reference-compiler/ziglang/zig.exe cc -target arm-freestanding-eabi -mcpu=arm926ej_s -marm -O2 -ffreestanding -fno-builtin -ffunction-sections -std=c11 -Wall -Wextra -Werror -c reconstruction/fsm_timeout.c -o work/fsm-timeout/fsm_timeout.o
+```
+
+The function's code section has no relocations. On explicit ARM926,12,914
+original/Python/compiled-C state cases agree. Separate original getter/setup/
+cache/tick-prefix probes bring the report to13,302 checks. See
+`contributions/COORD-FSM-TIMEOUT/README.md` and its JSON evidence.
+The original GPIO and critical bodies execute on inert shadows; the state1 UART
+send remains modeled. Other FSM states, full scheduling and physical units are
+not reconstructed here. No third-party reference driver code is copied.

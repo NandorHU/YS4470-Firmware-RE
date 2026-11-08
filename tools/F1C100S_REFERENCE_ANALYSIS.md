@@ -121,3 +121,9 @@ constructor/send/copy/critical code and renderer state helpers, with2396 checks.
 The queue's factory caller requests10 slots of68 bytes. The repeated-result
 example persists; remaining graphics/text/log/heap leaves and blocking queue
 paths are explicit limitations. Tick consumers are the next bounded timing work.
+
+Continuation 2026-11-08: `contributions/COORD-FSM-TIMEOUT/README.md` proves the
+cached deadline reader, real critical tick snapshot and timed-state transition
+contract. The label guard accepts `ys4470.fsm-timeout.v1`; four real Ghidra
+exports and the nine provenance tests pass. The standalone C timed-state
+component is not a full RTOS/firmware reconstruction. Next: Validate the MainADCTask candidate 0x80005a78 and actual callers of FSM 0x80004490; bound one task-loop iteration and the delay candidate 0x80060fbc before assigning a polling cadence. Keep GUI callback periods, live clock frequency and acoustic latency separate.

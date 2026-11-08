@@ -147,3 +147,24 @@ No new device access occurred. This run links a GUI callback to stored measureme
 Evidence: `evidence/2026-11-07-refresh-side-effects.json` and `evidence/2026-11-07-refresh-side-effects-ghidra.json`; runner/method: `tools/trace_refresh_side_effects.py` / `tools/REFRESH_SIDE_EFFECTS.md`.
 
 Original critical helpers manipulate guest CPSR IRQ-mask bit7 and nesting word0x805abbf8. Valid nesting0/1/2 paths pass on explicit ARM926. This does not inject hardware IRQs or prove concurrent scheduling. Queue/renderer code writes normal RAM, not newly observed MMIO. No device, flash, live UART or acoustic operation occurred; callback periods and wait10 remain unassigned physical time units.
+
+## 2026-11-08: cached FSM deadlines and real tick snapshot
+
+Evidence: `contributions/COORD-FSM-TIMEOUT/fsm-timeout.json` and `contributions/COORD-FSM-TIMEOUT/fsm-timeout-ghidra.json`. Method/runner: `contributions/COORD-FSM-TIMEOUT/README.md` / `trace_fsm_timeout.py`.
+
+Actual original tick-snapshot0x80061f84 reads the RTOS counter at0x805abbc8 while
+guest IRQ is masked and critical nesting is incremented. Valid nesting0/1/2/7
+is restored. The tick prefix increments modulo32 when not suspended; the
+suspended branch increments a deferred counter and leaves the getter's word
+unchanged. Ready-list, wrap-list and full interrupt scheduling remain outside
+this proof.
+
+Original GPIO clear/set helpers execute on inert RAM at0x01c208c4. The timed
+advance path clears bits3/2, but the experiment assigns no new analog-range or
+physical-pin function. UART send0x80005e84 is the explicit state1 leaf model;
+a successful modeled call does not establish wire transmission timing.
+
+The prior nominal timer0 setup is not upgraded to a measured frequency.
+Duration30, budget40 fixtures, settle50/100 and other duration80 remain raw
+counter quantities. No FEL operation, flashing, live UART or acoustic test
+occurred.

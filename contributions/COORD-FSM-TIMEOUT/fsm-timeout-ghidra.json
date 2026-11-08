@@ -1,0 +1,732 @@
+{
+  "schema": "ys4470.fsm-timeout-ghidra.v1",
+  "date": "2026-11-08",
+  "ghidra": "12.1.4",
+  "pyghidra": "3.1.0",
+  "label_pipeline_tests_passed": 9,
+  "exports": 4,
+  "versions": [
+    {
+      "version": "V3.6",
+      "input": {
+        "name": "f1c100s.bin",
+        "bytes": 5943296,
+        "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+      },
+      "import": {
+        "loader": "BinaryLoader",
+        "language": "ARM:LE:32:v5t",
+        "link_base": "0x7fffffe0",
+        "analysis_mode": "proof-labels-only",
+        "seed_revision": "not-used",
+        "note": "Seed names are labels with explicit confidence; they are not recovered vendor symbols."
+      },
+      "reference_labels": [
+        {
+          "address": "0x80004490",
+          "name": "RE_MeasurementFSM",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "contributions/COORD-FSM-TIMEOUT/fsm-timeout.json",
+          "guard_bytes": 32,
+          "guard_sha256": "7d34bbbabeca877e0c301cfa8053cc35fb3db63ddb4216469a12f64edec8607c",
+          "status": "named_from_independent_proof",
+          "ghidra_name": "RE_MeasurementFSM",
+          "previous_name": "FUN_80004490"
+        },
+        {
+          "address": "0x80061f84",
+          "name": "RE_RtosTickSnapshot",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "contributions/COORD-FSM-TIMEOUT/fsm-timeout.json",
+          "guard_bytes": 32,
+          "guard_sha256": "2a9cadd9bd169d25879e410f1855ab0fc6d99089745ba3cefd1a25756e03428f",
+          "status": "named_from_independent_proof",
+          "ghidra_name": "RE_RtosTickSnapshot",
+          "previous_name": "FUN_80061f84"
+        }
+      ],
+      "reference_function_exports": [
+        {
+          "address": "0x80004490",
+          "name": "RE_MeasurementFSM",
+          "label_status": "named_from_independent_proof",
+          "confidence": 1.0,
+          "evidence": "contributions/COORD-FSM-TIMEOUT/fsm-timeout.json",
+          "comment": "YS4470 reference proof: bounded_original_ARM926_execution; contributions/COORD-FSM-TIMEOUT/fsm-timeout.json; proposed RE_MeasurementFSM",
+          "body_end": "8000488b",
+          "assembly": [
+            {
+              "address": "80004490",
+              "assembly": "stmdb sp!,{r4,r5,r6,r7,r8,r9,r10,r11,r12,lr}",
+              "flow_targets": []
+            },
+            {
+              "address": "80004494",
+              "assembly": "ldr r9,[0x80004808]",
+              "flow_targets": []
+            },
+            {
+              "address": "80004498",
+              "assembly": "ldr r12,[0x80004814]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000449c",
+              "assembly": "add r1,r9,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "800044a0",
+              "assembly": "ldrb lr,[r9,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800044a4",
+              "assembly": "ldr r0,[r1,#0x2c]",
+              "flow_targets": []
+            },
+            {
+              "address": "800044a8",
+              "assembly": "ldr r5,[r1,#0x30]",
+              "flow_targets": []
+            },
+            {
+              "address": "800044ac",
+              "assembly": "ldrb r3,[r12,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800044b0",
+              "assembly": "ldr r10,[0x8000480c]",
+              "flow_targets": []
+            },
+            {
+              "address": "800044b4",
+              "assembly": "ldr r6,[0x80004810]",
+              "flow_targets": []
+            },
+            {
+              "address": "800044b8",
+              "assembly": "ldr r1,[r1,#0x20]",
+              "flow_targets": []
+            },
+            {
+              "address": "800044bc",
+              "assembly": "cmp lr,#0x8",
+              "flow_targets": []
+            },
+            {
+              "address": "800044c0",
+              "assembly": "mov r7,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "800044c4",
+              "assembly": "mov r2,#0x7",
+              "flow_targets": []
+            },
+            {
+              "address": "800044c8",
+              "assembly": "mov r8,#0x6",
+              "flow_targets": []
+            },
+            {
+              "address": "800044cc",
+              "assembly": "mov r11,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "800044d0",
+              "assembly": "mov r4,#0x8",
+              "flow_targets": []
+            },
+            {
+              "address": "800044d4",
+              "assembly": "ldrcc pc,[pc,lr,lsl #0x2]",
+              "flow_targets": []
+            },
+            {
+              "address": "800044d8",
+              "assembly": "b 0x800047fc",
+              "flow_targets": [
+                "800047fc"
+              ]
+            },
+            {
+              "address": "800047fc",
+              "assembly": "ldmia sp!,{r4,r5,r6,r7,r8,r9,r10,r11,r12,lr}",
+              "flow_targets": []
+            },
+            {
+              "address": "80004800",
+              "assembly": "mvn r0,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80004804",
+              "assembly": "b 0x8000482c",
+              "flow_targets": [
+                "8000482c"
+              ]
+            },
+            {
+              "address": "8000482c",
+              "assembly": "stmdb sp!,{r4,r5,r6,lr}",
+              "flow_targets": []
+            },
+            {
+              "address": "80004830",
+              "assembly": "ldr r5,[0x8000488c]",
+              "flow_targets": []
+            },
+            {
+              "address": "80004834",
+              "assembly": "mov r4,r0",
+              "flow_targets": []
+            },
+            {
+              "address": "80004838",
+              "assembly": "mov r1,#0x3",
+              "flow_targets": []
+            },
+            {
+              "address": "8000483c",
+              "assembly": "mov r0,r5",
+              "flow_targets": []
+            },
+            {
+              "address": "80004840",
+              "assembly": "bl 0x800031b8",
+              "flow_targets": [
+                "800031b8"
+              ]
+            },
+            {
+              "address": "80004844",
+              "assembly": "mov r1,#0x2",
+              "flow_targets": []
+            },
+            {
+              "address": "80004848",
+              "assembly": "mov r0,r5",
+              "flow_targets": []
+            },
+            {
+              "address": "8000484c",
+              "assembly": "bl 0x800031b8",
+              "flow_targets": [
+                "800031b8"
+              ]
+            },
+            {
+              "address": "80004850",
+              "assembly": "ldr r2,[0x80004890]",
+              "flow_targets": []
+            },
+            {
+              "address": "80004854",
+              "assembly": "mov r1,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80004858",
+              "assembly": "strb r1,[r2,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000485c",
+              "assembly": "strb r1,[r2,#0x1]",
+              "flow_targets": []
+            },
+            {
+              "address": "80004860",
+              "assembly": "str r1,[r2,#0x14]",
+              "flow_targets": []
+            },
+            {
+              "address": "80004864",
+              "assembly": "str r1,[r2,#0x18]",
+              "flow_targets": []
+            },
+            {
+              "address": "80004868",
+              "assembly": "str r1,[r2,#0x1c]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000486c",
+              "assembly": "str r1,[r2,#0x20]",
+              "flow_targets": []
+            },
+            {
+              "address": "80004870",
+              "assembly": "ldr r0,[0x80004894]",
+              "flow_targets": []
+            },
+            {
+              "address": "80004874",
+              "assembly": "strb r1,[r2,#0x34]",
+              "flow_targets": []
+            },
+            {
+              "address": "80004878",
+              "assembly": "str r4,[r2,#0x38]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000487c",
+              "assembly": "str r1,[r0,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80004880",
+              "assembly": "ldr r0,[0x80004898]",
+              "flow_targets": []
+            },
+            {
+              "address": "80004884",
+              "assembly": "str r1,[r0,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80004888",
+              "assembly": "ldmia sp!,{r4,r5,r6,pc}",
+              "flow_targets": []
+            }
+          ],
+          "direct_call_targets": [
+            "800031b8"
+          ],
+          "decompiled_c": "\r\n/* YS4470 reference proof: bounded_original_ARM926_execution;\r\n   contributions/COORD-FSM-TIMEOUT/fsm-timeout.json; proposed RE_MeasurementFSM */\r\n\r\nvoid RE_MeasurementFSM(void)\r\n\r\n{\r\n  char cVar1;\r\n  undefined1 *puVar2;\r\n  int *piVar3;\r\n  undefined4 uVar4;\r\n  undefined4 *puVar5;\r\n  undefined1 uVar6;\r\n  int iVar7;\r\n  int iVar8;\r\n  undefined4 uVar9;\r\n  int iVar10;\r\n  uint uVar11;\r\n  undefined4 unaff_r4;\r\n  undefined4 unaff_r5;\r\n  uint uVar12;\r\n  undefined4 unaff_r6;\r\n  undefined4 in_lr;\r\n  bool bVar13;\r\n  \r\n  uVar4 = uRam8000488c;\r\n  iVar8 = iRam80004820;\r\n  uVar9 = uRam80004810;\r\n  piVar3 = piRam8000480c;\r\n  puVar2 = puRam80004808;\r\n  iVar7 = *(int *)(puRam80004808 + 0x2c);\r\n  uVar12 = *(uint *)(puRam80004808 + 0x30);\r\n  cVar1 = *pcRam80004814;\r\n  iVar10 = *(int *)(puRam80004808 + 0x20);\r\n  switch(*puRam80004808) {\r\n  case 0:\r\n    puRam80004808[0x34] = 0;\r\n    return;\r\n  case 1:\r\n    iVar8 = *(int *)(puRam80004808 + 0x18);\r\n    bVar13 = iVar8 == 0;\r\n    if (-1 < iVar8) {\r\n      iVar10 = *(int *)(puRam80004808 + 0x14);\r\n      bVar13 = iVar10 == iVar8;\r\n    }\r\n    if (bVar13 || (-1 >= iVar8 || iVar10 < iVar8)) goto code_r0x80004518;\r\n    uVar12 = *(uint *)(puRam80004808 + iVar8 * 4 + 4);\r\n    *(uint *)(puRam80004808 + 0x20) = uVar12;\r\n    iVar10 = iRam80004818;\r\n    if (((0x2f < uVar12) || (*(int *)(iRam80004818 + uVar12 * 8) == 0)) ||\r\n       (iVar8 = iRam80004818 + uVar12 * 8, *(char *)(iVar8 + 4) == '\\0')) goto code_r0x8000459c;\r\n    func_0x80060efc();\r\n    *piVar3 = 0;\r\n    func_0x80000b4c(pcRam80004814,200);\r\n    func_0x80060f20();\r\n    if ((uVar12 == 0xc || uVar12 == 0xd) || ((uVar12 == 0xe || uVar12 == 0xf) || uVar12 == 0xb)) {\r\n      func_0x800031cc(uVar9,3);\r\n      func_0x800031b8(uVar9,2);\r\n    }\r\n    else if (uVar12 == 10 || uVar12 == 9) {\r\n      func_0x800031b8(uVar9,3);\r\n      func_0x800031cc(uVar9,2);\r\n    }\r\n    func_0x80005e84(*(undefined4 *)(iVar10 + uVar12 * 8),*(undefined1 *)(iVar8 + 4));\r\n    uVar9 = RE_RtosTickSnapshot();\r\n    *(undefined4 *)(puVar2 + 0x2c) = uVar9;\r\n    if (uVar12 == 0x1d || uVar12 == 0x1b) {\r\n      *(undefined4 *)(puVar2 + 0x28) = 5;\r\n      *(undefined4 *)(puVar2 + 0x30) = 0x1e;\r\n      uVar6 = 3;\r\n    }\r\n    else {\r\n      puVar2[0x24] = **(undefined1 **)(iVar10 + uVar12 * 8);\r\n      *(undefined4 *)(puVar2 + 0x30) = 0x50;\r\n      uVar6 = 2;\r\n    }\r\n    goto code_r0x80004718;\r\n  case 2:\r\n    if ((*piRam8000480c < 1) || (cVar1 != puRam80004808[0x24])) {\r\n      iVar10 = RE_RtosTickSnapshot();\r\n      if ((uint)(iVar10 - iVar7) < uVar12) {\r\n        return;\r\n      }\r\ncode_r0x800046bc:\r\n      *puVar2 = 6;\r\n      return;\r\n    }\r\n    if (iVar10 - 9U < 7) {\r\n      uVar9 = RE_RtosTickSnapshot();\r\n      *(undefined4 *)(puVar2 + 0x2c) = uVar9;\r\n      if (*(int *)(puVar2 + 0x20) == 0xe || *(int *)(puVar2 + 0x20) == 0xd) {\r\n        uVar9 = 100;\r\n      }\r\n      else {\r\n        uVar9 = 0x32;\r\n      }\r\n      *(undefined4 *)(puVar2 + 0x30) = uVar9;\r\n      uVar6 = 4;\r\n      goto code_r0x80004718;\r\n    }\r\n    break;\r\n  case 3:\r\n    if (*piRam8000480c < *(int *)(puRam80004808 + 0x28)) {\r\n      iVar10 = RE_RtosTickSnapshot();\r\n      if ((uint)(iVar10 - iVar7) < uVar12) {\r\n        return;\r\n      }\r\n      goto code_r0x800046bc;\r\n    }\r\n    if (iVar10 == 0x1d) {\r\n      if (cVar1 != '`') goto code_r0x800046bc;\r\n    }\r\n    else if ((iVar10 == 0x1b) && (cVar1 != '^')) goto code_r0x800046bc;\r\n    uVar6 = 5;\r\ncode_r0x80004718:\r\n    *puVar2 = uVar6;\r\n    return;\r\n  case 4:\r\n    iVar10 = RE_RtosTickSnapshot();\r\n    if ((uint)(iVar10 - iVar7) < uVar12) {\r\n      return;\r\n    }\r\n    break;\r\n  case 5:\r\n    uVar12 = (uint)*(uint3 *)(pcRam80004814 + 1);\r\n    if ((*(uint3 *)(pcRam80004814 + 1) & 0x800000) != 0) {\r\n      uVar12 = uVar12 - 0x1000000;\r\n    }\r\n    if (iVar10 == 0x1b) {\r\n      uVar11 = 0;\r\n    }\r\n    else {\r\n      uVar11 = (uint)(byte)pcRam80004814[4];\r\n      if (6 < uVar11) {\r\n        uVar11 = 6;\r\n      }\r\n    }\r\n    if (*(char *)(iRam8000481c + 1) == '\\0') {\r\n      if ((*(int *)(iRam8000481c + 8) == 0xe || *(int *)(iRam8000481c + 8) == 0xd) &&\r\n         (uRam80004824 <= uVar12)) {\r\n        *(undefined4 *)(iRam80004820 + 0x1c) = uRam80004828;\r\n        *(undefined4 *)(iVar8 + 0x20) = 0;\r\n      }\r\n      else {\r\n        *(uint *)(iRam80004820 + 0x1c) = uVar12;\r\n        *(uint *)(iVar8 + 0x20) = uVar11;\r\n      }\r\n    }\r\n    else {\r\n      *(char *)(iRam8000481c + 1) = *(char *)(iRam8000481c + 1) + -1;\r\n    }\r\ncode_r0x80004518:\r\n    *puVar2 = 7;\r\n    return;\r\n  case 6:\r\n    func_0x800031b8(uRam80004810,3);\r\n    func_0x800031b8(uVar9,2);\r\n    if (0 < *(int *)(puVar2 + 0x1c)) {\r\ncode_r0x8000459c:\r\n      *puVar2 = 8;\r\n      return;\r\n    }\r\n    *(int *)(puVar2 + 0x1c) = *(int *)(puVar2 + 0x1c) + 1;\r\n    goto code_r0x800046a0;\r\n  case 7:\r\n    uVar9 = 0;\r\n    goto LAB_8000482c;\r\n  default:\r\n    uVar9 = 0xffffffff;\r\nLAB_8000482c:\r\n    func_0x800031b8(uRam8000488c,3,7,cVar1,unaff_r4,unaff_r5,unaff_r6,in_lr);\r\n    func_0x800031b8(uVar4,2);\r\n    puVar2 = puRam80004890;\r\n    *puRam80004890 = 0;\r\n    puVar2[1] = 0;\r\n    *(undefined4 *)(puVar2 + 0x14) = 0;\r\n    *(undefined4 *)(puVar2 + 0x18) = 0;\r\n    *(undefined4 *)(puVar2 + 0x1c) = 0;\r\n    *(undefined4 *)(puVar2 + 0x20) = 0;\r\n    puVar5 = puRam80004894;\r\n    puVar2[0x34] = 0;\r\n    *(undefined4 *)(puVar2 + 0x38) = uVar9;\r\n    *puVar5 = 0;\r\n    *puRam80004898 = 0;\r\n    return;\r\n  }\r\n  func_0x800031b8(uVar9,3);\r\n  func_0x800031b8(uVar9,2);\r\n  *(int *)(puVar2 + 0x18) = *(int *)(puVar2 + 0x18) + 1;\r\n  *(undefined4 *)(puVar2 + 0x1c) = 0;\r\ncode_r0x800046a0:\r\n  *puVar2 = 1;\r\n  return;\r\n}\r\n\r\n",
+          "limits": [
+            "Ghidra inferred body; original-byte proof applies only to documented execution scope."
+          ]
+        },
+        {
+          "address": "0x80061f84",
+          "name": "RE_RtosTickSnapshot",
+          "label_status": "named_from_independent_proof",
+          "confidence": 1.0,
+          "evidence": "contributions/COORD-FSM-TIMEOUT/fsm-timeout.json",
+          "comment": "YS4470 reference proof: bounded_original_ARM926_execution; contributions/COORD-FSM-TIMEOUT/fsm-timeout.json; proposed RE_RtosTickSnapshot",
+          "body_end": "80061f9f",
+          "assembly": [
+            {
+              "address": "80061f84",
+              "assembly": "stmdb sp!,{r4,lr}",
+              "flow_targets": []
+            },
+            {
+              "address": "80061f88",
+              "assembly": "bl 0x80060efc",
+              "flow_targets": [
+                "80060efc"
+              ]
+            },
+            {
+              "address": "80061f8c",
+              "assembly": "ldr r0,[0x80061fa0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80061f90",
+              "assembly": "ldr r4,[r0,#0xc]",
+              "flow_targets": []
+            },
+            {
+              "address": "80061f94",
+              "assembly": "bl 0x80060f20",
+              "flow_targets": [
+                "80060f20"
+              ]
+            },
+            {
+              "address": "80061f98",
+              "assembly": "mov r0,r4",
+              "flow_targets": []
+            },
+            {
+              "address": "80061f9c",
+              "assembly": "ldmia sp!,{r4,pc}",
+              "flow_targets": []
+            }
+          ],
+          "direct_call_targets": [
+            "80060efc",
+            "80060f20"
+          ],
+          "decompiled_c": "\r\n/* YS4470 reference proof: bounded_original_ARM926_execution;\r\n   contributions/COORD-FSM-TIMEOUT/fsm-timeout.json; proposed RE_RtosTickSnapshot */\r\n\r\nundefined4 RE_RtosTickSnapshot(void)\r\n\r\n{\r\n  undefined4 uVar1;\r\n  \r\n  func_0x80060efc();\r\n  uVar1 = *(undefined4 *)(iRam80061fa0 + 0xc);\r\n  func_0x80060f20();\r\n  return uVar1;\r\n}\r\n\r\n",
+          "limits": [
+            "Ghidra inferred body; original-byte proof applies only to documented execution scope."
+          ]
+        }
+      ]
+    },
+    {
+      "version": "V3.8",
+      "input": {
+        "name": "f1c100s.bin",
+        "bytes": 5943296,
+        "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+      },
+      "import": {
+        "loader": "BinaryLoader",
+        "language": "ARM:LE:32:v5t",
+        "link_base": "0x7fffffe0",
+        "analysis_mode": "proof-labels-only",
+        "seed_revision": "not-used",
+        "note": "Seed names are labels with explicit confidence; they are not recovered vendor symbols."
+      },
+      "reference_labels": [
+        {
+          "address": "0x80004490",
+          "name": "RE_MeasurementFSM",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "contributions/COORD-FSM-TIMEOUT/fsm-timeout.json",
+          "guard_bytes": 32,
+          "guard_sha256": "7d34bbbabeca877e0c301cfa8053cc35fb3db63ddb4216469a12f64edec8607c",
+          "status": "named_from_independent_proof",
+          "ghidra_name": "RE_MeasurementFSM",
+          "previous_name": "FUN_80004490"
+        },
+        {
+          "address": "0x80061f84",
+          "name": "RE_RtosTickSnapshot",
+          "confidence": 1.0,
+          "proof": "bounded_original_ARM926_execution",
+          "evidence": "contributions/COORD-FSM-TIMEOUT/fsm-timeout.json",
+          "guard_bytes": 32,
+          "guard_sha256": "2a9cadd9bd169d25879e410f1855ab0fc6d99089745ba3cefd1a25756e03428f",
+          "status": "named_from_independent_proof",
+          "ghidra_name": "RE_RtosTickSnapshot",
+          "previous_name": "FUN_80061f84"
+        }
+      ],
+      "reference_function_exports": [
+        {
+          "address": "0x80004490",
+          "name": "RE_MeasurementFSM",
+          "label_status": "named_from_independent_proof",
+          "confidence": 1.0,
+          "evidence": "contributions/COORD-FSM-TIMEOUT/fsm-timeout.json",
+          "comment": "YS4470 reference proof: bounded_original_ARM926_execution; contributions/COORD-FSM-TIMEOUT/fsm-timeout.json; proposed RE_MeasurementFSM",
+          "body_end": "8000488b",
+          "assembly": [
+            {
+              "address": "80004490",
+              "assembly": "stmdb sp!,{r4,r5,r6,r7,r8,r9,r10,r11,r12,lr}",
+              "flow_targets": []
+            },
+            {
+              "address": "80004494",
+              "assembly": "ldr r9,[0x80004808]",
+              "flow_targets": []
+            },
+            {
+              "address": "80004498",
+              "assembly": "ldr r12,[0x80004814]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000449c",
+              "assembly": "add r1,r9,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "800044a0",
+              "assembly": "ldrb lr,[r9,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800044a4",
+              "assembly": "ldr r0,[r1,#0x2c]",
+              "flow_targets": []
+            },
+            {
+              "address": "800044a8",
+              "assembly": "ldr r5,[r1,#0x30]",
+              "flow_targets": []
+            },
+            {
+              "address": "800044ac",
+              "assembly": "ldrb r3,[r12,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "800044b0",
+              "assembly": "ldr r10,[0x8000480c]",
+              "flow_targets": []
+            },
+            {
+              "address": "800044b4",
+              "assembly": "ldr r6,[0x80004810]",
+              "flow_targets": []
+            },
+            {
+              "address": "800044b8",
+              "assembly": "ldr r1,[r1,#0x20]",
+              "flow_targets": []
+            },
+            {
+              "address": "800044bc",
+              "assembly": "cmp lr,#0x8",
+              "flow_targets": []
+            },
+            {
+              "address": "800044c0",
+              "assembly": "mov r7,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "800044c4",
+              "assembly": "mov r2,#0x7",
+              "flow_targets": []
+            },
+            {
+              "address": "800044c8",
+              "assembly": "mov r8,#0x6",
+              "flow_targets": []
+            },
+            {
+              "address": "800044cc",
+              "assembly": "mov r11,#0x1",
+              "flow_targets": []
+            },
+            {
+              "address": "800044d0",
+              "assembly": "mov r4,#0x8",
+              "flow_targets": []
+            },
+            {
+              "address": "800044d4",
+              "assembly": "ldrcc pc,[pc,lr,lsl #0x2]",
+              "flow_targets": []
+            },
+            {
+              "address": "800044d8",
+              "assembly": "b 0x800047fc",
+              "flow_targets": [
+                "800047fc"
+              ]
+            },
+            {
+              "address": "800047fc",
+              "assembly": "ldmia sp!,{r4,r5,r6,r7,r8,r9,r10,r11,r12,lr}",
+              "flow_targets": []
+            },
+            {
+              "address": "80004800",
+              "assembly": "mvn r0,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80004804",
+              "assembly": "b 0x8000482c",
+              "flow_targets": [
+                "8000482c"
+              ]
+            },
+            {
+              "address": "8000482c",
+              "assembly": "stmdb sp!,{r4,r5,r6,lr}",
+              "flow_targets": []
+            },
+            {
+              "address": "80004830",
+              "assembly": "ldr r5,[0x8000488c]",
+              "flow_targets": []
+            },
+            {
+              "address": "80004834",
+              "assembly": "mov r4,r0",
+              "flow_targets": []
+            },
+            {
+              "address": "80004838",
+              "assembly": "mov r1,#0x3",
+              "flow_targets": []
+            },
+            {
+              "address": "8000483c",
+              "assembly": "mov r0,r5",
+              "flow_targets": []
+            },
+            {
+              "address": "80004840",
+              "assembly": "bl 0x800031b8",
+              "flow_targets": [
+                "800031b8"
+              ]
+            },
+            {
+              "address": "80004844",
+              "assembly": "mov r1,#0x2",
+              "flow_targets": []
+            },
+            {
+              "address": "80004848",
+              "assembly": "mov r0,r5",
+              "flow_targets": []
+            },
+            {
+              "address": "8000484c",
+              "assembly": "bl 0x800031b8",
+              "flow_targets": [
+                "800031b8"
+              ]
+            },
+            {
+              "address": "80004850",
+              "assembly": "ldr r2,[0x80004890]",
+              "flow_targets": []
+            },
+            {
+              "address": "80004854",
+              "assembly": "mov r1,#0x0",
+              "flow_targets": []
+            },
+            {
+              "address": "80004858",
+              "assembly": "strb r1,[r2,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000485c",
+              "assembly": "strb r1,[r2,#0x1]",
+              "flow_targets": []
+            },
+            {
+              "address": "80004860",
+              "assembly": "str r1,[r2,#0x14]",
+              "flow_targets": []
+            },
+            {
+              "address": "80004864",
+              "assembly": "str r1,[r2,#0x18]",
+              "flow_targets": []
+            },
+            {
+              "address": "80004868",
+              "assembly": "str r1,[r2,#0x1c]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000486c",
+              "assembly": "str r1,[r2,#0x20]",
+              "flow_targets": []
+            },
+            {
+              "address": "80004870",
+              "assembly": "ldr r0,[0x80004894]",
+              "flow_targets": []
+            },
+            {
+              "address": "80004874",
+              "assembly": "strb r1,[r2,#0x34]",
+              "flow_targets": []
+            },
+            {
+              "address": "80004878",
+              "assembly": "str r4,[r2,#0x38]",
+              "flow_targets": []
+            },
+            {
+              "address": "8000487c",
+              "assembly": "str r1,[r0,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80004880",
+              "assembly": "ldr r0,[0x80004898]",
+              "flow_targets": []
+            },
+            {
+              "address": "80004884",
+              "assembly": "str r1,[r0,#0x0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80004888",
+              "assembly": "ldmia sp!,{r4,r5,r6,pc}",
+              "flow_targets": []
+            }
+          ],
+          "direct_call_targets": [
+            "800031b8"
+          ],
+          "decompiled_c": "\r\n/* YS4470 reference proof: bounded_original_ARM926_execution;\r\n   contributions/COORD-FSM-TIMEOUT/fsm-timeout.json; proposed RE_MeasurementFSM */\r\n\r\nvoid RE_MeasurementFSM(void)\r\n\r\n{\r\n  char cVar1;\r\n  undefined1 *puVar2;\r\n  int *piVar3;\r\n  undefined4 uVar4;\r\n  undefined4 *puVar5;\r\n  undefined1 uVar6;\r\n  int iVar7;\r\n  int iVar8;\r\n  undefined4 uVar9;\r\n  int iVar10;\r\n  uint uVar11;\r\n  undefined4 unaff_r4;\r\n  undefined4 unaff_r5;\r\n  uint uVar12;\r\n  undefined4 unaff_r6;\r\n  undefined4 in_lr;\r\n  bool bVar13;\r\n  \r\n  uVar4 = uRam8000488c;\r\n  iVar8 = iRam80004820;\r\n  uVar9 = uRam80004810;\r\n  piVar3 = piRam8000480c;\r\n  puVar2 = puRam80004808;\r\n  iVar7 = *(int *)(puRam80004808 + 0x2c);\r\n  uVar12 = *(uint *)(puRam80004808 + 0x30);\r\n  cVar1 = *pcRam80004814;\r\n  iVar10 = *(int *)(puRam80004808 + 0x20);\r\n  switch(*puRam80004808) {\r\n  case 0:\r\n    puRam80004808[0x34] = 0;\r\n    return;\r\n  case 1:\r\n    iVar8 = *(int *)(puRam80004808 + 0x18);\r\n    bVar13 = iVar8 == 0;\r\n    if (-1 < iVar8) {\r\n      iVar10 = *(int *)(puRam80004808 + 0x14);\r\n      bVar13 = iVar10 == iVar8;\r\n    }\r\n    if (bVar13 || (-1 >= iVar8 || iVar10 < iVar8)) goto code_r0x80004518;\r\n    uVar12 = *(uint *)(puRam80004808 + iVar8 * 4 + 4);\r\n    *(uint *)(puRam80004808 + 0x20) = uVar12;\r\n    iVar10 = iRam80004818;\r\n    if (((0x2f < uVar12) || (*(int *)(iRam80004818 + uVar12 * 8) == 0)) ||\r\n       (iVar8 = iRam80004818 + uVar12 * 8, *(char *)(iVar8 + 4) == '\\0')) goto code_r0x8000459c;\r\n    func_0x80060efc();\r\n    *piVar3 = 0;\r\n    func_0x80000b4c(pcRam80004814,200);\r\n    func_0x80060f20();\r\n    if ((uVar12 == 0xc || uVar12 == 0xd) || ((uVar12 == 0xe || uVar12 == 0xf) || uVar12 == 0xb)) {\r\n      func_0x800031cc(uVar9,3);\r\n      func_0x800031b8(uVar9,2);\r\n    }\r\n    else if (uVar12 == 10 || uVar12 == 9) {\r\n      func_0x800031b8(uVar9,3);\r\n      func_0x800031cc(uVar9,2);\r\n    }\r\n    func_0x80005e84(*(undefined4 *)(iVar10 + uVar12 * 8),*(undefined1 *)(iVar8 + 4));\r\n    uVar9 = RE_RtosTickSnapshot();\r\n    *(undefined4 *)(puVar2 + 0x2c) = uVar9;\r\n    if (uVar12 == 0x1d || uVar12 == 0x1b) {\r\n      *(undefined4 *)(puVar2 + 0x28) = 5;\r\n      *(undefined4 *)(puVar2 + 0x30) = 0x1e;\r\n      uVar6 = 3;\r\n    }\r\n    else {\r\n      puVar2[0x24] = **(undefined1 **)(iVar10 + uVar12 * 8);\r\n      *(undefined4 *)(puVar2 + 0x30) = 0x50;\r\n      uVar6 = 2;\r\n    }\r\n    goto code_r0x80004718;\r\n  case 2:\r\n    if ((*piRam8000480c < 1) || (cVar1 != puRam80004808[0x24])) {\r\n      iVar10 = RE_RtosTickSnapshot();\r\n      if ((uint)(iVar10 - iVar7) < uVar12) {\r\n        return;\r\n      }\r\ncode_r0x800046bc:\r\n      *puVar2 = 6;\r\n      return;\r\n    }\r\n    if (iVar10 - 9U < 7) {\r\n      uVar9 = RE_RtosTickSnapshot();\r\n      *(undefined4 *)(puVar2 + 0x2c) = uVar9;\r\n      if (*(int *)(puVar2 + 0x20) == 0xe || *(int *)(puVar2 + 0x20) == 0xd) {\r\n        uVar9 = 100;\r\n      }\r\n      else {\r\n        uVar9 = 0x32;\r\n      }\r\n      *(undefined4 *)(puVar2 + 0x30) = uVar9;\r\n      uVar6 = 4;\r\n      goto code_r0x80004718;\r\n    }\r\n    break;\r\n  case 3:\r\n    if (*piRam8000480c < *(int *)(puRam80004808 + 0x28)) {\r\n      iVar10 = RE_RtosTickSnapshot();\r\n      if ((uint)(iVar10 - iVar7) < uVar12) {\r\n        return;\r\n      }\r\n      goto code_r0x800046bc;\r\n    }\r\n    if (iVar10 == 0x1d) {\r\n      if (cVar1 != '`') goto code_r0x800046bc;\r\n    }\r\n    else if ((iVar10 == 0x1b) && (cVar1 != '^')) goto code_r0x800046bc;\r\n    uVar6 = 5;\r\ncode_r0x80004718:\r\n    *puVar2 = uVar6;\r\n    return;\r\n  case 4:\r\n    iVar10 = RE_RtosTickSnapshot();\r\n    if ((uint)(iVar10 - iVar7) < uVar12) {\r\n      return;\r\n    }\r\n    break;\r\n  case 5:\r\n    uVar12 = (uint)*(uint3 *)(pcRam80004814 + 1);\r\n    if ((*(uint3 *)(pcRam80004814 + 1) & 0x800000) != 0) {\r\n      uVar12 = uVar12 - 0x1000000;\r\n    }\r\n    if (iVar10 == 0x1b) {\r\n      uVar11 = 0;\r\n    }\r\n    else {\r\n      uVar11 = (uint)(byte)pcRam80004814[4];\r\n      if (6 < uVar11) {\r\n        uVar11 = 6;\r\n      }\r\n    }\r\n    if (*(char *)(iRam8000481c + 1) == '\\0') {\r\n      if ((*(int *)(iRam8000481c + 8) == 0xe || *(int *)(iRam8000481c + 8) == 0xd) &&\r\n         (uRam80004824 <= uVar12)) {\r\n        *(undefined4 *)(iRam80004820 + 0x1c) = uRam80004828;\r\n        *(undefined4 *)(iVar8 + 0x20) = 0;\r\n      }\r\n      else {\r\n        *(uint *)(iRam80004820 + 0x1c) = uVar12;\r\n        *(uint *)(iVar8 + 0x20) = uVar11;\r\n      }\r\n    }\r\n    else {\r\n      *(char *)(iRam8000481c + 1) = *(char *)(iRam8000481c + 1) + -1;\r\n    }\r\ncode_r0x80004518:\r\n    *puVar2 = 7;\r\n    return;\r\n  case 6:\r\n    func_0x800031b8(uRam80004810,3);\r\n    func_0x800031b8(uVar9,2);\r\n    if (0 < *(int *)(puVar2 + 0x1c)) {\r\ncode_r0x8000459c:\r\n      *puVar2 = 8;\r\n      return;\r\n    }\r\n    *(int *)(puVar2 + 0x1c) = *(int *)(puVar2 + 0x1c) + 1;\r\n    goto code_r0x800046a0;\r\n  case 7:\r\n    uVar9 = 0;\r\n    goto LAB_8000482c;\r\n  default:\r\n    uVar9 = 0xffffffff;\r\nLAB_8000482c:\r\n    func_0x800031b8(uRam8000488c,3,7,cVar1,unaff_r4,unaff_r5,unaff_r6,in_lr);\r\n    func_0x800031b8(uVar4,2);\r\n    puVar2 = puRam80004890;\r\n    *puRam80004890 = 0;\r\n    puVar2[1] = 0;\r\n    *(undefined4 *)(puVar2 + 0x14) = 0;\r\n    *(undefined4 *)(puVar2 + 0x18) = 0;\r\n    *(undefined4 *)(puVar2 + 0x1c) = 0;\r\n    *(undefined4 *)(puVar2 + 0x20) = 0;\r\n    puVar5 = puRam80004894;\r\n    puVar2[0x34] = 0;\r\n    *(undefined4 *)(puVar2 + 0x38) = uVar9;\r\n    *puVar5 = 0;\r\n    *puRam80004898 = 0;\r\n    return;\r\n  }\r\n  func_0x800031b8(uVar9,3);\r\n  func_0x800031b8(uVar9,2);\r\n  *(int *)(puVar2 + 0x18) = *(int *)(puVar2 + 0x18) + 1;\r\n  *(undefined4 *)(puVar2 + 0x1c) = 0;\r\ncode_r0x800046a0:\r\n  *puVar2 = 1;\r\n  return;\r\n}\r\n\r\n",
+          "limits": [
+            "Ghidra inferred body; original-byte proof applies only to documented execution scope."
+          ]
+        },
+        {
+          "address": "0x80061f84",
+          "name": "RE_RtosTickSnapshot",
+          "label_status": "named_from_independent_proof",
+          "confidence": 1.0,
+          "evidence": "contributions/COORD-FSM-TIMEOUT/fsm-timeout.json",
+          "comment": "YS4470 reference proof: bounded_original_ARM926_execution; contributions/COORD-FSM-TIMEOUT/fsm-timeout.json; proposed RE_RtosTickSnapshot",
+          "body_end": "80061f9f",
+          "assembly": [
+            {
+              "address": "80061f84",
+              "assembly": "stmdb sp!,{r4,lr}",
+              "flow_targets": []
+            },
+            {
+              "address": "80061f88",
+              "assembly": "bl 0x80060efc",
+              "flow_targets": [
+                "80060efc"
+              ]
+            },
+            {
+              "address": "80061f8c",
+              "assembly": "ldr r0,[0x80061fa0]",
+              "flow_targets": []
+            },
+            {
+              "address": "80061f90",
+              "assembly": "ldr r4,[r0,#0xc]",
+              "flow_targets": []
+            },
+            {
+              "address": "80061f94",
+              "assembly": "bl 0x80060f20",
+              "flow_targets": [
+                "80060f20"
+              ]
+            },
+            {
+              "address": "80061f98",
+              "assembly": "mov r0,r4",
+              "flow_targets": []
+            },
+            {
+              "address": "80061f9c",
+              "assembly": "ldmia sp!,{r4,pc}",
+              "flow_targets": []
+            }
+          ],
+          "direct_call_targets": [
+            "80060efc",
+            "80060f20"
+          ],
+          "decompiled_c": "\r\n/* YS4470 reference proof: bounded_original_ARM926_execution;\r\n   contributions/COORD-FSM-TIMEOUT/fsm-timeout.json; proposed RE_RtosTickSnapshot */\r\n\r\nundefined4 RE_RtosTickSnapshot(void)\r\n\r\n{\r\n  undefined4 uVar1;\r\n  \r\n  func_0x80060efc();\r\n  uVar1 = *(undefined4 *)(iRam80061fa0 + 0xc);\r\n  func_0x80060f20();\r\n  return uVar1;\r\n}\r\n\r\n",
+          "limits": [
+            "Ghidra inferred body; original-byte proof applies only to documented execution scope."
+          ]
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "New disposable projects; no existing analyst project was modified.",
+    "Inferred function body/decompilation is not a full execution proof.",
+    "Original-code proof scope remains states1 setup and timed states2/3/4 plus tick getter."
+  ],
+  "environment_note": "Initial launch failed because the dedicated Java home directory did not yet exist. Creating it allowed both exports; open_program deprecation warning remains."
+}

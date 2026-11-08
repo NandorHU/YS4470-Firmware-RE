@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.function-database.v1",
-  "generated_utc_date": "2026-11-07",
+  "generated_utc_date": "2026-11-08",
   "architecture": {
     "cpu": "ARM926EJ-S",
     "instruction_set": "ARM v5T / Thumb considered",
@@ -82,18 +82,29 @@
       "id": "measurement_fsm",
       "addresses": {
         "V3_8": "0x80004490",
-        "Beta3": "0x80004490"
+        "Beta3": "0x80004490",
+        "V3_6": "0x80004490"
       },
       "confidence": "confirmed",
       "role": "Request/reply measurement state machine",
       "relationships": [
         "state 5 parser at 0x80004738",
         "transaction_builder",
-        "state-1 PIO selector: command-dependent bits 2/3 using 0x01c208b4"
+        "state-1 PIO selector: command-dependent bits 2/3 using 0x01c208b4",
+        "rtos_tick_snapshot",
+        "timed states2/3/4: reconstruction/fsm_timeout.c",
+        "state1 setup after modeled UART send0x80005e84"
       ],
       "evidence": [
         "ARM state-table trace",
-        "PIO control trace 2026-11-05"
+        "PIO control trace 2026-11-05",
+        "contributions/COORD-FSM-TIMEOUT/fsm-timeout.json",
+        "contributions/COORD-FSM-TIMEOUT/fsm-timeout-ghidra.json"
+      ],
+      "limits": [
+        "2026-11-08 proof: original V3.6/V3.8 only; historical Beta3 annotation is not a new execution result.",
+        "State1 UART send is modeled; timed states2/3/4 have an independent original/Python/compiled-C contract.",
+        "Other FSM states, full RTOS scheduling and physical time units remain outside this experiment."
       ]
     },
     {
@@ -1299,6 +1310,30 @@
       "limits": [
         "Only the documented fixtures/paths; no complete GUI/RTOS or live-device/timing proof."
       ]
+    },
+    {
+      "id": "rtos_tick_snapshot",
+      "addresses": {
+        "V3_6": "0x80061f84",
+        "V3_8": "0x80061f84"
+      },
+      "bounded_end_exclusive": "0x80061fa0",
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Return RTOS root0x805abbbc+0xc snapshot under original critical enter/exit",
+      "relationships": [
+        "measurement_fsm",
+        "critical_enter",
+        "critical_exit",
+        "counter0x805abbc8"
+      ],
+      "evidence": [
+        "contributions/COORD-FSM-TIMEOUT/fsm-timeout.json",
+        "contributions/COORD-FSM-TIMEOUT/fsm-timeout-ghidra.json"
+      ],
+      "limits": [
+        "Valid critical nesting0/1/2/7; no general IRQ-save/restore or full scheduler proof.",
+        "No milliseconds or live-device frequency assigned."
+      ]
     }
   ],
   "session_updates": [
@@ -1381,6 +1416,11 @@
       "date": "2026-11-07",
       "evidence": "evidence/2026-11-07-refresh-side-effects.json",
       "summary": "Original queue construction/send/copy/critical and renderer state code preserve freshness counterexample;2396 checks,14 Ghidra exports."
+    },
+    {
+      "date": "2026-11-08",
+      "evidence": "contributions/COORD-FSM-TIMEOUT/fsm-timeout.json",
+      "summary": "Cached FSM start/duration, unsigned deadline and wrap, complete-frame precedence, actual critical tick getter and independent timed-state C reconstruction;13302 checks and four Ghidra exports."
     }
   ],
   "version_comparisons": {
@@ -1578,7 +1618,7 @@
         "printf0x80000544",
         "create0x80040894"
       ],
-      "next": "Prove FSM+0x30's cached reader0x800044a8 through r5 and elapsed-tick branches0x800046a8/0x800046c4/0x80004720 using real getter0x80061f84 and the verified critical helpers. Test threshold boundaries and32-bit tick wrap before assigning units or interpreting Beta3's30-to40 change. Keep blocked queues, waiters and remaining GUI/log leaves separate.",
+      "next": "Validate the MainADCTask candidate 0x80005a78 and actual callers of FSM 0x80004490; bound one task-loop iteration and the delay candidate 0x80060fbc before assigning a polling cadence. Keep GUI callback periods, live clock frequency and acoustic latency separate.",
       "refinement_evidence": "evidence/2026-11-07-refresh-side-effects.json"
     },
     "refresh_side_effects": {
@@ -1613,7 +1653,40 @@
         "full GUI/asynchronous log consumers",
         "live timing"
       ],
-      "next": "Prove FSM+0x30's cached reader0x800044a8 through r5 and elapsed-tick branches0x800046a8/0x800046c4/0x80004720 using real getter0x80061f84 and the verified critical helpers. Test threshold boundaries and32-bit tick wrap before assigning units or interpreting Beta3's30-to40 change. Keep blocked queues, waiters and remaining GUI/log leaves separate."
+      "next": "Validate the MainADCTask candidate 0x80005a78 and actual callers of FSM 0x80004490; bound one task-loop iteration and the delay candidate 0x80060fbc before assigning a polling cadence. Keep GUI callback periods, live clock frequency and acoustic latency separate."
+    },
+    "fsm_timeout": {
+      "evidence": "contributions/COORD-FSM-TIMEOUT/fsm-timeout.json",
+      "ghidra": "contributions/COORD-FSM-TIMEOUT/fsm-timeout-ghidra.json",
+      "total_checks": 13302,
+      "differential_original_python_c": 12914,
+      "per_original": {
+        "differential": 6457,
+        "getter": 20,
+        "tick_prefix": 10,
+        "send_setup": 108,
+        "cache_intervention": 48,
+        "counterfactual": 8
+      },
+      "results_sha256": "22212642cf8e42e7be6b1829508a6dc593a116be5f6298b63707f4911f5accfe",
+      "core_fields": {
+        "fsm": "0x805ac694",
+        "start_offset": "0x2c",
+        "duration_offset": "0x30",
+        "counter": "0x805abbc8"
+      },
+      "state1_original_budgets": {
+        "commands_0x1b_0x1d": 30,
+        "other_tested_commands": 80
+      },
+      "state4_settle_budgets": {
+        "commands_13_14": 100,
+        "other_9_through_15": 50
+      },
+      "complete_frame_checks_deadline": false,
+      "actual_beta3_executed": false,
+      "physical_time_units": null,
+      "next": "Validate the MainADCTask candidate 0x80005a78 and actual callers of FSM 0x80004490; bound one task-loop iteration and the delay candidate 0x80060fbc before assigning a polling cadence. Keep GUI callback periods, live clock frequency and acoustic latency separate."
     }
   },
   "configuration_fields": {
@@ -1663,7 +1736,7 @@
     "unit_tests": 7,
     "pyghidra_reference_exports": 12,
     "scope": "ARM aligned candidate survey0x80000000..0x80063800; not whole-firmware/Thumb/indirect proof",
-    "next": "Prove FSM+0x30's cached reader0x800044a8 through r5 and elapsed-tick branches0x800046a8/0x800046c4/0x80004720 using real getter0x80061f84 and the verified critical helpers. Test threshold boundaries and32-bit tick wrap before assigning units or interpreting Beta3's30-to40 change. Keep blocked queues, waiters and remaining GUI/log leaves separate.",
+    "next": "Validate the MainADCTask candidate 0x80005a78 and actual callers of FSM 0x80004490; bound one task-loop iteration and the delay candidate 0x80060fbc before assigning a polling cadence. Keep GUI callback periods, live clock frequency and acoustic latency separate.",
     "confirmed_semantic_additions": [
       {
         "id": "intc_vector_dispatch",

@@ -140,3 +140,17 @@ Evidence: `evidence/2026-11-07-refresh-side-effects.json` and `evidence/2026-11-
 The queue/renderer core audit is complete within its stated scopes. Reuse the2396-check side-effect runner and previous freshness/filter/INTC harnesses. Do not return to the two top-level stubs as if their original bodies had never been checked. Keep graphics/text/log models and blocking queues explicit.
 
 Next bounded task: Prove FSM+0x30's cached reader0x800044a8 through r5 and elapsed-tick branches0x800046a8/0x800046c4/0x80004720 using real getter0x80061f84 and the verified critical helpers. Test threshold boundaries and32-bit tick wrap before assigning units or interpreting Beta3's30-to40 change. Keep blocked queues, waiters and remaining GUI/log leaves separate.
+
+## 2026-11-08: cached FSM deadlines and real tick snapshot
+
+Evidence: `contributions/COORD-FSM-TIMEOUT/fsm-timeout.json` and `contributions/COORD-FSM-TIMEOUT/fsm-timeout-ghidra.json`. Method/runner: `contributions/COORD-FSM-TIMEOUT/README.md` / `trace_fsm_timeout.py`.
+
+Completed COORD-FSM-TIMEOUT with 13,302 checks, four real Ghidra exports and nine
+provenance tests. Reuse the runner and the pure-C timed-state component; do not
+repeat the old missing-reader investigation or treat +0x30 as a per-call decrement.
+The prior filter, queue/renderer and INTC evidence remains valid in its scopes.
+
+Next reserved task COORD-ADC-CADENCE: Validate the MainADCTask candidate 0x80005a78 and actual callers of FSM 0x80004490; bound one task-loop iteration and the delay candidate 0x80060fbc before assigning a polling cadence. Keep GUI callback periods, live clock frequency and acoustic latency separate.
+
+The six external tasks remain available and the physical UART task remains
+blocked; no external assignment or live hardware test was manufactured.
