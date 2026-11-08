@@ -1,0 +1,206 @@
+{
+  "schema": "ys4470.local-source-review.v1",
+  "date": "2026-11-08",
+  "task": "EXT-EVIDENCE-AUDIT",
+  "base_commit": "66d02a53afc91f3905fccadd9790974c4e866b43",
+  "external_branch": "external/local-llm/evidence-audit-2026-11-08",
+  "endpoint": "http://127.0.0.1:11435",
+  "candidates": [
+    "qwen3.5:9b",
+    "qwen2.5-coder:14b"
+  ],
+  "probe_sources": [
+    {
+      "id": "getter.arm.txt",
+      "start": 1,
+      "end": 11
+    }
+  ],
+  "sources": [
+    {
+      "id": "getter.arm.txt",
+      "file": "snapshots/source-0.txt",
+      "sha256": "dc8e25cd227d0144047f6346ba9860d81da6751ef3daec8f8438f6b0362e630a",
+      "lines": 11,
+      "status": "frozen_committed_evidence_or_source"
+    },
+    {
+      "id": "fsm-waits.arm.txt",
+      "file": "snapshots/source-1.txt",
+      "sha256": "e990007f1182e60dcd39fb3996783f1e4c3582f5abc4a8394ec17ee5d694bbaf",
+      "lines": 91,
+      "status": "frozen_committed_evidence_or_source"
+    },
+    {
+      "id": "reconstruction/fsm_timeout.c",
+      "file": "snapshots/source-2.txt",
+      "sha256": "8bfeff91d1b8d61361da0a8a4dd6ec2805e472eb0ccae3d450a65a39a139ee1a",
+      "lines": 45,
+      "status": "frozen_committed_evidence_or_source"
+    },
+    {
+      "id": "reconstruction/fsm_timeout.h",
+      "file": "snapshots/source-3.txt",
+      "sha256": "0e002b209a37c79ba1232c9d4c44af7505923a4c5be68fc3651bf14c1b97950a",
+      "lines": 23,
+      "status": "frozen_committed_evidence_or_source"
+    },
+    {
+      "id": "trace_fsm_timeout.py",
+      "file": "snapshots/source-4.txt",
+      "sha256": "0251ea2fca6899f998b1178adf867f15bf3d62021fd0ffa954b9cad23c6aad51",
+      "lines": 314,
+      "status": "frozen_committed_evidence_or_source"
+    },
+    {
+      "id": "proof-summary.json",
+      "file": "snapshots/source-5.txt",
+      "sha256": "5d8dac4fed7de9d512d6b5143f318afa056fa4db573686289d218fe3bef0ddbe",
+      "lines": 25,
+      "status": "frozen_committed_evidence_or_source"
+    },
+    {
+      "id": "selected-function-records.json",
+      "file": "snapshots/source-6.txt",
+      "sha256": "1fbdeb1eea743a403688aeaf46b8f86904fc150dc0caaa0fdb84dc438535c557",
+      "lines": 55,
+      "status": "frozen_committed_evidence_or_source"
+    },
+    {
+      "id": "original-manifest.json",
+      "file": "snapshots/source-7.txt",
+      "sha256": "802e838aacca3794f9acb890cee179114b87649a13f7651f54069313e6e73348",
+      "lines": 23,
+      "status": "frozen_committed_evidence_or_source"
+    },
+    {
+      "id": "legacy-unverified-final.md",
+      "file": "snapshots/source-8.txt",
+      "sha256": "c6bc4f743b8324573b0fc151928f832f23e4ef3f44fbc4d84575565fb4f98157",
+      "lines": 49,
+      "status": "unverified_model_draft"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "legacy-triage",
+      "question": "Audit the old UNVERIFIED final draft against the actual ARM getter. Identify unsupported ISA/threshold/physical-latency claims. An old model draft is never primary evidence. Cite the original excerpt for any positive code claim.",
+      "sources": [
+        {
+          "id": "getter.arm.txt",
+          "start": 1,
+          "end": 10
+        },
+        {
+          "id": "legacy-unverified-final.md",
+          "start": 1,
+          "end": 45
+        }
+      ]
+    },
+    {
+      "id": "deadline-precedence",
+      "question": "Audit expiry/equality, wrap and complete-frame precedence in the supplied original ARM. Separate what executes from what is absent. Do not assign milliseconds or claim actual Beta3 execution.",
+      "sources": [
+        {
+          "id": "fsm-waits.arm.txt",
+          "start": 1,
+          "end": 91
+        },
+        {
+          "id": "getter.arm.txt",
+          "start": 1,
+          "end": 10
+        },
+        {
+          "id": "proof-summary.json",
+          "start": 1,
+          "end": 25
+        }
+      ]
+    },
+    {
+      "id": "c-contract",
+      "question": "Compare the independent C timed-state component with the original state2/3/4 ARM excerpts. Find a concrete mismatch or state the exact scope/ABI assumptions. Suggest at most two falsifiable counterexamples.",
+      "sources": [
+        {
+          "id": "reconstruction/fsm_timeout.c",
+          "start": 1,
+          "end": 45
+        },
+        {
+          "id": "reconstruction/fsm_timeout.h",
+          "start": 1,
+          "end": 23
+        },
+        {
+          "id": "fsm-waits.arm.txt",
+          "start": 1,
+          "end": 91
+        }
+      ]
+    },
+    {
+      "id": "harness-guards",
+      "question": "Audit the original execution harness guards and state checks. Find a concrete missing assertion or plausible test escape, grounded in lines. Do not claim whole-device emulation.",
+      "sources": [
+        {
+          "id": "trace_fsm_timeout.py",
+          "start": 127,
+          "end": 205
+        },
+        {
+          "id": "proof-summary.json",
+          "start": 1,
+          "end": 25
+        }
+      ]
+    },
+    {
+      "id": "coverage-accounting",
+      "question": "Check case accounting and whether the scenarios support the stated scope. Distinguish differential cases, prefix-only execution and host intervention from physical observations. Identify useful missing controls.",
+      "sources": [
+        {
+          "id": "trace_fsm_timeout.py",
+          "start": 236,
+          "end": 292
+        },
+        {
+          "id": "proof-summary.json",
+          "start": 1,
+          "end": 25
+        }
+      ]
+    },
+    {
+      "id": "database-scope",
+      "question": "Audit these function records and original identities for overclaims, especially historical Beta3 annotations versus new original-only proof. Do not infer physical timing or firmware completeness.",
+      "sources": [
+        {
+          "id": "selected-function-records.json",
+          "start": 1,
+          "end": 55
+        },
+        {
+          "id": "original-manifest.json",
+          "start": 1,
+          "end": 23
+        },
+        {
+          "id": "proof-summary.json",
+          "start": 1,
+          "end": 25
+        }
+      ]
+    }
+  ],
+  "model_tools": false,
+  "device_operations": false,
+  "automatic_integration": false,
+  "notes": "Tiny source-cited model probes select a passing local model for this batch; not a general quality benchmark. All drafts require coordinator semantic review.",
+  "probe_prompt_version": 3,
+  "preferred_model": "qwen2.5-coder:14b",
+  "worker": "local_review_worker_v3.py",
+  "worker_sha256": "fe1c1f03cb054a0451682246a3cc6d4c1b09cc3710fd9888d3f9ae45d149b0eb",
+  "previous_attempt": "v2 retained: numeric address mistakes and incomplete citation objects; v3 uses tool-resolved numbers and a strict JSON schema. Failed drafts are not evidence."
+}

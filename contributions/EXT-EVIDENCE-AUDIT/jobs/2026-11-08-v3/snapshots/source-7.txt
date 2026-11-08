@@ -1,0 +1,23 @@
+{
+  "schema": "ys4470.original-firmware.v1",
+  "published_by_owner_request": "2026-11-07",
+  "purpose": "Unmodified application-image inputs for reproducible reverse engineering",
+  "linked_base": "0x7fffffe0",
+  "full_flash_backup": false,
+  "images": [
+    {
+      "version": "V3.6",
+      "path": "original-firmware/V3.6/f1c100s.bin",
+      "package": "Project_February_V3.6_V02.26.6",
+      "size_bytes": 5943296,
+      "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+    },
+    {
+      "version": "V3.8",
+      "path": "original-firmware/V3.8/f1c100s.bin",
+      "package": "Project_March_V3.8_V02.26.6",
+      "size_bytes": 5943296,
+      "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+    }
+  ]
+}

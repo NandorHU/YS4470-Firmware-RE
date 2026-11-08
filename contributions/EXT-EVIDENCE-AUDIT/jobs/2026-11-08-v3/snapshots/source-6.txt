@@ -1,0 +1,55 @@
+[
+  {
+    "id": "measurement_fsm",
+    "addresses": {
+      "V3_8": "0x80004490",
+      "Beta3": "0x80004490",
+      "V3_6": "0x80004490"
+    },
+    "confidence": "confirmed",
+    "role": "Request/reply measurement state machine",
+    "relationships": [
+      "state 5 parser at 0x80004738",
+      "transaction_builder",
+      "state-1 PIO selector: command-dependent bits 2/3 using 0x01c208b4",
+      "rtos_tick_snapshot",
+      "timed states2/3/4: reconstruction/fsm_timeout.c",
+      "state1 setup after modeled UART send0x80005e84"
+    ],
+    "evidence": [
+      "ARM state-table trace",
+      "PIO control trace 2026-11-05",
+      "contributions/COORD-FSM-TIMEOUT/fsm-timeout.json",
+      "contributions/COORD-FSM-TIMEOUT/fsm-timeout-ghidra.json"
+    ],
+    "limits": [
+      "2026-11-08 proof: original V3.6/V3.8 only; historical Beta3 annotation is not a new execution result.",
+      "State1 UART send is modeled; timed states2/3/4 have an independent original/Python/compiled-C contract.",
+      "Other FSM states, full RTOS scheduling and physical time units remain outside this experiment."
+    ]
+  },
+  {
+    "id": "rtos_tick_snapshot",
+    "addresses": {
+      "V3_6": "0x80061f84",
+      "V3_8": "0x80061f84"
+    },
+    "bounded_end_exclusive": "0x80061fa0",
+    "confidence": "confirmed_bounded_original_arm926_execution",
+    "role": "Return RTOS root0x805abbbc+0xc snapshot under original critical enter/exit",
+    "relationships": [
+      "measurement_fsm",
+      "critical_enter",
+      "critical_exit",
+      "counter0x805abbc8"
+    ],
+    "evidence": [
+      "contributions/COORD-FSM-TIMEOUT/fsm-timeout.json",
+      "contributions/COORD-FSM-TIMEOUT/fsm-timeout-ghidra.json"
+    ],
+    "limits": [
+      "Valid critical nesting0/1/2/7; no general IRQ-save/restore or full scheduler proof.",
+      "No milliseconds or live-device frequency assigned."
+    ]
+  }
+]

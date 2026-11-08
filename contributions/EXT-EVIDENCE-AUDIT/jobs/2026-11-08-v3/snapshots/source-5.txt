@@ -1,0 +1,25 @@
+{
+  "version": "V3.6",
+  "input_sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+  "differential_cases": {
+    "timeout_boundary": 3825,
+    "admission": 2560,
+    "signed_length_index_wrap": 72
+  },
+  "getter_cases": 20,
+  "tick_prefix_cases": 10,
+  "send_setup_cases": 108,
+  "cache_intervention_cases": 48,
+  "checks": 6651,
+  "results_sha256": "22212642cf8e42e7be6b1829508a6dc593a116be5f6298b63707f4911f5accfe",
+  "limits": [
+    "Only states2/3/4 have the original/Python/compiled-C differential specification.",
+    "State1 send setup executes original clear/GPIO/getter; UART send0x80005e84 is a leaf model.",
+    "Tick prefix stops at0x80061fe8 before wrap-list/ready-list handling; no complete RTOS scheduler proof.",
+    "Cache mutation is an explicit host intervention, not an observed concurrent writer or hardware IRQ.",
+    "Budget40 is a fixture comparison; no actual Beta3 image executed by this runner.",
+    "Counter ticks are not assigned milliseconds; no device, UART waveform or acoustic measurement."
+  ],
+  "date": "2026-11-08",
+  "compiled_c_cases": 6457
+}

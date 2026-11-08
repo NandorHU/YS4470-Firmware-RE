@@ -1,0 +1,7 @@
+{
+  "state": "completed_draft_awaiting_coordinator_review",
+  "completed": 6,
+  "total": 6,
+  "model": "qwen2.5-coder:14b",
+  "task": "database-scope"
+}

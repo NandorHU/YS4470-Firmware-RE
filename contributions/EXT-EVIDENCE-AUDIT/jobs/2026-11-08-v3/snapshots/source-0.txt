@@ -1,0 +1,11 @@
+Mode: ARM, explicit Unicorn ARM926; original V3.6 and V3.8 guarded windows agree.
+Raw linked base: 0x7fffffe0; this is original firmware, not a modified profile.
+Literal word at 0x80061fa0 = 0x805abbbc
+80061f84 push {r4, lr}
+80061f88 bl #0x80060efc
+80061f8c ldr r0, [pc, #0xc]
+80061f90 ldr r4, [r0, #0xc]
+80061f94 bl #0x80060f20
+80061f98 mov r0, r4
+80061f9c pop {r4, pc}
+Python-resolved effective address for LDR r4 at0x80061f90: 0x805abbc8. Pointer=0x805abbbc, byte offset=12. This is the returned-word read, not the literal-pool address.
