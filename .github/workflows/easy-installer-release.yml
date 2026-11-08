@@ -1,0 +1,57 @@
+name: Build and publish Windows installer
+on:
+  push:
+    branches: [release/easy-installer-1.1]
+    paths: ['installer/**', 'patcher/**', '.github/workflows/easy-installer-release.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ys4470-installer-release
+  cancel-in-progress: false
+jobs:
+  build:
+    if: github.repository == 'NandorHU/YS4470-Firmware-RE'
+    runs-on: windows-2022
+    timeout-minutes: 25
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12.10'
+          architecture: x64
+      - name: Install pinned build tools
+        run: python -m pip install -r installer/requirements-build.lock.txt
+      - name: Fetch public SHA-pinned inputs
+        run: python installer/prepare.py
+      - name: Test public patcher against both originals
+        run: python -m unittest discover -s patcher -p test_patcher.py -v
+      - name: Build packaged English GUI
+        run: python installer/build.py
+      - name: Audit runtime and simulate installation/recovery
+        run: python installer/verify_release.py
+      - name: Publish new beta Release
+        if: github.ref == 'refs/heads/release/easy-installer-1.1'
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $tag = 'installer-v1.1.0-beta.1'
+          gh release view $tag --repo NandorHU/YS4470-Firmware-RE *> $null
+          if ($LASTEXITCODE -eq 0) { throw 'Release already exists; refusing asset overwrite' }
+          $assets = @(Get-ChildItem -LiteralPath work/easy-installer/release -File | ForEach-Object { $_.FullName })
+          gh release create $tag @assets --repo NandorHU/YS4470-Firmware-RE --target ${{ github.sha }} --draft --prerelease --title 'YS-4470 English Installer 1.1.0-beta.1 (factory V3.8 included)' --notes-file installer/RELEASE-NOTES.md
+          if ($LASTEXITCODE -ne 0) { throw 'Release publication failed' }
+          $release = gh api repos/NandorHU/YS4470-Firmware-RE/releases/tags/$tag | ConvertFrom-Json
+          if ($release.assets.Count -ne $assets.Count) { throw 'Uploaded asset count differs; draft retained' }
+          foreach ($file in $assets) {
+            $name = [IO.Path]::GetFileName($file)
+            $asset = @($release.assets | Where-Object { $_.name -eq $name })
+            $expected = 'sha256:' + (Get-FileHash -LiteralPath $file -Algorithm SHA256).Hash.ToLowerInvariant()
+            if ($asset.Count -ne 1 -or $asset[0].digest -ne $expected) { throw "Uploaded digest mismatch: $name; draft retained" }
+          }
+          gh release edit $tag --repo NandorHU/YS4470-Firmware-RE --draft=false
+          if ($LASTEXITCODE -ne 0) { throw 'Could not publish verified draft' }
+
