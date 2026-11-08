@@ -1,5 +1,18 @@
 # YS-4470 firmware 1.0 — highspeedv2
 
+## Patch your own factory firmware — no Beta3 required
+
+Use the new [offline factory-input patcher](patcher/README.md) with your own supported V3.6/V3.8 application file or16 MiB full flash backup. Download this repository ZIP, extract it, then drag the firmware file onto `patcher/PATCH-WINDOWS.cmd` (Python3.10+).
+
+The patcher creates a new1.0 application/full-backup file, verifies hashes, and supports reversal. It preserves your input, bootloader, logo and every byte outside the application edits. V3.8 continuous matches the published1.0 application; the V3.6 port preserves its own version-specific bytes and is offline-tested only. It does not access or flash a device, and the historical Beta3 installer is not compatible with its personalized outputs. [English instructions](patcher/README.md) · [Magyar útmutató](patcher/OLVASS-EL.md).
+
+```text
+python patcher/ys4470_patch.py inspect "my-backup.bin"
+python patcher/ys4470_patch.py apply "my-backup.bin" --output "my-1.0.bin"
+```
+
+A full-backup hash can differ between devices; this tool recognizes the supported application inside it. Unknown application hashes are rejected. Share only the inspect text when reporting a mismatch, never a personal flash backup.
+
 Firmware improvements for the Mr. Yang YS-4470. **I tested this build on the device and confirmed that version 1.0 works well. The complete 16 MiB flash readback matched the intended image byte for byte.** This confirms operation on the tested device; it is not a complete accuracy or reliability certification.
 
 **[Download version 1.0 from Releases](https://github.com/NandorHU/YS4470-Firmware-RE/releases/tag/v1.0).** Compiled firmware is distributed as Release assets only; it is not tracked in the source tree.
@@ -33,7 +46,7 @@ Select diode mode and enable `highspeedv2`. Check the switch after restarting; t
 
 Valid measurements refresh a finite sound watchdog while its counter is above three. The original KeyTask stops the tone after 13 cycles without a qualifying refresh: nominally about 650 ms, depending on actual scheduling. A mode change therefore does not leave an indefinitely sustained tone, but immediate stopping has not been established. Counters of three or less preserve a superseding short key beep. In unusual scheduling conditions, sound may remain until the watchdog expires after an invalid result. These edge cases require further physical testing.
 
-## Reproducible Windows build
+## Historical Beta3-based Windows build
 
 Python 3.12 and its standard library are sufficient for the portable patch build. It requires your own verified **full 16 MiB Beta3 flash backup**, with this SHA-256:
 
@@ -78,3 +91,4 @@ The simulator replaces device enumeration and all native FEL calls in a temporar
 Research scripts under `src/` are archived from the original workspace. The portable build entry point is the root `build.py`. Archived emulation tests require Unicorn and the original local firmware inputs.
 
 See `PROJECT-STATUS.md` for research addresses and next steps. Older manifests retain their status at the time they were created; the physical installation record documents the later successful installation. Keep full flash backups, USB logs, and local `out/`, `inputs/`, and `tools/` directories private.
+
