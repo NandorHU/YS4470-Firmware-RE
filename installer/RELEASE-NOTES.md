@@ -1,6 +1,6 @@
-# YS-4470 Installer 1.1.0-beta.1
+# YS-4470 Installer 1.1.0-beta.2
 
-Download **YS4470-Installer-1.1.0-beta.1-Windows-x64.zip**, extract it and run
+Download **YS4470-Installer-1.1.0-beta.2-Windows-x64.zip**, extract it and run
 **YS4470-Installer.exe**. The interface is English. Factory V3.8, Python/Tcl/Tk,
 sunxi-fel and the official Zadig driver helper are included. No Python setup,
 separate firmware download or manual flash dump is required.

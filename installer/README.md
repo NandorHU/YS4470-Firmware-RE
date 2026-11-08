@@ -1,4 +1,4 @@
-# YS-4470 Installer 1.1.0-beta.1 — English Windows GUI
+# YS-4470 Installer 1.1.0-beta.2 — English Windows GUI
 
 Download the Windows-x64 ZIP from this Release, extract it, and double-click
 **YS4470-Installer.exe**. The package includes its Python/Tcl/Tk runtime, the
