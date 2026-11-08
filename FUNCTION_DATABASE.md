@@ -1,6 +1,6 @@
 # Function database (human-readable)
 
-The machine-readable source of record is `FUNCTION_DATABASE.json`. “Confirmed” means static code evidence supports the stated narrow role; it does not imply full behavioral reconstruction.
+The machine-readable source of record is `FUNCTION_DATABASE.json`. â€śConfirmedâ€ť means static code evidence supports the stated narrow role; it does not imply full behavioral reconstruction.
 
 | ID | V3.8 / Beta3 address | Confidence | Narrow evidence-backed role |
 |---|---:|---|---|
@@ -9,7 +9,7 @@ The machine-readable source of record is `FUNCTION_DATABASE.json`. “Confirmed�
 | MeasurementFSM | `0x80004490` | confirmed | Request/reply state machine |
 | TransactionBuilder | `0x8000489c` | confirmed | Transaction state construction/queueing |
 | MainADCTask_candidate | `0x80005a78` | hypothesis | Candidate ADC task entry |
-| SoundControlGate | `0x80006e4c` | confirmed | Selector gate (1–10) calling lower sound routine |
+| SoundControlGate | `0x80006e4c` | confirmed | Selector gate (1â€“10) calling lower sound routine |
 | UART_RX_ISR | `0x800073bc` | confirmed | UART RX interrupt handler |
 | Beta3SoundOverride | `0x80010754` | confirmed | Call-site-specific `r6=0x529` substitution when return address is `0x80003a78` |
 | Beta3ResultObserver | `0x80060130` | confirmed static behavior | Preserves dispatch value while recording result/context changes |
@@ -69,7 +69,7 @@ The descriptor count byte is the number of source bytes. It is not a count that 
 | MeasurementUARTSendByte | `0x80006dc8` | confirmed | Selector-based UART TX primitive; measurement sender selects UART2 and waits at `+0x7c` before writing `+0x00` |
 | UART_RX_ISR | `0x800073bc` | confirmed | UART2 receive ISR; conditionally reads `+0x00`, stores byte in `0x805b408c`, caps count at 200 |
 
-This replaces the former “byte-output candidate” uncertainty for the measurement sender path. The line configuration and external device remain unknown.
+This replaces the former â€śbyte-output candidateâ€ť uncertainty for the measurement sender path. The line configuration and external device remain unknown.
 
 
 ## 2026-11-05 UART2 initialization
@@ -189,7 +189,7 @@ The checkbox-state getter at 0x8003752c reads widget halfword +0x20 and masks bi
 
 Evidence: `evidence/2026-11-07-sound-pwm-path.json`; reproducible method: `tools/SOUND_PWM_PATH.md`; runner: `tools/trace_sound_pwm_path.py`.
 
-Original V3.6/V3.8 pass 792 gate/PWM cases, 160 Fast CONT result-qualifier cases and two sentinel-off call setups, with identical fingerprints. Real original instructions execute through 0x80006e4c → 0x800060d0 → pinmux 0x8000302c / PWM configure 0x80042d40; arithmetic helpers are executed, not stubbed. PIO/PWM are RAM shadows, with no physical clock, acoustic result or measured delay.
+Original V3.6/V3.8 pass 792 gate/PWM cases, 160 Fast CONT result-qualifier cases and two sentinel-off call setups, with identical fingerprints. Real original instructions execute through 0x80006e4c â†’ 0x800060d0 â†’ pinmux 0x8000302c / PWM configure 0x80042d40; arithmetic helpers are executed, not stubbed. PIO/PWM are RAM shadows, with no physical clock, acoustic result or measured delay.
 
 | Entry | Proven bounded role |
 |---|---|
@@ -280,3 +280,10 @@ New database ID rtos_tick_snapshot links the FSM to the existing critical
 helpers. The FSM's existing Beta3 annotation remains historical: this new
 execution proof covers only the SHA-256-pinned originals. Ghidra's inferred
 whole-function body is not a claim that all FSM states were reconstructed.
+
+
+## 2026-11-08: GaugeCmdTask binding and hash-bound packets
+
+The database now has60 records. New entry0x80003dbc is statically bound to the original GaugeCmdTask name through the executed registration-argument setup at0x80005948..0x80005954. Its seven original instructions call setup0x80005d24, command routine0x80005f14 with9 then19, and repeat service0x80005b6c. Three callees are modeled returns; no UART/RTOS timing is proven. The name of service0x80005b6c is still a hypothesis.
+
+Six original-hash-bound complete-local-CFG packets cover this wrapper, SoundControlGate0x80006e4c and MeasurementRefreshCallback0x8005d048. See contributions/COORD-FUNCTION-PACKETS/packet-index.json and validation.json for360 instructions checked against original bytes,388 edges and explicit caller/global completeness limits. No automatic renames or whole-firmware equivalence claim was made.

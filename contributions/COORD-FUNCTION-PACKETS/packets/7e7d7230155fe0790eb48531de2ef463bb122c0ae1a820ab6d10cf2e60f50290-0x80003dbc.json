@@ -1,0 +1,182 @@
+{
+  "schema": "ys4470.function-packet.v1",
+  "exporter_sha256": "8d26012249788ad62df427917d728ce6439afe0e08762e03a00cda89d207700e",
+  "cache_key": "4596cf5d507e795c4c25710bd8c29b9ff5a7bd17aedcd117d4da5e42f0e731ef",
+  "source_project_manifest_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "binary": {
+    "version": "V3.8",
+    "path": "original-firmware/V3.8/f1c100s.bin",
+    "package": "Project_March_V3.8_V02.26.6",
+    "size_bytes": 5943296,
+    "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+  },
+  "program": "f1c100s.bin",
+  "architecture": "ARM926EJ-S",
+  "language": "ARM:LE:32:v5t",
+  "instruction_mode": "ARM",
+  "ghidra_version": "12.1.4",
+  "pyghidra_version": "3.1.0",
+  "entry": "0x80003dbc",
+  "name": "GaugeCmdTask",
+  "name_evidence_status": "static_task_name_binding",
+  "preserved_analyst_metadata": null,
+  "range": {
+    "min": "0x80003dbc",
+    "max_inclusive": "0x80003dd7"
+  },
+  "body_instruction_count": 7,
+  "body_sha256": "0ded20654dce0bb87ddd8b293cc25eafb7f1f99a8efde060bf77c6ada3051b0d",
+  "complete_local_cfg": true,
+  "assembly": [
+    {
+      "address": "0x80003dbc",
+      "bytes": "d80700eb",
+      "assembly": "bl 0x80005d24",
+      "capstone": "bl #0x80005d24"
+    },
+    {
+      "address": "0x80003dc0",
+      "bytes": "0900a0e3",
+      "assembly": "mov r0,#0x9",
+      "capstone": "mov r0, #9"
+    },
+    {
+      "address": "0x80003dc4",
+      "bytes": "520800eb",
+      "assembly": "bl 0x80005f14",
+      "capstone": "bl #0x80005f14"
+    },
+    {
+      "address": "0x80003dc8",
+      "bytes": "1300a0e3",
+      "assembly": "mov r0,#0x13",
+      "capstone": "mov r0, #0x13"
+    },
+    {
+      "address": "0x80003dcc",
+      "bytes": "500800eb",
+      "assembly": "bl 0x80005f14",
+      "capstone": "bl #0x80005f14"
+    },
+    {
+      "address": "0x80003dd0",
+      "bytes": "650700eb",
+      "assembly": "bl 0x80005b6c",
+      "capstone": "bl #0x80005b6c"
+    },
+    {
+      "address": "0x80003dd4",
+      "bytes": "fdffffea",
+      "assembly": "b 0x80003dd0",
+      "capstone": "b #0x80003dd0"
+    }
+  ],
+  "decompiled_c": "\r\nvoid FUN_80003dbc(void)\r\n\r\n{\r\n  func_0x80005d24();\r\n  func_0x80005f14(9);\r\n  func_0x80005f14(0x13);\r\n  do {\r\n    func_0x80005b6c();\r\n  } while( true );\r\n}\r\n\r\n",
+  "basic_blocks": [
+    {
+      "entry": "0x80003dbc",
+      "instructions": [
+        "0x80003dbc",
+        "0x80003dc0",
+        "0x80003dc4",
+        "0x80003dc8",
+        "0x80003dcc"
+      ],
+      "outgoing": [
+        {
+          "from": "0x80003dcc",
+          "to": "0x80003dd0",
+          "kind": "local"
+        }
+      ]
+    },
+    {
+      "entry": "0x80003dd0",
+      "instructions": [
+        "0x80003dd0",
+        "0x80003dd4"
+      ],
+      "outgoing": [
+        {
+          "from": "0x80003dd4",
+          "to": "0x80003dd0",
+          "kind": "local"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "0x80003dbc",
+      "to": "0x80003dc0",
+      "kind": "local"
+    },
+    {
+      "from": "0x80003dc0",
+      "to": "0x80003dc4",
+      "kind": "local"
+    },
+    {
+      "from": "0x80003dc4",
+      "to": "0x80003dc8",
+      "kind": "local"
+    },
+    {
+      "from": "0x80003dc8",
+      "to": "0x80003dcc",
+      "kind": "local"
+    },
+    {
+      "from": "0x80003dcc",
+      "to": "0x80003dd0",
+      "kind": "local"
+    },
+    {
+      "from": "0x80003dd0",
+      "to": "0x80003dd4",
+      "kind": "local"
+    },
+    {
+      "from": "0x80003dd4",
+      "to": "0x80003dd0",
+      "kind": "local"
+    }
+  ],
+  "direct_callees": [
+    {
+      "site": "0x80003dbc",
+      "target": "0x80005d24",
+      "resolved": true,
+      "kind": "call"
+    },
+    {
+      "site": "0x80003dc4",
+      "target": "0x80005f14",
+      "resolved": true,
+      "kind": "call"
+    },
+    {
+      "site": "0x80003dcc",
+      "target": "0x80005f14",
+      "resolved": true,
+      "kind": "call"
+    },
+    {
+      "site": "0x80003dd0",
+      "target": "0x80005b6c",
+      "resolved": true,
+      "kind": "call"
+    }
+  ],
+  "indirect_calls": [],
+  "direct_caller_candidates": [],
+  "literal_refs": [],
+  "memory_accesses": [],
+  "global_readers_writers_scope": "Indexed exported packets only; dynamic bases and whole-program consumers remain unresolved.",
+  "limits": [
+    "Complete reachable local CFG under explicit ARM return/direct-branch rules; not complete transitive callees or all feasible paths.",
+    "Raw BL matches may be data. Caller completeness is not claimed. Dynamic memory bases and indirect calls remain explicit.",
+    "Decompiler output is an aid, not independent semantic proof. Names are analyst labels, not vendor symbols.",
+    "Constant tracking resets at block joins and clobbers; memory accesses are candidates, not execution observations."
+  ]
+}

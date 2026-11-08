@@ -210,3 +210,8 @@ state6 retry cadence; live concurrent RX publication; actual modified Beta3
 behavior. Cache intervention is a host experiment, not a proven race.
 
 Next reserved task COORD-ADC-CADENCE: Validate the MainADCTask candidate 0x80005a78 and actual callers of FSM 0x80004490; bound one task-loop iteration and the delay candidate 0x80060fbc before assigning a polling cadence. Keep GUI callback periods, live clock frequency and acoustic latency separate.
+
+
+## 2026-11-08 continuation
+
+The original GaugeCmdTask wrapper is0x80003dbc;0x80005b6c remains a service candidate, now linked to that wrapper. COORD-ADC-CADENCE should trace service/FSM/delay placement without assuming that the separate MainADCTask candidate is the diode UART-result producer. Global writers/readers outside the six-packet index remain incomplete. Base+highspeedv2 physical latency, clock units and modified-build provenance are unresolved. Full context improved this small instruction lookup test, not overall project completion. Do not repeat the22 cutoff historical replies or already reviewed comparison tasks.

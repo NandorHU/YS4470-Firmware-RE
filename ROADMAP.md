@@ -154,3 +154,11 @@ Next reserved task COORD-ADC-CADENCE: Validate the MainADCTask candidate 0x80005
 
 The six external tasks remain available and the physical UART task remains
 blocked; no external assignment or live hardware test was manufactured.
+
+
+## 2026-11-08 completed tooling scope / next work
+
+- Completed COORD-LOCAL-TOOLS: isolated pinned promptfoo/DSPy/MCP, measured local calibration and a scoped REA request.
+- Completed COORD-FUNCTION-PACKETS: strict completion/checkpoint/retry/resume, six original-hash-bound local CFG packets,13 tests,360 instruction-byte checks,388 edges, four bounded original runs and a six-row SQLite/FTS5 index.
+- Continue coordinator-reserved COORD-ADC-CADENCE from GaugeCmdTask0x80003dbc→service0x80005b6c and the established FSM/tick evidence. Keep MainADCTask, GUI periods and physical acoustic delay separate.
+- Extend the packet/index corpus only for an owned research question. Heavy emulators, vector retrieval and weight training remain deferred until a concrete measured gap requires them.

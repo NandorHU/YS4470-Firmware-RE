@@ -1,0 +1,229 @@
+{
+  "schema": "ys4470.legacy-completion-audit.v1",
+  "offline_only": true,
+  "old_files_modified": false,
+  "responses": 31,
+  "incomplete": 22,
+  "rows": [
+    {
+      "file": "challenge.json",
+      "sha256": "6cd9c0731c1ad0db18220769913b76f719cb8310c4fb708824ad3a12af9c7c24",
+      "done_reason": "stop",
+      "new_state": "unreviewed_legacy_text",
+      "verified": false
+    },
+    {
+      "file": "compare.json",
+      "sha256": "0bb6b411b25282bf897b02f712ca71e6b3c1632ec5d267c37424c15b69a7c17c",
+      "done_reason": "length",
+      "new_state": "incomplete",
+      "verified": false
+    },
+    {
+      "file": "dossier-00.json",
+      "sha256": "11d8361a722a81e8a5ee0de6d5d84e877fda3f404cf282fa020e65d77378942a",
+      "done_reason": "length",
+      "new_state": "incomplete",
+      "verified": false
+    },
+    {
+      "file": "dossier-01.json",
+      "sha256": "71196ca0ec83613cb4f8e72c57f1d8c2c8fd488f6a70dbed5a9cd92f3c8cbfa5",
+      "done_reason": "length",
+      "new_state": "incomplete",
+      "verified": false
+    },
+    {
+      "file": "dossier-02.json",
+      "sha256": "283b1c0b11fcd7372f9b9a05c0adca743649cacbb825503f24ae2d448642ea82",
+      "done_reason": "length",
+      "new_state": "incomplete",
+      "verified": false
+    },
+    {
+      "file": "dossier-03.json",
+      "sha256": "9cf2d033d1c7de7b9d7a17ff5faf745e6ccc610339886f8a2814d917aa697728",
+      "done_reason": "length",
+      "new_state": "incomplete",
+      "verified": false
+    },
+    {
+      "file": "dossier-04.json",
+      "sha256": "fa23af159f5a61bfe8a679be9a31dfa6a7981f578aceb24633dc3e186a587732",
+      "done_reason": "length",
+      "new_state": "incomplete",
+      "verified": false
+    },
+    {
+      "file": "dossier-05.json",
+      "sha256": "1c81937b5860d2adb8646109f9bc8374548f27f491d78aa96d3a89e7a7bdf4bd",
+      "done_reason": "length",
+      "new_state": "incomplete",
+      "verified": false
+    },
+    {
+      "file": "dossier-06.json",
+      "sha256": "b82486e44da897a0ba5ab38016be86db66991f48f820104ac01d637760d0fa33",
+      "done_reason": "length",
+      "new_state": "incomplete",
+      "verified": false
+    },
+    {
+      "file": "dossier-07.json",
+      "sha256": "e718fb875a84c4790ebedd615746d06b062769942db5051e73bc55183c12a463",
+      "done_reason": "length",
+      "new_state": "incomplete",
+      "verified": false
+    },
+    {
+      "file": "dossier-08.json",
+      "sha256": "5966d8e3d3fab77ead6f9477b04e19768fccb5c7658c2c176af3f60b0ce19806",
+      "done_reason": "length",
+      "new_state": "incomplete",
+      "verified": false
+    },
+    {
+      "file": "dossier-09.json",
+      "sha256": "85d037ba256b14e4fe4c04916530dd251ecc7552f7970bc66a5b538460d6d7f9",
+      "done_reason": "length",
+      "new_state": "incomplete",
+      "verified": false
+    },
+    {
+      "file": "dossier-10.json",
+      "sha256": "c9d109dda50dfe8c0bfecc192abf84965a18d07f93aa048db43a8ae9b9cc3131",
+      "done_reason": "stop",
+      "new_state": "unreviewed_legacy_text",
+      "verified": false
+    },
+    {
+      "file": "dossier-11.json",
+      "sha256": "d424183c66dde56321df3a05e7c82b9d98519de81632a422041665f51631d11f",
+      "done_reason": "stop",
+      "new_state": "unreviewed_legacy_text",
+      "verified": false
+    },
+    {
+      "file": "dossier-12.json",
+      "sha256": "7c5c83f57e38a264c39916b1f1d804105bd04ab4daba286368063b796d22b916",
+      "done_reason": "length",
+      "new_state": "incomplete",
+      "verified": false
+    },
+    {
+      "file": "dossier-13.json",
+      "sha256": "a825d011b9eddc6eae1d8db3d84d5c8f7ec5606f906e91a7cddb9d1f60d48fa2",
+      "done_reason": "stop",
+      "new_state": "unreviewed_legacy_text",
+      "verified": false
+    },
+    {
+      "file": "dossier-14.json",
+      "sha256": "e20745e86726c596724673cc9fbc0f035aa043cf6cb6538e73213950d3bfd8ad",
+      "done_reason": "length",
+      "new_state": "incomplete",
+      "verified": false
+    },
+    {
+      "file": "dossier-15.json",
+      "sha256": "16f0466096a909636a8a44ae3766c1b0a1661d6a0ad6bfad4bf3c2033d3f9750",
+      "done_reason": "length",
+      "new_state": "incomplete",
+      "verified": false
+    },
+    {
+      "file": "dossier-16.json",
+      "sha256": "7760ef1db9e6b77a13d3d08dba5c4931c241a08427d6d9d7898af68bc7744096",
+      "done_reason": "length",
+      "new_state": "incomplete",
+      "verified": false
+    },
+    {
+      "file": "dossier-17.json",
+      "sha256": "5c77168297cac73ef6c2dd5d9c81db200e8bcf5e494cf8c2862f31558074b1fe",
+      "done_reason": "stop",
+      "new_state": "unreviewed_legacy_text",
+      "verified": false
+    },
+    {
+      "file": "dossier-18.json",
+      "sha256": "67516a8421789b5f68bfeae9f919a998e25f006ab2de440b74929a206a3f9a30",
+      "done_reason": "length",
+      "new_state": "incomplete",
+      "verified": false
+    },
+    {
+      "file": "dossier-19.json",
+      "sha256": "fd80bdaac16d29485a0d8163b8a21d2e50645a182824e755d228d2ff3d794d2a",
+      "done_reason": "length",
+      "new_state": "incomplete",
+      "verified": false
+    },
+    {
+      "file": "dossier-20.json",
+      "sha256": "bf6067d011fb1625690f5cbb5f3bf4e0620de549d295c52fd3c7564bc8994b07",
+      "done_reason": "length",
+      "new_state": "incomplete",
+      "verified": false
+    },
+    {
+      "file": "dossier-21.json",
+      "sha256": "9073d50a7553f1e2cc996de6a737b7300f84912d4599adcc1a8668134414b8cc",
+      "done_reason": "length",
+      "new_state": "incomplete",
+      "verified": false
+    },
+    {
+      "file": "dossier-22.json",
+      "sha256": "d301d476bd5cc90e99879548ace8af36393821be5bd81d48cc74d60725c843b7",
+      "done_reason": "stop",
+      "new_state": "unreviewed_legacy_text",
+      "verified": false
+    },
+    {
+      "file": "dossier-23.json",
+      "sha256": "69051ba3218d7624da655fad882d598d9f9455dae57ec36ed7a46ccbb0ad558e",
+      "done_reason": "length",
+      "new_state": "incomplete",
+      "verified": false
+    },
+    {
+      "file": "dossier-24.json",
+      "sha256": "f831e5fda3da8e6612c2e68a905b5e3036b0f699cb6f6ded37c956eee722dd37",
+      "done_reason": "stop",
+      "new_state": "unreviewed_legacy_text",
+      "verified": false
+    },
+    {
+      "file": "dossier-25.json",
+      "sha256": "a85fadff538a6dbb18b4d3d85958361e1297fc28add2009a39c946d55ebf8ce8",
+      "done_reason": "stop",
+      "new_state": "unreviewed_legacy_text",
+      "verified": false
+    },
+    {
+      "file": "dossier-26.json",
+      "sha256": "d81d8b5e1dd7aa72864caabc37e0f8a8cc149c641aac252d8206425b8c00869e",
+      "done_reason": "stop",
+      "new_state": "unreviewed_legacy_text",
+      "verified": false
+    },
+    {
+      "file": "experiments.json",
+      "sha256": "145fcebfd1e46357ceb212757439765b93989a91cfdf4b3054cb265bf9e82ff2",
+      "done_reason": "length",
+      "new_state": "incomplete",
+      "verified": false
+    },
+    {
+      "file": "final.json",
+      "sha256": "440b2651ed62a02a844af430f40762be481fd1971d5f76c2e1330e3f4a5ee7d6",
+      "done_reason": "length",
+      "new_state": "incomplete",
+      "verified": false
+    }
+  ],
+  "limits": [
+    "Transport audit only; complete old text is not verified and old jobs are never auto-requeued."
+  ]
+}

@@ -1,11 +1,13 @@
 # Reverse-engineering progress
 
-**Last verified update:** 2026-11-07  
+**Last verified update:** 2026-11-08  
 **Development branch:** `re/2026-11-04-pyghidra-fel`
 
-## Current continuation (2026-11-07)
+## Current continuation (2026-11-08)
 
-Reference-guided INTC/timer validation and Fast CONT C reconstruction are complete in their tested scopes. Prove FSM+0x30's cached reader0x800044a8 through r5 and elapsed-tick branches0x800046a8/0x800046c4/0x80004720 using real getter0x80061f84 and the verified critical helpers. Test threshold boundaries and32-bit tick wrap before assigning units or interpreting Beta3's30-to40 change. Keep blocked queues, waiters and remaining GUI/log leaves separate.
+The completion/retry/resume gate and six original-hash-bound GaugeCmdTask/sound/GUI function packets are verified. See contributions/COORD-FUNCTION-PACKETS/README.md (360 instruction-byte checks, 388 CFG edges, four bounded original executions, 13 tests). GaugeCmdTask's static name binding reaches 0x80003dbc; its outer loop calls the still-candidate service0x80005b6c. The local index covers six packets; no global-data equivalence or physical timing is inferred.
+
+Next reserved task: COORD-ADC-CADENCE. Reuse the completed FSM proof and packets to validate the task/service→FSM→delay placement before assigning raw polling cadence. Do not repeat local comparisons or infer milliseconds, acoustic speed, or a whole-firmware percentage.
 
 ## Initial baseline (historical)
 
@@ -446,3 +448,14 @@ quarantined. Checked lessons are in-context examples, not weight training.
 The two-case check scored0/2 before and1/2 after; general reliability and overall
 speedup remain unproven. Keep local tasks small and tool-grounded while the main
 agent continues COORD-ADC-CADENCE. The13,302-check FSM proof is unchanged.
+
+
+## 2026-11-08: local completion gates and full function packets
+
+The latest continuation and collaboration/CURRENT_HANDOFF.md supersede historical continuation blocks below.
+
+The completion/retry/resume gate and six original-hash-bound GaugeCmdTask/sound/GUI function packets are verified. See contributions/COORD-FUNCTION-PACKETS/README.md (360 instruction-byte checks, 388 CFG edges, four bounded original executions, 13 tests). GaugeCmdTask's static name binding reaches 0x80003dbc; its outer loop calls the still-candidate service0x80005b6c. The local index covers six packets; no global-data equivalence or physical timing is inferred.
+
+Next reserved task: COORD-ADC-CADENCE. Reuse the completed FSM proof and packets to validate the task/service→FSM→delay placement before assigning raw polling cadence. Do not repeat local comparisons or infer milliseconds, acoustic speed, or a whole-firmware percentage.
+
+Installed and tested promptfoo0.125.1, DSPy3.4.1 and MCP2.3.0 in an isolated prefix; a scoped local-model→REA call succeeded. See contributions/COORD-LOCAL-TOOLS/README.md. The packet comparison verified3/3 complete-context versus1/3 short-window instruction answers in a deliberately small source-coverage test. Two short-context tasks remain needs_split; none is silently complete. No weight training, paid API or physical-device access occurred.

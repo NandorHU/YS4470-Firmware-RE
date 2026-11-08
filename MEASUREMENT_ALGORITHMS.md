@@ -248,3 +248,8 @@ and39 where duration30 selects6; both expire by40. A complete, valid reply can
 still be admitted without waiting for the budget. This is a conditional grace
 window, not an unconditional ten-tick delay. The actual Beta3 image was not
 executed, and no conversion to milliseconds follows.
+
+
+## 2026-11-08: GaugeCmdTask outer wrapper
+
+Original entry0x80003dbc is bound to GaugeCmdTask by the startup argument setup. Its outer wrapper calls0x80005d24, calls0x80005f14 with9 then19, and loops over service0x80005b6c. Two loop iterations execute with return-only callee models in both originals. This does not prove measurement-command completion, service/FSM timing or Base+highspeedv2 physical performance. See contributions/COORD-FUNCTION-PACKETS/validation.json. Reuse the full local CFG packets for the reserved service/FSM/delay trace.

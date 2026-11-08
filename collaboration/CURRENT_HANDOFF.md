@@ -1,8 +1,8 @@
-# Current shared handoff — 2026-11-08
+# Current shared handoff â€” 2026-11-08
 
 Coordinator: the current Codex agent in the ongoing YS-4470 conversation.
 Integration branch: [`re/2026-11-04-pyghidra-fel`](https://github.com/NandorHU/YS4470-Firmware-RE/tree/re/2026-11-04-pyghidra-fel).
-Baseline read for the current proof: `ddcb3f1c55acb0bb2df98c88e24450d2066bb35a`.
+Baseline read for this tooling/packet session: `9cdcfea5c5a12ee1884eda2b472c3cb0e0e2fc93`.
 Read live ownership in [TASK_REGISTRY.json](TASK_REGISTRY.json); this handoff is
 a research snapshot, not a substitute for current reservations.
 
@@ -13,7 +13,7 @@ Beta3/1.0 are modified builds, not evidence of full reconstruction. Do not resta
 from the earlier patch-only README/HANDOFF notes.
 
 - [Current status](../REVERSE_ENGINEERING_STATUS.md) and [progress](../RE_PROGRESS.md).
-- [59-entry function database](../FUNCTION_DATABASE.json), with evidence levels and relations.
+- [60-entry function database](../FUNCTION_DATABASE.json), with evidence levels and relations.
 - [Memory](../MEMORY_MAP.md), [hardware](../HARDWARE_MAP.md),
   [measurement algorithms](../MEASUREMENT_ALGORITHMS.md),
   [questions](../OPEN_QUESTIONS.md) and [roadmap](../ROADMAP.md).
@@ -90,7 +90,7 @@ tasks remain available; passive UART capture remains blocked. No external agent
 was assigned in this run. All prior completed evidence above should be reused.
 
 
-## Local helper state — 2026-11-08
+## Local helper state â€” 2026-11-08
 
 Read [LOCAL_LLM.md](LOCAL_LLM.md) before assigning more local work. The six-case
 source audit is completed and reviewed; the local client remains an optional
@@ -98,3 +98,14 @@ small-task helper. Examples changed the tiny check from0/2 to1/2 without weight
 training; semantic reliability remains insufficient for autonomous ARM analysis.
 The main coordinator proceeds with COORD-ADC-CADENCE. Do not rerun completed
 batches or treat earlier profile drafts as firmware proof.
+
+
+## 2026-11-08 packet/tool handoff
+
+The completion/retry/resume gate and six original-hash-bound GaugeCmdTask/sound/GUI function packets are verified. See contributions/COORD-FUNCTION-PACKETS/README.md (360 instruction-byte checks, 388 CFG edges, four bounded original executions, 13 tests). GaugeCmdTask's static name binding reaches 0x80003dbc; its outer loop calls the still-candidate service0x80005b6c. The local index covers six packets; no global-data equivalence or physical timing is inferred.
+
+Next reserved task: COORD-ADC-CADENCE. Reuse the completed FSM proof and packets to validate the task/serviceâ†’FSMâ†’delay placement before assigning raw polling cadence. Do not repeat local comparisons or infer milliseconds, acoustic speed, or a whole-firmware percentage.
+
+Reuse [packet index](../contributions/COORD-FUNCTION-PACKETS/packet-index.json), [original-byte/execution checks](../contributions/COORD-FUNCTION-PACKETS/validation.json), [completion audit](../contributions/COORD-FUNCTION-PACKETS/legacy-completion-audit.json), and [local comparison review](../contributions/COORD-FUNCTION-PACKETS/comparison-review.json). The completion worker passed13 tests and resumed with zero new calls.22/31 historical replies stay incomplete; old files were unchanged. The controlled full/short context scores do not establish general reasoning or speed gains.
+
+The function database now has60 records. No live-device timing, firmware installation, training or external agent assignment occurred. Five external tasks remain available; check live ownership before taking one. Installed tools/REA limits are in [LOCAL_LLM.md](LOCAL_LLM.md). No new heavy emulator or vector index was needed.

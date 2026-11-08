@@ -1,0 +1,268 @@
+{
+  "schema": "ys4470.local-tools.promptfoo.v1",
+  "model": "qwen2.5-coder:14b",
+  "original_response_sha256": "ecb52dd3dac07d5f759b5c69148599bdd4aad1f241b179127166df733df606eb",
+  "regraded_without_model_calls": true,
+  "initial_grader_error": "Single-line JS statements were treated as an expression; corrected with newline.",
+  "scores": [
+    {
+      "prompt_index": 0,
+      "passed": 4,
+      "total": 6
+    },
+    {
+      "prompt_index": 1,
+      "passed": 6,
+      "total": 6
+    }
+  ],
+  "negative_controls": {
+    "wrong_relation_rejected": true,
+    "token_cutoff_rejected": true
+  },
+  "results": [
+    {
+      "prompt_index": 0,
+      "case": "BHS",
+      "output": "{\n  \"relation\": \"unsigned_gt\",\n  \"branch_when_equal\": false\n}",
+      "finish_reason": "stop",
+      "latency_ms": 4072,
+      "passed": false,
+      "assertions": [
+        {
+          "type": "javascript",
+          "passed": false,
+          "reason": "Custom function returned false\nconst r=typeof output==='string'?JSON.parse(output):output;\nreturn r.relation===context.vars.expected_relation && r.branch_when_equal===context.vars.expected_equal;"
+        },
+        {
+          "type": "finish-reason",
+          "passed": true,
+          "reason": "Assertion passed"
+        }
+      ]
+    },
+    {
+      "prompt_index": 1,
+      "case": "BHS",
+      "output": "{\n  \"relation\": \"unsigned_ge\",\n  \"branch_when_equal\": true\n}",
+      "finish_reason": "stop",
+      "latency_ms": 487,
+      "passed": true,
+      "assertions": [
+        {
+          "type": "javascript",
+          "passed": true,
+          "reason": "Assertion passed"
+        },
+        {
+          "type": "finish-reason",
+          "passed": true,
+          "reason": "Assertion passed"
+        }
+      ]
+    },
+    {
+      "prompt_index": 0,
+      "case": "BHI",
+      "output": "{\n  \"relation\": \"unsigned_gt\",\n  \"branch_when_equal\": false\n}",
+      "finish_reason": "stop",
+      "latency_ms": 501,
+      "passed": true,
+      "assertions": [
+        {
+          "type": "javascript",
+          "passed": true,
+          "reason": "Assertion passed"
+        },
+        {
+          "type": "finish-reason",
+          "passed": true,
+          "reason": "Assertion passed"
+        }
+      ]
+    },
+    {
+      "prompt_index": 1,
+      "case": "BHI",
+      "output": "{\n  \"relation\": \"unsigned_gt\",\n  \"branch_when_equal\": false\n}",
+      "finish_reason": "stop",
+      "latency_ms": 481,
+      "passed": true,
+      "assertions": [
+        {
+          "type": "javascript",
+          "passed": true,
+          "reason": "Assertion passed"
+        },
+        {
+          "type": "finish-reason",
+          "passed": true,
+          "reason": "Assertion passed"
+        }
+      ]
+    },
+    {
+      "prompt_index": 0,
+      "case": "BLS",
+      "output": "{\n  \"relation\": \"unsigned_le\",\n  \"branch_when_equal\": true\n}",
+      "finish_reason": "stop",
+      "latency_ms": 477,
+      "passed": true,
+      "assertions": [
+        {
+          "type": "javascript",
+          "passed": true,
+          "reason": "Assertion passed"
+        },
+        {
+          "type": "finish-reason",
+          "passed": true,
+          "reason": "Assertion passed"
+        }
+      ]
+    },
+    {
+      "prompt_index": 1,
+      "case": "BLS",
+      "output": "{\n  \"relation\": \"unsigned_le\",\n  \"branch_when_equal\": true\n}",
+      "finish_reason": "stop",
+      "latency_ms": 477,
+      "passed": true,
+      "assertions": [
+        {
+          "type": "javascript",
+          "passed": true,
+          "reason": "Assertion passed"
+        },
+        {
+          "type": "finish-reason",
+          "passed": true,
+          "reason": "Assertion passed"
+        }
+      ]
+    },
+    {
+      "prompt_index": 0,
+      "case": "BGE",
+      "output": "{\n  \"relation\": \"signed_ge\",\n  \"branch_when_equal\": true\n}",
+      "finish_reason": "stop",
+      "latency_ms": 505,
+      "passed": true,
+      "assertions": [
+        {
+          "type": "javascript",
+          "passed": true,
+          "reason": "Assertion passed"
+        },
+        {
+          "type": "finish-reason",
+          "passed": true,
+          "reason": "Assertion passed"
+        }
+      ]
+    },
+    {
+      "prompt_index": 1,
+      "case": "BGE",
+      "output": "{\n  \"relation\": \"signed_ge\",\n  \"branch_when_equal\": true\n}",
+      "finish_reason": "stop",
+      "latency_ms": 481,
+      "passed": true,
+      "assertions": [
+        {
+          "type": "javascript",
+          "passed": true,
+          "reason": "Assertion passed"
+        },
+        {
+          "type": "finish-reason",
+          "passed": true,
+          "reason": "Assertion passed"
+        }
+      ]
+    },
+    {
+      "prompt_index": 0,
+      "case": "BLT",
+      "output": "{\n  \"relation\": \"signed_lt\",\n  \"branch_when_equal\": false\n}",
+      "finish_reason": "stop",
+      "latency_ms": 516,
+      "passed": true,
+      "assertions": [
+        {
+          "type": "javascript",
+          "passed": true,
+          "reason": "Assertion passed"
+        },
+        {
+          "type": "finish-reason",
+          "passed": true,
+          "reason": "Assertion passed"
+        }
+      ]
+    },
+    {
+      "prompt_index": 1,
+      "case": "BLT",
+      "output": "{\n  \"relation\": \"signed_lt\",\n  \"branch_when_equal\": false\n}",
+      "finish_reason": "stop",
+      "latency_ms": 484,
+      "passed": true,
+      "assertions": [
+        {
+          "type": "javascript",
+          "passed": true,
+          "reason": "Assertion passed"
+        },
+        {
+          "type": "finish-reason",
+          "passed": true,
+          "reason": "Assertion passed"
+        }
+      ]
+    },
+    {
+      "prompt_index": 0,
+      "case": "BGT",
+      "output": "{\n  \"relation\": \"equal\",\n  \"branch_when_equal\": false\n}",
+      "finish_reason": "stop",
+      "latency_ms": 445,
+      "passed": false,
+      "assertions": [
+        {
+          "type": "javascript",
+          "passed": false,
+          "reason": "Custom function returned false\nconst r=typeof output==='string'?JSON.parse(output):output;\nreturn r.relation===context.vars.expected_relation && r.branch_when_equal===context.vars.expected_equal;"
+        },
+        {
+          "type": "finish-reason",
+          "passed": true,
+          "reason": "Assertion passed"
+        }
+      ]
+    },
+    {
+      "prompt_index": 1,
+      "case": "BGT",
+      "output": "{\n  \"relation\": \"signed_gt\",\n  \"branch_when_equal\": false\n}",
+      "finish_reason": "stop",
+      "latency_ms": 505,
+      "passed": true,
+      "assertions": [
+        {
+          "type": "javascript",
+          "passed": true,
+          "reason": "Assertion passed"
+        },
+        {
+          "type": "finish-reason",
+          "passed": true,
+          "reason": "Assertion passed"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Synthetic calibration only; not a general firmware accuracy or productivity benchmark."
+  ]
+}

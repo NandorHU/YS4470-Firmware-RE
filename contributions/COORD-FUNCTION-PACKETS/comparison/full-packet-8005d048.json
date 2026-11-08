@@ -1,0 +1,92 @@
+{
+  "manifest_sha256": "b11662075deeee29cce3cf26b72b382733633b39f73812fd2dc55be4a2302662",
+  "packet_sha256": "2704be5f984913c6c5cdb8d8b09011aabc0b0741378f99394b6aef212e3ec1b4",
+  "state": "needs_split",
+  "verified": false,
+  "attempts": [
+    {
+      "attempt": 1,
+      "response": {
+        "model": "qwen2.5-coder:14b",
+        "created_at": "2026-11-08T08:38:14.1775347Z",
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"entry\": \"0x8005d048\",\n  \"instruction_mode\": \"ARM\",\n  \"evidence_address\": \"0x8005d1a0\",\n  \"quote\": \"0x8005d1a0 bl 0x800037c0\",\n  \"limitation\": \"Complete reachable local CFG under explicit ARM return/direct-branch rules; not complete transitive callees or all feasible paths.\"\n}"
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 4975393800,
+        "load_duration": 2566500,
+        "prompt_eval_count": 6049,
+        "prompt_eval_cached_count": 866,
+        "prompt_eval_duration": 2506001000,
+        "eval_count": 104,
+        "eval_duration": 2452472000
+      },
+      "gate": {
+        "state": "invalid",
+        "errors": [],
+        "parsed": {
+          "entry": "0x8005d048",
+          "instruction_mode": "ARM",
+          "evidence_address": "0x8005d1a0",
+          "quote": "0x8005d1a0 bl 0x800037c0",
+          "limitation": "Complete reachable local CFG under explicit ARM return/direct-branch rules; not complete transitive callees or all feasible paths."
+        },
+        "verified": false
+      },
+      "seconds": 4.969,
+      "context_sha256": "a20af82d772160f59337f7fef0b6a64a406683734cfcab11e4bfcf2305145c59",
+      "provided_instructions": 131,
+      "context_characters": 9291,
+      "grounding_errors": [
+        "quote_or_address_not_in_original_packet"
+      ]
+    },
+    {
+      "attempt": 2,
+      "response": {
+        "model": "qwen2.5-coder:14b",
+        "created_at": "2026-11-08T08:38:16.7693115Z",
+        "message": {
+          "role": "assistant",
+          "content": "{\n  \"entry\": \"0x8005d048\",\n  \"instruction_mode\": \"ARM\",\n  \"evidence_address\": \"0x8005d1a0\",\n  \"quote\": \"0x8005d1a0 bl 0x800037c0\",\n  \"limitation\": \"Complete reachable local CFG under explicit ARM return/direct-branch rules; not complete transitive callees or all feasible paths.\"\n}"
+        },
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 2586584500,
+        "load_duration": 3097900,
+        "prompt_eval_count": 6049,
+        "prompt_eval_cached_count": 6048,
+        "prompt_eval_duration": 39707000,
+        "eval_count": 104,
+        "eval_duration": 2530136000
+      },
+      "gate": {
+        "state": "invalid",
+        "errors": [],
+        "parsed": {
+          "entry": "0x8005d048",
+          "instruction_mode": "ARM",
+          "evidence_address": "0x8005d1a0",
+          "quote": "0x8005d1a0 bl 0x800037c0",
+          "limitation": "Complete reachable local CFG under explicit ARM return/direct-branch rules; not complete transitive callees or all feasible paths."
+        },
+        "verified": false
+      },
+      "seconds": 2.578,
+      "context_sha256": "a20af82d772160f59337f7fef0b6a64a406683734cfcab11e4bfcf2305145c59",
+      "provided_instructions": 131,
+      "context_characters": 9291,
+      "grounding_errors": [
+        "quote_or_address_not_in_original_packet"
+      ]
+    }
+  ],
+  "coordinator_review": {
+    "state": "verified",
+    "response_sha256": "7c1799fd2328dad3a942d1761188eeab8aa51addd1a1a48fc1f9fda32e50f76a",
+    "scope": "Exact requested instruction and identity only; other model prose is not promoted.",
+    "original_binary_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+  }
+}

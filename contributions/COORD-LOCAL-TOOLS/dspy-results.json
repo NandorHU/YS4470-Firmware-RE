@@ -1,0 +1,142 @@
+{
+  "schema": "ys4470.local-tools.dspy.v1",
+  "model": "qwen2.5-coder:14b",
+  "endpoint": "loopback:11435",
+  "optimizer": "LabeledFewShot(k=4)",
+  "weights_changed": false,
+  "train_groups": 4,
+  "held_out_groups": 6,
+  "complete": true,
+  "total_seconds": 6.265,
+  "provider_calls": 12,
+  "results": [
+    {
+      "program": "baseline",
+      "case": "BHS",
+      "actual": {
+        "relation": "unsigned_ge",
+        "branch_when_equal": true
+      },
+      "passed": true,
+      "seconds": 0.75
+    },
+    {
+      "program": "baseline",
+      "case": "BHI",
+      "actual": {
+        "relation": "unsigned_gt",
+        "branch_when_equal": false
+      },
+      "passed": true,
+      "seconds": 0.546
+    },
+    {
+      "program": "baseline",
+      "case": "BLS",
+      "actual": {
+        "relation": "unsigned_le",
+        "branch_when_equal": true
+      },
+      "passed": true,
+      "seconds": 0.547
+    },
+    {
+      "program": "baseline",
+      "case": "BGE",
+      "actual": {
+        "relation": "signed_ge",
+        "branch_when_equal": true
+      },
+      "passed": true,
+      "seconds": 0.547
+    },
+    {
+      "program": "baseline",
+      "case": "BLT",
+      "actual": {
+        "relation": "signed_lt",
+        "branch_when_equal": false
+      },
+      "passed": true,
+      "seconds": 0.531
+    },
+    {
+      "program": "baseline",
+      "case": "BGT",
+      "actual": {
+        "relation": "signed_gt",
+        "branch_when_equal": false
+      },
+      "passed": true,
+      "seconds": 0.532
+    },
+    {
+      "program": "labeled_fewshot",
+      "case": "BHS",
+      "actual": {
+        "relation": "unsigned_ge",
+        "branch_when_equal": true
+      },
+      "passed": true,
+      "seconds": 0.531
+    },
+    {
+      "program": "labeled_fewshot",
+      "case": "BHI",
+      "actual": {
+        "relation": "unsigned_gt",
+        "branch_when_equal": false
+      },
+      "passed": true,
+      "seconds": 0.453
+    },
+    {
+      "program": "labeled_fewshot",
+      "case": "BLS",
+      "actual": {
+        "relation": "unsigned_le",
+        "branch_when_equal": true
+      },
+      "passed": true,
+      "seconds": 0.453
+    },
+    {
+      "program": "labeled_fewshot",
+      "case": "BGE",
+      "actual": {
+        "relation": "signed_ge",
+        "branch_when_equal": true
+      },
+      "passed": true,
+      "seconds": 0.438
+    },
+    {
+      "program": "labeled_fewshot",
+      "case": "BLT",
+      "actual": {
+        "relation": "signed_lt",
+        "branch_when_equal": false
+      },
+      "passed": true,
+      "seconds": 0.484
+    },
+    {
+      "program": "labeled_fewshot",
+      "case": "BGT",
+      "actual": {
+        "relation": "signed_gt",
+        "branch_when_equal": false
+      },
+      "passed": true,
+      "seconds": 0.453
+    }
+  ],
+  "scores": {
+    "baseline": 6,
+    "labeled_fewshot": 6
+  },
+  "limits": [
+    "Single small synthetic condition test; no general firmware accuracy or productivity claim.",
+    "Dataset split is by branch mnemonic; this is not a broad held-out firmware corpus."
+  ]
+}
