@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 4,
+  "revision": 5,
   "updated": "2026-11-08",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -206,7 +206,7 @@
     {
       "id": "EXT-EVIDENCE-AUDIT",
       "title": "Audit evidence and address consistency",
-      "status": "in_progress",
+      "status": "completed",
       "owner": "local-ollama-worker",
       "claim_issue": null,
       "branch": "external/local-llm/evidence-audit-2026-11-08",
@@ -230,7 +230,21 @@
       ],
       "assigned_on": "2026-11-08",
       "coordinator_review_required": true,
-      "model_execution_tools": false
+      "model_execution_tools": false,
+      "completed_on": "2026-11-08",
+      "result_commit": "460405fa04971992d2d8830bac1d6ba914a927fc",
+      "review_result": {
+        "reviews": 6,
+        "claims": 24,
+        "confirmed_existing": 6,
+        "confirmed_scope_limits": 7,
+        "rejected": 11,
+        "new_firmware_claims": 0
+      },
+      "result_evidence": [
+        "https://github.com/NandorHU/YS4470-Firmware-RE/tree/460405fa04971992d2d8830bac1d6ba914a927fc/contributions/EXT-EVIDENCE-AUDIT/coordinator-review.json",
+        "https://github.com/NandorHU/YS4470-Firmware-RE/tree/460405fa04971992d2d8830bac1d6ba914a927fc/contributions/EXT-EVIDENCE-AUDIT/lessons-evaluation.json"
+      ]
     },
     {
       "id": "HW-UART-PASSIVE",
@@ -297,7 +311,9 @@
       "acceptance": [
         "Verify manifest/source identities and completion reasons.",
         "Reject unsupported ARM/Thumb, timing and hardware claims before any integration."
-      ]
+      ],
+      "review_state": "Source/manifest identities checked; 22/31 token-cutoff replies; synthesis hypotheses quarantined.",
+      "next_action": "Only revisit a specific primary-grounded question; do not repeat or ingest the full 31-task draft as proof."
     }
   ]
 }

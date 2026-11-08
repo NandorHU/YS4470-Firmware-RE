@@ -85,6 +85,16 @@ Tick prefix/list scheduling and modeled UART send remain separate limits.
 COORD-FSM-TIMEOUT is completed. COORD-ADC-CADENCE is reserved to the current
 coordinator. Validate the MainADCTask candidate 0x80005a78 and actual callers of FSM 0x80004490; bound one task-loop iteration and the delay candidate 0x80060fbc before assigning a polling cadence. Keep GUI callback periods, live clock frequency and acoustic latency separate.
 
-Read live ownership in [TASK_REGISTRY.json](TASK_REGISTRY.json). Six external
+Read live ownership in [TASK_REGISTRY.json](TASK_REGISTRY.json). Five external
 tasks remain available; passive UART capture remains blocked. No external agent
 was assigned in this run. All prior completed evidence above should be reused.
+
+
+## Local helper state — 2026-11-08
+
+Read [LOCAL_LLM.md](LOCAL_LLM.md) before assigning more local work. The six-case
+source audit is completed and reviewed; the local client remains an optional
+small-task helper. Examples changed the tiny check from0/2 to1/2 without weight
+training; semantic reliability remains insufficient for autonomous ARM analysis.
+The main coordinator proceeds with COORD-ADC-CADENCE. Do not rerun completed
+batches or treat earlier profile drafts as firmware proof.
