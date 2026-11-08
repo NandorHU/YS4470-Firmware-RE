@@ -1,461 +1,468 @@
-# Reverse-engineering progress
-
-**Last verified update:** 2026-11-08  
-**Development branch:** `re/2026-11-04-pyghidra-fel`
-
-## Current continuation (2026-11-08)
-
-The completion/retry/resume gate and six original-hash-bound GaugeCmdTask/sound/GUI function packets are verified. See contributions/COORD-FUNCTION-PACKETS/README.md (360 instruction-byte checks, 388 CFG edges, four bounded original executions, 13 tests). GaugeCmdTask's static name binding reaches 0x80003dbc; its outer loop calls the still-candidate service0x80005b6c. The local index covers six packets; no global-data equivalence or physical timing is inferred.
-
-Next reserved task: COORD-ADC-CADENCE. Reuse the completed FSM proof and packets to validate the task/service→FSM→delay placement before assigning raw polling cadence. Do not repeat local comparisons or infer milliseconds, acoustic speed, or a whole-firmware percentage.
-
-## Initial baseline (historical)
-
-- A bounded PyGhidra inventory pipeline now runs with Ghidra 12.1.4, PyGhidra 3.1.0, Jpype1 1.5.2, language `ARM:LE:32:v5t`, and link base `0x7fffffe0`. It exports seeded-function assembly, decompiler output, direct calls, fixed byte-window hashes, and evidence/confidence fields. It intentionally does not represent a full automatic ARM/Thumb analysis.
-- The V3.8-to-Beta3 raw equal-layout comparison found **65 changed ranges totaling 931 bytes**. Therefore Beta3 must not be described as a two-patch firmware.
-- At V3.8 `0x80006e80`, Beta3 replaces the factory sound-table load with a helper at `0x80010754`. The helper retains the original `ldrh`, and only when its caller return address equals `0x80003a78` it substitutes `r6 = 0x529` (1321 decimal). The target is the previously identified sound-gate call at `0x80003a74`. This proves a call-site-specific sound-parameter override; it does **not** yet prove a physical buzzer frequency or a shorter acoustic delay.
-- At V3.8 `0x800037fc`, Beta3 calls helper `0x80060130` instead of loading `[r7,#0x1c]` directly. The helper restores that original load into `r0` and records value/context changes in a new state block rooted at `0x800600ac`. The exact UI/measurement semantics remain a hypothesis.
-- A local V3.6 original was not present in the currently accessible workspace. The tooling supports it; no V3.6-to-V3.8 conclusion has been invented.
-- The repository contains a deliberately restricted FEL helper. Its offline policy/parser self-test passed. It can issue only `sunxi-fel --list` and `sunxi-fel spiflash-info`; it contains no flash write, RAM execution, arbitrary memory access, boot, or erase operation.
-- No USB/FEL operation was executed in this session. Existing 2026-11-02 project artifacts record an F1C100S FEL enumeration and a Winbond 16 MiB SPI-flash identification; that record is historical, not a claim about current device state.
-
-## Exact continuation point
-
-1. Trace the remaining Beta3 changes around `0x800045e0`, `0x8000461c`, and `0x80004738` through the request/reply FSM. Classify each as protocol acceptance, measurement-state change, or unrelated behavior before making latency claims.
-2. Obtain or register the original V3.6 image in a local non-public input directory, validate its SHA-256 locally, then run `tools/pyghidra_inventory.py` and `tools/compare_inventories.py`. Do not upload original firmware binaries.
-3. Convert the confirmed static call-site sound override into a bounded emulation experiment only after identifying the surrounding parameter contract.
-4. Perform a fresh live FEL probe only when the device is intentionally connected; retain its captured output as dated evidence. Never expand the probe to writing, arbitrary memory reads, or RAM code execution without explicit approval.
-
-See `evidence/2026-11-04-pyghidra-beta3-compare.json` for machine-readable session evidence, `FUNCTION_DATABASE.json` for the cross-version function database, and `FEL_ANALYSIS_PLAN.md` for the safety-gated hardware plan.
-
-
-## 2026-11-05: FSM deltas classified
-
-- `0x800045e0`: V3.8 calls `0x80005e84`; Beta3 calls `0x800586ec`, which records `*(u32 *)(0x805abbbc+0xc)` at `0x800600ac+8`, increments `+0x38`, restores `r0/r1/r12/lr`, and tail-branches to the same original target. **Observer only.**
-- `0x80004738`: V3.8 starts parsing with `ldrb r4,[r12,#1]`; Beta3 helper `0x8005871c` records context at `+0x3c`, increments `+0x2c`, restores registers, and executes that exact original load. **Observer only.**
-- `0x8000461c`: V3.8 writes fixed 30 to FSM object `0x805ac694+0x30`; Beta3 helper `0x80058750` selects 40 only for control tuple `(3, 0x0e, 1)`, otherwise 30. **Semantic change in an unresolved FSM phase-budget/interval field.**
-- Test: bounded PyGhidra trace exported successfully; raw control-flow assertions and five selector cases passed.
-- No physical device, USB, FEL, flash, firmware, or RAM-code operation occurred.
-
-### Revised exact continuation point
-
-1. Locate the read/decrement/check path for `0x805ac694+0x30` and establish its unit from code, not assumption.
-2. Trace writers of `0x805abefc+0`, `+2`, and `+7`, then attach descriptive names only with proof.
-3. Continue V3.6 intake once its original binary is accessible; do not substitute Beta3 for that requested comparison.
-
-
-## 2026-11-05: direct object-access trace
-
-- Added `tools/trace_arm_literal_object.py`: raw ARM PC-literal-load tracer with a bounded simple-MOV alias window. Its self-test passed.
-- `0x805ac694` has four verified PC-literal loads: `0x80004494`, `0x80004850`, `0x800048a0`, and `0x80005b94`.
-- Direct trace: FSM writes field `+0x30` at `0x80004608`, `0x80004620`, and `0x8000466c`; TransactionBuilder clears it at `0x800048d4`. No direct `LDR [object+0x30]` was found in the bounded windows. This is not an indirect-flow absence proof.
-- The task at `0x80005b70` uses FSM object field `+0x34` as a gate and invokes both `TransactionBuilder` and `MeasurementFSM`.
-- `HighspeedEventHandler` `0x8000d294` proves that control byte `0x805abefc+2` is toggled 0/1 and that `+7` receives branch-specific values. It does not prove the semantic names of those fields.
-- Tests: source self-test, generated V3.8 object traces, and assertions all passed. No physical I/O occurred.
-
-### Revised exact continuation point
-
-1. Trace `0x800031b8` and any callback/task registration that can consume the FSM object indirectly, with attention to `+0x30`.
-2. Trace a concrete source of control byte `0x805abefc+0 = 3`, especially the non-immediate write at `0x8000d74c`.
-3. Keep V3.6 intake pending its original binary path; no Beta3 result substitutes for V3.6/V3.8 comparison.
-
-
-## 2026-11-05: PIO helper and command-path correction
-
-- `0x800031b8` is **PIOBitClear**, not a scheduler: it clears `[r0+0x10]` bit `r1`. `0x800031cc` is the corresponding set helper.
-- TransactionBuilder calls PIOBitClear for bits 3 then 2 with `r0=0x01c208b4`, affecting MMIO word `0x01c208c4`.
-- FSM state 1 sets command-dependent PIO states immediately before the send routine: IDs `0x0b..0x0f` give bit3=1/bit2=0; IDs `0x09..0x0a` give bit3=0/bit2=1.
-- The descriptor table base is `0x8006367c`; code loads the descriptor pointer and its byte 4 before `0x80005e84`.
-- Test: bounded PyGhidra trace plus PIO control assertions passed. No physical I/O occurred.
-
-### Revised exact continuation point
-
-1. Decode `0x8006367c + 8*id` descriptors for IDs `0x09..0x0f` and map their sent bytes/lengths.
-2. Derive PIO register port/pin semantics from verified SoC documentation and firmware initialization; do not infer electrical board function.
-3. Independently continue the indirect consumer search for `0x805ac694+0x30`; PIOBitClear is excluded.
-
-
-## 2026-11-05: command descriptors 09–0f decoded
-
-- Added `tools/extract_measurement_descriptors.py`; its synthetic self-test passed.
-- Table `0x8006367c`, IDs 09–0f: each entry holds a two-byte source pointer/count. `0x80005e84` appends the modulo-256 sum and emits three bytes through `0x80006dc8`.
-- Verified frames are identical V3.8/Beta3: `58035b`, `58045c`, `580159`, `58075f`, `580961`, `580a62`, `580b63`.
-- The previous interpretation that the third adjacent pool byte belonged to each descriptor was corrected: it is the first byte of the next two-byte record; checksum is runtime-generated.
-- Test: frame expectations plus send-helper instruction assertions passed. No physical I/O occurred.
-
-### Revised exact continuation point
-
-1. Trace byte-output candidate `0x80006dc8` and determine its transport/peripheral contract.
-2. Correlate IDs 09–0f with reply parser behavior, preserving the unproven status of their physical measurement names.
-3. Keep the FSM `+0x30` indirect-consumer analysis separate from this now-confirmed PIO/frame path.
-
-
-## 2026-11-05: UART2 transport resolved
-
-- `0x80006dc8` is confirmed as the measurement UART byte transmitter. Selector 2 chooses `0x01c25800` (UART2); it polls `+0x7c` bit 1, then writes the byte to `+0x00`.
-- The descriptor sender explicitly passes selector 2. Therefore every decoded command frame in this path is sent through UART2.
-- RX ISR `0x800073bc` uses the same base, tests `UART2+0x08` bit 2, reads `+0x00`, and appends to buffer `0x805b408c` with a 200-byte cap.
-- Test: UART2 TX/RX static assertions passed. No physical I/O occurred.
-
-### Revised exact continuation point
-
-1. Locate UART2 initialization and pinmux/clock configuration; identify divisor, LCR/FCR/IER writes with evidence.
-2. Trace RX-buffer completion from `0x805b408c` into FSM parser state 5 and map frame boundaries.
-3. Revisit FSM `+0x30` only after a UART2 transaction timeout/check path is found.
-
-
-## 2026-11-05: UART2 bring-up decoded
-
-- UART init call site `0x80005e3c` passes UART selector 2, literal clock argument 720000000, baud argument 19200, and interrupt flag 1 to `0x80006bb8`.
-- Generic init configures PIO pin fields 7 and 8 at function 3; F1C100S Linux pinctrl maps PE7/PE8 function 3 to UART2 TX/RX.
-- It computes/programs divisor `0x0249` (DLL=49, DLM=02), writes FIFO/control values, toggles DLAB, and finishes LCR lower field at 3.
-- The post-init UART2 startup sequence is `60 60`.
-- Test: UART2 initialization assertions passed. No physical I/O occurred.
-
-### Revised exact continuation point
-
-1. Trace RX-buffer count `0x805ab938` and buffer `0x805b408c` reset/completion paths into parser state 5.
-2. Derive the complete UART2 frame-boundary rule before mapping response bytes to measurement values.
-3. Treat 19200 as the firmware's requested argument; calculate actual baud only after validating the active UART clock source.
-
-
-## 2026-11-05: UART2 RX lifecycle and state-5 gate
-
-- New repeatable PyGhidra tool: `tools/trace_uart2_rx_lifecycle.py`.
-- It identified direct bounded reset anchors for RX count `0x805ab938`: `0x80003f24`, `0x80003f44`, `0x80004558`, and `0x80005f30`. ISR `0x800073bc` stores each byte into `0x805b408c + count`, then increments the count.
-- For FSM command `0x1b`, state 3 requires at least five received bytes and byte 0 = `0x5e`; for `0x1d`, it requires at least five and byte 0 = `0x60`. Only then does it select state 5.
-- State 5 reads bytes 1..3 as a signed little-endian 24-bit value. This is a parser-entry rule for two commands, not a generic UART2 framing rule.
-- Test: `py_compile`, tool self-test, and 26 raw-instruction assertions passed. No physical I/O occurred.
-
-### Revised exact continuation point
-
-1. Locate descriptor-table entries and callers for command IDs `0x1b` and `0x1d`; export their exact UART2 wire frames.
-2. Trace the signed result destination from state 5 into its consumers and UI/measurement-mode selection.
-3. Do not reuse the five-byte/header condition for IDs 09–0f unless their own control flow proves it.
-
-
-## 2026-11-05: state-5 command frames and dispatch
-
-- Exported V3.8 and Beta3 descriptors: '0x1b -> 5e 5e'; '0x1d -> 60 60'. Both are one-byte source plus additive checksum and are identical across the two versions.
-- TransactionBuilder receives command lists from input dispatcher '0x80004390' and task dispatcher '0x80005b70'. The latter proves case 3 → '[0x1d]', case 4 → '[0x1b]', and case 5 → '[0x0c,0x22,0x13,0x1d]'; a case-2 list ends in '0x1d' after two input-derived values.
-- '0x1d' wire bytes equal the UART2 bring-up bytes '60 60'; equality is recorded as a protocol observation, not a semantic conclusion.
-- Test: descriptor exporter self-test, command-sequence tracer self-test, Python compilation, two-version frame assertions, and seven direct TransactionBuilder-call scan passed. No physical I/O occurred.
-
-### Revised exact continuation point
-
-1. Resolve state-5 result-target literals at '0x8000481c..0x80004820' and trace writes at '0x800047b4..0x800047b8'.
-2. Identify consumers that map the signed value/selector to UI or measurement state.
-3. Preserve dispatcher case tags as unlabelled software values until a downstream physical/UI mapping is proven.
-
-
-## 2026-11-06: state-5 result flow
-
-- State 5 publishes value/sentinel at '0x805ac714+0x1c' and selector at '+0x20'. The special path can store '0x007fffff'.
-- ResultDispatch '0x800037c0' reads both fields. Its sentinel branch conditionally calls SoundControlGate '0x80006e4c'.
-- Static text/formatting consumers at '0x80045264' and '0x8005dc3c' also read the result fields; the latter has a nearby '%.3f' literal.
-- Test: new PyGhidra result-flow tracer compiled; self-test and 16 instruction/literal assertions passed. No physical I/O occurred.
-
-### Revised exact continuation point
-
-1. Trace the special state-5 branch via '0x805aae8c+0x08' and identify its command/config source.
-2. Determine when threshold '0x1389' yields sentinel '0x007fffff'.
-3. Trace ResultDispatch's conditional SoundControlGate call without claiming a physical buzzer behavior until hardware/control evidence exists.
-
-
-## 2026-11-06: state-5 saturation path
-
-- State 5 reads '0x805aae8c+0x08'; only control values '0x0d'/'0x0e' proceed to its special path.
-- If unsigned parsed value >= '0x1389', it publishes '0x007fffff' at result '+0x1c' and selector zero at '+0x20'.
-- Case-2 setup in both dispatchers writes an input-derived control value; the task-level command list ends in '0x1d'. Visible case-5 setup writes '0x22' instead.
-- V3.8/Beta3 raw comparisons: input dispatcher, task dispatcher, state-5 saturation code, and literal ranges are identical.
-- Test: tracer compilation/self-test and 20 instruction/literal assertions passed. No physical I/O occurred.
-
-### Revised exact continuation point
-
-1. Trace ResultDispatch's sentinel branch and its call to SoundControlGate '0x80006e4c'.
-2. Establish the sound-gate argument values and first hardware-facing operation without claiming audible behavior.
-3. Separately map the upstream case-2 input field to a UI/measuring mode.
-
-## 2026-11-06: original V3.6 retrieved safely and raw-compared
-
-- Inspected the running Mr.Yang updater without activating **Upgrade**. Its firmware-list manifest named `Project_February_V3.6_V02.26.6` and supplied the expected SHA-256.
-- Retrieved original `f1c100s.bin` into a local non-public input directory. Verification passed: **5,943,296 bytes**, SHA-256 `7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9`.
-- Ran `tools/diff_raw_images.py` against verified V3.8: **10 ranges / 20 bytes**. Four bytes are at eGON-header offset `0x0c`; 16 bytes alter nine unclassified 32-bit table cells at linked `0x80063aa8..0x80063ac8`.
-- Ran `tools/trace_arm_literal_object.py` self-test and bounded trace. V3.8 `0x80042d98` PC-loads literal table address `0x80063acc`; no direct table field access appears in the next 128 ARM words. This is bounded, not a global negative result.
-- No physical I/O, FEL operation, device-memory access, firmware flashing, bootloader change, or RAM code execution occurred. The firmware binary itself is deliberately excluded from GitHub.
-
-### Revised exact continuation point
-
-1. Restore/use the existing PyGhidra environment to export a bounded V3.6 seed inventory, then run the inventory comparator against V3.8.
-2. Trace the function containing `0x80042d98` until the V3.6/V3.8 table data has a narrow evidence-backed role.
-3. Continue the pending ResultDispatch sentinel → SoundControlGate argument/peripheral trace as a separate task; do not conflate it with the V3.6 data delta.
-
-## 2026-11-06: live FEL transport and full flash identity
-
-- Live USB/PnP verified FEL BootROM hardware ID USB\VID_1F3A&PID_EFE8; Windows binds it to WinUSB/libwdi. The updater was closed to eliminate a potential handle conflict.
-- The updater-bundled sunxi-fel v1.4.1-104-g11a9d20-dirty enumerated one Allwinner F1C100s device and identified a Winbond EFh:40h 16 MiB SPI flash.
-- Read-only spiflash-read 0 0x1000000 produced a full local backup, SHA-256 ab1e0c4539a2e3e053af78b39c1be5d3b4d3c2934dc96b29d4fd5a9395008be3. The backup and its derived payload remain local/non-public.
-- eGON extraction: main image at 0x50000, declared size 5,943,296. Full image SHA-256 b04fb5bca7a052abfc5b1621bf50e03fd4f8116bf5cef849f1994e44d4b603b1 is an exact match for beta-diode-profiles-e2/f1c100s-profiles-OFFLINE.bin; payload SHA-256 4708beb05841b42543714d460e0f7928e2fe72aab7479a40cfa757ce7ef511d2.
-- No device write occurred: no spiflash-write, boot/SPL/U-Boot operation, RAM write/execution, or normal-firmware memory capture.
-
-### Revised exact continuation point
-
-1. Classify the rest of the backed-up 16 MiB flash image before using any region for future instrumentation or storage.
-2. Restore and run bounded V3.6 PyGhidra inventory, then compare it against V3.8; retain the already established raw 20-byte delta.
-3. If a physical experiment is needed, design it first against the confirmed E2 image and only use a recovery-tested, narrowly scoped image change after recording the exact restore path.
-
-## 2026-11-06: PyGhidra restored and V3.6/V3.8 seeds compared
-
-- Installed PyGhidra 3.1.0 from the local Ghidra 12.1.4 bundle into an isolated project directory; no external package download was used. Import test passed with JPype 1.5.2.
-- Ran the bounded ARMv5T inventory exporter on verified original V3.6 and V3.8 inputs. It produced assembly, decompiler, direct-call, and fixed-window evidence for all 13 seeds.
-- Comparator test passed: 13 of 13 exported bodies identical; no changed or missing seed. The first 64-byte and first 512-byte fingerprints are also identical for every pair.
-- Corrected compare_inventories.py stale limitation text so future reports do not claim V3.6 is unavailable when it is an input.
-- Added ACCELERATION_OPTIONS.md. It records the deferred passive UART-TTL capture method and the install criteria for Unicorn/Capstone, Rizin, Binwalk/ImHex, and Version Tracking.
-
-### Revised exact continuation point
-
-1. Trace SoundControlGate direct callee 0x800060d0 to its first hardware-facing register access, retaining explicit call arguments and gating conditions.
-2. Trace the single known pointer into the V3.6/V3.8 nine-cell changed data region at 0x80042d98.
-3. When available, use receive-only 3.3 V USB-TTL capture on confirmed UART2 TX during normal firmware boot; retain raw logs as protocol evidence.
-
-## 2026-11-06: Capstone/Unicorn installed and original parser executed
-
-- Completed the isolated environment installation check: Capstone distribution 5.0.9 (runtime reports 5.0.7), Unicorn 2.1.4. ARM926 smoke test passed.
-- Added `tools/emulate_state5_parser.py`, pinned requirements, and `tools/ARM_EMULATION.md`. The harness verifies original hashes, maps a limited code/RAM contract, selects UC_CPU_ARM_926, and executes original ARM bytes without stubbing instructions.
-- **V3.6: 2,976/2,976 passed; V3.8: 2,976/2,976 passed.** All outputs have identical fingerprints across versions. All 34 instruction addresses were visited; exact write sets were also checked.
-- New result: control byte +1 decrements and discards each sample while nonzero on entry. Count 1 → 0 still discards that sample. Command 1b forces selector zero; 1d caps byte 4 at 6.
-- Confirmed that the unsigned saturation gate converts negative values to sentinel too, only for control word 13/14 with zero discard counter.
-- Replaced the per-case emulation wall timer with a 64-instruction bound; the complete rerun finished successfully in about one second.
-- Evidence: `evidence/2026-11-06-state5-arm926-emulation.json`. No physical device I/O occurred.
-
-### Exact next continuation point
-
-1. Trace producers of `0x805aae8d` (control object +1) and the input modes/events that load the discard count.
-2. Retain the parser harness as regression coverage; avoid repeating the completed V3.6/V3.8 parser analysis.
-3. Then trace SoundControlGate at 0x80006e4c into 0x800060d0 to identify the first hardware-facing operation.
-4. UART-TTL capture remains deferred until the user can connect the adapter.
-
-## 2026-11-06: count=2 producers and persistent parser lifecycle
-
-- Verified original input-dispatcher case 2 stores control +8 from record byte 4 and count=2 at 0x80004468; case 5 stores control 0x22 and count=2 at 0x800043ec.
-- Case-2 commands are [record[4], normalize(record[5]), 0x1d]; case 5 uses [0x0c,0x22,0x13,0x1d]. Secondary-byte normalization retains 0x13..0x18 and otherwise selects 0x19. Cases 3/4 preserve the control fields.
-- Added trace_state5_discard_lifecycle.py and a reproduction note. Extended the existing parser harness with explicit persistent-RAM mode while preserving default behavior.
-- Tests passed across V3.6/V3.8: **1,184 producer cases; 96 lifecycle scenarios / 384 parser entries; 16 task-guard cases**. Results and relevant raw-window hashes match between originals.
-- Persistent state proves the publication pattern: first response discarded (2→1), second discarded (1→0), third and fourth publish.
-- Corrected task interpretation: the normal guard only directly admits cases 3/4. Cases 2/5 reach a deferred-copy branch, with a later static input-dispatcher call at 0x80005cf4. Duplicate task store blocks alone do not establish immediate execution.
-- Rejected false literal-scan candidate 0x80005e60: r4 was reloaded with UART startup RAM pointer 0x805b4154.
-- Original 5,952 parser regression cases passed with unchanged result fingerprints. No physical device operation occurred.
-
-### Exact next continuation point
-
-1. Trace helper 0x80006778, its r0/r1/r2 record construction, and direct call sites that submit software cases 2/5. Seek a proven UI/event association for input bytes +4/+5.
-2. Trace terminal 0x1d polling/repetition and cadence before interpreting count=2 as a time delay.
-3. Retain the validated parser/lifecycle harnesses; independent sound-control tracing still begins at 0x80006e4c → 0x800060d0.
-4. Keep UART-TTL capture deferred until the user can connect the adapter.
-
-Evidence: `evidence/2026-11-06-state5-discard-lifecycle.json`; method: `tools/STATE5_DISCARD_LIFECYCLE.md`.
-
-## 2026-11-07: Diode/Buzzer GUI event sources verified and saved
-
-- Continued the previous unfinished event-source experiment rather than restarting parser analysis. Re-read the development branch at 8ed1177 and re-ran all new experiments without filesystem writes.
-- Identified event builder 0x80006778: opaque handle at control +4, record word +0 = r0, bytes +4/+5 = low8(r1/r2), queue call at 0x80061acc. Null handle returns early; queue r2 is 0 for event 3 and 10 otherwise, with no assigned unit.
-- Found 31 aligned direct ARM BL candidates per original image. Full Thumb/indirect coverage is not claimed.
-- Proved GUI association: literal Diode/Buzzer assignments to root +0x2c0/+0x2c4, callback 0x8000cfd0 registered on root +0x2b8, and handler code manipulating those labels.
-- Diode event tail sends (2,0x0e,0x19). Buzzer sends the same unless settings word 0x805ac788 == 1, then (5,0x22,0x13). The selection API at 0x80044e54 has equivalent tails.
-- Tests passed in V3.6/V3.8: **900 builder cases, 64 GUI branch cases, 96 linked parser entries, 12 GUI binding slices, 18 mode-switch cases**. Both result fingerprints equal 79d0dc306702ed86a72cd27754368db7c269f908daa24c06a88bfe32fc6f5bbc; the read-only rerun matched saved evidence.
-- No physical device or paid external API was used. The complete GUI and queue implementation remain outside the harness.
-
-### Exact next continuation point
-
-1. Trace writers/default/storage of 0x805ac788 and identify the corresponding GUI setting.
-2. Reuse the new event-source harness to verify both setting branches when its provenance is known.
-3. Keep physical cadence, queue argument units, and audible latency open until independently proven.
-4. SoundControlGate → 0x800060d0 and deferred UART-TTL capture remain pending.
-
-Evidence created 2026-11-06 and re-verified 2026-11-07: `evidence/2026-11-06-measurement-event-sources.json`. Tool: `tools/trace_measurement_event_sources.py`.
-
-## 2026-11-07: Fast CONT UI option, default and CRC persistence proven
-
-- Identified 0x805ac788 as Fast CONT. English/Chinese label tails target GUI label +0x320; checkbox +0x31c registers 0x8005a3bc with event argument 0x1c.
-- Executed the original checkbox handler and original getter 0x8003752c: widget halfword +0x20 bit 0 becomes normalized 0/1 at settings +0x18, then execution reaches SoundControlGate(5,1).
-- Identified configuration loader 0x80008098 and save routine 0x800082c0. Record: flash offset 0xf00000, 72 bytes, zlib-compatible CRC32 over first 68 bytes, little-endian checksum at +0x44.
-- Invalid-record default block sets Fast CONT=1. The seven-word default block and preserved tail are recorded without assigning unproven field names.
-- Tests passed across V3.6/V3.8: **524 widget states; 48 save cases; 48 valid loads; 144 damaged records rejected; 12 default cases; eight restore cases; six GUI binding slices; 14 checkbox-to-event cases.** Version result fingerprints match.
-- Historical private 2026-11-06 E2 flash backup: valid settings CRC and Fast CONT=1. Raw configuration bytes and the dump remain non-public.
-- No physical device, flash-write, or sound operation occurred. Storage, GUI setters and SoundControlGate are API stop boundaries.
-
-### Exact next continuation point
-
-1. Trace Fast CONT read at 0x80003878 in ResultDispatch and prove its effect on the sound-control branch.
-2. Continue into SoundControlGate 0x80006e4c → 0x800060d0 to identify the first peripheral-facing sound operation.
-3. Retain queue timing units, response cadence and acoustic latency as open until directly established.
-4. Investigate settings-save call sites later; loader metadata and remaining configuration fields are separate work.
-
-Evidence: `evidence/2026-11-07-fast-cont-setting.json`. Tool/method: `tools/trace_fast_cont_setting.py` and `tools/FAST_CONT_SETTING.md`.
-
-
-## 2026-11-07: sound gate reaches PWM0 (bounded ARM926 execution)
-
-Evidence: `evidence/2026-11-07-sound-pwm-path.json`; reproducible method: `tools/SOUND_PWM_PATH.md`; runner: `tools/trace_sound_pwm_path.py`.
-
-Original V3.6/V3.8 pass 792 gate/PWM cases, 160 Fast CONT result-qualifier cases and two sentinel-off call setups, with identical fingerprints. Real original instructions execute through 0x80006e4c → 0x800060d0 → pinmux 0x8000302c / PWM configure 0x80042d40; arithmetic helpers are executed, not stubbed. PIO/PWM are RAM shadows, with no physical clock, acoustic result or measured delay.
-
-Proved gate conditions and full code path to emulated peripheral registers. Found zero-duty off semantics, unchanged tone/prescaler data, settings duty conversion and state flags. No physical device operation occurred. Next exact point: helper0x80007c88 history/range selection → verified gate; retain response cadence and acoustic latency as open.
-
-Address correction (2026-11-07): file word offsets 0x63ac8..0x63ae8 map to linked 0x80063aa8..0x80063ac8 at base 0x7fffffe0. Earlier prose was displaced by 0x20; raw-diff JSON was correct. Pointer load 0x80042d98 reaches the unchanged PWM prescaler table at 0x80063acc, not the changed nine-cell block. The changed block remains unclassified.
-
-
-## 2026-11-07: pinned F1C100S reference pipeline integrated
-
-Reference acquisition/licensing: `references/f1c100s/README.md` and `sources.lock.json`. Subsystem register anchors and identification methods: `references/f1c100s/F1C100S_REFERENCE_MAP.md` / `register-map.json`. Runner/method: `tools/analyze_f1c100s_references.py` / `tools/F1C100S_REFERENCE_ANALYSIS.md`.
-
-- Downloaded all four requested references into isolated pinned checkouts; canonical LF checkout and source hashes make intake reviewable. Root GPL texts exist for FNIRSI and F1C100s_projects; no root license found in F1C100s_info/f1c_nonos. No reference code enters our reconstructed firmware.
-- Added a working source/register inventory, five-source ARM926 cross-build, ELF/relocation-aware byte comparison, normalized candidate ranking, MMIO-literal/operand survey, CP15 leads and full compressed BL-candidate graphs.97 eligible reference functions per original; zero accepted matching candidates at current thresholds.
-- Per original:142 MMIO literals,129 address-use candidates,10 CP15 leads,11,914 raw BL candidates and1,004 target candidates. Code-survey results match across originals; these counts are not confirmed functions.
-- Used reference watchdog offsets/key to locate and execute two original helper routines.32 inert-shadow cases pass across both originals.
-- Integrated proof-gated labels into existing PyGhidra inventory, fixed the old seed-renaming behavior to preserve analyst/imported names, and exported assembly/decompilation for six proven entries per original. Five new RE_ labels are applied per image; SoundControlGate retains its name.
-- Seven positive/negative tests pass, including mutated body, masked relocation, pointer clobber, branch stop, hash/proof rejection and preservation/idempotence. Actual PyGhidra/JDK runs pass in disposable projects. Validation report: `evidence/2026-11-07-f1c100s-reference/pyghidra-reference-validation.json`.
-- Local Zig compiler required an unsandboxed compile because of Windows sandbox temporary-file/process failures; output/cache stays in workspace. Existing PyGhidra API works with a deprecation warning. No physical device was accessed.
-
-### Exact next continuation point
-
-1. On the reference track, validate INTC dispatcher0x80005260/registration region0x80005274 and timer setup near0x800071a8, including indirect targets and actual function bounds.
-2. On the measurement track, resume Fast CONT helper0x80007c88 history/range selection → already validated sound gate.
-3. Extend reference matching only after resolving constants/callees and adding Thumb/path-aware coverage; never rename from a similarity score alone.
-4. Keep raw firmware/private backups unchanged and hardware cadence/acoustic latency unresolved.
-
-Evidence: `evidence/2026-11-07-f1c100s-reference/reference-analysis.json`; method: `tools/F1C100S_REFERENCE_ANALYSIS.md`.
-
-
-## 2026-11-07: reference-guided INTC/timer proof and Fast CONT C reconstruction
-
-Evidence: `evidence/2026-11-07-intc-timer-path.json`, `evidence/2026-11-07-intc-timer-ghidra.json`, `evidence/2026-11-07-fast-cont-filter.json`, and `evidence/2026-11-07-fast-cont-filter-ghidra.json`. Methods: `tools/INTC_TIMER_PATH.md`, `tools/FAST_CONT_FILTER.md`.
-
-- Used the pinned reference INTC/timer definitions to reconstruct five original YS entries; the YS architecture differs from the reference examples, so no driver implementation was copied.
-- Across V3.6/V3.8:3304 registration,328 ARM/Thumb dispatch,720 timer configure,48 enable,8 status update,36 IRQ-bridge and2 startup cases pass (4446 total). Startup programs timer0 interval24000/control7 and IRQ13. Its registered handler0x8005bf54 differs from the bridge's direct tick call0x80061fa4.
-- Continued existing Fast CONT work at0x80007c88. Reconstructed ring/stability/median retention/reset and all11 selector records. Added independent freestanding C source, compiled it for ARM926 and executed that object separately from the original binary.
-- Both originals pass1979 linked state steps each (350 persistent scenarios each), agreeing with Python and compiled C. Original helper continues through the real gate/arithmetic/PIO/PWM code using inert shadows. Results fingerprint: e914aefb9e3a20eecb9debdf2dc3865074b0e8c5bafcf4f79e1ec9fbd0da6997.
-- Proved old-tone retention during instability and reset only on>1000 in this path. Values and call counts do not establish physical units, fresh replies or milliseconds.
-- Real PyGhidra exports10 INTC/timer functions plus4 filter/gate functions across originals. Added --labels-only to skip the13-seed repeat; existing names/comments remain preserved. Eight label-pipeline tests pass.
-- No physical device operation occurred. Source/header/object hashes, original hashes, exact write traces, disassembly and decompilation are saved. Firmware originals and private backups remain intact.
-
-### Exact next continuation point
-
-Trace fresh-result admission from ResultDispatch call0x80003970 into helper0x80007c88. Determine whether repeated calls can reuse one parsed UART result. Separately bound tick/scheduler0x80061fa4/0x800612f8 and the consumer/decrement of FSM field0x805ac694+0x30 before assigning timing units.
-
-Relevant entry/context: ResultDispatch special path0x80003910 calls float-to-int helper0x8006300c at0x8000396c then history helper0x80007c88 at0x80003970. Determine invocation/admission freshness before interpreting the three-call filter together with the earlier parser's two-discard lifecycle.
-
-
-## 2026-11-07: stored-result freshness and corrected refresh entries
-
-Evidence: `evidence/2026-11-07-result-freshness.json` / `evidence/2026-11-07-result-freshness-ghidra.json`. Reproduction/scope: `tools/RESULT_FRESHNESS.md`, `tools/trace_result_freshness.py`.
-
-- Continued from f6a160e without redoing the parser/filter reconstruction. Bound actual callback0x8005d048, its creation arguments, warmup field, ResultDispatch call and period-store branches.
-- Executed original callback→memclr→numeric conversion→filter→gate/arithmetic/PIO/PWM with explicit queue/renderer/printf/creation API stubs. Five callback calls consume one unchanged stored raw value: warmup1/2, then filter fill1/2/3. Parser entries remain0 and discard remains2.
-- Interleaved three admitted original command0x1b parser slices with callbacks: first two retain old result, third publishes. One published large value can then be reused by callbacks to form a stable history without further parser entries.
-- Recovered divisor bits0x452f499a, negative clamp and1000.0 upper rejection. Only0..999 reaches the filter through this caller; invalid/sentinel paths request off without resetting history. Standalone helper>1000 behavior is not the whole application policy.
-- Corrected two old coordinates: ResultDispatch entry37c0 (37bc is literal805abf10, with three PC-load consumers); refresh callback5d048 (5d1a0 is its callsite). Kept historical window/export evidence and added seed-revision provenance checks to avoid false firmware-delta classifications.
-- Per original:295 callback matrix,23 persistent callback,3 parser,54 period-branch and1 binding case;752 total across originals. Result fingerprints equal c45e5dbd02c5ae65b2ff2d0e294edefeec89733804a8cbcdf30b9de5eadb462c. Real Ghidra exports five entries per original; nine proof/provenance guard tests pass.
-- No physical device, flash or live timing operation occurred. Synthetic state, explicit API stubs and excluded GUI/notification behavior are documented.
-
-### Exact next continuation point
-
-Audit real renderer0x8000326c and enqueue path0x80006778 for side effects excluded from the refresh model. Then prove FSM+0x30's cached read at0x800044a8 (r1=sb via ADD#0), its elapsed-tick comparisons and tick getter0x80061f84; do not assign milliseconds before that contract is validated.
-
-New static lead: the direct timeout reader missed by the MOV-only alias tracer is0x800044a8; no tick-consumer execution proof is claimed yet. Continue by executing those elapsed-tick branches against a controlled getter, rather than repeating the now-proven filter or refresh tests.
-
-
-## 2026-11-07: original queue/renderer state execution
-
-Evidence: `evidence/2026-11-07-refresh-side-effects.json` and `evidence/2026-11-07-refresh-side-effects-ghidra.json`; runner/method: `tools/trace_refresh_side_effects.py` / `tools/REFRESH_SIDE_EFFECTS.md`.
-
-- Continued from97dbc55 by replacing top-level queue-builder/renderer stubs with original code. Generic queue probes cover available send-to-back, pointer wrap, full wait0 reject and null handle. No waiting tasks or blocking paths are modeled.
-- Located factory queue init0x800029dc. It requests(10,68,0), stores CONTROL+4, and now executes actual constructor0x80061838/list initializer. A modeled heap allocator returns null or a synthetic760-byte region; object/list fields are set by original code.
-- Executed renderer0x8000326c and original state helpers with cold/full auxiliary histories. Exact write guards and snapshots preserve the six protected state regions across1152 cases per original. Recorded coverage:244 renderer,275 helper and52 queue-send instruction addresses; not a whole-firmware coverage metric.
-- Original critical enter/exit execute guest CPSR bit7 and nesting word805abbf8. Valid nesting0/1/2 tests pass. These helpers are now reusable by the next tick-getter experiment.
-- The linked five-callback example still gives filter fill0,0,1,2,3 without a parser entry; five event4 records are actually copied into the original-code-constructed queue, discard stays2 and the emulated active flag becomes1.
-- Across V3.6/V3.8:36 queue+1152 renderer+3 critical+2 constructor+5 callback checks per original =2396 total; fingerprints match52391249227ef0f8d7154815a14b0bb6c174ce93b03631691ec5f1fe0a123156. Real Ghidra exports14 function bodies/labels; nine proof/provenance tests pass.
-- Remaining models: widget/display/text/printf/log leaves and heap allocation. No physical device, live scheduling or time/acoustic measurement. Original firmware/private backups are unchanged.
-
-### Exact next continuation point
-
-Prove FSM+0x30's cached reader0x800044a8 through r5 and elapsed-tick branches0x800046a8/0x800046c4/0x80004720 using real getter0x80061f84 and the verified critical helpers. Test threshold boundaries and32-bit tick wrap before assigning units or interpreting Beta3's30-to40 change. Keep blocked queues, waiters and remaining GUI/log leaves separate.
-
-Start from the original FSM prologue at0x80004490 (ADD-zero alias at449c, cached R5 load at44a8). Preserve the distinction between a logical tick-count threshold and measured milliseconds. Queue wait10 and GUI period25 must not be given time units by analogy alone.
-
-## 2026-11-07: shared contribution entry point and original-input publication
-
-The owner requested that contributors using their own AI resources can join any
-relevant subsystem while the current Codex agent remains coordinator. See
-[CONTRIBUTING.md](CONTRIBUTING.md), [current handoff](collaboration/CURRENT_HANDOFF.md),
-[task registry](collaboration/TASK_REGISTRY.json) and the task/AI/handoff templates.
-Six bounded tasks are available, the FSM timeout/tick task is reserved to the
-coordinator, and passive hardware capture is blocked pending real access/evidence.
-Only the registry on the integration branch assigns ownership; issue requests,
-forks and PRs do not constitute accepted work. No external agent was assigned or
-launched by this publication.
-
-The owner also explicitly requested publication of original V3.6/V3.8 application
-images. The two 5,943,296-byte inputs are preserved unchanged under
-original-firmware/V3.6 and V3.8 with the existing SHA-256 identities in
-[manifest.json](original-firmware/manifest.json). Personal 16 MiB recovery backups
-remain private. The 1.0 Release image remains distinct. All publication work is
-on the development branch; main is not changed.
-
-This is coordination/input-access work, not a new firmware-function proof or
-completion-percentage increment. The next technical experiment remains the
-cached FSM+0x30 read at0x800044a8, elapsed-tick branches0x800046a8/0x800046c4/0x80004720
-and tick getter0x80061f84, including threshold and32-bit-wrap boundaries.
-
-Publication validation from an isolated checkout: nine existing provenance tests
-pass, and all 2,396 original-byte checks reproduce the previously committed
-fingerprints using the two repository input paths. The 61 checked relative links
-resolve. Details: `evidence/2026-11-07-collaboration-publication.json`.
-
-## 2026-11-08: cached FSM deadlines and real tick snapshot
-
-Evidence: `contributions/COORD-FSM-TIMEOUT/fsm-timeout.json` and `contributions/COORD-FSM-TIMEOUT/fsm-timeout-ghidra.json`. Method/runner: `contributions/COORD-FSM-TIMEOUT/README.md` / `trace_fsm_timeout.py`.
-
-Executed the reserved coordinator task, rather than only updating plans.
-V3.6/V3.8 have 6,651 checks each, fingerprint
-22212642cf8e42e7be6b1829508a6dc593a116be5f6298b63707f4911f5accfe.
-The 6,457 differential cases per original compare original/Python/compiled-C;
-other per-original probes are20 getter,10 tick-prefix,108 transmit setup,
-48 explicit cache interventions and8 duration30/40 comparisons.
-Four Ghidra assembly/decompiler exports and nine existing provenance tests pass.
-
-Recovered cached start/duration, unsigned expiry and wrap behavior, complete
-reply precedence, original duration30/80 setup and conditional ACK settle50/100.
-Added a second freestanding C component. Updated the59-record machine database,
-all continuity documents and live task ownership. Originals remain unchanged.
-
-Environment: scoped write escalation was required by the read-only host.
-The first Ghidra launch lacked its dedicated Java-home directory; creating it
-allowed both exports. Existing open_program deprecation warning remains.
-No new tools, paid API or device access were used.
-
-Next reserved task COORD-ADC-CADENCE: Validate the MainADCTask candidate 0x80005a78 and actual callers of FSM 0x80004490; bound one task-loop iteration and the delay candidate 0x80060fbc before assigning a polling cadence. Keep GUI callback periods, live clock frequency and acoustic latency separate.
-
-
-## 2026-11-08: local-model collaboration and checked examples
-
-See [local collaboration](collaboration/LOCAL_LLM.md) and the isolated
-[reviewed external snapshot](https://github.com/NandorHU/YS4470-Firmware-RE/tree/460405fa04971992d2d8830bac1d6ba914a927fc/contributions/EXT-EVIDENCE-AUDIT). Six local reviews completed;6 existing
-facts and7 known limits were confirmed,11 findings rejected, and no new firmware
-claim was accepted. The previous31-task draft has22 token-cutoff responses and
-unverified binary provenance; its source hashes match but its hypotheses remain
-quarantined. Checked lessons are in-context examples, not weight training.
-The two-case check scored0/2 before and1/2 after; general reliability and overall
-speedup remain unproven. Keep local tasks small and tool-grounded while the main
-agent continues COORD-ADC-CADENCE. The13,302-check FSM proof is unchanged.
-
-
-## 2026-11-08: local completion gates and full function packets
-
-The latest continuation and collaboration/CURRENT_HANDOFF.md supersede historical continuation blocks below.
-
-The completion/retry/resume gate and six original-hash-bound GaugeCmdTask/sound/GUI function packets are verified. See contributions/COORD-FUNCTION-PACKETS/README.md (360 instruction-byte checks, 388 CFG edges, four bounded original executions, 13 tests). GaugeCmdTask's static name binding reaches 0x80003dbc; its outer loop calls the still-candidate service0x80005b6c. The local index covers six packets; no global-data equivalence or physical timing is inferred.
-
-Next reserved task: COORD-ADC-CADENCE. Reuse the completed FSM proof and packets to validate the task/service→FSM→delay placement before assigning raw polling cadence. Do not repeat local comparisons or infer milliseconds, acoustic speed, or a whole-firmware percentage.
-
-Installed and tested promptfoo0.125.1, DSPy3.4.1 and MCP2.3.0 in an isolated prefix; a scoped local-model→REA call succeeded. See contributions/COORD-LOCAL-TOOLS/README.md. The packet comparison verified3/3 complete-context versus1/3 short-window instruction answers in a deliberately small source-coverage test. Two short-context tasks remain needs_split; none is silently complete. No weight training, paid API or physical-device access occurred.
+# Reverse-engineering progress
+
+**Last verified update:** 2026-11-08  
+**Development branch:** `re/2026-11-04-pyghidra-fel`
+
+## Current continuation (2026-11-08)
+
+The completion/retry/resume gate and six original-hash-bound GaugeCmdTask/sound/GUI function packets are verified. See contributions/COORD-FUNCTION-PACKETS/README.md (360 instruction-byte checks, 388 CFG edges, four bounded original executions, 13 tests). GaugeCmdTask's static name binding reaches 0x80003dbc; its outer loop calls the still-candidate service0x80005b6c. The local index covers six packets; no global-data equivalence or physical timing is inferred.
+
+Next reserved task: COORD-ADC-CADENCE. Reuse the completed FSM proof and packets to validate the task/service→FSM→delay placement before assigning raw polling cadence. Do not repeat local comparisons or infer milliseconds, acoustic speed, or a whole-firmware percentage.
+
+## Initial baseline (historical)
+
+- A bounded PyGhidra inventory pipeline now runs with Ghidra 12.1.4, PyGhidra 3.1.0, Jpype1 1.5.2, language `ARM:LE:32:v5t`, and link base `0x7fffffe0`. It exports seeded-function assembly, decompiler output, direct calls, fixed byte-window hashes, and evidence/confidence fields. It intentionally does not represent a full automatic ARM/Thumb analysis.
+- The V3.8-to-Beta3 raw equal-layout comparison found **65 changed ranges totaling 931 bytes**. Therefore Beta3 must not be described as a two-patch firmware.
+- At V3.8 `0x80006e80`, Beta3 replaces the factory sound-table load with a helper at `0x80010754`. The helper retains the original `ldrh`, and only when its caller return address equals `0x80003a78` it substitutes `r6 = 0x529` (1321 decimal). The target is the previously identified sound-gate call at `0x80003a74`. This proves a call-site-specific sound-parameter override; it does **not** yet prove a physical buzzer frequency or a shorter acoustic delay.
+- At V3.8 `0x800037fc`, Beta3 calls helper `0x80060130` instead of loading `[r7,#0x1c]` directly. The helper restores that original load into `r0` and records value/context changes in a new state block rooted at `0x800600ac`. The exact UI/measurement semantics remain a hypothesis.
+- A local V3.6 original was not present in the currently accessible workspace. The tooling supports it; no V3.6-to-V3.8 conclusion has been invented.
+- The repository contains a deliberately restricted FEL helper. Its offline policy/parser self-test passed. It can issue only `sunxi-fel --list` and `sunxi-fel spiflash-info`; it contains no flash write, RAM execution, arbitrary memory access, boot, or erase operation.
+- No USB/FEL operation was executed in this session. Existing 2026-11-02 project artifacts record an F1C100S FEL enumeration and a Winbond 16 MiB SPI-flash identification; that record is historical, not a claim about current device state.
+
+## Exact continuation point
+
+1. Trace the remaining Beta3 changes around `0x800045e0`, `0x8000461c`, and `0x80004738` through the request/reply FSM. Classify each as protocol acceptance, measurement-state change, or unrelated behavior before making latency claims.
+2. Obtain or register the original V3.6 image in a local non-public input directory, validate its SHA-256 locally, then run `tools/pyghidra_inventory.py` and `tools/compare_inventories.py`. Do not upload original firmware binaries.
+3. Convert the confirmed static call-site sound override into a bounded emulation experiment only after identifying the surrounding parameter contract.
+4. Perform a fresh live FEL probe only when the device is intentionally connected; retain its captured output as dated evidence. Never expand the probe to writing, arbitrary memory reads, or RAM code execution without explicit approval.
+
+See `evidence/2026-11-04-pyghidra-beta3-compare.json` for machine-readable session evidence, `FUNCTION_DATABASE.json` for the cross-version function database, and `FEL_ANALYSIS_PLAN.md` for the safety-gated hardware plan.
+
+
+## 2026-11-05: FSM deltas classified
+
+- `0x800045e0`: V3.8 calls `0x80005e84`; Beta3 calls `0x800586ec`, which records `*(u32 *)(0x805abbbc+0xc)` at `0x800600ac+8`, increments `+0x38`, restores `r0/r1/r12/lr`, and tail-branches to the same original target. **Observer only.**
+- `0x80004738`: V3.8 starts parsing with `ldrb r4,[r12,#1]`; Beta3 helper `0x8005871c` records context at `+0x3c`, increments `+0x2c`, restores registers, and executes that exact original load. **Observer only.**
+- `0x8000461c`: V3.8 writes fixed 30 to FSM object `0x805ac694+0x30`; Beta3 helper `0x80058750` selects 40 only for control tuple `(3, 0x0e, 1)`, otherwise 30. **Semantic change in an unresolved FSM phase-budget/interval field.**
+- Test: bounded PyGhidra trace exported successfully; raw control-flow assertions and five selector cases passed.
+- No physical device, USB, FEL, flash, firmware, or RAM-code operation occurred.
+
+### Revised exact continuation point
+
+1. Locate the read/decrement/check path for `0x805ac694+0x30` and establish its unit from code, not assumption.
+2. Trace writers of `0x805abefc+0`, `+2`, and `+7`, then attach descriptive names only with proof.
+3. Continue V3.6 intake once its original binary is accessible; do not substitute Beta3 for that requested comparison.
+
+
+## 2026-11-05: direct object-access trace
+
+- Added `tools/trace_arm_literal_object.py`: raw ARM PC-literal-load tracer with a bounded simple-MOV alias window. Its self-test passed.
+- `0x805ac694` has four verified PC-literal loads: `0x80004494`, `0x80004850`, `0x800048a0`, and `0x80005b94`.
+- Direct trace: FSM writes field `+0x30` at `0x80004608`, `0x80004620`, and `0x8000466c`; TransactionBuilder clears it at `0x800048d4`. No direct `LDR [object+0x30]` was found in the bounded windows. This is not an indirect-flow absence proof.
+- The task at `0x80005b70` uses FSM object field `+0x34` as a gate and invokes both `TransactionBuilder` and `MeasurementFSM`.
+- `HighspeedEventHandler` `0x8000d294` proves that control byte `0x805abefc+2` is toggled 0/1 and that `+7` receives branch-specific values. It does not prove the semantic names of those fields.
+- Tests: source self-test, generated V3.8 object traces, and assertions all passed. No physical I/O occurred.
+
+### Revised exact continuation point
+
+1. Trace `0x800031b8` and any callback/task registration that can consume the FSM object indirectly, with attention to `+0x30`.
+2. Trace a concrete source of control byte `0x805abefc+0 = 3`, especially the non-immediate write at `0x8000d74c`.
+3. Keep V3.6 intake pending its original binary path; no Beta3 result substitutes for V3.6/V3.8 comparison.
+
+
+## 2026-11-05: PIO helper and command-path correction
+
+- `0x800031b8` is **PIOBitClear**, not a scheduler: it clears `[r0+0x10]` bit `r1`. `0x800031cc` is the corresponding set helper.
+- TransactionBuilder calls PIOBitClear for bits 3 then 2 with `r0=0x01c208b4`, affecting MMIO word `0x01c208c4`.
+- FSM state 1 sets command-dependent PIO states immediately before the send routine: IDs `0x0b..0x0f` give bit3=1/bit2=0; IDs `0x09..0x0a` give bit3=0/bit2=1.
+- The descriptor table base is `0x8006367c`; code loads the descriptor pointer and its byte 4 before `0x80005e84`.
+- Test: bounded PyGhidra trace plus PIO control assertions passed. No physical I/O occurred.
+
+### Revised exact continuation point
+
+1. Decode `0x8006367c + 8*id` descriptors for IDs `0x09..0x0f` and map their sent bytes/lengths.
+2. Derive PIO register port/pin semantics from verified SoC documentation and firmware initialization; do not infer electrical board function.
+3. Independently continue the indirect consumer search for `0x805ac694+0x30`; PIOBitClear is excluded.
+
+
+## 2026-11-05: command descriptors 09–0f decoded
+
+- Added `tools/extract_measurement_descriptors.py`; its synthetic self-test passed.
+- Table `0x8006367c`, IDs 09–0f: each entry holds a two-byte source pointer/count. `0x80005e84` appends the modulo-256 sum and emits three bytes through `0x80006dc8`.
+- Verified frames are identical V3.8/Beta3: `58035b`, `58045c`, `580159`, `58075f`, `580961`, `580a62`, `580b63`.
+- The previous interpretation that the third adjacent pool byte belonged to each descriptor was corrected: it is the first byte of the next two-byte record; checksum is runtime-generated.
+- Test: frame expectations plus send-helper instruction assertions passed. No physical I/O occurred.
+
+### Revised exact continuation point
+
+1. Trace byte-output candidate `0x80006dc8` and determine its transport/peripheral contract.
+2. Correlate IDs 09–0f with reply parser behavior, preserving the unproven status of their physical measurement names.
+3. Keep the FSM `+0x30` indirect-consumer analysis separate from this now-confirmed PIO/frame path.
+
+
+## 2026-11-05: UART2 transport resolved
+
+- `0x80006dc8` is confirmed as the measurement UART byte transmitter. Selector 2 chooses `0x01c25800` (UART2); it polls `+0x7c` bit 1, then writes the byte to `+0x00`.
+- The descriptor sender explicitly passes selector 2. Therefore every decoded command frame in this path is sent through UART2.
+- RX ISR `0x800073bc` uses the same base, tests `UART2+0x08` bit 2, reads `+0x00`, and appends to buffer `0x805b408c` with a 200-byte cap.
+- Test: UART2 TX/RX static assertions passed. No physical I/O occurred.
+
+### Revised exact continuation point
+
+1. Locate UART2 initialization and pinmux/clock configuration; identify divisor, LCR/FCR/IER writes with evidence.
+2. Trace RX-buffer completion from `0x805b408c` into FSM parser state 5 and map frame boundaries.
+3. Revisit FSM `+0x30` only after a UART2 transaction timeout/check path is found.
+
+
+## 2026-11-05: UART2 bring-up decoded
+
+- UART init call site `0x80005e3c` passes UART selector 2, literal clock argument 720000000, baud argument 19200, and interrupt flag 1 to `0x80006bb8`.
+- Generic init configures PIO pin fields 7 and 8 at function 3; F1C100S Linux pinctrl maps PE7/PE8 function 3 to UART2 TX/RX.
+- It computes/programs divisor `0x0249` (DLL=49, DLM=02), writes FIFO/control values, toggles DLAB, and finishes LCR lower field at 3.
+- The post-init UART2 startup sequence is `60 60`.
+- Test: UART2 initialization assertions passed. No physical I/O occurred.
+
+### Revised exact continuation point
+
+1. Trace RX-buffer count `0x805ab938` and buffer `0x805b408c` reset/completion paths into parser state 5.
+2. Derive the complete UART2 frame-boundary rule before mapping response bytes to measurement values.
+3. Treat 19200 as the firmware's requested argument; calculate actual baud only after validating the active UART clock source.
+
+
+## 2026-11-05: UART2 RX lifecycle and state-5 gate
+
+- New repeatable PyGhidra tool: `tools/trace_uart2_rx_lifecycle.py`.
+- It identified direct bounded reset anchors for RX count `0x805ab938`: `0x80003f24`, `0x80003f44`, `0x80004558`, and `0x80005f30`. ISR `0x800073bc` stores each byte into `0x805b408c + count`, then increments the count.
+- For FSM command `0x1b`, state 3 requires at least five received bytes and byte 0 = `0x5e`; for `0x1d`, it requires at least five and byte 0 = `0x60`. Only then does it select state 5.
+- State 5 reads bytes 1..3 as a signed little-endian 24-bit value. This is a parser-entry rule for two commands, not a generic UART2 framing rule.
+- Test: `py_compile`, tool self-test, and 26 raw-instruction assertions passed. No physical I/O occurred.
+
+### Revised exact continuation point
+
+1. Locate descriptor-table entries and callers for command IDs `0x1b` and `0x1d`; export their exact UART2 wire frames.
+2. Trace the signed result destination from state 5 into its consumers and UI/measurement-mode selection.
+3. Do not reuse the five-byte/header condition for IDs 09–0f unless their own control flow proves it.
+
+
+## 2026-11-05: state-5 command frames and dispatch
+
+- Exported V3.8 and Beta3 descriptors: '0x1b -> 5e 5e'; '0x1d -> 60 60'. Both are one-byte source plus additive checksum and are identical across the two versions.
+- TransactionBuilder receives command lists from input dispatcher '0x80004390' and task dispatcher '0x80005b70'. The latter proves case 3 → '[0x1d]', case 4 → '[0x1b]', and case 5 → '[0x0c,0x22,0x13,0x1d]'; a case-2 list ends in '0x1d' after two input-derived values.
+- '0x1d' wire bytes equal the UART2 bring-up bytes '60 60'; equality is recorded as a protocol observation, not a semantic conclusion.
+- Test: descriptor exporter self-test, command-sequence tracer self-test, Python compilation, two-version frame assertions, and seven direct TransactionBuilder-call scan passed. No physical I/O occurred.
+
+### Revised exact continuation point
+
+1. Resolve state-5 result-target literals at '0x8000481c..0x80004820' and trace writes at '0x800047b4..0x800047b8'.
+2. Identify consumers that map the signed value/selector to UI or measurement state.
+3. Preserve dispatcher case tags as unlabelled software values until a downstream physical/UI mapping is proven.
+
+
+## 2026-11-06: state-5 result flow
+
+- State 5 publishes value/sentinel at '0x805ac714+0x1c' and selector at '+0x20'. The special path can store '0x007fffff'.
+- ResultDispatch '0x800037c0' reads both fields. Its sentinel branch conditionally calls SoundControlGate '0x80006e4c'.
+- Static text/formatting consumers at '0x80045264' and '0x8005dc3c' also read the result fields; the latter has a nearby '%.3f' literal.
+- Test: new PyGhidra result-flow tracer compiled; self-test and 16 instruction/literal assertions passed. No physical I/O occurred.
+
+### Revised exact continuation point
+
+1. Trace the special state-5 branch via '0x805aae8c+0x08' and identify its command/config source.
+2. Determine when threshold '0x1389' yields sentinel '0x007fffff'.
+3. Trace ResultDispatch's conditional SoundControlGate call without claiming a physical buzzer behavior until hardware/control evidence exists.
+
+
+## 2026-11-06: state-5 saturation path
+
+- State 5 reads '0x805aae8c+0x08'; only control values '0x0d'/'0x0e' proceed to its special path.
+- If unsigned parsed value >= '0x1389', it publishes '0x007fffff' at result '+0x1c' and selector zero at '+0x20'.
+- Case-2 setup in both dispatchers writes an input-derived control value; the task-level command list ends in '0x1d'. Visible case-5 setup writes '0x22' instead.
+- V3.8/Beta3 raw comparisons: input dispatcher, task dispatcher, state-5 saturation code, and literal ranges are identical.
+- Test: tracer compilation/self-test and 20 instruction/literal assertions passed. No physical I/O occurred.
+
+### Revised exact continuation point
+
+1. Trace ResultDispatch's sentinel branch and its call to SoundControlGate '0x80006e4c'.
+2. Establish the sound-gate argument values and first hardware-facing operation without claiming audible behavior.
+3. Separately map the upstream case-2 input field to a UI/measuring mode.
+
+## 2026-11-06: original V3.6 retrieved safely and raw-compared
+
+- Inspected the running Mr.Yang updater without activating **Upgrade**. Its firmware-list manifest named `Project_February_V3.6_V02.26.6` and supplied the expected SHA-256.
+- Retrieved original `f1c100s.bin` into a local non-public input directory. Verification passed: **5,943,296 bytes**, SHA-256 `7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9`.
+- Ran `tools/diff_raw_images.py` against verified V3.8: **10 ranges / 20 bytes**. Four bytes are at eGON-header offset `0x0c`; 16 bytes alter nine unclassified 32-bit table cells at linked `0x80063aa8..0x80063ac8`.
+- Ran `tools/trace_arm_literal_object.py` self-test and bounded trace. V3.8 `0x80042d98` PC-loads literal table address `0x80063acc`; no direct table field access appears in the next 128 ARM words. This is bounded, not a global negative result.
+- No physical I/O, FEL operation, device-memory access, firmware flashing, bootloader change, or RAM code execution occurred. The firmware binary itself is deliberately excluded from GitHub.
+
+### Revised exact continuation point
+
+1. Restore/use the existing PyGhidra environment to export a bounded V3.6 seed inventory, then run the inventory comparator against V3.8.
+2. Trace the function containing `0x80042d98` until the V3.6/V3.8 table data has a narrow evidence-backed role.
+3. Continue the pending ResultDispatch sentinel → SoundControlGate argument/peripheral trace as a separate task; do not conflate it with the V3.6 data delta.
+
+## 2026-11-06: live FEL transport and full flash identity
+
+- Live USB/PnP verified FEL BootROM hardware ID USB\VID_1F3A&PID_EFE8; Windows binds it to WinUSB/libwdi. The updater was closed to eliminate a potential handle conflict.
+- The updater-bundled sunxi-fel v1.4.1-104-g11a9d20-dirty enumerated one Allwinner F1C100s device and identified a Winbond EFh:40h 16 MiB SPI flash.
+- Read-only spiflash-read 0 0x1000000 produced a full local backup, SHA-256 ab1e0c4539a2e3e053af78b39c1be5d3b4d3c2934dc96b29d4fd5a9395008be3. The backup and its derived payload remain local/non-public.
+- eGON extraction: main image at 0x50000, declared size 5,943,296. Full image SHA-256 b04fb5bca7a052abfc5b1621bf50e03fd4f8116bf5cef849f1994e44d4b603b1 is an exact match for beta-diode-profiles-e2/f1c100s-profiles-OFFLINE.bin; payload SHA-256 4708beb05841b42543714d460e0f7928e2fe72aab7479a40cfa757ce7ef511d2.
+- No device write occurred: no spiflash-write, boot/SPL/U-Boot operation, RAM write/execution, or normal-firmware memory capture.
+
+### Revised exact continuation point
+
+1. Classify the rest of the backed-up 16 MiB flash image before using any region for future instrumentation or storage.
+2. Restore and run bounded V3.6 PyGhidra inventory, then compare it against V3.8; retain the already established raw 20-byte delta.
+3. If a physical experiment is needed, design it first against the confirmed E2 image and only use a recovery-tested, narrowly scoped image change after recording the exact restore path.
+
+## 2026-11-06: PyGhidra restored and V3.6/V3.8 seeds compared
+
+- Installed PyGhidra 3.1.0 from the local Ghidra 12.1.4 bundle into an isolated project directory; no external package download was used. Import test passed with JPype 1.5.2.
+- Ran the bounded ARMv5T inventory exporter on verified original V3.6 and V3.8 inputs. It produced assembly, decompiler, direct-call, and fixed-window evidence for all 13 seeds.
+- Comparator test passed: 13 of 13 exported bodies identical; no changed or missing seed. The first 64-byte and first 512-byte fingerprints are also identical for every pair.
+- Corrected compare_inventories.py stale limitation text so future reports do not claim V3.6 is unavailable when it is an input.
+- Added ACCELERATION_OPTIONS.md. It records the deferred passive UART-TTL capture method and the install criteria for Unicorn/Capstone, Rizin, Binwalk/ImHex, and Version Tracking.
+
+### Revised exact continuation point
+
+1. Trace SoundControlGate direct callee 0x800060d0 to its first hardware-facing register access, retaining explicit call arguments and gating conditions.
+2. Trace the single known pointer into the V3.6/V3.8 nine-cell changed data region at 0x80042d98.
+3. When available, use receive-only 3.3 V USB-TTL capture on confirmed UART2 TX during normal firmware boot; retain raw logs as protocol evidence.
+
+## 2026-11-06: Capstone/Unicorn installed and original parser executed
+
+- Completed the isolated environment installation check: Capstone distribution 5.0.9 (runtime reports 5.0.7), Unicorn 2.1.4. ARM926 smoke test passed.
+- Added `tools/emulate_state5_parser.py`, pinned requirements, and `tools/ARM_EMULATION.md`. The harness verifies original hashes, maps a limited code/RAM contract, selects UC_CPU_ARM_926, and executes original ARM bytes without stubbing instructions.
+- **V3.6: 2,976/2,976 passed; V3.8: 2,976/2,976 passed.** All outputs have identical fingerprints across versions. All 34 instruction addresses were visited; exact write sets were also checked.
+- New result: control byte +1 decrements and discards each sample while nonzero on entry. Count 1 → 0 still discards that sample. Command 1b forces selector zero; 1d caps byte 4 at 6.
+- Confirmed that the unsigned saturation gate converts negative values to sentinel too, only for control word 13/14 with zero discard counter.
+- Replaced the per-case emulation wall timer with a 64-instruction bound; the complete rerun finished successfully in about one second.
+- Evidence: `evidence/2026-11-06-state5-arm926-emulation.json`. No physical device I/O occurred.
+
+### Exact next continuation point
+
+1. Trace producers of `0x805aae8d` (control object +1) and the input modes/events that load the discard count.
+2. Retain the parser harness as regression coverage; avoid repeating the completed V3.6/V3.8 parser analysis.
+3. Then trace SoundControlGate at 0x80006e4c into 0x800060d0 to identify the first hardware-facing operation.
+4. UART-TTL capture remains deferred until the user can connect the adapter.
+
+## 2026-11-06: count=2 producers and persistent parser lifecycle
+
+- Verified original input-dispatcher case 2 stores control +8 from record byte 4 and count=2 at 0x80004468; case 5 stores control 0x22 and count=2 at 0x800043ec.
+- Case-2 commands are [record[4], normalize(record[5]), 0x1d]; case 5 uses [0x0c,0x22,0x13,0x1d]. Secondary-byte normalization retains 0x13..0x18 and otherwise selects 0x19. Cases 3/4 preserve the control fields.
+- Added trace_state5_discard_lifecycle.py and a reproduction note. Extended the existing parser harness with explicit persistent-RAM mode while preserving default behavior.
+- Tests passed across V3.6/V3.8: **1,184 producer cases; 96 lifecycle scenarios / 384 parser entries; 16 task-guard cases**. Results and relevant raw-window hashes match between originals.
+- Persistent state proves the publication pattern: first response discarded (2→1), second discarded (1→0), third and fourth publish.
+- Corrected task interpretation: the normal guard only directly admits cases 3/4. Cases 2/5 reach a deferred-copy branch, with a later static input-dispatcher call at 0x80005cf4. Duplicate task store blocks alone do not establish immediate execution.
+- Rejected false literal-scan candidate 0x80005e60: r4 was reloaded with UART startup RAM pointer 0x805b4154.
+- Original 5,952 parser regression cases passed with unchanged result fingerprints. No physical device operation occurred.
+
+### Exact next continuation point
+
+1. Trace helper 0x80006778, its r0/r1/r2 record construction, and direct call sites that submit software cases 2/5. Seek a proven UI/event association for input bytes +4/+5.
+2. Trace terminal 0x1d polling/repetition and cadence before interpreting count=2 as a time delay.
+3. Retain the validated parser/lifecycle harnesses; independent sound-control tracing still begins at 0x80006e4c → 0x800060d0.
+4. Keep UART-TTL capture deferred until the user can connect the adapter.
+
+Evidence: `evidence/2026-11-06-state5-discard-lifecycle.json`; method: `tools/STATE5_DISCARD_LIFECYCLE.md`.
+
+## 2026-11-07: Diode/Buzzer GUI event sources verified and saved
+
+- Continued the previous unfinished event-source experiment rather than restarting parser analysis. Re-read the development branch at 8ed1177 and re-ran all new experiments without filesystem writes.
+- Identified event builder 0x80006778: opaque handle at control +4, record word +0 = r0, bytes +4/+5 = low8(r1/r2), queue call at 0x80061acc. Null handle returns early; queue r2 is 0 for event 3 and 10 otherwise, with no assigned unit.
+- Found 31 aligned direct ARM BL candidates per original image. Full Thumb/indirect coverage is not claimed.
+- Proved GUI association: literal Diode/Buzzer assignments to root +0x2c0/+0x2c4, callback 0x8000cfd0 registered on root +0x2b8, and handler code manipulating those labels.
+- Diode event tail sends (2,0x0e,0x19). Buzzer sends the same unless settings word 0x805ac788 == 1, then (5,0x22,0x13). The selection API at 0x80044e54 has equivalent tails.
+- Tests passed in V3.6/V3.8: **900 builder cases, 64 GUI branch cases, 96 linked parser entries, 12 GUI binding slices, 18 mode-switch cases**. Both result fingerprints equal 79d0dc306702ed86a72cd27754368db7c269f908daa24c06a88bfe32fc6f5bbc; the read-only rerun matched saved evidence.
+- No physical device or paid external API was used. The complete GUI and queue implementation remain outside the harness.
+
+### Exact next continuation point
+
+1. Trace writers/default/storage of 0x805ac788 and identify the corresponding GUI setting.
+2. Reuse the new event-source harness to verify both setting branches when its provenance is known.
+3. Keep physical cadence, queue argument units, and audible latency open until independently proven.
+4. SoundControlGate → 0x800060d0 and deferred UART-TTL capture remain pending.
+
+Evidence created 2026-11-06 and re-verified 2026-11-07: `evidence/2026-11-06-measurement-event-sources.json`. Tool: `tools/trace_measurement_event_sources.py`.
+
+## 2026-11-07: Fast CONT UI option, default and CRC persistence proven
+
+- Identified 0x805ac788 as Fast CONT. English/Chinese label tails target GUI label +0x320; checkbox +0x31c registers 0x8005a3bc with event argument 0x1c.
+- Executed the original checkbox handler and original getter 0x8003752c: widget halfword +0x20 bit 0 becomes normalized 0/1 at settings +0x18, then execution reaches SoundControlGate(5,1).
+- Identified configuration loader 0x80008098 and save routine 0x800082c0. Record: flash offset 0xf00000, 72 bytes, zlib-compatible CRC32 over first 68 bytes, little-endian checksum at +0x44.
+- Invalid-record default block sets Fast CONT=1. The seven-word default block and preserved tail are recorded without assigning unproven field names.
+- Tests passed across V3.6/V3.8: **524 widget states; 48 save cases; 48 valid loads; 144 damaged records rejected; 12 default cases; eight restore cases; six GUI binding slices; 14 checkbox-to-event cases.** Version result fingerprints match.
+- Historical private 2026-11-06 E2 flash backup: valid settings CRC and Fast CONT=1. Raw configuration bytes and the dump remain non-public.
+- No physical device, flash-write, or sound operation occurred. Storage, GUI setters and SoundControlGate are API stop boundaries.
+
+### Exact next continuation point
+
+1. Trace Fast CONT read at 0x80003878 in ResultDispatch and prove its effect on the sound-control branch.
+2. Continue into SoundControlGate 0x80006e4c → 0x800060d0 to identify the first peripheral-facing sound operation.
+3. Retain queue timing units, response cadence and acoustic latency as open until directly established.
+4. Investigate settings-save call sites later; loader metadata and remaining configuration fields are separate work.
+
+Evidence: `evidence/2026-11-07-fast-cont-setting.json`. Tool/method: `tools/trace_fast_cont_setting.py` and `tools/FAST_CONT_SETTING.md`.
+
+
+## 2026-11-07: sound gate reaches PWM0 (bounded ARM926 execution)
+
+Evidence: `evidence/2026-11-07-sound-pwm-path.json`; reproducible method: `tools/SOUND_PWM_PATH.md`; runner: `tools/trace_sound_pwm_path.py`.
+
+Original V3.6/V3.8 pass 792 gate/PWM cases, 160 Fast CONT result-qualifier cases and two sentinel-off call setups, with identical fingerprints. Real original instructions execute through 0x80006e4c → 0x800060d0 → pinmux 0x8000302c / PWM configure 0x80042d40; arithmetic helpers are executed, not stubbed. PIO/PWM are RAM shadows, with no physical clock, acoustic result or measured delay.
+
+Proved gate conditions and full code path to emulated peripheral registers. Found zero-duty off semantics, unchanged tone/prescaler data, settings duty conversion and state flags. No physical device operation occurred. Next exact point: helper0x80007c88 history/range selection → verified gate; retain response cadence and acoustic latency as open.
+
+Address correction (2026-11-07): file word offsets 0x63ac8..0x63ae8 map to linked 0x80063aa8..0x80063ac8 at base 0x7fffffe0. Earlier prose was displaced by 0x20; raw-diff JSON was correct. Pointer load 0x80042d98 reaches the unchanged PWM prescaler table at 0x80063acc, not the changed nine-cell block. The changed block remains unclassified.
+
+
+## 2026-11-07: pinned F1C100S reference pipeline integrated
+
+Reference acquisition/licensing: `references/f1c100s/README.md` and `sources.lock.json`. Subsystem register anchors and identification methods: `references/f1c100s/F1C100S_REFERENCE_MAP.md` / `register-map.json`. Runner/method: `tools/analyze_f1c100s_references.py` / `tools/F1C100S_REFERENCE_ANALYSIS.md`.
+
+- Downloaded all four requested references into isolated pinned checkouts; canonical LF checkout and source hashes make intake reviewable. Root GPL texts exist for FNIRSI and F1C100s_projects; no root license found in F1C100s_info/f1c_nonos. No reference code enters our reconstructed firmware.
+- Added a working source/register inventory, five-source ARM926 cross-build, ELF/relocation-aware byte comparison, normalized candidate ranking, MMIO-literal/operand survey, CP15 leads and full compressed BL-candidate graphs.97 eligible reference functions per original; zero accepted matching candidates at current thresholds.
+- Per original:142 MMIO literals,129 address-use candidates,10 CP15 leads,11,914 raw BL candidates and1,004 target candidates. Code-survey results match across originals; these counts are not confirmed functions.
+- Used reference watchdog offsets/key to locate and execute two original helper routines.32 inert-shadow cases pass across both originals.
+- Integrated proof-gated labels into existing PyGhidra inventory, fixed the old seed-renaming behavior to preserve analyst/imported names, and exported assembly/decompilation for six proven entries per original. Five new RE_ labels are applied per image; SoundControlGate retains its name.
+- Seven positive/negative tests pass, including mutated body, masked relocation, pointer clobber, branch stop, hash/proof rejection and preservation/idempotence. Actual PyGhidra/JDK runs pass in disposable projects. Validation report: `evidence/2026-11-07-f1c100s-reference/pyghidra-reference-validation.json`.
+- Local Zig compiler required an unsandboxed compile because of Windows sandbox temporary-file/process failures; output/cache stays in workspace. Existing PyGhidra API works with a deprecation warning. No physical device was accessed.
+
+### Exact next continuation point
+
+1. On the reference track, validate INTC dispatcher0x80005260/registration region0x80005274 and timer setup near0x800071a8, including indirect targets and actual function bounds.
+2. On the measurement track, resume Fast CONT helper0x80007c88 history/range selection → already validated sound gate.
+3. Extend reference matching only after resolving constants/callees and adding Thumb/path-aware coverage; never rename from a similarity score alone.
+4. Keep raw firmware/private backups unchanged and hardware cadence/acoustic latency unresolved.
+
+Evidence: `evidence/2026-11-07-f1c100s-reference/reference-analysis.json`; method: `tools/F1C100S_REFERENCE_ANALYSIS.md`.
+
+
+## 2026-11-07: reference-guided INTC/timer proof and Fast CONT C reconstruction
+
+Evidence: `evidence/2026-11-07-intc-timer-path.json`, `evidence/2026-11-07-intc-timer-ghidra.json`, `evidence/2026-11-07-fast-cont-filter.json`, and `evidence/2026-11-07-fast-cont-filter-ghidra.json`. Methods: `tools/INTC_TIMER_PATH.md`, `tools/FAST_CONT_FILTER.md`.
+
+- Used the pinned reference INTC/timer definitions to reconstruct five original YS entries; the YS architecture differs from the reference examples, so no driver implementation was copied.
+- Across V3.6/V3.8:3304 registration,328 ARM/Thumb dispatch,720 timer configure,48 enable,8 status update,36 IRQ-bridge and2 startup cases pass (4446 total). Startup programs timer0 interval24000/control7 and IRQ13. Its registered handler0x8005bf54 differs from the bridge's direct tick call0x80061fa4.
+- Continued existing Fast CONT work at0x80007c88. Reconstructed ring/stability/median retention/reset and all11 selector records. Added independent freestanding C source, compiled it for ARM926 and executed that object separately from the original binary.
+- Both originals pass1979 linked state steps each (350 persistent scenarios each), agreeing with Python and compiled C. Original helper continues through the real gate/arithmetic/PIO/PWM code using inert shadows. Results fingerprint: e914aefb9e3a20eecb9debdf2dc3865074b0e8c5bafcf4f79e1ec9fbd0da6997.
+- Proved old-tone retention during instability and reset only on>1000 in this path. Values and call counts do not establish physical units, fresh replies or milliseconds.
+- Real PyGhidra exports10 INTC/timer functions plus4 filter/gate functions across originals. Added --labels-only to skip the13-seed repeat; existing names/comments remain preserved. Eight label-pipeline tests pass.
+- No physical device operation occurred. Source/header/object hashes, original hashes, exact write traces, disassembly and decompilation are saved. Firmware originals and private backups remain intact.
+
+### Exact next continuation point
+
+Trace fresh-result admission from ResultDispatch call0x80003970 into helper0x80007c88. Determine whether repeated calls can reuse one parsed UART result. Separately bound tick/scheduler0x80061fa4/0x800612f8 and the consumer/decrement of FSM field0x805ac694+0x30 before assigning timing units.
+
+Relevant entry/context: ResultDispatch special path0x80003910 calls float-to-int helper0x8006300c at0x8000396c then history helper0x80007c88 at0x80003970. Determine invocation/admission freshness before interpreting the three-call filter together with the earlier parser's two-discard lifecycle.
+
+
+## 2026-11-07: stored-result freshness and corrected refresh entries
+
+Evidence: `evidence/2026-11-07-result-freshness.json` / `evidence/2026-11-07-result-freshness-ghidra.json`. Reproduction/scope: `tools/RESULT_FRESHNESS.md`, `tools/trace_result_freshness.py`.
+
+- Continued from f6a160e without redoing the parser/filter reconstruction. Bound actual callback0x8005d048, its creation arguments, warmup field, ResultDispatch call and period-store branches.
+- Executed original callback→memclr→numeric conversion→filter→gate/arithmetic/PIO/PWM with explicit queue/renderer/printf/creation API stubs. Five callback calls consume one unchanged stored raw value: warmup1/2, then filter fill1/2/3. Parser entries remain0 and discard remains2.
+- Interleaved three admitted original command0x1b parser slices with callbacks: first two retain old result, third publishes. One published large value can then be reused by callbacks to form a stable history without further parser entries.
+- Recovered divisor bits0x452f499a, negative clamp and1000.0 upper rejection. Only0..999 reaches the filter through this caller; invalid/sentinel paths request off without resetting history. Standalone helper>1000 behavior is not the whole application policy.
+- Corrected two old coordinates: ResultDispatch entry37c0 (37bc is literal805abf10, with three PC-load consumers); refresh callback5d048 (5d1a0 is its callsite). Kept historical window/export evidence and added seed-revision provenance checks to avoid false firmware-delta classifications.
+- Per original:295 callback matrix,23 persistent callback,3 parser,54 period-branch and1 binding case;752 total across originals. Result fingerprints equal c45e5dbd02c5ae65b2ff2d0e294edefeec89733804a8cbcdf30b9de5eadb462c. Real Ghidra exports five entries per original; nine proof/provenance guard tests pass.
+- No physical device, flash or live timing operation occurred. Synthetic state, explicit API stubs and excluded GUI/notification behavior are documented.
+
+### Exact next continuation point
+
+Audit real renderer0x8000326c and enqueue path0x80006778 for side effects excluded from the refresh model. Then prove FSM+0x30's cached read at0x800044a8 (r1=sb via ADD#0), its elapsed-tick comparisons and tick getter0x80061f84; do not assign milliseconds before that contract is validated.
+
+New static lead: the direct timeout reader missed by the MOV-only alias tracer is0x800044a8; no tick-consumer execution proof is claimed yet. Continue by executing those elapsed-tick branches against a controlled getter, rather than repeating the now-proven filter or refresh tests.
+
+
+## 2026-11-07: original queue/renderer state execution
+
+Evidence: `evidence/2026-11-07-refresh-side-effects.json` and `evidence/2026-11-07-refresh-side-effects-ghidra.json`; runner/method: `tools/trace_refresh_side_effects.py` / `tools/REFRESH_SIDE_EFFECTS.md`.
+
+- Continued from97dbc55 by replacing top-level queue-builder/renderer stubs with original code. Generic queue probes cover available send-to-back, pointer wrap, full wait0 reject and null handle. No waiting tasks or blocking paths are modeled.
+- Located factory queue init0x800029dc. It requests(10,68,0), stores CONTROL+4, and now executes actual constructor0x80061838/list initializer. A modeled heap allocator returns null or a synthetic760-byte region; object/list fields are set by original code.
+- Executed renderer0x8000326c and original state helpers with cold/full auxiliary histories. Exact write guards and snapshots preserve the six protected state regions across1152 cases per original. Recorded coverage:244 renderer,275 helper and52 queue-send instruction addresses; not a whole-firmware coverage metric.
+- Original critical enter/exit execute guest CPSR bit7 and nesting word805abbf8. Valid nesting0/1/2 tests pass. These helpers are now reusable by the next tick-getter experiment.
+- The linked five-callback example still gives filter fill0,0,1,2,3 without a parser entry; five event4 records are actually copied into the original-code-constructed queue, discard stays2 and the emulated active flag becomes1.
+- Across V3.6/V3.8:36 queue+1152 renderer+3 critical+2 constructor+5 callback checks per original =2396 total; fingerprints match52391249227ef0f8d7154815a14b0bb6c174ce93b03631691ec5f1fe0a123156. Real Ghidra exports14 function bodies/labels; nine proof/provenance tests pass.
+- Remaining models: widget/display/text/printf/log leaves and heap allocation. No physical device, live scheduling or time/acoustic measurement. Original firmware/private backups are unchanged.
+
+### Exact next continuation point
+
+Prove FSM+0x30's cached reader0x800044a8 through r5 and elapsed-tick branches0x800046a8/0x800046c4/0x80004720 using real getter0x80061f84 and the verified critical helpers. Test threshold boundaries and32-bit tick wrap before assigning units or interpreting Beta3's30-to40 change. Keep blocked queues, waiters and remaining GUI/log leaves separate.
+
+Start from the original FSM prologue at0x80004490 (ADD-zero alias at449c, cached R5 load at44a8). Preserve the distinction between a logical tick-count threshold and measured milliseconds. Queue wait10 and GUI period25 must not be given time units by analogy alone.
+
+## 2026-11-07: shared contribution entry point and original-input publication
+
+The owner requested that contributors using their own AI resources can join any
+relevant subsystem while the current Codex agent remains coordinator. See
+[CONTRIBUTING.md](CONTRIBUTING.md), [current handoff](collaboration/CURRENT_HANDOFF.md),
+[task registry](collaboration/TASK_REGISTRY.json) and the task/AI/handoff templates.
+Six bounded tasks are available, the FSM timeout/tick task is reserved to the
+coordinator, and passive hardware capture is blocked pending real access/evidence.
+Only the registry on the integration branch assigns ownership; issue requests,
+forks and PRs do not constitute accepted work. No external agent was assigned or
+launched by this publication.
+
+The owner also explicitly requested publication of original V3.6/V3.8 application
+images. The two 5,943,296-byte inputs are preserved unchanged under
+original-firmware/V3.6 and V3.8 with the existing SHA-256 identities in
+[manifest.json](original-firmware/manifest.json). Personal 16 MiB recovery backups
+remain private. The 1.0 Release image remains distinct. All publication work is
+on the development branch; main is not changed.
+
+This is coordination/input-access work, not a new firmware-function proof or
+completion-percentage increment. The next technical experiment remains the
+cached FSM+0x30 read at0x800044a8, elapsed-tick branches0x800046a8/0x800046c4/0x80004720
+and tick getter0x80061f84, including threshold and32-bit-wrap boundaries.
+
+Publication validation from an isolated checkout: nine existing provenance tests
+pass, and all 2,396 original-byte checks reproduce the previously committed
+fingerprints using the two repository input paths. The 61 checked relative links
+resolve. Details: `evidence/2026-11-07-collaboration-publication.json`.
+
+## 2026-11-08: cached FSM deadlines and real tick snapshot
+
+Evidence: `contributions/COORD-FSM-TIMEOUT/fsm-timeout.json` and `contributions/COORD-FSM-TIMEOUT/fsm-timeout-ghidra.json`. Method/runner: `contributions/COORD-FSM-TIMEOUT/README.md` / `trace_fsm_timeout.py`.
+
+Executed the reserved coordinator task, rather than only updating plans.
+V3.6/V3.8 have 6,651 checks each, fingerprint
+22212642cf8e42e7be6b1829508a6dc593a116be5f6298b63707f4911f5accfe.
+The 6,457 differential cases per original compare original/Python/compiled-C;
+other per-original probes are20 getter,10 tick-prefix,108 transmit setup,
+48 explicit cache interventions and8 duration30/40 comparisons.
+Four Ghidra assembly/decompiler exports and nine existing provenance tests pass.
+
+Recovered cached start/duration, unsigned expiry and wrap behavior, complete
+reply precedence, original duration30/80 setup and conditional ACK settle50/100.
+Added a second freestanding C component. Updated the59-record machine database,
+all continuity documents and live task ownership. Originals remain unchanged.
+
+Environment: scoped write escalation was required by the read-only host.
+The first Ghidra launch lacked its dedicated Java-home directory; creating it
+allowed both exports. Existing open_program deprecation warning remains.
+No new tools, paid API or device access were used.
+
+Next reserved task COORD-ADC-CADENCE: Validate the MainADCTask candidate 0x80005a78 and actual callers of FSM 0x80004490; bound one task-loop iteration and the delay candidate 0x80060fbc before assigning a polling cadence. Keep GUI callback periods, live clock frequency and acoustic latency separate.
+
+
+## 2026-11-08: local-model collaboration and checked examples
+
+See [local collaboration](collaboration/LOCAL_LLM.md) and the isolated
+[reviewed external snapshot](https://github.com/NandorHU/YS4470-Firmware-RE/tree/460405fa04971992d2d8830bac1d6ba914a927fc/contributions/EXT-EVIDENCE-AUDIT). Six local reviews completed;6 existing
+facts and7 known limits were confirmed,11 findings rejected, and no new firmware
+claim was accepted. The previous31-task draft has22 token-cutoff responses and
+unverified binary provenance; its source hashes match but its hypotheses remain
+quarantined. Checked lessons are in-context examples, not weight training.
+The two-case check scored0/2 before and1/2 after; general reliability and overall
+speedup remain unproven. Keep local tasks small and tool-grounded while the main
+agent continues COORD-ADC-CADENCE. The13,302-check FSM proof is unchanged.
+
+
+## 2026-11-08: local completion gates and full function packets
+
+The latest continuation and collaboration/CURRENT_HANDOFF.md supersede historical continuation blocks below.
+
+The completion/retry/resume gate and six original-hash-bound GaugeCmdTask/sound/GUI function packets are verified. See contributions/COORD-FUNCTION-PACKETS/README.md (360 instruction-byte checks, 388 CFG edges, four bounded original executions, 13 tests). GaugeCmdTask's static name binding reaches 0x80003dbc; its outer loop calls the still-candidate service0x80005b6c. The local index covers six packets; no global-data equivalence or physical timing is inferred.
+
+Next reserved task: COORD-ADC-CADENCE. Reuse the completed FSM proof and packets to validate the task/service→FSM→delay placement before assigning raw polling cadence. Do not repeat local comparisons or infer milliseconds, acoustic speed, or a whole-firmware percentage.
+
+Installed and tested promptfoo0.125.1, DSPy3.4.1 and MCP2.3.0 in an isolated prefix; a scoped local-model→REA call succeeded. See contributions/COORD-LOCAL-TOOLS/README.md. The packet comparison verified3/3 complete-context versus1/3 short-window instruction answers in a deliberately small source-coverage test. Two short-context tasks remain needs_split; none is silently complete. No weight training, paid API or physical-device access occurred.
+
+
+## 2026-11-08: public factory-input patcher
+
+The public factory-input patcher in patcher/ now accepts pinned original V3.6/V3.8 applications and personalized16 MiB containers, without a private Beta3 backup.14 regression tests and12 bounded original ARM926 loader-window cases passed. V3.8 continuous matches the downloaded public1.0 application; V3.6 retains version-specific factory bytes and is offline-tested only. No bootloader/logo replacement or device operation is performed.
+
+See contributions/COORD-PUBLIC-PATCHER/README.md and validation.json. This does not establish a new physical speed gain. The user redirected the current session to distribution after profile-source inspection. COORD-ADC-CADENCE remains in progress; its exact source/E2-hash checkpoint is contributions/COORD-ADC-CADENCE/STATUS.md and profile-inputs.json. No four-profile comparison was executed in this session.

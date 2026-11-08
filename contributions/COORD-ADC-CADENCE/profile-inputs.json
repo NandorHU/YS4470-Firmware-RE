@@ -1,0 +1,36 @@
+{
+  "schema": "ys4470.profile-continuation.v1",
+  "profile_image_sha256": "b04fb5bca7a052abfc5b1621bf50e03fd4f8116bf5cef849f1994e44d4b603b1",
+  "bytes": 5943296,
+  "source_files_read": [
+    {
+      "relative_legacy_path": "beta-diode-profiles-e2/build_profiles.py",
+      "sha256": "9d974196ab427224674e7f9f855286ffc3d277fdb48483ec278c8dbe34f8c86a",
+      "bytes": 11082
+    },
+    {
+      "relative_legacy_path": "beta-diode-profiles-e2/manifest.json",
+      "sha256": "0d0ac4f4313abd20a1266b5d5f628086848d1bc67fafdc330c1ac8079a59ad9c",
+      "bytes": 30754
+    },
+    {
+      "relative_legacy_path": "diode-fast-reply/build_fast_reply.py",
+      "sha256": "38c65bdd9defef80e7e7ba74ef735df254ce269e7464d680794e8bc941e99a42",
+      "bytes": 7723
+    },
+    {
+      "relative_legacy_path": "diode-fast-reply/test_pipeline.py",
+      "sha256": "0f2ae3a0b1242eebc2686ef419a6471ae65095e6ea72c00e8592f0061c813af1",
+      "bytes": 8099
+    },
+    {
+      "relative_legacy_path": "diode-threshold-v1.1/build_threshold.py",
+      "sha256": "7dd6ab9b1cf0f17f2b77c3f6d4764666f68d23ec36dabbf7545a700ddf9d4c57",
+      "bytes": 5530
+    }
+  ],
+  "builder_reproduced": false,
+  "legacy_tests_imported_or_executed": false,
+  "physical_identity_proven": false,
+  "next": "Reproduce source chain and bounded original/patched event runner at equal Highspeed. Legacy test modules contain top-level writes; do not import them wholesale."
+}

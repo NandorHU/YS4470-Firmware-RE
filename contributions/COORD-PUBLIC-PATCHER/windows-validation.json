@@ -1,0 +1,9 @@
+{
+  "schema": "ys4470.public-patcher-windows.v1",
+  "filename_with_space": true,
+  "launcher_uses_python_fallback_when_py_has_no_interpreter": true,
+  "output_application_sha256": "697d160047e9f040b31acd79d5b0febb940bc712f15eb6e2d91d997a5608011d",
+  "second_launch_existing_output_exit_code": 2,
+  "patch_resource_regenerated_byte_identical": true,
+  "device_operations": 0
+}

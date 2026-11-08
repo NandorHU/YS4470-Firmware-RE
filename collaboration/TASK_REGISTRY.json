@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 10,
+  "revision": 11,
   "updated": "2026-11-08",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -294,7 +294,8 @@
         "Identify actual tick delay and its placement relative to FSM progress; do not equate it with GUI refresh or fresh UART replies.",
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
-      ]
+      ],
+      "next_action": "Resume contributions/COORD-ADC-CADENCE/STATUS.md; E2 hash and sources pinned in profile-inputs.json. User redirected this session to public patcher; equal-Highspeed profile matrix is not yet executed."
     },
     {
       "id": "LOCAL-PROFILE-LATENCY",
@@ -394,7 +395,7 @@
     {
       "id": "COORD-PUBLIC-PATCHER",
       "title": "Build portable factory-input offline patcher for published 1.0 application",
-      "status": "in_progress",
+      "status": "completed",
       "owner": "current-codex-coordinator",
       "branch": "re/2026-11-04-pyghidra-fel",
       "base_commit": "5510a3a1738c2a2aa17574aca978ca7e5e34dfe3",
@@ -410,7 +411,22 @@
         "Reproduce public target application from both pinned factory inputs and reject unknown/corrupt inputs.",
         "Do not publish personal backups, device calibration or other private firmware.",
         "Test preservation, CLI rejection/rollback behavior and document any bootloader prerequisite."
-      ]
+      ],
+      "completed_on": "2026-11-08",
+      "result_evidence": [
+        "contributions/COORD-PUBLIC-PATCHER/validation.json",
+        "contributions/COORD-PUBLIC-PATCHER/loader-validation.json",
+        "contributions/COORD-PUBLIC-PATCHER/windows-validation.json"
+      ],
+      "validation": {
+        "regression_tests": 14,
+        "loader_window_cases": 12,
+        "continuous_changed_bytes": 939,
+        "timed_changed_bytes": 928,
+        "v38_continuous_public_release_byte_match": true,
+        "device_operations": 0
+      },
+      "public_distribution_branch": "release/factory-patcher-1.0"
     }
   ]
 }
