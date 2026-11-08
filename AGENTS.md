@@ -33,3 +33,11 @@ Coordination policy recorded from the project owner's instruction on 2026-11-07.
 - Use contributions/<TASK-ID>/ for isolated code, evidence and STATUS.md. Keep central databases/status documents coordinator-owned; return proposed deltas with collaboration/HANDOFF_TEMPLATE.md.
 - At each coordinator session, read current registry and open GitHub issues/PRs before assigning or integrating work. A claim remains pending until explicitly recorded. Review/integrate on the development branch; never infer task release from silence.
 - Reuse completed experiments and preserve their limits. Follow the input manifest; the original images and modified Release inputs are not interchangeable.
+
+
+## Local model work policy
+
+- Read collaboration/LOCAL_LLM.md before starting local batches. The helper code and raw drafts live on the separate external branch snapshot linked there.
+- The primary coordinator continues binary execution and integration. Give local models only a small owned extraction/index/draft task; exact arithmetic, hashes, quotations and line locations belong to deterministic tools.
+- Apply the checked lesson wrapper for new local requests. This is in-context preparation, not a trained weight adapter. Never reuse a completed job or automatically expand batches before accuracy and review time justify it.
+- A valid JSON response or matching source quote does not establish a semantic finding. Treat token-limit replies as incomplete and keep unsupported claims out of shared databases.

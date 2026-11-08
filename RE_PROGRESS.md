@@ -433,3 +433,16 @@ allowed both exports. Existing open_program deprecation warning remains.
 No new tools, paid API or device access were used.
 
 Next reserved task COORD-ADC-CADENCE: Validate the MainADCTask candidate 0x80005a78 and actual callers of FSM 0x80004490; bound one task-loop iteration and the delay candidate 0x80060fbc before assigning a polling cadence. Keep GUI callback periods, live clock frequency and acoustic latency separate.
+
+
+## 2026-11-08: local-model collaboration and checked examples
+
+See [local collaboration](collaboration/LOCAL_LLM.md) and the isolated
+[reviewed external snapshot](https://github.com/NandorHU/YS4470-Firmware-RE/tree/460405fa04971992d2d8830bac1d6ba914a927fc/contributions/EXT-EVIDENCE-AUDIT). Six local reviews completed;6 existing
+facts and7 known limits were confirmed,11 findings rejected, and no new firmware
+claim was accepted. The previous31-task draft has22 token-cutoff responses and
+unverified binary provenance; its source hashes match but its hypotheses remain
+quarantined. Checked lessons are in-context examples, not weight training.
+The two-case check scored0/2 before and1/2 after; general reliability and overall
+speedup remain unproven. Keep local tasks small and tool-grounded while the main
+agent continues COORD-ADC-CADENCE. The13,302-check FSM proof is unchanged.

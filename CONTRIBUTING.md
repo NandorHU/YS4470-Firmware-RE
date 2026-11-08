@@ -107,3 +107,9 @@ and each reference's license. No repository-wide license is selected by this gui
 
 The reusable [AI starter prompt](collaboration/AI_STARTER_PROMPT.md) is independent
 of the contributor's AI vendor and can be pasted into a fresh session.
+
+
+Local-model contributors: read [LOCAL_LLM.md](collaboration/LOCAL_LLM.md) for the
+actual tested setup, checked examples, failure receipts and current workload
+limits. Source-cited drafts require coordinator review just like any other
+external contribution.
