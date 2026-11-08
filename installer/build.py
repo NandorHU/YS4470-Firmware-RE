@@ -1,7 +1,7 @@
 """Build a portable English Windows EXE plus public factory/source archives."""
 from pathlib import Path
 import argparse,hashlib,json,os,shutil,subprocess,sys,zipfile
-ROOT=Path(__file__).resolve().parents[1];HERE=Path(__file__).resolve().parent;WORK=ROOT/'work/easy-installer';VERSION='1.1.0-beta.1'
+ROOT=Path(__file__).resolve().parents[1];HERE=Path(__file__).resolve().parent;WORK=ROOT/'work/easy-installer';VERSION='1.1.0-beta.2'
 def sha(b):return hashlib.sha256(b).hexdigest()
 def archive(path,files):
     with zipfile.ZipFile(path,'x',zipfile.ZIP_DEFLATED,compresslevel=9)as z:
