@@ -5,7 +5,7 @@ from pathlib import Path
 import tkinter as tk
 from tkinter import ttk,filedialog,messagebox
 from engine import Engine,FelTransport,factory_image,save_bytes,save_json,patch
-VERSION='1.1.0-beta.1'
+VERSION='1.1.0-beta.2'
 ZADIG_SHA='4ecaa95df3da3621486a043aef8b3050b8bafe7c901402871e816229ef82039b'
 def resources():return Path(getattr(sys,'_MEIPASS',Path(__file__).resolve().parents[1]/'work/easy-installer/resources'))
 def user_root():
@@ -72,7 +72,8 @@ class App:
             target=folder/source.name
             if target.exists()and patch.sha(target.read_bytes())!=ZADIG_SHA:raise RuntimeError('Existing driver helper was modified')
             if not target.exists():save_bytes(target,source.read_bytes())
-            subprocess.Popen([str(target)],cwd=folder)
+            if os.name!='nt':raise RuntimeError('USB driver setup is available on Windows only')
+            os.startfile(str(target),'runas',cwd=str(folder))
         except Exception as e:messagebox.showerror('Driver setup failed',str(e))
     def poll(self):
         try:

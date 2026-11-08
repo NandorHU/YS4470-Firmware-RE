@@ -5,11 +5,11 @@ ROOT=Path(__file__).resolve().parents[1];HERE=Path(__file__).resolve().parent;WO
 def sha(b):return hashlib.sha256(b).hexdigest()
 def main():
     report=json.loads((WORK/'release/build-validation.json').read_text());capture=io.StringIO()
-    suite=unittest.defaultTestLoader.discover(str(HERE),pattern='test_engine.py')
+    suite=unittest.defaultTestLoader.discover(str(HERE),pattern='test_*.py')
     result=unittest.TextTestRunner(stream=capture,verbosity=2).run(suite)
     if not result.wasSuccessful():print(capture.getvalue());raise SystemExit(1)
     report['simulated_transport_tests_passed']=result.testsRun;report['simulation_test_log']=capture.getvalue()
-    with zipfile.ZipFile(WORK/'release/YS4470-Installer-1.1.0-beta.1-Windows-x64.zip')as z:
+    with zipfile.ZipFile(WORK/'release/YS4470-Installer-1.1.0-beta.2-Windows-x64.zip')as z:
         assert 'YS4470-Installer.exe'in z.namelist()
         assert sha(z.read('factory/V3.8/f1c100s.bin'))=='7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290'
         assert 'licenses/PyInstaller-COPYING.txt'in z.namelist()and 'licenses/Tcl-8.6.15-license.terms'in z.namelist()
