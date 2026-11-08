@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 6,
+  "revision": 7,
   "updated": "2026-11-08",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -333,6 +333,28 @@
         "Pinned isolated installs and reproducible commands.",
         "Actual local evaluation and at least one verified REA-backed request.",
         "Report measured results and limitations without claiming blanket improvement."
+      ]
+    },
+    {
+      "id": "COORD-FUNCTION-PACKETS",
+      "title": "Reject incomplete local replies and export original-hash-bound whole-function packets",
+      "status": "in_progress",
+      "owner": "current-codex-coordinator",
+      "branch": "re/2026-11-04-pyghidra-fel",
+      "base_commit": "a8b6815b3aa05618b12ce6443f67ac0a05035eb9",
+      "inputs": [
+        "V3.6",
+        "V3.8",
+        "existing Ghidra projects and checked lessons"
+      ],
+      "scope": "Preserve old jobs. Implement resumable per-task completion gates first, then complete reachable CFG/assembly/decompiler packets and bounded original-code checks; no hardware writes or heavyweight emulator installation.",
+      "allowed_paths": [
+        "contributions/COORD-FUNCTION-PACKETS/**"
+      ],
+      "acceptance": [
+        "Token-limit/unknown completion cannot count as completed; checkpoint and bounded retries.",
+        "Hash-bound Ghidra body/byte coverage, explicit unresolved calls/globals and preserved analyst labels.",
+        "Reproduce a few Gauge/GUI/sound packets and verify any conclusions against original code."
       ]
     }
   ]
