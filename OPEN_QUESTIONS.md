@@ -193,3 +193,20 @@ Evidence: `evidence/2026-11-07-refresh-side-effects.json` and `evidence/2026-11-
 Resolved in the new bounded scope: real available-queue send/copy and renderer-state code preserve the repeated-result example; queue init requests10*68-byte slots; critical nesting/IRQ-mask behavior is executed. Still open: timed full queues, waiting-task wakeups/context switches, real heap behavior, remaining graphics/text/log leaves and live timing.
 
 Next: Prove FSM+0x30's cached reader0x800044a8 through r5 and elapsed-tick branches0x800046a8/0x800046c4/0x80004720 using real getter0x80061f84 and the verified critical helpers. Test threshold boundaries and32-bit tick wrap before assigning units or interpreting Beta3's30-to40 change. Keep blocked queues, waiters and remaining GUI/log leaves separate.
+
+## 2026-11-08: cached FSM deadlines and real tick snapshot
+
+Evidence: `contributions/COORD-FSM-TIMEOUT/fsm-timeout.json` and `contributions/COORD-FSM-TIMEOUT/fsm-timeout-ghidra.json`. Method/runner: `contributions/COORD-FSM-TIMEOUT/README.md` / `trace_fsm_timeout.py`.
+
+Resolved within the tested originals: +0x30 is a cached deadline duration for the
+three wait branches; +0x2c is its start snapshot; equality expires; subtraction
+uses unsigned modulo32. A complete state3 reply is checked before the deadline.
+The real getter's counter, critical protection, setup durations and conditional
+ACK settling durations are now executed, with an independent C reconstruction.
+
+Still open: physical counter frequency; actual FSM task-loop cadence; complete
+tick wrap-list/ready-list scheduling; real send completion/arrival timing;
+state6 retry cadence; live concurrent RX publication; actual modified Beta3
+behavior. Cache intervention is a host experiment, not a proven race.
+
+Next reserved task COORD-ADC-CADENCE: Validate the MainADCTask candidate 0x80005a78 and actual callers of FSM 0x80004490; bound one task-loop iteration and the delay candidate 0x80060fbc before assigning a polling cadence. Keep GUI callback periods, live clock frequency and acoustic latency separate.

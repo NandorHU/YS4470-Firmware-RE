@@ -216,3 +216,35 @@ The freshness counterexample now survives original renderer-state and queue-copy
 The renderer's direct state and helpers preserve UI warmup+9, parser discard+1, raw result/selector, Fast CONT active/index/count/median/history and RX bytes in1152 states per original. Mode0/1/3/4, UI+3 flag, record+0x40 flag, saved-mode match, counters and cold/full auxiliary histories are varied. The raw UI flags are not assigned unproven menu names. Renderer-owned memo/four/eight-value storage changes independently of the Fast CONT ring.
 
 Graphics/text/log leaves and heap allocation remain models. Waiting-task, blocking-queue and asynchronous UI effects are not covered. The C filter component is unchanged; this run strengthens its caller/context evidence rather than claiming a complete GUI or firmware reconstruction.
+
+## 2026-11-08: cached FSM deadlines and real tick snapshot
+
+Evidence: `contributions/COORD-FSM-TIMEOUT/fsm-timeout.json` and `contributions/COORD-FSM-TIMEOUT/fsm-timeout-ghidra.json`. Method/runner: `contributions/COORD-FSM-TIMEOUT/README.md` / `trace_fsm_timeout.py`.
+
+The original FSM caches start and duration at entry and computes
+uint32(now-start) >= duration using the real tick getter.
+
+| State/path | Before expiry / admitted input | On expiry |
+|---|---|---|
+| 2, no positive RX count or wrong expected header | Retain state2 | Set state6 |
+| 2, expected header for command9..15 | Record new start; state4, duration100 for13/14 or50 otherwise | Prior deadline is not consulted on that admitted branch |
+| 2, expected header for other tested commands | Clear PIO bits3/2, advance index, clear retry, state1 | Prior deadline is not consulted |
+| 3, insufficient signed RX count | Retain state3 | Set state6 |
+| 3, sufficient count | Header0x5e for0x1b /0x60 for0x1d admits state5; mismatched header sets6; other tested selectors admit5 | Complete-frame branch does not call the getter |
+| 4 | Retain state4 | Clear PIO bits3/2, advance index, clear retry, state1 |
+
+State1 after the UART-send call captures a tick snapshot. Commands0x1b/0x1d set
+required length5 and duration30, then state3; other tested commands set expected
+header from the TX table and duration80, then state2. No new parser data is
+invented by these transitions; state5 parsing runs on a subsequent invocation.
+
+Across both originals, 12,914 state cases agree after every step between original,
+Python and compiled C. Synthetic signed-length/index boundaries do not assert
+that extreme RX counts are physically reachable. Setup, getters and cache
+interventions have separate check counts.
+
+For incomplete state3 replies, a duration40 fixture retains state3 at elapsed30
+and39 where duration30 selects6; both expire by40. A complete, valid reply can
+still be admitted without waiting for the budget. This is a conditional grace
+window, not an unconditional ten-tick delay. The actual Beta3 image was not
+executed, and no conversion to milliseconds follows.

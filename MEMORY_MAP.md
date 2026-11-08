@@ -267,3 +267,24 @@ Evidence: `evidence/2026-11-07-refresh-side-effects.json` and `evidence/2026-11-
 | 0x80d47038 / 0x80d47048 | four/eight-word renderer auxiliary histories |
 
 The renderer histories differ from Fast CONT history0x805ac7b8. Runtime queue pointer values in tests are synthetic allocator returns; this is not a live RAM capture. No FEL-safe-region conclusion follows from emulator mappings.
+
+## 2026-11-08: cached FSM deadlines and real tick snapshot
+
+Evidence: `contributions/COORD-FSM-TIMEOUT/fsm-timeout.json` and `contributions/COORD-FSM-TIMEOUT/fsm-timeout-ghidra.json`. Method/runner: `contributions/COORD-FSM-TIMEOUT/README.md` / `trace_fsm_timeout.py`.
+
+| Storage | Tested role |
+|---|---|
+| FSM root0x805ac694 +0x2c =0x805ac6c0 | Start counter captured after send or qualifying ACK |
+| FSM+0x30 =0x805ac6c4 | Raw counter duration, cached in R5 at0x800044a8 |
+| FSM+0x24 / +0x28 | Expected header byte / required reply length; length comparison uses signed32 arithmetic |
+| FSM+0x18 / +0x1c | Command index / retry field; successful timed completion increments index modulo32 and clears retry |
+| RTOS root0x805abbbc +0xc =0x805abbc8 | Tick snapshot read under critical protection |
+| RTOS root+0x30 / +0x18 | Suspend-related condition / deferred increment in the tested tick prefix |
+| 0x805ab938 | RX count used by the FSM; distinct from parser discard0x805aae8d |
+| 0x01c208c4 | PIO data shadow; successful advance clears bits3 then2 |
+
+Deliberately injected host writes to start/duration at getter entry leave the
+current comparison using the earlier R4/R5 snapshots. This verifies caching,
+not the existence of an asynchronous writer. Tick wrap is tested at the32-bit
+boundary; a complete counter cycle cannot be distinguished from elapsed0.
+No location here was read from a live device in this run.

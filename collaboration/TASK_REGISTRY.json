@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 2,
+  "revision": 3,
   "updated": "2026-11-08",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -34,7 +34,7 @@
     {
       "id": "COORD-FSM-TIMEOUT",
       "title": "Prove cached FSM timeout/tick contract",
-      "status": "in_progress",
+      "status": "completed",
       "owner": "current-codex-coordinator",
       "claim_issue": null,
       "branch": "re/2026-11-04-pyghidra-fel",
@@ -45,7 +45,9 @@
       ],
       "scope": "Next technical task reserved to the coordinator; no new timeout execution is claimed by this onboarding session.",
       "allowed_paths": [
-        "contributions/COORD-FSM-TIMEOUT/**"
+        "contributions/COORD-FSM-TIMEOUT/**",
+        "reconstruction/fsm_timeout.c",
+        "reconstruction/fsm_timeout.h"
       ],
       "anchors": [
         "0x800044a8",
@@ -57,7 +59,18 @@
       "acceptance": [
         "Execute the real getter and verified critical helpers.",
         "Test threshold boundaries and 32-bit tick wrap before assigning units or interpreting Beta3's 30-to-40 change."
-      ]
+      ],
+      "completed_on": "2026-11-08",
+      "result_evidence": [
+        "contributions/COORD-FSM-TIMEOUT/fsm-timeout.json",
+        "contributions/COORD-FSM-TIMEOUT/fsm-timeout-ghidra.json"
+      ],
+      "validation": {
+        "total_checks": 13302,
+        "differential_original_python_compiled_c": 12914,
+        "ghidra_exports": 4,
+        "provenance_tests": 9
+      }
     },
     {
       "id": "EXT-DATA9",
@@ -235,6 +248,33 @@
       "acceptance": [
         "Obtain verified pin/voltage information and owner-assisted access before any connection.",
         "Keep observed capture distinct from FEL/static/emulated state."
+      ]
+    },
+    {
+      "id": "COORD-ADC-CADENCE",
+      "title": "Validate measurement-task loop and raw tick cadence",
+      "status": "reserved",
+      "owner": "current-codex-coordinator",
+      "claim_issue": null,
+      "branch": "re/2026-11-04-pyghidra-fel",
+      "base_commit": "ddcb3f1c55acb0bb2df98c88e24450d2066bb35a",
+      "inputs": [
+        "V3.6",
+        "V3.8"
+      ],
+      "scope": "Validate the MainADCTask candidate 0x80005a78 and actual callers of FSM 0x80004490; bound one task-loop iteration and the delay candidate 0x80060fbc before assigning a polling cadence. Keep GUI callback periods, live clock frequency and acoustic latency separate.",
+      "allowed_paths": [
+        "contributions/COORD-ADC-CADENCE/**"
+      ],
+      "anchors": [
+        "0x80005a78 (task entry candidate)",
+        "0x80004490",
+        "0x80060fbc (delay candidate)"
+      ],
+      "acceptance": [
+        "Prove entry/caller and one real task iteration before promoting the MainADCTask name.",
+        "Identify actual tick delay and its placement relative to FSM progress; do not equate it with GUI refresh or fresh UART replies.",
+        "Keep raw counter cadence separate from milliseconds and acoustic timing."
       ]
     }
   ]

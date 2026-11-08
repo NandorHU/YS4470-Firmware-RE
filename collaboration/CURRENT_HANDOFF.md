@@ -1,8 +1,8 @@
-# Current shared handoff — 2026-11-07
+# Current shared handoff — 2026-11-08
 
 Coordinator: the current Codex agent in the ongoing YS-4470 conversation.
 Integration branch: [`re/2026-11-04-pyghidra-fel`](https://github.com/NandorHU/YS4470-Firmware-RE/tree/re/2026-11-04-pyghidra-fel).
-Technical baseline before this onboarding publication: `7e173ffdaa7dffd67a2d998f3fa8b28036e99485`.
+Baseline read for the current proof: `ddcb3f1c55acb0bb2df98c88e24450d2066bb35a`.
 Read live ownership in [TASK_REGISTRY.json](TASK_REGISTRY.json); this handoff is
 a research snapshot, not a substitute for current reservations.
 
@@ -13,7 +13,7 @@ Beta3/1.0 are modified builds, not evidence of full reconstruction. Do not resta
 from the earlier patch-only README/HANDOFF notes.
 
 - [Current status](../REVERSE_ENGINEERING_STATUS.md) and [progress](../RE_PROGRESS.md).
-- [58-entry function database](../FUNCTION_DATABASE.json), with evidence levels and relations.
+- [59-entry function database](../FUNCTION_DATABASE.json), with evidence levels and relations.
 - [Memory](../MEMORY_MAP.md), [hardware](../HARDWARE_MAP.md),
   [measurement algorithms](../MEASUREMENT_ALGORITHMS.md),
   [questions](../OPEN_QUESTIONS.md) and [roadmap](../ROADMAP.md).
@@ -41,7 +41,7 @@ These are different experiments and units; do not sum their counts into a
 whole-firmware completion percentage. Consult their matrices, guard conditions
 and models before reusing a result.
 
-Latest linked example: five original refresh callbacks enqueue five event4
+Latest linked refresh example (2026-11-07): five original refresh callbacks enqueue five event4
 records into the original-code-constructed queue without a parser entry. Filter
 fill is [0,0,1,2,3], while stored raw14023 and discard2 remain unchanged. The final
 retained value is5 and the emulated sound-active flag is1. This establishes
@@ -66,23 +66,25 @@ scheduling remain explicit limits. No whole-device emulation is established.
 - PIO/PWM in emulation are inert memory shadows. Do not assign milliseconds or an
   acoustic outcome without the missing clock/scheduling/physical evidence.
 
+## Latest completed timed-state proof
+
+[COORD-FSM-TIMEOUT](../contributions/COORD-FSM-TIMEOUT/README.md) now has13,302
+checks, four Ghidra exports and a second independently buildable C component.
+See [report](../contributions/COORD-FSM-TIMEOUT/fsm-timeout.json) and [source](../reconstruction/fsm_timeout.c).
+
+FSM+0x2c is start, +0x30 is duration cached in R5. States2/3/4 compare unsigned
+modulo elapsed against duration; equality expires. Complete valid state3 frames
+are admitted before the deadline check. Original setup commands0x1b/0x1d seed30
+and required5; other tested commands seed80; ACK9..15 seeds settle50 or100.
+The real getter reads0x805abbc8 under the original critical helpers. No
+milliseconds, actual Beta3 execution or live acoustic behavior was established.
+Tick prefix/list scheduling and modeled UART send remain separate limits.
+
 ## Reserved next task
 
-`COORD-FSM-TIMEOUT` is reserved to the coordinator, not offered as parallel work.
-No new timeout execution is claimed by this documentation session.
+COORD-FSM-TIMEOUT is completed. COORD-ADC-CADENCE is reserved to the current
+coordinator. Validate the MainADCTask candidate 0x80005a78 and actual callers of FSM 0x80004490; bound one task-loop iteration and the delay candidate 0x80060fbc before assigning a polling cadence. Keep GUI callback periods, live clock frequency and acoustic latency separate.
 
-Prove FSM+0x30's cached reader at `0x800044a8` through R5 and elapsed-tick branches
-`0x800046a8/0x800046c4/0x80004720`, using real tick getter `0x80061f84` and the
-verified critical helpers. Test threshold boundaries and 32-bit wrap before
-assigning units or interpreting Beta3's 30-to-40 change. Keep queue blocking,
-waiters and remaining GUI/log leaves separate.
-
-Six independent available tasks and one blocked hardware task are specified in
-[TASK_REGISTRY.json](TASK_REGISTRY.json). New subsystems may be proposed using
-[TASK_REQUEST_TEMPLATE.md](TASK_REQUEST_TEMPLATE.md). Publish one owner per scope
-before starting; use a task directory and return evidence through the coordinator.
-
-Publication validation from an isolated checkout: nine existing provenance tests
-pass, and all 2,396 original-byte checks reproduce the previously committed
-fingerprints using the two repository input paths. The 61 checked relative links
-resolve. Details: `evidence/2026-11-07-collaboration-publication.json`.
+Read live ownership in [TASK_REGISTRY.json](TASK_REGISTRY.json). Six external
+tasks remain available; passive UART capture remains blocked. No external agent
+was assigned in this run. All prior completed evidence above should be reused.
