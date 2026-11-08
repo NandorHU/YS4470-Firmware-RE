@@ -178,3 +178,8 @@ No physical hardware, USB/FEL, flash or live register operation occurred. REA su
 ## 2026-11-08 public patcher
 
 The new patcher operates on local files only. Fourteen offline regression tests and twelve bounded loader-window executions used no physical device. Bootloader/logo/device-specific data outside the listed application edits are preserved. The known-loader read contract does not establish an unknown bootloader's compatibility or any live-device state.
+
+
+## 2026-11-08 host-tool package
+
+The new beta installer pins public sunxi-fel v1.4.2-162-g530adfa (exeSHA256cc1e338a238ab99dc0ca12bdb3558d2781f9e81ed411a9b92d1c4021a67a2acf), separate from the earlier tested da14... host binary. It requires exactly one F1C100s/Winbond EF40/16 MiB device. Official Zadig2.9 is bundled for explicit WinUSB setup; administrator approval remains with the user. No native USB, driver replacement, RAM execution or flash write was performed during the new installer tests. New package physical compatibility remains unverified.

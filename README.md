@@ -1,5 +1,11 @@
 # YS-4470 firmware reverse engineering
 
+## English Windows installer — factory V3.8 included
+
+**[Download Installer1.1.0-beta.2 (Windows-x64 ZIP)](https://github.com/NandorHU/YS4470-Firmware-RE/releases/download/installer-v1.1.0-beta.2/YS4470-Installer-1.1.0-beta.2-Windows-x64.zip)** · [Release notes and source](https://github.com/NandorHU/YS4470-Firmware-RE/releases/tag/installer-v1.1.0-beta.2)
+
+Extract the ZIP and run `YS4470-Installer.exe`. No Python installation or manual dump is required. The English GUI includes a verified factory image, automatic device-specific backup, guarded application writes, full readback and recovery. The FEL utility and USB driver helper are bundled; Windows driver selection/administrator approval remain explicit user steps. This new installer is a simulation-tested beta, not a new physical-device certification.
+
 ## Patch your own factory firmware — no Beta3 required
 
 Use the new [offline factory-input patcher](patcher/README.md) with your own supported V3.6/V3.8 application file or16 MiB full flash backup. Download this repository ZIP, extract it, then drag the firmware file onto `patcher/PATCH-WINDOWS.cmd` (Python3.10+).

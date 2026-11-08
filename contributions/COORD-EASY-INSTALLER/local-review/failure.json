@@ -1,0 +1,6 @@
+{
+  "state": "incomplete",
+  "reason": "Local Ollama request timed out at 45 seconds; no response or semantic finding was accepted.",
+  "retries": 0,
+  "job_repeated": false
+}
