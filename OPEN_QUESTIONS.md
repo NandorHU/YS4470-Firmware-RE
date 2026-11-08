@@ -225,3 +225,8 @@ The private Beta3 full-backup prerequisite is removed for the two pinned factory
 ## 2026-11-08 installer boundaries and research continuation
 
 The English self-contained Release is public; no manual firmware dump is needed in its normal workflow. Physical validation of the new beta installer/FEL binary, real USB-driver setup, and GUI visual verification remain unestablished. Simulation, compiled-resource/Tcl and runtime-component checks passed. A local LLM extraction request timed out after45s; no draft or claim was accepted. The E2 build reproduction and equal-Highspeed active/requested-profile event matrix are still outstanding; resume the pinned COORD-ADC-CADENCE checkpoint.
+
+
+## 2026-11-08: equal-Highspeed profile evidence
+
+The equal-Highspeed matrix and public recorded-edit reproduction are complete for pinned E2. The reported physical Base+highspeedv2 advantage remains unresolved: installed-image identity, external conversion response/restart behavior, real task order/counter rate and short-tone audibility are missing. The immediate-responder model favors Direct sound initiation and reveals shorter Auto/Ready pulses. Do not change ADC deadlines or add an OPEN tone hold from that hypothesis. Historical source generators and full transitive caller/global/indirect-call coverage remain unverified. See contributions/COORD-ADC-CADENCE/STATUS.md.

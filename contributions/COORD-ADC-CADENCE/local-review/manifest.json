@@ -1,0 +1,23 @@
+{
+  "schema": "ys4470.local-extraction.v1",
+  "job": "profile-active-byte-20261108",
+  "endpoint": "http://127.0.0.1:11435",
+  "model": "qwen2.5-coder:14b",
+  "lessons_sha256": "7b135d7b5b1e58e68fa7ba4283902106547b7d76fe9736baacb065a3653217c4",
+  "source_sha256": "0fe84b836b685cae034abfa6a656d56b23883c989840f87dc0eb152d433dd86b",
+  "context": {
+    "entry": "0x80007f60",
+    "binary_sha256": "b04fb5bca7a052abfc5b1621bf50e03fd4f8116bf5cef849f1994e44d4b603b1",
+    "facts_from_coordinator": "r1 is loaded with the profile-state pointer. Active is byte0, requested is byte1.",
+    "assembly": [
+      "0x80007f60 ldr r1, [pc, #0x10]",
+      "0x80007f64 ldrb r1, [r1]",
+      "0x80007f68 cmp r1, #0",
+      "0x80007f6c movne r1, #1",
+      "0x80007f70 cmp r1, #1"
+    ]
+  },
+  "question": "Does the shown byte load use active or requested? Give one exact assembly quote and one context limit. JSON keys: quote, claim, limitation. No arithmetic or physical timing.",
+  "timeout_seconds": 25,
+  "max_tokens": 160
+}

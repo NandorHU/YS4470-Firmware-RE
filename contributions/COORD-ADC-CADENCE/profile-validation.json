@@ -1,0 +1,4406 @@
+{
+  "schema": "ys4470.profile-validation.v1",
+  "image_sha256": "b04fb5bca7a052abfc5b1621bf50e03fd4f8116bf5cef849f1994e44d4b603b1",
+  "replay": {
+    "schema": "ys4470.profile-replay-receipt.v1",
+    "chain_sha256": "0fe84b836b685cae034abfa6a656d56b23883c989840f87dc0eb152d433dd86b",
+    "stock_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+    "public_patcher": {
+      "schema": "ys4470.public-patch-receipt.v1",
+      "action": "apply",
+      "variant": "continuous",
+      "source_version": "V3.8",
+      "container": "application",
+      "input_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+      "output_sha256": "697d160047e9f040b31acd79d5b0febb940bc712f15eb6e2d91d997a5608011d",
+      "input_application_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+      "output_application_sha256": "697d160047e9f040b31acd79d5b0febb940bc712f15eb6e2d91d997a5608011d",
+      "application_offset": 0,
+      "changed_ranges": 69,
+      "changed_bytes": 939,
+      "outside_application_preserved": true,
+      "bootloader_and_logo_replaced": false,
+      "device_access": false,
+      "validation_scope": "Published v1.0 application byte-identical",
+      "installation_note": "Offline file only. Legacy Beta3-hash installer does not accept this input. Vendor updater and physical installation of this personalized container are not verified."
+    },
+    "stages": [
+      {
+        "name": "threshold-1.1",
+        "sha256": "884c39524942cf42580b52c0ce3ed8b33dab8d8fc4d3addd6266d1c9831c551e",
+        "bytes": 5943296,
+        "preimage_guards": 10
+      },
+      {
+        "name": "reply-audio",
+        "sha256": "9890a3c671987b0aa75a505e4f389532ca102f9dcf306394daa45a9328bc91e1",
+        "bytes": 5943296,
+        "preimage_guards": 26
+      },
+      {
+        "name": "profiles-E2",
+        "sha256": "b04fb5bca7a052abfc5b1621bf50e03fd4f8116bf5cef849f1994e44d4b603b1",
+        "bytes": 5943296,
+        "preimage_guards": 122
+      }
+    ],
+    "source_generators_executed": false,
+    "device_operations": 0
+  },
+  "runner_sha256": "15aa227b6064248b6dd1922db8923595e7df11c79ca2fbb8a3f363f99fbe5fe3",
+  "validator_sha256": "b07b0f733ed51f8e079d923e5b3f7fc3b86b773f0c26a6396fc1d21656cca048",
+  "restored_globals_sha256": "524ba48c4f8e6b7876fc1da735f82f197eb436947e65eac043f2d9f2b96f8be0",
+  "profile_cases": 64,
+  "transition_cases": 64,
+  "candidate_cases": 16,
+  "assertion_groups": 268,
+  "packet_instruction_byte_guards": 360,
+  "packet_count": 6,
+  "e2_observed_instruction_addresses": 978,
+  "profile_rows": [
+    {
+      "profile": "Base",
+      "requested": 0,
+      "active": 0,
+      "highspeed": 0,
+      "scenario": "stable-low",
+      "counts": {
+        "request": 2,
+        "accepted": 2,
+        "parser": 2,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 1,
+        "enqueue": 2,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 28735,
+      "first_low_accept": 6,
+      "first_sound_on": 200,
+      "first_sound_off": null,
+      "first_low_render": 200
+    },
+    {
+      "profile": "Direct",
+      "requested": 1,
+      "active": 1,
+      "highspeed": 0,
+      "scenario": "stable-low",
+      "counts": {
+        "request": 2,
+        "accepted": 2,
+        "parser": 2,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 1,
+        "enqueue": 2,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 34290,
+      "first_low_accept": 6,
+      "first_sound_on": 6,
+      "first_sound_off": null,
+      "first_low_render": 200
+    },
+    {
+      "profile": "Auto",
+      "requested": 2,
+      "active": 2,
+      "highspeed": 0,
+      "scenario": "stable-low",
+      "counts": {
+        "request": 32,
+        "accepted": 31,
+        "parser": 31,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 1,
+        "enqueue": 2,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 1,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 48332,
+      "first_low_accept": 6,
+      "first_sound_on": 6,
+      "first_sound_off": null,
+      "first_low_render": 200
+    },
+    {
+      "profile": "Ready",
+      "requested": 3,
+      "active": 3,
+      "highspeed": 0,
+      "scenario": "stable-low",
+      "counts": {
+        "request": 42,
+        "accepted": 41,
+        "parser": 41,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 1,
+        "enqueue": 2,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 1,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 58082,
+      "first_low_accept": 5,
+      "first_sound_on": 5,
+      "first_sound_off": null,
+      "first_low_render": 200
+    },
+    {
+      "profile": "Base",
+      "requested": 0,
+      "active": 0,
+      "highspeed": 0,
+      "scenario": "open-contact",
+      "counts": {
+        "request": 2,
+        "accepted": 2,
+        "parser": 2,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 0,
+        "enqueue": 2,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 28442,
+      "first_low_accept": 206,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Direct",
+      "requested": 1,
+      "active": 1,
+      "highspeed": 0,
+      "scenario": "open-contact",
+      "counts": {
+        "request": 2,
+        "accepted": 2,
+        "parser": 2,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 1,
+        "enqueue": 2,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 34070,
+      "first_low_accept": 206,
+      "first_sound_on": 206,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Auto",
+      "requested": 2,
+      "active": 2,
+      "highspeed": 0,
+      "scenario": "open-contact",
+      "counts": {
+        "request": 32,
+        "accepted": 31,
+        "parser": 31,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 1,
+        "enqueue": 2,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 1,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 48423,
+      "first_low_accept": 110,
+      "first_sound_on": 110,
+      "first_sound_off": null,
+      "first_low_render": 200
+    },
+    {
+      "profile": "Ready",
+      "requested": 3,
+      "active": 3,
+      "highspeed": 0,
+      "scenario": "open-contact",
+      "counts": {
+        "request": 42,
+        "accepted": 41,
+        "parser": 41,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 1,
+        "enqueue": 2,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 1,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 58201,
+      "first_low_accept": 107,
+      "first_sound_on": 107,
+      "first_sound_off": null,
+      "first_low_render": 200
+    },
+    {
+      "profile": "Base",
+      "requested": 0,
+      "active": 0,
+      "highspeed": 0,
+      "scenario": "contact-open",
+      "counts": {
+        "request": 2,
+        "accepted": 2,
+        "parser": 2,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 1,
+        "enqueue": 2,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 28736,
+      "first_low_accept": 6,
+      "first_sound_on": 200,
+      "first_sound_off": null,
+      "first_low_render": 200
+    },
+    {
+      "profile": "Direct",
+      "requested": 1,
+      "active": 1,
+      "highspeed": 0,
+      "scenario": "contact-open",
+      "counts": {
+        "request": 2,
+        "accepted": 2,
+        "parser": 2,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 2,
+        "enqueue": 2,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 34338,
+      "first_low_accept": 6,
+      "first_sound_on": 6,
+      "first_sound_off": 206,
+      "first_low_render": 200
+    },
+    {
+      "profile": "Auto",
+      "requested": 2,
+      "active": 2,
+      "highspeed": 0,
+      "scenario": "contact-open",
+      "counts": {
+        "request": 32,
+        "accepted": 31,
+        "parser": 31,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 2,
+        "enqueue": 2,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 1,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 48272,
+      "first_low_accept": 6,
+      "first_sound_on": 6,
+      "first_sound_off": 110,
+      "first_low_render": null
+    },
+    {
+      "profile": "Ready",
+      "requested": 3,
+      "active": 3,
+      "highspeed": 0,
+      "scenario": "contact-open",
+      "counts": {
+        "request": 42,
+        "accepted": 41,
+        "parser": 41,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 2,
+        "enqueue": 2,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 1,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 58064,
+      "first_low_accept": 5,
+      "first_sound_on": 5,
+      "first_sound_off": 107,
+      "first_low_render": null
+    },
+    {
+      "profile": "Base",
+      "requested": 0,
+      "active": 0,
+      "highspeed": 0,
+      "scenario": "short-contact",
+      "counts": {
+        "request": 2,
+        "accepted": 2,
+        "parser": 2,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 0,
+        "enqueue": 2,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 28443,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Direct",
+      "requested": 1,
+      "active": 1,
+      "highspeed": 0,
+      "scenario": "short-contact",
+      "counts": {
+        "request": 2,
+        "accepted": 2,
+        "parser": 2,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 0,
+        "enqueue": 2,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 34017,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Auto",
+      "requested": 2,
+      "active": 2,
+      "highspeed": 0,
+      "scenario": "short-contact",
+      "counts": {
+        "request": 32,
+        "accepted": 31,
+        "parser": 31,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 2,
+        "enqueue": 2,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 1,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 48356,
+      "first_low_accept": 110,
+      "first_sound_on": 110,
+      "first_sound_off": 118,
+      "first_low_render": null
+    },
+    {
+      "profile": "Ready",
+      "requested": 3,
+      "active": 3,
+      "highspeed": 0,
+      "scenario": "short-contact",
+      "counts": {
+        "request": 42,
+        "accepted": 41,
+        "parser": 41,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 2,
+        "enqueue": 2,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 1,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 58176,
+      "first_low_accept": 107,
+      "first_sound_on": 107,
+      "first_sound_off": 113,
+      "first_low_render": null
+    },
+    {
+      "profile": "Base",
+      "requested": 0,
+      "active": 0,
+      "highspeed": 0,
+      "scenario": "late",
+      "counts": {
+        "request": 4,
+        "accepted": 2,
+        "parser": 2,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 1,
+        "enqueue": 2,
+        "incomplete_timeout": 2,
+        "header_reject": 0,
+        "state6_total": 2,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 28754,
+      "first_low_accept": 40,
+      "first_sound_on": 200,
+      "first_sound_off": null,
+      "first_low_render": 200
+    },
+    {
+      "profile": "Direct",
+      "requested": 1,
+      "active": 1,
+      "highspeed": 0,
+      "scenario": "late",
+      "counts": {
+        "request": 4,
+        "accepted": 2,
+        "parser": 2,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 1,
+        "enqueue": 2,
+        "incomplete_timeout": 2,
+        "header_reject": 0,
+        "state6_total": 2,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 34309,
+      "first_low_accept": 40,
+      "first_sound_on": 40,
+      "first_sound_off": null,
+      "first_low_render": 200
+    },
+    {
+      "profile": "Auto",
+      "requested": 2,
+      "active": 2,
+      "highspeed": 0,
+      "scenario": "late",
+      "counts": {
+        "request": 12,
+        "accepted": 10,
+        "parser": 10,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 1,
+        "enqueue": 2,
+        "incomplete_timeout": 1,
+        "header_reject": 0,
+        "state6_total": 1,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 1,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 39849,
+      "first_low_accept": 40,
+      "first_sound_on": 40,
+      "first_sound_off": null,
+      "first_low_render": 200
+    },
+    {
+      "profile": "Ready",
+      "requested": 3,
+      "active": 3,
+      "highspeed": 0,
+      "scenario": "late",
+      "counts": {
+        "request": 13,
+        "accepted": 6,
+        "parser": 6,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 1,
+        "enqueue": 2,
+        "incomplete_timeout": 6,
+        "header_reject": 0,
+        "state6_total": 6,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 1,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 42913,
+      "first_low_accept": 39,
+      "first_sound_on": 39,
+      "first_sound_off": null,
+      "first_low_render": 200
+    },
+    {
+      "profile": "Base",
+      "requested": 0,
+      "active": 0,
+      "highspeed": 0,
+      "scenario": "wrong-header",
+      "counts": {
+        "request": 4,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 0,
+        "enqueue": 2,
+        "incomplete_timeout": 0,
+        "header_reject": 4,
+        "state6_total": 4,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 28785,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Direct",
+      "requested": 1,
+      "active": 1,
+      "highspeed": 0,
+      "scenario": "wrong-header",
+      "counts": {
+        "request": 4,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 0,
+        "enqueue": 2,
+        "incomplete_timeout": 0,
+        "header_reject": 4,
+        "state6_total": 4,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 34271,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Auto",
+      "requested": 2,
+      "active": 2,
+      "highspeed": 0,
+      "scenario": "wrong-header",
+      "counts": {
+        "request": 34,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 0,
+        "enqueue": 2,
+        "incomplete_timeout": 0,
+        "header_reject": 33,
+        "state6_total": 33,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 1,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 44805,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Ready",
+      "requested": 3,
+      "active": 3,
+      "highspeed": 0,
+      "scenario": "wrong-header",
+      "counts": {
+        "request": 34,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 0,
+        "enqueue": 2,
+        "incomplete_timeout": 0,
+        "header_reject": 33,
+        "state6_total": 33,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 1,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 48055,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Base",
+      "requested": 0,
+      "active": 0,
+      "highspeed": 0,
+      "scenario": "truncated",
+      "counts": {
+        "request": 4,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 0,
+        "enqueue": 2,
+        "incomplete_timeout": 3,
+        "header_reject": 0,
+        "state6_total": 3,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 27974,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Direct",
+      "requested": 1,
+      "active": 1,
+      "highspeed": 0,
+      "scenario": "truncated",
+      "counts": {
+        "request": 4,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 0,
+        "enqueue": 2,
+        "incomplete_timeout": 3,
+        "header_reject": 0,
+        "state6_total": 3,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 33460,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Auto",
+      "requested": 2,
+      "active": 2,
+      "highspeed": 0,
+      "scenario": "truncated",
+      "counts": {
+        "request": 8,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 0,
+        "enqueue": 2,
+        "incomplete_timeout": 7,
+        "header_reject": 0,
+        "state6_total": 7,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 1,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 36597,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Ready",
+      "requested": 3,
+      "active": 3,
+      "highspeed": 0,
+      "scenario": "truncated",
+      "counts": {
+        "request": 8,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 0,
+        "enqueue": 2,
+        "incomplete_timeout": 7,
+        "header_reject": 0,
+        "state6_total": 7,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 1,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 39847,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Base",
+      "requested": 0,
+      "active": 0,
+      "highspeed": 0,
+      "scenario": "missing",
+      "counts": {
+        "request": 4,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 0,
+        "enqueue": 2,
+        "incomplete_timeout": 3,
+        "header_reject": 0,
+        "state6_total": 3,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 27758,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Direct",
+      "requested": 1,
+      "active": 1,
+      "highspeed": 0,
+      "scenario": "missing",
+      "counts": {
+        "request": 4,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 0,
+        "enqueue": 2,
+        "incomplete_timeout": 3,
+        "header_reject": 0,
+        "state6_total": 3,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 33244,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Auto",
+      "requested": 2,
+      "active": 2,
+      "highspeed": 0,
+      "scenario": "missing",
+      "counts": {
+        "request": 8,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 0,
+        "enqueue": 2,
+        "incomplete_timeout": 7,
+        "header_reject": 0,
+        "state6_total": 7,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 1,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 36165,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Ready",
+      "requested": 3,
+      "active": 3,
+      "highspeed": 0,
+      "scenario": "missing",
+      "counts": {
+        "request": 8,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 2,
+        "renderer": 2,
+        "sound_control": 0,
+        "enqueue": 2,
+        "incomplete_timeout": 7,
+        "header_reject": 0,
+        "state6_total": 7,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 1,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 39415,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Base",
+      "requested": 0,
+      "active": 0,
+      "highspeed": 1,
+      "scenario": "stable-low",
+      "counts": {
+        "request": 10,
+        "accepted": 10,
+        "parser": 10,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 1,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 35641,
+      "first_low_accept": 6,
+      "first_sound_on": 25,
+      "first_sound_off": null,
+      "first_low_render": 25
+    },
+    {
+      "profile": "Direct",
+      "requested": 1,
+      "active": 1,
+      "highspeed": 1,
+      "scenario": "stable-low",
+      "counts": {
+        "request": 10,
+        "accepted": 10,
+        "parser": 10,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 1,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 41404,
+      "first_low_accept": 6,
+      "first_sound_on": 6,
+      "first_sound_off": null,
+      "first_low_render": 25
+    },
+    {
+      "profile": "Auto",
+      "requested": 2,
+      "active": 2,
+      "highspeed": 1,
+      "scenario": "stable-low",
+      "counts": {
+        "request": 32,
+        "accepted": 31,
+        "parser": 31,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 1,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 9,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 52414,
+      "first_low_accept": 6,
+      "first_sound_on": 6,
+      "first_sound_off": null,
+      "first_low_render": 25
+    },
+    {
+      "profile": "Ready",
+      "requested": 3,
+      "active": 3,
+      "highspeed": 1,
+      "scenario": "stable-low",
+      "counts": {
+        "request": 42,
+        "accepted": 41,
+        "parser": 41,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 1,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 9,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 62164,
+      "first_low_accept": 5,
+      "first_sound_on": 5,
+      "first_sound_off": null,
+      "first_low_render": 25
+    },
+    {
+      "profile": "Base",
+      "requested": 0,
+      "active": 0,
+      "highspeed": 1,
+      "scenario": "open-contact",
+      "counts": {
+        "request": 10,
+        "accepted": 10,
+        "parser": 10,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 1,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 34717,
+      "first_low_accept": 106,
+      "first_sound_on": 125,
+      "first_sound_off": null,
+      "first_low_render": 125
+    },
+    {
+      "profile": "Direct",
+      "requested": 1,
+      "active": 1,
+      "highspeed": 1,
+      "scenario": "open-contact",
+      "counts": {
+        "request": 10,
+        "accepted": 10,
+        "parser": 10,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 1,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 40524,
+      "first_low_accept": 106,
+      "first_sound_on": 106,
+      "first_sound_off": null,
+      "first_low_render": 125
+    },
+    {
+      "profile": "Auto",
+      "requested": 2,
+      "active": 2,
+      "highspeed": 1,
+      "scenario": "open-contact",
+      "counts": {
+        "request": 32,
+        "accepted": 31,
+        "parser": 31,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 1,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 9,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 51597,
+      "first_low_accept": 110,
+      "first_sound_on": 110,
+      "first_sound_off": null,
+      "first_low_render": 125
+    },
+    {
+      "profile": "Ready",
+      "requested": 3,
+      "active": 3,
+      "highspeed": 1,
+      "scenario": "open-contact",
+      "counts": {
+        "request": 42,
+        "accepted": 41,
+        "parser": 41,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 1,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 9,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 61375,
+      "first_low_accept": 107,
+      "first_sound_on": 107,
+      "first_sound_off": null,
+      "first_low_render": 125
+    },
+    {
+      "profile": "Base",
+      "requested": 0,
+      "active": 0,
+      "highspeed": 1,
+      "scenario": "contact-open",
+      "counts": {
+        "request": 10,
+        "accepted": 10,
+        "parser": 10,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 2,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 34528,
+      "first_low_accept": 6,
+      "first_sound_on": 25,
+      "first_sound_off": 125,
+      "first_low_render": 25
+    },
+    {
+      "profile": "Direct",
+      "requested": 1,
+      "active": 1,
+      "highspeed": 1,
+      "scenario": "contact-open",
+      "counts": {
+        "request": 10,
+        "accepted": 10,
+        "parser": 10,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 2,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 40352,
+      "first_low_accept": 6,
+      "first_sound_on": 6,
+      "first_sound_off": 106,
+      "first_low_render": 25
+    },
+    {
+      "profile": "Auto",
+      "requested": 2,
+      "active": 2,
+      "highspeed": 1,
+      "scenario": "contact-open",
+      "counts": {
+        "request": 32,
+        "accepted": 31,
+        "parser": 31,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 2,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 9,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 51446,
+      "first_low_accept": 6,
+      "first_sound_on": 6,
+      "first_sound_off": 110,
+      "first_low_render": 25
+    },
+    {
+      "profile": "Ready",
+      "requested": 3,
+      "active": 3,
+      "highspeed": 1,
+      "scenario": "contact-open",
+      "counts": {
+        "request": 42,
+        "accepted": 41,
+        "parser": 41,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 2,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 9,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 61238,
+      "first_low_accept": 5,
+      "first_sound_on": 5,
+      "first_sound_off": 107,
+      "first_low_render": 25
+    },
+    {
+      "profile": "Base",
+      "requested": 0,
+      "active": 0,
+      "highspeed": 1,
+      "scenario": "short-contact",
+      "counts": {
+        "request": 10,
+        "accepted": 10,
+        "parser": 10,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 2,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 33835,
+      "first_low_accept": 106,
+      "first_sound_on": 125,
+      "first_sound_off": 150,
+      "first_low_render": 125
+    },
+    {
+      "profile": "Direct",
+      "requested": 1,
+      "active": 1,
+      "highspeed": 1,
+      "scenario": "short-contact",
+      "counts": {
+        "request": 10,
+        "accepted": 10,
+        "parser": 10,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 2,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 39692,
+      "first_low_accept": 106,
+      "first_sound_on": 106,
+      "first_sound_off": 131,
+      "first_low_render": 125
+    },
+    {
+      "profile": "Auto",
+      "requested": 2,
+      "active": 2,
+      "highspeed": 1,
+      "scenario": "short-contact",
+      "counts": {
+        "request": 32,
+        "accepted": 31,
+        "parser": 31,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 2,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 9,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 50622,
+      "first_low_accept": 110,
+      "first_sound_on": 110,
+      "first_sound_off": 118,
+      "first_low_render": null
+    },
+    {
+      "profile": "Ready",
+      "requested": 3,
+      "active": 3,
+      "highspeed": 1,
+      "scenario": "short-contact",
+      "counts": {
+        "request": 42,
+        "accepted": 41,
+        "parser": 41,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 2,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 9,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 60442,
+      "first_low_accept": 107,
+      "first_sound_on": 107,
+      "first_sound_off": 113,
+      "first_low_render": null
+    },
+    {
+      "profile": "Base",
+      "requested": 0,
+      "active": 0,
+      "highspeed": 1,
+      "scenario": "late",
+      "counts": {
+        "request": 5,
+        "accepted": 5,
+        "parser": 5,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 1,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 5,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 32854,
+      "first_low_accept": 40,
+      "first_sound_on": 50,
+      "first_sound_off": null,
+      "first_low_render": 50
+    },
+    {
+      "profile": "Direct",
+      "requested": 1,
+      "active": 1,
+      "highspeed": 1,
+      "scenario": "late",
+      "counts": {
+        "request": 5,
+        "accepted": 5,
+        "parser": 5,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 1,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 5,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 38432,
+      "first_low_accept": 40,
+      "first_sound_on": 40,
+      "first_sound_off": null,
+      "first_low_render": 50
+    },
+    {
+      "profile": "Auto",
+      "requested": 2,
+      "active": 2,
+      "highspeed": 1,
+      "scenario": "late",
+      "counts": {
+        "request": 6,
+        "accepted": 5,
+        "parser": 5,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 1,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 9,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 41517,
+      "first_low_accept": 40,
+      "first_sound_on": 40,
+      "first_sound_off": null,
+      "first_low_render": 50
+    },
+    {
+      "profile": "Ready",
+      "requested": 3,
+      "active": 3,
+      "highspeed": 1,
+      "scenario": "late",
+      "counts": {
+        "request": 7,
+        "accepted": 6,
+        "parser": 6,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 1,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 9,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 45371,
+      "first_low_accept": 39,
+      "first_sound_on": 39,
+      "first_sound_off": null,
+      "first_low_render": 50
+    },
+    {
+      "profile": "Base",
+      "requested": 0,
+      "active": 0,
+      "highspeed": 1,
+      "scenario": "wrong-header",
+      "counts": {
+        "request": 20,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 0,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 20,
+        "state6_total": 20,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 35211,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Direct",
+      "requested": 1,
+      "active": 1,
+      "highspeed": 1,
+      "scenario": "wrong-header",
+      "counts": {
+        "request": 20,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 0,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 20,
+        "state6_total": 20,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 40641,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Auto",
+      "requested": 2,
+      "active": 2,
+      "highspeed": 1,
+      "scenario": "wrong-header",
+      "counts": {
+        "request": 34,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 0,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 33,
+        "state6_total": 33,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 9,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 47071,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Ready",
+      "requested": 3,
+      "active": 3,
+      "highspeed": 1,
+      "scenario": "wrong-header",
+      "counts": {
+        "request": 34,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 0,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 33,
+        "state6_total": 33,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 9,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 50321,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Base",
+      "requested": 0,
+      "active": 0,
+      "highspeed": 1,
+      "scenario": "truncated",
+      "counts": {
+        "request": 6,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 0,
+        "enqueue": 10,
+        "incomplete_timeout": 5,
+        "header_reject": 0,
+        "state6_total": 5,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 7,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 30183,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Direct",
+      "requested": 1,
+      "active": 1,
+      "highspeed": 1,
+      "scenario": "truncated",
+      "counts": {
+        "request": 6,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 0,
+        "enqueue": 10,
+        "incomplete_timeout": 5,
+        "header_reject": 0,
+        "state6_total": 5,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 7,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 35613,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Auto",
+      "requested": 2,
+      "active": 2,
+      "highspeed": 1,
+      "scenario": "truncated",
+      "counts": {
+        "request": 6,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 0,
+        "enqueue": 10,
+        "incomplete_timeout": 5,
+        "header_reject": 0,
+        "state6_total": 5,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 9,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 38455,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Ready",
+      "requested": 3,
+      "active": 3,
+      "highspeed": 1,
+      "scenario": "truncated",
+      "counts": {
+        "request": 6,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 0,
+        "enqueue": 10,
+        "incomplete_timeout": 5,
+        "header_reject": 0,
+        "state6_total": 5,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 9,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 41705,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Base",
+      "requested": 0,
+      "active": 0,
+      "highspeed": 1,
+      "scenario": "missing",
+      "counts": {
+        "request": 6,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 0,
+        "enqueue": 10,
+        "incomplete_timeout": 5,
+        "header_reject": 0,
+        "state6_total": 5,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 7,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 29859,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Direct",
+      "requested": 1,
+      "active": 1,
+      "highspeed": 1,
+      "scenario": "missing",
+      "counts": {
+        "request": 6,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 0,
+        "enqueue": 10,
+        "incomplete_timeout": 5,
+        "header_reject": 0,
+        "state6_total": 5,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 7,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 35289,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Auto",
+      "requested": 2,
+      "active": 2,
+      "highspeed": 1,
+      "scenario": "missing",
+      "counts": {
+        "request": 6,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 0,
+        "enqueue": 10,
+        "incomplete_timeout": 5,
+        "header_reject": 0,
+        "state6_total": 5,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 9,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 38131,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "profile": "Ready",
+      "requested": 3,
+      "active": 3,
+      "highspeed": 1,
+      "scenario": "missing",
+      "counts": {
+        "request": 6,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 0,
+        "enqueue": 10,
+        "incomplete_timeout": 5,
+        "header_reject": 0,
+        "state6_total": 5,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 9,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 41381,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    }
+  ],
+  "switch_rows": [
+    {
+      "start": 0,
+      "target": 0,
+      "when": 2,
+      "final_active": 0,
+      "changes": [
+        {
+          "t": 2,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 0,
+          "active": 0,
+          "busy": 1
+        }
+      ]
+    },
+    {
+      "start": 0,
+      "target": 0,
+      "when": 5,
+      "final_active": 0,
+      "changes": [
+        {
+          "t": 5,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 0,
+          "active": 0,
+          "busy": 1
+        }
+      ]
+    },
+    {
+      "start": 0,
+      "target": 0,
+      "when": 7,
+      "final_active": 0,
+      "changes": [
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 0,
+          "active": 0,
+          "busy": 1
+        }
+      ]
+    },
+    {
+      "start": 0,
+      "target": 0,
+      "when": 26,
+      "final_active": 0,
+      "changes": [
+        {
+          "t": 26,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 0,
+          "active": 0,
+          "busy": 1
+        }
+      ]
+    },
+    {
+      "start": 0,
+      "target": 1,
+      "when": 2,
+      "final_active": 1,
+      "changes": [
+        {
+          "t": 2,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 1,
+          "active": 0,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 0,
+          "new": 1,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 0,
+      "target": 1,
+      "when": 5,
+      "final_active": 1,
+      "changes": [
+        {
+          "t": 5,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 1,
+          "active": 0,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 0,
+          "new": 1,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 0,
+      "target": 1,
+      "when": 7,
+      "final_active": 1,
+      "changes": [
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 1,
+          "active": 0,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 0,
+          "new": 1,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 0,
+      "target": 1,
+      "when": 26,
+      "final_active": 1,
+      "changes": [
+        {
+          "t": 26,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 1,
+          "active": 0,
+          "busy": 1
+        },
+        {
+          "t": 32,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 0,
+          "new": 1,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 0,
+      "target": 2,
+      "when": 2,
+      "final_active": 2,
+      "changes": [
+        {
+          "t": 2,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 2,
+          "active": 0,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 0,
+          "new": 2,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 0,
+      "target": 2,
+      "when": 5,
+      "final_active": 2,
+      "changes": [
+        {
+          "t": 5,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 2,
+          "active": 0,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 0,
+          "new": 2,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 0,
+      "target": 2,
+      "when": 7,
+      "final_active": 2,
+      "changes": [
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 2,
+          "active": 0,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 0,
+          "new": 2,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 0,
+      "target": 2,
+      "when": 26,
+      "final_active": 2,
+      "changes": [
+        {
+          "t": 26,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 2,
+          "active": 0,
+          "busy": 1
+        },
+        {
+          "t": 32,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 0,
+          "new": 2,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 0,
+      "target": 3,
+      "when": 2,
+      "final_active": 3,
+      "changes": [
+        {
+          "t": 2,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 3,
+          "active": 0,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 0,
+          "new": 3,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 0,
+      "target": 3,
+      "when": 5,
+      "final_active": 3,
+      "changes": [
+        {
+          "t": 5,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 3,
+          "active": 0,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 0,
+          "new": 3,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 0,
+      "target": 3,
+      "when": 7,
+      "final_active": 3,
+      "changes": [
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 3,
+          "active": 0,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 0,
+          "new": 3,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 0,
+      "target": 3,
+      "when": 26,
+      "final_active": 3,
+      "changes": [
+        {
+          "t": 26,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 3,
+          "active": 0,
+          "busy": 1
+        },
+        {
+          "t": 32,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 0,
+          "new": 3,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 1,
+      "target": 0,
+      "when": 2,
+      "final_active": 0,
+      "changes": [
+        {
+          "t": 2,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 0,
+          "active": 1,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 1,
+          "new": 0,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 1,
+      "target": 0,
+      "when": 5,
+      "final_active": 0,
+      "changes": [
+        {
+          "t": 5,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 0,
+          "active": 1,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 1,
+          "new": 0,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 1,
+      "target": 0,
+      "when": 7,
+      "final_active": 0,
+      "changes": [
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 0,
+          "active": 1,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 1,
+          "new": 0,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 1,
+      "target": 0,
+      "when": 26,
+      "final_active": 0,
+      "changes": [
+        {
+          "t": 26,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 0,
+          "active": 1,
+          "busy": 1
+        },
+        {
+          "t": 32,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 1,
+          "new": 0,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 1,
+      "target": 1,
+      "when": 2,
+      "final_active": 1,
+      "changes": [
+        {
+          "t": 2,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 1,
+          "active": 1,
+          "busy": 1
+        }
+      ]
+    },
+    {
+      "start": 1,
+      "target": 1,
+      "when": 5,
+      "final_active": 1,
+      "changes": [
+        {
+          "t": 5,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 1,
+          "active": 1,
+          "busy": 1
+        }
+      ]
+    },
+    {
+      "start": 1,
+      "target": 1,
+      "when": 7,
+      "final_active": 1,
+      "changes": [
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 1,
+          "active": 1,
+          "busy": 1
+        }
+      ]
+    },
+    {
+      "start": 1,
+      "target": 1,
+      "when": 26,
+      "final_active": 1,
+      "changes": [
+        {
+          "t": 26,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 1,
+          "active": 1,
+          "busy": 1
+        }
+      ]
+    },
+    {
+      "start": 1,
+      "target": 2,
+      "when": 2,
+      "final_active": 2,
+      "changes": [
+        {
+          "t": 2,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 2,
+          "active": 1,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 1,
+          "new": 2,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 1,
+      "target": 2,
+      "when": 5,
+      "final_active": 2,
+      "changes": [
+        {
+          "t": 5,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 2,
+          "active": 1,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 1,
+          "new": 2,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 1,
+      "target": 2,
+      "when": 7,
+      "final_active": 2,
+      "changes": [
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 2,
+          "active": 1,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 1,
+          "new": 2,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 1,
+      "target": 2,
+      "when": 26,
+      "final_active": 2,
+      "changes": [
+        {
+          "t": 26,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 2,
+          "active": 1,
+          "busy": 1
+        },
+        {
+          "t": 32,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 1,
+          "new": 2,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 1,
+      "target": 3,
+      "when": 2,
+      "final_active": 3,
+      "changes": [
+        {
+          "t": 2,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 3,
+          "active": 1,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 1,
+          "new": 3,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 1,
+      "target": 3,
+      "when": 5,
+      "final_active": 3,
+      "changes": [
+        {
+          "t": 5,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 3,
+          "active": 1,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 1,
+          "new": 3,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 1,
+      "target": 3,
+      "when": 7,
+      "final_active": 3,
+      "changes": [
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 3,
+          "active": 1,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 1,
+          "new": 3,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 1,
+      "target": 3,
+      "when": 26,
+      "final_active": 3,
+      "changes": [
+        {
+          "t": 26,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 3,
+          "active": 1,
+          "busy": 1
+        },
+        {
+          "t": 32,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 1,
+          "new": 3,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 2,
+      "target": 0,
+      "when": 2,
+      "final_active": 0,
+      "changes": [
+        {
+          "t": 2,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 0,
+          "active": 2,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 2,
+          "new": 0,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 2,
+      "target": 0,
+      "when": 5,
+      "final_active": 0,
+      "changes": [
+        {
+          "t": 5,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 0,
+          "active": 2,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 2,
+          "new": 0,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 2,
+      "target": 0,
+      "when": 7,
+      "final_active": 0,
+      "changes": [
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 0,
+          "active": 2,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 2,
+          "new": 0,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 2,
+      "target": 0,
+      "when": 26,
+      "final_active": 0,
+      "changes": [
+        {
+          "t": 26,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 0,
+          "active": 2,
+          "busy": 1
+        },
+        {
+          "t": 31,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 2,
+          "new": 0,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 2,
+      "target": 1,
+      "when": 2,
+      "final_active": 1,
+      "changes": [
+        {
+          "t": 2,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 1,
+          "active": 2,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 2,
+          "new": 1,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 2,
+      "target": 1,
+      "when": 5,
+      "final_active": 1,
+      "changes": [
+        {
+          "t": 5,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 1,
+          "active": 2,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 2,
+          "new": 1,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 2,
+      "target": 1,
+      "when": 7,
+      "final_active": 1,
+      "changes": [
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 1,
+          "active": 2,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 2,
+          "new": 1,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 2,
+      "target": 1,
+      "when": 26,
+      "final_active": 1,
+      "changes": [
+        {
+          "t": 26,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 1,
+          "active": 2,
+          "busy": 1
+        },
+        {
+          "t": 31,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 2,
+          "new": 1,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 2,
+      "target": 2,
+      "when": 2,
+      "final_active": 2,
+      "changes": [
+        {
+          "t": 2,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 2,
+          "active": 2,
+          "busy": 1
+        }
+      ]
+    },
+    {
+      "start": 2,
+      "target": 2,
+      "when": 5,
+      "final_active": 2,
+      "changes": [
+        {
+          "t": 5,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 2,
+          "active": 2,
+          "busy": 1
+        }
+      ]
+    },
+    {
+      "start": 2,
+      "target": 2,
+      "when": 7,
+      "final_active": 2,
+      "changes": [
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 2,
+          "active": 2,
+          "busy": 1
+        }
+      ]
+    },
+    {
+      "start": 2,
+      "target": 2,
+      "when": 26,
+      "final_active": 2,
+      "changes": [
+        {
+          "t": 26,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 2,
+          "active": 2,
+          "busy": 1
+        }
+      ]
+    },
+    {
+      "start": 2,
+      "target": 3,
+      "when": 2,
+      "final_active": 3,
+      "changes": [
+        {
+          "t": 2,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 3,
+          "active": 2,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 2,
+          "new": 3,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 2,
+      "target": 3,
+      "when": 5,
+      "final_active": 3,
+      "changes": [
+        {
+          "t": 5,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 3,
+          "active": 2,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 2,
+          "new": 3,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 2,
+      "target": 3,
+      "when": 7,
+      "final_active": 3,
+      "changes": [
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 3,
+          "active": 2,
+          "busy": 1
+        },
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 2,
+          "new": 3,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 2,
+      "target": 3,
+      "when": 26,
+      "final_active": 3,
+      "changes": [
+        {
+          "t": 26,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 3,
+          "active": 2,
+          "busy": 1
+        },
+        {
+          "t": 31,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 2,
+          "new": 3,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 3,
+      "target": 0,
+      "when": 2,
+      "final_active": 0,
+      "changes": [
+        {
+          "t": 2,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 0,
+          "active": 3,
+          "busy": 1
+        },
+        {
+          "t": 5,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 3,
+          "new": 0,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 3,
+      "target": 0,
+      "when": 5,
+      "final_active": 0,
+      "changes": [
+        {
+          "t": 5,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 0,
+          "active": 3,
+          "busy": 1
+        },
+        {
+          "t": 5,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 3,
+          "new": 0,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 3,
+      "target": 0,
+      "when": 7,
+      "final_active": 0,
+      "changes": [
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 0,
+          "active": 3,
+          "busy": 1
+        },
+        {
+          "t": 11,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 3,
+          "new": 0,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 3,
+      "target": 0,
+      "when": 26,
+      "final_active": 0,
+      "changes": [
+        {
+          "t": 26,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 0,
+          "active": 3,
+          "busy": 1
+        },
+        {
+          "t": 29,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 3,
+          "new": 0,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 3,
+      "target": 1,
+      "when": 2,
+      "final_active": 1,
+      "changes": [
+        {
+          "t": 2,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 1,
+          "active": 3,
+          "busy": 1
+        },
+        {
+          "t": 5,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 3,
+          "new": 1,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 3,
+      "target": 1,
+      "when": 5,
+      "final_active": 1,
+      "changes": [
+        {
+          "t": 5,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 1,
+          "active": 3,
+          "busy": 1
+        },
+        {
+          "t": 5,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 3,
+          "new": 1,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 3,
+      "target": 1,
+      "when": 7,
+      "final_active": 1,
+      "changes": [
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 1,
+          "active": 3,
+          "busy": 1
+        },
+        {
+          "t": 11,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 3,
+          "new": 1,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 3,
+      "target": 1,
+      "when": 26,
+      "final_active": 1,
+      "changes": [
+        {
+          "t": 26,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 1,
+          "active": 3,
+          "busy": 1
+        },
+        {
+          "t": 29,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 3,
+          "new": 1,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 3,
+      "target": 2,
+      "when": 2,
+      "final_active": 2,
+      "changes": [
+        {
+          "t": 2,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 2,
+          "active": 3,
+          "busy": 1
+        },
+        {
+          "t": 5,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 3,
+          "new": 2,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 3,
+      "target": 2,
+      "when": 5,
+      "final_active": 2,
+      "changes": [
+        {
+          "t": 5,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 2,
+          "active": 3,
+          "busy": 1
+        },
+        {
+          "t": 5,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 3,
+          "new": 2,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 3,
+      "target": 2,
+      "when": 7,
+      "final_active": 2,
+      "changes": [
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 2,
+          "active": 3,
+          "busy": 1
+        },
+        {
+          "t": 11,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 3,
+          "new": 2,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 3,
+      "target": 2,
+      "when": 26,
+      "final_active": 2,
+      "changes": [
+        {
+          "t": 26,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 2,
+          "active": 3,
+          "busy": 1
+        },
+        {
+          "t": 29,
+          "phase": "service",
+          "kind": "active_profile",
+          "pc": "0x8001b4f8",
+          "old": 3,
+          "new": 2,
+          "busy": 0
+        }
+      ]
+    },
+    {
+      "start": 3,
+      "target": 3,
+      "when": 2,
+      "final_active": 3,
+      "changes": [
+        {
+          "t": 2,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 3,
+          "active": 3,
+          "busy": 1
+        }
+      ]
+    },
+    {
+      "start": 3,
+      "target": 3,
+      "when": 5,
+      "final_active": 3,
+      "changes": [
+        {
+          "t": 5,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 3,
+          "active": 3,
+          "busy": 1
+        }
+      ]
+    },
+    {
+      "start": 3,
+      "target": 3,
+      "when": 7,
+      "final_active": 3,
+      "changes": [
+        {
+          "t": 7,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 3,
+          "active": 3,
+          "busy": 1
+        }
+      ]
+    },
+    {
+      "start": 3,
+      "target": 3,
+      "when": 26,
+      "final_active": 3,
+      "changes": [
+        {
+          "t": 26,
+          "phase": "service",
+          "kind": "requested_profile",
+          "new": 3,
+          "active": 3,
+          "busy": 1
+        }
+      ]
+    }
+  ],
+  "candidate_rows": [
+    {
+      "build": "threshold-1.1",
+      "sha256": "884c39524942cf42580b52c0ce3ed8b33dab8d8fc4d3addd6266d1c9831c551e",
+      "profile": "Base",
+      "requested": null,
+      "active": null,
+      "highspeed": 1,
+      "scenario": "stable-low",
+      "counts": {
+        "request": 10,
+        "accepted": 10,
+        "parser": 10,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 1,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 20409,
+      "first_low_accept": 6,
+      "first_sound_on": 25,
+      "first_sound_off": null,
+      "first_low_render": 25
+    },
+    {
+      "build": "threshold-1.1",
+      "sha256": "884c39524942cf42580b52c0ce3ed8b33dab8d8fc4d3addd6266d1c9831c551e",
+      "profile": "Base",
+      "requested": null,
+      "active": null,
+      "highspeed": 1,
+      "scenario": "open-contact",
+      "counts": {
+        "request": 10,
+        "accepted": 10,
+        "parser": 10,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 1,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 19489,
+      "first_low_accept": 106,
+      "first_sound_on": 125,
+      "first_sound_off": null,
+      "first_low_render": 125
+    },
+    {
+      "build": "threshold-1.1",
+      "sha256": "884c39524942cf42580b52c0ce3ed8b33dab8d8fc4d3addd6266d1c9831c551e",
+      "profile": "Base",
+      "requested": null,
+      "active": null,
+      "highspeed": 1,
+      "scenario": "contact-open",
+      "counts": {
+        "request": 10,
+        "accepted": 10,
+        "parser": 10,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 2,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 19299,
+      "first_low_accept": 6,
+      "first_sound_on": 25,
+      "first_sound_off": 125,
+      "first_low_render": 25
+    },
+    {
+      "build": "threshold-1.1",
+      "sha256": "884c39524942cf42580b52c0ce3ed8b33dab8d8fc4d3addd6266d1c9831c551e",
+      "profile": "Base",
+      "requested": null,
+      "active": null,
+      "highspeed": 1,
+      "scenario": "short-contact",
+      "counts": {
+        "request": 10,
+        "accepted": 10,
+        "parser": 10,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 2,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 18609,
+      "first_low_accept": 106,
+      "first_sound_on": 125,
+      "first_sound_off": 150,
+      "first_low_render": 125
+    },
+    {
+      "build": "threshold-1.1",
+      "sha256": "884c39524942cf42580b52c0ce3ed8b33dab8d8fc4d3addd6266d1c9831c551e",
+      "profile": "Base",
+      "requested": null,
+      "active": null,
+      "highspeed": 1,
+      "scenario": "late",
+      "counts": {
+        "request": 5,
+        "accepted": 5,
+        "parser": 5,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 1,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 5,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 19043,
+      "first_low_accept": 40,
+      "first_sound_on": 50,
+      "first_sound_off": null,
+      "first_low_render": 50
+    },
+    {
+      "build": "threshold-1.1",
+      "sha256": "884c39524942cf42580b52c0ce3ed8b33dab8d8fc4d3addd6266d1c9831c551e",
+      "profile": "Base",
+      "requested": null,
+      "active": null,
+      "highspeed": 1,
+      "scenario": "wrong-header",
+      "counts": {
+        "request": 20,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 0,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 20,
+        "state6_total": 20,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 20880,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "build": "threshold-1.1",
+      "sha256": "884c39524942cf42580b52c0ce3ed8b33dab8d8fc4d3addd6266d1c9831c551e",
+      "profile": "Base",
+      "requested": null,
+      "active": null,
+      "highspeed": 1,
+      "scenario": "truncated",
+      "counts": {
+        "request": 6,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 0,
+        "enqueue": 10,
+        "incomplete_timeout": 5,
+        "header_reject": 0,
+        "state6_total": 5,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 7,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 16592,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "build": "threshold-1.1",
+      "sha256": "884c39524942cf42580b52c0ce3ed8b33dab8d8fc4d3addd6266d1c9831c551e",
+      "profile": "Base",
+      "requested": null,
+      "active": null,
+      "highspeed": 1,
+      "scenario": "missing",
+      "counts": {
+        "request": 6,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 0,
+        "enqueue": 10,
+        "incomplete_timeout": 5,
+        "header_reject": 0,
+        "state6_total": 5,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 7,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 16268,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "build": "reply-audio",
+      "sha256": "9890a3c671987b0aa75a505e4f389532ca102f9dcf306394daa45a9328bc91e1",
+      "profile": "Base",
+      "requested": null,
+      "active": null,
+      "highspeed": 1,
+      "scenario": "stable-low",
+      "counts": {
+        "request": 10,
+        "accepted": 10,
+        "parser": 10,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 1,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 21138,
+      "first_low_accept": 6,
+      "first_sound_on": 6,
+      "first_sound_off": null,
+      "first_low_render": 25
+    },
+    {
+      "build": "reply-audio",
+      "sha256": "9890a3c671987b0aa75a505e4f389532ca102f9dcf306394daa45a9328bc91e1",
+      "profile": "Base",
+      "requested": null,
+      "active": null,
+      "highspeed": 1,
+      "scenario": "open-contact",
+      "counts": {
+        "request": 10,
+        "accepted": 10,
+        "parser": 10,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 1,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 20258,
+      "first_low_accept": 106,
+      "first_sound_on": 106,
+      "first_sound_off": null,
+      "first_low_render": 125
+    },
+    {
+      "build": "reply-audio",
+      "sha256": "9890a3c671987b0aa75a505e4f389532ca102f9dcf306394daa45a9328bc91e1",
+      "profile": "Base",
+      "requested": null,
+      "active": null,
+      "highspeed": 1,
+      "scenario": "contact-open",
+      "counts": {
+        "request": 10,
+        "accepted": 10,
+        "parser": 10,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 2,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 20086,
+      "first_low_accept": 6,
+      "first_sound_on": 6,
+      "first_sound_off": 106,
+      "first_low_render": 25
+    },
+    {
+      "build": "reply-audio",
+      "sha256": "9890a3c671987b0aa75a505e4f389532ca102f9dcf306394daa45a9328bc91e1",
+      "profile": "Base",
+      "requested": null,
+      "active": null,
+      "highspeed": 1,
+      "scenario": "short-contact",
+      "counts": {
+        "request": 10,
+        "accepted": 10,
+        "parser": 10,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 2,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 19426,
+      "first_low_accept": 106,
+      "first_sound_on": 106,
+      "first_sound_off": 131,
+      "first_low_render": 125
+    },
+    {
+      "build": "reply-audio",
+      "sha256": "9890a3c671987b0aa75a505e4f389532ca102f9dcf306394daa45a9328bc91e1",
+      "profile": "Base",
+      "requested": null,
+      "active": null,
+      "highspeed": 1,
+      "scenario": "late",
+      "counts": {
+        "request": 5,
+        "accepted": 5,
+        "parser": 5,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 1,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 5,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 19516,
+      "first_low_accept": 40,
+      "first_sound_on": 40,
+      "first_sound_off": null,
+      "first_low_render": 50
+    },
+    {
+      "build": "reply-audio",
+      "sha256": "9890a3c671987b0aa75a505e4f389532ca102f9dcf306394daa45a9328bc91e1",
+      "profile": "Base",
+      "requested": null,
+      "active": null,
+      "highspeed": 1,
+      "scenario": "wrong-header",
+      "counts": {
+        "request": 20,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 0,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 20,
+        "state6_total": 20,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 0,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 21125,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "build": "reply-audio",
+      "sha256": "9890a3c671987b0aa75a505e4f389532ca102f9dcf306394daa45a9328bc91e1",
+      "profile": "Base",
+      "requested": null,
+      "active": null,
+      "highspeed": 1,
+      "scenario": "truncated",
+      "counts": {
+        "request": 6,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 0,
+        "enqueue": 10,
+        "incomplete_timeout": 5,
+        "header_reject": 0,
+        "state6_total": 5,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 7,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 16837,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    },
+    {
+      "build": "reply-audio",
+      "sha256": "9890a3c671987b0aa75a505e4f389532ca102f9dcf306394daa45a9328bc91e1",
+      "profile": "Base",
+      "requested": null,
+      "active": null,
+      "highspeed": 1,
+      "scenario": "missing",
+      "counts": {
+        "request": 6,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 0,
+        "enqueue": 10,
+        "incomplete_timeout": 5,
+        "header_reject": 0,
+        "state6_total": 5,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 7,
+        "sleep_calls": 250
+      },
+      "queue_max": 1,
+      "instructions": 16513,
+      "first_low_accept": null,
+      "first_sound_on": null,
+      "first_sound_off": null,
+      "first_low_render": null
+    }
+  ],
+  "original_service": [
+    {
+      "version": "V3.6",
+      "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+      "events": [
+        {
+          "t": 0,
+          "phase": "service",
+          "kind": "fsm",
+          "state": 0,
+          "busy": 0,
+          "command": 0
+        },
+        {
+          "t": 0,
+          "phase": "service",
+          "kind": "task_sleep",
+          "units": 1
+        }
+      ],
+      "instructions": 47,
+      "executed_instructions": [
+        {
+          "address": "0x80004490",
+          "size": 4,
+          "bytes": "f05f2de9",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80004494",
+          "size": 4,
+          "bytes": "6c939fe5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80004498",
+          "size": 4,
+          "bytes": "74c39fe5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x8000449c",
+          "size": 4,
+          "bytes": "001089e2",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044a0",
+          "size": 4,
+          "bytes": "00e0d9e5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044a4",
+          "size": 4,
+          "bytes": "2c0091e5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044a8",
+          "size": 4,
+          "bytes": "305091e5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044ac",
+          "size": 4,
+          "bytes": "0030dce5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044b0",
+          "size": 4,
+          "bytes": "54a39fe5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044b4",
+          "size": 4,
+          "bytes": "54639fe5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044b8",
+          "size": 4,
+          "bytes": "201091e5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044bc",
+          "size": 4,
+          "bytes": "08005ee3",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044c0",
+          "size": 4,
+          "bytes": "0070a0e3",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044c4",
+          "size": 4,
+          "bytes": "0720a0e3",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044c8",
+          "size": 4,
+          "bytes": "0680a0e3",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044cc",
+          "size": 4,
+          "bytes": "01b0a0e3",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044d0",
+          "size": 4,
+          "bytes": "0840a0e3",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044d4",
+          "size": 4,
+          "bytes": "0ef19f37",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044fc",
+          "size": 4,
+          "bytes": "3470c9e5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80004500",
+          "size": 4,
+          "bytes": "f09fbde8",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b6c",
+          "size": 4,
+          "bytes": "f04f2de9",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b70",
+          "size": 4,
+          "bytes": "a0419fe5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b74",
+          "size": 4,
+          "bytes": "5cd04de2",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b78",
+          "size": 4,
+          "bytes": "040094e5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b7c",
+          "size": 4,
+          "bytes": "000050e3",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b80",
+          "size": 4,
+          "bytes": "5f00000a",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b84",
+          "size": 4,
+          "bytes": "0030a0e3",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b88",
+          "size": 4,
+          "bytes": "0320a0e1",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b8c",
+          "size": 4,
+          "bytes": "0d10a0e1",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b90",
+          "size": 4,
+          "bytes": "516f01eb",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b94",
+          "size": 4,
+          "bytes": "80719fe5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b98",
+          "size": 4,
+          "bytes": "010050e3",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b9c",
+          "size": 4,
+          "bytes": "4700001a",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005cc0",
+          "size": 4,
+          "bytes": "3400d7e5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005cc4",
+          "size": 4,
+          "bytes": "000050e3",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005cc8",
+          "size": 4,
+          "bytes": "0d00001a",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005ccc",
+          "size": 4,
+          "bytes": "0000d4e5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005cd0",
+          "size": 4,
+          "bytes": "000050e3",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005cd4",
+          "size": 4,
+          "bytes": "0a00000a",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005d04",
+          "size": 4,
+          "bytes": "e1f9ffeb",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005d08",
+          "size": 4,
+          "bytes": "5cd08de2",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005d0c",
+          "size": 4,
+          "bytes": "f04fbde8",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005d10",
+          "size": 4,
+          "bytes": "0100a0e3",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005d14",
+          "size": 4,
+          "bytes": "a86c01ea",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80060fbc",
+          "size": 4,
+          "bytes": "10402de9",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800618dc",
+          "size": 4,
+          "bytes": "ff432de9",
+          "mode": "ARM"
+        }
+      ]
+    },
+    {
+      "version": "V3.8",
+      "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+      "events": [
+        {
+          "t": 0,
+          "phase": "service",
+          "kind": "fsm",
+          "state": 0,
+          "busy": 0,
+          "command": 0
+        },
+        {
+          "t": 0,
+          "phase": "service",
+          "kind": "task_sleep",
+          "units": 1
+        }
+      ],
+      "instructions": 47,
+      "executed_instructions": [
+        {
+          "address": "0x80004490",
+          "size": 4,
+          "bytes": "f05f2de9",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80004494",
+          "size": 4,
+          "bytes": "6c939fe5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80004498",
+          "size": 4,
+          "bytes": "74c39fe5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x8000449c",
+          "size": 4,
+          "bytes": "001089e2",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044a0",
+          "size": 4,
+          "bytes": "00e0d9e5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044a4",
+          "size": 4,
+          "bytes": "2c0091e5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044a8",
+          "size": 4,
+          "bytes": "305091e5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044ac",
+          "size": 4,
+          "bytes": "0030dce5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044b0",
+          "size": 4,
+          "bytes": "54a39fe5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044b4",
+          "size": 4,
+          "bytes": "54639fe5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044b8",
+          "size": 4,
+          "bytes": "201091e5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044bc",
+          "size": 4,
+          "bytes": "08005ee3",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044c0",
+          "size": 4,
+          "bytes": "0070a0e3",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044c4",
+          "size": 4,
+          "bytes": "0720a0e3",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044c8",
+          "size": 4,
+          "bytes": "0680a0e3",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044cc",
+          "size": 4,
+          "bytes": "01b0a0e3",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044d0",
+          "size": 4,
+          "bytes": "0840a0e3",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044d4",
+          "size": 4,
+          "bytes": "0ef19f37",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800044fc",
+          "size": 4,
+          "bytes": "3470c9e5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80004500",
+          "size": 4,
+          "bytes": "f09fbde8",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b6c",
+          "size": 4,
+          "bytes": "f04f2de9",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b70",
+          "size": 4,
+          "bytes": "a0419fe5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b74",
+          "size": 4,
+          "bytes": "5cd04de2",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b78",
+          "size": 4,
+          "bytes": "040094e5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b7c",
+          "size": 4,
+          "bytes": "000050e3",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b80",
+          "size": 4,
+          "bytes": "5f00000a",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b84",
+          "size": 4,
+          "bytes": "0030a0e3",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b88",
+          "size": 4,
+          "bytes": "0320a0e1",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b8c",
+          "size": 4,
+          "bytes": "0d10a0e1",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b90",
+          "size": 4,
+          "bytes": "516f01eb",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b94",
+          "size": 4,
+          "bytes": "80719fe5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b98",
+          "size": 4,
+          "bytes": "010050e3",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005b9c",
+          "size": 4,
+          "bytes": "4700001a",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005cc0",
+          "size": 4,
+          "bytes": "3400d7e5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005cc4",
+          "size": 4,
+          "bytes": "000050e3",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005cc8",
+          "size": 4,
+          "bytes": "0d00001a",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005ccc",
+          "size": 4,
+          "bytes": "0000d4e5",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005cd0",
+          "size": 4,
+          "bytes": "000050e3",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005cd4",
+          "size": 4,
+          "bytes": "0a00000a",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005d04",
+          "size": 4,
+          "bytes": "e1f9ffeb",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005d08",
+          "size": 4,
+          "bytes": "5cd08de2",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005d0c",
+          "size": 4,
+          "bytes": "f04fbde8",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005d10",
+          "size": 4,
+          "bytes": "0100a0e3",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80005d14",
+          "size": 4,
+          "bytes": "a86c01ea",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x80060fbc",
+          "size": 4,
+          "bytes": "10402de9",
+          "mode": "ARM"
+        },
+        {
+          "address": "0x800618dc",
+          "size": 4,
+          "bytes": "ff432de9",
+          "mode": "ARM"
+        }
+      ]
+    }
+  ],
+  "physical_device_operations": 0,
+  "physical_time_units_established": false,
+  "limits": [
+    "Synthetic RTOS counter/queue/critical/sleep, service+GUI task order, UART TX/responder, formatter/renderer/PWM endpoints.",
+    "The original tick/critical execution is reused from COORD-FSM-TIMEOUT, not rerun by this profile harness.",
+    "UART answers snapshot the common input waveform at modeled response start. Analog conversion and command restart behavior are unknown.",
+    "Late frames carry only a host request label, not a firmware transaction identifier; attribution to current hardware conversion is not proven.",
+    "Renderer entry is an observation, not LCD completion. PWM control is an observation, not acoustic output.",
+    "Code-hook coverage includes modeled-leaf entry addresses whose original instructions are skipped; it is not an executed-instruction percentage.",
+    "The replay reproduces recorded edits and hashes, not historical source generators or physical E2 identity.",
+    "This does not reproduce the reported Base physical advantage or justify an ADC/timeout change."
+  ]
+}

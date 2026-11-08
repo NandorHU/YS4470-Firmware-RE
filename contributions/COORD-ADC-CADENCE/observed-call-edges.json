@@ -1,0 +1,510 @@
+{
+  "image_sha256": "b04fb5bca7a052abfc5b1621bf50e03fd4f8116bf5cef849f1994e44d4b603b1",
+  "edges": [
+    {
+      "site": "0x800037cc",
+      "assembly": "bl #0x80000b4c",
+      "target": "0x80000b4c",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x800037f8",
+      "assembly": "blx #0x80000544",
+      "target": "0x80000544",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x800037fc",
+      "assembly": "bl #0x80060130",
+      "target": "0x80060130",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80003834",
+      "assembly": "blx #0x80000544",
+      "target": "0x80000544",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80003864",
+      "assembly": "bl #0x8000f544",
+      "target": "0x8000f544",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x8000388c",
+      "assembly": "bl #0x800630a4",
+      "target": "0x800630a4",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x800038b0",
+      "assembly": "bl #0x800427ec",
+      "target": "0x800427ec",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x800038bc",
+      "assembly": "bl #0x80062e7c",
+      "target": "0x80062e7c",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80003a34",
+      "assembly": "bl #0x80062d2c",
+      "target": "0x80062d2c",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80003a48",
+      "assembly": "blx #0x80000544",
+      "target": "0x80000544",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80003a58",
+      "assembly": "blx #0x80000544",
+      "target": "0x80000544",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80003a5c",
+      "assembly": "bl #0x8000f5c4",
+      "target": "0x8000f5c4",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80003a74",
+      "assembly": "bl #0x80006e4c",
+      "target": "0x80006e4c",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80003a78",
+      "assembly": "bl #0x80010774",
+      "target": "0x80010774",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80004554",
+      "assembly": "bl #0x80060efc",
+      "target": "0x80060efc",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80004564",
+      "assembly": "bl #0x80000b4c",
+      "target": "0x80000b4c",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80004568",
+      "assembly": "bl #0x80060f20",
+      "target": "0x80060f20",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x800045e0",
+      "assembly": "bl #0x800586ec",
+      "target": "0x800586ec",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x800045e4",
+      "assembly": "bl #0x80061f84",
+      "target": "0x80061f84",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x8000461c",
+      "assembly": "bl #0x80058750",
+      "target": "0x80058750",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80004724",
+      "assembly": "bl #0x80061f84",
+      "target": "0x80061f84",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80004738",
+      "assembly": "bl #0x8005871c",
+      "target": "0x8005871c",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x800047c8",
+      "assembly": "bl #0x800031b8",
+      "target": "0x800031b8",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x800047d4",
+      "assembly": "bl #0x800031b8",
+      "target": "0x800031b8",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80004840",
+      "assembly": "bl #0x800031b8",
+      "target": "0x800031b8",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x8000484c",
+      "assembly": "bl #0x800031b8",
+      "target": "0x800031b8",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x8000553c",
+      "assembly": "bl #0x8005fb18",
+      "target": "0x8005fb18",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x8000556c",
+      "assembly": "bl #0x8005fb44",
+      "target": "0x8005fb44",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80005b90",
+      "assembly": "bl #0x800618dc",
+      "target": "0x800618dc",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80005c50",
+      "assembly": "bl #0x8000489c",
+      "target": "0x8000489c",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80005cb4",
+      "assembly": "bl #0x800618dc",
+      "target": "0x800618dc",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80005d04",
+      "assembly": "bl #0x800107cc",
+      "target": "0x800107cc",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x800067b8",
+      "assembly": "bl #0x80061acc",
+      "target": "0x80061acc",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80006e80",
+      "assembly": "bl #0x80060958",
+      "target": "0x80060958",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80006eac",
+      "assembly": "bl #0x800060d0",
+      "target": "0x800060d0",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80006ecc",
+      "assembly": "bl #0x800630a4",
+      "target": "0x800630a4",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80006ee0",
+      "assembly": "bl #0x800060d0",
+      "target": "0x800060d0",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x8000f548",
+      "assembly": "bl #0x8005fd38",
+      "target": "0x8005fd38",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x8000f5c8",
+      "assembly": "bl #0x8005fd38",
+      "target": "0x8005fd38",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80010748",
+      "assembly": "bl #0x80006e4c",
+      "target": "0x80006e4c",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x800107d0",
+      "assembly": "bl #0x80058678",
+      "target": "0x80058678",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x800107d4",
+      "assembly": "bl #0x80004490",
+      "target": "0x80004490",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x800107d8",
+      "assembly": "bl #0x8005fd38",
+      "target": "0x8005fd38",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x800107dc",
+      "assembly": "bleq #0x80007f7c",
+      "target": "0x80007f7c",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x8001b4f0",
+      "assembly": "bl #0x80010718",
+      "target": "0x80010718",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x8001b5d0",
+      "assembly": "bl #0x80060af4",
+      "target": "0x80060af4",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x8001b5d4",
+      "assembly": "bl #0x80060998",
+      "target": "0x80060998",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80041908",
+      "assembly": "blne #0x80032038",
+      "target": "0x80032038",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80042810",
+      "assembly": "bl #0x80063180",
+      "target": "0x80063180",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80042820",
+      "assembly": "bl #0x80063180",
+      "target": "0x80063180",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x8005d130",
+      "assembly": "bl #0x80006778",
+      "target": "0x80006778",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x8005d1a0",
+      "assembly": "bl #0x800037c0",
+      "target": "0x800037c0",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x8005d1a8",
+      "assembly": "bl #0x8000326c",
+      "target": "0x8000326c",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x8005d214",
+      "assembly": "bl #0x80040b84",
+      "target": "0x80040b84",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x8005d230",
+      "assembly": "bl #0x8005c374",
+      "target": "0x8005c374",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x8005d234",
+      "assembly": "bl #0x80040b84",
+      "target": "0x80040b84",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x8005f878",
+      "assembly": "bl #0x8000489c",
+      "target": "0x8000489c",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x8005fb1c",
+      "assembly": "bl #0x800604dc",
+      "target": "0x800604dc",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x8005fb30",
+      "assembly": "bleq #0x80060efc",
+      "target": "0x80060efc",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x8005fb54",
+      "assembly": "bleq #0x80060f20",
+      "target": "0x80060f20",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x8005fb7c",
+      "assembly": "bl #0x80058678",
+      "target": "0x80058678",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x8005fb80",
+      "assembly": "bl #0x8005fd38",
+      "target": "0x8005fd38",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x8005fb84",
+      "assembly": "bleq #0x8001110c",
+      "target": "0x8001110c",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x800602f0",
+      "assembly": "bl #0x80060928",
+      "target": "0x80060928",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x800602f8",
+      "assembly": "bl #0x80010718",
+      "target": "0x80010718",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80060500",
+      "assembly": "bleq #0x80004490",
+      "target": "0x80004490",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x8006050c",
+      "assembly": "bleq #0x80004490",
+      "target": "0x80004490",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80060c74",
+      "assembly": "bl #0x8005fd38",
+      "target": "0x8005fd38",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80060c94",
+      "assembly": "bl #0x80010754",
+      "target": "0x80010754",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80060c98",
+      "assembly": "bl #0x800602b4",
+      "target": "0x800602b4",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80060cac",
+      "assembly": "bl #0x80006e4c",
+      "target": "0x80006e4c",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    },
+    {
+      "site": "0x80060cb0",
+      "assembly": "bl #0x80010774",
+      "target": "0x80010774",
+      "resolution": "immediate_target",
+      "mode": "ARM"
+    }
+  ],
+  "scope": "Calls decoded only at observed E2 hook addresses. This is neither a complete CFG nor a transitive or indirect-target proof."
+}

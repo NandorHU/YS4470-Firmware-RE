@@ -147,16 +147,27 @@
       "id": "gauge_task_candidate",
       "addresses": {
         "V3_8": "0x80005b6c",
-        "Beta3": "0x80005b6c"
+        "Beta3": "0x80005b6c",
+        "V3_6": "0x80005b6c"
       },
-      "confidence": "hypothesis",
-      "role": "Candidate gauge/UI task entry",
+      "confidence": "confirmed_bounded_original_idle_service",
+      "role": "Service called by GaugeCmdTask; idle path steps measurement FSM then requests sleep(1)",
       "evidence": [
         "existing project annotation",
-        "contributions/COORD-FUNCTION-PACKETS/validation.json"
+        "contributions/COORD-FUNCTION-PACKETS/validation.json",
+        "contributions/COORD-ADC-CADENCE/profile-validation.json"
       ],
       "relationships": [
-        "original GaugeCmdTask wrapper0x80003dbc repeatedly calls this service at0x80003dd0; service semantics remain a hypothesis"
+        "GaugeCmdTask0x80003dbc calls service at0x80003dd0",
+        "idle original service calls FSM0x80004490 at0x80005d04; tail0x80005d14 requests sleep(1) through0x80060fbc",
+        "E2 callsite0x80005d04 enters step0x800107cc; branch0x80005d08 enters tail0x8005fb78"
+      ],
+      "inferred_name": "GaugeCmdService",
+      "name_status": "role label, not recovered factory symbol",
+      "limits": [
+        "Original proof executes only an empty-queue/inactive-FSM iteration; RTOS queue/sleep are models.",
+        "Active queue/UART/profile paths execute pinned E2, not unmodified3.6/3.8; static callers beyond observed paths are incomplete.",
+        "Requested one-unit sleep is not measured task cadence or physical time."
       ]
     },
     {
@@ -1354,12 +1365,13 @@
       ],
       "evidence": [
         "contributions/COORD-FUNCTION-PACKETS/validation.json",
-        "contributions/COORD-FUNCTION-PACKETS/packet-index.json"
+        "contributions/COORD-FUNCTION-PACKETS/packet-index.json",
+        "contributions/COORD-ADC-CADENCE/profile-validation.json"
       ],
       "limits": [
         "Creation callee is not executed; this proves original argument binding only.",
         "Three task callees are return-only models in the outer-loop test.",
-        "Service0x80005b6c, command completion, RTOS cadence and physical response time remain separate work."
+        "Service idle FSM→sleep(1) path is now executed separately on both originals; active original service and real RTOS cadence remain incomplete."
       ]
     }
   ],

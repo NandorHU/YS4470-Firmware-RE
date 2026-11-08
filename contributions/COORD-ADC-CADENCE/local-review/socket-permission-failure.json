@@ -1,0 +1,11 @@
+{
+  "seconds": 0.0,
+  "manifest_sha256": "d121dbf6b5a2d0c9066db5ac8997c5472037fd27c1fed3966a767fb05547af47",
+  "complete": false,
+  "reply": {
+    "done": false,
+    "done_reason": "transport_error",
+    "error": "<urlopen error [WinError 10013] A szoftvercsatorn\u00e1hoz a hozz\u00e1f\u00e9r\u00e9si enged\u00e9lyeket megs\u00e9rt\u0151 m\u00f3don t\u00f6rt\u00e9nt hozz\u00e1f\u00e9r\u00e9s>"
+  },
+  "semantic_finding_accepted": false
+}

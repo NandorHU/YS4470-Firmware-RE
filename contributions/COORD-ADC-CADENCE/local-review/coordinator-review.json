@@ -1,0 +1,11 @@
+{
+  "response_sha256": "b5f00fb423de02a0f887178860f0c7019880a52cd50c4a996d898c46b235d8dd",
+  "exact_quote_matches_binary": true,
+  "source_pointer_literal_checked": "0x80007f78 -> 0x80060a90",
+  "accepted_scope": "The supplied zero-offset byte load is active, not requested. It confirms supplied context; it is not a new independent semantic discovery.",
+  "limitation": "The model restated context rather than identifying a meaningful missing-context limit. No timing or ADC claim accepted.",
+  "new_firmware_findings": 0,
+  "model_done_reason": "stop",
+  "generated_tokens": 71,
+  "seconds": 10.485
+}

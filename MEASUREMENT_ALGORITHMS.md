@@ -263,3 +263,8 @@ The factory-input patcher applies the already published1.0 application changes. 
 ## 2026-11-08 distribution milestone
 
 Installer1.1.0-beta.2 prepares/installs the existing1.0 application using the bundled originalV3.8 or a matched device application. It adds no new measurement algorithm, profile policy or physical speed result. V3.6's version-specific bytes remain intact under the guarded port. The Base+highspeedv2 versus Direct/Auto/Ready question remains with COORD-ADC-CADENCE.
+
+
+## 2026-11-08: equal-Highspeed profile evidence
+
+At equal Highspeed=1, Base/Direct share poll times; Direct moves audio from the next GUI stored-result callback to accepted-frame handling. In one modeled OPEN→contact case acceptance is106 for both, sound125/106 respectively; renderer125 for both. Auto/Ready poll more often and can shorten the brief-contact sound-control pulse (ON/OFF110/118 and107/113 versus Base125/150). This is a possible perception-related mechanism, not a proved physical explanation. Header rejection, incomplete deadlines, holdoff drops and busy GUI-poll drops are counted separately in contributions/COORD-ADC-CADENCE/profile-validation.json and traces/.
