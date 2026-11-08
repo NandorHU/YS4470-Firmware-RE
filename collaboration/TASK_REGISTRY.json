@@ -1,7 +1,7 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 1,
-  "updated": "2026-11-07",
+  "revision": 2,
+  "updated": "2026-11-08",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
   "research_baseline_commit": "7e173ffdaa7dffd67a2d998f3fa8b28036e99485",
@@ -34,11 +34,11 @@
     {
       "id": "COORD-FSM-TIMEOUT",
       "title": "Prove cached FSM timeout/tick contract",
-      "status": "reserved",
+      "status": "in_progress",
       "owner": "current-codex-coordinator",
       "claim_issue": null,
       "branch": "re/2026-11-04-pyghidra-fel",
-      "base_commit": "7e173ffdaa7dffd67a2d998f3fa8b28036e99485",
+      "base_commit": "8e413b2d0e7efe22f8ef370f01d6a192e63d0e65",
       "inputs": [
         "V3.6",
         "V3.8"
