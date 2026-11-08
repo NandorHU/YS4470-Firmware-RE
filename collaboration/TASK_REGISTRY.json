@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 3,
+  "revision": 4,
   "updated": "2026-11-08",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -206,11 +206,11 @@
     {
       "id": "EXT-EVIDENCE-AUDIT",
       "title": "Audit evidence and address consistency",
-      "status": "available",
-      "owner": null,
+      "status": "in_progress",
+      "owner": "local-ollama-worker",
       "claim_issue": null,
-      "branch": null,
-      "base_commit": null,
+      "branch": "external/local-llm/evidence-audit-2026-11-08",
+      "base_commit": "66d02a53afc91f3905fccadd9790974c4e866b43",
       "inputs": [
         "public documents and evidence; no firmware required"
       ],
@@ -227,7 +227,10 @@
         "Report exact artifact/JSON field or line references and proposed corrections.",
         "Account for corrected entries 0x800037c0/0x8005d048 and base 0x7fffffe0.",
         "Do not rerun completed disassembly or add an invented completion percentage."
-      ]
+      ],
+      "assigned_on": "2026-11-08",
+      "coordinator_review_required": true,
+      "model_execution_tools": false
     },
     {
       "id": "HW-UART-PASSIVE",
@@ -275,6 +278,25 @@
         "Prove entry/caller and one real task iteration before promoting the MainADCTask name.",
         "Identify actual tick delay and its placement relative to FSM progress; do not equate it with GUI refresh or fresh UART replies.",
         "Keep raw counter cadence separate from milliseconds and acoustic timing."
+      ]
+    },
+    {
+      "id": "LOCAL-PROFILE-LATENCY",
+      "title": "Review existing 31-task local Base/Direct/Auto/Ready draft",
+      "status": "review",
+      "owner": "local-ollama-worker",
+      "branch": null,
+      "base_commit": null,
+      "scope": "Existing independent batch from the previous workspace; provenance and claims require coordinator review. Do not rerun or modify its frozen manifest.",
+      "allowed_paths": [
+        "contributions/LOCAL-PROFILE-LATENCY/**"
+      ],
+      "inputs": [
+        "Existing frozen local text evidence; build provenance unverified"
+      ],
+      "acceptance": [
+        "Verify manifest/source identities and completion reasons.",
+        "Reject unsupported ARM/Thumb, timing and hardware claims before any integration."
       ]
     }
   ]
