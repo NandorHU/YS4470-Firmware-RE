@@ -1,0 +1,50 @@
+{
+  "schema": "ys4470.public-patcher-validation.v1",
+  "date": "2026-11-08",
+  "tests_passed": 14,
+  "test_log": "test_already_patched_and_wrong_revert_variant_rejected (test_patcher.PatcherTests.test_already_patched_and_wrong_revert_variant_rejected) ... ok\ntest_cli_apply_inspect_revert_and_input_unchanged (test_patcher.PatcherTests.test_cli_apply_inspect_revert_and_input_unchanged) ... ok\ntest_detect_factory_and_both_output_variants (test_patcher.PatcherTests.test_detect_factory_and_both_output_variants) ... ok\ntest_existing_receipt_prevents_any_output (test_patcher.PatcherTests.test_existing_receipt_prevents_any_output) ... ok\ntest_factory_applications_and_roundtrip (test_patcher.PatcherTests.test_factory_applications_and_roundtrip) ... ok\ntest_no_inplace_and_no_overwrite (test_patcher.PatcherTests.test_no_inplace_and_no_overwrite) ... ok\ntest_original_byte_guard_and_output_hash_guard (test_patcher.PatcherTests.test_original_byte_guard_and_output_hash_guard) ... ok\ntest_patch_data_integrity (test_patcher.PatcherTests.test_patch_data_integrity) ... ok\ntest_personalized_full_flash_roundtrip_and_preservation (test_patcher.PatcherTests.test_personalized_full_flash_roundtrip_and_preservation) ... ok\ntest_unknown_application_rejected (test_patcher.PatcherTests.test_unknown_application_rejected) ... ok\ntest_unknown_full_flash_rejected (test_patcher.PatcherTests.test_unknown_full_flash_rejected) ... ok\ntest_version_specific_factory_data_preserved (test_patcher.PatcherTests.test_version_specific_factory_data_preserved) ... ok\ntest_wrong_header_or_offset_rejected (test_patcher.PatcherTests.test_wrong_header_or_offset_rejected) ... ok\ntest_wrong_sizes_rejected (test_patcher.PatcherTests.test_wrong_sizes_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 14 tests in 1.125s\n\nOK\n",
+  "source_release_zip_sha256": "d336adcb687a1f53695cf1cf98419265f284f97ded2690449f2553fe1e50c038",
+  "v38_continuous_byte_identical_to_downloaded_release": true,
+  "variants": {
+    "continuous": {
+      "ranges": 69,
+      "changed_bytes": 939,
+      "input_and_output_hashes": {
+        "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9": {
+          "version": "V3.6",
+          "output_sha256": "2e3c4251e568a9dd076ddf98c2fedd97eaa22a976970b276f02ff882d941ca45",
+          "validation": "Offline application of identical guarded edits; factory version-specific bytes retained; not physically tested"
+        },
+        "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290": {
+          "version": "V3.8",
+          "output_sha256": "697d160047e9f040b31acd79d5b0febb940bc712f15eb6e2d91d997a5608011d",
+          "validation": "Published v1.0 application byte-identical"
+        }
+      }
+    },
+    "timed": {
+      "ranges": 65,
+      "changed_bytes": 928,
+      "input_and_output_hashes": {
+        "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9": {
+          "version": "V3.6",
+          "output_sha256": "373ea64a5240c567810ef2e1c1dc6c0a2ce4bbf81e26347091b6e0c9885d4fc0",
+          "validation": "Offline application of identical guarded edits; factory version-specific bytes retained; not physically tested"
+        },
+        "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290": {
+          "version": "V3.8",
+          "output_sha256": "89a5bb79ec304a57a758e33bf89d6d7b3848982573460a476fb53e7412877729",
+          "validation": "Published v1.0 application byte-identical"
+        }
+      }
+    }
+  },
+  "patch_data_sha256": "9b06a2bd42cb0278488cc75b8e28c7840771d08ed8d540a83aa328b78d4b03b8",
+  "physical_device_operations": 0,
+  "limits": [
+    "Only published exact original application hashes are supported; no unknown-hash override.",
+    "V3.6 preserves version-specific factory bytes and is offline-validated, not physically tested.",
+    "Full-flash inputs use synthetic personalized fixtures in regression tests; no personal backup is published.",
+    "Bootloader and logo are preserved. This is an application patcher, not the legacy bootloader/logo installer."
+  ]
+}

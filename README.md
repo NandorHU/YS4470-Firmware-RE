@@ -1,5 +1,18 @@
 # YS-4470 firmware reverse engineering
 
+## Patch your own factory firmware — no Beta3 required
+
+Use the new [offline factory-input patcher](patcher/README.md) with your own supported V3.6/V3.8 application file or16 MiB full flash backup. Download this repository ZIP, extract it, then drag the firmware file onto `patcher/PATCH-WINDOWS.cmd` (Python3.10+).
+
+The patcher creates a new1.0 application/full-backup file, verifies hashes, and supports reversal. It preserves your input, bootloader, logo and every byte outside the application edits. V3.8 continuous matches the published1.0 application; the V3.6 port preserves its own version-specific bytes and is offline-tested only. It does not access or flash a device, and the historical Beta3 installer is not compatible with its personalized outputs. [English instructions](patcher/README.md) · [Magyar útmutató](patcher/OLVASS-EL.md).
+
+```text
+python patcher/ys4470_patch.py inspect "my-backup.bin"
+python patcher/ys4470_patch.py apply "my-backup.bin" --output "my-1.0.bin"
+```
+
+A full-backup hash can differ between devices; this tool recognizes the supported application inside it. Unknown application hashes are rejected. Share only the inspect text when reporting a mismatch, never a personal flash backup.
+
 ## Join the current reverse-engineering work
 
 The current goal is full V3.6/V3.8 analysis and independent firmware reconstruction.
@@ -48,7 +61,7 @@ Select diode mode and enable `highspeedv2`. Check the switch after restarting; t
 
 Valid measurements refresh a finite sound watchdog while its counter is above three. The original KeyTask stops the tone after 13 cycles without a qualifying refresh: nominally about 650 ms, depending on actual scheduling. A mode change therefore does not leave an indefinitely sustained tone, but immediate stopping has not been established. Counters of three or less preserve a superseding short key beep. In unusual scheduling conditions, sound may remain until the watchdog expires after an invalid result. These edge cases require further physical testing.
 
-## Reproducible Windows build
+## Historical Beta3-based Windows build
 
 Python 3.12 and its standard library are sufficient for the portable patch build. It requires your own verified **full 16 MiB Beta3 flash backup**, with this SHA-256:
 
