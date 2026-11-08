@@ -1,0 +1,49 @@
+# UNVERIFIED LOCAL MODEL DRAFT
+
+**Jelentés: YS-4470 Firmware Reverse Engineering – Átadási Összefoglaló**
+**Dátum:** 2023.10.27 (Szimulált)
+**Tárgy:** Kódstruktúra elemzés, hipotézisek és hiányosságok a „Base" és „highspeed" profilok közötti teljesítménykülönbséggel kapcsolatban.
+
+---
+
+### 1. Forrásokkal Alátámasztott Állítások (Fact Statements)
+
+Az alábbi állítások kizárólag a megadott szöveges kivonatokból (`dossier-XX`) származnak, címkei (address) eredeti formában megőrizve.
+
+*   **Kódforrás és Profil:** A `highspeed-acquisition.txt` fájl egy ARM Thumb-kódblokkot tartalmaz, amely nem a gyári bináris fájl, hanem a „Base" vagy egy kísérleti profilhoz tartozik (`dossier-01`).
+*   **Címek és Utasítások:** A `0x80061f84` címen található elágazás (`bl`) valószínűleg külső rutinokat hív meg, míg a `0x800047e0` című kód számlálót növel (`addlt r0, r0, #1`) (`dossier-01`).
+*   **Memória Hozzáférés:** A `highspeed-receiver-detail.txt` kódrészletben az adatok egy közös memóriaterületen (`sb`, `sl`, `fp`) vannak rendezve, ahol a `ldr r0, [r4, #0x2c8]` utasítás olvas be adatokat egy `r4` alapú offsettől (`dossier-03`).
+*   **GUI/Felületi Kód:** A `highspeed-gui.txt` (`0x800032f0` – `0x8000341c`) szakasz felületi állapotfrissítést vagy eseménykezelést végez, nem pedig közvetlen hardver-vezérlést (pl. UART/USB) (`dossier-05`).
+*   **Kódbázis Hibák:** A `highspeed-ui.txt` (`141–280`) szakasz szimulált vagy kódolt bináris adatfolyamot tartalmaz, amely hibásan értelmezhető utasításokból áll (pl. `uqasxpl`, `strbtvc`), és valószínűleg patchelt vagy „szemetes" (garbage) adatokat jelent (`dossier-07`).
+*   **Globális Változók:** A `build_profiles.py:11` alapján rekonstruált architektúra tartalmazza a `STATE` (`0x80060a90`) és `UI` (`0x805abefc`) változókat, amelyek a profilok aktív állapotát tárolják (`dossier-22`).
+*   **Külső Hívások:** A `mode-branch-disassembly.txt` szakaszban a `bl #0x80060fbc` hívás valószínűleg módosított beállítást inicializál, de a teljes kontextus hiányzik (`dossier-13`).
+*   **Küszöbpolitika:** A „Base" profil nem a gyári bináris fájl, és tartalmazza a megosztott 1.1-es küszöb-politikát (`shared 1.1 threshold policy`) (`dossier-01`, `user_observation`).
+
+---
+
+### 2. Rangsorolt Hipotézisek (Legfeljebb 5 db)
+
+A rendelkezésre álló bizonyítékok alapján a következő hipotéziseket állítottuk fel a teljesítménykülönbség magyarázatára:
+
+1.  **Memória Integritás és Buffer Telítettség:** A „Base" profilban a FIFO/buffer struktúra (`highspeed-receiver-detail.txt`) stabilabb, így kevesebb időt vesz igénybe az adatok betöltése (`ldr`/`str`) és kiírása. A buffer telítődési ideje hosszabb lehet, ami azt jelzi, hogy az adatok gyorsabban kerülnek feldolgozásra (kevesebb blokkolás).
+2.  **GUI/Felületi Frissítés Szűrése:** A `highspeed-gui.txt` kódrészletben található magas szintű hívások (`bl`) a „Base" profilban ritkábban futnak le, vagy gyorsabbak, mivel a felületi állapotfrissítés nem blokkolja az adatgyűjtést.
+3.  **Regiszter-Áramlás Optimalizálása:** A „Base" profilban a regiszterek (`r0`, `r4`, `r5`, `r6`) hatékonyabban használódnak, kevesebb spill (stack-kiírás) történik, ami gyorsabb futást eredményez.
+4.  **Elágazási Logika Divergencia:** A „Base" profilban a `mode-branch` (`dossier-20`) elágazásai más irányba mutatnak, vagy a hívott rutinok (`0x80063598`, `0x8004224c`) eltérő logikát futtatnak, ami csökkenti a késleltetést.
+5.  **Küszöbpolitika Hatása:** A „Base" profilban a `shared 1.1 threshold policy` aktív, és ez pozitívan befolyásolja az adatgyűjtési láncolatot, csökkentve a szűrési késleltetést.
+
+---
+
+### 3. Ellentmondások (Contradictions)
+
+*   **Kódminőség vs. Fizikai Megfigyelés:** A kódelemzés (`highspeed-gui.txt`) azt sugallja, hogy a felületi állapotfrissítés magas szintű hívásokat használ, míg a felhasználói megfigyelés szerint a „Base" profil fizikailag gyorsabb. Nincs mérési adat, amely ezt a különbséget alátámasztaná (`dossier-26`).
+*   **Memória Hozzáférés vs. Adatvesztés:** A `highspeed-receiver-detail.txt` szerint az adatok egy közös memóriaterületen vannak rendezve, de a `highspeed-ui.txt:141–280` szakasz szimulált vagy kódolt bináris adatfolyamot tartalmaz. Ez azt jelenti, hogy a kódbázis elveszett, és csak „szemetes" (garbage) adatok maradtak vissza (`dossier-07`).
+*   **Hívás Funkciója:** A `bl #0x80060fbc` hívás valószínűleg a módosított beállítást inicializálja, de a `highspeed-modes.txt:141–280` szerint ez az adatfolyam-kezelés vagy szűrési logika része. A két forrás közötti funkcionális jelentés eltérő (`dossier-13`).
+*   **Címek Értelmezése:** A `0x80061f84` című elágazás a „highspeed-acquisition.txt"-ben adatgyűjtési rutin része, de a `mode-branch-disassembly.txt`-ben csak egy diszasszembler kiírást tartalmaz, nem pedig a teljes kontextust (`dossier-18`).
+
+---
+
+### 4. Hiányzó Konkrét Függvények/Globális Olvasók (Missing Functions/Readers)
+
+A jelenlegi adatok alapján a következő elemek hiányoznak a teljes képértelmezéshez:
+
+*   **Hív

@@ -1,0 +1,424 @@
+{
+  "schema": "ys4470.local-review-receipt.v1",
+  "date": "2026-11-08",
+  "model": "qwen2.5-coder:14b",
+  "reviews_completed": 6,
+  "generated_review_tokens": 3065,
+  "model_request_seconds": 77.0,
+  "incomplete_or_invalid_response_errors": 0,
+  "claim_count": 24,
+  "new_firmware_claims_accepted": 0,
+  "automatic_integration": false,
+  "citation_counts": {
+    "exact": 15,
+    "unique_quote_relocated": 6,
+    "rejected": 3
+  },
+  "verdict_counts": {
+    "confirmed_existing": 6,
+    "confirmed_scope_limit": 7,
+    "rejected": 11
+  },
+  "lessons_check": "lessons-evaluation.json",
+  "claims": [
+    {
+      "task": "legacy-triage",
+      "finding_index": 0,
+      "statement": "The code block in `highspeed-acquisition.txt` is not from the original firmware but from the 'Base' or a test profile.",
+      "source": "legacy-unverified-final.md",
+      "original_lines": [
+        13,
+        13
+      ],
+      "quote_status": "exact",
+      "tool_resolved_lines": [
+        13,
+        13
+      ],
+      "coordinator_verdict": "rejected",
+      "reason": "An unverified draft does not establish which binary or ISA generated an old export."
+    },
+    {
+      "task": "legacy-triage",
+      "finding_index": 1,
+      "statement": "The 'Base' profile is not the original firmware and contains the shared 1.1 threshold policy.",
+      "source": "legacy-unverified-final.md",
+      "original_lines": [
+        20,
+        20
+      ],
+      "quote_status": "rejected",
+      "tool_resolved_lines": null,
+      "coordinator_verdict": "rejected",
+      "reason": "A repeated prior-model profile claim is not primary build evidence."
+    },
+    {
+      "task": "legacy-triage",
+      "finding_index": 2,
+      "statement": "There is no measurement data to support the difference between code analysis and user observation regarding the 'Base' profile's speed.",
+      "source": "legacy-unverified-final.md",
+      "original_lines": [
+        38,
+        38
+      ],
+      "quote_status": "rejected",
+      "tool_resolved_lines": null,
+      "coordinator_verdict": "confirmed_scope_limit",
+      "reason": "No controlled physical profile latency evidence is supplied in this source package."
+    },
+    {
+      "task": "legacy-triage",
+      "finding_index": 3,
+      "statement": "The function of the `bl #0x80060fbc` call is unclear due to conflicting information between sources.",
+      "source": "legacy-unverified-final.md",
+      "original_lines": [
+        40,
+        40
+      ],
+      "quote_status": "exact",
+      "tool_resolved_lines": [
+        40,
+        40
+      ],
+      "coordinator_verdict": "confirmed_scope_limit",
+      "reason": "The candidate delay/caller semantics remain assigned to the next coordinator task."
+    },
+    {
+      "task": "deadline-precedence",
+      "finding_index": 0,
+      "statement": "Compares r5 with 0x1d.",
+      "source": "fsm-waits.arm.txt",
+      "original_lines": [
+        8,
+        8
+      ],
+      "quote_status": "exact",
+      "tool_resolved_lines": [
+        8,
+        8
+      ],
+      "coordinator_verdict": "confirmed_existing",
+      "reason": "The original CMP immediate is present; this is an existing code fact."
+    },
+    {
+      "task": "deadline-precedence",
+      "finding_index": 1,
+      "statement": "Compares r5 with 0x1b if r5 is not equal to 0x1d.",
+      "source": "fsm-waits.arm.txt",
+      "original_lines": [
+        9,
+        9
+      ],
+      "quote_status": "exact",
+      "tool_resolved_lines": [
+        9,
+        9
+      ],
+      "coordinator_verdict": "confirmed_existing",
+      "reason": "CMPNE follows the prior command comparison, as in the original ARM."
+    },
+    {
+      "task": "deadline-precedence",
+      "finding_index": 2,
+      "statement": "Compares r3 with r2, which could be related to expiry or equality check.",
+      "source": "fsm-waits.arm.txt",
+      "original_lines": [
+        28,
+        28
+      ],
+      "quote_status": "unique_quote_relocated",
+      "tool_resolved_lines": [
+        29,
+        29
+      ],
+      "coordinator_verdict": "rejected",
+      "reason": "This comparison is the state2 expected-header comparison, not an expiry comparison."
+    },
+    {
+      "task": "deadline-precedence",
+      "finding_index": 3,
+      "statement": "Branches if r0 is higher or same as r5, which might indicate a wrap condition.",
+      "source": "fsm-waits.arm.txt",
+      "original_lines": [
+        67,
+        67
+      ],
+      "quote_status": "exact",
+      "tool_resolved_lines": [
+        67,
+        67
+      ],
+      "coordinator_verdict": "rejected",
+      "reason": "Unsigned elapsed >= duration is not an explicit wrap-detection branch."
+    },
+    {
+      "task": "c-contract",
+      "finding_index": 0,
+      "statement": "The C code checks if rx_count is greater than 0 and first_byte matches expected_header.",
+      "source": "reconstruction/fsm_timeout.c",
+      "original_lines": [
+        13,
+        13
+      ],
+      "quote_status": "exact",
+      "tool_resolved_lines": [
+        13,
+        13
+      ],
+      "coordinator_verdict": "confirmed_existing",
+      "reason": "The C receive-count/header guard matches the already executed original branch."
+    },
+    {
+      "task": "c-contract",
+      "finding_index": 1,
+      "statement": "The ARM code checks if rx_count is greater than 0.",
+      "source": "fsm-waits.arm.txt",
+      "original_lines": [
+        26,
+        26
+      ],
+      "quote_status": "exact",
+      "tool_resolved_lines": [
+        26,
+        26
+      ],
+      "coordinator_verdict": "confirmed_existing",
+      "reason": "The adjacent BLE path establishes positive signed receive-count admission."
+    },
+    {
+      "task": "c-contract",
+      "finding_index": 2,
+      "statement": "The C code checks if required is greater than rx_count.",
+      "source": "reconstruction/fsm_timeout.c",
+      "original_lines": [
+        29,
+        29
+      ],
+      "quote_status": "unique_quote_relocated",
+      "tool_resolved_lines": [
+        28,
+        28
+      ],
+      "coordinator_verdict": "confirmed_existing",
+      "reason": "The C signed required-length guard matches the already verified contract."
+    },
+    {
+      "task": "c-contract",
+      "finding_index": 3,
+      "statement": "The ARM code checks if required is greater than rx_count.",
+      "source": "fsm-waits.arm.txt",
+      "original_lines": [
+        80,
+        80
+      ],
+      "quote_status": "unique_quote_relocated",
+      "tool_resolved_lines": [
+        71,
+        71
+      ],
+      "coordinator_verdict": "confirmed_existing",
+      "reason": "CMP plus the adjacent BGT establishes the signed required-length test."
+    },
+    {
+      "task": "harness-guards",
+      "finding_index": 0,
+      "statement": "Missing assertion for address ROOT+0xc when kind is 'tick_prefix'.",
+      "source": "trace_fsm_timeout.py",
+      "original_lines": [
+        129,
+        130
+      ],
+      "quote_status": "exact",
+      "tool_resolved_lines": [
+        129,
+        130
+      ],
+      "coordinator_verdict": "rejected",
+      "reason": "Tick-prefix probes deliberately do not claim getter critical-entry semantics."
+    },
+    {
+      "task": "harness-guards",
+      "finding_index": 1,
+      "statement": "Plausible test escape: Modify 'allowed' condition to bypass assertion.",
+      "source": "trace_fsm_timeout.py",
+      "original_lines": [
+        142,
+        142
+      ],
+      "quote_status": "exact",
+      "tool_resolved_lines": [
+        142,
+        142
+      ],
+      "coordinator_verdict": "rejected",
+      "reason": "Changing the harness assertion is not a counterexample under the fixed harness."
+    },
+    {
+      "task": "harness-guards",
+      "finding_index": 2,
+      "statement": "Missing check for writes to address ROOT+0xc in 'getter_probe'.",
+      "source": "trace_fsm_timeout.py",
+      "original_lines": [
+        176,
+        176
+      ],
+      "quote_status": "exact",
+      "tool_resolved_lines": [
+        176,
+        176
+      ],
+      "coordinator_verdict": "rejected",
+      "reason": "Getter writes allow only stack/nesting; the emulated injected-store negative control is rejected."
+    },
+    {
+      "task": "harness-guards",
+      "finding_index": 3,
+      "statement": "Plausible test escape: Modify 'now' value to bypass assertion.",
+      "source": "trace_fsm_timeout.py",
+      "original_lines": [
+        183,
+        183
+      ],
+      "quote_status": "exact",
+      "tool_resolved_lines": [
+        183,
+        183
+      ],
+      "coordinator_verdict": "rejected",
+      "reason": "Changing an expected input is not evidence that the original fixed-input test escapes validation."
+    },
+    {
+      "task": "coverage-accounting",
+      "finding_index": 0,
+      "statement": "The budget values include 0x80000000, which may cause overflow issues.",
+      "source": "trace_fsm_timeout.py",
+      "original_lines": [
+        237,
+        237
+      ],
+      "quote_status": "exact",
+      "tool_resolved_lines": [
+        237,
+        237
+      ],
+      "coordinator_verdict": "rejected",
+      "reason": "Unsigned modulo32 arithmetic is intentional and 0x80000000 is an executed boundary fixture."
+    },
+    {
+      "task": "coverage-accounting",
+      "finding_index": 1,
+      "statement": "The product of state, budget, start, and nest combinations may lead to excessive test cases.",
+      "source": "trace_fsm_timeout.py",
+      "original_lines": [
+        239,
+        239
+      ],
+      "quote_status": "exact",
+      "tool_resolved_lines": [
+        239,
+        239
+      ],
+      "coordinator_verdict": "rejected",
+      "reason": "The full test matrix completed in seconds; no excessive-runtime defect is demonstrated."
+    },
+    {
+      "task": "coverage-accounting",
+      "finding_index": 2,
+      "statement": "The specific conditions in this if statement may not cover all timeout boundary scenarios.",
+      "source": "trace_fsm_timeout.py",
+      "original_lines": [
+        260,
+        260
+      ],
+      "quote_status": "unique_quote_relocated",
+      "tool_resolved_lines": [
+        259,
+        259
+      ],
+      "coordinator_verdict": "rejected",
+      "reason": "The condition selects saved examples after every case was executed and checked."
+    },
+    {
+      "task": "coverage-accounting",
+      "finding_index": 3,
+      "statement": "The leaf model for UART send0x80005e84 may not be sufficient for comprehensive testing.",
+      "source": "proof-summary.json",
+      "original_lines": [
+        16,
+        16
+      ],
+      "quote_status": "unique_quote_relocated",
+      "tool_resolved_lines": [
+        17,
+        17
+      ],
+      "coordinator_verdict": "confirmed_scope_limit",
+      "reason": "UART send is an explicitly modeled leaf; full UART behavior is outside this proof."
+    },
+    {
+      "task": "database-scope",
+      "finding_index": 0,
+      "statement": "Historical Beta3 annotation is not a new execution result.",
+      "source": "selected-function-records.json",
+      "original_lines": [
+        6,
+        6
+      ],
+      "quote_status": "rejected",
+      "tool_resolved_lines": null,
+      "coordinator_verdict": "confirmed_scope_limit",
+      "reason": "Historical Beta3 annotation is explicitly separate from the new original-only proof."
+    },
+    {
+      "task": "database-scope",
+      "finding_index": 1,
+      "statement": "State1 UART send is modeled, not an original execution result.",
+      "source": "selected-function-records.json",
+      "original_lines": [
+        26,
+        26
+      ],
+      "quote_status": "unique_quote_relocated",
+      "tool_resolved_lines": [
+        27,
+        27
+      ],
+      "coordinator_verdict": "confirmed_scope_limit",
+      "reason": "Only the UART-send leaf is modeled; the surrounding original setup instructions execute."
+    },
+    {
+      "task": "database-scope",
+      "finding_index": 2,
+      "statement": "No actual Beta3 image executed by this runner.",
+      "source": "proof-summary.json",
+      "original_lines": [
+        20,
+        20
+      ],
+      "quote_status": "exact",
+      "tool_resolved_lines": [
+        20,
+        20
+      ],
+      "coordinator_verdict": "confirmed_scope_limit",
+      "reason": "The duration40 fixture is not actual Beta3 image execution."
+    },
+    {
+      "task": "database-scope",
+      "finding_index": 3,
+      "statement": "Counter ticks are not assigned milliseconds.",
+      "source": "proof-summary.json",
+      "original_lines": [
+        21,
+        21
+      ],
+      "quote_status": "exact",
+      "tool_resolved_lines": [
+        21,
+        21
+      ],
+      "coordinator_verdict": "confirmed_scope_limit",
+      "reason": "Physical clock frequency and milliseconds remain unassigned."
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "schema": "ys4470.local-lessons-check.v1",
+  "date": "2026-11-08",
+  "model": "qwen2.5-coder:14b",
+  "training_type": "in_context_examples_only",
+  "weights_changed": false,
+  "test_cases": 2,
+  "runs": [
+    {
+      "case": "unsigned-deadline",
+      "lessons_applied": false,
+      "expected": {
+        "relation": "unsigned_ge",
+        "at_equality": true,
+        "flag_source": "CMP",
+        "milliseconds_proven": false
+      },
+      "actual": {
+        "relation": "unsigned_ge",
+        "at_equality": false,
+        "flag_source": "CMP",
+        "milliseconds_proven": false
+      },
+      "passed": false,
+      "elapsed_seconds": 1.375,
+      "metrics": {
+        "prompt_eval_count": 191,
+        "prompt_eval_duration": 189196000,
+        "eval_count": 41,
+        "eval_duration": 1049505000,
+        "load_duration": 2590600,
+        "total_duration": 1383904700
+      }
+    },
+    {
+      "case": "signed-length",
+      "lessons_applied": false,
+      "expected": {
+        "relation": "signed_gt",
+        "at_equality": false,
+        "flag_source": "CMP",
+        "milliseconds_proven": false
+      },
+      "actual": {
+        "relation": "unsigned_ge",
+        "at_equality": false,
+        "flag_source": "CMP",
+        "milliseconds_proven": false
+      },
+      "passed": false,
+      "elapsed_seconds": 1.11,
+      "metrics": {
+        "prompt_eval_count": 203,
+        "prompt_eval_duration": 55929000,
+        "eval_count": 41,
+        "eval_duration": 1044589999,
+        "load_duration": 3115400,
+        "total_duration": 1105808300
+      }
+    },
+    {
+      "case": "unsigned-deadline",
+      "lessons_applied": true,
+      "expected": {
+        "relation": "unsigned_ge",
+        "at_equality": true,
+        "flag_source": "CMP",
+        "milliseconds_proven": false
+      },
+      "actual": {
+        "relation": "unsigned_ge",
+        "at_equality": false,
+        "flag_source": "CMP",
+        "milliseconds_proven": false
+      },
+      "passed": false,
+      "elapsed_seconds": 1.156,
+      "metrics": {
+        "prompt_eval_count": 620,
+        "prompt_eval_duration": 218131000,
+        "eval_count": 37,
+        "eval_duration": 900122000,
+        "load_duration": 2717500,
+        "total_duration": 1124983700
+      }
+    },
+    {
+      "case": "signed-length",
+      "lessons_applied": true,
+      "expected": {
+        "relation": "signed_gt",
+        "at_equality": false,
+        "flag_source": "CMP",
+        "milliseconds_proven": false
+      },
+      "actual": {
+        "relation": "signed_gt",
+        "at_equality": false,
+        "flag_source": "CMP",
+        "milliseconds_proven": false
+      },
+      "passed": true,
+      "elapsed_seconds": 0.953,
+      "metrics": {
+        "prompt_eval_count": 632,
+        "prompt_eval_duration": 57868000,
+        "eval_count": 37,
+        "eval_duration": 901333000,
+        "load_duration": 2572400,
+        "total_duration": 966489400
+      }
+    }
+  ],
+  "without_lessons_passed": 0,
+  "with_lessons_passed": 1,
+  "generalization_claim": false,
+  "note": "Tiny sanity check only; no new firmware proof and no broad accuracy or speedup claim.",
+  "negative_control": {
+    "getter_write_guard_rejected_injected_store": true,
+    "test_only_in_memory_mutation": true,
+    "original_file_sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "model": "qwen3.5:9b",
+  "elapsed_seconds": 7.313,
+  "done": true,
+  "done_reason": "stop",
+  "tool_calls_rejected": false,
+  "content": "{\n  \"isa\": \"ARM\",\n  \"literal_pool_address\": \"0x805abbbc\",\n  \"pointer_value\": \"0x805abbbc\",\n  \"load_offset\": 12,\n  \"word_address\": \"0x805abbc8\",\n  \"returns\": \"tick_snapshot\",\n  \"critical_protected\": true,\n  \"findings\": [\n    {\n      \"kind\": \"issue\",\n      \"source\": \"getter.arm.txt\",\n      \"line_start\": 11,\n      \"line_end\": 11,\n      \"quote\": \"Python-resolved effective address for LDR r4 at0x80061f90: 0x805abbc8. Pointer=0x805abbbc, byte offset=12. This is the returned-word read, not the literal-pool address.\",\n      \"statement\": \"The instruction at 0x80061f90 reads a word from an address derived by adding an offset to a pointer value stored in r0, which differs from the base literal pool address.\"\n    }\n  ]\n}",
+  "independently_verified": false,
+  "metrics": {
+    "prompt_eval_count": 668,
+    "prompt_eval_duration": 260777000,
+    "eval_count": 259,
+    "eval_duration": 3599254000,
+    "load_duration": 3441366000,
+    "total_duration": 7306875000
+  },
+  "parsed": {
+    "isa": "ARM",
+    "literal_pool_address": "0x805abbbc",
+    "pointer_value": "0x805abbbc",
+    "load_offset": 12,
+    "word_address": "0x805abbc8",
+    "returns": "tick_snapshot",
+    "critical_protected": true,
+    "findings": [
+      {
+        "kind": "issue",
+        "source": "getter.arm.txt",
+        "line_start": 11,
+        "line_end": 11,
+        "quote": "Python-resolved effective address for LDR r4 at0x80061f90: 0x805abbc8. Pointer=0x805abbbc, byte offset=12. This is the returned-word read, not the literal-pool address.",
+        "statement": "The instruction at 0x80061f90 reads a word from an address derived by adding an offset to a pointer value stored in r0, which differs from the base literal pool address."
+      }
+    ]
+  },
+  "response_errors": [],
+  "quality_gate_errors": [
+    "failed known-answer getter facts"
+  ],
+  "probe_passed": false
+}

@@ -1,0 +1,90 @@
+{
+  "model": "qwen2.5-coder:14b",
+  "elapsed_seconds": 11.312,
+  "done": true,
+  "done_reason": "stop",
+  "tool_calls_rejected": false,
+  "content": "{\n  \"findings\": [\n    {\n      \"kind\": \"supported\",\n      \"source\": \"fsm-waits.arm.txt\",\n      \"line_start\": 8,\n      \"line_end\": 8,\n      \"quote\": \"cmp r5, #0x1d\",\n      \"statement\": \"Compares r5 with 0x1d.\"\n    },\n    {\n      \"kind\": \"supported\",\n      \"source\": \"fsm-waits.arm.txt\",\n      \"line_start\": 9,\n      \"line_end\": 9,\n      \"quote\": \"cmpne r5, #0x1b\",\n      \"statement\": \"Compares r5 with 0x1b if r5 is not equal to 0x1d.\"\n    },\n    {\n      \"kind\": \"hypothesis\",\n      \"source\": \"fsm-waits.arm.txt\",\n      \"line_start\": 28,\n      \"line_end\": 28,\n      \"quote\": \"cmp r3, r2\",\n      \"statement\": \"Compares r3 with r2, which could be related to expiry or equality check.\"\n    },\n    {\n      \"kind\": \"issue\",\n      \"source\": \"fsm-waits.arm.txt\",\n      \"line_start\": 67,\n      \"line_end\": 67,\n      \"quote\": \"bhs #0x80004678\",\n      \"statement\": \"Branches if r0 is higher or same as r5, which might indicate a wrap condition.\"\n    }\n  ],\n  \"proposed_tests\": [\n    {\n      \"idea\": \"Test the behavior when r5 equals 0x1d and 0x1b.\",\n      \"falsifier\": \"Observe if the program branches correctly based on the value of r5.\"\n    },\n    {\n      \"idea\": \"Analyze the impact of r3 and r2 comparison on the program flow.\",\n      \"falsifier\": \"Check if the program correctly handles the expiry or equality condition.\"\n    }\n  ]\n}",
+  "independently_verified": false,
+  "metrics": {
+    "prompt_eval_count": 3176,
+    "prompt_eval_duration": 1348557000,
+    "eval_count": 430,
+    "eval_duration": 9840251000,
+    "load_duration": 2088500,
+    "total_duration": 11304417700
+  },
+  "parsed": {
+    "findings": [
+      {
+        "kind": "supported",
+        "source": "fsm-waits.arm.txt",
+        "line_start": 8,
+        "line_end": 8,
+        "quote": "cmp r5, #0x1d",
+        "statement": "Compares r5 with 0x1d."
+      },
+      {
+        "kind": "supported",
+        "source": "fsm-waits.arm.txt",
+        "line_start": 9,
+        "line_end": 9,
+        "quote": "cmpne r5, #0x1b",
+        "statement": "Compares r5 with 0x1b if r5 is not equal to 0x1d."
+      },
+      {
+        "kind": "hypothesis",
+        "source": "fsm-waits.arm.txt",
+        "line_start": 28,
+        "line_end": 28,
+        "quote": "cmp r3, r2",
+        "statement": "Compares r3 with r2, which could be related to expiry or equality check."
+      },
+      {
+        "kind": "issue",
+        "source": "fsm-waits.arm.txt",
+        "line_start": 67,
+        "line_end": 67,
+        "quote": "bhs #0x80004678",
+        "statement": "Branches if r0 is higher or same as r5, which might indicate a wrap condition."
+      }
+    ],
+    "proposed_tests": [
+      {
+        "idea": "Test the behavior when r5 equals 0x1d and 0x1b.",
+        "falsifier": "Observe if the program branches correctly based on the value of r5."
+      },
+      {
+        "idea": "Analyze the impact of r3 and r2 comparison on the program flow.",
+        "falsifier": "Check if the program correctly handles the expiry or equality condition."
+      }
+    ]
+  },
+  "response_errors": [],
+  "task": {
+    "id": "deadline-precedence",
+    "question": "Audit expiry/equality, wrap and complete-frame precedence in the supplied original ARM. Separate what executes from what is absent. Do not assign milliseconds or claim actual Beta3 execution.",
+    "sources": [
+      {
+        "id": "fsm-waits.arm.txt",
+        "start": 1,
+        "end": 91
+      },
+      {
+        "id": "getter.arm.txt",
+        "start": 1,
+        "end": 10
+      },
+      {
+        "id": "proof-summary.json",
+        "start": 1,
+        "end": 25
+      }
+    ]
+  },
+  "source_citation_errors": [
+    "invalid or unsupported citation at finding 2"
+  ],
+  "citation_gate_passed": false,
+  "source_manifest_sha256": "95c270c7317a1ff35defae0dd6ea1219e3158e33b72dd6bbaba1da7ca0d31f43"
+}

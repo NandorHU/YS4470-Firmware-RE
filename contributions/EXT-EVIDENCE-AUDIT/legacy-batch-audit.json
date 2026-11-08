@@ -1,0 +1,16 @@
+{
+  "schema": "ys4470.legacy-local-draft-review.v1",
+  "date": "2026-11-08",
+  "task_records": 31,
+  "model": "qwen3.5:9b",
+  "manifest_sha256": "c3ed0a6d0154cdd4053df90a3d882439fc016d373c9f53487777e04bb909b4fd",
+  "all_records_match_manifest": true,
+  "done_reason_counts": {
+    "length": 22,
+    "stop": 9
+  },
+  "source_hash_mismatches": [],
+  "binary_build_provenance": "unverified",
+  "independently_verified": false,
+  "total_generated_tokens": 52201
+}

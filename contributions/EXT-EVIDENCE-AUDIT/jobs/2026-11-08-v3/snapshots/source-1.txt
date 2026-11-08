@@ -1,0 +1,91 @@
+Mode: ARM; only selected original instructions below. Omitted regions remain outside this excerpt.
+At entry0x800044a4 loads FSM+0x2c;0x800044a8 loads R5 from FSM+0x30.
+FSM root:0x805ac694; RX count word:0x805ab938; RX bytes:0x805b408c.
+800045d8 ldr r0, [fp, r5, lsl #3]
+800045dc ldrb r1, [r8, #4]
+800045e0 bl #0x80005e84
+800045e4 bl #0x80061f84
+800045e8 cmp r5, #0x1d
+800045ec cmpne r5, #0x1b
+800045f0 str r0, [sb, #0x2c]
+800045f4 beq #0x80004614
+800045f8 ldr r0, [fp, r5, lsl #3]
+800045fc ldrb r0, [r0]
+80004600 strb r0, [sb, #0x24]
+80004604 mov r0, #0x50
+80004608 str r0, [sb, #0x30]
+8000460c mov r0, #2
+80004610 b #0x80004718
+80004614 mov r0, #5
+80004618 str r0, [sb, #0x28]
+8000461c mov r0, #0x1e
+80004620 str r0, [sb, #0x30]
+80004624 mov r0, #3
+80004628 b #0x80004718
+8000462c ldr r2, [sl]
+80004630 cmp r2, #0
+80004634 ble #0x800046a8
+80004638 ldrb r2, [sb, #0x24]
+8000463c cmp r3, r2
+80004640 bne #0x800046a8
+80004644 sub r0, r1, #9
+80004648 cmp r0, #6
+8000464c bhi #0x80004678
+80004650 bl #0x80061f84
+80004654 str r0, [sb, #0x2c]
+80004658 ldr r0, [sb, #0x20]
+8000465c cmp r0, #0xe
+80004660 cmpne r0, #0xd
+80004664 movne r0, #0x32
+80004668 moveq r0, #0x64
+8000466c str r0, [sb, #0x30]
+80004670 mov r0, #4
+80004674 b #0x80004718
+80004678 mov r1, #3
+8000467c mov r0, r6
+80004680 bl #0x800031b8
+80004684 mov r1, #2
+80004688 mov r0, r6
+8000468c bl #0x800031b8
+80004690 ldr r0, [sb, #0x18]
+80004694 add r0, r0, #1
+80004698 str r0, [sb, #0x18]
+8000469c str r7, [sb, #0x1c]
+800046a0 strb fp, [sb]
+800046a4 pop {r4, r5, r6, r7, r8, sb, sl, fp, ip, pc}
+800046a8 mov r4, r0
+800046ac bl #0x80061f84
+800046b0 sub r0, r0, r4
+800046b4 cmp r0, r5
+800046b8 poplo {r4, r5, r6, r7, r8, sb, sl, fp, ip, pc}
+800046bc strb r8, [sb]
+800046c0 pop {r4, r5, r6, r7, r8, sb, sl, fp, ip, pc}
+800046c4 mov r4, r0
+800046c8 bl #0x80061f84
+800046cc sub r0, r0, r4
+800046d0 cmp r0, r5
+800046d4 bhs #0x80004678
+800046d8 pop {r4, r5, r6, r7, r8, sb, sl, fp, ip, pc}
+800046dc ldr r2, [sb, #0x28]
+800046e0 ldr ip, [sl]
+800046e4 cmp r2, ip
+800046e8 bgt #0x80004720
+800046ec cmp r1, #0x1d
+800046f0 beq #0x80004700
+800046f4 cmp r1, #0x1b
+800046f8 beq #0x8000470c
+800046fc b #0x80004714
+80004700 cmp r3, #0x60
+80004704 bne #0x800046bc
+80004708 b #0x80004714
+8000470c cmp r3, #0x5e
+80004710 bne #0x800046bc
+80004714 mov r0, #5
+80004718 strb r0, [sb]
+8000471c pop {r4, r5, r6, r7, r8, sb, sl, fp, ip, pc}
+80004720 mov r4, r0
+80004724 bl #0x80061f84
+80004728 sub r0, r0, r4
+8000472c cmp r0, r5
+80004730 poplo {r4, r5, r6, r7, r8, sb, sl, fp, ip, pc}
+80004734 b #0x800046bc
