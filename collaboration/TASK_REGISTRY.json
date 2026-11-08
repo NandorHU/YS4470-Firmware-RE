@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 9,
+  "revision": 10,
   "updated": "2026-11-08",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -390,6 +390,27 @@
         "questions_each": 3
       },
       "next_action": "Reuse cached packets/index for COORD-ADC-CADENCE. Do not repeat frozen local jobs; two insufficient-context comparison tasks remain needs_split."
+    },
+    {
+      "id": "COORD-PUBLIC-PATCHER",
+      "title": "Build portable factory-input offline patcher for published 1.0 application",
+      "status": "in_progress",
+      "owner": "current-codex-coordinator",
+      "branch": "re/2026-11-04-pyghidra-fel",
+      "base_commit": "5510a3a1738c2a2aa17574aca978ca7e5e34dfe3",
+      "inputs": [
+        "Published original V3.6/V3.8 applications and public 1.0 Release components/deltas"
+      ],
+      "scope": "Remove the private Beta3 full-backup prerequisite. Identify raw application/full-flash inputs, preserve unrelated device bytes, guard every supported input and output, and document bootloader/install compatibility. No device write or automatic installer.",
+      "allowed_paths": [
+        "patcher/**",
+        "contributions/COORD-PUBLIC-PATCHER/**"
+      ],
+      "acceptance": [
+        "Reproduce public target application from both pinned factory inputs and reject unknown/corrupt inputs.",
+        "Do not publish personal backups, device calibration or other private firmware.",
+        "Test preservation, CLI rejection/rollback behavior and document any bootloader prerequisite."
+      ]
     }
   ]
 }
