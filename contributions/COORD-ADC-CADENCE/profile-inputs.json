@@ -32,5 +32,8 @@
   "builder_reproduced": false,
   "legacy_tests_imported_or_executed": false,
   "physical_identity_proven": false,
-  "next": "Reproduce source chain and bounded original/patched event runner at equal Highspeed. Legacy test modules contain top-level writes; do not import them wholesale."
+  "next": "Installed identity and actual UART conversion/response behavior; modeled Base physical advantage not reproduced.",
+  "recorded_edit_chain_reproduced": true,
+  "public_replay": "contributions/COORD-ADC-CADENCE/reproduce_profiles.py",
+  "validation": "contributions/COORD-ADC-CADENCE/profile-validation.json"
 }

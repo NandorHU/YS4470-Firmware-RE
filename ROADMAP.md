@@ -172,3 +172,8 @@ COORD-PUBLIC-PATCHER provides a standard-library CLI, Windows launcher, bilingua
 ## 2026-11-08 installer milestone completed
 
 COORD-EASY-INSTALLER published the English self-contained1.1.0-beta.2 Release with factoryV3.8, runtime/FEL/driver helper, automatic private backup/verification/recovery, source archives and SHA256SUMS. Clean Windows CI passed19 installer/driver-launch tests and14 patcher tests; no device write occurred. Source tag is installer-v1.1.0-beta.2. The full firmware RE project remains unfinished. Continue coordinator-owned COORD-ADC-CADENCE; do not repeat completed packaging work as firmware research.
+
+
+## 2026-11-08: equal-Highspeed profile evidence
+
+COORD-ADC-CADENCE remains in progress after the64-case equal-Highspeed matrix,64 profile switches and16 existing-candidate comparisons. Next resolve installed identity and whether repeated0x60 requests restart or buffer the external conversion; absent hardware, add explicitly hypothetical response-source/phase-order variants without treating any as physical truth. The public installer remains unchanged1.0 firmware. Do not rerun the completed matrix/local extraction unless code, inputs or unresolved guards change. Exact checkpoint: contributions/COORD-ADC-CADENCE/STATUS.md.

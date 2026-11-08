@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 13,
+  "revision": 14,
   "updated": "2026-11-08",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,7 +295,20 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Resume contributions/COORD-ADC-CADENCE/STATUS.md; E2 hash and sources pinned in profile-inputs.json. User redirected this session to public patcher; equal-Highspeed profile matrix is not yet executed."
+      "next_action": "Follow STATUS.md: installed image identity and actual external conversion response/restart behavior. Base physical advantage is not reproduced by the immediate-responder model; caller/global/indirect coverage remains bounded.",
+      "last_verified_result": {
+        "profile_cases": 64,
+        "transition_cases": 64,
+        "candidate_cases": 16,
+        "assertion_groups": 268,
+        "packet_instruction_byte_guards": 360,
+        "public_recorded_edit_replay": true,
+        "physical_device_operations": 0
+      },
+      "result_evidence": [
+        "contributions/COORD-ADC-CADENCE/profile-validation.json",
+        "contributions/COORD-ADC-CADENCE/README.md"
+      ]
     },
     {
       "id": "LOCAL-PROFILE-LATENCY",

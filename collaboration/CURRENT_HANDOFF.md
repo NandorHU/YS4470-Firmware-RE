@@ -127,3 +127,8 @@ The English Windows installer is published as [1.1.0-beta.2](https://github.com/
 The published source commit is c12fdef3fcb56c1f6b504ac1330f02965e6bc727 on release/easy-installer-1.1; the successful workflow run is42499845896. The prior beta.1 draft remains unpublished after its draft-lookup failure. The corrected workflow verifies uploads by release ID and does not overwrite existing releases. A driver-launch UAC issue was corrected with explicit runas and three mocked launcher tests. See contributions/COORD-EASY-INSTALLER/ for public download/CI receipts and local limits. No private backups are in either asset ZIP.
 
 Resume COORD-ADC-CADENCE from its existing E2/source hash checkpoint. No new four-profile comparison, physical latency explanation or offline speed fix was established in this redirected distribution session. Keep the new installer beta's host tests separate from the historical1.0 device result. The local helper request timed out; do not repeat it or promote nonexistent output.
+
+
+## 2026-11-08: equal-Highspeed profile evidence
+
+The next usable checkpoint is now contributions/COORD-ADC-CADENCE/STATUS.md. The public-stock recorded-edit chain,64-case equal-Highspeed matrix,64 active/requested switches and16 candidate comparisons passed268 assertion groups. Direct removes the observed GUI audio wait; Auto/Ready alter request cadence and brief-pulse width. Neither proves physical Base superiority. Task remains coordinator-owned/in_progress; resolve installed identity and actual external response behavior before another speed patch. All active-path observations are pinned E2; original idle service executes separately on3.6/3.8. No main/Release/device change.

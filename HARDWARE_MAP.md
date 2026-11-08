@@ -183,3 +183,8 @@ The new patcher operates on local files only. Fourteen offline regression tests 
 ## 2026-11-08 host-tool package
 
 The new beta installer pins public sunxi-fel v1.4.2-162-g530adfa (exeSHA256cc1e338a238ab99dc0ca12bdb3558d2781f9e81ed411a9b92d1c4021a67a2acf), separate from the earlier tested da14... host binary. It requires exactly one F1C100s/Winbond EF40/16 MiB device. Official Zadig2.9 is bundled for explicit WinUSB setup; administrator approval remains with the user. No native USB, driver replacement, RAM execution or flash write was performed during the new installer tests. New package physical compatibility remains unverified.
+
+
+## 2026-11-08: equal-Highspeed profile evidence
+
+The E2 profile experiment executes the original UART ISR with synthetic RX bytes and inert MMIO. UART TX, PWM/renderer endpoints and RTOS ordering remain models. It cannot establish the external ADC identity, whether repeated0x60 restarts conversion, actual conversion cadence, physical clock units or buzzer audibility.64 waveform cases produced no false sound on malformed/missing input. See contributions/COORD-ADC-CADENCE/profile-validation.json.

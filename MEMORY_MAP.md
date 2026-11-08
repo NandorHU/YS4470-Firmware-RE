@@ -303,3 +303,8 @@ The public patcher recognizes a5,943,296-byte application at full-flash offset0x
 ## 2026-11-08 automatic installation plan
 
 The installer preserves the full16 MiB pre-write snapshot and requires a matching second read. It writes only differing64 KiB sectors wholly inside application0x50000..0x5fafff; all other bytes stay equal. Restoration accepts a confirmed backup/plan and refuses differences outside the earlier planned sectors. These contracts passed fake-transport tests; no physical flash state or new MMIO mapping is inferred.
+
+
+## 2026-11-08: equal-Highspeed profile evidence
+
+Original copy0x80000124 and decompressor0x800000c8 regenerate0x805aaab4..0x805ac098 (exclusive),5604 bytes, SHA256524ba48c4f8e6b7876fc1da735f82f197eb436947e65eac043f2d9f2b96f8be0, from pinned V3.8. E2 active/requested are bytes0/1 at0x80060a90;64 switch cases observed active stores only when FSM0x805ac694+0x34 was0. This is initialized data plus bounded emulated state, not a runtime capture. See contributions/COORD-ADC-CADENCE/README.md.

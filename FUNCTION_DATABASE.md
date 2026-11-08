@@ -297,3 +297,8 @@ Function records remain60; no new firmware function role was inferred by the dis
 ## 2026-11-08 installer release
 
 Function records remain60. Installer1.1.0-beta.2 bundles the known factory image and existing1.0 patch resource; no new firmware role/name is promoted.19 simulated installer/driver-launch tests and14 public patch tests are host-side validation, not new original-function coverage. See contributions/COORD-EASY-INSTALLER/published-release.json.
+
+
+## 2026-11-08: equal-Highspeed profile evidence
+
+The existing gauge_task_candidate record0x80005b6c is refined to a proven GaugeCmdTask service on the bounded original idle path: call FSM0x80004490, then request sleep(1). Its task-entry label is superseded; GaugeCmdTask entry remains0x80003dbc. E2 active paths execute the patched step/tail around the original body. The inferred service name is not a recovered factory symbol. The database remains60 records. See contributions/COORD-ADC-CADENCE/profile-validation.json and observed-call-edges.json for bounded edges and limits.
