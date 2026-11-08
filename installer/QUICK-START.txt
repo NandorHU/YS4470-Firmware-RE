@@ -1,0 +1,15 @@
+YS-4470 INSTALLER 1.1.0-beta.1
+
+1. Extract the entire Windows-x64 ZIP.
+2. Double-click YS4470-Installer.exe. No Python installation is needed.
+3. To create a firmware file, click Save firmware file.
+   Factory V3.8 is included; no existing dump is required.
+4. To install: connect ONE meter in FEL mode, click Install and confirm.
+   Backup, second-read confirmation, application write and full readback are automatic.
+5. If USB detection fails, use the included USB driver setup button.
+   Select ONLY 1F3A:EFE8 and WinUSB in Zadig; approve the Windows prompt if asked.
+
+Wait for Verified successfully before power-cycling.
+Keep your automatic backup folder private and safe.
+The beta installer is simulation-tested; no new physical installation is claimed.
+Read README.md for exact supported images, recovery and limits.
