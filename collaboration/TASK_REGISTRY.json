@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 8,
+  "revision": 9,
   "updated": "2026-11-08",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -270,16 +270,17 @@
     {
       "id": "COORD-ADC-CADENCE",
       "title": "Validate measurement-task loop and raw tick cadence",
-      "status": "reserved",
+      "status": "in_progress",
       "owner": "current-codex-coordinator",
       "claim_issue": null,
       "branch": "re/2026-11-04-pyghidra-fel",
-      "base_commit": "ddcb3f1c55acb0bb2df98c88e24450d2066bb35a",
+      "base_commit": "b2cde6d56f1d1cff19a39c540250b7f08c7cfa00",
       "inputs": [
         "V3.6",
-        "V3.8"
+        "V3.8",
+        "hash-verified local E2 profile build and builder dependency chain"
       ],
-      "scope": "Validate the MainADCTask candidate 0x80005a78 and actual callers of FSM 0x80004490; bound one task-loop iteration and the delay candidate 0x80060fbc before assigning a polling cadence. Keep GUI callback periods, live clock frequency and acoustic latency separate.",
+      "scope": "Validate the MainADCTask candidate 0x80005a78 and actual callers of FSM 0x80004490; bound one task-loop iteration and the delay candidate 0x80060fbc before assigning a polling cadence. Keep GUI callback periods, live clock frequency and acoustic latency separate. User-directed extension: pin the four-profile build, compare active/requested selection at equal Highspeed, and record bounded original/patched ARM event traces without physical timing claims.",
       "allowed_paths": [
         "contributions/COORD-ADC-CADENCE/**"
       ],
@@ -291,7 +292,8 @@
       "acceptance": [
         "Prove entry/caller and one real task iteration before promoting the MainADCTask name.",
         "Identify actual tick delay and its placement relative to FSM progress; do not equate it with GUI refresh or fresh UART replies.",
-        "Keep raw counter cadence separate from milliseconds and acoustic timing."
+        "Keep raw counter cadence separate from milliseconds and acoustic timing.",
+        "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ]
     },
     {
