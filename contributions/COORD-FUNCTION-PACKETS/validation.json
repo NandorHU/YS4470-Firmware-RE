@@ -1,0 +1,177 @@
+{
+  "schema": "ys4470.packet-validation.v1",
+  "packets": [
+    {
+      "version": "V3.6",
+      "entry": "0x80003dbc",
+      "instructions": 7,
+      "blocks": 2,
+      "body_sha256": "0ded20654dce0bb87ddd8b293cc25eafb7f1f99a8efde060bf77c6ada3051b0d"
+    },
+    {
+      "version": "V3.6",
+      "entry": "0x80006e4c",
+      "instructions": 42,
+      "blocks": 6,
+      "body_sha256": "be90e2d7b6dea5415de44905ac0d525fd69a91a7a8f3ccbbc9281a124ef69c0f"
+    },
+    {
+      "version": "V3.6",
+      "entry": "0x8005d048",
+      "instructions": 131,
+      "blocks": 16,
+      "body_sha256": "3f518690426b1ae387b7c5d0eb930a70ddd3ff5c7ff41992185327cee2ec451e"
+    },
+    {
+      "version": "V3.8",
+      "entry": "0x80003dbc",
+      "instructions": 7,
+      "blocks": 2,
+      "body_sha256": "0ded20654dce0bb87ddd8b293cc25eafb7f1f99a8efde060bf77c6ada3051b0d"
+    },
+    {
+      "version": "V3.8",
+      "entry": "0x80006e4c",
+      "instructions": 42,
+      "blocks": 6,
+      "body_sha256": "be90e2d7b6dea5415de44905ac0d525fd69a91a7a8f3ccbbc9281a124ef69c0f"
+    },
+    {
+      "version": "V3.8",
+      "entry": "0x8005d048",
+      "instructions": 131,
+      "blocks": 16,
+      "body_sha256": "3f518690426b1ae387b7c5d0eb930a70ddd3ff5c7ff41992185327cee2ec451e"
+    }
+  ],
+  "instruction_byte_checks": 360,
+  "cfg_edges_checked": 388,
+  "original_executions": [
+    {
+      "version": "V3.6",
+      "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+      "registration_binding": {
+        "callsite": "0x80005958",
+        "function_argument_r0": "0x80003dbc",
+        "name_argument_r1": "0x80005a10",
+        "original_name": "GaugeCmdTask",
+        "executed": [
+          "0x80005948",
+          "0x8000594c",
+          "0x80005950",
+          "0x80005954"
+        ],
+        "limit": "Task creation callee is not executed; this proves the argument binding only."
+      },
+      "gauge_task": {
+        "entry": "0x80003dbc",
+        "calls": [
+          {
+            "site": "0x80003dbc",
+            "target": "0x80005d24",
+            "r0": 0
+          },
+          {
+            "site": "0x80003dc4",
+            "target": "0x80005f14",
+            "r0": 9
+          },
+          {
+            "site": "0x80003dcc",
+            "target": "0x80005f14",
+            "r0": 19
+          },
+          {
+            "site": "0x80003dd0",
+            "target": "0x80005b6c",
+            "r0": 19
+          },
+          {
+            "site": "0x80003dd0",
+            "target": "0x80005b6c",
+            "r0": 19
+          }
+        ],
+        "visited": [
+          "0x80003dbc",
+          "0x80003dc0",
+          "0x80003dc4",
+          "0x80003dc8",
+          "0x80003dcc",
+          "0x80003dd0",
+          "0x80003dd4",
+          "0x80003dd0",
+          "0x80003dd4"
+        ],
+        "all_original_instructions_executed": true,
+        "limit": "Three callees are return-only models. No UART, RTOS task creation, task body or physical timing is measured."
+      }
+    },
+    {
+      "version": "V3.8",
+      "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+      "registration_binding": {
+        "callsite": "0x80005958",
+        "function_argument_r0": "0x80003dbc",
+        "name_argument_r1": "0x80005a10",
+        "original_name": "GaugeCmdTask",
+        "executed": [
+          "0x80005948",
+          "0x8000594c",
+          "0x80005950",
+          "0x80005954"
+        ],
+        "limit": "Task creation callee is not executed; this proves the argument binding only."
+      },
+      "gauge_task": {
+        "entry": "0x80003dbc",
+        "calls": [
+          {
+            "site": "0x80003dbc",
+            "target": "0x80005d24",
+            "r0": 0
+          },
+          {
+            "site": "0x80003dc4",
+            "target": "0x80005f14",
+            "r0": 9
+          },
+          {
+            "site": "0x80003dcc",
+            "target": "0x80005f14",
+            "r0": 19
+          },
+          {
+            "site": "0x80003dd0",
+            "target": "0x80005b6c",
+            "r0": 19
+          },
+          {
+            "site": "0x80003dd0",
+            "target": "0x80005b6c",
+            "r0": 19
+          }
+        ],
+        "visited": [
+          "0x80003dbc",
+          "0x80003dc0",
+          "0x80003dc4",
+          "0x80003dc8",
+          "0x80003dcc",
+          "0x80003dd0",
+          "0x80003dd4",
+          "0x80003dd0",
+          "0x80003dd4"
+        ],
+        "all_original_instructions_executed": true,
+        "limit": "Three callees are return-only models. No UART, RTOS task creation, task body or physical timing is measured."
+      }
+    }
+  ],
+  "same_function_body_bytes_across_originals": true,
+  "limits": [
+    "Identical function bytes do not prove equal global data or complete firmware behavior.",
+    "CFG validation reuses the exporter algorithm; independent high-address/conditional-return fixtures and original execution are reported separately.",
+    "Sound/GUI semantic proof remains the previously committed bounded experiments; these packets add full local CFG context."
+  ]
+}

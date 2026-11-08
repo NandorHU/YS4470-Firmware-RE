@@ -1,0 +1,43 @@
+{
+  "schema": "ys4470.local-tools.rea-smoke.v1",
+  "server": {
+    "name": "rea",
+    "title": null,
+    "version": "6.8.0",
+    "description": null,
+    "website_url": null,
+    "icons": null
+  },
+  "model": "qwen2.5-coder:14b",
+  "model_provider": "loopback:11435",
+  "delegated_tool_names": [
+    "read_tick_snapshot_evidence"
+  ],
+  "blocked_operations": [
+    "write_bytes",
+    "execute_command",
+    "flash",
+    "rename_function"
+  ],
+  "rea_calls": [
+    {
+      "operation": "inspect_byte_entropy",
+      "evidence_id": "ev_e75263f450d134d67eb5e518a37ac8010fbb6942709ab84277e19a8a62652c85",
+      "artifact_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+      "window": {
+        "offset": 401316,
+        "length": 32
+      }
+    }
+  ],
+  "model_calls": 3,
+  "answer": "Original entry: 0x80061f84, Returned-word address: 0x805abbc8, REA evidence id: ev_e75263f450d134d67eb5e518a37ac8010fbb6942709ab84277e19a8a62652c85, Physical-time limitation: Raw counter snapshot; physical tick frequency and milliseconds are unproven.",
+  "passed": true,
+  "weights_changed": false,
+  "device_access": false,
+  "limits": [
+    "REA Windows Ghidra P0 does not admit this raw ARM firmware.",
+    "REA access tested here is read-only byte identity/entropy. Assembly is the existing verified export.",
+    "A successful tool smoke is not evidence of improved general model reasoning."
+  ]
+}

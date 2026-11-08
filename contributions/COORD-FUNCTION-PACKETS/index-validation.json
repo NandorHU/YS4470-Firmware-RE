@@ -1,0 +1,17 @@
+{
+  "schema": "ys4470.evidence-index.v1",
+  "database_sha256": "e07be40342d28218a091b9b2cf8624f0f01f1e3be0bf46dc7df10eb271df677a",
+  "counts": {
+    "functions": 6,
+    "instructions": 360,
+    "relations": 114,
+    "search": 6
+  },
+  "cross_version_key_test": true,
+  "fts_test": true,
+  "limits": [
+    "Index covers six packets only, not all firmware or notes. FTS is not the relations table.",
+    "Caller and global matches keep candidate status; absence is not proof of no other users.",
+    "Source JSON array indices are recorded instead of invented text line numbers; follow source_sha and packet path."
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "schema": "ys4470.packet-comparison.v1",
+  "summary": {
+    "legacy_window": {
+      "verified": 1,
+      "tasks": 3,
+      "seconds_including_retries": 17.344
+    },
+    "full_packet": {
+      "verified": 3,
+      "tasks": 3,
+      "seconds_including_retries": 17.25
+    }
+  },
+  "rows": [
+    {
+      "task": "legacy-window-80003dbc",
+      "context": "legacy_window",
+      "raw_result_sha256_before_review": "c69e2d7353ae80de8cf5f55119a75a35bb3d7ca5fcffe3acef3e938f22ad9f95",
+      "formal_grounding_passed": true,
+      "requested_original_instruction_verified": true,
+      "expected": {
+        "address": "0x80003dd4",
+        "bytes": "fdffffea",
+        "assembly": "b 0x80003dd0",
+        "capstone": "b #0x80003dd0"
+      },
+      "attempts": 2,
+      "seconds": 7.453,
+      "generated_tokens": 198,
+      "scope": "Exact requested instruction and identity only; other model prose is not promoted."
+    },
+    {
+      "task": "full-packet-80003dbc",
+      "context": "full_packet",
+      "raw_result_sha256_before_review": "b11b4af74e659112dff203d3f83e919f90914a819627f4941763ae1aeefa34b7",
+      "formal_grounding_passed": true,
+      "requested_original_instruction_verified": true,
+      "expected": {
+        "address": "0x80003dd4",
+        "bytes": "fdffffea",
+        "assembly": "b 0x80003dd0",
+        "capstone": "b #0x80003dd0"
+      },
+      "attempts": 2,
+      "seconds": 4.469,
+      "generated_tokens": 198,
+      "scope": "Exact requested instruction and identity only; other model prose is not promoted."
+    },
+    {
+      "task": "legacy-window-80006e4c",
+      "context": "legacy_window",
+      "raw_result_sha256_before_review": "647e6c1b013ce156132e9a8a78a145365da9b72afded41bb51b439bf61f4caf2",
+      "formal_grounding_passed": true,
+      "requested_original_instruction_verified": false,
+      "expected": {
+        "address": "0x80006ecc",
+        "bytes": "747001eb",
+        "assembly": "bl 0x800630a4",
+        "capstone": "bl #0x800630a4"
+      },
+      "attempts": 2,
+      "seconds": 4.516,
+      "generated_tokens": 198,
+      "scope": "Exact requested instruction and identity only; other model prose is not promoted."
+    },
+    {
+      "task": "full-packet-80006e4c",
+      "context": "full_packet",
+      "raw_result_sha256_before_review": "05dd4152d7b89e6436ae9e2ec9ab5b38a851bde4c734a82d55edfd8eb19903ba",
+      "formal_grounding_passed": true,
+      "requested_original_instruction_verified": true,
+      "expected": {
+        "address": "0x80006ecc",
+        "bytes": "747001eb",
+        "assembly": "bl 0x800630a4",
+        "capstone": "bl #0x800630a4"
+      },
+      "attempts": 2,
+      "seconds": 5.234,
+      "generated_tokens": 200,
+      "scope": "Exact requested instruction and identity only; other model prose is not promoted."
+    },
+    {
+      "task": "legacy-window-8005d048",
+      "context": "legacy_window",
+      "raw_result_sha256_before_review": "a10625cb8bc4c9bd4901b48fafc879551fe999b2360e41b069496bf2e53ec10d",
+      "formal_grounding_passed": false,
+      "requested_original_instruction_verified": false,
+      "expected": {
+        "address": "0x8005d1a0",
+        "bytes": "8699feeb",
+        "assembly": "bl 0x800037c0",
+        "capstone": "bl #0x800037c0"
+      },
+      "attempts": 2,
+      "seconds": 5.375,
+      "generated_tokens": 236,
+      "scope": "Exact requested instruction and identity only; other model prose is not promoted."
+    },
+    {
+      "task": "full-packet-8005d048",
+      "context": "full_packet",
+      "raw_result_sha256_before_review": "b8397671c1a7ba2c91b8d0617fd95d0c90695a3a6ba97de4eacbe72c95c6db3c",
+      "formal_grounding_passed": true,
+      "requested_original_instruction_verified": true,
+      "expected": {
+        "address": "0x8005d1a0",
+        "bytes": "8699feeb",
+        "assembly": "bl 0x800037c0",
+        "capstone": "bl #0x800037c0"
+      },
+      "attempts": 2,
+      "seconds": 7.547,
+      "generated_tokens": 208,
+      "scope": "Exact requested instruction and identity only; other model prose is not promoted."
+    }
+  ],
+  "initial_gate_bug": "The model quoted exact address+assembly lines. Initial validator accepted assembly-only; revalidated saved replies without new model calls.",
+  "limits": [
+    "Three controlled questions, not a general model quality or productivity benchmark.",
+    "Two requested instructions were absent from the legacy eight-instruction windows by design.",
+    "Twelve calls include retries due to the original quote-format gate bug; timing is not a fair steady-state speed comparison.",
+    "Original attempts and original gate records were retained. Only bounded coordinator reviews were appended."
+  ]
+}

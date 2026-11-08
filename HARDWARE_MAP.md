@@ -168,3 +168,8 @@ The prior nominal timer0 setup is not upgraded to a measured frequency.
 Duration30, budget40 fixtures, settle50/100 and other duration80 remain raw
 counter quantities. No FEL operation, flashing, live UART or acoustic test
 occurred.
+
+
+## 2026-11-08: packet workflow scope
+
+No physical hardware, USB/FEL, flash or live register operation occurred. REA supplied a read-only original-file identity/entropy observation; Ghidra/Unicorn supplied original-code context and bounded execution. None establishes the external measuring IC, clock rate or sound delay. See contributions/COORD-FUNCTION-PACKETS/README.md and contributions/COORD-LOCAL-TOOLS/rea-model-smoke.json.

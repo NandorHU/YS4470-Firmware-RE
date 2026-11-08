@@ -1,0 +1,157 @@
+{
+  "description": "Synthetic ARM condition calibration; no firmware or physical timing claim",
+  "prompts": [
+    "Classify the ARM conditional branch after CMP left,right. relation describes the comparison of left with right. branch_when_equal MUST answer: is this branch taken when the compared operands are equal? Return only JSON with relation and branch_when_equal.\n{{asm}}",
+    "Classify the ARM conditional branch after CMP left,right. relation describes the comparison of left with right. branch_when_equal MUST answer: is this branch taken when the compared operands are equal? Return only JSON with relation and branch_when_equal.\nExample ARM mode; CMP r0, r1; BEQ target -> {\"relation\": \"equal\", \"branch_when_equal\": true}\nExample ARM mode; CMP r0, r1; BNE target -> {\"relation\": \"not_equal\", \"branch_when_equal\": false}\nExample ARM mode; CMP r0, r1; BLO target -> {\"relation\": \"unsigned_lt\", \"branch_when_equal\": false}\nExample ARM mode; CMP r0, r1; BLE target -> {\"relation\": \"signed_le\", \"branch_when_equal\": true}\nTask:\n{{asm}}"
+  ],
+  "providers": [
+    {
+      "id": "ollama:chat:qwen2.5-coder:14b",
+      "config": {
+        "num_predict": 128,
+        "num_ctx": 8192,
+        "temperature": 0,
+        "seed": 4470,
+        "format": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "relation",
+            "branch_when_equal"
+          ],
+          "properties": {
+            "relation": {
+              "type": "string",
+              "enum": [
+                "equal",
+                "not_equal",
+                "unsigned_ge",
+                "unsigned_lt",
+                "unsigned_gt",
+                "unsigned_le",
+                "signed_ge",
+                "signed_lt",
+                "signed_gt",
+                "signed_le"
+              ]
+            },
+            "branch_when_equal": {
+              "type": "boolean"
+            }
+          }
+        },
+        "keep_alive": "10m"
+      }
+    }
+  ],
+  "tests": [
+    {
+      "description": "BHS",
+      "vars": {
+        "asm": "ARM mode\nCMP r0, r1\nBHS target",
+        "expected_relation": "unsigned_ge",
+        "expected_equal": true
+      },
+      "assert": [
+        {
+          "type": "javascript",
+          "value": "const r=typeof output==='string'?JSON.parse(output):output;\nreturn r.relation===context.vars.expected_relation && r.branch_when_equal===context.vars.expected_equal;"
+        },
+        {
+          "type": "finish-reason",
+          "value": "stop"
+        }
+      ]
+    },
+    {
+      "description": "BHI",
+      "vars": {
+        "asm": "ARM mode\nCMP r0, r1\nBHI target",
+        "expected_relation": "unsigned_gt",
+        "expected_equal": false
+      },
+      "assert": [
+        {
+          "type": "javascript",
+          "value": "const r=typeof output==='string'?JSON.parse(output):output;\nreturn r.relation===context.vars.expected_relation && r.branch_when_equal===context.vars.expected_equal;"
+        },
+        {
+          "type": "finish-reason",
+          "value": "stop"
+        }
+      ]
+    },
+    {
+      "description": "BLS",
+      "vars": {
+        "asm": "ARM mode\nCMP r0, r1\nBLS target",
+        "expected_relation": "unsigned_le",
+        "expected_equal": true
+      },
+      "assert": [
+        {
+          "type": "javascript",
+          "value": "const r=typeof output==='string'?JSON.parse(output):output;\nreturn r.relation===context.vars.expected_relation && r.branch_when_equal===context.vars.expected_equal;"
+        },
+        {
+          "type": "finish-reason",
+          "value": "stop"
+        }
+      ]
+    },
+    {
+      "description": "BGE",
+      "vars": {
+        "asm": "ARM mode\nCMP r0, r1\nBGE target",
+        "expected_relation": "signed_ge",
+        "expected_equal": true
+      },
+      "assert": [
+        {
+          "type": "javascript",
+          "value": "const r=typeof output==='string'?JSON.parse(output):output;\nreturn r.relation===context.vars.expected_relation && r.branch_when_equal===context.vars.expected_equal;"
+        },
+        {
+          "type": "finish-reason",
+          "value": "stop"
+        }
+      ]
+    },
+    {
+      "description": "BLT",
+      "vars": {
+        "asm": "ARM mode\nCMP r0, r1\nBLT target",
+        "expected_relation": "signed_lt",
+        "expected_equal": false
+      },
+      "assert": [
+        {
+          "type": "javascript",
+          "value": "const r=typeof output==='string'?JSON.parse(output):output;\nreturn r.relation===context.vars.expected_relation && r.branch_when_equal===context.vars.expected_equal;"
+        },
+        {
+          "type": "finish-reason",
+          "value": "stop"
+        }
+      ]
+    },
+    {
+      "description": "BGT",
+      "vars": {
+        "asm": "ARM mode\nCMP r0, r1\nBGT target",
+        "expected_relation": "signed_gt",
+        "expected_equal": false
+      },
+      "assert": [
+        {
+          "type": "javascript",
+          "value": "const r=typeof output==='string'?JSON.parse(output):output;\nreturn r.relation===context.vars.expected_relation && r.branch_when_equal===context.vars.expected_equal;"
+        },
+        {
+          "type": "finish-reason",
+          "value": "stop"
+        }
+      ]
+    }
+  ]
+}

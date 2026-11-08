@@ -1,0 +1,459 @@
+{
+  "schema": "ys4470.local-tools.conditions.v1",
+  "date": "2026-11-08",
+  "cpu": "UC_CPU_ARM_926",
+  "scope": "Synthetic calibration, not additional original-firmware proof",
+  "oracle_checks": 70,
+  "cases": [
+    {
+      "id": "BEQ",
+      "split": "train",
+      "asm": "ARM mode\nCMP r0, r1\nBEQ target",
+      "relation": "equal",
+      "branch_when_equal": true,
+      "instruction_sha256": "9bfa78cfde700c19082291264d0a154acb1905c82f79d7d6e698e6f55db07375",
+      "observations": [
+        {
+          "left": 0,
+          "right": 0,
+          "branch_taken": true
+        },
+        {
+          "left": 0,
+          "right": 1,
+          "branch_taken": false
+        },
+        {
+          "left": 1,
+          "right": 0,
+          "branch_taken": false
+        },
+        {
+          "left": 4294967295,
+          "right": 0,
+          "branch_taken": false
+        },
+        {
+          "left": 0,
+          "right": 4294967295,
+          "branch_taken": false
+        },
+        {
+          "left": 2147483647,
+          "right": 2147483648,
+          "branch_taken": false
+        },
+        {
+          "left": 2147483648,
+          "right": 2147483647,
+          "branch_taken": false
+        }
+      ]
+    },
+    {
+      "id": "BNE",
+      "split": "train",
+      "asm": "ARM mode\nCMP r0, r1\nBNE target",
+      "relation": "not_equal",
+      "branch_when_equal": false,
+      "instruction_sha256": "f1eac1f6e91025e2f094f50c00ad14e9e47b9dd1e7ab922846271572603aba0b",
+      "observations": [
+        {
+          "left": 0,
+          "right": 0,
+          "branch_taken": false
+        },
+        {
+          "left": 0,
+          "right": 1,
+          "branch_taken": true
+        },
+        {
+          "left": 1,
+          "right": 0,
+          "branch_taken": true
+        },
+        {
+          "left": 4294967295,
+          "right": 0,
+          "branch_taken": true
+        },
+        {
+          "left": 0,
+          "right": 4294967295,
+          "branch_taken": true
+        },
+        {
+          "left": 2147483647,
+          "right": 2147483648,
+          "branch_taken": true
+        },
+        {
+          "left": 2147483648,
+          "right": 2147483647,
+          "branch_taken": true
+        }
+      ]
+    },
+    {
+      "id": "BHS",
+      "split": "held_out",
+      "asm": "ARM mode\nCMP r0, r1\nBHS target",
+      "relation": "unsigned_ge",
+      "branch_when_equal": true,
+      "instruction_sha256": "3f15dff758a4a314ec0d714f834ed9f7ccb2b7dc237423ee2222e0504a4c8333",
+      "observations": [
+        {
+          "left": 0,
+          "right": 0,
+          "branch_taken": true
+        },
+        {
+          "left": 0,
+          "right": 1,
+          "branch_taken": false
+        },
+        {
+          "left": 1,
+          "right": 0,
+          "branch_taken": true
+        },
+        {
+          "left": 4294967295,
+          "right": 0,
+          "branch_taken": true
+        },
+        {
+          "left": 0,
+          "right": 4294967295,
+          "branch_taken": false
+        },
+        {
+          "left": 2147483647,
+          "right": 2147483648,
+          "branch_taken": false
+        },
+        {
+          "left": 2147483648,
+          "right": 2147483647,
+          "branch_taken": true
+        }
+      ]
+    },
+    {
+      "id": "BLO",
+      "split": "train",
+      "asm": "ARM mode\nCMP r0, r1\nBLO target",
+      "relation": "unsigned_lt",
+      "branch_when_equal": false,
+      "instruction_sha256": "1aede895752a436e51ad647b14f64f66367a710eb1db91f72eafae54e87920a2",
+      "observations": [
+        {
+          "left": 0,
+          "right": 0,
+          "branch_taken": false
+        },
+        {
+          "left": 0,
+          "right": 1,
+          "branch_taken": true
+        },
+        {
+          "left": 1,
+          "right": 0,
+          "branch_taken": false
+        },
+        {
+          "left": 4294967295,
+          "right": 0,
+          "branch_taken": false
+        },
+        {
+          "left": 0,
+          "right": 4294967295,
+          "branch_taken": true
+        },
+        {
+          "left": 2147483647,
+          "right": 2147483648,
+          "branch_taken": true
+        },
+        {
+          "left": 2147483648,
+          "right": 2147483647,
+          "branch_taken": false
+        }
+      ]
+    },
+    {
+      "id": "BHI",
+      "split": "held_out",
+      "asm": "ARM mode\nCMP r0, r1\nBHI target",
+      "relation": "unsigned_gt",
+      "branch_when_equal": false,
+      "instruction_sha256": "290d59f53e238aaabc81349e5ceef1ddeb958f3bc56b8947024a4537592fbaa5",
+      "observations": [
+        {
+          "left": 0,
+          "right": 0,
+          "branch_taken": false
+        },
+        {
+          "left": 0,
+          "right": 1,
+          "branch_taken": false
+        },
+        {
+          "left": 1,
+          "right": 0,
+          "branch_taken": true
+        },
+        {
+          "left": 4294967295,
+          "right": 0,
+          "branch_taken": true
+        },
+        {
+          "left": 0,
+          "right": 4294967295,
+          "branch_taken": false
+        },
+        {
+          "left": 2147483647,
+          "right": 2147483648,
+          "branch_taken": false
+        },
+        {
+          "left": 2147483648,
+          "right": 2147483647,
+          "branch_taken": true
+        }
+      ]
+    },
+    {
+      "id": "BLS",
+      "split": "held_out",
+      "asm": "ARM mode\nCMP r0, r1\nBLS target",
+      "relation": "unsigned_le",
+      "branch_when_equal": true,
+      "instruction_sha256": "a93dff0b845d02bcbd527d23427664ca26d20f9e692a5004af69c1f36244cd79",
+      "observations": [
+        {
+          "left": 0,
+          "right": 0,
+          "branch_taken": true
+        },
+        {
+          "left": 0,
+          "right": 1,
+          "branch_taken": true
+        },
+        {
+          "left": 1,
+          "right": 0,
+          "branch_taken": false
+        },
+        {
+          "left": 4294967295,
+          "right": 0,
+          "branch_taken": false
+        },
+        {
+          "left": 0,
+          "right": 4294967295,
+          "branch_taken": true
+        },
+        {
+          "left": 2147483647,
+          "right": 2147483648,
+          "branch_taken": true
+        },
+        {
+          "left": 2147483648,
+          "right": 2147483647,
+          "branch_taken": false
+        }
+      ]
+    },
+    {
+      "id": "BGE",
+      "split": "held_out",
+      "asm": "ARM mode\nCMP r0, r1\nBGE target",
+      "relation": "signed_ge",
+      "branch_when_equal": true,
+      "instruction_sha256": "b63ba61f1158a90b6d6259675c45dd24ae0e7469a53ae401c243dbcb1977fb59",
+      "observations": [
+        {
+          "left": 0,
+          "right": 0,
+          "branch_taken": true
+        },
+        {
+          "left": 0,
+          "right": 1,
+          "branch_taken": false
+        },
+        {
+          "left": 1,
+          "right": 0,
+          "branch_taken": true
+        },
+        {
+          "left": 4294967295,
+          "right": 0,
+          "branch_taken": false
+        },
+        {
+          "left": 0,
+          "right": 4294967295,
+          "branch_taken": true
+        },
+        {
+          "left": 2147483647,
+          "right": 2147483648,
+          "branch_taken": true
+        },
+        {
+          "left": 2147483648,
+          "right": 2147483647,
+          "branch_taken": false
+        }
+      ]
+    },
+    {
+      "id": "BLT",
+      "split": "held_out",
+      "asm": "ARM mode\nCMP r0, r1\nBLT target",
+      "relation": "signed_lt",
+      "branch_when_equal": false,
+      "instruction_sha256": "06b01434ed4cabc0843377df8651709d66d067ec13f5be4f0d897880b4513108",
+      "observations": [
+        {
+          "left": 0,
+          "right": 0,
+          "branch_taken": false
+        },
+        {
+          "left": 0,
+          "right": 1,
+          "branch_taken": true
+        },
+        {
+          "left": 1,
+          "right": 0,
+          "branch_taken": false
+        },
+        {
+          "left": 4294967295,
+          "right": 0,
+          "branch_taken": true
+        },
+        {
+          "left": 0,
+          "right": 4294967295,
+          "branch_taken": false
+        },
+        {
+          "left": 2147483647,
+          "right": 2147483648,
+          "branch_taken": false
+        },
+        {
+          "left": 2147483648,
+          "right": 2147483647,
+          "branch_taken": true
+        }
+      ]
+    },
+    {
+      "id": "BGT",
+      "split": "held_out",
+      "asm": "ARM mode\nCMP r0, r1\nBGT target",
+      "relation": "signed_gt",
+      "branch_when_equal": false,
+      "instruction_sha256": "35f9231c656f9c95017a3583e3e6cb245168410123d4f356ae31c38ae9aadac7",
+      "observations": [
+        {
+          "left": 0,
+          "right": 0,
+          "branch_taken": false
+        },
+        {
+          "left": 0,
+          "right": 1,
+          "branch_taken": false
+        },
+        {
+          "left": 1,
+          "right": 0,
+          "branch_taken": true
+        },
+        {
+          "left": 4294967295,
+          "right": 0,
+          "branch_taken": false
+        },
+        {
+          "left": 0,
+          "right": 4294967295,
+          "branch_taken": true
+        },
+        {
+          "left": 2147483647,
+          "right": 2147483648,
+          "branch_taken": true
+        },
+        {
+          "left": 2147483648,
+          "right": 2147483647,
+          "branch_taken": false
+        }
+      ]
+    },
+    {
+      "id": "BLE",
+      "split": "train",
+      "asm": "ARM mode\nCMP r0, r1\nBLE target",
+      "relation": "signed_le",
+      "branch_when_equal": true,
+      "instruction_sha256": "1fe92f9bb37de52b947db019749a9e7693b246f71a0be7de624d633f80c95184",
+      "observations": [
+        {
+          "left": 0,
+          "right": 0,
+          "branch_taken": true
+        },
+        {
+          "left": 0,
+          "right": 1,
+          "branch_taken": true
+        },
+        {
+          "left": 1,
+          "right": 0,
+          "branch_taken": false
+        },
+        {
+          "left": 4294967295,
+          "right": 0,
+          "branch_taken": true
+        },
+        {
+          "left": 0,
+          "right": 4294967295,
+          "branch_taken": false
+        },
+        {
+          "left": 2147483647,
+          "right": 2147483648,
+          "branch_taken": false
+        },
+        {
+          "left": 2147483648,
+          "right": 2147483647,
+          "branch_taken": true
+        }
+      ]
+    }
+  ]
+}

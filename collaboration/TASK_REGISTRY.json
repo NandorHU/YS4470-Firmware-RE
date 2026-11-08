@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 7,
+  "revision": 8,
   "updated": "2026-11-08",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -318,7 +318,7 @@
     {
       "id": "COORD-LOCAL-TOOLS",
       "title": "Install isolated local evaluation/optimization tools and bounded REA access",
-      "status": "in_progress",
+      "status": "completed",
       "owner": "current-codex-coordinator",
       "branch": "re/2026-11-04-pyghidra-fel",
       "base_commit": "aa8fb8e22043a3d3cb53d7f723c41f1772de1d2d",
@@ -333,12 +333,27 @@
         "Pinned isolated installs and reproducible commands.",
         "Actual local evaluation and at least one verified REA-backed request.",
         "Report measured results and limitations without claiming blanket improvement."
-      ]
+      ],
+      "completed_on": "2026-11-08",
+      "result_evidence": [
+        "contributions/COORD-LOCAL-TOOLS/install-report.json",
+        "contributions/COORD-LOCAL-TOOLS/dspy-results.json",
+        "contributions/COORD-LOCAL-TOOLS/promptfoo-results.json",
+        "contributions/COORD-LOCAL-TOOLS/rea-model-smoke.json"
+      ],
+      "validation": {
+        "dspy_baseline": 6,
+        "dspy_fewshot": 6,
+        "held_out": 6,
+        "promptfoo_plain": 4,
+        "promptfoo_fewshot": 6,
+        "rea_fixed_view_calls": 1
+      }
     },
     {
       "id": "COORD-FUNCTION-PACKETS",
       "title": "Reject incomplete local replies and export original-hash-bound whole-function packets",
-      "status": "in_progress",
+      "status": "completed",
       "owner": "current-codex-coordinator",
       "branch": "re/2026-11-04-pyghidra-fel",
       "base_commit": "a8b6815b3aa05618b12ce6443f67ac0a05035eb9",
@@ -355,7 +370,24 @@
         "Token-limit/unknown completion cannot count as completed; checkpoint and bounded retries.",
         "Hash-bound Ghidra body/byte coverage, explicit unresolved calls/globals and preserved analyst labels.",
         "Reproduce a few Gauge/GUI/sound packets and verify any conclusions against original code."
-      ]
+      ],
+      "completed_on": "2026-11-08",
+      "result_evidence": [
+        "contributions/COORD-FUNCTION-PACKETS/packet-index.json",
+        "contributions/COORD-FUNCTION-PACKETS/validation.json",
+        "contributions/COORD-FUNCTION-PACKETS/comparison-review.json"
+      ],
+      "validation": {
+        "regression_tests": 13,
+        "packets": 6,
+        "instruction_byte_checks": 360,
+        "cfg_edges_checked": 388,
+        "bounded_original_runs": 4,
+        "full_context_instruction_answers": 3,
+        "short_context_instruction_answers": 1,
+        "questions_each": 3
+      },
+      "next_action": "Reuse cached packets/index for COORD-ADC-CADENCE. Do not repeat frozen local jobs; two insufficient-context comparison tasks remain needs_split."
     }
   ]
 }

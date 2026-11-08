@@ -288,3 +288,8 @@ current comparison using the earlier R4/R5 snapshots. This verifies caching,
 not the existence of an asynchronous writer. Tick wrap is tested at the32-bit
 boundary; a complete counter cycle cannot be distinguished from elapsed0.
 No location here was read from a live device in this run.
+
+
+## 2026-11-08: original GaugeCmdTask name binding
+
+Both pinned originals have the string GaugeCmdTask\0 at0x80005a10 and function-pointer literal0x80003dbc at0x80005a20. Executing0x80005948..0x80005954 reaches call0x80005958 with R0=0x80003dbc/R1=0x80005a10. These are application code/data addresses, not new MMIO identities. See contributions/COORD-FUNCTION-PACKETS/validation.json; the creation callee is not executed. Packet global-access candidates cover exported bodies only.

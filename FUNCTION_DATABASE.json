@@ -18,7 +18,7 @@
     },
     "V3_6": {
       "status": "verified local original; raw baseline completed",
-      "input_kind": "original raw payload (kept non-public)",
+      "input_kind": "owner-approved published original raw payload",
       "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
       "bytes": 5943296,
       "package": "Project_February_V3.6_V02.26.6",
@@ -152,7 +152,11 @@
       "confidence": "hypothesis",
       "role": "Candidate gauge/UI task entry",
       "evidence": [
-        "existing project annotation"
+        "existing project annotation",
+        "contributions/COORD-FUNCTION-PACKETS/validation.json"
+      ],
+      "relationships": [
+        "original GaugeCmdTask wrapper0x80003dbc repeatedly calls this service at0x80003dd0; service semantics remain a hypothesis"
       ]
     },
     {
@@ -1333,6 +1337,29 @@
       "limits": [
         "Valid critical nesting0/1/2/7; no general IRQ-save/restore or full scheduler proof.",
         "No milliseconds or live-device frequency assigned."
+      ]
+    },
+    {
+      "id": "gauge_cmd_task",
+      "addresses": {
+        "V3_6": "0x80003dbc",
+        "V3_8": "0x80003dbc"
+      },
+      "confidence": "confirmed_original_static_name_binding_and_bounded_outer_loop_execution",
+      "role": "GaugeCmdTask name argument bound to original entry; setup/command-call wrapper and repeating service call",
+      "relationships": [
+        "original startup0x80005948..0x80005954 reaches call0x80005958 with R0=0x80003dbc and R1=0x80005a10 -> GaugeCmdTask",
+        "entry calls0x80005d24, then0x80005f14 with9 and19",
+        "loop0x80003dd0 calls0x80005b6c; back edge0x80003dd4"
+      ],
+      "evidence": [
+        "contributions/COORD-FUNCTION-PACKETS/validation.json",
+        "contributions/COORD-FUNCTION-PACKETS/packet-index.json"
+      ],
+      "limits": [
+        "Creation callee is not executed; this proves original argument binding only.",
+        "Three task callees are return-only models in the outer-loop test.",
+        "Service0x80005b6c, command completion, RTOS cadence and physical response time remain separate work."
       ]
     }
   ],

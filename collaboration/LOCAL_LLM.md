@@ -60,10 +60,19 @@ model weights and original firmware were not changed.
 - [LlamaFactory](https://github.com/hiyouga/LlamaFactory): alternative trainer
   with GUI, supervised fine-tuning and LoRA/QLoRA support.
 
-These are researched options, not installed integrations or promises of a gain.
+promptfoo and DSPy are now installed and exercised; see the coordinator-owned tools below. Unsloth/LlamaFactory remain researched options, not installed trainers or promises of a gain.
 Before weight training, curate independently checked ARM/source-to-explanation
 pairs. Split evaluation by function/byte identity so matching V3.6/V3.8 bodies
 do not leak between training and test. Do not train on uncorrected local drafts.
 GPU memory suitability and post-training accuracy must be measured separately.
 
 Next firmware task remains the coordinator-reserved COORD-ADC-CADENCE.
+
+
+## Installed tools and current packet workflow (2026-11-08)
+
+Use [COORD-LOCAL-TOOLS](../contributions/COORD-LOCAL-TOOLS/README.md) for pins and measured calibration/REA scope, and [COORD-FUNCTION-PACKETS](../contributions/COORD-FUNCTION-PACKETS/README.md) for the current checked-lessons worker, full-function packets and SQLite/FTS5 lookup. Historical raw local drafts remain on their separate external snapshot; do not rerun them.
+
+The current worker rejects every completion reason other than stop, keeps token-cutoff JSON incomplete, records attempts atomically, retries at most once, and skips reviewed/exhausted tasks on resume. Only source-grounded drafts reach coordinator review. The six-packet index requires an explicit original binary hash. REA access tested here is a single fixed read-only file-evidence view; it does not supply raw-ARM decompilation. No free-form tool/code/device execution is delegated.
+
+I ran13 regression tests and a zero-new-call resume. The new three-question-per-context comparison establishes source coverage only:3/3 full versus1/3 eight-instruction views, with no fair timing/general-quality claim. See comparison-review.json for the initial quote-gate mistake and offline correction. Continue COORD-ADC-CADENCE; completed calibrations are not daily work.

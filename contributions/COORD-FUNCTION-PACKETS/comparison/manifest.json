@@ -1,0 +1,66 @@
+{
+  "schema": "ys4470.packet-worker.v1",
+  "endpoint": "http://127.0.0.1:11435",
+  "model": "qwen2.5-coder:14b",
+  "lessons_sha256": "7b135d7b5b1e58e68fa7ba4283902106547b7d76fe9736baacb065a3653217c4",
+  "tasks": [
+    {
+      "id": "legacy-window-80003dbc",
+      "context": "legacy_window",
+      "packet": "contributions/COORD-FUNCTION-PACKETS/packets/7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290-0x80003dbc.json",
+      "packet_sha256": "dfcab7f04e23ca2de36bc97650a4eb4a11971fa6db5542864dfc2f00e3e819ea",
+      "binary_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+      "question": "Report the instruction at 0x80003dd4. Keep the entry separate from that instruction address. State one limitation.",
+      "review_expected_address": "0x80003dd4"
+    },
+    {
+      "id": "full-packet-80003dbc",
+      "context": "full_packet",
+      "packet": "contributions/COORD-FUNCTION-PACKETS/packets/7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290-0x80003dbc.json",
+      "packet_sha256": "dfcab7f04e23ca2de36bc97650a4eb4a11971fa6db5542864dfc2f00e3e819ea",
+      "binary_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+      "question": "Report the instruction at 0x80003dd4. Keep the entry separate from that instruction address. State one limitation.",
+      "review_expected_address": "0x80003dd4"
+    },
+    {
+      "id": "legacy-window-80006e4c",
+      "context": "legacy_window",
+      "packet": "contributions/COORD-FUNCTION-PACKETS/packets/7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290-0x80006e4c.json",
+      "packet_sha256": "91765360848565d9049bb11c62c30dbf8db645dbfc9ff299cf441187668d8b61",
+      "binary_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+      "question": "Report the instruction at 0x80006ecc. Keep the entry separate from that instruction address. State one limitation.",
+      "review_expected_address": "0x80006ecc"
+    },
+    {
+      "id": "full-packet-80006e4c",
+      "context": "full_packet",
+      "packet": "contributions/COORD-FUNCTION-PACKETS/packets/7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290-0x80006e4c.json",
+      "packet_sha256": "91765360848565d9049bb11c62c30dbf8db645dbfc9ff299cf441187668d8b61",
+      "binary_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+      "question": "Report the instruction at 0x80006ecc. Keep the entry separate from that instruction address. State one limitation.",
+      "review_expected_address": "0x80006ecc"
+    },
+    {
+      "id": "legacy-window-8005d048",
+      "context": "legacy_window",
+      "packet": "contributions/COORD-FUNCTION-PACKETS/packets/7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290-0x8005d048.json",
+      "packet_sha256": "2704be5f984913c6c5cdb8d8b09011aabc0b0741378f99394b6aef212e3ec1b4",
+      "binary_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+      "question": "Report the instruction at 0x8005d1a0. Keep the entry separate from that instruction address. State one limitation.",
+      "review_expected_address": "0x8005d1a0"
+    },
+    {
+      "id": "full-packet-8005d048",
+      "context": "full_packet",
+      "packet": "contributions/COORD-FUNCTION-PACKETS/packets/7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290-0x8005d048.json",
+      "packet_sha256": "2704be5f984913c6c5cdb8d8b09011aabc0b0741378f99394b6aef212e3ec1b4",
+      "binary_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+      "question": "Report the instruction at 0x8005d1a0. Keep the entry separate from that instruction address. State one limitation.",
+      "review_expected_address": "0x8005d1a0"
+    }
+  ],
+  "limits": [
+    "New controlled context comparison, not a replay of the old 31-task job or a general benchmark.",
+    "Same version/hash/questions/model; legacy view is first eight instructions. Two questions are intentionally outside that window."
+  ]
+}

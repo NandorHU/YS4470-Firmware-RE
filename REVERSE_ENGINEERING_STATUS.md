@@ -2,14 +2,16 @@
 
 The project is actively reconstructing the original YS-4470 firmware; it is not complete and no reconstructed firmware is claimed equivalent yet.
 
-## Current continuation (2026-11-07)
+## Current continuation (2026-11-08)
 
-INTC/timer proof and a separately compiled Fast CONT C component are complete within the documented bounded scopes. Prove FSM+0x30's cached reader0x800044a8 through r5 and elapsed-tick branches0x800046a8/0x800046c4/0x80004720 using real getter0x80061f84 and the verified critical helpers. Test threshold boundaries and32-bit tick wrap before assigning units or interpreting Beta3's30-to40 change. Keep blocked queues, waiters and remaining GUI/log leaves separate.
+The completion/retry/resume gate and six original-hash-bound GaugeCmdTask/sound/GUI function packets are verified. See contributions/COORD-FUNCTION-PACKETS/README.md (360 instruction-byte checks, 388 CFG edges, four bounded original executions, 13 tests). GaugeCmdTask's static name binding reaches 0x80003dbc; its outer loop calls the still-candidate service0x80005b6c. The local index covers six packets; no global-data equivalence or physical timing is inferred.
+
+Next reserved task: COORD-ADC-CADENCE. Reuse the completed FSM proof and packets to validate the task/service→FSM→delay placement before assigning raw polling cadence. Do not repeat local comparisons or infer milliseconds, acoustic speed, or a whole-firmware percentage.
 
 ## Confirmed static foundation
 
 - Target CPU: Allwinner F1C100S / ARM926EJ-S. The main raw image is linked at `0x7fffffe0`; its eGON payload entry/load region begins at `0x80000000`.
-- Original V3.8 local SHA-256: `7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290`. Originals remain external/non-public inputs.
+- Original V3.8 local SHA-256: `7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290`. Both owner-approved originals are published with SHA-256 identities in original-firmware/manifest.json.
 - The request/reply measurement FSM begins at `0x80004490`; its parser state includes `0x80004738`.
 - `0x800073bc` is a UART receive ISR region with a buffer rooted at `0x805b408c` and a 200-byte bound.
 - `0x80006e4c` is a sound-control gate which clamps its selector to 1–10 and invokes a lower sound routine.
@@ -282,3 +284,14 @@ quarantined. Checked lessons are in-context examples, not weight training.
 The two-case check scored0/2 before and1/2 after; general reliability and overall
 speedup remain unproven. Keep local tasks small and tool-grounded while the main
 agent continues COORD-ADC-CADENCE. The13,302-check FSM proof is unchanged.
+
+
+## 2026-11-08: local completion gates and full function packets
+
+The latest continuation and collaboration/CURRENT_HANDOFF.md supersede historical continuation blocks below.
+
+The completion/retry/resume gate and six original-hash-bound GaugeCmdTask/sound/GUI function packets are verified. See contributions/COORD-FUNCTION-PACKETS/README.md (360 instruction-byte checks, 388 CFG edges, four bounded original executions, 13 tests). GaugeCmdTask's static name binding reaches 0x80003dbc; its outer loop calls the still-candidate service0x80005b6c. The local index covers six packets; no global-data equivalence or physical timing is inferred.
+
+Next reserved task: COORD-ADC-CADENCE. Reuse the completed FSM proof and packets to validate the task/service→FSM→delay placement before assigning raw polling cadence. Do not repeat local comparisons or infer milliseconds, acoustic speed, or a whole-firmware percentage.
+
+Installed and tested promptfoo0.125.1, DSPy3.4.1 and MCP2.3.0 in an isolated prefix; a scoped local-model→REA call succeeded. See contributions/COORD-LOCAL-TOOLS/README.md. The packet comparison verified3/3 complete-context versus1/3 short-window instruction answers in a deliberately small source-coverage test. Two short-context tasks remain needs_split; none is silently complete. No weight training, paid API or physical-device access occurred.

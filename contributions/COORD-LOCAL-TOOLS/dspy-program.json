@@ -1,0 +1,51 @@
+{
+  "traces": [],
+  "train": [],
+  "demos": [
+    {
+      "asm": "ARM mode\nCMP r0, r1\nBEQ target",
+      "relation": "equal",
+      "branch_when_equal": true
+    },
+    {
+      "asm": "ARM mode\nCMP r0, r1\nBNE target",
+      "relation": "not_equal",
+      "branch_when_equal": false
+    },
+    {
+      "asm": "ARM mode\nCMP r0, r1\nBLO target",
+      "relation": "unsigned_lt",
+      "branch_when_equal": false
+    },
+    {
+      "asm": "ARM mode\nCMP r0, r1\nBLE target",
+      "relation": "signed_le",
+      "branch_when_equal": true
+    }
+  ],
+  "signature": {
+    "instructions": "Classify the conditional ARM branch following CMP left,right.\nrelation describes left compared with right. branch_when_equal means:\nis this conditional branch taken when the two compared operands are EQUAL?\nUse signedness from the branch mnemonic. Return both fields.",
+    "fields": [
+      {
+        "prefix": "Asm:",
+        "description": "${asm}"
+      },
+      {
+        "prefix": "Relation:",
+        "description": "${relation}"
+      },
+      {
+        "prefix": "Branch When Equal:",
+        "description": "${branch_when_equal}"
+      }
+    ]
+  },
+  "lm": null,
+  "metadata": {
+    "dependency_versions": {
+      "python": "3.12",
+      "dspy": "3.4.1",
+      "cloudpickle": "3.1"
+    }
+  }
+}
