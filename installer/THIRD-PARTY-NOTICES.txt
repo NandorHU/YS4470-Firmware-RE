@@ -1,0 +1,32 @@
+YS-4470 Installer - bundled components
+
+The original factory V3.8 application is included at the project owner's request.
+SHA-256: 7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290
+Manufacturer rights are unchanged. No personal full-flash image is distributed.
+
+sunxi-fel: linux-sunxi/sunxi-tools, GPL-2.0-or-later.
+Upstream source: 530adfa1420c1a1a73aa93df5b4d4c39f997f490.
+Public Windows build: eperie/build-scripts Release v1.3.
+Binary SHA-256: cc1e338a238ab99dc0ca12bdb3558d2781f9e81ed411a9b92d1c4021a67a2acf
+Build scripts: 62e368994f0735f383caebbc846598ce0460e46c, BSD-3-Clause.
+The public build script uses libusb1.0.26 (LGPL), zlib1.2.13 (zlib license)
+and the MinGW-w64 toolchain/runtime with their respective licenses.
+
+Zadig2.9 / libwdi1.5.1: official pbatard/libwdi release.
+The library is LGPL-3.0-or-later; the Zadig application is GPL-3.0-or-later.
+Binary SHA-256: 4ecaa95df3da3621486a043aef8b3050b8bafe7c901402871e816229ef82039b
+No certificate-warning suppression or automatic driver replacement is enabled.
+
+Complete pinned source archives for these components, including their license
+texts and build scripts, accompany the Sources ZIP on the SAME Release page.
+See dependencies.lock.json for download URLs and archive SHA-256 identities.
+
+Python3.12: Python Software Foundation license; Tcl/Tk8.6: included upstream
+license terms. Their license texts are supplied in the Windows ZIP's licenses/.
+PyInstaller6.22.3: GPL with the bootloader distribution exception; its license
+text is supplied in licenses/. The application code and firmware are separate
+from these unchanged third-party executables and retain their existing notices.
+
+Source repository: https://github.com/NandorHU/YS4470-Firmware-RE
+Third-party source is provided for transparency and redistribution compliance;
+the new package has not been physically tested on a meter.

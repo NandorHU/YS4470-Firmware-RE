@@ -1,0 +1,67 @@
+{
+  "schema": "ys4470.installer-deps.v1",
+  "factory": [
+    {
+      "version": "V3.8",
+      "url": "https://raw.githubusercontent.com/NandorHU/YS4470-Firmware-RE/024faa8c9cb56fa009630738da7e71d78ba5160d/original-firmware/V3.8/f1c100s.bin",
+      "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+    },
+    {
+      "version": "V3.6",
+      "url": "https://raw.githubusercontent.com/NandorHU/YS4470-Firmware-RE/024faa8c9cb56fa009630738da7e71d78ba5160d/original-firmware/V3.6/f1c100s.bin",
+      "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+    }
+  ],
+  "fel": {
+    "name": "sunxi-tools-mingw64-530adfa.zip",
+    "url": "https://github.com/eperie/build-scripts/releases/download/v1.3/sunxi-tools-mingw64-530adfa.zip",
+    "sha256": "0fee8e293ac552f95e1a72585c31c59d89f77542294f89ef7de638de5b4a96c4",
+    "entry": "sunxi-tools-mingw64-530adfa/sunxi-fel.exe",
+    "exe_sha256": "cc1e338a238ab99dc0ca12bdb3558d2781f9e81ed411a9b92d1c4021a67a2acf",
+    "upstream_commit": "530adfa1420c1a1a73aa93df5b4d4c39f997f490",
+    "physical_tested_in_this_package": false
+  },
+  "zadig": {
+    "name": "zadig-2.9.exe",
+    "url": "https://github.com/pbatard/libwdi/releases/download/v1.5.1/zadig-2.9.exe",
+    "sha256": "4ecaa95df3da3621486a043aef8b3050b8bafe7c901402871e816229ef82039b"
+  },
+  "sources": [
+    {
+      "name": "sunxi-tools-530adfa.zip",
+      "url": "https://github.com/linux-sunxi/sunxi-tools/archive/530adfa1420c1a1a73aa93df5b4d4c39f997f490.zip",
+      "sha256": "ebf9d1924d6edea49514da14bcbd4ef1e1d166db966e10ca4d8e948e63befc56",
+      "bytes": 166555
+    },
+    {
+      "name": "build-scripts-62e3689.zip",
+      "url": "https://github.com/eperie/build-scripts/archive/62e368994f0735f383caebbc846598ce0460e46c.zip",
+      "sha256": "daeb50d4229cfb15054763f3c574f0e02675981f6c528aa58d94bbbc1ee8f49c",
+      "bytes": 7074
+    },
+    {
+      "name": "libusb-1.0.26.tar.bz2",
+      "url": "https://github.com/libusb/libusb/releases/download/v1.0.26/libusb-1.0.26.tar.bz2",
+      "sha256": "12ce7a61fc9854d1d2a1ffe095f7b5fac19ddba095c259e6067a46500381b5a5",
+      "bytes": 620534
+    },
+    {
+      "name": "zlib-1.2.13.tar.gz",
+      "url": "https://zlib.net/fossils/zlib-1.2.13.tar.gz",
+      "sha256": "b3a24de97a8fdbc835b9833169501030b8977031bcb54b3b3ac13740f846ab30",
+      "bytes": 1497445
+    },
+    {
+      "name": "libwdi-1.5.1.zip",
+      "url": "https://github.com/pbatard/libwdi/archive/refs/tags/v1.5.1.zip",
+      "sha256": "746547aaf927cae44c75512d763941805928427f4ba4df3dbb40c3f7f561821e",
+      "bytes": 338305
+    },
+    {
+      "name": "mingw-w64-8.0.0.zip",
+      "url": "https://github.com/mingw-w64/mingw-w64/archive/refs/tags/v8.0.0.zip",
+      "sha256": "d592e1d563885ff3233d288c974644b3784158fec1f1e3f57b0641337df243d9",
+      "bytes": 15491661
+    }
+  ]
+}
