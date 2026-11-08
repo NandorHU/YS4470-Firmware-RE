@@ -8,7 +8,7 @@ permissions:
   contents: read
 concurrency:
   group: ys4470-installer-release
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   build:
     if: github.repository == 'NandorHU/YS4470-Firmware-RE'
@@ -38,20 +38,31 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          $tag = 'installer-v1.1.0-beta.1'
-          gh release view $tag --repo NandorHU/YS4470-Firmware-RE *> $null
-          if ($LASTEXITCODE -eq 0) { throw 'Release already exists; refusing asset overwrite' }
+          $tag = 'installer-v1.1.0-beta.2'
+          $all = gh api 'repos/NandorHU/YS4470-Firmware-RE/releases?per_page=100' | ConvertFrom-Json
+          if ($LASTEXITCODE -ne 0) { throw 'Could not inspect existing releases' }
+          if (@($all | Where-Object { $_.tag_name -eq $tag }).Count -ne 0) { throw 'Release already exists; refusing asset overwrite' }
           $assets = @(Get-ChildItem -LiteralPath work/easy-installer/release -File | ForEach-Object { $_.FullName })
-          gh release create $tag @assets --repo NandorHU/YS4470-Firmware-RE --target ${{ github.sha }} --draft --prerelease --title 'YS-4470 English Installer 1.1.0-beta.1 (factory V3.8 included)' --notes-file installer/RELEASE-NOTES.md
+          gh release create $tag @assets --repo NandorHU/YS4470-Firmware-RE --target ${{ github.sha }} --draft --prerelease --title 'YS-4470 English Installer 1.1.0-beta.2 (factory V3.8 included)' --notes-file installer/RELEASE-NOTES.md
           if ($LASTEXITCODE -ne 0) { throw 'Release publication failed' }
-          $release = gh api repos/NandorHU/YS4470-Firmware-RE/releases/tags/$tag | ConvertFrom-Json
-          if ($release.assets.Count -ne $assets.Count) { throw 'Uploaded asset count differs; draft retained' }
-          foreach ($file in $assets) {
-            $name = [IO.Path]::GetFileName($file)
-            $asset = @($release.assets | Where-Object { $_.name -eq $name })
-            $expected = 'sha256:' + (Get-FileHash -LiteralPath $file -Algorithm SHA256).Hash.ToLowerInvariant()
-            if ($asset.Count -ne 1 -or $asset[0].digest -ne $expected) { throw "Uploaded digest mismatch: $name; draft retained" }
+          $all = gh api 'repos/NandorHU/YS4470-Firmware-RE/releases?per_page=100' | ConvertFrom-Json
+          $draft = @($all | Where-Object { $_.tag_name -eq $tag -and $_.draft })
+          if ($draft.Count -ne 1) { throw 'Created draft not found by release ID' }
+          $id = $draft[0].id
+          $valid = $false
+          for ($attempt = 0; $attempt -lt 6; $attempt++) {
+            $release = gh api repos/NandorHU/YS4470-Firmware-RE/releases/$id | ConvertFrom-Json
+            $valid = $release.assets.Count -eq $assets.Count
+            foreach ($file in $assets) {
+              $name = [IO.Path]::GetFileName($file)
+              $asset = @($release.assets | Where-Object { $_.name -eq $name })
+              $expected = 'sha256:' + (Get-FileHash -LiteralPath $file -Algorithm SHA256).Hash.ToLowerInvariant()
+              if ($asset.Count -ne 1 -or $asset[0].digest -ne $expected) { $valid = $false }
+            }
+            if ($valid) { break }
+            Start-Sleep -Seconds 5
           }
-          gh release edit $tag --repo NandorHU/YS4470-Firmware-RE --draft=false
+          if (-not $valid) { throw 'Uploaded asset verification failed; draft retained' }
+          gh api --method PATCH repos/NandorHU/YS4470-Firmware-RE/releases/$id -F draft=false
           if ($LASTEXITCODE -ne 0) { throw 'Could not publish verified draft' }
 
