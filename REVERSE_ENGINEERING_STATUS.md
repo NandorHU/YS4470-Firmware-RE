@@ -375,3 +375,7 @@ Across both originals, the [real-queue replay](contributions/COORD-ADC-CADENCE/s
 ## 2026-11-09: dynamic type-2 selection and compiled plan
 
 Both originals agree in 36 Highspeed callback cases, 20 adjacent/paired callback cases and 512 exhaustive byte-to-second-send cases. Separately compiled ARM C agrees with the original dispatcher and builder in 4,108 plan cases. See the [dynamic replay](contributions/COORD-ADC-CADENCE/synchronous/dynamic-type2-validation.json) and [compiled-plan differential](contributions/COORD-ADC-CADENCE/synchronous/measurement-plan-validation.json).
+
+## 2026-11-09: refresh and first publication
+
+The [configuration-to-publication replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-publication-validation.json) adds 18 matching V3.6/V3.8 sequences across successful, missing and wrong-header replies, a busy overlap, and reconfiguration in both directions. In the overlap the original queue accepts a refresh request, the busy service skips it, and the refresh still reaches ResultDispatch with the prior stored result.

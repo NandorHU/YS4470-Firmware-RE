@@ -291,3 +291,7 @@ The [queue reference index](contributions/COORD-ADC-CADENCE/synchronous/control-
 ## 2026-11-09: dynamic type-2 selection and compiled plan
 
 The [dynamic replay](contributions/COORD-ADC-CADENCE/synchronous/dynamic-type2-validation.json) binds a writer of the dynamic UI byte and verifies the complete clamp. Other writers and the physical behavior selected by UART descriptors `0x13..0x19` remain open. Test a complete type-2 configuration followed by native refresh-produced type-3 requests to link the discard counter to the first fresh publication.
+
+## 2026-11-09: refresh and first publication
+
+The [configuration-to-publication replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-publication-validation.json) closes the tested configuration-to-first-publication path. Next execute the downstream `0x800037c0` conversion and `0x8000326c` renderer on these same schedules and separate the actual rendering outcome from the stored-result read. Peer conversion, physical timing and complete scheduler behavior remain open.

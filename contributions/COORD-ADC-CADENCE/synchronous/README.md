@@ -392,3 +392,42 @@ python -B "$b/trace_dynamic_type2.py" --out work/dynamic-type2-validation.json
 zig cc -target arm-freestanding-eabi -mcpu=arm926ej_s -marm -O2 -ffreestanding -fno-builtin -ffunction-sections -std=c11 -Wall -Wextra -Werror -c "$b/measurement_plan.c" -o work/measurement_plan.o
 python -B "$b/validate_measurement_plan.py" --object work/measurement_plan.o --compiler 'Zig 0.13.0' --out work/measurement-plan-validation.json
 ```
+
+## Configuration, refresh and first publication
+
+The [replay](refresh-publication-validation.json) executes the
+original type-2 configuration callback and the refresh timer
+registration at `0x800518c8`. The original timer due gate, refresh
+`0x8005d048`, real queue, service, FSM, UART TX and RX ISR all execute.
+The two original images agree in 18 sequences.
+
+| Path | Type-3 refresh | Type-4 refresh |
+|---|---|---|
+| Configuration list | `0c 15 1d` | `22 15 1d` |
+| Refresh measurement | `1d` (wire `6060`) | `1b` (wire `5e5e`) |
+| First publication with all replies valid | Refresh measurement 2 | Refresh measurement 2 |
+| First publication with first refresh absent or wrong header | Refresh measurement 3 | Refresh measurement 3 |
+
+The configuration seeds discard 2. Its accepted terminal frame
+consumes one slot. A valid first refresh consumes the remaining slot,
+whereas no reply or a wrong header leaves it intact through the
+retry and return to idle. Reconfiguration in either direction
+re-arms discard while preserving the old result. Later callbacks
+reach ResultDispatch with that old result until a fresh frame publishes.
+
+The type-4 overlap fixture uses the original 25-unit period after
+warmup. At counter 300 a refresh starts a measurement. At 325 the
+next refresh enqueues another record and reaches ResultDispatch with
+the prior value, but the service drains and skips the new request
+while busy. An injected reply for the first request publishes at
+counter 328, and the callback at 350 sees the new value.
+
+Timer list and allocation, style/feedback, downstream
+ResultDispatch/renderer behavior, counter steps and reply delivery
+are controlled fixtures. The replay observes the stored value at
+the dispatch boundary. It leaves actual rendering, peer behavior
+and physical timing open.
+
+```powershell
+python -B contributions/COORD-ADC-CADENCE/synchronous/trace_refresh_publication.py --out work/refresh-publication-validation.json
+```

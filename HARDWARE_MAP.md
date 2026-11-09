@@ -249,3 +249,7 @@ In the [real-queue replay](contributions/COORD-ADC-CADENCE/synchronous/type6-que
 ## 2026-11-09: dynamic type-2 selection and compiled plan
 
 The [dynamic replay](contributions/COORD-ADC-CADENCE/synchronous/dynamic-type2-validation.json) verifies actual UART2 second-send frames `590059` through `59055e` for descriptors `0x13..0x18`, and `5a5a` for fallback `0x19`. The controlled replies exercise firmware paths. The electrical meaning of the descriptor arguments remains open.
+
+## 2026-11-09: refresh and first publication
+
+In the [configuration-to-publication replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-publication-validation.json), the original UART2 path sends `6060` for refresh type 3 or `5e5e` for type 4 and handles controlled matching, missing and wrong-header replies. Timer values and reply delivery are model inputs. No physical timing was measured.

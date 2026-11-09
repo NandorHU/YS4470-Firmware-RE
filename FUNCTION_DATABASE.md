@@ -363,3 +363,7 @@ The existing fallback entry at `0x80003dd8` now includes the synthetic type-6 re
 ## 2026-11-09: dynamic type-2 selection and compiled plan
 
 The existing Highspeed handler at `0x8000d294` now has original producer-to-UART execution on both versions. The existing dispatcher entry is also compared with independently compiled C for types 2–5. See the [dynamic replay](contributions/COORD-ADC-CADENCE/synchronous/dynamic-type2-validation.json) and [compiled-plan differential](contributions/COORD-ADC-CADENCE/synchronous/measurement-plan-validation.json).
+
+## 2026-11-09: refresh and first publication
+
+The existing callback `0x8005d048` now runs from its original timer and enqueues type-3/4 into the original queue. The [configuration-to-publication replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-publication-validation.json) follows 18 original sequences to parser publication and observes which stored value is present at the ResultDispatch call.

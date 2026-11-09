@@ -547,3 +547,7 @@ From `25750c1c780a01c09265c0bef5987a01f5097a40`, executed the Fast CONT choice s
 ## 2026-11-09: dynamic type-2 selection and compiled plan
 
 From `78530f2d602a566209a68cd830518316164cf975`, exercised the dynamic type-2 UI callbacks and original queue through UART, then exhaustively replayed the secondary byte. The [dynamic replay](contributions/COORD-ADC-CADENCE/synchronous/dynamic-type2-validation.json) pins 568 original cases. The [compiled-plan differential](contributions/COORD-ADC-CADENCE/synchronous/measurement-plan-validation.json) pins 4,108 comparisons against a separately compiled independent C plan. Continue by linking complete configuration to refresh-produced measurement requests and discard-to-publication transitions.
+
+## 2026-11-09: refresh and first publication
+
+From `0d1072d7c39910ad939ce0d74db38c01d4a8181f`, executed the original configuration callback, timer, refresh, queue, FSM and UART RX/TX through first publication in 18 sequences. The [configuration-to-publication replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-publication-validation.json) separates dropped frames from failed requests and records the old result reused across reconfiguration and the busy overlap.
