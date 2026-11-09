@@ -519,3 +519,7 @@ arguments/record producers and aliases before broader shared-buffer claims;
 startup IDs9/19 are already proven. The old daily automation is still active
 at08:00 Europe/Budapest and must be deliberately switched during account takeover.
 The prepared handoff does not silently release ownership or start a second agent.
+
+## 2026-11-09: original deferred producer paths
+
+The owner confirmed the old 08:00 automation was stopped. Commit `3eb171bf801b79e316f0895af78c83b802143635` records the successor in upstream registry revision 19. The new experiment ran four producer suffixes and both reply scenarios on each hash-verified original (16 ARM926 cases), exercising the `0x8000404c` tail branch and three paths through `0x80003eac`. See the [replay, firmware hashes and instruction bytes](contributions/COORD-ADC-CADENCE/synchronous/deferred-validation.json). Next test the `0x28`/`0x29` extended path.

@@ -107,3 +107,38 @@ Next prove further **reachable** deferred-handler command/helper paths and their
 message producers. Keep the known service-idle precondition, other aliases,
 installed application identity and physical ADC/latency questions separate.
 The normal asynchronous measurement FSM is not this startup ACK helper.
+
+## Deferred producer paths
+
+The replay starts immediately after each caller's queue drain, runs its original
+record-producing suffix and `0x80006778`, then runs `0x80005b6c` with the FSM
+idle. The original service consumes the record, copies 68 bytes to
+`0x805ac6d0` and back to its stack, clears the pending byte and calls the
+fallback after `0x80004390` returns zero.
+
+| Producer call | Record (type, +4, +5) | Helper call | ID | UART frame |
+|---|---|---|---|---|
+| `0x8000e634` | `0, 09, 13` | tail `0x8000404c` | `26` | `c000c0` |
+| `0x8000e6c4` | `1, 2b, 00` | `0x80003eac` | `2b` | `c4c4` |
+| `0x8000e750` | `1, 2a, 00` | `0x80003eac` | `2a` | `c3c3` |
+| `0x8000e7e0` | `1, 27, 13` | `0x80003eac` | `27` | `c05515` |
+
+All 16 cases agree across the two originals. A one-byte matching header
+injected before the first check gives return 1 with one send and zero helper
+sleeps. A missing reply gives return 0 with two sends and 1,000 requested
+helper sleeps. The type-0 path separately requests sleep(200); the service
+requests sleep(1) at the end of all cases. Queue transfer, UART status/arrival
+and sleep are explicit models. Upstream UI dispatch and physical timing remain
+outside the replay.
+
+The [report](deferred-validation.json) includes both firmware SHA-256 hashes
+and executed instruction bytes. Reproduce from the checkout with the existing
+analysis dependencies:
+
+```powershell
+python -B contributions/COORD-ADC-CADENCE/synchronous/trace_deferred_producers.py --out work/deferred-validation.json
+```
+
+Create the output parent directory before running. Next trace the producers
+at `0x8000e50c` and `0x8000e5a0` into the extended `0x28`/`0x29` path at
+`0x80003eb8` and distinguish its later status bytes from the helper ACK.

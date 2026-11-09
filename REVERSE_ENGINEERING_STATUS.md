@@ -355,3 +355,7 @@ arguments/record producers and aliases before broader shared-buffer claims;
 startup IDs9/19 are already proven. The old daily automation is still active
 at08:00 Europe/Budapest and must be deliberately switched during account takeover.
 The prepared handoff does not silently release ownership or start a second agent.
+
+## 2026-11-09: original deferred producer paths
+
+Four original caller suffixes now run through the record producer at `0x80006778`, the idle service at `0x80005b6c`, the fallback at `0x80003dd8` and the synchronous helper at `0x80005f14`. Sixteen ARM926 cases across V3.6/V3.8 agree for IDs `0x26`, `0x27`, `0x2a` and `0x2b`, with a first-check header and with no reply. See the [replay, firmware hashes and instruction bytes](contributions/COORD-ADC-CADENCE/synchronous/deferred-validation.json).
