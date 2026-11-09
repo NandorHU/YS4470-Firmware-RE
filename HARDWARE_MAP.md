@@ -188,3 +188,8 @@ The new beta installer pins public sunxi-fel v1.4.2-162-g530adfa (exeSHA256cc1e3
 ## 2026-11-08: equal-Highspeed profile evidence
 
 The E2 profile experiment executes the original UART ISR with synthetic RX bytes and inert MMIO. UART TX, PWM/renderer endpoints and RTOS ordering remain models. It cannot establish the external ADC identity, whether repeated0x60 restarts conversion, actual conversion cadence, physical clock units or buzzer audibility.64 waveform cases produced no false sound on malformed/missing input. See contributions/COORD-ADC-CADENCE/profile-validation.json.
+
+
+## 2026-11-09: original UART correlation proof
+
+The original UART2 transmitter now executes through its real ready loop at0x80006e00..0x80006e08 and register write0x80006e10. Descriptor source60 emits60 60 including checksum. Real ISR0x800073bc executes with synthetic status/data; UART2 MMIO remains inert guest memory. A160-instruction not-ready probe remains in TX before the FSM post-send timestamp, establishing no physical stall duration. No external ADC identity, conversion restart/buffering, actual baud or acoustic timing follows from these software cases. Hardware/device operations:0.

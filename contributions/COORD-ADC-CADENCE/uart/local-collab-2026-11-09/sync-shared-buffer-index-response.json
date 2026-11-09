@@ -1,0 +1,12 @@
+{
+  "manifest_sha256": "fd0238b01d8d689be1fe56365ad4786f7644a0784801f7d256f11a1cedf0a0ea",
+  "context_sha256": "87d304eca27bf81eb910dea57113c289d415ec8a43ec155d086ae3bc1173ad45",
+  "complete": false,
+  "seconds": 2.047,
+  "reply": {
+    "done": false,
+    "done_reason": "transport_error",
+    "error": "<urlopen error [WinError 10061] Nem hozhat\u00f3 l\u00e9tre kapcsolat, mert a c\u00e9lsz\u00e1m\u00edt\u00f3g\u00e9p m\u00e1r visszautas\u00edtotta a kapcsolatot>"
+  },
+  "semantic_finding_accepted": false
+}

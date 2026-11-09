@@ -1,0 +1,21 @@
+{
+  "schema": "ys4470.local-collaboration.v1",
+  "owner": "current-codex-coordinator",
+  "endpoint": "http://127.0.0.1:11435",
+  "model": "qwen2.5-coder:14b",
+  "max_tokens": 220,
+  "request_timeout_seconds": 25,
+  "lessons_sha256": "7b135d7b5b1e58e68fa7ba4283902106547b7d76fe9736baacb065a3653217c4",
+  "tasks": [
+    {
+      "id": "rx-register-index",
+      "context": "rx-register-index-context.json",
+      "sha256": "f5b7130c5efe5208b059285cb2cce52cd211707cfe8015534a9946cd6f8c6472"
+    },
+    {
+      "id": "sync-shared-buffer-index",
+      "context": "sync-shared-buffer-index-context.json",
+      "sha256": "87d304eca27bf81eb910dea57113c289d415ec8a43ec155d086ae3bc1173ad45"
+    }
+  ]
+}

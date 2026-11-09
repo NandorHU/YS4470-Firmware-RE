@@ -314,3 +314,8 @@ The public ZIP was downloaded again and verified against SHA256SUMS/GitHub asset
 ## 2026-11-08: equal-Highspeed profile evidence
 
 The equal-Highspeed E2 comparison is now executed:64 waveform cases,64 active/requested switches,16 existing-candidate comparisons and268 assertion groups. Six packet identities/360 instruction bytes were rechecked. Direct removes a modeled GUI sound wait (accepted106/sound106 versus Base accepted106/sound125), with unchanged Base/Direct polling. This is not physical timing; the reported Base advantage remains unproven. Public-stock replay now reproduces the existing offline reply-audio/E2 inputs. See contributions/COORD-ADC-CADENCE/README.md and profile-validation.json.
+
+
+## 2026-11-09: original UART correlation proof
+
+The original UART-send leaf has now been replaced by executed original descriptor framing, UART2 byte-output polling and RX ISR in a bounded FSM experiment.12,704 original/Python/separate compiled-ARM-C transport cases passed across factory3.6/3.8, alongside184 arrival schedules and12 explicit ISR interleaves. An old matching-header response can be published after a retry or survive an IRQ-enabled gap after RX clear/before TX. This proves a controlled stale-frame counterexample, not external ADC behavior or a physical Base advantage. See contributions/COORD-ADC-CADENCE/uart/README.md, validation.json and six fresh Ghidra exports. No firmware/device/Release update occurred.

@@ -1,0 +1,23 @@
+{
+  "manifest_sha256": "264dda7aa51eb69b0a80056a7945a38301c9cdecf18f4503beae57714ea4f501",
+  "seconds": 6.656,
+  "complete": true,
+  "reply": {
+    "model": "qwen2.5-coder:14b",
+    "created_at": "2026-11-08T18:08:49.1241842Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"quote\": \"0x80005ed4 and r1,r1,#0xff\",\n  \"limitation\": \"The external measurement device's power consumption cannot be inferred from this function.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 6653081200,
+    "load_duration": 5029306000,
+    "prompt_eval_count": 1296,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 626566000,
+    "eval_count": 46,
+    "eval_duration": 992323000
+  },
+  "semantic_finding_accepted": false
+}

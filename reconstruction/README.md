@@ -52,3 +52,8 @@ cache/tick-prefix probes bring the report to13,302 checks. See
 The original GPIO and critical bodies execute on inert shadows; the state1 UART
 send remains modeled. Other FSM states, full scheduling and physical units are
 not reconstructed here. No third-party reference driver code is copied.
+
+
+## 2026-11-09: original UART correlation proof
+
+uart_transport.c/.h add two independently written pure-C data components: bounded source framing with additive checksum and RX status/count-gated byte append. The ARM object is compiled separately and executes independently from original code;12,704 original/Python/C cases pass across both factory versions. These functions are not MMIO drivers, complete UART framing protocol or request correlation. Proven domain excludes corrupt signed RX counts, overlapping buffers and the original source-count+1 wrap at UINT_MAX. See ../contributions/COORD-ADC-CADENCE/uart/README.md for build commands, exact hashes, code-section relocation checks and limits.

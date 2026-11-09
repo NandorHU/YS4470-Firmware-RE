@@ -132,3 +132,8 @@ Resume COORD-ADC-CADENCE from its existing E2/source hash checkpoint. No new fou
 ## 2026-11-08: equal-Highspeed profile evidence
 
 The next usable checkpoint is now contributions/COORD-ADC-CADENCE/STATUS.md. The public-stock recorded-edit chain,64-case equal-Highspeed matrix,64 active/requested switches and16 candidate comparisons passed268 assertion groups. Direct removes the observed GUI audio wait; Auto/Ready alter request cadence and brief-pulse width. Neither proves physical Base superiority. Task remains coordinator-owned/in_progress; resolve installed identity and actual external response behavior before another speed patch. All active-path observations are pinned E2; original idle service executes separately on3.6/3.8. No main/Release/device change.
+
+
+## 2026-11-09: original UART correlation proof
+
+Latest coordinator checkpoint: contributions/COORD-ADC-CADENCE/STATUS.md, with new uart/README.md, validation.json and six Ghidra exports.12,704 three-way transport cases and controlled original-code retry/interleave cases passed. A stale same-header frame can be accepted after retry; two queued frames publish only the first, with the tail lost at next state1 clear. Task stays coordinator-owned/in_progress. Next bound admission-to-parse buffer stability and synchronous0x80005f14 actual callers. The earlier64-case E2/profile result remains intact and is not rerun. The local checksum draft was reviewed; two new small RX/synchronous index requests hit a refused localhost service and remain without model findings. No device/main/Release change.

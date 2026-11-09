@@ -177,3 +177,8 @@ COORD-EASY-INSTALLER published the English self-contained1.1.0-beta.2 Release wi
 ## 2026-11-08: equal-Highspeed profile evidence
 
 COORD-ADC-CADENCE remains in progress after the64-case equal-Highspeed matrix,64 profile switches and16 existing-candidate comparisons. Next resolve installed identity and whether repeated0x60 requests restart or buffer the external conversion; absent hardware, add explicitly hypothetical response-source/phase-order variants without treating any as physical truth. The public installer remains unchanged1.0 firmware. Do not rerun the completed matrix/local extraction unless code, inputs or unresolved guards change. Exact checkpoint: contributions/COORD-ADC-CADENCE/STATUS.md.
+
+
+## 2026-11-09: original UART correlation proof
+
+Continue COORD-ADC-CADENCE from contributions/COORD-ADC-CADENCE/STATUS.md and uart/README.md. Completed now:12,704 three-way original/C/Python transport cases,184 arrival schedules,12 explicit ISR interleaves,4 two-frame concatenations and six fresh Ghidra function exports. Next bound the original shared-buffer admission-to-parse interval and synchronous helper0x80005f14 actual callers/writers. Reuse existing packets and prepared local source indexes; do not repeat the completed profile or transport matrices without a code/input/guard change. External conversion behavior still blocks a justified physical speed/correlation fix.

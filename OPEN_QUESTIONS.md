@@ -230,3 +230,8 @@ The English self-contained Release is public; no manual firmware dump is needed 
 ## 2026-11-08: equal-Highspeed profile evidence
 
 The equal-Highspeed matrix and public recorded-edit reproduction are complete for pinned E2. The reported physical Base+highspeedv2 advantage remains unresolved: installed-image identity, external conversion response/restart behavior, real task order/counter rate and short-tone audibility are missing. The immediate-responder model favors Direct sound initiation and reveals shorter Auto/Ready pulses. Do not change ADC deadlines or add an OPEN tone hold from that hypothesis. Historical source generators and full transitive caller/global/indirect-call coverage remain unverified. See contributions/COORD-ADC-CADENCE/STATUS.md.
+
+
+## 2026-11-09: original UART correlation proof
+
+Original UART framing/ready polling and ISR append are now dynamically checked, with independent C/Python agreement. The same-header late-response counterexample is proven for controlled original-code schedules, while real frequency and ADC restart/buffering remain unknown. Next inspect count/read/parse stability between state3 admission and state5, and actual callers of synchronous helper0x80005f14 before claiming a feasible shared-buffer clear race. Its clear anchors are prepared as a static source index. The reported physical Base advantage and installed application identity remain open. New local-model RX/synchronous indexing jobs are frozen but encountered a refused localhost API; do not treat their failed responses as results.

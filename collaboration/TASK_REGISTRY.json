@@ -1,7 +1,7 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 14,
-  "updated": "2026-11-08",
+  "revision": 15,
+  "updated": "2026-11-09",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
   "research_baseline_commit": "7e173ffdaa7dffd67a2d998f3fa8b28036e99485",
@@ -295,7 +295,7 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Follow STATUS.md: installed image identity and actual external conversion response/restart behavior. Base physical advantage is not reproduced by the immediate-responder model; caller/global/indirect coverage remains bounded.",
+      "next_action": "Follow STATUS.md: bound state3-admission -> state5 parse byte stability; check synchronous helper0x80005f14 actual callers and shared RX clears before claiming a feasible concurrent race. Two fresh easy local-model contexts await reachable localhost service; completed batches stay frozen. External conversion behavior and physical Base advantage remain open.",
       "last_verified_result": {
         "profile_cases": 64,
         "transition_cases": 64,
@@ -303,11 +303,19 @@
         "assertion_groups": 268,
         "packet_instruction_byte_guards": 360,
         "public_recorded_edit_replay": true,
-        "physical_device_operations": 0
+        "physical_device_operations": 0,
+        "original_uart_transport_cases": 12704,
+        "original_late_schedules": 184,
+        "original_controlled_isr_interleaves": 12,
+        "original_concat_cases": 4,
+        "uart_ghidra_exports": 6,
+        "uart_ghidra_instruction_guards": 158
       },
       "result_evidence": [
         "contributions/COORD-ADC-CADENCE/profile-validation.json",
-        "contributions/COORD-ADC-CADENCE/README.md"
+        "contributions/COORD-ADC-CADENCE/README.md",
+        "contributions/COORD-ADC-CADENCE/uart/validation.json",
+        "contributions/COORD-ADC-CADENCE/uart/ghidra-functions.json"
       ]
     },
     {
