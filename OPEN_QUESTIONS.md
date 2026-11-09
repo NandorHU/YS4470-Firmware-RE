@@ -235,3 +235,8 @@ The equal-Highspeed matrix and public recorded-edit reproduction are complete fo
 ## 2026-11-09: original UART correlation proof
 
 Original UART framing/ready polling and ISR append are now dynamically checked, with independent C/Python agreement. The same-header late-response counterexample is proven for controlled original-code schedules, while real frequency and ADC restart/buffering remain unknown. Next inspect count/read/parse stability between state3 admission and state5, and actual callers of synchronous helper0x80005f14 before claiming a feasible shared-buffer clear race. Its clear anchors are prepared as a static source index. The reported physical Base advantage and installed application identity remain open. New local-model RX/synchronous indexing jobs are frozen but encountered a refused localhost API; do not treat their failed responses as results.
+
+
+## 2026-11-09: admitted-frame stability and caller ownership
+
+Admission-to-parse append stability is now bounded; known synchronous call ownership is better classified, including a previously absent tail edge0x8000404c→0x80005f14. A shared RX pointer alone is insufficient to claim a feasible live clear race: tested service paths gate fallback entry on idle. Next execute the synchronous helper for reachable command/caller preconditions and trace actual producers/other aliases before claiming system-wide exclusion. External ADC restart/buffering, installed identity and physical Base advantage remain unresolved. The existing local-model service issue has not been re-polled or presented as a new failure.

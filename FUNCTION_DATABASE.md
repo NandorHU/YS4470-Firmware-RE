@@ -307,3 +307,8 @@ The existing gauge_task_candidate record0x80005b6c is refined to a proven GaugeC
 ## 2026-11-09: original UART correlation proof
 
 Existing measurement_transaction_send, measurement_byte_output_candidate and uart_rx_isr records are refined from static observations to bounded original ARM926 execution on both originals. The sender appends an8-bit additive checksum; selector2 polls UART2+0x7c bit1 and writes UART2+0; the ISR gates on UART2+8 bit2 and appends into a200-byte buffer. The database remains60 entries; inferred labels are not recovered vendor names. New independent pure-C components: reconstruction/uart_transport.c/.h. See contributions/COORD-ADC-CADENCE/uart/validation.json and ghidra-functions.json.
+
+
+## 2026-11-09: admitted-frame stability and caller ownership
+
+Two scoped analyst entries are added: fallback control handler0x80003dd8 (entry routing dynamically bounded, body statically indexed) and synchronous helper candidate0x80005f14 (identical95-instruction local CFG; no new body execution). The database now has62 records, not62 fully reconstructed functions. Nine direct BL call sites and an additional0x8000404c tail edge are validated in original code. The UART ISR/prefix and service-idle gate evidence is linked to existing records. See contributions/COORD-ADC-CADENCE/admission/.

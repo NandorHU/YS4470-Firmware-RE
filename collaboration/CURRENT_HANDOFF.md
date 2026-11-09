@@ -137,3 +137,8 @@ The next usable checkpoint is now contributions/COORD-ADC-CADENCE/STATUS.md. The
 ## 2026-11-09: original UART correlation proof
 
 Latest coordinator checkpoint: contributions/COORD-ADC-CADENCE/STATUS.md, with new uart/README.md, validation.json and six Ghidra exports.12,704 three-way transport cases and controlled original-code retry/interleave cases passed. A stale same-header frame can be accepted after retry; two queued frames publish only the first, with the tail lost at next state1 clear. Task stays coordinator-owned/in_progress. Next bound admission-to-parse buffer stability and synchronous0x80005f14 actual callers. The earlier64-case E2/profile result remains intact and is not rerun. The local checksum draft was reviewed; two new small RX/synchronous index requests hit a refused localhost service and remain without model findings. No device/main/Release change.
+
+
+## 2026-11-09: admitted-frame stability and caller ownership
+
+Latest bounded result is contributions/COORD-ADC-CADENCE/admission/:1,200 original admission/parser cases,24 service gates, nine classified BL sites and one newly recorded tail edge0x8000404c→0x80005f14. The admitted RX prefix is stable against append-only ISR arrivals under stated conditions. Tested fallback control-handler entry is idle-gated; no feasible active-acquisition synchronous-clear race is inferred. New database records are scoped analyst roles, not full reconstructions. Continue with reachable synchronous-helper execution and message producer/alias ownership; preserve external ADC/physical timing uncertainty.

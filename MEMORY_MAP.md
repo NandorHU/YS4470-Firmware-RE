@@ -313,3 +313,8 @@ Original copy0x80000124 and decompressor0x800000c8 regenerate0x805aaab4..0x805ac
 ## 2026-11-09: original UART correlation proof
 
 RX0x805b408c..0x805b4154 exclusive and TX0x805b4154..0x805b421c exclusive are separately guarded200-byte regions in the new original-code transport experiment. Count0x805ab938 remains10 after a two-frame finalization and the next builder, then the next state1 clears it with the RX buffer. Builder/finalizer writes to0x805ab91c/0x805ab920 are distinct bookkeeping cells; their wider roles are not assigned here. Original state1 clear executes IRQ-masked with positive nesting; tested old-frame injection after release can survive until parser publication. See contributions/COORD-ADC-CADENCE/uart/README.md.
+
+
+## 2026-11-09: admitted-frame stability and caller ownership
+
+The service's original literal0x80005d20 resolves to deferred-record storage0x805ac6d0. Its68-byte extent ends at0x805ac714, immediately before the result object and after the FSM's0x3c-byte region. In1,200 ISR/parser cases, first five RX bytes remain unchanged while up to196 further bytes arrive; valid count caps at200. This is conditional append stability, not immunity to another reset/writer. The synchronous helper's literal0x80006090 resolves to count0x805ab938 in both originals.

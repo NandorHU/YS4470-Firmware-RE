@@ -319,3 +319,8 @@ The equal-Highspeed E2 comparison is now executed:64 waveform cases,64 active/re
 ## 2026-11-09: original UART correlation proof
 
 The original UART-send leaf has now been replaced by executed original descriptor framing, UART2 byte-output polling and RX ISR in a bounded FSM experiment.12,704 original/Python/separate compiled-ARM-C transport cases passed across factory3.6/3.8, alongside184 arrival schedules and12 explicit ISR interleaves. An old matching-header response can be published after a retry or survive an IRQ-enabled gap after RX clear/before TX. This proves a controlled stale-frame counterexample, not external ADC behavior or a physical Base advantage. See contributions/COORD-ADC-CADENCE/uart/README.md, validation.json and six fresh Ghidra exports. No firmware/device/Release update occurred.
+
+
+## 2026-11-09: admitted-frame stability and caller ownership
+
+A further1,200 original ARM926 cases show that the UART ISR's append-only path preserves the admitted five-byte prefix before/during state5 parsing under valid-count/no-other-writer conditions.24 original service-gate cases admit the deferred control fallback only when idle. All nine raw BL candidates for synchronous helper0x80005f14 are classified into GaugeCmdTask startup/deferred handler CFGs; an additional tail branch0x8000404c was found. The proof does not establish global mutual exclusion or remove the earlier late same-header ambiguity. See contributions/COORD-ADC-CADENCE/admission/README.md and validation.json.

@@ -50,3 +50,8 @@ Reuse the prepared static index and local contexts; the old clear anchors
 0x80005f30/0x80005ffc are static until that combined execution is tested.
 External conversion restart/buffering, installed image identity and physical
 Base latency remain open. No device, flash, main or Release was modified.
+
+
+## 2026-11-09: admitted-frame stability and caller ownership
+
+New checkpoint: admission/README.md and admission/validation.json. On both originals,1,200 admitted-frame/ISR cases preserve the prefix and match the previous Python parser contract;24 original service cases confirm tested deferred-handler entry is idle-gated. Nine raw BL sites are classified, plus a newly identified0x8000404c tail branch to0x80005f14. admission/synchronous-static.json adds identical95-instruction callee context, not body execution. The earlier UART/profile proofs are reused without reruns. Next: execute synchronous helper success/failure under reachable caller/idle preconditions, and trace fallback record producers/other aliases before claiming global buffer ownership. The local API question remains unresolved; frozen model requests were not repeated. Current run baseline is d4140e2fd396c4f0edc4b8590c227fc6a50eaf6c. Repository working directory was read-only; new artifacts were generated in the permitted isolated workspace and published through GitHub. No device/main/Release change.

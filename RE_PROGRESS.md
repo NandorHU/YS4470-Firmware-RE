@@ -483,3 +483,8 @@ Executed the pinned E2 four-profile experiment at Highspeed0/1:64 waveform cases
 ## 2026-11-09: original UART correlation proof
 
 The UART run begun2026-11-08 is documented2026-11-09: original V3.6/V3.8 TX/checksum/ready-loop/ISR/builder/FSM/critical/getter execute;12,704 transport cases agree with independent Python and separately compiled ARM C.184 arrival schedules and12 controlled ISR interleaves expose old matching-header acceptance across retry/clear-to-TX gaps.4 concatenation fixtures confirm only the first frame is published; RX retention through finalization is now distinguished from next-state1 clear. Six actual Ghidra exports contain158 byte-checked instructions. A new pure-C transport component is saved. No physical latency, new firmware fix, main merge or Release change is claimed.
+
+
+## 2026-11-09: admitted-frame stability and caller ownership
+
+The scheduled2026-11-09 continuation checked1,200 admitted-frame/ISR interleavings and24 service-idle gates on original3.6/3.8. The admitted prefix and independently specified parsed result stayed stable; buffer-limit crossing was included. All nine raw ARM BL candidates for0x80005f14 were assigned to known local CFGs, and an additional tail branch0x8000404c was validated. Two carefully scoped analyst database records bring the index to62. Static evidence remains separate from body execution/global ownership. Artifacts were generated in an isolated permitted writable workspace and integrated on the development branch; no original, device, main or Release change.
