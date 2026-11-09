@@ -367,3 +367,7 @@ The existing Highspeed handler at `0x8000d294` now has original producer-to-UART
 ## 2026-11-09: refresh and first publication
 
 The existing callback `0x8005d048` now runs from its original timer and enqueues type-3/4 into the original queue. The [configuration-to-publication replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-publication-validation.json) follows 18 original sequences to parser publication and observes which stored value is present at the ResultDispatch call.
+
+## 2026-11-09: refresh rendering and sound
+
+The [rendering and sound replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-rendering-validation.json) executes original ResultDispatch `0x800037c0`, renderer `0x8000326c`, and a controlled Fast CONT path through `0x80007c88` and sound gate `0x80006e4c` on both originals.

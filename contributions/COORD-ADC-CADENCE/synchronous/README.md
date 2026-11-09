@@ -431,3 +431,32 @@ and physical timing open.
 ```powershell
 python -B contributions/COORD-ADC-CADENCE/synchronous/trace_refresh_publication.py --out work/refresh-publication-validation.json
 ```
+
+## Rendering and sound after refresh
+
+The [replay](refresh-rendering-validation.json) extends the 18 lifecycle
+sequences through original ResultDispatch `0x800037c0` and renderer
+`0x8000326c`. It checks the exact float32 result at record +0x3c against
+an independent reference and records the strings passed to display
+leaves. The mode-1 fixture uses the original unit-table bytes restored
+from V3.8 initialization. Type-3 uses the selector-specific decimal
+exponent, and the config-`0x22` path uses float constant `0x41dfd1b7`.
+
+In the extra integrated mode-4 Fast CONT schedule on each original,
+the real UART parser publishes raw 14023 once. The three following
+timer callbacks use that value before another queued request is
+serviced. They enter the original filter at `0x80007c88` with values
+5, 5, 5. The third update selects median 5, sound selector 10 and
+action 1. Original gate and PWM setup then set shadow control
+`0x7f` and period word `0x176f0a8c`. Mode, sound enable and initial
+filter contents in this schedule are explicit fixtures.
+
+Original numeric conversion and renderer control execute. The
+`%.3f` conversion to text is a scoped host model because the
+original formatter exceeded the instruction budget. Widget/display
+updates and UI feedback are also models. PWM writes are emulated.
+Next trace native mode entry and filter-reset writers.
+
+```powershell
+python -B contributions/COORD-ADC-CADENCE/synchronous/trace_refresh_rendering.py --out work/refresh-rendering-validation.json
+```

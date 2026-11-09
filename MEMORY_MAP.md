@@ -373,3 +373,7 @@ The callback at `0x8000d648` sets `0x805abefc+1` at `0x8000d67c`. The `0x8000d29
 ## 2026-11-09: refresh and first publication
 
 The [configuration-to-publication replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-publication-validation.json) follows the original discard byte at `0x805aae8d` from 2 at configuration through 1 and 0. The result words at `0x805ac730`/`0x805ac734` retain the prior value until an admitted frame reaches the parser with discard 0. At the ResultDispatch boundary those words still hold the prior value, before the request the refresh just queued can publish.
+
+## 2026-11-09: refresh rendering and sound
+
+The [rendering and sound replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-rendering-validation.json) links result words at `0x805ac730`/`0x805ac734` to the original render record. It checks scaled float32 at record +0x3c, value and unit fields at +0/+0x32, and the filter count and median at `0x805ab92c`/`0x805ab930`.

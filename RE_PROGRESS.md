@@ -551,3 +551,7 @@ From `78530f2d602a566209a68cd830518316164cf975`, exercised the dynamic type-2 UI
 ## 2026-11-09: refresh and first publication
 
 From `0d1072d7c39910ad939ce0d74db38c01d4a8181f`, executed the original configuration callback, timer, refresh, queue, FSM and UART RX/TX through first publication in 18 sequences. The [configuration-to-publication replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-publication-validation.json) separates dropped frames from failed requests and records the old result reused across reconfiguration and the busy overlap.
+
+## 2026-11-09: refresh rendering and sound
+
+From `6d8f5a8bf3aa6d719d28993b7e5d92914ceaf3d8`, extended the lifecycle to original ResultDispatch/renderer and ran a separate integrated original Fast CONT sound path. The [rendering and sound replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-rendering-validation.json) pins 20 sequences with both input hashes. The original numeric formatter exceeded the instruction limit and was replaced in the harness by a scoped format model.
