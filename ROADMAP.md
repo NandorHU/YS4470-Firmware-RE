@@ -218,3 +218,7 @@ arguments/record producers and aliases before broader shared-buffer claims;
 startup IDs9/19 are already proven. The old daily automation is still active
 at08:00 Europe/Budapest and must be deliberately switched during account takeover.
 The prepared handoff does not silently release ownership or start a second agent.
+
+## 2026-11-09: original deferred producer paths
+
+COORD-ADC-CADENCE now covers four original deferred paths and 16 ARM926 executions across V3.6/V3.8. Continue with the `0x28`/`0x29` caller suffixes and idle path at `0x80003eb8`. Capture the extended reply handling and separate the queue, sleep and UART models from original execution. See the [replay, firmware hashes and instruction bytes](contributions/COORD-ADC-CADENCE/synchronous/deferred-validation.json).

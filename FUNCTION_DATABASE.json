@@ -1409,20 +1409,22 @@
         "V3_6": "0x80003dd8",
         "V3_8": "0x80003dd8"
       },
-      "confidence": "confirmed_bounded_entry_routing_and_static_local_cfg_only",
-      "role": "Fallback control-record handler reached by GaugeCmdTask service after idle gating; body not dynamically executed in this experiment",
+      "confidence": "confirmed_bounded_original_deferred_control_execution",
+      "role": "Fallback control-record handler reached by GaugeCmdTask service after idle gating. The tested type-0 and type-1 producer paths execute the original handler body.",
       "name_status": "Analyst role label, not recovered vendor symbol",
       "relationships": [
         "Original service0x80005d00 conditionally calls0x80003dd8 after InputDispatcher0x80004390 returns0.",
         "Seven BL calls to synchronous helper0x80005f14 plus tail branch0x8000404c inside the indexed handler CFG.",
-        "Known handler entry receives a copied68-byte control record rooted in original deferred storage0x805ac6d0."
+        "Known handler entry receives a copied68-byte control record rooted in original deferred storage0x805ac6d0.",
+        "Four caller suffixes reach producer0x80006778 and idle fallback. Type 0 tail-calls with0x26 at0x8000404c. The three tested type-1 paths call with0x27/0x2a/0x2b at0x80003eac."
       ],
       "evidence": [
-        "contributions/COORD-ADC-CADENCE/admission/validation.json"
+        "contributions/COORD-ADC-CADENCE/admission/validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/deferred-validation.json"
       ],
       "limits": [
-        "Execution stops at handler entry; full command, UART configuration and blocking bodies are not newly executed.",
-        "Local ARM CFG only; other callers, message producers, indirect aliases and complete system-wide ownership remain open."
+        "The four producer suffixes begin after the caller's queue drain. Queue transfer, UART status/arrival and requested sleep are modeled.",
+        "Other callers, type-6 producer reachability, the extended0x28/0x29 path, indirect aliases and complete system-wide ownership remain open."
       ]
     },
     {
@@ -1431,8 +1433,8 @@
         "V3_6": "0x80005f14",
         "V3_8": "0x80005f14"
       },
-      "confidence": "confirmed_bounded_original_startup_command_execution",
-      "role": "Synchronous descriptor sender and matching-header ACK wait with one retry; proven here for startup IDs9/19",
+      "confidence": "confirmed_bounded_original_synchronous_command_execution",
+      "role": "Synchronous descriptor sender and matching-header ACK wait with one retry. Tested startup IDs9/19 and producer-bound deferred IDs0x26/0x27/0x2a/0x2b.",
       "name_status": "Analyst role label, not vendor symbol; legacy candidate database ID retained",
       "relationships": [
         "Original count pointer is loaded from literal0x80006090 ->0x805ab938.",
@@ -1440,16 +1442,18 @@
         "Nine BL sites and one tail edge0x8000404c are validated across the startup wrapper/control-handler local CFGs.",
         "Static calls include descriptor sender0x80005e84 and delay candidate0x80060fbc.",
         "Original startup ID9 source5803 -> wire58035b; ID19 source5900 -> wire590059.",
+        "Original deferred IDs0x26/0x27/0x2a/0x2b produce wire frames c000c0/c05515/c3c3/c4c4 in 16 cases across V3.6/V3.8.",
         "A matching first byte can return success before any requested sleep; the500 bound is a maximum per-attempt iteration count.",
         "At most two sends and1000 requested sleep(1) calls in tested cases; GPIO bits2/3 and callee-saved registers are restored."
       ],
       "evidence": [
         "contributions/COORD-ADC-CADENCE/admission/synchronous-static.json",
         "contributions/COORD-ADC-CADENCE/admission/validation.json",
-        "contributions/COORD-ADC-CADENCE/synchronous/synchronous-validation.json"
+        "contributions/COORD-ADC-CADENCE/synchronous/synchronous-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/deferred-validation.json"
       ],
       "limits": [
-        "New whole-helper execution covers only proven startup arguments9/19 with valid buffers and initial FSM idle.",
+        "Execution covers the two tested startup and four tested deferred arguments with valid buffers and initial FSM idle.",
         "Sleep scheduling, byte delivery, UART status and CPU-context ISR interleave are explicit models; actual exception/task timing is not established.",
         "A helper ACK needs a matching header, unlike the measurement FSM's five-byte admission rule; other command IDs/UI routes remain untested.",
         "Last-sleep reply ordering is a software boundary observation, not a physical delay/bug or warranted timing patch.",

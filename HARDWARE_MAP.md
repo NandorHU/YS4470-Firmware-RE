@@ -229,3 +229,7 @@ arguments/record producers and aliases before broader shared-buffer claims;
 startup IDs9/19 are already proven. The old daily automation is still active
 at08:00 Europe/Budapest and must be deliberately switched during account takeover.
 The prepared handoff does not silently release ownership or start a second agent.
+
+## 2026-11-09: original deferred producer paths
+
+For tested idle fallback calls on V3.6/V3.8, the original UART2 TX path through `0x80006e10` wrote frames `c000c0`, `c05515`, `c3c3` and `c4c4` for IDs `0x26`, `0x27`, `0x2a` and `0x2b`, respectively. The original RX ISR handled synthetic ACK delivery in eight of the 16 cases. The external peer response and physical timing remain open. See the [replay, firmware hashes and instruction bytes](contributions/COORD-ADC-CADENCE/synchronous/deferred-validation.json).

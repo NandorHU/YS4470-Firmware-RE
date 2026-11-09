@@ -309,3 +309,7 @@ arguments/record producers and aliases before broader shared-buffer claims;
 startup IDs9/19 are already proven. The old daily automation is still active
 at08:00 Europe/Budapest and must be deliberately switched during account takeover.
 The prepared handoff does not silently release ownership or start a second agent.
+
+## 2026-11-09: original deferred producer paths
+
+With the FSM idle, type 0 requests `sleep(200)` at `0x80004038` before the `0x26` tail call. The three tested type-1 paths enter the helper directly via `0x80003eac`. Across 16 V3.6/V3.8 ARM926 cases, a matching first byte gave success with zero helper sleeps. No reply produced two sends and 1,000 requested helper sleeps. The sleep arguments describe the software path. See the [replay, firmware hashes and instruction bytes](contributions/COORD-ADC-CADENCE/synchronous/deferred-validation.json).

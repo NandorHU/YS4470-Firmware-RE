@@ -1,5 +1,19 @@
 # COORD-ADC-CADENCE — continuation, 2026-11-09
 
+## Current checkpoint
+
+Four producer suffixes now run through the original idle service and fallback
+to helper commands `0x26`, `0x27`, `0x2a` and `0x2b`. All 16 ARM926 cases
+agree across both original hashes. See [method](synchronous/README.md#deferred-producer-paths)
+and [validation](synchronous/deferred-validation.json). Continue from producer
+sites `0x8000e50c`/`0x8000e5a0` into the extended `0x28`/`0x29` handler path
+at `0x80003eb8`. Queue/ISR delivery/sleep fixtures bound the current evidence.
+
+One new local indexing request over five original instructions used the frozen
+checked UART lessons. The reply stopped normally with the expected schema and
+selected `0x8000e7d8` for the final R1 write before the producer call. Capstone
+and original bytes `2710a0e3` independently confirmed the selection.
+
 Coordinator-owned/in_progress. Integration baseline for this UART run:
 ed71bdb5d2dc3745ab700c1a80fe544788044077. The full project is not complete.
 

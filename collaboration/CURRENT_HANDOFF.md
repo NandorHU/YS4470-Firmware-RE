@@ -1,13 +1,18 @@
 # Account-transfer entry point — 2026-11-09
 
 Read [the complete migration handoff](../migration/2026-11-09/README.md) first.
-It pins the latest research commit a2e5e7ebd2f661f37f88507f55a62a14c5df3f9f,
+It pins the transfer's research commit a2e5e7ebd2f661f37f88507f55a62a14c5df3f9f,
 62 function records, restored local model,40 startup-helper cases and exact next
 COORD-ADC-CADENCE step. Earlier sections below are historical snapshots.
 The local transfer kit contains full public Git history, approved originals,
 checksums and a tool inventory; private backups/credentials/model weights stay out.
 Beta.2 Release API currently404; retained historical installer is documented.
-Old daily automation remains active; coordinate explicit account takeover.
+The owner confirmed the old daily automation was stopped. The new coordinator
+`codex-ys4470-20261109-01a1c110` is recorded in upstream registry revision 19.
+
+Latest analysis: [deferred producer replay](../contributions/COORD-ADC-CADENCE/synchronous/README.md#deferred-producer-paths)
+covers four original producer suffixes and 16 original ARM926 cases on
+V3.6/V3.8. Next trace the extended `0x28`/`0x29` branch at `0x80003eb8`.
 
 ---
 
