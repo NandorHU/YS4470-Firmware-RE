@@ -222,3 +222,7 @@ The prepared handoff does not silently release ownership or start a second agent
 ## 2026-11-09: original deferred producer paths
 
 COORD-ADC-CADENCE now covers four original deferred paths and 16 ARM926 executions across V3.6/V3.8. Continue with the `0x28`/`0x29` caller suffixes and idle path at `0x80003eb8`. Capture the extended reply handling and separate the queue, sleep and UART models from original execution. See the [replay, firmware hashes and instruction bytes](contributions/COORD-ADC-CADENCE/synchronous/deferred-validation.json).
+
+## 2026-11-09: extended deferred status
+
+The extended `0x28`/`0x29` fallback is now exercised on both originals. Follow the `0x805ab920` reader candidate at `0x80005dac4` to bind decoded statuses to their consumers before naming the peer operation. See the [64 original ARM926 cases with both firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/extended-status-validation.json).

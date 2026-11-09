@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 20,
+  "revision": 21,
   "updated": "2026-11-09",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,7 +295,7 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Trace the 0x28/0x29 producer sites 0x8000e50c/0x8000e5a0 into the extended idle fallback at 0x80003eb8 and distinguish its later status bytes from the helper ACK. Type-6 producer reachability, indirect aliases, peer conversion and physical timing remain open.",
+      "next_action": "Validate the 0x805ab920 reader candidate at 0x80005dac4 (literal load 0x80005dabc) and trace the status codes to their consumers. Type-6 producer reachability, indirect aliases, peer conversion and physical timing remain open.",
       "last_verified_result": {
         "profile_cases": 64,
         "transition_cases": 64,
@@ -320,7 +320,9 @@
         "local_extraction_requests_completed": 2,
         "local_heldout_exercises": 1,
         "original_deferred_producer_sites": 4,
-        "original_deferred_producer_cases": 16
+        "original_deferred_producer_cases": 16,
+        "original_extended_status_producers": 2,
+        "original_extended_status_cases": 64
       },
       "result_evidence": [
         "contributions/COORD-ADC-CADENCE/profile-validation.json",
@@ -331,7 +333,8 @@
         "contributions/COORD-ADC-CADENCE/admission/synchronous-static.json",
         "contributions/COORD-ADC-CADENCE/synchronous/synchronous-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/runtime-verification.json",
-        "contributions/COORD-ADC-CADENCE/synchronous/deferred-validation.json"
+        "contributions/COORD-ADC-CADENCE/synchronous/deferred-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/extended-status-validation.json"
       ]
     },
     {

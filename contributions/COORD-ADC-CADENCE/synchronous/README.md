@@ -142,3 +142,51 @@ python -B contributions/COORD-ADC-CADENCE/synchronous/trace_deferred_producers.p
 Create the output parent directory before running. Next trace the producers
 at `0x8000e50c` and `0x8000e5a0` into the extended `0x28`/`0x29` path at
 `0x80003eb8` and distinguish its later status bytes from the helper ACK.
+
+## Extended status after 0x28/0x29
+
+The original caller suffixes at `0x8000e4f4`/`0x8000e588` send type-1
+records via `0x80006778` with byte +4 equal to `0x28`/`0x29`. The idle
+service delivers each record to `0x80003dd8`, which branches to
+`0x80003eb8`. Both original images pass the same 32 cases (64 total).
+
+1. At `0x80003ec4` the handler calls the helper with `0x27` (UART frame
+   `c05515`). A zero return still leads to the next helper.
+2. At `0x80003f10` it calls the helper with `0x28` (`c1c1`) or `0x29`
+   (`c2c2`). A matching first byte is enough to return 1. Return 0 skips
+   the status loop after the helper's two failed attempts.
+3. The original critical sections clear the RX count and buffer twice,
+   with a requested sleep(10000) between them. A status behind the ACK
+   or injected between the clears is discarded in the tested schedules.
+4. At `0x80003f60` the loop requests sleep(1000) and then checks RX byte 0
+   at `0x80003f68`, for up to 230 iterations. A recognized `a0`/`a1`
+   header selects a read of RX byte 1. A single `a0` byte after a clear
+   takes this path with byte 1 still zero. An unknown leading byte kept
+   polling even after a valid pair was appended behind it.
+5. A recognized header leads to helper ID `0x26` (`c000c0`) at
+   `0x80003fe8` even when byte 1 does not map to a value. This is
+   followed by the original flag and GPIO cleanup. With no recognized
+   header by poll 230, the handler clears the flag and exits without
+   calling the `0x26` helper.
+
+| RX prefix | Value stored to `0x805ab920` |
+|---|---|
+| `a0 01`, `a0 02`, `a0 03` | 1, 2, 3 |
+| `a1 01`, `a1 02`, `a1 03`, `a1 04` | 4, 5, 6, 7 |
+| Recognized header with an unmapped second byte | Remains at the entry value 0 |
+
+The [validation report](extended-status-validation.json) pins both image
+hashes, the caller and helper instruction bytes, return values, wire frames
+and representative RX samples. The run executes the original service,
+critical helpers, UART sender and RX ISR. The queue, requested sleeps,
+UART status and interrupt delivery schedule are controlled fixtures.
+The report records software arguments and iteration counts. Peer semantics,
+physical timing and complete task scheduling remain open.
+
+```powershell
+python -B contributions/COORD-ADC-CADENCE/synchronous/trace_extended_status.py --out work/extended-status-validation.json
+```
+
+Use the existing analysis dependencies and create the output parent
+directory before running. Next validate the status reader candidate at
+`0x80005dac4` and trace where the seven decoded values go.

@@ -523,3 +523,7 @@ The prepared handoff does not silently release ownership or start a second agent
 ## 2026-11-09: original deferred producer paths
 
 The owner confirmed the old 08:00 automation was stopped. Commit `3eb171bf801b79e316f0895af78c83b802143635` records the successor in upstream registry revision 19. The new experiment ran four producer suffixes and both reply scenarios on each hash-verified original (16 ARM926 cases), exercising the `0x8000404c` tail branch and three paths through `0x80003eac`. See the [replay, firmware hashes and instruction bytes](contributions/COORD-ADC-CADENCE/synchronous/deferred-validation.json). Next test the `0x28`/`0x29` extended path.
+
+## 2026-11-09: extended deferred status
+
+From `3907fb5877be718150b43a113beebf8e1dbaf955`, ran 16 scenarios per producer per original. Both versions agreed on command ACK failure, both critical RX clears, all seven status mappings, malformed and early status cases, the 230th poll and cleanup. Source and instruction bytes are pinned in the [64 original ARM926 cases with both firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/extended-status-validation.json). Next trace the reader candidate at `0x80005dac4`.

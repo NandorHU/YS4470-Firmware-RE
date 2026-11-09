@@ -1,0 +1,4419 @@
+{
+  "schema": "ys4470.extended-deferred-status.v1",
+  "source_sha256": "4db3c1d8822e1602e8c39032f35faf49d64705e128b1b35ff13f0fe5f3e8876c",
+  "producer_harness_sha256": "f583a373ab95404b629fd0d008a48cdfd712777597d024d7caf1f2c6e97febe2",
+  "uart_harness_sha256": "20df6f4f777d91aed209757fa866282906fae36ff0e5653da7447f0374f525fa",
+  "versions": [
+    {
+      "version": "V3.6",
+      "input_sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+      "cases": 32
+    },
+    {
+      "version": "V3.8",
+      "input_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+      "cases": 32
+    }
+  ],
+  "total_cases": 64,
+  "cases_identical_across_versions": [
+    {
+      "command": "0x28",
+      "producer": "0x8000e50c",
+      "case": "command-ack-missing",
+      "record_prefix_hex": "010000002800",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x28",
+          "return_site": "0x80003f14",
+          "result": 0
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0"
+      },
+      "counts_before_critical_clear": [],
+      "critical_clears": [],
+      "status_polls": 0,
+      "poll_samples": [],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003eb0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c1c1c1c1",
+      "requested_sleep_calls": 1004,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          1,
+          1001
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128
+      ],
+      "original_instructions": 8800
+    },
+    {
+      "command": "0x28",
+      "producer": "0x8000e50c",
+      "case": "ack-only",
+      "record_prefix_hex": "010000002800",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x28",
+          "return_site": "0x80003f14",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-28": "c1"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 230,
+      "poll_samples": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          229,
+          0,
+          0,
+          0
+        ],
+        [
+          230,
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003eb0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c1c1",
+      "requested_sleep_calls": 235,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          230
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128
+      ],
+      "original_instructions": 3126
+    },
+    {
+      "command": "0x28",
+      "producer": "0x8000e50c",
+      "case": "status-behind-ack",
+      "record_prefix_hex": "010000002800",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x28",
+          "return_site": "0x80003f14",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-28": "c1a001"
+      },
+      "counts_before_critical_clear": [
+        3,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 230,
+      "poll_samples": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          229,
+          0,
+          0,
+          0
+        ],
+        [
+          230,
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003eb0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c1c1",
+      "requested_sleep_calls": 235,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          230
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128
+      ],
+      "original_instructions": 3172
+    },
+    {
+      "command": "0x28",
+      "producer": "0x8000e50c",
+      "case": "status-between-clears",
+      "record_prefix_hex": "010000002800",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x28",
+          "return_site": "0x80003f14",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-28": "c1",
+        "between-clears": "a104"
+      },
+      "counts_before_critical_clear": [
+        1,
+        2
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 230,
+      "poll_samples": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          229,
+          0,
+          0,
+          0
+        ],
+        [
+          230,
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003eb0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c1c1",
+      "requested_sleep_calls": 235,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          230
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128
+      ],
+      "original_instructions": 3172
+    },
+    {
+      "command": "0x28",
+      "producer": "0x8000e50c",
+      "case": "a0-01",
+      "record_prefix_hex": "010000002800",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x28",
+          "return_site": "0x80003f14",
+          "result": 1
+        },
+        {
+          "id": "0x26",
+          "return_site": "0x80003fec",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-28": "c1",
+        "poll-1": "a001",
+        "ack-26": "c0"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 1,
+      "poll_samples": [
+        [
+          1,
+          2,
+          160,
+          1
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003f94",
+          "address": "0x805ab920",
+          "value": 1
+        },
+        {
+          "pc": "0x80003ff0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c1c1c000c0",
+      "requested_sleep_calls": 8,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          1
+        ],
+        [
+          2000,
+          1
+        ],
+        [
+          500,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        132,
+        132,
+        128
+      ],
+      "original_instructions": 1159
+    },
+    {
+      "command": "0x28",
+      "producer": "0x8000e50c",
+      "case": "a0-02",
+      "record_prefix_hex": "010000002800",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x28",
+          "return_site": "0x80003f14",
+          "result": 1
+        },
+        {
+          "id": "0x26",
+          "return_site": "0x80003fec",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-28": "c1",
+        "poll-1": "a002",
+        "ack-26": "c0"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 1,
+      "poll_samples": [
+        [
+          1,
+          2,
+          160,
+          2
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003fa8",
+          "address": "0x805ab920",
+          "value": 2
+        },
+        {
+          "pc": "0x80003ff0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c1c1c000c0",
+      "requested_sleep_calls": 8,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          1
+        ],
+        [
+          2000,
+          1
+        ],
+        [
+          500,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        132,
+        132,
+        128
+      ],
+      "original_instructions": 1164
+    },
+    {
+      "command": "0x28",
+      "producer": "0x8000e50c",
+      "case": "a0-03",
+      "record_prefix_hex": "010000002800",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x28",
+          "return_site": "0x80003f14",
+          "result": 1
+        },
+        {
+          "id": "0x26",
+          "return_site": "0x80003fec",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-28": "c1",
+        "poll-1": "a003",
+        "ack-26": "c0"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 1,
+      "poll_samples": [
+        [
+          1,
+          2,
+          160,
+          3
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003fa8",
+          "address": "0x805ab920",
+          "value": 3
+        },
+        {
+          "pc": "0x80003ff0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c1c1c000c0",
+      "requested_sleep_calls": 8,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          1
+        ],
+        [
+          2000,
+          1
+        ],
+        [
+          500,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        132,
+        132,
+        128
+      ],
+      "original_instructions": 1164
+    },
+    {
+      "command": "0x28",
+      "producer": "0x8000e50c",
+      "case": "a0-invalid",
+      "record_prefix_hex": "010000002800",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x28",
+          "return_site": "0x80003f14",
+          "result": 1
+        },
+        {
+          "id": "0x26",
+          "return_site": "0x80003fec",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-28": "c1",
+        "poll-1": "a004",
+        "ack-26": "c0"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 1,
+      "poll_samples": [
+        [
+          1,
+          2,
+          160,
+          4
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003ff0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c1c1c000c0",
+      "requested_sleep_calls": 8,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          1
+        ],
+        [
+          2000,
+          1
+        ],
+        [
+          500,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        132,
+        132,
+        128
+      ],
+      "original_instructions": 1162
+    },
+    {
+      "command": "0x28",
+      "producer": "0x8000e50c",
+      "case": "a0-header-only",
+      "record_prefix_hex": "010000002800",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x28",
+          "return_site": "0x80003f14",
+          "result": 1
+        },
+        {
+          "id": "0x26",
+          "return_site": "0x80003fec",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-28": "c1",
+        "poll-1": "a0",
+        "ack-26": "c0"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 1,
+      "poll_samples": [
+        [
+          1,
+          1,
+          160,
+          0
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003ff0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c1c1c000c0",
+      "requested_sleep_calls": 8,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          1
+        ],
+        [
+          2000,
+          1
+        ],
+        [
+          500,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        132,
+        132,
+        128
+      ],
+      "original_instructions": 1139
+    },
+    {
+      "command": "0x28",
+      "producer": "0x8000e50c",
+      "case": "a1-01",
+      "record_prefix_hex": "010000002800",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x28",
+          "return_site": "0x80003f14",
+          "result": 1
+        },
+        {
+          "id": "0x26",
+          "return_site": "0x80003fec",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-28": "c1",
+        "poll-1": "a101",
+        "ack-26": "c0"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 1,
+      "poll_samples": [
+        [
+          1,
+          2,
+          161,
+          1
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003fa8",
+          "address": "0x805ab920",
+          "value": 4
+        },
+        {
+          "pc": "0x80003ff0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c1c1c000c0",
+      "requested_sleep_calls": 8,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          1
+        ],
+        [
+          2000,
+          1
+        ],
+        [
+          500,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        132,
+        132,
+        128
+      ],
+      "original_instructions": 1163
+    },
+    {
+      "command": "0x28",
+      "producer": "0x8000e50c",
+      "case": "a1-02",
+      "record_prefix_hex": "010000002800",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x28",
+          "return_site": "0x80003f14",
+          "result": 1
+        },
+        {
+          "id": "0x26",
+          "return_site": "0x80003fec",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-28": "c1",
+        "poll-1": "a102",
+        "ack-26": "c0"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 1,
+      "poll_samples": [
+        [
+          1,
+          2,
+          161,
+          2
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003fa8",
+          "address": "0x805ab920",
+          "value": 5
+        },
+        {
+          "pc": "0x80003ff0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c1c1c000c0",
+      "requested_sleep_calls": 8,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          1
+        ],
+        [
+          2000,
+          1
+        ],
+        [
+          500,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        132,
+        132,
+        128
+      ],
+      "original_instructions": 1166
+    },
+    {
+      "command": "0x28",
+      "producer": "0x8000e50c",
+      "case": "a1-03",
+      "record_prefix_hex": "010000002800",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x28",
+          "return_site": "0x80003f14",
+          "result": 1
+        },
+        {
+          "id": "0x26",
+          "return_site": "0x80003fec",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-28": "c1",
+        "poll-1": "a103",
+        "ack-26": "c0"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 1,
+      "poll_samples": [
+        [
+          1,
+          2,
+          161,
+          3
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003fa8",
+          "address": "0x805ab920",
+          "value": 6
+        },
+        {
+          "pc": "0x80003ff0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c1c1c000c0",
+      "requested_sleep_calls": 8,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          1
+        ],
+        [
+          2000,
+          1
+        ],
+        [
+          500,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        132,
+        132,
+        128
+      ],
+      "original_instructions": 1169
+    },
+    {
+      "command": "0x28",
+      "producer": "0x8000e50c",
+      "case": "a1-04-last-poll",
+      "record_prefix_hex": "010000002800",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x28",
+          "return_site": "0x80003f14",
+          "result": 1
+        },
+        {
+          "id": "0x26",
+          "return_site": "0x80003fec",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-28": "c1",
+        "poll-230": "a104",
+        "ack-26": "c0"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 230,
+      "poll_samples": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          229,
+          0,
+          0,
+          0
+        ],
+        [
+          230,
+          2,
+          161,
+          4
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003fa8",
+          "address": "0x805ab920",
+          "value": 7
+        },
+        {
+          "pc": "0x80003ff0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c1c1c000c0",
+      "requested_sleep_calls": 237,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          230
+        ],
+        [
+          2000,
+          1
+        ],
+        [
+          500,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        132,
+        132,
+        128
+      ],
+      "original_instructions": 3462
+    },
+    {
+      "command": "0x28",
+      "producer": "0x8000e50c",
+      "case": "a1-invalid",
+      "record_prefix_hex": "010000002800",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x28",
+          "return_site": "0x80003f14",
+          "result": 1
+        },
+        {
+          "id": "0x26",
+          "return_site": "0x80003fec",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-28": "c1",
+        "poll-1": "a105",
+        "ack-26": "c0"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 1,
+      "poll_samples": [
+        [
+          1,
+          2,
+          161,
+          5
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003ff0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c1c1c000c0",
+      "requested_sleep_calls": 8,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          1
+        ],
+        [
+          2000,
+          1
+        ],
+        [
+          500,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        132,
+        132,
+        128
+      ],
+      "original_instructions": 1170
+    },
+    {
+      "command": "0x28",
+      "producer": "0x8000e50c",
+      "case": "unknown-first-byte",
+      "record_prefix_hex": "010000002800",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x28",
+          "return_site": "0x80003f14",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-28": "c1",
+        "poll-1": "99",
+        "poll-2": "a001"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 230,
+      "poll_samples": [
+        [
+          1,
+          1,
+          153,
+          0
+        ],
+        [
+          2,
+          3,
+          153,
+          160
+        ],
+        [
+          229,
+          3,
+          153,
+          160
+        ],
+        [
+          230,
+          3,
+          153,
+          160
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003eb0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c1c1",
+      "requested_sleep_calls": 235,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          230
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128
+      ],
+      "original_instructions": 3195
+    },
+    {
+      "command": "0x28",
+      "producer": "0x8000e50c",
+      "case": "initial-and-final-ack-missing",
+      "record_prefix_hex": "010000002800",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 0
+        },
+        {
+          "id": "0x28",
+          "return_site": "0x80003f14",
+          "result": 1
+        },
+        {
+          "id": "0x26",
+          "return_site": "0x80003fec",
+          "result": 0
+        }
+      ],
+      "deliveries": {
+        "ack-28": "c1",
+        "poll-1": "a001"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 1,
+      "poll_samples": [
+        [
+          1,
+          2,
+          160,
+          1
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003f94",
+          "address": "0x805ab920",
+          "value": 1
+        },
+        {
+          "pc": "0x80003ff0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c05515c1c1c000c0c000c0",
+      "requested_sleep_calls": 2008,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          1,
+          1000
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          1
+        ],
+        [
+          1,
+          1000
+        ],
+        [
+          2000,
+          1
+        ],
+        [
+          500,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        132,
+        132,
+        128
+      ],
+      "original_instructions": 17445
+    },
+    {
+      "command": "0x29",
+      "producer": "0x8000e5a0",
+      "case": "command-ack-missing",
+      "record_prefix_hex": "010000002900",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x29",
+          "return_site": "0x80003f14",
+          "result": 0
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0"
+      },
+      "counts_before_critical_clear": [],
+      "critical_clears": [],
+      "status_polls": 0,
+      "poll_samples": [],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003eb0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c2c2c2c2",
+      "requested_sleep_calls": 1004,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          1,
+          1001
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128
+      ],
+      "original_instructions": 8800
+    },
+    {
+      "command": "0x29",
+      "producer": "0x8000e5a0",
+      "case": "ack-only",
+      "record_prefix_hex": "010000002900",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x29",
+          "return_site": "0x80003f14",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-29": "c2"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 230,
+      "poll_samples": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          229,
+          0,
+          0,
+          0
+        ],
+        [
+          230,
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003eb0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c2c2",
+      "requested_sleep_calls": 235,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          230
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128
+      ],
+      "original_instructions": 3126
+    },
+    {
+      "command": "0x29",
+      "producer": "0x8000e5a0",
+      "case": "status-behind-ack",
+      "record_prefix_hex": "010000002900",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x29",
+          "return_site": "0x80003f14",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-29": "c2a001"
+      },
+      "counts_before_critical_clear": [
+        3,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 230,
+      "poll_samples": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          229,
+          0,
+          0,
+          0
+        ],
+        [
+          230,
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003eb0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c2c2",
+      "requested_sleep_calls": 235,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          230
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128
+      ],
+      "original_instructions": 3172
+    },
+    {
+      "command": "0x29",
+      "producer": "0x8000e5a0",
+      "case": "status-between-clears",
+      "record_prefix_hex": "010000002900",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x29",
+          "return_site": "0x80003f14",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-29": "c2",
+        "between-clears": "a104"
+      },
+      "counts_before_critical_clear": [
+        1,
+        2
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 230,
+      "poll_samples": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          229,
+          0,
+          0,
+          0
+        ],
+        [
+          230,
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003eb0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c2c2",
+      "requested_sleep_calls": 235,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          230
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128
+      ],
+      "original_instructions": 3172
+    },
+    {
+      "command": "0x29",
+      "producer": "0x8000e5a0",
+      "case": "a0-01",
+      "record_prefix_hex": "010000002900",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x29",
+          "return_site": "0x80003f14",
+          "result": 1
+        },
+        {
+          "id": "0x26",
+          "return_site": "0x80003fec",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-29": "c2",
+        "poll-1": "a001",
+        "ack-26": "c0"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 1,
+      "poll_samples": [
+        [
+          1,
+          2,
+          160,
+          1
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003f94",
+          "address": "0x805ab920",
+          "value": 1
+        },
+        {
+          "pc": "0x80003ff0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c2c2c000c0",
+      "requested_sleep_calls": 8,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          1
+        ],
+        [
+          2000,
+          1
+        ],
+        [
+          500,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        132,
+        132,
+        128
+      ],
+      "original_instructions": 1159
+    },
+    {
+      "command": "0x29",
+      "producer": "0x8000e5a0",
+      "case": "a0-02",
+      "record_prefix_hex": "010000002900",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x29",
+          "return_site": "0x80003f14",
+          "result": 1
+        },
+        {
+          "id": "0x26",
+          "return_site": "0x80003fec",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-29": "c2",
+        "poll-1": "a002",
+        "ack-26": "c0"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 1,
+      "poll_samples": [
+        [
+          1,
+          2,
+          160,
+          2
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003fa8",
+          "address": "0x805ab920",
+          "value": 2
+        },
+        {
+          "pc": "0x80003ff0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c2c2c000c0",
+      "requested_sleep_calls": 8,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          1
+        ],
+        [
+          2000,
+          1
+        ],
+        [
+          500,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        132,
+        132,
+        128
+      ],
+      "original_instructions": 1164
+    },
+    {
+      "command": "0x29",
+      "producer": "0x8000e5a0",
+      "case": "a0-03",
+      "record_prefix_hex": "010000002900",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x29",
+          "return_site": "0x80003f14",
+          "result": 1
+        },
+        {
+          "id": "0x26",
+          "return_site": "0x80003fec",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-29": "c2",
+        "poll-1": "a003",
+        "ack-26": "c0"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 1,
+      "poll_samples": [
+        [
+          1,
+          2,
+          160,
+          3
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003fa8",
+          "address": "0x805ab920",
+          "value": 3
+        },
+        {
+          "pc": "0x80003ff0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c2c2c000c0",
+      "requested_sleep_calls": 8,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          1
+        ],
+        [
+          2000,
+          1
+        ],
+        [
+          500,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        132,
+        132,
+        128
+      ],
+      "original_instructions": 1164
+    },
+    {
+      "command": "0x29",
+      "producer": "0x8000e5a0",
+      "case": "a0-invalid",
+      "record_prefix_hex": "010000002900",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x29",
+          "return_site": "0x80003f14",
+          "result": 1
+        },
+        {
+          "id": "0x26",
+          "return_site": "0x80003fec",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-29": "c2",
+        "poll-1": "a004",
+        "ack-26": "c0"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 1,
+      "poll_samples": [
+        [
+          1,
+          2,
+          160,
+          4
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003ff0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c2c2c000c0",
+      "requested_sleep_calls": 8,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          1
+        ],
+        [
+          2000,
+          1
+        ],
+        [
+          500,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        132,
+        132,
+        128
+      ],
+      "original_instructions": 1162
+    },
+    {
+      "command": "0x29",
+      "producer": "0x8000e5a0",
+      "case": "a0-header-only",
+      "record_prefix_hex": "010000002900",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x29",
+          "return_site": "0x80003f14",
+          "result": 1
+        },
+        {
+          "id": "0x26",
+          "return_site": "0x80003fec",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-29": "c2",
+        "poll-1": "a0",
+        "ack-26": "c0"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 1,
+      "poll_samples": [
+        [
+          1,
+          1,
+          160,
+          0
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003ff0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c2c2c000c0",
+      "requested_sleep_calls": 8,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          1
+        ],
+        [
+          2000,
+          1
+        ],
+        [
+          500,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        132,
+        132,
+        128
+      ],
+      "original_instructions": 1139
+    },
+    {
+      "command": "0x29",
+      "producer": "0x8000e5a0",
+      "case": "a1-01",
+      "record_prefix_hex": "010000002900",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x29",
+          "return_site": "0x80003f14",
+          "result": 1
+        },
+        {
+          "id": "0x26",
+          "return_site": "0x80003fec",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-29": "c2",
+        "poll-1": "a101",
+        "ack-26": "c0"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 1,
+      "poll_samples": [
+        [
+          1,
+          2,
+          161,
+          1
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003fa8",
+          "address": "0x805ab920",
+          "value": 4
+        },
+        {
+          "pc": "0x80003ff0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c2c2c000c0",
+      "requested_sleep_calls": 8,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          1
+        ],
+        [
+          2000,
+          1
+        ],
+        [
+          500,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        132,
+        132,
+        128
+      ],
+      "original_instructions": 1163
+    },
+    {
+      "command": "0x29",
+      "producer": "0x8000e5a0",
+      "case": "a1-02",
+      "record_prefix_hex": "010000002900",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x29",
+          "return_site": "0x80003f14",
+          "result": 1
+        },
+        {
+          "id": "0x26",
+          "return_site": "0x80003fec",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-29": "c2",
+        "poll-1": "a102",
+        "ack-26": "c0"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 1,
+      "poll_samples": [
+        [
+          1,
+          2,
+          161,
+          2
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003fa8",
+          "address": "0x805ab920",
+          "value": 5
+        },
+        {
+          "pc": "0x80003ff0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c2c2c000c0",
+      "requested_sleep_calls": 8,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          1
+        ],
+        [
+          2000,
+          1
+        ],
+        [
+          500,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        132,
+        132,
+        128
+      ],
+      "original_instructions": 1166
+    },
+    {
+      "command": "0x29",
+      "producer": "0x8000e5a0",
+      "case": "a1-03",
+      "record_prefix_hex": "010000002900",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x29",
+          "return_site": "0x80003f14",
+          "result": 1
+        },
+        {
+          "id": "0x26",
+          "return_site": "0x80003fec",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-29": "c2",
+        "poll-1": "a103",
+        "ack-26": "c0"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 1,
+      "poll_samples": [
+        [
+          1,
+          2,
+          161,
+          3
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003fa8",
+          "address": "0x805ab920",
+          "value": 6
+        },
+        {
+          "pc": "0x80003ff0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c2c2c000c0",
+      "requested_sleep_calls": 8,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          1
+        ],
+        [
+          2000,
+          1
+        ],
+        [
+          500,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        132,
+        132,
+        128
+      ],
+      "original_instructions": 1169
+    },
+    {
+      "command": "0x29",
+      "producer": "0x8000e5a0",
+      "case": "a1-04-last-poll",
+      "record_prefix_hex": "010000002900",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x29",
+          "return_site": "0x80003f14",
+          "result": 1
+        },
+        {
+          "id": "0x26",
+          "return_site": "0x80003fec",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-29": "c2",
+        "poll-230": "a104",
+        "ack-26": "c0"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 230,
+      "poll_samples": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          229,
+          0,
+          0,
+          0
+        ],
+        [
+          230,
+          2,
+          161,
+          4
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003fa8",
+          "address": "0x805ab920",
+          "value": 7
+        },
+        {
+          "pc": "0x80003ff0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c2c2c000c0",
+      "requested_sleep_calls": 237,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          230
+        ],
+        [
+          2000,
+          1
+        ],
+        [
+          500,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        132,
+        132,
+        128
+      ],
+      "original_instructions": 3462
+    },
+    {
+      "command": "0x29",
+      "producer": "0x8000e5a0",
+      "case": "a1-invalid",
+      "record_prefix_hex": "010000002900",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x29",
+          "return_site": "0x80003f14",
+          "result": 1
+        },
+        {
+          "id": "0x26",
+          "return_site": "0x80003fec",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-29": "c2",
+        "poll-1": "a105",
+        "ack-26": "c0"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 1,
+      "poll_samples": [
+        [
+          1,
+          2,
+          161,
+          5
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003ff0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c2c2c000c0",
+      "requested_sleep_calls": 8,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          1
+        ],
+        [
+          2000,
+          1
+        ],
+        [
+          500,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        132,
+        132,
+        128
+      ],
+      "original_instructions": 1170
+    },
+    {
+      "command": "0x29",
+      "producer": "0x8000e5a0",
+      "case": "unknown-first-byte",
+      "record_prefix_hex": "010000002900",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 1
+        },
+        {
+          "id": "0x29",
+          "return_site": "0x80003f14",
+          "result": 1
+        }
+      ],
+      "deliveries": {
+        "ack-27": "c0",
+        "ack-29": "c2",
+        "poll-1": "99",
+        "poll-2": "a001"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 230,
+      "poll_samples": [
+        [
+          1,
+          1,
+          153,
+          0
+        ],
+        [
+          2,
+          3,
+          153,
+          160
+        ],
+        [
+          229,
+          3,
+          153,
+          160
+        ],
+        [
+          230,
+          3,
+          153,
+          160
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003eb0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c2c2",
+      "requested_sleep_calls": 235,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          230
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128
+      ],
+      "original_instructions": 3195
+    },
+    {
+      "command": "0x29",
+      "producer": "0x8000e5a0",
+      "case": "initial-and-final-ack-missing",
+      "record_prefix_hex": "010000002900",
+      "helpers": [
+        {
+          "id": "0x27",
+          "return_site": "0x80003ec8",
+          "result": 0
+        },
+        {
+          "id": "0x29",
+          "return_site": "0x80003f14",
+          "result": 1
+        },
+        {
+          "id": "0x26",
+          "return_site": "0x80003fec",
+          "result": 0
+        }
+      ],
+      "deliveries": {
+        "ack-29": "c2",
+        "poll-1": "a001"
+      },
+      "counts_before_critical_clear": [
+        1,
+        0
+      ],
+      "critical_clears": [
+        [
+          "0x80003f38",
+          0,
+          0,
+          0
+        ],
+        [
+          "0x80003f58",
+          0,
+          0,
+          0
+        ]
+      ],
+      "status_polls": 1,
+      "poll_samples": [
+        [
+          1,
+          2,
+          160,
+          1
+        ]
+      ],
+      "status_writes": [
+        {
+          "pc": "0x80003e58",
+          "address": "0x805ab91c",
+          "value": 1
+        },
+        {
+          "pc": "0x80003e60",
+          "address": "0x805ab920",
+          "value": 0
+        },
+        {
+          "pc": "0x80003f94",
+          "address": "0x805ab920",
+          "value": 1
+        },
+        {
+          "pc": "0x80003ff0",
+          "address": "0x805ab91c",
+          "value": 0
+        }
+      ],
+      "wire_hex": "c05515c05515c2c2c000c0c000c0",
+      "requested_sleep_calls": 2008,
+      "requested_sleep_runs": [
+        [
+          600,
+          1
+        ],
+        [
+          1,
+          1000
+        ],
+        [
+          500,
+          2
+        ],
+        [
+          10000,
+          1
+        ],
+        [
+          1000,
+          1
+        ],
+        [
+          1,
+          1000
+        ],
+        [
+          2000,
+          1
+        ],
+        [
+          500,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "gpio_shadow_writes": [
+        128,
+        128,
+        136,
+        136,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        128,
+        132,
+        132,
+        128
+      ],
+      "original_instructions": 17445
+    }
+  ],
+  "observed_instructions_identical_across_versions": {
+    "0x800009c4": "030052e3",
+    "0x800009c8": "2a00009a",
+    "0x80000a78": "822fb0e1",
+    "0x80000a7c": "0130d124",
+    "0x80000a80": "01c0d124",
+    "0x80000a84": "0120d144",
+    "0x80000a88": "0130c024",
+    "0x80000a8c": "01c0c024",
+    "0x80000a90": "0120c044",
+    "0x80000a94": "1eff2fe1",
+    "0x80000a98": "10402de9",
+    "0x80000a9c": "202052e2",
+    "0x80000aa0": "0500003a",
+    "0x80000aa4": "1850b1e8",
+    "0x80000aa8": "202052e2",
+    "0x80000aac": "1850a0e8",
+    "0x80000ab0": "1850b1e8",
+    "0x80000ab4": "1850a0e8",
+    "0x80000ab8": "f9ffff2a",
+    "0x80000abc": "02ceb0e1",
+    "0x80000ac0": "1850b128",
+    "0x80000ac4": "1850a028",
+    "0x80000ac8": "1800b148",
+    "0x80000acc": "1800a048",
+    "0x80000ad0": "1040bde8",
+    "0x80000ad4": "02cfb0e1",
+    "0x80000ad8": "04309124",
+    "0x80000adc": "04308024",
+    "0x80000ae0": "1eff2f01",
+    "0x80000b4c": "0020a0e3",
+    "0x80000b50": "00402de9",
+    "0x80000b54": "0230a0e1",
+    "0x80000b58": "02c0a0e1",
+    "0x80000b5c": "02e0a0e1",
+    "0x80000b60": "201051e2",
+    "0x80000b64": "0c50a028",
+    "0x80000b68": "0c50a028",
+    "0x80000b6c": "20105122",
+    "0x80000b70": "fbffff2a",
+    "0x80000b74": "011eb0e1",
+    "0x80000b78": "0c50a028",
+    "0x80000b7c": "0c00a048",
+    "0x80000b80": "0040bde8",
+    "0x80000b84": "0111b0e1",
+    "0x80000b88": "04208024",
+    "0x80000b8c": "1eff2f01",
+    "0x800031b8": "102090e5",
+    "0x800031bc": "0130a0e3",
+    "0x800031c0": "1311c2e1",
+    "0x800031c4": "101080e5",
+    "0x800031c8": "1eff2fe1",
+    "0x800031cc": "102090e5",
+    "0x800031d0": "0130a0e3",
+    "0x800031d4": "131182e1",
+    "0x800031d8": "101080e5",
+    "0x800031dc": "1eff2fe1",
+    "0x80003dd8": "f0472de9",
+    "0x80003ddc": "0580d0e5",
+    "0x80003de0": "0440d0e5",
+    "0x80003de4": "000090e5",
+    "0x80003de8": "131048e2",
+    "0x80003dec": "050051e3",
+    "0x80003df0": "58529fe5",
+    "0x80003df4": "58729fe5",
+    "0x80003df8": "1980a083",
+    "0x80003dfc": "010050e3",
+    "0x80003e00": "0060a0e3",
+    "0x80003e04": "1100000a",
+    "0x80003e50": "0190a0e3",
+    "0x80003e54": "280054e3",
+    "0x80003e58": "009087e5",
+    "0x80003e5c": "29005413",
+    "0x80003e60": "006085e5",
+    "0x80003e64": "1300000a",
+    "0x80003eb0": "006087e5",
+    "0x80003eb4": "f087bde8",
+    "0x80003eb8": "960fa0e3",
+    "0x80003ebc": "3e7401eb",
+    "0x80003ec0": "2700a0e3",
+    "0x80003ec4": "120800eb",
+    "0x80003ec8": "7d0fa0e3",
+    "0x80003ecc": "3a7401eb",
+    "0x80003ed0": "84819fe5",
+    "0x80003ed4": "0310a0e3",
+    "0x80003ed8": "0800a0e1",
+    "0x80003edc": "bafcffeb",
+    "0x80003ee0": "0210a0e3",
+    "0x80003ee4": "0800a0e1",
+    "0x80003ee8": "b2fcffeb",
+    "0x80003eec": "7d0fa0e3",
+    "0x80003ef0": "317401eb",
+    "0x80003ef4": "0310a0e3",
+    "0x80003ef8": "0800a0e1",
+    "0x80003efc": "adfcffeb",
+    "0x80003f00": "0210a0e3",
+    "0x80003f04": "0800a0e1",
+    "0x80003f08": "aafcffeb",
+    "0x80003f0c": "0400a0e1",
+    "0x80003f10": "ff0700eb",
+    "0x80003f14": "010050e3",
+    "0x80003f18": "e4ffff1a",
+    "0x80003f1c": "f67301eb",
+    "0x80003f20": "38419fe5",
+    "0x80003f24": "006084e5",
+    "0x80003f28": "34019fe5",
+    "0x80003f2c": "c810a0e3",
+    "0x80003f30": "05f3ffeb",
+    "0x80003f34": "f97301eb",
+    "0x80003f38": "28019fe5",
+    "0x80003f3c": "1e7401eb",
+    "0x80003f40": "ed7301eb",
+    "0x80003f44": "006084e5",
+    "0x80003f48": "14019fe5",
+    "0x80003f4c": "c810a0e3",
+    "0x80003f50": "fdf2ffeb",
+    "0x80003f54": "f17301eb",
+    "0x80003f58": "04a19fe5",
+    "0x80003f5c": "e640a0e3",
+    "0x80003f60": "fa0fa0e3",
+    "0x80003f64": "147401eb",
+    "0x80003f68": "0000dae5",
+    "0x80003f6c": "a00050e3",
+    "0x80003f70": "0500000a",
+    "0x80003f74": "a10050e3",
+    "0x80003f78": "0c00000a",
+    "0x80003f7c": "014044e2",
+    "0x80003f80": "000054e3",
+    "0x80003f84": "f5ffffca",
+    "0x80003f88": "c8ffffea",
+    "0x80003f8c": "0100dae5",
+    "0x80003f90": "010050e3",
+    "0x80003f94": "00908505",
+    "0x80003f98": "1100000a",
+    "0x80003f9c": "020050e3",
+    "0x80003fa0": "03005013",
+    "0x80003fa4": "0e00001a",
+    "0x80003fa8": "000085e5",
+    "0x80003fac": "0c0000ea",
+    "0x80003fb0": "0100dae5",
+    "0x80003fb4": "010050e3",
+    "0x80003fb8": "0400a003",
+    "0x80003fbc": "f9ffff0a",
+    "0x80003fc0": "020050e3",
+    "0x80003fc4": "0500a003",
+    "0x80003fc8": "f6ffff0a",
+    "0x80003fcc": "030050e3",
+    "0x80003fd0": "0600a003",
+    "0x80003fd4": "f3ffff0a",
+    "0x80003fd8": "040050e3",
+    "0x80003fdc": "0700a003",
+    "0x80003fe0": "f0ffff0a",
+    "0x80003fe4": "2600a0e3",
+    "0x80003fe8": "c90700eb",
+    "0x80003fec": "7d0ea0e3",
+    "0x80003ff0": "006087e5",
+    "0x80003ff4": "f07301eb",
+    "0x80003ff8": "0310a0e3",
+    "0x80003ffc": "0800a0e1",
+    "0x80004000": "6cfcffeb",
+    "0x80004004": "0210a0e3",
+    "0x80004008": "0800a0e1",
+    "0x8000400c": "6efcffeb",
+    "0x80004010": "7d0fa0e3",
+    "0x80004014": "e87301eb",
+    "0x80004018": "0310a0e3",
+    "0x8000401c": "0800a0e1",
+    "0x80004020": "64fcffeb",
+    "0x80004024": "0800a0e1",
+    "0x80004028": "f047bde8",
+    "0x8000402c": "0210a0e3",
+    "0x80004030": "60fcffea",
+    "0x80004390": "10402de9",
+    "0x80004394": "0520d0e5",
+    "0x80004398": "0410d0e5",
+    "0x8000439c": "000090e5",
+    "0x800043a0": "133042e2",
+    "0x800043a4": "050053e3",
+    "0x800043a8": "1920a083",
+    "0x800043ac": "030050e3",
+    "0x800043b0": "10d04de2",
+    "0x800043b4": "1d40a0e3",
+    "0x800043b8": "1800000a",
+    "0x800043bc": "040050e3",
+    "0x800043c0": "1e00000a",
+    "0x800043c4": "c0309fe5",
+    "0x800043c8": "020050e3",
+    "0x800043cc": "02c0a0e3",
+    "0x800043d0": "2300000a",
+    "0x800043d4": "050050e3",
+    "0x800043d8": "0000a013",
+    "0x800043dc": "10d08d12",
+    "0x800043e0": "1080bd18",
+    "0x80004490": "f05f2de9",
+    "0x80004494": "6c939fe5",
+    "0x80004498": "74c39fe5",
+    "0x8000449c": "001089e2",
+    "0x800044a0": "00e0d9e5",
+    "0x800044a4": "2c0091e5",
+    "0x800044a8": "305091e5",
+    "0x800044ac": "0030dce5",
+    "0x800044b0": "54a39fe5",
+    "0x800044b4": "54639fe5",
+    "0x800044b8": "201091e5",
+    "0x800044bc": "08005ee3",
+    "0x800044c0": "0070a0e3",
+    "0x800044c4": "0720a0e3",
+    "0x800044c8": "0680a0e3",
+    "0x800044cc": "01b0a0e3",
+    "0x800044d0": "0840a0e3",
+    "0x800044d4": "0ef19f37",
+    "0x800044fc": "3470c9e5",
+    "0x80004500": "f09fbde8",
+    "0x80005b6c": "f04f2de9",
+    "0x80005b70": "a0419fe5",
+    "0x80005b74": "5cd04de2",
+    "0x80005b78": "040094e5",
+    "0x80005b7c": "000050e3",
+    "0x80005b80": "5f00000a",
+    "0x80005b84": "0030a0e3",
+    "0x80005b88": "0320a0e1",
+    "0x80005b8c": "0d10a0e1",
+    "0x80005b90": "516f01eb",
+    "0x80005b94": "80719fe5",
+    "0x80005b98": "010050e3",
+    "0x80005b9c": "4700001a",
+    "0x80005ba0": "1b90a0e3",
+    "0x80005ba4": "1d50a0e3",
+    "0x80005ba8": "0260a0e3",
+    "0x80005bac": "2280a0e3",
+    "0x80005bb0": "0ca0a0e3",
+    "0x80005bb4": "13b0a0e3",
+    "0x80005bb8": "00009de5",
+    "0x80005bbc": "030050e3",
+    "0x80005bc0": "04005013",
+    "0x80005bc4": "0600000a",
+    "0x80005bc8": "50019fe5",
+    "0x80005bcc": "4420a0e3",
+    "0x80005bd0": "0d10a0e1",
+    "0x80005bd4": "afebffeb",
+    "0x80005bd8": "0100a0e3",
+    "0x80005bdc": "0000c4e5",
+    "0x80005be0": "2f0000ea",
+    "0x80005ca4": "0030a0e3",
+    "0x80005ca8": "040094e5",
+    "0x80005cac": "0320a0e1",
+    "0x80005cb0": "0d10a0e1",
+    "0x80005cb4": "086f01eb",
+    "0x80005cb8": "010050e3",
+    "0x80005cbc": "bdffff0a",
+    "0x80005cc0": "3400d7e5",
+    "0x80005cc4": "000050e3",
+    "0x80005cc8": "0d00001a",
+    "0x80005ccc": "0000d4e5",
+    "0x80005cd0": "000050e3",
+    "0x80005cd4": "0a00000a",
+    "0x80005cd8": "40109fe5",
+    "0x80005cdc": "4420a0e3",
+    "0x80005ce0": "0d00a0e1",
+    "0x80005ce4": "6bebffeb",
+    "0x80005ce8": "0000a0e3",
+    "0x80005cec": "0000c4e5",
+    "0x80005cf0": "0d00a0e1",
+    "0x80005cf4": "a5f9ffeb",
+    "0x80005cf8": "000050e3",
+    "0x80005cfc": "0d00a001",
+    "0x80005d00": "34f8ff0b",
+    "0x80005d04": "e1f9ffeb",
+    "0x80005d08": "5cd08de2",
+    "0x80005d0c": "f04fbde8",
+    "0x80005d10": "0100a0e3",
+    "0x80005d14": "a86c01ea",
+    "0x80005e84": "70402de9",
+    "0x80005e88": "015081e2",
+    "0x80005e8c": "c80055e3",
+    "0x80005e90": "0060a0e1",
+    "0x80005e94": "0140a0e1",
+    "0x80005e98": "0000a083",
+    "0x80005e9c": "7080bd88",
+    "0x80005ea0": "0120a0e1",
+    "0x80005ea4": "0010a0e1",
+    "0x80005ea8": "60009fe5",
+    "0x80005eac": "c4eaffeb",
+    "0x80005eb0": "0010a0e3",
+    "0x80005eb4": "000054e3",
+    "0x80005eb8": "0100a0e1",
+    "0x80005ebc": "0600009a",
+    "0x80005ec0": "0020d6e7",
+    "0x80005ec4": "010080e2",
+    "0x80005ec8": "0108c0e3",
+    "0x80005ecc": "021081e0",
+    "0x80005ed0": "000054e1",
+    "0x80005ed4": "ff1001e2",
+    "0x80005ed8": "f8ffff8a",
+    "0x80005edc": "2c609fe5",
+    "0x80005ee0": "000055e3",
+    "0x80005ee4": "0410c6e7",
+    "0x80005ee8": "0040a0e3",
+    "0x80005eec": "050000da",
+    "0x80005ef0": "0410d6e7",
+    "0x80005ef4": "0200a0e3",
+    "0x80005ef8": "b20300eb",
+    "0x80005efc": "014084e2",
+    "0x80005f00": "040055e1",
+    "0x80005f04": "f9ffffca",
+    "0x80005f08": "0100a0e3",
+    "0x80005f0c": "7080bde8",
+    "0x80005f14": "300050e3",
+    "0x80005f18": "0000a0a3",
+    "0x80005f1c": "1eff2fa1",
+    "0x80005f20": "f05f2de9",
+    "0x80005f24": "64a19fe5",
+    "0x80005f28": "0040a0e1",
+    "0x80005f2c": "0000a0e3",
+    "0x80005f30": "00008ae5",
+    "0x80005f34": "58019fe5",
+    "0x80005f38": "c810a0e3",
+    "0x80005f3c": "02ebffeb",
+    "0x80005f40": "50819fe5",
+    "0x80005f44": "0c0054e3",
+    "0x80005f48": "0d005413",
+    "0x80005f4c": "0700000a",
+    "0x80005f50": "0e0054e3",
+    "0x80005f54": "0f005413",
+    "0x80005f58": "0b005413",
+    "0x80005f5c": "0300000a",
+    "0x80005f60": "0a0054e3",
+    "0x80005f64": "09005413",
+    "0x80005f68": "0700000a",
+    "0x80005f6c": "0c0000ea",
+    "0x80005fa4": "f0509fe5",
+    "0x80005fa8": "840195e7",
+    "0x80005fac": "849185e0",
+    "0x80005fb0": "0410d9e5",
+    "0x80005fb4": "b2ffffeb",
+    "0x80005fb8": "840195e7",
+    "0x80005fbc": "d0b09fe5",
+    "0x80005fc0": "0060d0e5",
+    "0x80005fc4": "7d7fa0e3",
+    "0x80005fc8": "0050a0e3",
+    "0x80005fcc": "00009ae5",
+    "0x80005fd0": "000050e3",
+    "0x80005fd4": "020000da",
+    "0x80005fd8": "0010dbe5",
+    "0x80005fdc": "060051e1",
+    "0x80005fe0": "1500000a",
+    "0x80005fe4": "0100a0e3",
+    "0x80005fe8": "f36b01eb",
+    "0x80005fec": "015085e2",
+    "0x80005ff0": "070055e1",
+    "0x80005ff4": "f4ffffba",
+    "0x80005ff8": "0000a0e3",
+    "0x80005ffc": "00008ae5",
+    "0x80006000": "8c009fe5",
+    "0x80006004": "c810a0e3",
+    "0x80006008": "cfeaffeb",
+    "0x8000600c": "88009fe5",
+    "0x80006010": "0410d9e5",
+    "0x80006014": "840190e7",
+    "0x80006018": "99ffffeb",
+    "0x8000601c": "7d5fa0e3",
+    "0x80006020": "0040a0e3",
+    "0x80006024": "00009ae5",
+    "0x80006028": "000050e3",
+    "0x8000602c": "0a0000da",
+    "0x8000603c": "0310a0e3",
+    "0x80006040": "0800a0e1",
+    "0x80006044": "5bf4ffeb",
+    "0x80006048": "0210a0e3",
+    "0x8000604c": "0800a0e1",
+    "0x80006050": "58f4ffeb",
+    "0x80006054": "0100a0e3",
+    "0x80006058": "f09fbde8",
+    "0x8000605c": "0100a0e3",
+    "0x80006060": "d56b01eb",
+    "0x80006064": "014084e2",
+    "0x80006068": "050054e1",
+    "0x8000606c": "ecffffba",
+    "0x80006070": "0310a0e3",
+    "0x80006074": "0800a0e1",
+    "0x80006078": "4ef4ffeb",
+    "0x8000607c": "0210a0e3",
+    "0x80006080": "0800a0e1",
+    "0x80006084": "4bf4ffeb",
+    "0x80006088": "0000a0e3",
+    "0x8000608c": "f09fbde8",
+    "0x80006778": "0030a0e1",
+    "0x8000677c": "40009fe5",
+    "0x80006780": "04e02de5",
+    "0x80006784": "040090e5",
+    "0x80006788": "44d04de2",
+    "0x8000678c": "000050e3",
+    "0x80006790": "44d08d02",
+    "0x80006794": "04f09d04",
+    "0x80006798": "0410cde5",
+    "0x8000679c": "030053e3",
+    "0x800067a0": "0520cde5",
+    "0x800067a4": "00308de5",
+    "0x800067a8": "0020a003",
+    "0x800067ac": "0a20a013",
+    "0x800067b0": "0030a0e3",
+    "0x800067b4": "0d10a0e1",
+    "0x800067b8": "c36c01eb",
+    "0x800067bc": "44d08de2",
+    "0x800067c0": "04f09de4",
+    "0x80006dc8": "000050e3",
+    "0x80006dcc": "48009f05",
+    "0x80006dd0": "04d04de2",
+    "0x80006dd4": "0700000a",
+    "0x80006dd8": "010050e3",
+    "0x80006ddc": "3c009f05",
+    "0x80006de0": "0400000a",
+    "0x80006de4": "020050e3",
+    "0x80006de8": "34009f05",
+    "0x80006dec": "00008d05",
+    "0x80006df0": "00009de5",
+    "0x80006df4": "000000ea",
+    "0x80006dfc": "7c0080e2",
+    "0x80006e00": "002090e5",
+    "0x80006e04": "020012e3",
+    "0x80006e08": "fcffff0a",
+    "0x80006e0c": "00009de5",
+    "0x80006e10": "001080e5",
+    "0x80006e14": "04d08de2",
+    "0x80006e18": "1eff2fe1",
+    "0x800073bc": "54009fe5",
+    "0x800073c0": "04d04de2",
+    "0x800073c4": "081080e2",
+    "0x800073c8": "001091e5",
+    "0x800073cc": "040011e3",
+    "0x800073d0": "00108de5",
+    "0x800073d4": "04d08d02",
+    "0x800073d8": "1eff2f01",
+    "0x800073dc": "000090e5",
+    "0x800073e0": "ff1000e2",
+    "0x800073e4": "30209fe5",
+    "0x800073e8": "000092e5",
+    "0x800073ec": "c80050e3",
+    "0x800073f0": "04d08da2",
+    "0x800073f4": "1eff2fa1",
+    "0x800073f8": "000092e5",
+    "0x800073fc": "1c309fe5",
+    "0x80007400": "003083e0",
+    "0x80007404": "010080e2",
+    "0x80007408": "000082e5",
+    "0x8000740c": "0010c3e5",
+    "0x80007410": "04d08de2",
+    "0x80007414": "1eff2fe1",
+    "0x8000e4f4": "40009fe5",
+    "0x8000e4f8": "2810a0e3",
+    "0x8000e4fc": "0020a0e3",
+    "0x8000e500": "0010c0e5",
+    "0x8000e504": "0120c0e5",
+    "0x8000e508": "0100a0e3",
+    "0x8000e50c": "99e0ffeb",
+    "0x8000e588": "40009fe5",
+    "0x8000e58c": "2910a0e3",
+    "0x8000e590": "0020a0e3",
+    "0x8000e594": "0010c0e5",
+    "0x8000e598": "0120c0e5",
+    "0x8000e59c": "0100a0e3",
+    "0x8000e5a0": "74e0ffeb",
+    "0x80060efc": "00000fe1",
+    "0x80060f00": "800080e3",
+    "0x80060f04": "00f021e1",
+    "0x80060f08": "0c009fe5",
+    "0x80060f0c": "001090e5",
+    "0x80060f10": "011081e2",
+    "0x80060f14": "001080e5",
+    "0x80060f18": "1eff2fe1",
+    "0x80060f20": "30009fe5",
+    "0x80060f24": "001090e5",
+    "0x80060f28": "000051e3",
+    "0x80060f2c": "1eff2f01",
+    "0x80060f30": "001090e5",
+    "0x80060f34": "011041e2",
+    "0x80060f38": "001080e5",
+    "0x80060f3c": "000090e5",
+    "0x80060f40": "000050e3",
+    "0x80060f44": "1eff2f11",
+    "0x80060f48": "00000fe1",
+    "0x80060f4c": "8000c0e3",
+    "0x80060f50": "00f021e1",
+    "0x80060f54": "1eff2fe1"
+  },
+  "models": [
+    "One-record RTOS queue handoff, requested sleep returns, UART status and explicit byte delivery.",
+    "Original UART ISR executed with controlled nested context after each scheduled injection.",
+    "Original caller suffixes start after their queue-drain call; peer and physical timing are outside replay."
+  ]
+}

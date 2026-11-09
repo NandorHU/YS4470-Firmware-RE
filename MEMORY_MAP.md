@@ -353,3 +353,7 @@ The prepared handoff does not silently release ownership or start a second agent
 ## 2026-11-09: original deferred producer paths
 
 In 16 original V3.6/V3.8 ARM926 cases, `0x80006778` formed the tested records with a word at offset 0 and bytes at +4 and +5. With a modeled queue, the original service copied all 68 bytes to `0x805ac6d0` and back to its stack for dispatch. At caller `0x8000e7e0`, the record carries `0x27` at +4 while the selection byte at `0x805ac08c` holds `0x09`. See the [replay, firmware hashes and instruction bytes](contributions/COORD-ADC-CADENCE/synchronous/deferred-validation.json).
+
+## 2026-11-09: extended deferred status
+
+At `0x80003e60` the extended fallback zeroes `0x805ab920`. At `0x80003f94`/`0x80003fa8` it stores a decoded status value 1–7 for the tested pairs. The control word `0x805ab91c` is set to 1 during the tested path and cleared on exit. The original IRQ-masked clears at `0x80003f24`/`0x80003f44` zero `0x805ab938` and accompany clears of the 200-byte buffer at `0x805b408c`. See the [64 original ARM926 cases with both firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/extended-status-validation.json).
