@@ -238,3 +238,7 @@ Continue from the original queue and fallback evidence in the [real-queue replay
 ## 2026-11-09: dynamic type-2 selection and compiled plan
 
 The dynamic type-2 producer, adjacent callback and record-byte clamp are covered in the [dynamic replay](contributions/COORD-ADC-CADENCE/synchronous/dynamic-type2-validation.json). A pure command-plan C component is checked in the [compiled-plan differential](contributions/COORD-ADC-CADENCE/synchronous/measurement-plan-validation.json). Next exercise consecutive native refresh-produced type-3 measurements after type-2 configuration to identify the first published sample.
+
+## 2026-11-09: refresh and first publication
+
+The [configuration-to-publication replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-publication-validation.json) covers refresh-produced measurement requests through discard and first publication. Next replace the `0x800037c0` and `0x8000326c` boundaries with bounded original conversion and renderer execution on the same lifecycle schedules.

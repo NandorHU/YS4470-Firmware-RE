@@ -329,3 +329,7 @@ Original queue order controls admission in the [real-queue replay](contributions
 ## 2026-11-09: dynamic type-2 selection and compiled plan
 
 The type-2 dispatcher at `0x80004390` preserves record byte +5 in `0x13..0x18` and selects `0x19` otherwise. The [dynamic replay](contributions/COORD-ADC-CADENCE/synchronous/dynamic-type2-validation.json) checks all 256 bytes on each original through the second UART send. The [compiled-plan differential](contributions/COORD-ADC-CADENCE/synchronous/measurement-plan-validation.json) checks the pure list and control-update plan independently of UART and scheduling.
+
+## 2026-11-09: refresh and first publication
+
+The [configuration-to-publication replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-publication-validation.json) shows that a valid configuration-terminal frame consumes the first of two discard slots. With matching replies, the first refresh frame consumes the other and the second refresh measurement publishes. If the first refresh receives no accepted frame, first publication moves to the third refresh measurement. Reconfiguration re-arms this sequence.

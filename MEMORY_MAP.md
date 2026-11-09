@@ -369,3 +369,7 @@ The [queue reference index](contributions/COORD-ADC-CADENCE/synchronous/control-
 ## 2026-11-09: dynamic type-2 selection and compiled plan
 
 The callback at `0x8000d648` sets `0x805abefc+1` at `0x8000d67c`. The `0x8000d294` callback reads that byte at `0x8000d388` and writes record-bound bytes through UI offsets +7/+8. The [dynamic replay](contributions/COORD-ADC-CADENCE/synchronous/dynamic-type2-validation.json) covers both single and paired callback schedules with the original queue drain.
+
+## 2026-11-09: refresh and first publication
+
+The [configuration-to-publication replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-publication-validation.json) follows the original discard byte at `0x805aae8d` from 2 at configuration through 1 and 0. The result words at `0x805ac730`/`0x805ac734` retain the prior value until an admitted frame reaches the parser with discard 0. At the ResultDispatch boundary those words still hold the prior value, before the request the refresh just queued can publish.

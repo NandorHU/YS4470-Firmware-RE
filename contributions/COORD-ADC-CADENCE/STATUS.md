@@ -2,6 +2,14 @@
 
 ## Current checkpoint
 
+The [configuration-to-publication replay](synchronous/refresh-publication-validation.json)
+agrees in 18 original sequences across both versions. The original timer,
+refresh, queue, UART and FSM execute. Missing/wrong frames do not consume
+discard. Reconfiguration retains the stored result and re-arms discard.
+Next execute ResultDispatch and the renderer on the same schedules.
+
+## Previous dynamic type-2 checkpoint
+
 The [dynamic replay](synchronous/dynamic-type2-validation.json) covers
 568 cases on both originals, including the complete byte clamp and
 paired callbacks with the original queue drain. The [compiled plan
