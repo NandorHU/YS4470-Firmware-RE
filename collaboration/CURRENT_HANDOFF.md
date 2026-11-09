@@ -10,9 +10,10 @@ Beta.2 Release API currently404; retained historical installer is documented.
 The owner confirmed the old daily automation was stopped. The new coordinator
 `codex-ys4470-20261109-01a1c110` is recorded in upstream registry revision 19.
 
-Latest analysis: [extended deferred status](../contributions/COORD-ADC-CADENCE/synchronous/README.md#extended-status-after-0x280x29)
-covers the `0x28`/`0x29` producers and 64 original ARM926 cases on V3.6/V3.8.
-Next validate the `0x805ab920` reader candidate at `0x80005dac4`.
+Latest analysis: [calibration status UI](../contributions/COORD-ADC-CADENCE/synchronous/README.md#calibration-status-ui)
+links the `0x28`/`0x29` commands to their original button text and exercises
+the result callback at `0x8005da88` and its timer. Next trace the general
+type-1 path from `0x8000e36c` and search for alternate type-6 queue writers.
 
 ---
 

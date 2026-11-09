@@ -278,4 +278,8 @@ The four tested producer-bound paths now have 16 original ARM926 cases across V3
 
 ## 2026-11-09: extended deferred status
 
-The `0x28`/`0x29` replay establishes the ACK/status split and the local status write contract. The consumer of `0x805ab920`, the type-6 producer and external peer semantics remain open. Next validate the reader candidate at `0x80005dac4` reached via the literal load at `0x80005dabc`. See the [64 original ARM926 cases with both firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/extended-status-validation.json).
+The `0x28`/`0x29` replay establishes the ACK/status split and the local status write contract. The consumer of `0x805ab920`, the type-6 producer and external peer semantics remain open. Next validate the reader candidate at `0x8005dac4` reached via the literal load at `0x8005dabc`. See the [64 original ARM926 cases with both firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/extended-status-validation.json).
+
+## 2026-11-09: calibration status UI
+
+The [calibration UI replay](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-validation.json) binds the status consumer and the two UI producers. The [producer index](contributions/COORD-ADC-CADENCE/synchronous/control-producer-index.json) lists 31 aligned immediate ARM branch candidates per original, with local type arguments 0–5. Type-6 reachability through alternate queue writers or indirect code remains open, along with full hardware calibration behavior.

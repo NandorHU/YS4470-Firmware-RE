@@ -357,3 +357,7 @@ In 16 original V3.6/V3.8 ARM926 cases, `0x80006778` formed the tested records wi
 ## 2026-11-09: extended deferred status
 
 At `0x80003e60` the extended fallback zeroes `0x805ab920`. At `0x80003f94`/`0x80003fa8` it stores a decoded status value 1–7 for the tested pairs. The control word `0x805ab91c` is set to 1 during the tested path and cleared on exit. The original IRQ-masked clears at `0x80003f24`/`0x80003f44` zero `0x805ab938` and accompany clears of the 200-byte buffer at `0x805b408c`. See the [64 original ARM926 cases with both firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/extended-status-validation.json).
+
+## 2026-11-09: calibration status UI
+
+The calibration callback reads `0x805ab920` at `0x8005dac4` and reads `0x805ab91c` at `0x8005dbfc` when status is zero. Timer registration stores the handle at `0x805abeb8`, and the status callback gets its label object through `0x805ac540`. Original stores at `0x80046cb0`/`0x80046cb8` clear the two status words. See the [calibration UI replay](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-validation.json).

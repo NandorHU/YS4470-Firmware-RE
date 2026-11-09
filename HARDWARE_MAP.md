@@ -237,3 +237,7 @@ For tested idle fallback calls on V3.6/V3.8, the original UART2 TX path through 
 ## 2026-11-09: extended deferred status
 
 The original UART2 write path at `0x80006e10` emitted `c1c1` and `c2c2` for `0x28` and `0x29`, with surrounding helper frames `c05515` and, on recognized status, `c000c0`. At `0x8000400c` and the tail path at `0x80004030`, the GPIO shadow shows bit 2 set then cleared. The peer, line behavior and physical timing remain open. See the [64 original ARM926 cases with both firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/extended-status-validation.json).
+
+## 2026-11-09: calibration status UI
+
+The original UI names the producers for `0x28` and `0x29` as Cal Circuit 1 mode and Cal Circuit 2 mode. The result strings include EEPROM failures. These are user-facing labels grounded by the original registered callbacks and label copy, with physical circuits and peer internals still open. See the [calibration UI replay](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-validation.json).

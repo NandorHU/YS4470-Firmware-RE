@@ -189,4 +189,56 @@ python -B contributions/COORD-ADC-CADENCE/synchronous/trace_extended_status.py -
 
 Use the existing analysis dependencies and create the output parent
 directory before running. Next validate the status reader candidate at
-`0x80005dac4` and trace where the seven decoded values go.
+`0x8005dac4` and trace where the seven decoded values go.
+
+## Calibration status UI
+
+The original registration suffix at `0x8004c454` installs callbacks
+`0x8000e4c8` and `0x8000e55c` with event code 1. The two original
+callbacks drain the queue through `0x80003d74`, submit type-1 records
+for `0x28` and `0x29`, and write the original labels
+`Cal Circuit 1 mode` and `Cal Circuit 2 mode`, respectively.
+
+The original registration at `0x8004c4ec` constructs a periodic timer
+with callback `0x8005da88` and initial period 2000. Its due path calls
+the callback at `0x80040a0c`. The callback reads the stored status at
+`0x8005dac4` and, when status is zero, the flag at `0x8005dbfc`.
+The original Thumb formatter and original label setter/copy execute.
+
+| Status | Original label text |
+|---|---|
+| 1 | `Power On OK01` |
+| 2 | `Cal circuit 1 OK02` |
+| 3 | `Cal circuit 2 OK03` |
+| 4 | `EEPROM error01` |
+| 5 | `EEPROM initail error02` |
+| 6 | `EEPROM write error03` |
+| 7 | `Cal over range04` |
+
+For status 0 with flag 1, the callback displays `Calibration ...` and
+keeps period 2000. A recognized result selects period 200. Status 0
+with flag 0 queues a type-3 record and selects period 200. The
+raw-result sentinel fixture in this branch displays `.OL`.
+The eight linked sequences use status snapshots from the original
+deferred writer. On the same timer they cover waiting, the result or
+timeout, one repeated refresh, and a refresh after the two original
+reset stores at `0x80046cb0`/`0x80046cb8`. Each deadline is checked at
+equality and one raw counter unit before it, including counter wrap.
+
+The [UI replay](calibration-ui-validation.json) includes 40 status
+cases, eight linked sequences, both image hashes and observed bytes.
+The experiment uses fixture objects, allocation/queue/GUI invalidation
+leaves and a one-item timer list. Snapshot transfer is a controlled
+task boundary. Counter units, label strings and copied text do not
+establish physical calibration timing, peer implementation or pixels.
+
+The [producer index](control-producer-index.json) scans all aligned
+ARM immediate branches to `0x80006778` in both images. The 31 matches
+have local setup types 0–5. The report preserves the exact four
+instructions per site. Indirect branches and alternate queue writers
+remain separate from this index.
+
+```powershell
+python -B contributions/COORD-ADC-CADENCE/synchronous/trace_calibration_ui.py --out work/calibration-ui-validation.json
+python -B contributions/COORD-ADC-CADENCE/synchronous/index_control_producers.py --out work/control-producer-index.json
+```

@@ -526,4 +526,8 @@ The owner confirmed the old 08:00 automation was stopped. Commit `3eb171bf801b79
 
 ## 2026-11-09: extended deferred status
 
-From `3907fb5877be718150b43a113beebf8e1dbaf955`, ran 16 scenarios per producer per original. Both versions agreed on command ACK failure, both critical RX clears, all seven status mappings, malformed and early status cases, the 230th poll and cleanup. Source and instruction bytes are pinned in the [64 original ARM926 cases with both firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/extended-status-validation.json). Next trace the reader candidate at `0x80005dac4`.
+From `3907fb5877be718150b43a113beebf8e1dbaf955`, ran 16 scenarios per producer per original. Both versions agreed on command ACK failure, both critical RX clears, all seven status mappings, malformed and early status cases, the 230th poll and cleanup. Source and instruction bytes are pinned in the [64 original ARM926 cases with both firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/extended-status-validation.json). Next trace the reader candidate at `0x8005dac4`.
+
+## 2026-11-09: calibration status UI
+
+From `056fa50572104a58f86ad309c903781bae457321`, verified the two button bindings and the original status renderer through the timer dispatcher, including four-tick sequences with waiting, result, reset and normal measurement request. The [calibration UI replay](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-validation.json) pins 40 status cases and eight linked sequences. The [producer index](contributions/COORD-ADC-CADENCE/synchronous/control-producer-index.json) checks 31 aligned branch candidates per original. The correct status reader is `0x8005dac4`.
