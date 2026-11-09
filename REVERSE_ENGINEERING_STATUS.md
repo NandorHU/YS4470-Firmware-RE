@@ -363,3 +363,7 @@ Four original caller suffixes now run through the record producer at `0x80006778
 ## 2026-11-09: extended deferred status
 
 Original callers `0x8000e50c` and `0x8000e5a0` reached the idle fallback's extended branch at `0x80003eb8` on V3.6 and V3.8. After the command ACK, two original critical sections cleared the RX count and buffer. The separate status loop mapped `a0 01..03` to 1–3 and `a1 01..04` to 4–7. See the [64 original ARM926 cases with both firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/extended-status-validation.json).
+
+## 2026-11-09: calibration status UI
+
+Both originals passed 40 status cases and eight linked four-deadline UI sequences. The original calibration button registration, timer constructor and due gate, Thumb formatter, and label copy were exercised. The mapped strings cover power-on success, two calibration successes, three EEPROM errors and calibration over-range. See the [calibration UI replay](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-validation.json) and the separate [producer index](contributions/COORD-ADC-CADENCE/synchronous/control-producer-index.json).

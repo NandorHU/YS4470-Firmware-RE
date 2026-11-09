@@ -225,4 +225,8 @@ COORD-ADC-CADENCE now covers four original deferred paths and 16 ARM926 executio
 
 ## 2026-11-09: extended deferred status
 
-The extended `0x28`/`0x29` fallback is now exercised on both originals. Follow the `0x805ab920` reader candidate at `0x80005dac4` to bind decoded statuses to their consumers before naming the peer operation. See the [64 original ARM926 cases with both firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/extended-status-validation.json).
+The extended `0x28`/`0x29` fallback is now exercised on both originals. Follow the `0x805ab920` reader candidate at `0x8005dac4` to bind decoded statuses to their consumers before naming the peer operation. See the [64 original ARM926 cases with both firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/extended-status-validation.json).
+
+## 2026-11-09: calibration status UI
+
+The [calibration UI replay](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-validation.json) closes the local status-to-label path. Next trace the remaining reachable type-1 record at producer call `0x8000e36c` through the general fallback chain and identify alternate queue writers that could supply type 6. Use the [producer index](contributions/COORD-ADC-CADENCE/synchronous/control-producer-index.json) to exclude the already classified immediate branch sites.

@@ -317,3 +317,7 @@ With the FSM idle, type 0 requests `sleep(200)` at `0x80004038` before the `0x26
 ## 2026-11-09: extended deferred status
 
 A successful `0x28`/`0x29` helper ACK reaches two RX clears followed by a status loop with up to 230 requested sleep(1000)/check iterations. At `0x80003f68`, the loop reads RX byte 0. A recognized `a0`/`a1` header takes the `0x26` exit even if its second byte maps to no status. An unknown first byte remained in place under modeled append-only arrivals, so later valid bytes did not exit the loop. See the [64 original ARM926 cases with both firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/extended-status-validation.json).
+
+## 2026-11-09: calibration status UI
+
+In the [calibration UI replay](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-validation.json), status 0 with the control flag set shows `Calibration ...` and keeps the initial timer period of 2000. Codes 1–7 show result text and set period 200. With both words zero, the callback queues a type-3 request and the raw-sentinel fixture produces `.OL`. The original due gate was exercised one counter unit before and at each deadline, including wrap.

@@ -351,3 +351,7 @@ The existing fallback and synchronous-helper entries now include the four produc
 ## 2026-11-09: extended deferred status
 
 The existing `0x80003dd8` and `0x80005f14` entries now include the `0x28`/`0x29` producer-bound branch and its `0x27 → command → 0x26` sequence when a status header is recognized. The two existing analyst entries remain scoped to tested paths. See the [64 original ARM926 cases with both firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/extended-status-validation.json).
+
+## 2026-11-09: calibration status UI
+
+New analyst entry `calibration_status_ui_callback` binds `0x8005da88` to the original timer registration at `0x8004c4ec`, the status load at `0x8005dac4`, and the result-label setter at `0x80032038`. The database now has 63 entries. See the [calibration UI replay](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-validation.json).

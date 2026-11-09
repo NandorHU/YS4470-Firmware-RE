@@ -2,13 +2,23 @@
 
 ## Current checkpoint
 
+The [calibration UI replay](synchronous/calibration-ui-validation.json)
+binds the two buttons, confirms all seven status messages and follows four
+successive timer deadlines. Both originals agree in 40 status cases and
+eight linked sequences. The [producer index](synchronous/control-producer-index.json)
+finds 31 aligned ARM immediate call candidates with local types 0–5.
+Continue from `0x8000e36c` into the general type-1 fallback, then look for
+alternate queue writers that could supply type 6.
+
+## Previous extended-status checkpoint
+
 The extended `0x28`/`0x29` producer paths agree in all 64 original ARM926
 cases. The command ACK gates the later status loop, which uses two critical
 RX clears before polling. The original handler writes status codes 1–7 to
 `0x805ab920` for the verified header/value pairs. See
 [method](synchronous/README.md#extended-status-after-0x280x29) and
 [validation](synchronous/extended-status-validation.json). Next validate
-the reader candidate at `0x80005dac4`. Earlier checkpoints below are historical.
+the reader candidate at `0x8005dac4`. Earlier checkpoints below are historical.
 
 ## Previous checkpoint
 

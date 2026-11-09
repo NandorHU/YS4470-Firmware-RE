@@ -1,0 +1,902 @@
+{
+  "schema": "ys4470.control-producer-references.v1",
+  "source_sha256": "a710447433480991d7e8226466c29c754a6bc097fec5b65491756d171d8710d4",
+  "producer": "0x80006778",
+  "versions": [
+    {
+      "version": "V3.6",
+      "input_sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+    },
+    {
+      "version": "V3.8",
+      "input_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+    }
+  ],
+  "identical_observations": {
+    "calls": [
+      {
+        "address": "0x8000ce54",
+        "local_r0_values": [
+          2
+        ],
+        "instructions": [
+          {
+            "pc": "0x8000ce48",
+            "bytes": "0020a0e1",
+            "asm": "mov r2, r0"
+          },
+          {
+            "pc": "0x8000ce4c",
+            "bytes": "0710d5e5",
+            "asm": "ldrb r1, [r5, #7]"
+          },
+          {
+            "pc": "0x8000ce50",
+            "bytes": "0200a0e3",
+            "asm": "mov r0, #2"
+          },
+          {
+            "pc": "0x8000ce54",
+            "bytes": "47e6ffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x8000cf00",
+        "local_r0_values": [
+          2
+        ],
+        "instructions": [
+          {
+            "pc": "0x8000cef4",
+            "bytes": "1920a0e3",
+            "asm": "mov r2, #0x19"
+          },
+          {
+            "pc": "0x8000cef8",
+            "bytes": "0f10a0e3",
+            "asm": "mov r1, #0xf"
+          },
+          {
+            "pc": "0x8000cefc",
+            "bytes": "0200a0e3",
+            "asm": "mov r0, #2"
+          },
+          {
+            "pc": "0x8000cf00",
+            "bytes": "1ce6ffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x8000d0a0",
+        "local_r0_values": [
+          5
+        ],
+        "instructions": [
+          {
+            "pc": "0x8000d094",
+            "bytes": "1320a0e3",
+            "asm": "mov r2, #0x13"
+          },
+          {
+            "pc": "0x8000d098",
+            "bytes": "2210a0e3",
+            "asm": "mov r1, #0x22"
+          },
+          {
+            "pc": "0x8000d09c",
+            "bytes": "0500a0e3",
+            "asm": "mov r0, #5"
+          },
+          {
+            "pc": "0x8000d0a0",
+            "bytes": "b4e5ffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x8000d0c8",
+        "local_r0_values": [
+          2
+        ],
+        "instructions": [
+          {
+            "pc": "0x8000d0bc",
+            "bytes": "1920a0e3",
+            "asm": "mov r2, #0x19"
+          },
+          {
+            "pc": "0x8000d0c0",
+            "bytes": "0e10a0e3",
+            "asm": "mov r1, #0xe"
+          },
+          {
+            "pc": "0x8000d0c4",
+            "bytes": "0200a0e3",
+            "asm": "mov r0, #2"
+          },
+          {
+            "pc": "0x8000d0c8",
+            "bytes": "aae5ffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x8000d350",
+        "local_r0_values": [
+          2
+        ],
+        "instructions": [
+          {
+            "pc": "0x8000d344",
+            "bytes": "0620a0e1",
+            "asm": "mov r2, r6"
+          },
+          {
+            "pc": "0x8000d348",
+            "bytes": "0200a0e3",
+            "asm": "mov r0, #2"
+          },
+          {
+            "pc": "0x8000d34c",
+            "bytes": "0860c4e5",
+            "asm": "strb r6, [r4, #8]"
+          },
+          {
+            "pc": "0x8000d350",
+            "bytes": "08e5ffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x8000d39c",
+        "local_r0_values": [
+          2
+        ],
+        "instructions": [
+          {
+            "pc": "0x8000d390",
+            "bytes": "0860c405",
+            "asm": "strbeq r6, [r4, #8]"
+          },
+          {
+            "pc": "0x8000d394",
+            "bytes": "0820d4e5",
+            "asm": "ldrb r2, [r4, #8]"
+          },
+          {
+            "pc": "0x8000d398",
+            "bytes": "0200a0e3",
+            "asm": "mov r0, #2"
+          },
+          {
+            "pc": "0x8000d39c",
+            "bytes": "f5e4ffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x8000d5c0",
+        "local_r0_values": [
+          2
+        ],
+        "instructions": [
+          {
+            "pc": "0x8000d5b4",
+            "bytes": "1920a0e3",
+            "asm": "mov r2, #0x19"
+          },
+          {
+            "pc": "0x8000d5b8",
+            "bytes": "0c10a0e3",
+            "asm": "mov r1, #0xc"
+          },
+          {
+            "pc": "0x8000d5bc",
+            "bytes": "0200a0e3",
+            "asm": "mov r0, #2"
+          },
+          {
+            "pc": "0x8000d5c0",
+            "bytes": "6ce4ffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x8000d6d0",
+        "local_r0_values": [
+          2
+        ],
+        "instructions": [
+          {
+            "pc": "0x8000d6c4",
+            "bytes": "0800c4e5",
+            "asm": "strb r0, [r4, #8]"
+          },
+          {
+            "pc": "0x8000d6c8",
+            "bytes": "1320a0e3",
+            "asm": "mov r2, #0x13"
+          },
+          {
+            "pc": "0x8000d6cc",
+            "bytes": "0200a0e3",
+            "asm": "mov r0, #2"
+          },
+          {
+            "pc": "0x8000d6d0",
+            "bytes": "28e4ffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x8000d718",
+        "local_r0_values": [
+          2
+        ],
+        "instructions": [
+          {
+            "pc": "0x8000d70c",
+            "bytes": "0710d4e5",
+            "asm": "ldrb r1, [r4, #7]"
+          },
+          {
+            "pc": "0x8000d710",
+            "bytes": "1520a0e3",
+            "asm": "mov r2, #0x15"
+          },
+          {
+            "pc": "0x8000d714",
+            "bytes": "0200a0e3",
+            "asm": "mov r0, #2"
+          },
+          {
+            "pc": "0x8000d718",
+            "bytes": "16e4ffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x8000d7c8",
+        "local_r0_values": [
+          2
+        ],
+        "instructions": [
+          {
+            "pc": "0x8000d7bc",
+            "bytes": "1920a0e3",
+            "asm": "mov r2, #0x19"
+          },
+          {
+            "pc": "0x8000d7c0",
+            "bytes": "0910a0e3",
+            "asm": "mov r1, #9"
+          },
+          {
+            "pc": "0x8000d7c4",
+            "bytes": "0200a0e3",
+            "asm": "mov r0, #2"
+          },
+          {
+            "pc": "0x8000d7c8",
+            "bytes": "eae3ffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x8000e2dc",
+        "local_r0_values": [
+          1
+        ],
+        "instructions": [
+          {
+            "pc": "0x8000e2d0",
+            "bytes": "0010c0e5",
+            "asm": "strb r1, [r0]"
+          },
+          {
+            "pc": "0x8000e2d4",
+            "bytes": "0120c0e5",
+            "asm": "strb r2, [r0, #1]"
+          },
+          {
+            "pc": "0x8000e2d8",
+            "bytes": "0100a0e3",
+            "asm": "mov r0, #1"
+          },
+          {
+            "pc": "0x8000e2dc",
+            "bytes": "25e1ffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x8000e36c",
+        "local_r0_values": [
+          1
+        ],
+        "instructions": [
+          {
+            "pc": "0x8000e360",
+            "bytes": "0010c0e5",
+            "asm": "strb r1, [r0]"
+          },
+          {
+            "pc": "0x8000e364",
+            "bytes": "0120c0e5",
+            "asm": "strb r2, [r0, #1]"
+          },
+          {
+            "pc": "0x8000e368",
+            "bytes": "0100a0e3",
+            "asm": "mov r0, #1"
+          },
+          {
+            "pc": "0x8000e36c",
+            "bytes": "01e1ffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x8000e3f4",
+        "local_r0_values": [
+          1
+        ],
+        "instructions": [
+          {
+            "pc": "0x8000e3e8",
+            "bytes": "0010c0e5",
+            "asm": "strb r1, [r0]"
+          },
+          {
+            "pc": "0x8000e3ec",
+            "bytes": "0120c0e5",
+            "asm": "strb r2, [r0, #1]"
+          },
+          {
+            "pc": "0x8000e3f0",
+            "bytes": "0100a0e3",
+            "asm": "mov r0, #1"
+          },
+          {
+            "pc": "0x8000e3f4",
+            "bytes": "dfe0ffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x8000e480",
+        "local_r0_values": [
+          1
+        ],
+        "instructions": [
+          {
+            "pc": "0x8000e474",
+            "bytes": "0010c0e5",
+            "asm": "strb r1, [r0]"
+          },
+          {
+            "pc": "0x8000e478",
+            "bytes": "0120c0e5",
+            "asm": "strb r2, [r0, #1]"
+          },
+          {
+            "pc": "0x8000e47c",
+            "bytes": "0100a0e3",
+            "asm": "mov r0, #1"
+          },
+          {
+            "pc": "0x8000e480",
+            "bytes": "bce0ffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x8000e50c",
+        "local_r0_values": [
+          1
+        ],
+        "instructions": [
+          {
+            "pc": "0x8000e500",
+            "bytes": "0010c0e5",
+            "asm": "strb r1, [r0]"
+          },
+          {
+            "pc": "0x8000e504",
+            "bytes": "0120c0e5",
+            "asm": "strb r2, [r0, #1]"
+          },
+          {
+            "pc": "0x8000e508",
+            "bytes": "0100a0e3",
+            "asm": "mov r0, #1"
+          },
+          {
+            "pc": "0x8000e50c",
+            "bytes": "99e0ffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x8000e5a0",
+        "local_r0_values": [
+          1
+        ],
+        "instructions": [
+          {
+            "pc": "0x8000e594",
+            "bytes": "0010c0e5",
+            "asm": "strb r1, [r0]"
+          },
+          {
+            "pc": "0x8000e598",
+            "bytes": "0120c0e5",
+            "asm": "strb r2, [r0, #1]"
+          },
+          {
+            "pc": "0x8000e59c",
+            "bytes": "0100a0e3",
+            "asm": "mov r0, #1"
+          },
+          {
+            "pc": "0x8000e5a0",
+            "bytes": "74e0ffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x8000e634",
+        "local_r0_values": [
+          0
+        ],
+        "instructions": [
+          {
+            "pc": "0x8000e628",
+            "bytes": "0010c0e5",
+            "asm": "strb r1, [r0]"
+          },
+          {
+            "pc": "0x8000e62c",
+            "bytes": "0120c0e5",
+            "asm": "strb r2, [r0, #1]"
+          },
+          {
+            "pc": "0x8000e630",
+            "bytes": "0000a0e3",
+            "asm": "mov r0, #0"
+          },
+          {
+            "pc": "0x8000e634",
+            "bytes": "4fe0ffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x8000e6c4",
+        "local_r0_values": [
+          1
+        ],
+        "instructions": [
+          {
+            "pc": "0x8000e6b8",
+            "bytes": "0010c0e5",
+            "asm": "strb r1, [r0]"
+          },
+          {
+            "pc": "0x8000e6bc",
+            "bytes": "0120c0e5",
+            "asm": "strb r2, [r0, #1]"
+          },
+          {
+            "pc": "0x8000e6c0",
+            "bytes": "0100a0e3",
+            "asm": "mov r0, #1"
+          },
+          {
+            "pc": "0x8000e6c4",
+            "bytes": "2be0ffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x8000e750",
+        "local_r0_values": [
+          1
+        ],
+        "instructions": [
+          {
+            "pc": "0x8000e744",
+            "bytes": "0010c0e5",
+            "asm": "strb r1, [r0]"
+          },
+          {
+            "pc": "0x8000e748",
+            "bytes": "0120c0e5",
+            "asm": "strb r2, [r0, #1]"
+          },
+          {
+            "pc": "0x8000e74c",
+            "bytes": "0100a0e3",
+            "asm": "mov r0, #1"
+          },
+          {
+            "pc": "0x8000e750",
+            "bytes": "08e0ffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x8000e7e0",
+        "local_r0_values": [
+          1
+        ],
+        "instructions": [
+          {
+            "pc": "0x8000e7d4",
+            "bytes": "0120c0e5",
+            "asm": "strb r2, [r0, #1]"
+          },
+          {
+            "pc": "0x8000e7d8",
+            "bytes": "2710a0e3",
+            "asm": "mov r1, #0x27"
+          },
+          {
+            "pc": "0x8000e7dc",
+            "bytes": "0100a0e3",
+            "asm": "mov r0, #1"
+          },
+          {
+            "pc": "0x8000e7e0",
+            "bytes": "e4dfffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x8000f414",
+        "local_r0_values": [
+          2
+        ],
+        "instructions": [
+          {
+            "pc": "0x8000f408",
+            "bytes": "1920a0e3",
+            "asm": "mov r2, #0x19"
+          },
+          {
+            "pc": "0x8000f40c",
+            "bytes": "0a10a0e3",
+            "asm": "mov r1, #0xa"
+          },
+          {
+            "pc": "0x8000f410",
+            "bytes": "0200a0e3",
+            "asm": "mov r0, #2"
+          },
+          {
+            "pc": "0x8000f414",
+            "bytes": "d7dcffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x8000f49c",
+        "local_r0_values": [
+          2
+        ],
+        "instructions": [
+          {
+            "pc": "0x8000f490",
+            "bytes": "1920a0e3",
+            "asm": "mov r2, #0x19"
+          },
+          {
+            "pc": "0x8000f494",
+            "bytes": "0910a0e3",
+            "asm": "mov r1, #9"
+          },
+          {
+            "pc": "0x8000f498",
+            "bytes": "0200a0e3",
+            "asm": "mov r0, #2"
+          },
+          {
+            "pc": "0x8000f49c",
+            "bytes": "b5dcffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x80044f2c",
+        "local_r0_values": [
+          2
+        ],
+        "instructions": [
+          {
+            "pc": "0x80044f20",
+            "bytes": "1920a0e3",
+            "asm": "mov r2, #0x19"
+          },
+          {
+            "pc": "0x80044f24",
+            "bytes": "0910a0e3",
+            "asm": "mov r1, #9"
+          },
+          {
+            "pc": "0x80044f28",
+            "bytes": "0200a0e3",
+            "asm": "mov r0, #2"
+          },
+          {
+            "pc": "0x80044f2c",
+            "bytes": "1106ffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x80044f80",
+        "local_r0_values": [
+          2
+        ],
+        "instructions": [
+          {
+            "pc": "0x80044f74",
+            "bytes": "1920a0e3",
+            "asm": "mov r2, #0x19"
+          },
+          {
+            "pc": "0x80044f78",
+            "bytes": "0c10a0e3",
+            "asm": "mov r1, #0xc"
+          },
+          {
+            "pc": "0x80044f7c",
+            "bytes": "0200a0e3",
+            "asm": "mov r0, #2"
+          },
+          {
+            "pc": "0x80044f80",
+            "bytes": "fc05ffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x80044fdc",
+        "local_r0_values": [
+          2
+        ],
+        "instructions": [
+          {
+            "pc": "0x80044fd0",
+            "bytes": "1920a0e3",
+            "asm": "mov r2, #0x19"
+          },
+          {
+            "pc": "0x80044fd4",
+            "bytes": "0f10a0e3",
+            "asm": "mov r1, #0xf"
+          },
+          {
+            "pc": "0x80044fd8",
+            "bytes": "0200a0e3",
+            "asm": "mov r0, #2"
+          },
+          {
+            "pc": "0x80044fdc",
+            "bytes": "e505ffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x80045050",
+        "local_r0_values": [
+          2
+        ],
+        "instructions": [
+          {
+            "pc": "0x80045044",
+            "bytes": "1920a0e3",
+            "asm": "mov r2, #0x19"
+          },
+          {
+            "pc": "0x80045048",
+            "bytes": "0e10a0e3",
+            "asm": "mov r1, #0xe"
+          },
+          {
+            "pc": "0x8004504c",
+            "bytes": "0200a0e3",
+            "asm": "mov r0, #2"
+          },
+          {
+            "pc": "0x80045050",
+            "bytes": "c805ffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x800450d0",
+        "local_r0_values": [
+          2
+        ],
+        "instructions": [
+          {
+            "pc": "0x800450c4",
+            "bytes": "1920a0e3",
+            "asm": "mov r2, #0x19"
+          },
+          {
+            "pc": "0x800450c8",
+            "bytes": "0e10a0e3",
+            "asm": "mov r1, #0xe"
+          },
+          {
+            "pc": "0x800450cc",
+            "bytes": "0200a0e3",
+            "asm": "mov r0, #2"
+          },
+          {
+            "pc": "0x800450d0",
+            "bytes": "a805ffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x8004513c",
+        "local_r0_values": [
+          5
+        ],
+        "instructions": [
+          {
+            "pc": "0x80045130",
+            "bytes": "1320a0e3",
+            "asm": "mov r2, #0x13"
+          },
+          {
+            "pc": "0x80045134",
+            "bytes": "2210a0e3",
+            "asm": "mov r1, #0x22"
+          },
+          {
+            "pc": "0x80045138",
+            "bytes": "0500a0e3",
+            "asm": "mov r0, #5"
+          },
+          {
+            "pc": "0x8004513c",
+            "bytes": "8d05ffeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x800519e0",
+        "local_r0_values": [
+          2
+        ],
+        "instructions": [
+          {
+            "pc": "0x800519d4",
+            "bytes": "1920a0e3",
+            "asm": "mov r2, #0x19"
+          },
+          {
+            "pc": "0x800519d8",
+            "bytes": "0910a0e3",
+            "asm": "mov r1, #9"
+          },
+          {
+            "pc": "0x800519dc",
+            "bytes": "0200a0e3",
+            "asm": "mov r0, #2"
+          },
+          {
+            "pc": "0x800519e0",
+            "bytes": "64d3feeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x8005d130",
+        "local_r0_values": [
+          3,
+          4
+        ],
+        "instructions": [
+          {
+            "pc": "0x8005d124",
+            "bytes": "220050e3",
+            "asm": "cmp r0, #0x22"
+          },
+          {
+            "pc": "0x8005d128",
+            "bytes": "0400a003",
+            "asm": "moveq r0, #4"
+          },
+          {
+            "pc": "0x8005d12c",
+            "bytes": "0300a013",
+            "asm": "movne r0, #3"
+          },
+          {
+            "pc": "0x8005d130",
+            "bytes": "90a5feeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      },
+      {
+        "address": "0x8005dc38",
+        "local_r0_values": [
+          3
+        ],
+        "instructions": [
+          {
+            "pc": "0x8005dc2c",
+            "bytes": "0020a0e3",
+            "asm": "mov r2, #0"
+          },
+          {
+            "pc": "0x8005dc30",
+            "bytes": "0210a0e1",
+            "asm": "mov r1, r2"
+          },
+          {
+            "pc": "0x8005dc34",
+            "bytes": "0300a0e3",
+            "asm": "mov r0, #3"
+          },
+          {
+            "pc": "0x8005dc38",
+            "bytes": "cea2feeb",
+            "asm": "bl #0x80006778"
+          }
+        ]
+      }
+    ],
+    "aligned_pointer_hits": [],
+    "site_counts_by_local_r0": {
+      "2": 17,
+      "5": 2,
+      "1": 9,
+      "0": 1,
+      "3": 2,
+      "4": 1
+    }
+  },
+  "limits": [
+    "Full-file aligned ARM immediate B/BL scan and aligned absolute pointer search.",
+    "R0 values describe the decoded local setup suffix, with both conditions at 0x8005d130.",
+    "Coverage excludes indirect or synthesized targets, alternate queue writers and reachability."
+  ]
+}

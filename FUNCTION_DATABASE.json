@@ -1464,6 +1464,32 @@
         "Last-sleep reply ordering is a software boundary observation, not a physical delay/bug or warranted timing patch.",
         "Indirect callers, aliases, other tasks and global ownership remain incomplete."
       ]
+    },
+    {
+      "id": "calibration_status_ui_callback",
+      "addresses": {
+        "V3_6": "0x8005da88",
+        "V3_8": "0x8005da88"
+      },
+      "confidence": "confirmed_bounded_original_ui_status_and_timer_execution",
+      "role": "Reads deferred calibration status and updates the original result label and timer.",
+      "name_status": "Analyst label grounded by original callback binding and displayed strings",
+      "relationships": [
+        "Timer registration at 0x8004c4ec uses callback 0x8005da88 and period 2000. Original due-path indirect call is at 0x80040a0c.",
+        "Loads status at 0x8005dac4 from 0x805ab920 and, for zero status, flag at 0x8005dbfc from 0x805ab91c.",
+        "Statuses 1..7 use original power-on, calibration and EEPROM result texts via formatter 0x80000544 and label setter 0x80032038.",
+        "Zero status and set flag display Calibration ... and retain the current timer period. Zero status and zero flag queue type 3 via 0x80006778. Result paths tested set period 200.",
+        "Original stores at 0x80046cb0 and 0x80046cb8 clear the two words."
+      ],
+      "evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/extended-status-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/control-producer-index.json"
+      ],
+      "limits": [
+        "Timer list, allocation, GUI invalidation and queue leaves are fixtures. Original timer, formatter and label copy execute.",
+        "The linked sequences use writer snapshots and controlled tick values. Physical scheduling, pixels, and peer behavior remain open."
+      ]
     }
   ],
   "session_updates": [
