@@ -539,3 +539,7 @@ Continued from `8879de87bb201ff0da9848e7ae71cf648e455558` with four producer suf
 ## 2026-11-09: original control queue and type 6
 
 From `4933c79003cd3766812ee8beb36d67ccc2703ac9`, added the [queue reference index](contributions/COORD-ADC-CADENCE/synchronous/control-queue-index.json) and 38 original cases in the [real-queue replay](contributions/COORD-ADC-CADENCE/synchronous/type6-queue-validation.json). A host-supplied type-6 record reaches UART2 setup after a failed ACK or a rejected helper ID. The service preserves type 6 across a busy-to-idle transition and arbitrates tested type-3/4 mixtures by queue order. Next execute the type-2/5 dispatcher paths through the real queue.
+
+## 2026-11-09: original deferred type-2/5 lists
+
+From `25750c1c780a01c09265c0bef5987a01f5097a40`, executed the Fast CONT choice suffix, original queue and both dispatcher lists in 20 cases. Matching setup replies traversed the full list and the first measurement frame consumed one discard slot. With no first ACK the FSM retried that command then returned idle. See the [replay](contributions/COORD-ADC-CADENCE/synchronous/deferred-measurement-validation.json). Next trace the dynamic type-2 byte at producer `0x8000d39c`.

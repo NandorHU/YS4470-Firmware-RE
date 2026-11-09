@@ -10,10 +10,11 @@ Beta.2 Release API currently404; retained historical installer is documented.
 The owner confirmed the old daily automation was stopped. The new coordinator
 `codex-ys4470-20261109-01a1c110` is recorded in upstream registry revision 19.
 
-Latest analysis: [original queue and type-6 fallback](../contributions/COORD-ADC-CADENCE/synchronous/README.md#original-control-queue-and-type-6)
-executes the queue, UART2 reinitialization and immediate/deferred arbitration.
-Type 6 uses a host-supplied record. Next execute type-2 and type-5 producers
-at `0x8000d0c8`/`0x8000d0a0` through the real queue and dispatcher.
+Latest analysis: [deferred type-2/5 measurement](../contributions/COORD-ADC-CADENCE/synchronous/README.md#deferred-type-2-and-type-5-measurement)
+executes both original Fast CONT selections through the real queue and FSM.
+Next follow the dynamic type-2 producer byte +5 at `0x8000d39c`. The
+[type-6 fallback](../contributions/COORD-ADC-CADENCE/synchronous/README.md#original-control-queue-and-type-6)
+remains host-supplied in the tested scope.
 
 ---
 
