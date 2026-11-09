@@ -1,0 +1,86 @@
+name: YS-4470 progress watchdog
+
+on:
+  schedule:
+    - cron: '17 */3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: read
+  actions: read
+
+concurrency:
+  group: ys4470-progress-watchdog
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check GitHub-visible progress and alert on suspected stall
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const now = Date.now();
+            const HOUR = 3600000;
+            const STALL_HOURS = 12;
+            const prefix = '[Watchdog] YS-4470: GitHub activity stalled';
+            const { data: repoInfo } = await github.rest.repos.get({owner, repo});
+            const { data: branches } = await github.rest.repos.listBranches({owner, repo, per_page: 100});
+            const { data: pulls } = await github.rest.pulls.list({owner, repo, state: 'open', per_page: 100});
+            const activePrefixes = /^(re\/|external\/|community\/|release\/|dev\/|codex\/|work\/|feature\/)/;
+            const candidates = branches.filter(b => b.name !== repoInfo.default_branch && activePrefixes.test(b.name));
+            const inspected = await Promise.all(candidates.map(async b => {
+              const { data: c } = await github.rest.repos.getCommit({owner, repo, ref: b.commit.sha});
+              const at = c.commit.committer?.date || c.commit.author?.date;
+              return { branch: b.name, sha: b.commit.sha.slice(0, 10), at, ageHours: at ? Math.round((now - Date.parse(at)) / HOUR * 10) / 10 : null };
+            }));
+            const recent = inspected.filter(x => x.ageHours !== null && x.ageHours <= 7 * 24);
+            const newest = [...recent].sort((a,b) => a.ageHours-b.ageHours)[0];
+            const { data: workflowRuns } = await github.rest.actions.listWorkflowRunsForRepo({owner, repo, per_page: 30});
+            const failedRuns = workflowRuns.workflow_runs.filter(x => x.conclusion === 'failure' && now-Date.parse(x.updated_at) < 24*HOUR && x.name !== 'YS-4470 progress watchdog');
+            const idle = Boolean(newest && newest.ageHours >= STALL_HOURS);
+            const trouble = idle || failedRuns.length > 0;
+            const { data: issues } = await github.rest.issues.listForRepo({owner, repo, state: 'open', per_page: 100});
+            const existing = issues.find(x => !x.pull_request && x.title === prefix);
+            core.summary.addHeading('YS-4470 watchdog');
+            core.summary.addRaw('Only GitHub-visible activity is measured; local Work/Codex/Ollama execution cannot be observed.\n\n');
+            core.summary.addTable([
+              [{data:'Signal', header:true},{data:'Value', header:true}],
+              ['Recent development branch', newest ? newest.branch : 'none in last 7 days'],
+              ['Hours since commit', newest ? String(newest.ageHours) : 'unknown'],
+              ['Open PRs', String(pulls.length)],
+              ['Recent failed CI runs', String(failedRuns.length)]
+            ]);
+            await core.summary.write();
+            if (!trouble) {
+              core.info('No actionable GitHub-visible stall detected.');
+              return;
+            }
+            const body = [
+              '## Automated warning (not proof of a stuck agent)',
+              'This watchdog can inspect only GitHub, **not** ChatGPT Work, Codex, local files or Ollama.',
+              '',
+              newest ? '- Latest recently active branch: `' + newest.branch + '` (`' + newest.sha + '`, ' + newest.ageHours + ' h since last commit).' : '- No development-branch tip updated within the last seven days.',
+              '- Open PRs: ' + pulls.length,
+              '- Failed non-watchdog CI runs during the last 24 h: ' + failedRuns.length,
+              '',
+              '## Suggested manual recovery',
+              '1. Check the current ChatGPT Work task and local Codex agent before restarting anything.',
+              '2. Inspect `git status`, uncommitted work, CI logs, and the existing task issue.',
+              '3. Resume the existing agent only if needed; do not start a competing instance.',
+              '',
+              '## Safety',
+              'No automatic merges, firmware releases, flash operations, task restarts, or edits to main.'
+            ].join('\n');
+            if (!existing) {
+              await github.rest.issues.create({owner, repo, title: prefix, body});
+              core.warning('Suspected stall or CI failures. Created a single watchdog issue.');
+            } else {
+              core.warning('Suspected stall or CI failures. Existing watchdog issue: #' + existing.number);
+            }
