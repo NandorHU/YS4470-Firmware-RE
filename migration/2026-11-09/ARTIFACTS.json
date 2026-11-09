@@ -1,0 +1,121 @@
+{
+  "schema": "ys4470.account-handoff.v1",
+  "date": "2026-11-09",
+  "repository": "https://github.com/NandorHU/YS4470-Firmware-RE",
+  "integration_branch": "re/2026-11-04-pyghidra-fel",
+  "analysis_commit": "a2e5e7ebd2f661f37f88507f55a62a14c5df3f9f",
+  "raw_link_base": "0x7fffffe0",
+  "code_base": "0x80000000",
+  "application_flash_offset": "0x50000",
+  "application_flash_end_exclusive": "0x5fb000",
+  "originals": [
+    {
+      "version": "V3.6",
+      "path": "original-firmware/V3.6/f1c100s.bin",
+      "package": "Project_February_V3.6_V02.26.6",
+      "size_bytes": 5943296,
+      "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+    },
+    {
+      "version": "V3.8",
+      "path": "original-firmware/V3.8/f1c100s.bin",
+      "package": "Project_March_V3.8_V02.26.6",
+      "size_bytes": 5943296,
+      "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+    }
+  ],
+  "function_database_records": 62,
+  "entry_documents": [
+    "AGENTS.md",
+    "CONTRIBUTING.md",
+    "collaboration/CURRENT_HANDOFF.md",
+    "collaboration/TASK_REGISTRY.json",
+    "collaboration/LOCAL_LLM.md",
+    "REVERSE_ENGINEERING_STATUS.md",
+    "RE_PROGRESS.md"
+  ],
+  "packet_index": "contributions/COORD-FUNCTION-PACKETS/packet-index.json",
+  "proofs": [
+    {
+      "scope": "FSM timeout",
+      "path": "contributions/COORD-FSM-TIMEOUT/fsm-timeout.json",
+      "sha256": "ccde9691123d3d1d29421ca89bfbcaeb5ba45ab4eeeb07ea978643360332c61b"
+    },
+    {
+      "scope": "function packets",
+      "path": "contributions/COORD-FUNCTION-PACKETS/validation.json",
+      "sha256": "bd6ccb488dd114871ee9d5a8caab12331684e307ee837a6fe544a3886a24793f"
+    },
+    {
+      "scope": "equal-Highspeed profiles",
+      "path": "contributions/COORD-ADC-CADENCE/profile-validation.json",
+      "sha256": "86b28be96030de4f9a2889b4631e3f0c98dc19a536fc6c992a7a3ec890e7e5cb"
+    },
+    {
+      "scope": "UART correlation",
+      "path": "contributions/COORD-ADC-CADENCE/uart/validation.json",
+      "sha256": "19767d556f0e265ead8f1e47d8707be832422a018326f09590eefd41bd588119"
+    },
+    {
+      "scope": "admission and caller ownership",
+      "path": "contributions/COORD-ADC-CADENCE/admission/validation.json",
+      "sha256": "bf114a59e4369d7fc7839d0ae30c92b182b9600c4ed5ce51c73981434e729644"
+    },
+    {
+      "scope": "synchronous startup helper IDs9/19",
+      "path": "contributions/COORD-ADC-CADENCE/synchronous/synchronous-validation.json",
+      "sha256": "b64dd8b33e5a215c7211fa277220ca4262ca55abd40c1e153cfe527e7319395d"
+    }
+  ],
+  "next_task": {
+    "id": "COORD-ADC-CADENCE",
+    "status": "in_progress",
+    "description": "Trace further reachable deferred-handler arguments/producers and aliases; execute additional helper paths under proven caller/idle preconditions.",
+    "anchors": [
+      "0x80003dd8",
+      "0x8000404c",
+      "0x80005f14",
+      "0x805ac6d0"
+    ]
+  },
+  "experimental_e2": {
+    "sha256": "b04fb5bca7a052abfc5b1621bf50e03fd4f8116bf5cef849f1994e44d4b603b1",
+    "replay_script": "contributions/COORD-ADC-CADENCE/reproduce_profiles.py",
+    "provenance_limit": "158 ordered recorded preimage edits, not source-generator reconstruction"
+  },
+  "installer_beta2": {
+    "tag": "installer-v1.1.0-beta.2",
+    "source_commit": "c12fdef3fcb56c1f6b504ac1330f02965e6bc727",
+    "release_api_status_at_migration": 404,
+    "retained_archive": "YS4470-Installer-1.1.0-beta.2-Windows-x64.zip",
+    "size_bytes": 18586707,
+    "sha256": "7beb67b4187d63c9756a1e336d29386bbe95b40272402d53b69a2d7743502d72",
+    "republished_during_migration": false
+  },
+  "local_model": {
+    "root": "http://127.0.0.1:11435",
+    "openai_compatible_base": "http://127.0.0.1:11435/v1",
+    "model": "qwen2.5-coder:14b",
+    "digest": "9ec8897f747e246e970bc5cfdda85d22f1123dc2e3d34978a010a75968716849",
+    "trained_weights": false,
+    "policy": "collaboration/LOCAL_LLM.md",
+    "restart_helper": "contributions/COORD-ADC-CADENCE/synchronous/start_local_server.ps1",
+    "new_uart_lesson": "contributions/COORD-ADC-CADENCE/synchronous/local-heldout/LESSONS-UART.md"
+  },
+  "automation": {
+    "id": "ys-4470-n-ll-napi-firmware-visszafejt-s-projekt-https-github-com-nandor",
+    "observed_status": "ACTIVE",
+    "schedule_human": "Every day at08:00",
+    "timezone": "Europe/Budapest",
+    "changed_during_migration": false
+  },
+  "physical_device_operations_during_migration": 0,
+  "main_modified_during_migration": false,
+  "excluded": [
+    "credentials or sessions",
+    "private full-flash/calibration backups",
+    "model weights",
+    "manual Ghidra databases",
+    "unpublished vendor SDK/BROM archives"
+  ]
+}

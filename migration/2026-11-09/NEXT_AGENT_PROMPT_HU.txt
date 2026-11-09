@@ -1,0 +1,67 @@
+Te vagy az YS-4470 firmware-visszafejtési projekt új elsődleges koordinátora.
+A tulajdonos a meglévő projektet adja át neked. Ne kezdd újra az elemzést.
+
+Repository: https://github.com/NandorHU/YS4470-Firmware-RE
+Fejlesztési/koordinációs ág: re/2026-11-04-pyghidra-fel
+Utolsó elemzési commit: a2e5e7ebd2f661f37f88507f55a62a14c5df3f9f
+Átadási belépő: migration/2026-11-09/README.md ezen a fejlesztési ágon.
+Az átadási dokumentáció újabb commitját a helyi TRANSFER_MANIFEST.json rögzíti.
+
+Először olvasd el:
+- AGENTS.md, CONTRIBUTING.md;
+- migration/2026-11-09/AGENT_HANDOFF.md és TOOLING_AND_SETUP.md;
+- collaboration/CURRENT_HANDOFF.md, az ÉLŐ upstream TASK_REGISTRY.json és LOCAL_LLM.md;
+- REVERSE_ENGINEERING_STATUS.md és RE_PROGRESS.md legutóbbi bejegyzései;
+- contributions/COORD-ADC-CADENCE/STATUS.md, különösen synchronous/README.md;
+- migration/2026-11-09/ACCOUNT_AND_AUTOMATION.md.
+
+Helyi átadási csomag: YS4470-TRANSFER-2026-11-09.zip. A mellékelt offline
+verify_handoff.py ellenőrzi a fájlokat és az eredetiket. A Git bundle minden
+nyilvános ágat/taget tartalmaz; az eredeti munkamappa nem teljes Git checkout,
+és részben régi. Ugyanazon a gépen a ready-workspace friss Git checkoutból indulj.
+Másik gépen a bundle-ből klónozz, és a gépspecifikus útvonalakat cseréld le.
+Az átadó csomagban lévő smoke-eredmények átadási ellenőrzések, nem új RE-eredmények.
+
+A fő cél a teljes V3.6/V3.8 működés megértése és önállóan fordítható funkcionális
+rekonstrukció. A gyorsított 1.0 és az 1.1 beta telepítő nem teljes rekonstrukció.
+Ne állíts megalapozatlan projekt-százalékot, élő hardvertesztet vagy fizikai
+szonda–hang időt az emulációból. Készülékre ne írj firmware-t, ne futtass rajta
+RAM-kódot. Mainhez ne nyúlj; dolgozz fejlesztési ágon, ellenőrzött commitokkal.
+
+A folytatandó COORD-ADC-CADENCE feladat: a 0x80003dd8 fallback handler további
+elérhető parancsargumentumainak/üzenetelőállítóinak követése és a 0x80005f14 helper
+útjainak futtatása valós hívó/idle előfeltételekkel. Az induláskori 9/19 parancs
+már 40 eredeti ARM926 tesztesetben lefutott. A service 0x80005b6c idle kapuja,
+1,200 prefixstabilitási és 24 service teszt, 12,704 UART-eset és a profil-mátrix
+már kész; ne ismételd meg őket indokolatlanul. Más feladatok, indirekt aliasok,
+külső ADC/peer konverziója és tényleges fizikai időzítés továbbra sem bizonyított.
+Csak igazolt okhoz készíts külön offline javításjelöltet.
+
+Helyi modell: Ollama 127.0.0.1:11435, qwen2.5-coder:14b; a szerver a felhasználó
+kérésére el lett indítva. Ellenőrizd a pillanatnyi állapotát, ne indíts duplát.
+Ugyanazon a Windows-fiókon az inventoryban megadott telepítés/modellek használhatók.
+Csak kis, új, lefoglalt indexelési/kivonatolási részfeladatot adj neki a checked
+lessons wrapperrel. A fontos állításokat te ellenőrizd az eredeti binárissal.
+Ne futtasd újra a kész modellbatch-eket; tokenlimit-válasz hiányos, JSON/idézet
+egyezése önmagában nem szemantikai bizonyíték. Nincs megtanított súlyadapter.
+
+Az új koordinátor induláskor nézze meg a nyitott issue/PR-ket és az élő registryt,
+majd egyedi koordinátorazonosítóval, az aktuális branch headre építve rögzítse
+az átvételt. Külső agentek csak saját ágon/forkon, elkülönített checkoutban;
+a központi adatbázisokat és task registryt a koordinátor integrálja. Ne írd felül
+más agent változtatását és ne következtesd feladat felszabadulását hallgatásból.
+
+Figyelem: a korábbi beta.2 GitHub Release a migrációkor 404-et adott, a tag/source
+megmaradt. A csomagban hash-ellenőrzött történeti Windows ZIP van. Ne publikáld
+újra és ne használd helyette a beta.1 draftot külön tulajdonosi kérés nélkül.
+
+Az eredeti napi automatizálás még aktív: minden nap 08:00 Europe/Budapest.
+Fiókváltással nem költözik át automatikusan. A régi automatizálást a tulajdonos
+állítsa le, mielőtt az újat bekapcsolja; ne legyen két párhuzamos koordinátor.
+Tokeneket, böngészős sessiont, .codex authot, SSH/Ollama privát kulcsot ne másolj.
+GitHub/REA/plugin hozzáféréseket az új fiókban külön kell csatlakoztatni.
+
+Ne csak tervet/jelentést írj: az átadási ellenőrzések után végezz egy körülhatárolt
+új bináriselemzési részfeladatot, teszteld, dokumentáld, és fejlesztési ágon commitold.
+Frissítsd a hét kért folytonossági dokumentumot és a RE_PROGRESS.md-t. Minden
+fontos eredményhez firmware-hash, cím, kód/evidence és tényleges teszt tartozzon.

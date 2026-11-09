@@ -1,0 +1,60 @@
+{
+  "schema": "ys4470.migration-readiness.v1",
+  "date": "2026-11-09",
+  "analysis_commit": "a2e5e7ebd2f661f37f88507f55a62a14c5df3f9f",
+  "purpose": "Fresh public Git checkout portability check; existing proofs rerun, no new firmware finding.",
+  "originals_rehashed": 2,
+  "patcher_unit_tests": 14,
+  "startup_helper_cases": 40,
+  "packet_validation": {
+    "packets": 6,
+    "instruction_byte_checks": 360,
+    "cfg_edges": 388,
+    "outer_loop_runs": 4
+  },
+  "commands": [
+    {
+      "command": [
+        "python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "patcher",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "test_already_patched_and_wrong_revert_variant_rejected (test_patcher.PatcherTests.test_already_patched_and_wrong_revert_variant_rejected) ... ok\ntest_cli_apply_inspect_revert_and_input_unchanged (test_patcher.PatcherTests.test_cli_apply_inspect_revert_and_input_unchanged) ... ok\ntest_detect_factory_and_both_output_variants (test_patcher.PatcherTests.test_detect_factory_and_both_output_variants) ... ok\ntest_existing_receipt_prevents_any_output (test_patcher.PatcherTests.test_existing_receipt_prevents_any_output) ... ok\ntest_factory_applications_and_roundtrip (test_patcher.PatcherTests.test_factory_applications_and_roundtrip) ... ok\ntest_no_inplace_and_no_overwrite (test_patcher.PatcherTests.test_no_inplace_and_no_overwrite) ... ok\ntest_original_byte_guard_and_output_hash_guard (test_patcher.PatcherTests.test_original_byte_guard_and_output_hash_guard) ... ok\ntest_patch_data_integrity (test_patcher.PatcherTests.test_patch_data_integrity) ... ok\ntest_personalized_full_flash_roundtrip_and_preservation (test_patcher.PatcherTests.test_personalized_full_flash_roundtrip_and_preservation) ... ok\ntest_unknown_application_rejected (test_patcher.PatcherTests.test_unknown_application_rejected) ... ok\ntest_unknown_full_flash_rejected (test_patcher.PatcherTests.test_unknown_full_flash_rejected) ... ok\ntest_version_specific_factory_data_preserved (test_patcher.PatcherTests.test_version_specific_factory_data_preserved) ... ok\ntest_wrong_header_or_offset_rejected (test_patcher.PatcherTests.test_wrong_header_or_offset_rejected) ... ok\ntest_wrong_sizes_rejected (test_patcher.PatcherTests.test_wrong_sizes_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 14 tests in 1.096s\n\nOK\n"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "contributions/COORD-ADC-CADENCE/synchronous/trace_synchronous_helper.py",
+        "--repo",
+        ".",
+        "--out-dir",
+        "work/migration-smoke/synchronous"
+      ],
+      "returncode": 0,
+      "stdout": "V3.6 PASS 20 synchronous helper cases\nV3.8 PASS 20 synchronous helper cases\nPASS 40 original startup-helper cases\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "contributions/COORD-FUNCTION-PACKETS/validate_packets.py"
+      ],
+      "returncode": 0,
+      "stdout": "{\"packets\": 6, \"instruction_byte_checks\": 360, \"cfg_edges_checked\": 388, \"binding_and_task_runs\": 4}\n",
+      "stderr": ""
+    }
+  ],
+  "model_calls": 0,
+  "physical_device_operations": 0
+}

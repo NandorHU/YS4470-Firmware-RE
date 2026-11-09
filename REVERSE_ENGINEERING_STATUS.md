@@ -329,3 +329,29 @@ A further1,200 original ARM926 cases show that the UART ISR's append-only path p
 ## 2026-11-09: local model restored and startup-helper execution
 
 The owner's requested local-model restart is complete: the existing signed Ollama0.40.15 and pinned coder14B run on127.0.0.1:11435 with existing weights, loopback/cloud-disabled settings and reported full GPU residency at context4096. Two previously transport-failed extraction tasks completed; manual review accepted3/4 extracted roles and rejected a pointer-literal/UART-status confusion. A new checked-example exercise passed, without weight training or a general-quality claim. Independently,40 original ARM926 cases executed the synchronous startup helper for proven arguments9/19 on both originals. See contributions/COORD-ADC-CADENCE/synchronous/README.md. No firmware patch/device/Release change.
+
+
+## 2026-11-09: account-migration handoff prepared
+
+The owner requested a complete transfer to another account. See
+[migration/2026-11-09/README.md](migration/2026-11-09/README.md), its detailed
+AGENT_HANDOFF.md, tool/setup inventory and machine-readable ARTIFACTS.json.
+Research baseline remains a2e5e7ebd2f661f37f88507f55a62a14c5df3f9f;
+62 function records. No new firmware finding or changed hardware claim is
+introduced by this documentation session. The existing memory/hardware/
+algorithm evidence and uncertainties remain as recorded above.
+
+A fresh public checkout passed14 patcher tests,40 existing startup-helper
+cases and six-packet validation (360 byte checks/388 CFG edges/four outer-loop
+runs); READINESS_VALIDATION.json records this portability check. Originals were
+rehashed. A full-history bundle/source kit and local environment inventory are
+prepared separately without private dumps, credentials or model weights.
+The beta.2 GitHub Release currently returns404 although its tag/source remain;
+the exact previously published Windows ZIP is retained locally with its pinned
+hash. No republishing, main/device write or automation change was performed.
+
+Next research task remains COORD-ADC-CADENCE: further reachable deferred-handler
+arguments/record producers and aliases before broader shared-buffer claims;
+startup IDs9/19 are already proven. The old daily automation is still active
+at08:00 Europe/Budapest and must be deliberately switched during account takeover.
+The prepared handoff does not silently release ownership or start a second agent.
