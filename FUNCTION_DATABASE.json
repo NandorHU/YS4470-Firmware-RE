@@ -1410,7 +1410,7 @@
         "V3_8": "0x80003dd8"
       },
       "confidence": "confirmed_bounded_original_deferred_control_execution",
-      "role": "Fallback control-record handler reached by GaugeCmdTask service after idle gating. The tested type-0 and type-1 producer paths execute the original handler body.",
+      "role": "Fallback control-record handler reached by GaugeCmdTask service after idle gating. The tested type-0/1 producer paths and host-supplied type-6 records execute the original handler body.",
       "name_status": "Analyst role label, not recovered vendor symbol",
       "relationships": [
         "Original service0x80005d00 conditionally calls0x80003dd8 after InputDispatcher0x80004390 returns0.",
@@ -1419,17 +1419,21 @@
         "Four caller suffixes reach producer0x80006778 and idle fallback. Type 0 tail-calls with0x26 at0x8000404c. Three type-1 paths call with0x27/0x2a/0x2b at0x80003eac.",
         "The two extended type-1 producers at0x8000e50c/0x8000e5a0 reach0x80003eb8. A successful command ACK leads to two critical RX clears, followed by a status-byte poll at0x80003f68.",
         "In 64 original ARM926 cases, recognized a0/a1 status headers lead to helper0x26 at0x80003fe8. Recognized second bytes can write values1..7 at0x805ab920.",
-        "Four general type-1 producer paths execute helper0x26, record byte +4, then0x19, regardless of all eight ACK-presence combinations tested on each original."
+        "Four general type-1 producer paths execute helper0x26, record byte +4, then0x19, regardless of all eight ACK-presence combinations tested on each original.",
+        "A type-6 record traverses the original queue and calls helper0x80005f14 using record byte +4. Both success and failure lead to the UART2 setup tail call at0x80003e4c.",
+        "Original queue order determines whether type-3/4 starts the measurement FSM before a deferred type-6 record or is suppressed by the pending flag."
       ],
       "evidence": [
         "contributions/COORD-ADC-CADENCE/admission/validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/deferred-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/extended-status-validation.json",
-        "contributions/COORD-ADC-CADENCE/synchronous/general-type1-validation.json"
+        "contributions/COORD-ADC-CADENCE/synchronous/general-type1-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/type6-queue-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/control-queue-index.json"
       ],
       "limits": [
         "The ten tested producer suffixes begin after the caller's queue drain. Queue transfer, UART status/arrival and requested sleep are modeled.",
-        "Status consumers, other callers, type-6 producer reachability, indirect aliases and complete system-wide ownership remain open."
+        "The real-queue replay injects type 6 at the original producer API. Native type-6 producer reachability, indirect aliases and complete system-wide ownership remain open."
       ]
     },
     {

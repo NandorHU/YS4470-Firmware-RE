@@ -535,3 +535,7 @@ From `056fa50572104a58f86ad309c903781bae457321`, verified the two button binding
 ## 2026-11-09: general type-1 fallback
 
 Continued from `8879de87bb201ff0da9848e7ae71cf648e455558` with four producer suffixes and all eight ACK combinations on each original (64 cases). The handler uses `0x26 → record[4] → 0x19` across all tested returns. The [report](contributions/COORD-ADC-CADENCE/synchronous/general-type1-validation.json) pins original hashes, executed bytes, wire frames and entry state. Next check alternate writers and indirect aliases of the control queue handle.
+
+## 2026-11-09: original control queue and type 6
+
+From `4933c79003cd3766812ee8beb36d67ccc2703ac9`, added the [queue reference index](contributions/COORD-ADC-CADENCE/synchronous/control-queue-index.json) and 38 original cases in the [real-queue replay](contributions/COORD-ADC-CADENCE/synchronous/type6-queue-validation.json). A host-supplied type-6 record reaches UART2 setup after a failed ACK or a rejected helper ID. The service preserves type 6 across a busy-to-idle transition and arbitrates tested type-3/4 mixtures by queue order. Next execute the type-2/5 dispatcher paths through the real queue.

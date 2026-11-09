@@ -283,3 +283,7 @@ The `0x28`/`0x29` replay establishes the ACK/status split and the local status w
 ## 2026-11-09: calibration status UI
 
 The [calibration UI replay](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-validation.json) binds the status consumer and the two UI producers. The [producer index](contributions/COORD-ADC-CADENCE/synchronous/control-producer-index.json) lists 31 aligned immediate ARM branch candidates per original, with local type arguments 0–5. Type-6 reachability through alternate queue writers or indirect code remains open, along with full hardware calibration behavior.
+
+## 2026-11-09: original control queue and type 6
+
+The [queue reference index](contributions/COORD-ADC-CADENCE/synchronous/control-queue-index.json) finds one immediate direct call to the task-context send routine `0x80061acc`, at `0x800067b8`, across the aligned ARM B/BL and ARMv5 Thumb BLX scans. The [real-queue replay](contributions/COORD-ADC-CADENCE/synchronous/type6-queue-validation.json) establishes type-6 behavior after host injection. Native type-6 creation, synthesized/indirect calls and alternate writer routines remain open.

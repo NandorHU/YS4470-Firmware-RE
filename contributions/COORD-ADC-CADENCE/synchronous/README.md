@@ -265,3 +265,46 @@ the controlled queue, UART and sleep fixtures.
 ```powershell
 python -B contributions/COORD-ADC-CADENCE/synchronous/trace_general_type1.py --out work/general-type1-validation.json
 ```
+
+## Original control queue and type 6
+
+The constructor call at `0x800418a4` initializes the original 10 ×
+68-byte queue and writes its handle to `0x805aae90`. The replay uses
+the original constructor, send, receive and service with modeled
+allocation and empty waiter lists. The [reference index](control-queue-index.json)
+finds one immediate call to task-context send `0x80061acc`, at
+`0x800067b8`, in both originals. It covers aligned ARM B/BL and ARMv5
+Thumb immediate BLX, and separately records aligned exact pointers and
+ARM literal references. Indirect targets and alternate primitives
+remain outside that bound.
+
+A host-supplied type-6 record is queued by original producer
+`0x80006778`. The idle fallback requests sleep(200), clears the
+two status words, calls the synchronous helper using byte +4, and
+requests sleep(200) again. It then tail-calls `0x80006bb8` with
+`(2, 720000000, 19200, 1)`. The original helper return does not gate
+this tail call. Tests cover ACK success, two attempts with no ACK, and
+command `0x30` rejected before send. The original setup programs PE7/PE8
+mux value 3, UART2 divisor `0x0249` and final LCR 3. The original
+interrupt routine writes `0x800073bc` into vector slot `0x805ab950`
+and programs priority and enable for source 3. The reset wait and
+helper sleeps are modeled and register values are memory shadows.
+
+Queue order is material within the tested original service paths.
+Two deferred records overwrite the same slot before dispatch, including
+when the queue ring wraps. A type-3/4 record ahead of type 6 starts the
+measurement FSM. Type 6 stays pending until the FSM returns idle in
+the controlled no-reply schedule. In reverse order the pending type-6
+record suppresses the later immediate request in that iteration.
+
+The [replay](type6-queue-validation.json) pins 38 cases, both firmware
+hashes, original instruction bytes, UART setup writes and receive
+counts. The original producer accepts the supplied type, but these
+fixtures do not establish a reachable factory caller supplying type 6.
+Next follow type-2 and type-5 original producers through the deferred
+dispatcher and measurement builder with the real queue.
+
+```powershell
+python -B contributions/COORD-ADC-CADENCE/synchronous/trace_type6_queue.py --out work/type6-queue-validation.json
+python -B contributions/COORD-ADC-CADENCE/synchronous/index_control_queue.py --out work/control-queue-index.json
+```

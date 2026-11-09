@@ -241,3 +241,7 @@ The original UART2 write path at `0x80006e10` emitted `c1c1` and `c2c2` for `0x2
 ## 2026-11-09: calibration status UI
 
 The original UI names the producers for `0x28` and `0x29` as Cal Circuit 1 mode and Cal Circuit 2 mode. The result strings include EEPROM failures. These are user-facing labels grounded by the original registered callbacks and label copy, with physical circuits and peer internals still open. See the [calibration UI replay](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-validation.json).
+
+## 2026-11-09: original control queue and type 6
+
+In the [real-queue replay](contributions/COORD-ADC-CADENCE/synchronous/type6-queue-validation.json), the type-6 handler tail-calls `0x80006bb8` with UART index 2, clock argument 720000000, baud argument 19200 and IRQ enable 1. Original code writes UART2 divisor `0x0249`, final LCR 3 and the IRQ handler `0x800073bc`. The MMIO register shadows describe programmed values and routing. Physical clock rate and line behavior remain open.

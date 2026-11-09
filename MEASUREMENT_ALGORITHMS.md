@@ -321,3 +321,7 @@ A successful `0x28`/`0x29` helper ACK reaches two RX clears followed by a status
 ## 2026-11-09: calibration status UI
 
 In the [calibration UI replay](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-validation.json), status 0 with the control flag set shows `Calibration ...` and keeps the initial timer period of 2000. Codes 1–7 show result text and set period 200. With both words zero, the callback queues a type-3 request and the raw-sentinel fixture produces `.OL`. The original due gate was exercised one counter unit before and at each deadline, including wrap.
+
+## 2026-11-09: original control queue and type 6
+
+Original queue order controls admission in the [real-queue replay](contributions/COORD-ADC-CADENCE/synchronous/type6-queue-validation.json). A type-3 or type-4 record ahead of a synthetic type-6 record starts the measurement builder, deferring type 6 until the FSM is idle. If type 6 arrives first, the pending flag blocks the later immediate record. Two deferred records occupy one pending slot after queue drain, so only the last reaches the fallback in the tested orders.

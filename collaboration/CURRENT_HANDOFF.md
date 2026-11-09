@@ -10,11 +10,10 @@ Beta.2 Release API currently404; retained historical installer is documented.
 The owner confirmed the old daily automation was stopped. The new coordinator
 `codex-ys4470-20261109-01a1c110` is recorded in upstream registry revision 19.
 
-Latest analysis: [general type-1 fallback](../contributions/COORD-ADC-CADENCE/synchronous/README.md#general-type-1-fallback)
-executes four original callers under all ACK combinations. The
-[calibration UI replay](../contributions/COORD-ADC-CADENCE/synchronous/README.md#calibration-status-ui)
-also binds the button text and result timer. Next trace alternate writers
-and indirect aliases of the control queue handle at `0x805aae90`.
+Latest analysis: [original queue and type-6 fallback](../contributions/COORD-ADC-CADENCE/synchronous/README.md#original-control-queue-and-type-6)
+executes the queue, UART2 reinitialization and immediate/deferred arbitration.
+Type 6 uses a host-supplied record. Next execute type-2 and type-5 producers
+at `0x8000d0c8`/`0x8000d0a0` through the real queue and dispatcher.
 
 ---
 
