@@ -283,3 +283,29 @@ Original state3-admitted frames retain their first five bytes through state5 whi
 ## 2026-11-09: local model restored and startup-helper execution
 
 Synchronous startup helper0x80005f14 accepts a matching first-byte ACK immediately for tested IDs9/19; its500 constant bounds per-attempt check/sleep iterations, not a mandatory delay.40 original-code cases verify immediate/wrong/missing/late/second-attempt replies, at most two sends and up to1,000 requested sleep(1) calls. A header arriving after the final sleep can miss the last check. Keep this startup ACK contract distinct from the asynchronous measurement FSM's five-byte parser admission. No physical time unit or Base-profile cause is inferred.
+
+
+## 2026-11-09: account-migration handoff prepared
+
+The owner requested a complete transfer to another account. See
+[migration/2026-11-09/README.md](migration/2026-11-09/README.md), its detailed
+AGENT_HANDOFF.md, tool/setup inventory and machine-readable ARTIFACTS.json.
+Research baseline remains a2e5e7ebd2f661f37f88507f55a62a14c5df3f9f;
+62 function records. No new firmware finding or changed hardware claim is
+introduced by this documentation session. The existing memory/hardware/
+algorithm evidence and uncertainties remain as recorded above.
+
+A fresh public checkout passed14 patcher tests,40 existing startup-helper
+cases and six-packet validation (360 byte checks/388 CFG edges/four outer-loop
+runs); READINESS_VALIDATION.json records this portability check. Originals were
+rehashed. A full-history bundle/source kit and local environment inventory are
+prepared separately without private dumps, credentials or model weights.
+The beta.2 GitHub Release currently returns404 although its tag/source remain;
+the exact previously published Windows ZIP is retained locally with its pinned
+hash. No republishing, main/device write or automation change was performed.
+
+Next research task remains COORD-ADC-CADENCE: further reachable deferred-handler
+arguments/record producers and aliases before broader shared-buffer claims;
+startup IDs9/19 are already proven. The old daily automation is still active
+at08:00 Europe/Budapest and must be deliberately switched during account takeover.
+The prepared handoff does not silently release ownership or start a second agent.

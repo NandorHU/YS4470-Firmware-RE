@@ -1,3 +1,16 @@
+# Account-transfer entry point — 2026-11-09
+
+Read [the complete migration handoff](../migration/2026-11-09/README.md) first.
+It pins the latest research commit a2e5e7ebd2f661f37f88507f55a62a14c5df3f9f,
+62 function records, restored local model,40 startup-helper cases and exact next
+COORD-ADC-CADENCE step. Earlier sections below are historical snapshots.
+The local transfer kit contains full public Git history, approved originals,
+checksums and a tool inventory; private backups/credentials/model weights stay out.
+Beta.2 Release API currently404; retained historical installer is documented.
+Old daily automation remains active; coordinate explicit account takeover.
+
+---
+
 # Current shared handoff â€” 2026-11-08
 
 Coordinator: the current Codex agent in the ongoing YS-4470 conversation.

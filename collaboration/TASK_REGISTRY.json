@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 17,
+  "revision": 18,
   "updated": "2026-11-09",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -503,5 +503,14 @@
       "source_commit": "c12fdef3fcb56c1f6b504ac1330f02965e6bc727",
       "workflow_run": 42499845896
     }
-  ]
+  ],
+  "handoff_prepared": {
+    "date": "2026-11-09",
+    "requested_by": "project-owner",
+    "entry": "migration/2026-11-09/README.md",
+    "research_checkpoint": "a2e5e7ebd2f661f37f88507f55a62a14c5df3f9f",
+    "successor_identity": null,
+    "ownership_transferred": false,
+    "note": "Prepared for account transfer. Successor records its unique coordinator/task identity against live head on actual owner-approved takeover; no task released by this preparation."
+  }
 }
