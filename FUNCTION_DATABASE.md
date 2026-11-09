@@ -312,3 +312,8 @@ Existing measurement_transaction_send, measurement_byte_output_candidate and uar
 ## 2026-11-09: admitted-frame stability and caller ownership
 
 Two scoped analyst entries are added: fallback control handler0x80003dd8 (entry routing dynamically bounded, body statically indexed) and synchronous helper candidate0x80005f14 (identical95-instruction local CFG; no new body execution). The database now has62 records, not62 fully reconstructed functions. Nine direct BL call sites and an additional0x8000404c tail edge are validated in original code. The UART ISR/prefix and service-idle gate evidence is linked to existing records. See contributions/COORD-ADC-CADENCE/admission/.
+
+
+## 2026-11-09: local model restored and startup-helper execution
+
+The existing synchronous_command_helper_candidate0x80005f14 entry is promoted from static-only evidence to bounded original startup-command execution for IDs9/19, with40 matching cases across3.6/3.8. One matching header byte suffices for helper ACK success; each attempt checks before sleep with a500-iteration cap, and at most one retry is observed. The measurement FSM's separate five-byte contract remains unchanged. The database stays62 records; other command IDs/caller concurrency remain outside this new proof.

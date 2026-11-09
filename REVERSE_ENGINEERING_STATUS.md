@@ -324,3 +324,8 @@ The original UART-send leaf has now been replaced by executed original descripto
 ## 2026-11-09: admitted-frame stability and caller ownership
 
 A further1,200 original ARM926 cases show that the UART ISR's append-only path preserves the admitted five-byte prefix before/during state5 parsing under valid-count/no-other-writer conditions.24 original service-gate cases admit the deferred control fallback only when idle. All nine raw BL candidates for synchronous helper0x80005f14 are classified into GaugeCmdTask startup/deferred handler CFGs; an additional tail branch0x8000404c was found. The proof does not establish global mutual exclusion or remove the earlier late same-header ambiguity. See contributions/COORD-ADC-CADENCE/admission/README.md and validation.json.
+
+
+## 2026-11-09: local model restored and startup-helper execution
+
+The owner's requested local-model restart is complete: the existing signed Ollama0.40.15 and pinned coder14B run on127.0.0.1:11435 with existing weights, loopback/cloud-disabled settings and reported full GPU residency at context4096. Two previously transport-failed extraction tasks completed; manual review accepted3/4 extracted roles and rejected a pointer-literal/UART-status confusion. A new checked-example exercise passed, without weight training or a general-quality claim. Independently,40 original ARM926 cases executed the synchronous startup helper for proven arguments9/19 on both originals. See contributions/COORD-ADC-CADENCE/synchronous/README.md. No firmware patch/device/Release change.

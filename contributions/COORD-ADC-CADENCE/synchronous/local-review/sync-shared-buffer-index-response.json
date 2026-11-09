@@ -1,0 +1,24 @@
+{
+  "manifest_sha256": "ab8407184bcaf73a7d3d847441cab6a234621a23433494bd4173f2427e9f5522",
+  "context_sha256": "87d304eca27bf81eb910dea57113c289d415ec8a43ec155d086ae3bc1173ad45",
+  "complete": true,
+  "reply": {
+    "model": "qwen2.5-coder:14b",
+    "created_at": "2026-11-09T08:08:48.7734614Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"clear_rx_count_instruction\": \"0x80005f30 str r0, [sl]\",\n  \"delay_call_instruction\": \"0x80005fe8 bl #0x80060fbc\",\n  \"limitation\": \"The delay call instruction is a branch with link to the address 0x80060fbc.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2954685800,
+    "load_duration": 4910600,
+    "prompt_eval_count": 2720,
+    "prompt_eval_cached_count": 459,
+    "prompt_eval_duration": 1011493000,
+    "eval_count": 85,
+    "eval_duration": 1878727000
+  },
+  "seconds": 2.984,
+  "semantic_finding_accepted": false
+}

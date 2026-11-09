@@ -187,3 +187,8 @@ Continue COORD-ADC-CADENCE from contributions/COORD-ADC-CADENCE/STATUS.md and ua
 ## 2026-11-09: admitted-frame stability and caller ownership
 
 Completed the bounded admission-to-parse step:1,200 original-code cases,24 service-gate cases, nine classified BL sites plus one tail branch, and95-instruction static synchronous-helper context per original. Next trace fallback message producers/other aliases and execute synchronous helper success/failure under reachable caller/idle preconditions. Keep broad physical ADC/latency questions separate. Do not rerun the completed transport/profile/admission matrices without changed code, inputs or unresolved guards. Exact continuation: contributions/COORD-ADC-CADENCE/STATUS.md.
+
+
+## 2026-11-09: local model restored and startup-helper execution
+
+Reuse the40 completed startup-helper cases and prior profile/transport/admission proofs. Next bound further reachable deferred-handler arguments/message producers before extending helper semantics or claiming global RX ownership. For local assistance, the service is restored at127.0.0.1:11435; use synchronous/start_local_server.ps1 with explicit existing exe/models/writable-state paths for recovery. Give new small tasks the checked base lessons plus local-heldout/LESSONS-UART.md; do not rerun frozen completed batches or grant model shell/device tools.

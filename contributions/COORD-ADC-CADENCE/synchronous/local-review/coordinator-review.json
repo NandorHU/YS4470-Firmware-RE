@@ -1,0 +1,28 @@
+{
+  "tasks": [
+    {
+      "task": "rx-register-index",
+      "response_sha256": "7e2e1dcfc0cbe296b1b4fcab444105ba46952e70cf1a16b94a4f70290110d655",
+      "strict_requested_schema": false,
+      "grounded_quotes": 2,
+      "accepted_extractions": 1,
+      "rejected_extractions": 1,
+      "correction": "0x800073bc loads a pointer literal, not UART status. The status read is0x800073c8.0x80007408 stores count;0x8000740c subsequently stores the byte, so the claimed last-write limitation is wrong."
+    },
+    {
+      "task": "sync-shared-buffer-index",
+      "response_sha256": "d9aabbb69fc56e351d03f6c706b43db2562c6fe755affc102e3e322740044aaa",
+      "strict_requested_schema": false,
+      "grounded_quotes": 2,
+      "accepted_extractions": 2,
+      "rejected_extractions": 0,
+      "correction": "Count clear0x80005f30 and delay-call0x80005fe8 are grounded and correct. Saying the latter is BL is not a useful missing-context limit; no physical time follows."
+    }
+  ],
+  "grounded_quotes": 4,
+  "semantically_correct_extractions": 3,
+  "accepted_independent_new_findings": 0,
+  "generated_tokens": 183,
+  "seconds": 12.062,
+  "scope": "Manual byte/semantic review, not a general model-quality score or speedup. Both replies violated the requested output-key schema."
+}

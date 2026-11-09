@@ -1,0 +1,11 @@
+{
+  "validation_sha256": "aed4ec7d5fc731df3b7ae6318b101ea944b8eae6fe4e28273719967f8147c81a",
+  "observed_original_byte_guards": 406,
+  "original_cases": 40,
+  "checked_model_responses": 3,
+  "physical_device_operations": 0,
+  "reviewed_initial_extractions": 4,
+  "semantically_correct_initial_extractions": 3,
+  "source_hashes_verified": true,
+  "original_images_unchanged": true
+}

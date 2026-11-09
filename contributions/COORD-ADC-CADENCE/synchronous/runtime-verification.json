@@ -1,0 +1,27 @@
+{
+  "schema": "ys4470.local-runtime-restored.v1",
+  "date": "2026-11-09",
+  "version": "0.40.15",
+  "endpoint": "http://127.0.0.1:11435",
+  "executable_sha256": "544216ca2082b8bc19b4ba94b513f0098fa06774b232f3c140090e3449e322a5",
+  "authenticode_status": "Valid",
+  "authenticode_publisher": "Ollama Inc.",
+  "native_hidden_server_started": true,
+  "existing_models_reused": true,
+  "downloads": 0,
+  "launch_options": {
+    "cloud_disabled": true,
+    "num_parallel": 1,
+    "max_loaded_models": 1,
+    "flash_attention": true,
+    "kv_cache_type": "q8_0"
+  },
+  "model": "qwen2.5-coder:14b",
+  "model_digest": "9ec8897f747e246e970bc5cfdda85d22f1123dc2e3d34978a010a75968716849",
+  "api_reported_size": 9107029359,
+  "api_reported_size_vram": 9107029359,
+  "context_length": 4096,
+  "reusable_recovery_script_already_running_path_tested": true,
+  "reusable_recovery_script_cold_path_tested": false,
+  "scope": "Actual native launch, version/tags/ps responses and reviewed executable signature. Not a performance/quality benchmark; no startup service installed."
+}

@@ -142,3 +142,8 @@ Latest coordinator checkpoint: contributions/COORD-ADC-CADENCE/STATUS.md, with n
 ## 2026-11-09: admitted-frame stability and caller ownership
 
 Latest bounded result is contributions/COORD-ADC-CADENCE/admission/:1,200 original admission/parser cases,24 service gates, nine classified BL sites and one newly recorded tail edge0x8000404c→0x80005f14. The admitted RX prefix is stable against append-only ISR arrivals under stated conditions. Tested fallback control-handler entry is idle-gated; no feasible active-acquisition synchronous-clear race is inferred. New database records are scoped analyst roles, not full reconstructions. Continue with reachable synchronous-helper execution and message producer/alias ownership; preserve external ADC/physical timing uncertainty.
+
+
+## 2026-11-09: local model restored and startup-helper execution
+
+Latest bounded work is contributions/COORD-ADC-CADENCE/synchronous/: restored local service, two reviewed extraction responses, one new in-context held-out exercise, and40 original startup-helper cases for arguments9/19. The previous refused-service issue is resolved; old failures remain intact for provenance. The helper's one-byte ACK, two-attempt/500-per-attempt check/sleep order and late-final-check boundaries are established only for tested startup descriptors. Continue reachable deferred-handler/message-producer analysis; keep measurement FSM admission, ADC behavior and physical latency separate. No main/device/Release change.

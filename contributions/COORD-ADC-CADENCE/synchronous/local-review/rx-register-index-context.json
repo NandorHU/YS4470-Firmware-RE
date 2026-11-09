@@ -1,0 +1,33 @@
+{
+  "id": "rx-register-index",
+  "binary_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+  "entry": "0x800073bc",
+  "source_kind": "Ghidra complete local ARM function",
+  "pointer_facts": "UART2 base=0x01c25800; count pointer=0x805ab938; buffer=0x805b408c. These pointer facts are supplied by deterministic tools.",
+  "assembly": [
+    "0x800073bc ldr r0,[0x80007418]",
+    "0x800073c0 sub sp,sp,#0x4",
+    "0x800073c4 add r1,r0,#0x8",
+    "0x800073c8 ldr r1,[r1,#0x0]",
+    "0x800073cc tst r1,#0x4",
+    "0x800073d0 str r1,[sp,#0x0]",
+    "0x800073d4 addeq sp,sp,#0x4",
+    "0x800073d8 bxeq lr",
+    "0x800073dc ldr r0,[r0,#0x0]",
+    "0x800073e0 and r1,r0,#0xff",
+    "0x800073e4 ldr r2,[0x8000741c]",
+    "0x800073e8 ldr r0,[r2,#0x0]",
+    "0x800073ec cmp r0,#0xc8",
+    "0x800073f0 addge sp,sp,#0x4",
+    "0x800073f4 bxge lr",
+    "0x800073f8 ldr r0,[r2,#0x0]",
+    "0x800073fc ldr r3,[0x80007420]",
+    "0x80007400 add r3,r3,r0",
+    "0x80007404 add r0,r0,#0x1",
+    "0x80007408 str r0,[r2,#0x0]",
+    "0x8000740c strb r1,[r3,#0x0]",
+    "0x80007410 add sp,sp,#0x4",
+    "0x80007414 bx lr"
+  ],
+  "question": "Extract ONE exact instruction that reads UART status and ONE exact instruction that stores the updated receive count. Do not confuse peripheral reads with RAM writes."
+}
