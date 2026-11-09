@@ -365,3 +365,7 @@ The calibration callback reads `0x805ab920` at `0x8005dac4` and reads `0x805ab91
 ## 2026-11-09: original control queue and type 6
 
 The [queue reference index](contributions/COORD-ADC-CADENCE/synchronous/control-queue-index.json) byte-checks the write at `0x800029f4` to the queue handle at `0x805aae90`, and its original reads by the producer, service and drain. The [real-queue replay](contributions/COORD-ADC-CADENCE/synchronous/type6-queue-validation.json) executes the original 10 × 68-byte ring, including wrap, and the 68-byte copy to the single deferred slot at `0x805ac6d0`.
+
+## 2026-11-09: dynamic type-2 selection and compiled plan
+
+The callback at `0x8000d648` sets `0x805abefc+1` at `0x8000d67c`. The `0x8000d294` callback reads that byte at `0x8000d388` and writes record-bound bytes through UI offsets +7/+8. The [dynamic replay](contributions/COORD-ADC-CADENCE/synchronous/dynamic-type2-validation.json) covers both single and paired callback schedules with the original queue drain.

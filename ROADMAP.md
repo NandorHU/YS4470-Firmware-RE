@@ -234,3 +234,7 @@ The [calibration UI replay](contributions/COORD-ADC-CADENCE/synchronous/calibrat
 ## 2026-11-09: original control queue and type 6
 
 Continue from the original queue and fallback evidence in the [real-queue replay](contributions/COORD-ADC-CADENCE/synchronous/type6-queue-validation.json). Trace type-2 and type-5 producer sites `0x8000d0c8`/`0x8000d0a0` through deferred dispatcher `0x80004390` into the measurement builder. Keep native type-6 reachability separate from the scoped synthetic execution and [queue reference index](contributions/COORD-ADC-CADENCE/synchronous/control-queue-index.json).
+
+## 2026-11-09: dynamic type-2 selection and compiled plan
+
+The dynamic type-2 producer, adjacent callback and record-byte clamp are covered in the [dynamic replay](contributions/COORD-ADC-CADENCE/synchronous/dynamic-type2-validation.json). A pure command-plan C component is checked in the [compiled-plan differential](contributions/COORD-ADC-CADENCE/synchronous/measurement-plan-validation.json). Next exercise consecutive native refresh-produced type-3 measurements after type-2 configuration to identify the first published sample.

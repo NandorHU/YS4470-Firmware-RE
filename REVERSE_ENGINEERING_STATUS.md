@@ -371,3 +371,7 @@ Both originals passed 40 status cases and eight linked four-deadline UI sequence
 ## 2026-11-09: original control queue and type 6
 
 Across both originals, the [real-queue replay](contributions/COORD-ADC-CADENCE/synchronous/type6-queue-validation.json) passed 38 cases covering the original queue lifecycle, type-6 UART2 setup after ACK success/failure, ring wrap, deferred overwrites and ordering relative to immediate measurement records. The [queue reference index](contributions/COORD-ADC-CADENCE/synchronous/control-queue-index.json) bounds direct queue-send and handle references.
+
+## 2026-11-09: dynamic type-2 selection and compiled plan
+
+Both originals agree in 36 Highspeed callback cases, 20 adjacent/paired callback cases and 512 exhaustive byte-to-second-send cases. Separately compiled ARM C agrees with the original dispatcher and builder in 4,108 plan cases. See the [dynamic replay](contributions/COORD-ADC-CADENCE/synchronous/dynamic-type2-validation.json) and [compiled-plan differential](contributions/COORD-ADC-CADENCE/synchronous/measurement-plan-validation.json).

@@ -245,3 +245,7 @@ The original UI names the producers for `0x28` and `0x29` as Cal Circuit 1 mode 
 ## 2026-11-09: original control queue and type 6
 
 In the [real-queue replay](contributions/COORD-ADC-CADENCE/synchronous/type6-queue-validation.json), the type-6 handler tail-calls `0x80006bb8` with UART index 2, clock argument 720000000, baud argument 19200 and IRQ enable 1. Original code writes UART2 divisor `0x0249`, final LCR 3 and the IRQ handler `0x800073bc`. The MMIO register shadows describe programmed values and routing. Physical clock rate and line behavior remain open.
+
+## 2026-11-09: dynamic type-2 selection and compiled plan
+
+The [dynamic replay](contributions/COORD-ADC-CADENCE/synchronous/dynamic-type2-validation.json) verifies actual UART2 second-send frames `590059` through `59055e` for descriptors `0x13..0x18`, and `5a5a` for fallback `0x19`. The controlled replies exercise firmware paths. The electrical meaning of the descriptor arguments remains open.

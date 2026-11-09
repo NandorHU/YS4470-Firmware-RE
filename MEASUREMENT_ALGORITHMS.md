@@ -325,3 +325,7 @@ In the [calibration UI replay](contributions/COORD-ADC-CADENCE/synchronous/calib
 ## 2026-11-09: original control queue and type 6
 
 Original queue order controls admission in the [real-queue replay](contributions/COORD-ADC-CADENCE/synchronous/type6-queue-validation.json). A type-3 or type-4 record ahead of a synthetic type-6 record starts the measurement builder, deferring type 6 until the FSM is idle. If type 6 arrives first, the pending flag blocks the later immediate record. Two deferred records occupy one pending slot after queue drain, so only the last reaches the fallback in the tested orders.
+
+## 2026-11-09: dynamic type-2 selection and compiled plan
+
+The type-2 dispatcher at `0x80004390` preserves record byte +5 in `0x13..0x18` and selects `0x19` otherwise. The [dynamic replay](contributions/COORD-ADC-CADENCE/synchronous/dynamic-type2-validation.json) checks all 256 bytes on each original through the second UART send. The [compiled-plan differential](contributions/COORD-ADC-CADENCE/synchronous/measurement-plan-validation.json) checks the pure list and control-update plan independently of UART and scheduling.
