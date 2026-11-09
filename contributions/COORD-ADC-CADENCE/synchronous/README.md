@@ -341,3 +341,54 @@ immediate value.
 ```powershell
 python -B contributions/COORD-ADC-CADENCE/synchronous/trace_deferred_measurement.py --out work/deferred-measurement-validation.json
 ```
+
+## Dynamic type-2 selection
+
+In both originals the setup at `0x80051818`/`0x8005182c` supplies
+`0x8000d648`/`0x8000d294` as callback arguments. The callbacks then
+execute under controlled UI inputs. The adjacent callback sets
+`0x805abefc+1` to 1 at `0x8000d67c`. When Highspeed toggles off in
+UI mode 1, the original type-2 producer at `0x8000d39c` uses
+`[0x0c, 0x15]` if that byte is 1, else `[0x0c, 0x19]`. The
+tested toggle-on branch with the byte set sends `[0x22, 0x15]`.
+The adjacent callback can itself send `[0x09, 0x13]`,
+`[0x0a, 0x13]` or `[0x0c, 0x15]` for the tested incoming selections.
+
+In paired cases, the second callback's original queue drain removes
+the first callback's waiting record before enqueueing its own. The
+service then executes the remaining record's three-command list. The
+test runs original callbacks, queue, dispatcher, builder and UART
+transport. Widget style, feedback, allocation, counter progression
+and replies are fixtures.
+
+The dispatcher preserves secondary bytes `0x13..0x18` and maps all
+others to `0x19`. All 256 values are tested on each original via the
+producer API and checked through the actual second send. In the
+[replay](dynamic-type2-validation.json), the 512 clamp/send cases are
+separate from 36 Highspeed callback cases and 20 adjacent/paired cases.
+
+### Independent compiled plan
+
+`measurement_plan.c/.h` return a pure command plan for types 2–5.
+The result lists the builder mode and commands, and whether to update
+configuration and discard. Types 3/4 leave the caller's control state
+alone. The function expects a valid output pointer and leaves its
+buffer untouched for unhandled types. The result uses a semantic
+struct. Original queue arbitration, MMIO and scheduling are separate.
+
+The [differential report](measurement-plan-validation.json) verifies
+4,108 cases against the original dispatcher and builder on both
+firmware hashes. It covers all secondary byte values for each type
+2–5 at two primary values, plus six unhandled record types per image.
+The ARM object executes separately under Unicorn and the validator
+rejects relocations in the function's section.
+
+With Zig 0.13.0 and the existing analysis dependencies, create the
+output directory and run from the checkout:
+
+```powershell
+$b='contributions/COORD-ADC-CADENCE/synchronous'
+python -B "$b/trace_dynamic_type2.py" --out work/dynamic-type2-validation.json
+zig cc -target arm-freestanding-eabi -mcpu=arm926ej_s -marm -O2 -ffreestanding -fno-builtin -ffunction-sections -std=c11 -Wall -Wextra -Werror -c "$b/measurement_plan.c" -o work/measurement_plan.o
+python -B "$b/validate_measurement_plan.py" --object work/measurement_plan.o --compiler 'Zig 0.13.0' --out work/measurement-plan-validation.json
+```

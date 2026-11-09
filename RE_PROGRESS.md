@@ -543,3 +543,7 @@ From `4933c79003cd3766812ee8beb36d67ccc2703ac9`, added the [queue reference inde
 ## 2026-11-09: original deferred type-2/5 lists
 
 From `25750c1c780a01c09265c0bef5987a01f5097a40`, executed the Fast CONT choice suffix, original queue and both dispatcher lists in 20 cases. Matching setup replies traversed the full list and the first measurement frame consumed one discard slot. With no first ACK the FSM retried that command then returned idle. See the [replay](contributions/COORD-ADC-CADENCE/synchronous/deferred-measurement-validation.json). Next trace the dynamic type-2 byte at producer `0x8000d39c`.
+
+## 2026-11-09: dynamic type-2 selection and compiled plan
+
+From `78530f2d602a566209a68cd830518316164cf975`, exercised the dynamic type-2 UI callbacks and original queue through UART, then exhaustively replayed the secondary byte. The [dynamic replay](contributions/COORD-ADC-CADENCE/synchronous/dynamic-type2-validation.json) pins 568 original cases. The [compiled-plan differential](contributions/COORD-ADC-CADENCE/synchronous/measurement-plan-validation.json) pins 4,108 comparisons against a separately compiled independent C plan. Continue by linking complete configuration to refresh-produced measurement requests and discard-to-publication transitions.

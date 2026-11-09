@@ -359,3 +359,7 @@ New analyst entry `calibration_status_ui_callback` binds `0x8005da88` to the ori
 ## 2026-11-09: original control queue and type 6
 
 The existing fallback entry at `0x80003dd8` now includes the synthetic type-6 record path through helper call `0x80003e2c` and the UART2 setup tail call at `0x80003e4c`. The original constructor, enqueue, dequeue and fallback execute in 38 cases. The database retains 63 entries. See the [real-queue replay](contributions/COORD-ADC-CADENCE/synchronous/type6-queue-validation.json).
+
+## 2026-11-09: dynamic type-2 selection and compiled plan
+
+The existing Highspeed handler at `0x8000d294` now has original producer-to-UART execution on both versions. The existing dispatcher entry is also compared with independently compiled C for types 2–5. See the [dynamic replay](contributions/COORD-ADC-CADENCE/synchronous/dynamic-type2-validation.json) and [compiled-plan differential](contributions/COORD-ADC-CADENCE/synchronous/measurement-plan-validation.json).

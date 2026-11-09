@@ -232,17 +232,20 @@
       "id": "highspeed_event_handler",
       "addresses": {
         "V3_8": "0x8000d294",
+        "V3_6": "0x8000d294",
         "Beta3": "0x8000d294"
       },
       "confidence": "confirmed",
       "role": "High-speed event handler",
       "evidence": [
         "prior static trace",
-        "literal-object trace 2026-11-05"
+        "literal-object trace 2026-11-05",
+        "contributions/COORD-ADC-CADENCE/synchronous/dynamic-type2-validation.json"
       ],
       "relationships": [
         "reads/toggles 0x805abefc+0x02",
-        "writes 0x805abefc+0x07 on distinct branches"
+        "writes 0x805abefc+0x07 on distinct branches",
+        "In tested mode-1 toggle-off cases, UI byte +1 selects record byte +5 at 0x8000d394. The adjacent callback sets UI byte +1 at 0x8000d67c."
       ]
     },
     {
@@ -618,14 +621,18 @@
         "input case 4 builds [0x1b]",
         "input cases 3, 2, and 5 construct lists containing terminal command 0x1d",
         "case 5 list is [0x0c,0x22,0x13,0x1d]",
-        "The Fast CONT choice at 0x8000d084 supplies tested type-2 list [0x0e,0x19,0x1d] or type-5 list [0x0c,0x22,0x13,0x1d]. Both original deferred paths use builder mode 3 and seed discard 2."
+        "The Fast CONT choice at 0x8000d084 supplies tested type-2 list [0x0e,0x19,0x1d] or type-5 list [0x0c,0x22,0x13,0x1d]. Both original deferred paths use builder mode 3 and seed discard 2.",
+        "For type 2, byte +5 is preserved in 0x13..0x18 or replaced by 0x19. The original queue-to-UART replay checks all 256 byte values on each original.",
+        "A separately compiled semantic C plan matches the original dispatcher and builder on 4,108 cases including tested type 2..5 inputs and unhandled records."
       ],
       "evidence": [
         "evidence/2026-11-05-measurement-command-1b-1d.json",
         "bounded PyGhidra TransactionBuilder caller trace",
         "evidence/2026-11-06-state5-saturation-path.json",
         "evidence/2026-11-06-state5-discard-lifecycle.json",
-        "contributions/COORD-ADC-CADENCE/synchronous/deferred-measurement-validation.json"
+        "contributions/COORD-ADC-CADENCE/synchronous/deferred-measurement-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/dynamic-type2-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/measurement-plan-validation.json"
       ],
       "limits": [
         "Input case codes are not mapped to physical measurement modes."

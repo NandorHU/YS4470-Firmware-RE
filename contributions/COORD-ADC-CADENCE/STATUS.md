@@ -2,6 +2,15 @@
 
 ## Current checkpoint
 
+The [dynamic replay](synchronous/dynamic-type2-validation.json) covers
+568 cases on both originals, including the complete byte clamp and
+paired callbacks with the original queue drain. The [compiled plan
+comparison](synchronous/measurement-plan-validation.json) agrees in
+4,108 cases. Next follow native refresh-produced type-3 requests
+after type-2 configuration through discard and first publication.
+
+## Previous type-2/5 checkpoint
+
 The [type-2/5 replay](synchronous/deferred-measurement-validation.json)
 follows the original Fast CONT choice through the real queue, deferred
 dispatcher and the complete tested command lists. Both originals agree

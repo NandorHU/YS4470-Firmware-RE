@@ -287,3 +287,7 @@ The [calibration UI replay](contributions/COORD-ADC-CADENCE/synchronous/calibrat
 ## 2026-11-09: original control queue and type 6
 
 The [queue reference index](contributions/COORD-ADC-CADENCE/synchronous/control-queue-index.json) finds one immediate direct call to the task-context send routine `0x80061acc`, at `0x800067b8`, across the aligned ARM B/BL and ARMv5 Thumb BLX scans. The [real-queue replay](contributions/COORD-ADC-CADENCE/synchronous/type6-queue-validation.json) establishes type-6 behavior after host injection. Native type-6 creation, synthesized/indirect calls and alternate writer routines remain open.
+
+## 2026-11-09: dynamic type-2 selection and compiled plan
+
+The [dynamic replay](contributions/COORD-ADC-CADENCE/synchronous/dynamic-type2-validation.json) binds a writer of the dynamic UI byte and verifies the complete clamp. Other writers and the physical behavior selected by UART descriptors `0x13..0x19` remain open. Test a complete type-2 configuration followed by native refresh-produced type-3 requests to link the discard counter to the first fresh publication.
