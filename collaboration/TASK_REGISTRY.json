@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 22,
+  "revision": 23,
   "updated": "2026-11-09",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,7 +295,7 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Execute the general type-1 fallback from producer site 0x8000e36c through its sequence of helper arguments. Then trace alternate or indirect queue writers that could produce type 6. The calibration UI binding is verified; peer internals and physical timing remain open.",
+      "next_action": "Trace the control queue handle at 0x805aae90 (control object 0x805aae8c +4) through alternate writers and indirect aliases that could supply type 6. The general type-1 fallback and calibration UI binding are verified. Peer internals and physical timing remain open.",
       "last_verified_result": {
         "profile_cases": 64,
         "transition_cases": 64,
@@ -325,7 +325,9 @@
         "original_extended_status_cases": 64,
         "original_calibration_ui_status_cases": 40,
         "original_calibration_ui_linked_sequences": 8,
-        "control_producer_aligned_arm_branch_sites": 31
+        "control_producer_aligned_arm_branch_sites": 31,
+        "original_general_type1_producer_sites": 4,
+        "original_general_type1_cases": 64
       },
       "result_evidence": [
         "contributions/COORD-ADC-CADENCE/profile-validation.json",
@@ -339,7 +341,8 @@
         "contributions/COORD-ADC-CADENCE/synchronous/deferred-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/extended-status-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-validation.json",
-        "contributions/COORD-ADC-CADENCE/synchronous/control-producer-index.json"
+        "contributions/COORD-ADC-CADENCE/synchronous/control-producer-index.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/general-type1-validation.json"
       ]
     },
     {
