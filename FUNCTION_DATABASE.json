@@ -1212,12 +1212,14 @@
         "UI object0x805abefc; warmup+9",
         "event4 enqueued for config0x22, otherwise event3; ResultDispatch call0x8005d1a0",
         "callback handle root0x805abeb8",
-        "Original timer, queue and FSM replay links both refresh record types to first publication after discard. In the tested busy overlap the second record is consumed without starting another request, while the callback still reaches ResultDispatch."
+        "Original timer, queue and FSM replay links both refresh record types to first publication after discard. In the tested busy overlap the second record is consumed without starting another request, while the callback still reaches ResultDispatch.",
+        "Linked original rendering and Fast CONT fixtures connect stored-result reuse to three filter inputs and a PWM shadow write."
       ],
       "evidence": [
         "evidence/2026-11-07-result-freshness.json",
         "evidence/2026-11-07-result-freshness-ghidra.json",
-        "contributions/COORD-ADC-CADENCE/synchronous/refresh-publication-validation.json"
+        "contributions/COORD-ADC-CADENCE/synchronous/refresh-publication-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/refresh-rendering-validation.json"
       ],
       "limits": [
         "Notification state0 in the tested lifecycle. The new timer/queue replay uses fixture allocation, timer list and reply arrivals; it observes values at the ResultDispatch/renderer boundary. Earlier evidence separately covers bounded downstream execution."

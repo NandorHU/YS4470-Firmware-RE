@@ -295,3 +295,7 @@ The [dynamic replay](contributions/COORD-ADC-CADENCE/synchronous/dynamic-type2-v
 ## 2026-11-09: refresh and first publication
 
 The [configuration-to-publication replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-publication-validation.json) closes the tested configuration-to-first-publication path. Next execute the downstream `0x800037c0` conversion and `0x8000326c` renderer on these same schedules and separate the actual rendering outcome from the stored-result read. Peer conversion, physical timing and complete scheduler behavior remain open.
+
+## 2026-11-09: refresh rendering and sound
+
+The [rendering and sound replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-rendering-validation.json) links a single publication to three Fast CONT updates in a controlled mode-4 fixture. Next trace native mode entry and filter-reset writers, then test which transitions actually invalidate the prior stored result. Numeric string conversion and final widget updates are modeled in this replay.

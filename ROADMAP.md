@@ -242,3 +242,7 @@ The dynamic type-2 producer, adjacent callback and record-byte clamp are covered
 ## 2026-11-09: refresh and first publication
 
 The [configuration-to-publication replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-publication-validation.json) covers refresh-produced measurement requests through discard and first publication. Next replace the `0x800037c0` and `0x8000326c` boundaries with bounded original conversion and renderer execution on the same lifecycle schedules.
+
+## 2026-11-09: refresh rendering and sound
+
+After the [rendering and sound replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-rendering-validation.json), trace native Fast CONT mode entry and filter resets before attributing result freshness or proposing a change. Reuse the original queue, parser, renderer and PWM fixtures to isolate which event actually invalidates stored data.

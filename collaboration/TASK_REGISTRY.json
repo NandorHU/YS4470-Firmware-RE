@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 27,
+  "revision": 28,
   "updated": "2026-11-09",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,7 +295,7 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Execute original ResultDispatch 0x800037c0 and renderer 0x8000326c on the verified configuration-to-publication schedules. Bound scaling, display and buzzer branches against the stored-result transitions. Native type-6 reachability, peer internals and physical timing remain open.",
+      "next_action": "Trace native Fast CONT mode entry and filter-reset writers. Verify which transitions invalidate the prior stored result using the original queue, parser, renderer and PWM fixtures. Native type-6 reachability, peer internals and physical timing remain open.",
       "last_verified_result": {
         "profile_cases": 64,
         "transition_cases": 64,
@@ -335,7 +335,9 @@
         "original_dynamic_type2_adjacent_or_paired_cases": 20,
         "original_type2_clamp_and_second_send_cases": 512,
         "compiled_measurement_plan_differential_cases": 4108,
-        "original_refresh_publication_sequences": 18
+        "original_refresh_publication_sequences": 18,
+        "original_refresh_rendering_sequences": 18,
+        "integrated_fast_cont_pwm_sequences": 2
       },
       "result_evidence": [
         "contributions/COORD-ADC-CADENCE/profile-validation.json",
@@ -356,7 +358,8 @@
         "contributions/COORD-ADC-CADENCE/synchronous/deferred-measurement-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/dynamic-type2-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/measurement-plan-validation.json",
-        "contributions/COORD-ADC-CADENCE/synchronous/refresh-publication-validation.json"
+        "contributions/COORD-ADC-CADENCE/synchronous/refresh-publication-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/refresh-rendering-validation.json"
       ]
     },
     {

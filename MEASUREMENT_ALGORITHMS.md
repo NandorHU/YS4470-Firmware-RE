@@ -333,3 +333,7 @@ The type-2 dispatcher at `0x80004390` preserves record byte +5 in `0x13..0x18` a
 ## 2026-11-09: refresh and first publication
 
 The [configuration-to-publication replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-publication-validation.json) shows that a valid configuration-terminal frame consumes the first of two discard slots. With matching replies, the first refresh frame consumes the other and the second refresh measurement publishes. If the first refresh receives no accepted frame, first publication moves to the third refresh measurement. Reconfiguration re-arms this sequence.
+
+## 2026-11-09: refresh rendering and sound
+
+The [rendering and sound replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-rendering-validation.json) matches original float32 scaling on 18 lifecycle schedules. In the Fast CONT fixture the same stored raw 14023 becomes helper input 5 on three callbacks. Fill reaches 3, median becomes 5, and the original sound gate receives selector 10 and action 1. No additional UART frame is admitted in those three callbacks.

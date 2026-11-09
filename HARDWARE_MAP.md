@@ -253,3 +253,7 @@ The [dynamic replay](contributions/COORD-ADC-CADENCE/synchronous/dynamic-type2-v
 ## 2026-11-09: refresh and first publication
 
 In the [configuration-to-publication replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-publication-validation.json), the original UART2 path sends `6060` for refresh type 3 or `5e5e` for type 4 and handles controlled matching, missing and wrong-header replies. Timer values and reply delivery are model inputs. No physical timing was measured.
+
+## 2026-11-09: refresh rendering and sound
+
+The [rendering and sound replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-rendering-validation.json) exercises original PWM setup at `0x80042d40`. The third reuse of one stored result sets PWM shadow control `0x7f` and period word `0x176f0a8c` in the tested mode-4 fixture. No physical probe or sound timing was measured.

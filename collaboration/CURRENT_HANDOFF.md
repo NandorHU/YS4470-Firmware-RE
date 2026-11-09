@@ -10,9 +10,9 @@ Beta.2 Release API currently404; retained historical installer is documented.
 The owner confirmed the old daily automation was stopped. The new coordinator
 `codex-ys4470-20261109-01a1c110` is recorded in upstream registry revision 19.
 
-Latest analysis: [configuration through first publication](../contributions/COORD-ADC-CADENCE/synchronous/README.md#configuration-refresh-and-first-publication)
-executes the original timer, refresh, queue and UART FSM on both originals.
-Next execute ResultDispatch and the renderer on the same lifecycle schedules.
+Latest analysis: [rendering and sound after refresh](../contributions/COORD-ADC-CADENCE/synchronous/README.md#rendering-and-sound-after-refresh)
+executes original scaling, renderer and bounded Fast CONT/PWM on both originals.
+Next trace native Fast CONT entry and filter-reset writers.
 
 ---
 

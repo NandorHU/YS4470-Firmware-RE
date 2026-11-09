@@ -379,3 +379,7 @@ Both originals agree in 36 Highspeed callback cases, 20 adjacent/paired callback
 ## 2026-11-09: refresh and first publication
 
 The [configuration-to-publication replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-publication-validation.json) adds 18 matching V3.6/V3.8 sequences across successful, missing and wrong-header replies, a busy overlap, and reconfiguration in both directions. In the overlap the original queue accepts a refresh request, the busy service skips it, and the refresh still reaches ResultDispatch with the prior stored result.
+
+## 2026-11-09: refresh rendering and sound
+
+The [rendering and sound replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-rendering-validation.json) adds 18 lifecycle sequences with original scaling and renderer control, plus two integrated Fast CONT/PWM sequences. It verifies stale value reuse across the prior busy overlap and reconfiguration. Widget updates and numeric formatting are explicit fixtures.

@@ -2,6 +2,14 @@
 
 ## Current checkpoint
 
+The [rendering and sound replay](synchronous/refresh-rendering-validation.json)
+adds original scaling and renderer execution to 18 lifecycle schedules.
+Two further Fast CONT fixtures use the original sound path and show one
+stored result reused for all three inputs of the filter. Next trace
+native mode entry and filter resets.
+
+## Previous publication checkpoint
+
 The [configuration-to-publication replay](synchronous/refresh-publication-validation.json)
 agrees in 18 original sequences across both versions. The original timer,
 refresh, queue, UART and FSM execute. Missing/wrong frames do not consume
