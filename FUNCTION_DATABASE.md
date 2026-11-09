@@ -355,3 +355,7 @@ The existing `0x80003dd8` and `0x80005f14` entries now include the `0x28`/`0x29`
 ## 2026-11-09: calibration status UI
 
 New analyst entry `calibration_status_ui_callback` binds `0x8005da88` to the original timer registration at `0x8004c4ec`, the status load at `0x8005dac4`, and the result-label setter at `0x80032038`. The database now has 63 entries. See the [calibration UI replay](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-validation.json).
+
+## 2026-11-09: original control queue and type 6
+
+The existing fallback entry at `0x80003dd8` now includes the synthetic type-6 record path through helper call `0x80003e2c` and the UART2 setup tail call at `0x80003e4c`. The original constructor, enqueue, dequeue and fallback execute in 38 cases. The database retains 63 entries. See the [real-queue replay](contributions/COORD-ADC-CADENCE/synchronous/type6-queue-validation.json).

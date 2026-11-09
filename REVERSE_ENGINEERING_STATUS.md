@@ -367,3 +367,7 @@ Original callers `0x8000e50c` and `0x8000e5a0` reached the idle fallback's exten
 ## 2026-11-09: calibration status UI
 
 Both originals passed 40 status cases and eight linked four-deadline UI sequences. The original calibration button registration, timer constructor and due gate, Thumb formatter, and label copy were exercised. The mapped strings cover power-on success, two calibration successes, three EEPROM errors and calibration over-range. See the [calibration UI replay](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-validation.json) and the separate [producer index](contributions/COORD-ADC-CADENCE/synchronous/control-producer-index.json).
+
+## 2026-11-09: original control queue and type 6
+
+Across both originals, the [real-queue replay](contributions/COORD-ADC-CADENCE/synchronous/type6-queue-validation.json) passed 38 cases covering the original queue lifecycle, type-6 UART2 setup after ACK success/failure, ring wrap, deferred overwrites and ordering relative to immediate measurement records. The [queue reference index](contributions/COORD-ADC-CADENCE/synchronous/control-queue-index.json) bounds direct queue-send and handle references.

@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 23,
+  "revision": 24,
   "updated": "2026-11-09",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,7 +295,7 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Trace the control queue handle at 0x805aae90 (control object 0x805aae8c +4) through alternate writers and indirect aliases that could supply type 6. The general type-1 fallback and calibration UI binding are verified. Peer internals and physical timing remain open.",
+      "next_action": "Execute the type-2 and type-5 producer sites 0x8000d0c8/0x8000d0a0 through the real queue and deferred dispatcher 0x80004390. Verify builder arguments and first original UART sends. Type-6 execution is covered with a host-supplied record. Native type-6 reachability, alternate writers, peer internals and physical timing remain open.",
       "last_verified_result": {
         "profile_cases": 64,
         "transition_cases": 64,
@@ -327,7 +327,9 @@
         "original_calibration_ui_linked_sequences": 8,
         "control_producer_aligned_arm_branch_sites": 31,
         "original_general_type1_producer_sites": 4,
-        "original_general_type1_cases": 64
+        "original_general_type1_cases": 64,
+        "original_real_queue_type6_and_arbitration_cases": 38,
+        "task_context_send_immediate_call_candidates_per_image": 1
       },
       "result_evidence": [
         "contributions/COORD-ADC-CADENCE/profile-validation.json",
@@ -342,7 +344,9 @@
         "contributions/COORD-ADC-CADENCE/synchronous/extended-status-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/control-producer-index.json",
-        "contributions/COORD-ADC-CADENCE/synchronous/general-type1-validation.json"
+        "contributions/COORD-ADC-CADENCE/synchronous/general-type1-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/type6-queue-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/control-queue-index.json"
       ]
     },
     {

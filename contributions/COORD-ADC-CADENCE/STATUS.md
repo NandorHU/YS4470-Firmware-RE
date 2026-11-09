@@ -2,6 +2,15 @@
 
 ## Current checkpoint
 
+The [real-queue replay](synchronous/type6-queue-validation.json) covers
+38 cases across both originals. Type 6 uses a host-supplied record.
+The original service, constructor/send/receive, helper, UART2 setup and
+IRQ registration execute. The [reference index](synchronous/control-queue-index.json)
+identifies one direct call to the task-context send routine. Next route
+the type-2/5 producer sites `0x8000d0c8`/`0x8000d0a0` through the real queue.
+
+## Previous general type-1 checkpoint
+
 The [general type-1 replay](synchronous/general-type1-validation.json)
 covers four original producers and all eight ACK combinations on both
 images (64 cases). The handler always invokes `0x26 → record[4] → 0x19`.
