@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.function-database.v1",
-  "generated_utc_date": "2026-11-08",
+  "generated_utc_date": "2026-11-09",
   "architecture": {
     "cpu": "ARM926EJ-S",
     "instruction_set": "ARM v5T / Thumb considered",
@@ -93,18 +93,22 @@
         "state-1 PIO selector: command-dependent bits 2/3 using 0x01c208b4",
         "rtos_tick_snapshot",
         "timed states2/3/4: reconstruction/fsm_timeout.c",
-        "state1 setup after modeled UART send0x80005e84"
+        "state1 setup after modeled UART send0x80005e84",
+        "new bounded same-header old-frame counterexample across retry and RX-clear/TX interleave; state5 publishes original raw fixture"
       ],
       "evidence": [
         "ARM state-table trace",
         "PIO control trace 2026-11-05",
         "contributions/COORD-FSM-TIMEOUT/fsm-timeout.json",
-        "contributions/COORD-FSM-TIMEOUT/fsm-timeout-ghidra.json"
+        "contributions/COORD-FSM-TIMEOUT/fsm-timeout-ghidra.json",
+        "contributions/COORD-ADC-CADENCE/uart/validation.json"
       ],
       "limits": [
         "2026-11-08 proof: original V3.6/V3.8 only; historical Beta3 annotation is not a new execution result.",
         "State1 UART send is modeled; timed states2/3/4 have an independent original/Python/compiled-C contract.",
-        "Other FSM states, full RTOS scheduling and physical time units remain outside this experiment."
+        "Other FSM states, full RTOS scheduling and physical time units remain outside this experiment.",
+        "The newer UART correlation run executes original send/ISR/clear/critical/getter rather than the older send leaf; byte arrival, UART status and explicit ISR interleave remain modeled.",
+        "Old-frame acceptance in controlled schedules does not prove external ADC restart/buffering or explain the user's physical Base latency."
       ]
     },
     {
@@ -196,19 +200,27 @@
       "id": "uart_rx_isr",
       "addresses": {
         "V3_8": "0x800073bc",
-        "Beta3": "0x800073bc"
+        "Beta3": "0x800073bc",
+        "V3_6": "0x800073bc"
       },
-      "confidence": "confirmed",
+      "confidence": "confirmed_bounded_original_arm926_execution",
       "role": "UART2 receive ISR; reads a byte after status condition and appends to bounded parser buffer",
       "evidence": [
         "prior ARM trace; buffer 0x805b408c, bound 200",
         "bounded UART2 trace 2026-11-05",
-        "uart2_transport_assertions"
+        "uart2_transport_assertions",
+        "contributions/COORD-ADC-CADENCE/uart/validation.json",
+        "contributions/COORD-ADC-CADENCE/uart/ghidra-functions.json"
       ],
       "relationships": [
         "uses UART2 base 0x01c25800",
         "tests +0x08 then reads +0x00",
         "writes 0x805b408c; count 0x805ab938 capped at 200"
+      ],
+      "limits": [
+        "New original/Python/C append proof covers nonnegative counts0..201, four interrupt status patterns and all256 byte values.",
+        "The ISR appends bytes; request-instance correlation and complete protocol framing are not added by this routine.",
+        "Invalid negative/corrupt counts and actual exception entry/scheduling are excluded."
       ]
     },
     {
@@ -416,38 +428,50 @@
       "id": "measurement_transaction_send",
       "addresses": {
         "V3_8": "0x80005e84",
-        "Beta3": "0x80005e84"
+        "Beta3": "0x80005e84",
+        "V3_6": "0x80005e84"
       },
-      "confidence": "confirmed_static_behavior",
+      "confidence": "confirmed_bounded_original_arm926_execution",
       "role": "Copies descriptor source bytes, appends their u8 additive checksum, calls byte-output routine for each wire byte",
       "relationships": [
         "input r0=source pointer; r1=source count",
         "writes checksum at send-buffer[source_count]",
-        "calls 0x80006dc8 source_count+1 times"
+        "calls 0x80006dc8 source_count+1 times",
+        "selector2 reaches UART2 base0x01c25800 through0x80006dc8; source60 -> wire-register writes6060",
+        "independent pure data reconstruction: reconstruction/uart_transport.c"
       ],
       "evidence": [
         "bounded PyGhidra send trace 2026-11-05",
-        "descriptor_and_send_assertions"
+        "descriptor_and_send_assertions",
+        "contributions/COORD-ADC-CADENCE/uart/validation.json",
+        "contributions/COORD-ADC-CADENCE/uart/ghidra-functions.json"
       ],
       "limits": [
-        "Underlying transport/peripheral used by 0x80006dc8 is unresolved."
+        "New original/C/Python framing proof covers source counts0..201, valid source pointer and separate buffers; accepted0..199 append modulo256 checksum.",
+        "Actual UART2 output/ready polling executes with synthetic register readiness; external peer semantics and physical baud/timing remain unknown.",
+        "Original count+1 wrap at UINT_MAX and overlapping buffers are outside the established equivalence domain."
       ]
     },
     {
       "id": "measurement_byte_output_candidate",
       "addresses": {
         "V3_8": "0x80006dc8",
-        "Beta3": "0x80006dc8"
+        "Beta3": "0x80006dc8",
+        "V3_6": "0x80006dc8"
       },
-      "confidence": "confirmed_static_behavior",
+      "confidence": "confirmed_bounded_original_arm926_execution",
       "role": "UART selector byte transmitter; measurement sender passes selector 2 for UART2",
       "evidence": [
         "call-site trace from 0x80005e84",
         "bounded UART2 trace 2026-11-05",
-        "uart2_transport_assertions"
+        "uart2_transport_assertions",
+        "contributions/COORD-ADC-CADENCE/uart/validation.json",
+        "contributions/COORD-ADC-CADENCE/uart/ghidra-functions.json"
       ],
       "limits": [
-        "UART2 pinmux, baud, line configuration, and external peer remain unresolved."
+        "New dynamic proof executes selector2 only; selector0/1 mapping remains prior static evidence.",
+        "UART-ready status is an explicit shadow; blocked-TX probe stops in0x80006e00..0x80006e08 before returning, with no physical duration claim.",
+        "External device identity, conversion behavior and live clock source are unproven."
       ],
       "aliases": [
         "MeasurementUARTSendByte"
@@ -1802,5 +1826,16 @@
         "address": "0x80007c88"
       }
     ]
+  },
+  "uart_correlation_proof": {
+    "report": "contributions/COORD-ADC-CADENCE/uart/validation.json",
+    "transport_cases_original_python_c": 12704,
+    "arrival_schedules": 184,
+    "controlled_isr_interleaves": 12,
+    "concatenated_cases": 4,
+    "ghidra_exports": 6,
+    "ghidra_instruction_byte_guards": 158,
+    "physical_device_operations": 0,
+    "scope": "Two original application hashes; controlled software fixtures, not physical ADC/latency evidence."
   }
 }

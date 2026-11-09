@@ -308,3 +308,8 @@ The installer preserves the full16 MiB pre-write snapshot and requires a matchin
 ## 2026-11-08: equal-Highspeed profile evidence
 
 Original copy0x80000124 and decompressor0x800000c8 regenerate0x805aaab4..0x805ac098 (exclusive),5604 bytes, SHA256524ba48c4f8e6b7876fc1da735f82f197eb436947e65eac043f2d9f2b96f8be0, from pinned V3.8. E2 active/requested are bytes0/1 at0x80060a90;64 switch cases observed active stores only when FSM0x805ac694+0x34 was0. This is initialized data plus bounded emulated state, not a runtime capture. See contributions/COORD-ADC-CADENCE/README.md.
+
+
+## 2026-11-09: original UART correlation proof
+
+RX0x805b408c..0x805b4154 exclusive and TX0x805b4154..0x805b421c exclusive are separately guarded200-byte regions in the new original-code transport experiment. Count0x805ab938 remains10 after a two-frame finalization and the next builder, then the next state1 clears it with the RX buffer. Builder/finalizer writes to0x805ab91c/0x805ab920 are distinct bookkeeping cells; their wider roles are not assigned here. Original state1 clear executes IRQ-masked with positive nesting; tested old-frame injection after release can survive until parser publication. See contributions/COORD-ADC-CADENCE/uart/README.md.

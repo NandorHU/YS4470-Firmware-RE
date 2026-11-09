@@ -1,0 +1,8 @@
+{
+  "validation_sha256": "23edee702c0d1240d73a7acbb4d763380ad89cc84f22e531ce96fbfa59342163",
+  "ghidra_sha256": "e50fb9453c24f714101cb6feebc59752251a3261ef935590bb199f55a2351b77",
+  "ghidra_instruction_byte_guards": 158,
+  "original_observed_byte_guards": 816,
+  "checked_source_hashes": true,
+  "physical_device_operations": 0
+}

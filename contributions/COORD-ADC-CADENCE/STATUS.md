@@ -1,40 +1,52 @@
-# COORD-ADC-CADENCE — proven checkpoint, 2026-11-08
+# COORD-ADC-CADENCE — continuation, 2026-11-09
 
-Coordinator-owned and still in progress. Base physical advantage remains
-unexplained; no physical unit or complete firmware/ADC emulation is claimed.
+Coordinator-owned/in_progress. Integration baseline for this UART run:
+ed71bdb5d2dc3745ab700c1a80fe544788044077. The full project is not complete.
 
-Completed now: public-stock replay of the pinned historical E2 chain (158
-preimage guards), original copy/decompress-derived globals, six packet identity
-checks/360 instruction bytes,64 equal-Highspeed waveform cases,64 requested vs
-active switches,16 existing reply-audio candidate comparisons,268 assertion
-groups, and one original idle service iteration per V3.6/V3.8. See README.md,
-profile-validation.json and traces/. All original bytes and Release are intact.
+Latest proof: uart/README.md, uart/validation.json, uart/ghidra-functions.json.
+On each original V3.6/V3.8 the real UART sender/byte-ready polling, ISR,
+builder, FSM, copy/clear/critical/getter code now execute.12,704 transport
+cases agree with independent Python and separately compiled ARM C. There
+are184 delayed-arrival schedules,12 controlled ISR interleaves,4 concatenation
+cases,2 cross-command rejects and2 bounded blocked-TX prefixes. Six Ghidra
+exports contain158 byte-checked instructions;816 observed original addresses
+are guarded separately. Counts overlap in code and are not firmware coverage.
 
-Proven software example (HS=1, modeled counter): OPEN→contact raw50 accepted106
-in Base and Direct; Base sound125, Direct sound106; both10 requests and low
-renderer125. Auto/Ready send more requests; a brief-contact sound-control pulse
-is shorter in this model. This does not prove the user's physical Base finding.
-Malformed/missing replies never start a tone in the tested cases.
+A delayed first reply can be accepted after the retry: request0, timeout30,
+retry selection31, resend32, old five-byte frame33..37, raw50 publication38.
+These are injected counters, not milliseconds or actual ADC timing. Matching
+headers identify command class, not request instance in the tested path.
+Explicit ISR interleaves after RX clear/before send and during send also admit
+the old frame. Actual CPU exception entry and scheduling remain unmodeled.
 
-reproduce_profiles.py --out work/adc-cadence creates the existing historical
-reply-audio-OFFLINE.bin (9890a3c6...) and E2 (b04fb5bc...) from the public
-stock application. It replays recorded edits, not source generators. The
-reply-audio parent removes the verified GUI wait, but depends on threshold-1.1
-sound-policy changes. No new speculative polling/timeout patch was produced.
+Two concatenated valid frames publish only the first. Count10 remains through
+finalization and the next builder, then the next state1 clears the trailing
+frame. This corrected the initial test's mistaken finalization-clear assumption.
+Permanent not-ready UART status leaves original TX in its polling loop before
+the FSM's post-send timestamp; the bounded probe gives no physical duration.
 
-One new local LLM extraction completed and its active-byte quote was checked
-against E2. It adds no independent timing finding. Failed sandbox socket access
-is recorded separately; no completed model job/batch was repeated.
+reconstruction/uart_transport.c/.h are new pure data components for framing and
+RX append, not a UART driver or a complete firmware. Equivalence excludes
+corrupt signed counts, source count+1 wrap and overlapping buffers. No offline
+timing/correlation fix or new firmware Release was produced from a hypothesis.
 
-Next bounded task: resolve why extra polls/brief tones differ on actual hardware.
-First confirm the installed application identity without a write, and use
-existing public/private read-only UART/update protocol evidence to determine
-whether0x60 restarts conversion or returns buffered data. If hardware is
-unavailable, extend the model with separately labeled response-source variants
-and test phase/order sensitivity; do not select one as hardware truth. The
-reproduced immediate-responder model alone cannot justify another speed patch.
-Keep the incomplete whole-firmware caller/global/indirect-call survey explicit.
+Prior equal-Highspeed E2 matrix remains verified and is not rerun:64 waveform,
+64 active/requested switches,16 existing candidate comparisons. It proves the
+modeled GUI sound wait removal, not Base physical superiority. Public-input
+replay remains available in reproduce_profiles.py without private dumps.
 
-Reproduce: set PYTHONPATH to work/analysis-python; run reproduce_profiles.py
-then validate_profiles.py. Do not import legacy tests with top-level writes.
-No USB/device operations, public firmware Release update or main merge occurred.
+Local assistance: the new checksum extraction completed and its exact quote
+was binary-checked; it added no independent finding. On the next day two new
+RX/synchronous-helper index requests encountered a refused localhost API.
+Their frozen contexts and failures are under uart/local-collab-2026-11-09/;
+check current service address before retrying a transport failure. Never rerun
+a completed model task or treat an unavailable/incomplete response as proof.
+
+Next bounded work: count/read/parse stability between state3 admission and
+state5. An append-only ISR does not itself replace existing first bytes, but
+trace other shared-buffer writers and the synchronous helper0x80005f14,
+including its actual callers before claiming a feasible concurrent clear.
+Reuse the prepared static index and local contexts; the old clear anchors
+0x80005f30/0x80005ffc are static until that combined execution is tested.
+External conversion restart/buffering, installed image identity and physical
+Base latency remain open. No device, flash, main or Release was modified.

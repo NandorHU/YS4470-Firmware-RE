@@ -1,0 +1,2453 @@
+{
+  "schema": "ys4470.uart-ghidra.v1",
+  "versions": [
+    {
+      "version": "V3.6",
+      "input_sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+      "functions": [
+        {
+          "entry": "0x80005e84",
+          "analyst_label": "MeasurementDescriptorSend",
+          "name_status": "role label; not a vendor symbol",
+          "preserved_metadata": null,
+          "complete_local_arm_cfg": true,
+          "assembly": [
+            {
+              "address": "0x80005e84",
+              "bytes": "70402de9",
+              "assembly": "stmdb sp!,{r4,r5,r6,lr}"
+            },
+            {
+              "address": "0x80005e88",
+              "bytes": "015081e2",
+              "assembly": "add r5,r1,#0x1"
+            },
+            {
+              "address": "0x80005e8c",
+              "bytes": "c80055e3",
+              "assembly": "cmp r5,#0xc8"
+            },
+            {
+              "address": "0x80005e90",
+              "bytes": "0060a0e1",
+              "assembly": "mov r6,r0"
+            },
+            {
+              "address": "0x80005e94",
+              "bytes": "0140a0e1",
+              "assembly": "mov r4,r1"
+            },
+            {
+              "address": "0x80005e98",
+              "bytes": "0000a083",
+              "assembly": "movhi r0,#0x0"
+            },
+            {
+              "address": "0x80005e9c",
+              "bytes": "7080bd88",
+              "assembly": "ldmiahi sp!,{r4,r5,r6,pc}"
+            },
+            {
+              "address": "0x80005ea0",
+              "bytes": "0120a0e1",
+              "assembly": "mov r2,r1"
+            },
+            {
+              "address": "0x80005ea4",
+              "bytes": "0010a0e1",
+              "assembly": "mov r1,r0"
+            },
+            {
+              "address": "0x80005ea8",
+              "bytes": "60009fe5",
+              "assembly": "ldr r0,[0x80005f10]"
+            },
+            {
+              "address": "0x80005eac",
+              "bytes": "c4eaffeb",
+              "assembly": "bl 0x800009c4"
+            },
+            {
+              "address": "0x80005eb0",
+              "bytes": "0010a0e3",
+              "assembly": "mov r1,#0x0"
+            },
+            {
+              "address": "0x80005eb4",
+              "bytes": "000054e3",
+              "assembly": "cmp r4,#0x0"
+            },
+            {
+              "address": "0x80005eb8",
+              "bytes": "0100a0e1",
+              "assembly": "mov r0,r1"
+            },
+            {
+              "address": "0x80005ebc",
+              "bytes": "0600009a",
+              "assembly": "bls 0x80005edc"
+            },
+            {
+              "address": "0x80005ec0",
+              "bytes": "0020d6e7",
+              "assembly": "ldrb r2,[r6,r0]"
+            },
+            {
+              "address": "0x80005ec4",
+              "bytes": "010080e2",
+              "assembly": "add r0,r0,#0x1"
+            },
+            {
+              "address": "0x80005ec8",
+              "bytes": "0108c0e3",
+              "assembly": "bic r0,r0,#0x10000"
+            },
+            {
+              "address": "0x80005ecc",
+              "bytes": "021081e0",
+              "assembly": "add r1,r1,r2"
+            },
+            {
+              "address": "0x80005ed0",
+              "bytes": "000054e1",
+              "assembly": "cmp r4,r0"
+            },
+            {
+              "address": "0x80005ed4",
+              "bytes": "ff1001e2",
+              "assembly": "and r1,r1,#0xff"
+            },
+            {
+              "address": "0x80005ed8",
+              "bytes": "f8ffff8a",
+              "assembly": "bhi 0x80005ec0"
+            },
+            {
+              "address": "0x80005edc",
+              "bytes": "2c609fe5",
+              "assembly": "ldr r6,[0x80005f10]"
+            },
+            {
+              "address": "0x80005ee0",
+              "bytes": "000055e3",
+              "assembly": "cmp r5,#0x0"
+            },
+            {
+              "address": "0x80005ee4",
+              "bytes": "0410c6e7",
+              "assembly": "strb r1,[r6,r4]"
+            },
+            {
+              "address": "0x80005ee8",
+              "bytes": "0040a0e3",
+              "assembly": "mov r4,#0x0"
+            },
+            {
+              "address": "0x80005eec",
+              "bytes": "050000da",
+              "assembly": "ble 0x80005f08"
+            },
+            {
+              "address": "0x80005ef0",
+              "bytes": "0410d6e7",
+              "assembly": "ldrb r1,[r6,r4]"
+            },
+            {
+              "address": "0x80005ef4",
+              "bytes": "0200a0e3",
+              "assembly": "mov r0,#0x2"
+            },
+            {
+              "address": "0x80005ef8",
+              "bytes": "b20300eb",
+              "assembly": "bl 0x80006dc8"
+            },
+            {
+              "address": "0x80005efc",
+              "bytes": "014084e2",
+              "assembly": "add r4,r4,#0x1"
+            },
+            {
+              "address": "0x80005f00",
+              "bytes": "040055e1",
+              "assembly": "cmp r5,r4"
+            },
+            {
+              "address": "0x80005f04",
+              "bytes": "f9ffffca",
+              "assembly": "bgt 0x80005ef0"
+            },
+            {
+              "address": "0x80005f08",
+              "bytes": "0100a0e3",
+              "assembly": "mov r0,#0x1"
+            },
+            {
+              "address": "0x80005f0c",
+              "bytes": "7080bde8",
+              "assembly": "ldmia sp!,{r4,r5,r6,pc}"
+            }
+          ],
+          "decompiled_c": "\r\nundefined4 FUN_80005e84(int param_1,uint param_2)\r\n\r\n{\r\n  char *pcVar1;\r\n  int iVar2;\r\n  uint uVar3;\r\n  char cVar4;\r\n  int iVar5;\r\n  uint uVar6;\r\n  \r\n  uVar6 = param_2 + 1;\r\n  if (uVar6 < 0xc9) {\r\n    func_0x800009c4(iRam80005f10,param_1,param_2);\r\n    iVar2 = iRam80005f10;\r\n    cVar4 = '\\0';\r\n    uVar3 = 0;\r\n    if (param_2 != 0) {\r\n      do {\r\n        pcVar1 = (char *)(param_1 + uVar3);\r\n        uVar3 = uVar3 + 1 & 0xfffeffff;\r\n        cVar4 = cVar4 + *pcVar1;\r\n      } while (uVar3 < param_2);\r\n    }\r\n    *(char *)(iRam80005f10 + param_2) = cVar4;\r\n    iVar5 = 0;\r\n    if (0 < (int)uVar6) {\r\n      do {\r\n        func_0x80006dc8(2,*(undefined1 *)(iVar2 + iVar5));\r\n        iVar5 = iVar5 + 1;\r\n      } while (iVar5 < (int)uVar6);\r\n    }\r\n    return 1;\r\n  }\r\n  return 0;\r\n}\r\n\r\n",
+          "calls": [
+            {
+              "site": "0x80005eac",
+              "target": "0x800009c4",
+              "resolved": true,
+              "kind": "call"
+            },
+            {
+              "site": "0x80005ef8",
+              "target": "0x80006dc8",
+              "resolved": true,
+              "kind": "call"
+            }
+          ],
+          "edges": [
+            {
+              "from": "0x80005e84",
+              "to": "0x80005e88",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005e88",
+              "to": "0x80005e8c",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005e8c",
+              "to": "0x80005e90",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005e90",
+              "to": "0x80005e94",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005e94",
+              "to": "0x80005e98",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005e98",
+              "to": "0x80005e9c",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005e9c",
+              "to": null,
+              "kind": "return"
+            },
+            {
+              "from": "0x80005e9c",
+              "to": "0x80005ea0",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ea0",
+              "to": "0x80005ea4",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ea4",
+              "to": "0x80005ea8",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ea8",
+              "to": "0x80005eac",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005eac",
+              "to": "0x80005eb0",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005eb0",
+              "to": "0x80005eb4",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005eb4",
+              "to": "0x80005eb8",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005eb8",
+              "to": "0x80005ebc",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ebc",
+              "to": "0x80005edc",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ebc",
+              "to": "0x80005ec0",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ec0",
+              "to": "0x80005ec4",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ec4",
+              "to": "0x80005ec8",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ec8",
+              "to": "0x80005ecc",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ecc",
+              "to": "0x80005ed0",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ed0",
+              "to": "0x80005ed4",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ed4",
+              "to": "0x80005ed8",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ed8",
+              "to": "0x80005ec0",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ed8",
+              "to": "0x80005edc",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005edc",
+              "to": "0x80005ee0",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ee0",
+              "to": "0x80005ee4",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ee4",
+              "to": "0x80005ee8",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ee8",
+              "to": "0x80005eec",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005eec",
+              "to": "0x80005f08",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005eec",
+              "to": "0x80005ef0",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ef0",
+              "to": "0x80005ef4",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ef4",
+              "to": "0x80005ef8",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ef8",
+              "to": "0x80005efc",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005efc",
+              "to": "0x80005f00",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005f00",
+              "to": "0x80005f04",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005f04",
+              "to": "0x80005ef0",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005f04",
+              "to": "0x80005f08",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005f08",
+              "to": "0x80005f0c",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005f0c",
+              "to": null,
+              "kind": "return"
+            }
+          ],
+          "literal_refs": [
+            {
+              "site": "0x80005ea8",
+              "literal_address": "0x80005f10",
+              "value": "0x805b4154",
+              "bytes": "54415b80"
+            },
+            {
+              "site": "0x80005edc",
+              "literal_address": "0x80005f10",
+              "value": "0x805b4154",
+              "bytes": "54415b80"
+            }
+          ],
+          "memory_access_candidates": [
+            {
+              "site": "0x80005ea8",
+              "assembly": "ldr r0, [pc, #0x60]",
+              "base_register": "pc",
+              "structure_offset": 96,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": "0x80005f10",
+              "operation": "read"
+            },
+            {
+              "site": "0x80005ec0",
+              "assembly": "ldrb r2, [r6, r0]",
+              "base_register": "r6",
+              "structure_offset": 0,
+              "indexed": true,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "read"
+            },
+            {
+              "site": "0x80005edc",
+              "assembly": "ldr r6, [pc, #0x2c]",
+              "base_register": "pc",
+              "structure_offset": 44,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": "0x80005f10",
+              "operation": "read"
+            },
+            {
+              "site": "0x80005ee4",
+              "assembly": "strb r1, [r6, r4]",
+              "base_register": "r6",
+              "structure_offset": 0,
+              "indexed": true,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "write"
+            },
+            {
+              "site": "0x80005ef0",
+              "assembly": "ldrb r1, [r6, r4]",
+              "base_register": "r6",
+              "structure_offset": 0,
+              "indexed": true,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "read"
+            }
+          ],
+          "raw_caller_candidates": [
+            {
+              "site": "0x800045e0",
+              "status": "raw_ARM_BL_candidate_not_validated_code_region"
+            },
+            {
+              "site": "0x80005fb4",
+              "status": "raw_ARM_BL_candidate_not_validated_code_region"
+            },
+            {
+              "site": "0x80006018",
+              "status": "raw_ARM_BL_candidate_not_validated_code_region"
+            }
+          ],
+          "body_sha256": "a2c21591545c533a2cb11148881dcce993da7758186c283efcce43a891d7d661"
+        },
+        {
+          "entry": "0x80006dc8",
+          "analyst_label": "UARTSelectorByteOutput",
+          "name_status": "role label; not a vendor symbol",
+          "preserved_metadata": null,
+          "complete_local_arm_cfg": true,
+          "assembly": [
+            {
+              "address": "0x80006dc8",
+              "bytes": "000050e3",
+              "assembly": "cmp r0,#0x0"
+            },
+            {
+              "address": "0x80006dcc",
+              "bytes": "48009f05",
+              "assembly": "ldreq r0,[0x80006e1c]"
+            },
+            {
+              "address": "0x80006dd0",
+              "bytes": "04d04de2",
+              "assembly": "sub sp,sp,#0x4"
+            },
+            {
+              "address": "0x80006dd4",
+              "bytes": "0700000a",
+              "assembly": "beq 0x80006df8"
+            },
+            {
+              "address": "0x80006dd8",
+              "bytes": "010050e3",
+              "assembly": "cmp r0,#0x1"
+            },
+            {
+              "address": "0x80006ddc",
+              "bytes": "3c009f05",
+              "assembly": "ldreq r0,[0x80006e20]"
+            },
+            {
+              "address": "0x80006de0",
+              "bytes": "0400000a",
+              "assembly": "beq 0x80006df8"
+            },
+            {
+              "address": "0x80006de4",
+              "bytes": "020050e3",
+              "assembly": "cmp r0,#0x2"
+            },
+            {
+              "address": "0x80006de8",
+              "bytes": "34009f05",
+              "assembly": "ldreq r0,[0x80006e24]"
+            },
+            {
+              "address": "0x80006dec",
+              "bytes": "00008d05",
+              "assembly": "streq r0,[sp,#0x0]"
+            },
+            {
+              "address": "0x80006df0",
+              "bytes": "00009de5",
+              "assembly": "ldr r0,[sp,#0x0]"
+            },
+            {
+              "address": "0x80006df4",
+              "bytes": "000000ea",
+              "assembly": "b 0x80006dfc"
+            },
+            {
+              "address": "0x80006df8",
+              "bytes": "00008de5",
+              "assembly": "str r0,[sp,#0x0]"
+            },
+            {
+              "address": "0x80006dfc",
+              "bytes": "7c0080e2",
+              "assembly": "add r0,r0,#0x7c"
+            },
+            {
+              "address": "0x80006e00",
+              "bytes": "002090e5",
+              "assembly": "ldr r2,[r0,#0x0]"
+            },
+            {
+              "address": "0x80006e04",
+              "bytes": "020012e3",
+              "assembly": "tst r2,#0x2"
+            },
+            {
+              "address": "0x80006e08",
+              "bytes": "fcffff0a",
+              "assembly": "beq 0x80006e00"
+            },
+            {
+              "address": "0x80006e0c",
+              "bytes": "00009de5",
+              "assembly": "ldr r0,[sp,#0x0]"
+            },
+            {
+              "address": "0x80006e10",
+              "bytes": "001080e5",
+              "assembly": "str r1,[r0,#0x0]"
+            },
+            {
+              "address": "0x80006e14",
+              "bytes": "04d08de2",
+              "assembly": "add sp,sp,#0x4"
+            },
+            {
+              "address": "0x80006e18",
+              "bytes": "1eff2fe1",
+              "assembly": "bx lr"
+            }
+          ],
+          "decompiled_c": "\r\nvoid FUN_80006dc8(int param_1,undefined4 param_2)\r\n\r\n{\r\n  undefined4 *puVar1;\r\n  undefined4 *puStack_4;\r\n  \r\n  puVar1 = puRam80006e1c;\r\n  if (((param_1 != 0) && (puVar1 = puRam80006e20, param_1 != 1)) &&\r\n     (puVar1 = puStack_4, param_1 == 2)) {\r\n    puStack_4 = puRam80006e24;\r\n    puVar1 = puStack_4;\r\n  }\r\n  puStack_4 = puVar1;\r\n  do {\r\n  } while ((puStack_4[0x1f] & 2) == 0);\r\n  *puStack_4 = param_2;\r\n  return;\r\n}\r\n\r\n",
+          "calls": [],
+          "edges": [
+            {
+              "from": "0x80006dc8",
+              "to": "0x80006dcc",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006dcc",
+              "to": "0x80006dd0",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006dd0",
+              "to": "0x80006dd4",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006dd4",
+              "to": "0x80006df8",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006dd4",
+              "to": "0x80006dd8",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006dd8",
+              "to": "0x80006ddc",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006ddc",
+              "to": "0x80006de0",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006de0",
+              "to": "0x80006df8",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006de0",
+              "to": "0x80006de4",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006de4",
+              "to": "0x80006de8",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006de8",
+              "to": "0x80006dec",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006dec",
+              "to": "0x80006df0",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006df0",
+              "to": "0x80006df4",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006df4",
+              "to": "0x80006dfc",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006dfc",
+              "to": "0x80006e00",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006e00",
+              "to": "0x80006e04",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006e04",
+              "to": "0x80006e08",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006e08",
+              "to": "0x80006e00",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006e08",
+              "to": "0x80006e0c",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006e0c",
+              "to": "0x80006e10",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006e10",
+              "to": "0x80006e14",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006e14",
+              "to": "0x80006e18",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006e18",
+              "to": null,
+              "kind": "return"
+            },
+            {
+              "from": "0x80006df8",
+              "to": "0x80006dfc",
+              "kind": "local"
+            }
+          ],
+          "literal_refs": [],
+          "memory_access_candidates": [
+            {
+              "site": "0x80006dcc",
+              "assembly": "ldreq r0, [pc, #0x48]",
+              "base_register": "pc",
+              "structure_offset": 72,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "read"
+            },
+            {
+              "site": "0x80006ddc",
+              "assembly": "ldreq r0, [pc, #0x3c]",
+              "base_register": "pc",
+              "structure_offset": 60,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "read"
+            },
+            {
+              "site": "0x80006de8",
+              "assembly": "ldreq r0, [pc, #0x34]",
+              "base_register": "pc",
+              "structure_offset": 52,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "read"
+            },
+            {
+              "site": "0x80006dec",
+              "assembly": "streq r0, [sp]",
+              "base_register": "sp",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "write"
+            },
+            {
+              "site": "0x80006df0",
+              "assembly": "ldr r0, [sp]",
+              "base_register": "sp",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "read"
+            },
+            {
+              "site": "0x80006df8",
+              "assembly": "str r0, [sp]",
+              "base_register": "sp",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "write"
+            },
+            {
+              "site": "0x80006e00",
+              "assembly": "ldr r2, [r0]",
+              "base_register": "r0",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "read"
+            },
+            {
+              "site": "0x80006e0c",
+              "assembly": "ldr r0, [sp]",
+              "base_register": "sp",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "read"
+            },
+            {
+              "site": "0x80006e10",
+              "assembly": "str r1, [r0]",
+              "base_register": "r0",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "write"
+            }
+          ],
+          "raw_caller_candidates": [
+            {
+              "site": "0x80005e64",
+              "status": "raw_ARM_BL_candidate_not_validated_code_region"
+            },
+            {
+              "site": "0x80005ef8",
+              "status": "raw_ARM_BL_candidate_not_validated_code_region"
+            },
+            {
+              "site": "0x80007354",
+              "status": "raw_ARM_BL_candidate_not_validated_code_region"
+            },
+            {
+              "site": "0x800073a4",
+              "status": "raw_ARM_BL_candidate_not_validated_code_region"
+            }
+          ],
+          "body_sha256": "87e304a9edd515dcf8ad0d532c816d090d2c1734bbaac96586f198971551beb8"
+        },
+        {
+          "entry": "0x800073bc",
+          "analyst_label": "UART2ReceiveISR",
+          "name_status": "role label; not a vendor symbol",
+          "preserved_metadata": null,
+          "complete_local_arm_cfg": true,
+          "assembly": [
+            {
+              "address": "0x800073bc",
+              "bytes": "54009fe5",
+              "assembly": "ldr r0,[0x80007418]"
+            },
+            {
+              "address": "0x800073c0",
+              "bytes": "04d04de2",
+              "assembly": "sub sp,sp,#0x4"
+            },
+            {
+              "address": "0x800073c4",
+              "bytes": "081080e2",
+              "assembly": "add r1,r0,#0x8"
+            },
+            {
+              "address": "0x800073c8",
+              "bytes": "001091e5",
+              "assembly": "ldr r1,[r1,#0x0]"
+            },
+            {
+              "address": "0x800073cc",
+              "bytes": "040011e3",
+              "assembly": "tst r1,#0x4"
+            },
+            {
+              "address": "0x800073d0",
+              "bytes": "00108de5",
+              "assembly": "str r1,[sp,#0x0]"
+            },
+            {
+              "address": "0x800073d4",
+              "bytes": "04d08d02",
+              "assembly": "addeq sp,sp,#0x4"
+            },
+            {
+              "address": "0x800073d8",
+              "bytes": "1eff2f01",
+              "assembly": "bxeq lr"
+            },
+            {
+              "address": "0x800073dc",
+              "bytes": "000090e5",
+              "assembly": "ldr r0,[r0,#0x0]"
+            },
+            {
+              "address": "0x800073e0",
+              "bytes": "ff1000e2",
+              "assembly": "and r1,r0,#0xff"
+            },
+            {
+              "address": "0x800073e4",
+              "bytes": "30209fe5",
+              "assembly": "ldr r2,[0x8000741c]"
+            },
+            {
+              "address": "0x800073e8",
+              "bytes": "000092e5",
+              "assembly": "ldr r0,[r2,#0x0]"
+            },
+            {
+              "address": "0x800073ec",
+              "bytes": "c80050e3",
+              "assembly": "cmp r0,#0xc8"
+            },
+            {
+              "address": "0x800073f0",
+              "bytes": "04d08da2",
+              "assembly": "addge sp,sp,#0x4"
+            },
+            {
+              "address": "0x800073f4",
+              "bytes": "1eff2fa1",
+              "assembly": "bxge lr"
+            },
+            {
+              "address": "0x800073f8",
+              "bytes": "000092e5",
+              "assembly": "ldr r0,[r2,#0x0]"
+            },
+            {
+              "address": "0x800073fc",
+              "bytes": "1c309fe5",
+              "assembly": "ldr r3,[0x80007420]"
+            },
+            {
+              "address": "0x80007400",
+              "bytes": "003083e0",
+              "assembly": "add r3,r3,r0"
+            },
+            {
+              "address": "0x80007404",
+              "bytes": "010080e2",
+              "assembly": "add r0,r0,#0x1"
+            },
+            {
+              "address": "0x80007408",
+              "bytes": "000082e5",
+              "assembly": "str r0,[r2,#0x0]"
+            },
+            {
+              "address": "0x8000740c",
+              "bytes": "0010c3e5",
+              "assembly": "strb r1,[r3,#0x0]"
+            },
+            {
+              "address": "0x80007410",
+              "bytes": "04d08de2",
+              "assembly": "add sp,sp,#0x4"
+            },
+            {
+              "address": "0x80007414",
+              "bytes": "1eff2fe1",
+              "assembly": "bx lr"
+            }
+          ],
+          "decompiled_c": "\r\nvoid FUN_800073bc(void)\r\n\r\n{\r\n  undefined4 uVar1;\r\n  undefined1 *puVar2;\r\n  \r\n  if ((puRam80007418[2] & 4) == 0) {\r\n    return;\r\n  }\r\n  uVar1 = *puRam80007418;\r\n  if (*piRam8000741c < 200) {\r\n    puVar2 = (undefined1 *)(iRam80007420 + *piRam8000741c);\r\n    *piRam8000741c = *piRam8000741c + 1;\r\n    *puVar2 = (char)uVar1;\r\n    return;\r\n  }\r\n  return;\r\n}\r\n\r\n",
+          "calls": [],
+          "edges": [
+            {
+              "from": "0x800073bc",
+              "to": "0x800073c0",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073c0",
+              "to": "0x800073c4",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073c4",
+              "to": "0x800073c8",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073c8",
+              "to": "0x800073cc",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073cc",
+              "to": "0x800073d0",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073d0",
+              "to": "0x800073d4",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073d4",
+              "to": "0x800073d8",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073d8",
+              "to": null,
+              "kind": "return"
+            },
+            {
+              "from": "0x800073d8",
+              "to": "0x800073dc",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073dc",
+              "to": "0x800073e0",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073e0",
+              "to": "0x800073e4",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073e4",
+              "to": "0x800073e8",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073e8",
+              "to": "0x800073ec",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073ec",
+              "to": "0x800073f0",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073f0",
+              "to": "0x800073f4",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073f4",
+              "to": null,
+              "kind": "return"
+            },
+            {
+              "from": "0x800073f4",
+              "to": "0x800073f8",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073f8",
+              "to": "0x800073fc",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073fc",
+              "to": "0x80007400",
+              "kind": "local"
+            },
+            {
+              "from": "0x80007400",
+              "to": "0x80007404",
+              "kind": "local"
+            },
+            {
+              "from": "0x80007404",
+              "to": "0x80007408",
+              "kind": "local"
+            },
+            {
+              "from": "0x80007408",
+              "to": "0x8000740c",
+              "kind": "local"
+            },
+            {
+              "from": "0x8000740c",
+              "to": "0x80007410",
+              "kind": "local"
+            },
+            {
+              "from": "0x80007410",
+              "to": "0x80007414",
+              "kind": "local"
+            },
+            {
+              "from": "0x80007414",
+              "to": null,
+              "kind": "return"
+            }
+          ],
+          "literal_refs": [
+            {
+              "site": "0x800073bc",
+              "literal_address": "0x80007418",
+              "value": "0x1c25800",
+              "bytes": "0058c201"
+            },
+            {
+              "site": "0x800073e4",
+              "literal_address": "0x8000741c",
+              "value": "0x805ab938",
+              "bytes": "38b95a80"
+            },
+            {
+              "site": "0x800073fc",
+              "literal_address": "0x80007420",
+              "value": "0x805b408c",
+              "bytes": "8c405b80"
+            }
+          ],
+          "memory_access_candidates": [
+            {
+              "site": "0x800073bc",
+              "assembly": "ldr r0, [pc, #0x54]",
+              "base_register": "pc",
+              "structure_offset": 84,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": "0x80007418",
+              "operation": "read"
+            },
+            {
+              "site": "0x800073c8",
+              "assembly": "ldr r1, [r1]",
+              "base_register": "r1",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": "0x1c25808",
+              "operation": "read",
+              "confidence": "straight_line_static_candidate"
+            },
+            {
+              "site": "0x800073d0",
+              "assembly": "str r1, [sp]",
+              "base_register": "sp",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "write"
+            },
+            {
+              "site": "0x800073dc",
+              "assembly": "ldr r0, [r0]",
+              "base_register": "r0",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": "0x1c25800",
+              "operation": "read",
+              "confidence": "straight_line_static_candidate"
+            },
+            {
+              "site": "0x800073e4",
+              "assembly": "ldr r2, [pc, #0x30]",
+              "base_register": "pc",
+              "structure_offset": 48,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": "0x8000741c",
+              "operation": "read"
+            },
+            {
+              "site": "0x800073e8",
+              "assembly": "ldr r0, [r2]",
+              "base_register": "r2",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": "0x805ab938",
+              "operation": "read",
+              "confidence": "straight_line_static_candidate"
+            },
+            {
+              "site": "0x800073f8",
+              "assembly": "ldr r0, [r2]",
+              "base_register": "r2",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": "0x805ab938",
+              "operation": "read",
+              "confidence": "straight_line_static_candidate"
+            },
+            {
+              "site": "0x800073fc",
+              "assembly": "ldr r3, [pc, #0x1c]",
+              "base_register": "pc",
+              "structure_offset": 28,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": "0x80007420",
+              "operation": "read"
+            },
+            {
+              "site": "0x80007408",
+              "assembly": "str r0, [r2]",
+              "base_register": "r2",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": "0x805ab938",
+              "operation": "write",
+              "confidence": "straight_line_static_candidate"
+            },
+            {
+              "site": "0x8000740c",
+              "assembly": "strb r1, [r3]",
+              "base_register": "r3",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "write"
+            }
+          ],
+          "raw_caller_candidates": [],
+          "body_sha256": "13746d05fe7dcb9248cd6ad66bf1a7aa2f4a2af40334d39eaac8ff508e1b6e06"
+        }
+      ]
+    },
+    {
+      "version": "V3.8",
+      "input_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+      "functions": [
+        {
+          "entry": "0x80005e84",
+          "analyst_label": "MeasurementDescriptorSend",
+          "name_status": "role label; not a vendor symbol",
+          "preserved_metadata": null,
+          "complete_local_arm_cfg": true,
+          "assembly": [
+            {
+              "address": "0x80005e84",
+              "bytes": "70402de9",
+              "assembly": "stmdb sp!,{r4,r5,r6,lr}"
+            },
+            {
+              "address": "0x80005e88",
+              "bytes": "015081e2",
+              "assembly": "add r5,r1,#0x1"
+            },
+            {
+              "address": "0x80005e8c",
+              "bytes": "c80055e3",
+              "assembly": "cmp r5,#0xc8"
+            },
+            {
+              "address": "0x80005e90",
+              "bytes": "0060a0e1",
+              "assembly": "mov r6,r0"
+            },
+            {
+              "address": "0x80005e94",
+              "bytes": "0140a0e1",
+              "assembly": "mov r4,r1"
+            },
+            {
+              "address": "0x80005e98",
+              "bytes": "0000a083",
+              "assembly": "movhi r0,#0x0"
+            },
+            {
+              "address": "0x80005e9c",
+              "bytes": "7080bd88",
+              "assembly": "ldmiahi sp!,{r4,r5,r6,pc}"
+            },
+            {
+              "address": "0x80005ea0",
+              "bytes": "0120a0e1",
+              "assembly": "mov r2,r1"
+            },
+            {
+              "address": "0x80005ea4",
+              "bytes": "0010a0e1",
+              "assembly": "mov r1,r0"
+            },
+            {
+              "address": "0x80005ea8",
+              "bytes": "60009fe5",
+              "assembly": "ldr r0,[0x80005f10]"
+            },
+            {
+              "address": "0x80005eac",
+              "bytes": "c4eaffeb",
+              "assembly": "bl 0x800009c4"
+            },
+            {
+              "address": "0x80005eb0",
+              "bytes": "0010a0e3",
+              "assembly": "mov r1,#0x0"
+            },
+            {
+              "address": "0x80005eb4",
+              "bytes": "000054e3",
+              "assembly": "cmp r4,#0x0"
+            },
+            {
+              "address": "0x80005eb8",
+              "bytes": "0100a0e1",
+              "assembly": "mov r0,r1"
+            },
+            {
+              "address": "0x80005ebc",
+              "bytes": "0600009a",
+              "assembly": "bls 0x80005edc"
+            },
+            {
+              "address": "0x80005ec0",
+              "bytes": "0020d6e7",
+              "assembly": "ldrb r2,[r6,r0]"
+            },
+            {
+              "address": "0x80005ec4",
+              "bytes": "010080e2",
+              "assembly": "add r0,r0,#0x1"
+            },
+            {
+              "address": "0x80005ec8",
+              "bytes": "0108c0e3",
+              "assembly": "bic r0,r0,#0x10000"
+            },
+            {
+              "address": "0x80005ecc",
+              "bytes": "021081e0",
+              "assembly": "add r1,r1,r2"
+            },
+            {
+              "address": "0x80005ed0",
+              "bytes": "000054e1",
+              "assembly": "cmp r4,r0"
+            },
+            {
+              "address": "0x80005ed4",
+              "bytes": "ff1001e2",
+              "assembly": "and r1,r1,#0xff"
+            },
+            {
+              "address": "0x80005ed8",
+              "bytes": "f8ffff8a",
+              "assembly": "bhi 0x80005ec0"
+            },
+            {
+              "address": "0x80005edc",
+              "bytes": "2c609fe5",
+              "assembly": "ldr r6,[0x80005f10]"
+            },
+            {
+              "address": "0x80005ee0",
+              "bytes": "000055e3",
+              "assembly": "cmp r5,#0x0"
+            },
+            {
+              "address": "0x80005ee4",
+              "bytes": "0410c6e7",
+              "assembly": "strb r1,[r6,r4]"
+            },
+            {
+              "address": "0x80005ee8",
+              "bytes": "0040a0e3",
+              "assembly": "mov r4,#0x0"
+            },
+            {
+              "address": "0x80005eec",
+              "bytes": "050000da",
+              "assembly": "ble 0x80005f08"
+            },
+            {
+              "address": "0x80005ef0",
+              "bytes": "0410d6e7",
+              "assembly": "ldrb r1,[r6,r4]"
+            },
+            {
+              "address": "0x80005ef4",
+              "bytes": "0200a0e3",
+              "assembly": "mov r0,#0x2"
+            },
+            {
+              "address": "0x80005ef8",
+              "bytes": "b20300eb",
+              "assembly": "bl 0x80006dc8"
+            },
+            {
+              "address": "0x80005efc",
+              "bytes": "014084e2",
+              "assembly": "add r4,r4,#0x1"
+            },
+            {
+              "address": "0x80005f00",
+              "bytes": "040055e1",
+              "assembly": "cmp r5,r4"
+            },
+            {
+              "address": "0x80005f04",
+              "bytes": "f9ffffca",
+              "assembly": "bgt 0x80005ef0"
+            },
+            {
+              "address": "0x80005f08",
+              "bytes": "0100a0e3",
+              "assembly": "mov r0,#0x1"
+            },
+            {
+              "address": "0x80005f0c",
+              "bytes": "7080bde8",
+              "assembly": "ldmia sp!,{r4,r5,r6,pc}"
+            }
+          ],
+          "decompiled_c": "\r\nundefined4 FUN_80005e84(int param_1,uint param_2)\r\n\r\n{\r\n  char *pcVar1;\r\n  int iVar2;\r\n  uint uVar3;\r\n  char cVar4;\r\n  int iVar5;\r\n  uint uVar6;\r\n  \r\n  uVar6 = param_2 + 1;\r\n  if (uVar6 < 0xc9) {\r\n    func_0x800009c4(iRam80005f10,param_1,param_2);\r\n    iVar2 = iRam80005f10;\r\n    cVar4 = '\\0';\r\n    uVar3 = 0;\r\n    if (param_2 != 0) {\r\n      do {\r\n        pcVar1 = (char *)(param_1 + uVar3);\r\n        uVar3 = uVar3 + 1 & 0xfffeffff;\r\n        cVar4 = cVar4 + *pcVar1;\r\n      } while (uVar3 < param_2);\r\n    }\r\n    *(char *)(iRam80005f10 + param_2) = cVar4;\r\n    iVar5 = 0;\r\n    if (0 < (int)uVar6) {\r\n      do {\r\n        func_0x80006dc8(2,*(undefined1 *)(iVar2 + iVar5));\r\n        iVar5 = iVar5 + 1;\r\n      } while (iVar5 < (int)uVar6);\r\n    }\r\n    return 1;\r\n  }\r\n  return 0;\r\n}\r\n\r\n",
+          "calls": [
+            {
+              "site": "0x80005eac",
+              "target": "0x800009c4",
+              "resolved": true,
+              "kind": "call"
+            },
+            {
+              "site": "0x80005ef8",
+              "target": "0x80006dc8",
+              "resolved": true,
+              "kind": "call"
+            }
+          ],
+          "edges": [
+            {
+              "from": "0x80005e84",
+              "to": "0x80005e88",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005e88",
+              "to": "0x80005e8c",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005e8c",
+              "to": "0x80005e90",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005e90",
+              "to": "0x80005e94",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005e94",
+              "to": "0x80005e98",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005e98",
+              "to": "0x80005e9c",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005e9c",
+              "to": null,
+              "kind": "return"
+            },
+            {
+              "from": "0x80005e9c",
+              "to": "0x80005ea0",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ea0",
+              "to": "0x80005ea4",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ea4",
+              "to": "0x80005ea8",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ea8",
+              "to": "0x80005eac",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005eac",
+              "to": "0x80005eb0",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005eb0",
+              "to": "0x80005eb4",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005eb4",
+              "to": "0x80005eb8",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005eb8",
+              "to": "0x80005ebc",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ebc",
+              "to": "0x80005edc",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ebc",
+              "to": "0x80005ec0",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ec0",
+              "to": "0x80005ec4",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ec4",
+              "to": "0x80005ec8",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ec8",
+              "to": "0x80005ecc",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ecc",
+              "to": "0x80005ed0",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ed0",
+              "to": "0x80005ed4",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ed4",
+              "to": "0x80005ed8",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ed8",
+              "to": "0x80005ec0",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ed8",
+              "to": "0x80005edc",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005edc",
+              "to": "0x80005ee0",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ee0",
+              "to": "0x80005ee4",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ee4",
+              "to": "0x80005ee8",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ee8",
+              "to": "0x80005eec",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005eec",
+              "to": "0x80005f08",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005eec",
+              "to": "0x80005ef0",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ef0",
+              "to": "0x80005ef4",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ef4",
+              "to": "0x80005ef8",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005ef8",
+              "to": "0x80005efc",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005efc",
+              "to": "0x80005f00",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005f00",
+              "to": "0x80005f04",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005f04",
+              "to": "0x80005ef0",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005f04",
+              "to": "0x80005f08",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005f08",
+              "to": "0x80005f0c",
+              "kind": "local"
+            },
+            {
+              "from": "0x80005f0c",
+              "to": null,
+              "kind": "return"
+            }
+          ],
+          "literal_refs": [
+            {
+              "site": "0x80005ea8",
+              "literal_address": "0x80005f10",
+              "value": "0x805b4154",
+              "bytes": "54415b80"
+            },
+            {
+              "site": "0x80005edc",
+              "literal_address": "0x80005f10",
+              "value": "0x805b4154",
+              "bytes": "54415b80"
+            }
+          ],
+          "memory_access_candidates": [
+            {
+              "site": "0x80005ea8",
+              "assembly": "ldr r0, [pc, #0x60]",
+              "base_register": "pc",
+              "structure_offset": 96,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": "0x80005f10",
+              "operation": "read"
+            },
+            {
+              "site": "0x80005ec0",
+              "assembly": "ldrb r2, [r6, r0]",
+              "base_register": "r6",
+              "structure_offset": 0,
+              "indexed": true,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "read"
+            },
+            {
+              "site": "0x80005edc",
+              "assembly": "ldr r6, [pc, #0x2c]",
+              "base_register": "pc",
+              "structure_offset": 44,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": "0x80005f10",
+              "operation": "read"
+            },
+            {
+              "site": "0x80005ee4",
+              "assembly": "strb r1, [r6, r4]",
+              "base_register": "r6",
+              "structure_offset": 0,
+              "indexed": true,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "write"
+            },
+            {
+              "site": "0x80005ef0",
+              "assembly": "ldrb r1, [r6, r4]",
+              "base_register": "r6",
+              "structure_offset": 0,
+              "indexed": true,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "read"
+            }
+          ],
+          "raw_caller_candidates": [
+            {
+              "site": "0x800045e0",
+              "status": "raw_ARM_BL_candidate_not_validated_code_region"
+            },
+            {
+              "site": "0x80005fb4",
+              "status": "raw_ARM_BL_candidate_not_validated_code_region"
+            },
+            {
+              "site": "0x80006018",
+              "status": "raw_ARM_BL_candidate_not_validated_code_region"
+            }
+          ],
+          "body_sha256": "a2c21591545c533a2cb11148881dcce993da7758186c283efcce43a891d7d661"
+        },
+        {
+          "entry": "0x80006dc8",
+          "analyst_label": "UARTSelectorByteOutput",
+          "name_status": "role label; not a vendor symbol",
+          "preserved_metadata": null,
+          "complete_local_arm_cfg": true,
+          "assembly": [
+            {
+              "address": "0x80006dc8",
+              "bytes": "000050e3",
+              "assembly": "cmp r0,#0x0"
+            },
+            {
+              "address": "0x80006dcc",
+              "bytes": "48009f05",
+              "assembly": "ldreq r0,[0x80006e1c]"
+            },
+            {
+              "address": "0x80006dd0",
+              "bytes": "04d04de2",
+              "assembly": "sub sp,sp,#0x4"
+            },
+            {
+              "address": "0x80006dd4",
+              "bytes": "0700000a",
+              "assembly": "beq 0x80006df8"
+            },
+            {
+              "address": "0x80006dd8",
+              "bytes": "010050e3",
+              "assembly": "cmp r0,#0x1"
+            },
+            {
+              "address": "0x80006ddc",
+              "bytes": "3c009f05",
+              "assembly": "ldreq r0,[0x80006e20]"
+            },
+            {
+              "address": "0x80006de0",
+              "bytes": "0400000a",
+              "assembly": "beq 0x80006df8"
+            },
+            {
+              "address": "0x80006de4",
+              "bytes": "020050e3",
+              "assembly": "cmp r0,#0x2"
+            },
+            {
+              "address": "0x80006de8",
+              "bytes": "34009f05",
+              "assembly": "ldreq r0,[0x80006e24]"
+            },
+            {
+              "address": "0x80006dec",
+              "bytes": "00008d05",
+              "assembly": "streq r0,[sp,#0x0]"
+            },
+            {
+              "address": "0x80006df0",
+              "bytes": "00009de5",
+              "assembly": "ldr r0,[sp,#0x0]"
+            },
+            {
+              "address": "0x80006df4",
+              "bytes": "000000ea",
+              "assembly": "b 0x80006dfc"
+            },
+            {
+              "address": "0x80006df8",
+              "bytes": "00008de5",
+              "assembly": "str r0,[sp,#0x0]"
+            },
+            {
+              "address": "0x80006dfc",
+              "bytes": "7c0080e2",
+              "assembly": "add r0,r0,#0x7c"
+            },
+            {
+              "address": "0x80006e00",
+              "bytes": "002090e5",
+              "assembly": "ldr r2,[r0,#0x0]"
+            },
+            {
+              "address": "0x80006e04",
+              "bytes": "020012e3",
+              "assembly": "tst r2,#0x2"
+            },
+            {
+              "address": "0x80006e08",
+              "bytes": "fcffff0a",
+              "assembly": "beq 0x80006e00"
+            },
+            {
+              "address": "0x80006e0c",
+              "bytes": "00009de5",
+              "assembly": "ldr r0,[sp,#0x0]"
+            },
+            {
+              "address": "0x80006e10",
+              "bytes": "001080e5",
+              "assembly": "str r1,[r0,#0x0]"
+            },
+            {
+              "address": "0x80006e14",
+              "bytes": "04d08de2",
+              "assembly": "add sp,sp,#0x4"
+            },
+            {
+              "address": "0x80006e18",
+              "bytes": "1eff2fe1",
+              "assembly": "bx lr"
+            }
+          ],
+          "decompiled_c": "\r\nvoid FUN_80006dc8(int param_1,undefined4 param_2)\r\n\r\n{\r\n  undefined4 *puVar1;\r\n  undefined4 *puStack_4;\r\n  \r\n  puVar1 = puRam80006e1c;\r\n  if (((param_1 != 0) && (puVar1 = puRam80006e20, param_1 != 1)) &&\r\n     (puVar1 = puStack_4, param_1 == 2)) {\r\n    puStack_4 = puRam80006e24;\r\n    puVar1 = puStack_4;\r\n  }\r\n  puStack_4 = puVar1;\r\n  do {\r\n  } while ((puStack_4[0x1f] & 2) == 0);\r\n  *puStack_4 = param_2;\r\n  return;\r\n}\r\n\r\n",
+          "calls": [],
+          "edges": [
+            {
+              "from": "0x80006dc8",
+              "to": "0x80006dcc",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006dcc",
+              "to": "0x80006dd0",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006dd0",
+              "to": "0x80006dd4",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006dd4",
+              "to": "0x80006df8",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006dd4",
+              "to": "0x80006dd8",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006dd8",
+              "to": "0x80006ddc",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006ddc",
+              "to": "0x80006de0",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006de0",
+              "to": "0x80006df8",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006de0",
+              "to": "0x80006de4",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006de4",
+              "to": "0x80006de8",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006de8",
+              "to": "0x80006dec",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006dec",
+              "to": "0x80006df0",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006df0",
+              "to": "0x80006df4",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006df4",
+              "to": "0x80006dfc",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006dfc",
+              "to": "0x80006e00",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006e00",
+              "to": "0x80006e04",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006e04",
+              "to": "0x80006e08",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006e08",
+              "to": "0x80006e00",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006e08",
+              "to": "0x80006e0c",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006e0c",
+              "to": "0x80006e10",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006e10",
+              "to": "0x80006e14",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006e14",
+              "to": "0x80006e18",
+              "kind": "local"
+            },
+            {
+              "from": "0x80006e18",
+              "to": null,
+              "kind": "return"
+            },
+            {
+              "from": "0x80006df8",
+              "to": "0x80006dfc",
+              "kind": "local"
+            }
+          ],
+          "literal_refs": [],
+          "memory_access_candidates": [
+            {
+              "site": "0x80006dcc",
+              "assembly": "ldreq r0, [pc, #0x48]",
+              "base_register": "pc",
+              "structure_offset": 72,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "read"
+            },
+            {
+              "site": "0x80006ddc",
+              "assembly": "ldreq r0, [pc, #0x3c]",
+              "base_register": "pc",
+              "structure_offset": 60,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "read"
+            },
+            {
+              "site": "0x80006de8",
+              "assembly": "ldreq r0, [pc, #0x34]",
+              "base_register": "pc",
+              "structure_offset": 52,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "read"
+            },
+            {
+              "site": "0x80006dec",
+              "assembly": "streq r0, [sp]",
+              "base_register": "sp",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "write"
+            },
+            {
+              "site": "0x80006df0",
+              "assembly": "ldr r0, [sp]",
+              "base_register": "sp",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "read"
+            },
+            {
+              "site": "0x80006df8",
+              "assembly": "str r0, [sp]",
+              "base_register": "sp",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "write"
+            },
+            {
+              "site": "0x80006e00",
+              "assembly": "ldr r2, [r0]",
+              "base_register": "r0",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "read"
+            },
+            {
+              "site": "0x80006e0c",
+              "assembly": "ldr r0, [sp]",
+              "base_register": "sp",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "read"
+            },
+            {
+              "site": "0x80006e10",
+              "assembly": "str r1, [r0]",
+              "base_register": "r0",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "write"
+            }
+          ],
+          "raw_caller_candidates": [
+            {
+              "site": "0x80005e64",
+              "status": "raw_ARM_BL_candidate_not_validated_code_region"
+            },
+            {
+              "site": "0x80005ef8",
+              "status": "raw_ARM_BL_candidate_not_validated_code_region"
+            },
+            {
+              "site": "0x80007354",
+              "status": "raw_ARM_BL_candidate_not_validated_code_region"
+            },
+            {
+              "site": "0x800073a4",
+              "status": "raw_ARM_BL_candidate_not_validated_code_region"
+            }
+          ],
+          "body_sha256": "87e304a9edd515dcf8ad0d532c816d090d2c1734bbaac96586f198971551beb8"
+        },
+        {
+          "entry": "0x800073bc",
+          "analyst_label": "UART2ReceiveISR",
+          "name_status": "role label; not a vendor symbol",
+          "preserved_metadata": null,
+          "complete_local_arm_cfg": true,
+          "assembly": [
+            {
+              "address": "0x800073bc",
+              "bytes": "54009fe5",
+              "assembly": "ldr r0,[0x80007418]"
+            },
+            {
+              "address": "0x800073c0",
+              "bytes": "04d04de2",
+              "assembly": "sub sp,sp,#0x4"
+            },
+            {
+              "address": "0x800073c4",
+              "bytes": "081080e2",
+              "assembly": "add r1,r0,#0x8"
+            },
+            {
+              "address": "0x800073c8",
+              "bytes": "001091e5",
+              "assembly": "ldr r1,[r1,#0x0]"
+            },
+            {
+              "address": "0x800073cc",
+              "bytes": "040011e3",
+              "assembly": "tst r1,#0x4"
+            },
+            {
+              "address": "0x800073d0",
+              "bytes": "00108de5",
+              "assembly": "str r1,[sp,#0x0]"
+            },
+            {
+              "address": "0x800073d4",
+              "bytes": "04d08d02",
+              "assembly": "addeq sp,sp,#0x4"
+            },
+            {
+              "address": "0x800073d8",
+              "bytes": "1eff2f01",
+              "assembly": "bxeq lr"
+            },
+            {
+              "address": "0x800073dc",
+              "bytes": "000090e5",
+              "assembly": "ldr r0,[r0,#0x0]"
+            },
+            {
+              "address": "0x800073e0",
+              "bytes": "ff1000e2",
+              "assembly": "and r1,r0,#0xff"
+            },
+            {
+              "address": "0x800073e4",
+              "bytes": "30209fe5",
+              "assembly": "ldr r2,[0x8000741c]"
+            },
+            {
+              "address": "0x800073e8",
+              "bytes": "000092e5",
+              "assembly": "ldr r0,[r2,#0x0]"
+            },
+            {
+              "address": "0x800073ec",
+              "bytes": "c80050e3",
+              "assembly": "cmp r0,#0xc8"
+            },
+            {
+              "address": "0x800073f0",
+              "bytes": "04d08da2",
+              "assembly": "addge sp,sp,#0x4"
+            },
+            {
+              "address": "0x800073f4",
+              "bytes": "1eff2fa1",
+              "assembly": "bxge lr"
+            },
+            {
+              "address": "0x800073f8",
+              "bytes": "000092e5",
+              "assembly": "ldr r0,[r2,#0x0]"
+            },
+            {
+              "address": "0x800073fc",
+              "bytes": "1c309fe5",
+              "assembly": "ldr r3,[0x80007420]"
+            },
+            {
+              "address": "0x80007400",
+              "bytes": "003083e0",
+              "assembly": "add r3,r3,r0"
+            },
+            {
+              "address": "0x80007404",
+              "bytes": "010080e2",
+              "assembly": "add r0,r0,#0x1"
+            },
+            {
+              "address": "0x80007408",
+              "bytes": "000082e5",
+              "assembly": "str r0,[r2,#0x0]"
+            },
+            {
+              "address": "0x8000740c",
+              "bytes": "0010c3e5",
+              "assembly": "strb r1,[r3,#0x0]"
+            },
+            {
+              "address": "0x80007410",
+              "bytes": "04d08de2",
+              "assembly": "add sp,sp,#0x4"
+            },
+            {
+              "address": "0x80007414",
+              "bytes": "1eff2fe1",
+              "assembly": "bx lr"
+            }
+          ],
+          "decompiled_c": "\r\nvoid FUN_800073bc(void)\r\n\r\n{\r\n  undefined4 uVar1;\r\n  undefined1 *puVar2;\r\n  \r\n  if ((puRam80007418[2] & 4) == 0) {\r\n    return;\r\n  }\r\n  uVar1 = *puRam80007418;\r\n  if (*piRam8000741c < 200) {\r\n    puVar2 = (undefined1 *)(iRam80007420 + *piRam8000741c);\r\n    *piRam8000741c = *piRam8000741c + 1;\r\n    *puVar2 = (char)uVar1;\r\n    return;\r\n  }\r\n  return;\r\n}\r\n\r\n",
+          "calls": [],
+          "edges": [
+            {
+              "from": "0x800073bc",
+              "to": "0x800073c0",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073c0",
+              "to": "0x800073c4",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073c4",
+              "to": "0x800073c8",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073c8",
+              "to": "0x800073cc",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073cc",
+              "to": "0x800073d0",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073d0",
+              "to": "0x800073d4",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073d4",
+              "to": "0x800073d8",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073d8",
+              "to": null,
+              "kind": "return"
+            },
+            {
+              "from": "0x800073d8",
+              "to": "0x800073dc",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073dc",
+              "to": "0x800073e0",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073e0",
+              "to": "0x800073e4",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073e4",
+              "to": "0x800073e8",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073e8",
+              "to": "0x800073ec",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073ec",
+              "to": "0x800073f0",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073f0",
+              "to": "0x800073f4",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073f4",
+              "to": null,
+              "kind": "return"
+            },
+            {
+              "from": "0x800073f4",
+              "to": "0x800073f8",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073f8",
+              "to": "0x800073fc",
+              "kind": "local"
+            },
+            {
+              "from": "0x800073fc",
+              "to": "0x80007400",
+              "kind": "local"
+            },
+            {
+              "from": "0x80007400",
+              "to": "0x80007404",
+              "kind": "local"
+            },
+            {
+              "from": "0x80007404",
+              "to": "0x80007408",
+              "kind": "local"
+            },
+            {
+              "from": "0x80007408",
+              "to": "0x8000740c",
+              "kind": "local"
+            },
+            {
+              "from": "0x8000740c",
+              "to": "0x80007410",
+              "kind": "local"
+            },
+            {
+              "from": "0x80007410",
+              "to": "0x80007414",
+              "kind": "local"
+            },
+            {
+              "from": "0x80007414",
+              "to": null,
+              "kind": "return"
+            }
+          ],
+          "literal_refs": [
+            {
+              "site": "0x800073bc",
+              "literal_address": "0x80007418",
+              "value": "0x1c25800",
+              "bytes": "0058c201"
+            },
+            {
+              "site": "0x800073e4",
+              "literal_address": "0x8000741c",
+              "value": "0x805ab938",
+              "bytes": "38b95a80"
+            },
+            {
+              "site": "0x800073fc",
+              "literal_address": "0x80007420",
+              "value": "0x805b408c",
+              "bytes": "8c405b80"
+            }
+          ],
+          "memory_access_candidates": [
+            {
+              "site": "0x800073bc",
+              "assembly": "ldr r0, [pc, #0x54]",
+              "base_register": "pc",
+              "structure_offset": 84,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": "0x80007418",
+              "operation": "read"
+            },
+            {
+              "site": "0x800073c8",
+              "assembly": "ldr r1, [r1]",
+              "base_register": "r1",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": "0x1c25808",
+              "operation": "read",
+              "confidence": "straight_line_static_candidate"
+            },
+            {
+              "site": "0x800073d0",
+              "assembly": "str r1, [sp]",
+              "base_register": "sp",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "write"
+            },
+            {
+              "site": "0x800073dc",
+              "assembly": "ldr r0, [r0]",
+              "base_register": "r0",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": "0x1c25800",
+              "operation": "read",
+              "confidence": "straight_line_static_candidate"
+            },
+            {
+              "site": "0x800073e4",
+              "assembly": "ldr r2, [pc, #0x30]",
+              "base_register": "pc",
+              "structure_offset": 48,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": "0x8000741c",
+              "operation": "read"
+            },
+            {
+              "site": "0x800073e8",
+              "assembly": "ldr r0, [r2]",
+              "base_register": "r2",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": "0x805ab938",
+              "operation": "read",
+              "confidence": "straight_line_static_candidate"
+            },
+            {
+              "site": "0x800073f8",
+              "assembly": "ldr r0, [r2]",
+              "base_register": "r2",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": "0x805ab938",
+              "operation": "read",
+              "confidence": "straight_line_static_candidate"
+            },
+            {
+              "site": "0x800073fc",
+              "assembly": "ldr r3, [pc, #0x1c]",
+              "base_register": "pc",
+              "structure_offset": 28,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": "0x80007420",
+              "operation": "read"
+            },
+            {
+              "site": "0x80007408",
+              "assembly": "str r0, [r2]",
+              "base_register": "r2",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": "0x805ab938",
+              "operation": "write",
+              "confidence": "straight_line_static_candidate"
+            },
+            {
+              "site": "0x8000740c",
+              "assembly": "strb r1, [r3]",
+              "base_register": "r3",
+              "structure_offset": 0,
+              "indexed": false,
+              "writeback": false,
+              "effective_address": null,
+              "operation": "write"
+            }
+          ],
+          "raw_caller_candidates": [],
+          "body_sha256": "13746d05fe7dcb9248cd6ad66bf1a7aa2f4a2af40334d39eaac8ff508e1b6e06"
+        }
+      ]
+    }
+  ],
+  "ghidra_version": "12.1.4",
+  "pyghidra_version": "3.1.0",
+  "exporter_sha256": "e819442cc559671b559b50f0089a1e7010dfa1808678bec42e57f3b5ba7c942f",
+  "limits": [
+    "Fresh disposable projects; temporary changes rolled back; no analyst project or names modified.",
+    "Local ARM CFGs only. Raw BL matches may be data; indirect/transitive caller completeness not established.",
+    "Decompiler and block-local constant access candidates are not independent semantic proof."
+  ]
+}

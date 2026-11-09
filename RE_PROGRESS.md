@@ -478,3 +478,8 @@ The public ZIP was downloaded again and verified against SHA256SUMS/GitHub asset
 ## 2026-11-08: equal-Highspeed profile evidence
 
 Executed the pinned E2 four-profile experiment at Highspeed0/1:64 waveform cases,64 in-flight switches,16 existing reply-audio candidate cases,268 assertion groups. Rechecked six packets/360 instruction bytes and executed one original idle service iteration per version. Reproduced the existing offline chain from public V3.8 with158 preimage guards. Verified GUI audio-wait removal in the model; no physical speed percentage or explanation of the reported Base advantage. One local extraction completed, binary quote checked, zero new independent findings. No device writes or new firmware Release. See contributions/COORD-ADC-CADENCE/README.md.
+
+
+## 2026-11-09: original UART correlation proof
+
+The UART run begun2026-11-08 is documented2026-11-09: original V3.6/V3.8 TX/checksum/ready-loop/ISR/builder/FSM/critical/getter execute;12,704 transport cases agree with independent Python and separately compiled ARM C.184 arrival schedules and12 controlled ISR interleaves expose old matching-header acceptance across retry/clear-to-TX gaps.4 concatenation fixtures confirm only the first frame is published; RX retention through finalization is now distinguished from next-state1 clear. Six actual Ghidra exports contain158 byte-checked instructions. A new pure-C transport component is saved. No physical latency, new firmware fix, main merge or Release change is claimed.

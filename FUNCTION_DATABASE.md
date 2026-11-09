@@ -302,3 +302,8 @@ Function records remain60. Installer1.1.0-beta.2 bundles the known factory image
 ## 2026-11-08: equal-Highspeed profile evidence
 
 The existing gauge_task_candidate record0x80005b6c is refined to a proven GaugeCmdTask service on the bounded original idle path: call FSM0x80004490, then request sleep(1). Its task-entry label is superseded; GaugeCmdTask entry remains0x80003dbc. E2 active paths execute the patched step/tail around the original body. The inferred service name is not a recovered factory symbol. The database remains60 records. See contributions/COORD-ADC-CADENCE/profile-validation.json and observed-call-edges.json for bounded edges and limits.
+
+
+## 2026-11-09: original UART correlation proof
+
+Existing measurement_transaction_send, measurement_byte_output_candidate and uart_rx_isr records are refined from static observations to bounded original ARM926 execution on both originals. The sender appends an8-bit additive checksum; selector2 polls UART2+0x7c bit1 and writes UART2+0; the ISR gates on UART2+8 bit2 and appends into a200-byte buffer. The database remains60 entries; inferred labels are not recovered vendor names. New independent pure-C components: reconstruction/uart_transport.c/.h. See contributions/COORD-ADC-CADENCE/uart/validation.json and ghidra-functions.json.
