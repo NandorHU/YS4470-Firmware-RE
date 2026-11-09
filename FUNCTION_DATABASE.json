@@ -1431,23 +1431,29 @@
         "V3_6": "0x80005f14",
         "V3_8": "0x80005f14"
       },
-      "confidence": "static_candidate_with_validated_known_direct_callers",
-      "role": "Static descriptor-command send/response-wait helper candidate sharing the measurement RX buffer",
-      "name_status": "Analyst candidate role; no new whole-body execution proof",
+      "confidence": "confirmed_bounded_original_startup_command_execution",
+      "role": "Synchronous descriptor sender and matching-header ACK wait with one retry; proven here for startup IDs9/19",
+      "name_status": "Analyst role label, not vendor symbol; legacy candidate database ID retained",
       "relationships": [
         "Original count pointer is loaded from literal0x80006090 ->0x805ab938.",
         "Known startup callers0x80003dc4/0x80003dcc precede GaugeCmdTask service loop.",
         "Nine BL sites and one tail edge0x8000404c are validated across the startup wrapper/control-handler local CFGs.",
-        "Static calls include descriptor sender0x80005e84 and delay candidate0x80060fbc."
+        "Static calls include descriptor sender0x80005e84 and delay candidate0x80060fbc.",
+        "Original startup ID9 source5803 -> wire58035b; ID19 source5900 -> wire590059.",
+        "A matching first byte can return success before any requested sleep; the500 bound is a maximum per-attempt iteration count.",
+        "At most two sends and1000 requested sleep(1) calls in tested cases; GPIO bits2/3 and callee-saved registers are restored."
       ],
       "evidence": [
         "contributions/COORD-ADC-CADENCE/admission/synchronous-static.json",
-        "contributions/COORD-ADC-CADENCE/admission/validation.json"
+        "contributions/COORD-ADC-CADENCE/admission/validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/synchronous-validation.json"
       ],
       "limits": [
-        "Identical95-instruction local ARM contexts do not establish all runtime paths, external protocol semantics or blocking duration.",
-        "Indirect/Thumb callers and other shared-buffer writers remain unclassified.",
-        "Do not infer an active-acquisition clear race from a shared pointer when tested known service paths are idle-gated."
+        "New whole-helper execution covers only proven startup arguments9/19 with valid buffers and initial FSM idle.",
+        "Sleep scheduling, byte delivery, UART status and CPU-context ISR interleave are explicit models; actual exception/task timing is not established.",
+        "A helper ACK needs a matching header, unlike the measurement FSM's five-byte admission rule; other command IDs/UI routes remain untested.",
+        "Last-sleep reply ordering is a software boundary observation, not a physical delay/bug or warranted timing patch.",
+        "Indirect callers, aliases, other tasks and global ownership remain incomplete."
       ]
     }
   ],
@@ -1897,5 +1903,15 @@
     "known_bl_sites": 9,
     "additional_tail_branch": "0x8000404c -> 0x80005f14",
     "scope": "Conditional append/prefix stability and bounded entry gating; no global ownership/physical latency claim."
+  },
+  "synchronous_startup_proof": {
+    "report": "contributions/COORD-ADC-CADENCE/synchronous/synchronous-validation.json",
+    "original_cases": 40,
+    "startup_descriptor_ids": [
+      9,
+      19
+    ],
+    "physical_device_operations": 0,
+    "local_model_results": "Extraction/manual review only; no independent firmware finding promoted."
   }
 }

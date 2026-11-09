@@ -1,0 +1,109 @@
+# Synchronous startup commands and restored local collaboration — 2026-11-09
+
+The owner explicitly requested starting the installed local model while away
+from the computer and continuing collaboration. I located the existing signed
+portable Ollama under the legacy project's local-ai/runtime, rather than
+reinstalling it or downloading weights. The executable SHA-256 is
+`544216ca2082b8bc19b4ba94b513f0098fa06774b232f3c140090e3449e322a5`;
+Authenticode reported Valid, publisher Ollama Inc. Ollama0.40.15 now listens
+on127.0.0.1:11435 with cloud disabled, one concurrent request/model, flash
+attention and q8_0 KV cache. Logs/temp files are in an isolated writable workspace.
+No login startup, Windows service, registry or firmware change is made.
+
+Both existing models are available. The reviewed coder is qwen2.5-coder:14b,
+digest `9ec8897f747e246e970bc5cfdda85d22f1123dc2e3d34978a010a75968716849`.
+After inference, /api/ps reported size=size_vram=9,107,029,359 and context4096.
+This is runtime residency evidence, not a comparative quality/speed claim.
+
+## The local model's bounded work
+
+I explicitly retried the two failed transport-only requests from the previous
+run. Their original manifests, inputs and WinError10061 receipts remain intact;
+neither task had reached model inference before. The model received checked
+lessons and source only, with no shell/Git/REA/device tools.
+
+- The RX index reply quoted the RAM count store correctly, but mislabeled the
+  pointer-literal load0x800073bc as UART status. The actual status read is
+  0x800073c8. Its claimed final-write limit was also wrong: byte store0x8000740c
+  follows the count store0x80007408.
+- The synchronous-helper reply correctly selected clear0x80005f30 and delay
+  call0x80005fe8. Its limitation merely restated BL and was not useful.
+- All four quotes matched supplied source, yet only three semantic extractions
+  were correct. Both replies used the wrong requested JSON keys. They were
+  manually reviewed; no automated database/firmware finding was accepted.
+
+The two requests produced183 tokens in12.062s, including the first model load.
+I recorded the correction in a separate versioned LESSONS-UART.md rather than
+editing the base lessons and breaking frozen-job hashes. A **new**, held-out TX
+classification question then returned the correct two candidate IDs with the
+exact requested schema (19 tokens,1.094s). This is one in-context exercise,
+not weight training or evidence of general reasoning improvement. There is
+no model-generated code execution. See local-review/ and local-heldout/.
+
+## Coordinator binary execution
+
+While the model indexed source, I executed the complete original synchronous
+helper0x80005f14, its real sender/byte-output/ISR/copy/clear/GPIO routines for
+the two previously proven GaugeCmdTask startup arguments9 and19 (0x09/0x13).
+Both originals pass the same20 cases,40 total; initial FSM is idle. The native
+caller arguments were already bound by the earlier GaugeCmdTask packet proof.
+Other descriptor IDs/UI modes are outside this new execution proof.
+
+| Observation | Established for the tested startup helper |
+|---|---|
+| Source/wire | ID9 source5803→wire58035b; ID19 source5900→wire590059 |
+| Matching one-byte header before first check | Return1 without a sleep |
+| Matching five-byte input with arbitrary trailing payload | Return1; all5 RX bytes remain |
+| No/wrong header | Two sends; return0 after1,000 requested sleep(1) calls |
+| First attempt: matching header after499 sleeps | Return1 after499 sleeps |
+| First attempt: header delivered after500th sleep | Header is cleared before retry; no new reply gives return0 |
+| Second attempt: header before first check | Return1 after500 total sleeps |
+| Second attempt: header after499 sleeps | Return1 after999 total sleeps |
+| Second attempt: header after500th sleep | Return0 with matching RX header/count1 still present |
+| Matching old header injected during TX | Return1; no request-instance identity is checked in this tested path |
+
+The loop checks RX **before** each sleep, then increments its loop counter.
+Delivery after the final sleep can therefore miss the final check. This is an
+instruction-order/deadline-boundary result, not an established bug, physical
+delay or justified speed patch. The500 constant is a per-attempt maximum loop
+count, not a mandatory delay and not500 milliseconds. The helper ACK condition
+uses a matching first byte, distinct from the measurement FSM's five-byte rule.
+Only byte delivery, sleep scheduling and UART status are models; CPU context
+interleave uses the previous explicit harness. GPIO bits2/3 are cleared on
+all tested exits; callee-saved registers and nesting are preserved.
+
+[synchronous-validation.json](synchronous-validation.json) pins both inputs,
+the reused harness, source,40 cases and203 observed instruction addresses per
+original. These results do not measure external ADC conversion/restart,
+actual task scheduling, Base profile superiority or acoustic response.
+
+## Reproduction and continuation
+
+With pinned analysis dependencies installed:
+
+```powershell
+$env:PYTHONPATH="$PWD\work\analysis-python"
+python -B contributions/COORD-ADC-CADENCE/synchronous/trace_synchronous_helper.py
+```
+
+Use --repo and --out-dir for an isolated output path. Existing originals stay
+unchanged. No source generator, patched firmware or device operation occurs.
+
+start_local_server.ps1 takes explicit OllamaExe, ModelDirectory and writable
+StateDirectory arguments, verifies the reviewed executable/signature, and
+starts only an absent local server with hidden windows and loopback binding.
+It never pulls models or stops an existing server. The already-running API
+was rechecked successfully; the cold-start path was executed by the equivalent
+recorded native launch before this reusable script was written.
+
+The local retry/exercise folders are frozen completed jobs. Do not rerun them
+or the old31-task batch. For new local tasks, use the checked base lessons plus
+the UART correction, a new small source/manifest and strict completion, exact
+schema, quote and semantic review gates. Keep exact arithmetic/hashes and ARM
+execution with deterministic tools/coordinator. Native server remains available
+for subsequent bounded tasks; model keep-alive is30m, not an endless work batch.
+
+Next prove further **reachable** deferred-handler command/helper paths and their
+message producers. Keep the known service-idle precondition, other aliases,
+installed application identity and physical ADC/latency questions separate.
+The normal asynchronous measurement FSM is not this startup ACK helper.

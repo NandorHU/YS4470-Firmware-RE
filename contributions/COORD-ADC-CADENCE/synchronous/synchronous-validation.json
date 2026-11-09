@@ -1,0 +1,5021 @@
+{
+  "schema": "ys4470.synchronous-execution.v1",
+  "source_sha256": "548c4a9401bcb8b49ac96a505d3238f88d70a9b9a8354f68e939dbd18a77bcd8",
+  "reused_uart_harness_sha256": "20df6f4f777d91aed209757fa866282906fae36ff0e5653da7447f0374f525fa",
+  "cases": 40,
+  "versions": [
+    {
+      "version": "V3.6",
+      "input_sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+      "cases": [
+        {
+          "command": 9,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "missing",
+          "return_value": 0,
+          "send_attempts": 2,
+          "requested_sleep_calls": 1000,
+          "requested_sleep_units": 1000,
+          "source_hex": "5803",
+          "wire_hex": "58035b58035b",
+          "rx_count_at_return": 0,
+          "rx_prefix_at_return": "0000000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 91
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80005ffc",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 500,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 91
+            }
+          ],
+          "instruction_hook_count": 8399
+        },
+        {
+          "command": 9,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "one-byte-first-check",
+          "return_value": 1,
+          "send_attempts": 1,
+          "requested_sleep_calls": 0,
+          "requested_sleep_units": 0,
+          "source_hex": "5803",
+          "wire_hex": "58035b",
+          "rx_count_at_return": 1,
+          "rx_prefix_at_return": "5800000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 91
+            },
+            {
+              "t": 0,
+              "kind": "interleave",
+              "site": "0x80005fcc",
+              "irq_masked": false
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 88,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            }
+          ],
+          "instruction_hook_count": 256
+        },
+        {
+          "command": 9,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "five-bytes-first-check",
+          "return_value": 1,
+          "send_attempts": 1,
+          "requested_sleep_calls": 0,
+          "requested_sleep_units": 0,
+          "source_hex": "5803",
+          "wire_hex": "58035b",
+          "rx_count_at_return": 5,
+          "rx_prefix_at_return": "5832ff12ff",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 91
+            },
+            {
+              "t": 0,
+              "kind": "interleave",
+              "site": "0x80005fcc",
+              "irq_masked": false
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 88,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 50,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 1,
+              "new": 2
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 255,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 2,
+              "new": 3
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 18,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 3,
+              "new": 4
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 255,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 4,
+              "new": 5
+            }
+          ],
+          "instruction_hook_count": 348
+        },
+        {
+          "command": 9,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "wrong-header",
+          "return_value": 0,
+          "send_attempts": 2,
+          "requested_sleep_calls": 1000,
+          "requested_sleep_units": 1000,
+          "source_hex": "5803",
+          "wire_hex": "58035b58035b",
+          "rx_count_at_return": 0,
+          "rx_prefix_at_return": "0000000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 91
+            },
+            {
+              "t": 0,
+              "kind": "interleave",
+              "site": "0x80005fcc",
+              "irq_masked": false
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 89,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80005ffc",
+              "old": 1,
+              "new": 0
+            },
+            {
+              "t": 500,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 91
+            }
+          ],
+          "instruction_hook_count": 9922
+        },
+        {
+          "command": 9,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "first-after499-sleeps",
+          "return_value": 1,
+          "send_attempts": 1,
+          "requested_sleep_calls": 499,
+          "requested_sleep_units": 499,
+          "source_hex": "5803",
+          "wire_hex": "58035b",
+          "rx_count_at_return": 1,
+          "rx_prefix_at_return": "5800000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 91
+            },
+            {
+              "t": 499,
+              "kind": "interleave",
+              "site": "0x80060fbc",
+              "irq_masked": false
+            },
+            {
+              "t": 499,
+              "kind": "fixture_rx",
+              "value": 88,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 499,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            }
+          ],
+          "instruction_hook_count": 4248
+        },
+        {
+          "command": 9,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "first-after500-sleeps",
+          "return_value": 0,
+          "send_attempts": 2,
+          "requested_sleep_calls": 1000,
+          "requested_sleep_units": 1000,
+          "source_hex": "5803",
+          "wire_hex": "58035b58035b",
+          "rx_count_at_return": 0,
+          "rx_prefix_at_return": "0000000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 91
+            },
+            {
+              "t": 500,
+              "kind": "interleave",
+              "site": "0x80060fbc",
+              "irq_masked": false
+            },
+            {
+              "t": 500,
+              "kind": "fixture_rx",
+              "value": 88,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80005ffc",
+              "old": 1,
+              "new": 0
+            },
+            {
+              "t": 500,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 91
+            }
+          ],
+          "instruction_hook_count": 8422
+        },
+        {
+          "command": 9,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "second-first-check",
+          "return_value": 1,
+          "send_attempts": 2,
+          "requested_sleep_calls": 500,
+          "requested_sleep_units": 500,
+          "source_hex": "5803",
+          "wire_hex": "58035b58035b",
+          "rx_count_at_return": 1,
+          "rx_prefix_at_return": "5800000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 91
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80005ffc",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 500,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 91
+            },
+            {
+              "t": 500,
+              "kind": "interleave",
+              "site": "0x80006024",
+              "irq_masked": false
+            },
+            {
+              "t": 500,
+              "kind": "fixture_rx",
+              "value": 88,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            }
+          ],
+          "instruction_hook_count": 4428
+        },
+        {
+          "command": 9,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "second-after499-sleeps",
+          "return_value": 1,
+          "send_attempts": 2,
+          "requested_sleep_calls": 999,
+          "requested_sleep_units": 999,
+          "source_hex": "5803",
+          "wire_hex": "58035b58035b",
+          "rx_count_at_return": 1,
+          "rx_prefix_at_return": "5800000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 91
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80005ffc",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 500,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 91
+            },
+            {
+              "t": 999,
+              "kind": "interleave",
+              "site": "0x80060fbc",
+              "irq_masked": false
+            },
+            {
+              "t": 999,
+              "kind": "fixture_rx",
+              "value": 88,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 999,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            }
+          ],
+          "instruction_hook_count": 8420
+        },
+        {
+          "command": 9,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "second-after500-sleeps",
+          "return_value": 0,
+          "send_attempts": 2,
+          "requested_sleep_calls": 1000,
+          "requested_sleep_units": 1000,
+          "source_hex": "5803",
+          "wire_hex": "58035b58035b",
+          "rx_count_at_return": 1,
+          "rx_prefix_at_return": "5800000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 91
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80005ffc",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 500,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 91
+            },
+            {
+              "t": 1000,
+              "kind": "interleave",
+              "site": "0x80060fbc",
+              "irq_masked": false
+            },
+            {
+              "t": 1000,
+              "kind": "fixture_rx",
+              "value": 88,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 1000,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            }
+          ],
+          "instruction_hook_count": 8422
+        },
+        {
+          "command": 9,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "old-header-during-tx",
+          "return_value": 1,
+          "send_attempts": 1,
+          "requested_sleep_calls": 0,
+          "requested_sleep_units": 0,
+          "source_hex": "5803",
+          "wire_hex": "58035b",
+          "rx_count_at_return": 1,
+          "rx_prefix_at_return": "5800000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 0,
+              "kind": "interleave",
+              "site": "0x80005efc",
+              "irq_masked": false
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 88,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 91
+            }
+          ],
+          "instruction_hook_count": 256
+        },
+        {
+          "command": 19,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "missing",
+          "return_value": 0,
+          "send_attempts": 2,
+          "requested_sleep_calls": 1000,
+          "requested_sleep_units": 1000,
+          "source_hex": "5900",
+          "wire_hex": "590059590059",
+          "rx_count_at_return": 0,
+          "rx_prefix_at_return": "0000000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80005ffc",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 500,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 89
+            }
+          ],
+          "instruction_hook_count": 8384
+        },
+        {
+          "command": 19,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "one-byte-first-check",
+          "return_value": 1,
+          "send_attempts": 1,
+          "requested_sleep_calls": 0,
+          "requested_sleep_units": 0,
+          "source_hex": "5900",
+          "wire_hex": "590059",
+          "rx_count_at_return": 1,
+          "rx_prefix_at_return": "5900000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "interleave",
+              "site": "0x80005fcc",
+              "irq_masked": false
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 89,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            }
+          ],
+          "instruction_hook_count": 241
+        },
+        {
+          "command": 19,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "five-bytes-first-check",
+          "return_value": 1,
+          "send_attempts": 1,
+          "requested_sleep_calls": 0,
+          "requested_sleep_units": 0,
+          "source_hex": "5900",
+          "wire_hex": "590059",
+          "rx_count_at_return": 5,
+          "rx_prefix_at_return": "5932ff12ff",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "interleave",
+              "site": "0x80005fcc",
+              "irq_masked": false
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 89,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 50,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 1,
+              "new": 2
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 255,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 2,
+              "new": 3
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 18,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 3,
+              "new": 4
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 255,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 4,
+              "new": 5
+            }
+          ],
+          "instruction_hook_count": 333
+        },
+        {
+          "command": 19,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "wrong-header",
+          "return_value": 0,
+          "send_attempts": 2,
+          "requested_sleep_calls": 1000,
+          "requested_sleep_units": 1000,
+          "source_hex": "5900",
+          "wire_hex": "590059590059",
+          "rx_count_at_return": 0,
+          "rx_prefix_at_return": "0000000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "interleave",
+              "site": "0x80005fcc",
+              "irq_masked": false
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 88,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80005ffc",
+              "old": 1,
+              "new": 0
+            },
+            {
+              "t": 500,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 89
+            }
+          ],
+          "instruction_hook_count": 9907
+        },
+        {
+          "command": 19,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "first-after499-sleeps",
+          "return_value": 1,
+          "send_attempts": 1,
+          "requested_sleep_calls": 499,
+          "requested_sleep_units": 499,
+          "source_hex": "5900",
+          "wire_hex": "590059",
+          "rx_count_at_return": 1,
+          "rx_prefix_at_return": "5900000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 499,
+              "kind": "interleave",
+              "site": "0x80060fbc",
+              "irq_masked": false
+            },
+            {
+              "t": 499,
+              "kind": "fixture_rx",
+              "value": 89,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 499,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            }
+          ],
+          "instruction_hook_count": 4233
+        },
+        {
+          "command": 19,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "first-after500-sleeps",
+          "return_value": 0,
+          "send_attempts": 2,
+          "requested_sleep_calls": 1000,
+          "requested_sleep_units": 1000,
+          "source_hex": "5900",
+          "wire_hex": "590059590059",
+          "rx_count_at_return": 0,
+          "rx_prefix_at_return": "0000000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 500,
+              "kind": "interleave",
+              "site": "0x80060fbc",
+              "irq_masked": false
+            },
+            {
+              "t": 500,
+              "kind": "fixture_rx",
+              "value": 89,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80005ffc",
+              "old": 1,
+              "new": 0
+            },
+            {
+              "t": 500,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 89
+            }
+          ],
+          "instruction_hook_count": 8407
+        },
+        {
+          "command": 19,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "second-first-check",
+          "return_value": 1,
+          "send_attempts": 2,
+          "requested_sleep_calls": 500,
+          "requested_sleep_units": 500,
+          "source_hex": "5900",
+          "wire_hex": "590059590059",
+          "rx_count_at_return": 1,
+          "rx_prefix_at_return": "5900000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80005ffc",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 500,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 500,
+              "kind": "interleave",
+              "site": "0x80006024",
+              "irq_masked": false
+            },
+            {
+              "t": 500,
+              "kind": "fixture_rx",
+              "value": 89,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            }
+          ],
+          "instruction_hook_count": 4413
+        },
+        {
+          "command": 19,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "second-after499-sleeps",
+          "return_value": 1,
+          "send_attempts": 2,
+          "requested_sleep_calls": 999,
+          "requested_sleep_units": 999,
+          "source_hex": "5900",
+          "wire_hex": "590059590059",
+          "rx_count_at_return": 1,
+          "rx_prefix_at_return": "5900000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80005ffc",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 500,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 999,
+              "kind": "interleave",
+              "site": "0x80060fbc",
+              "irq_masked": false
+            },
+            {
+              "t": 999,
+              "kind": "fixture_rx",
+              "value": 89,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 999,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            }
+          ],
+          "instruction_hook_count": 8405
+        },
+        {
+          "command": 19,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "second-after500-sleeps",
+          "return_value": 0,
+          "send_attempts": 2,
+          "requested_sleep_calls": 1000,
+          "requested_sleep_units": 1000,
+          "source_hex": "5900",
+          "wire_hex": "590059590059",
+          "rx_count_at_return": 1,
+          "rx_prefix_at_return": "5900000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80005ffc",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 500,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 1000,
+              "kind": "interleave",
+              "site": "0x80060fbc",
+              "irq_masked": false
+            },
+            {
+              "t": 1000,
+              "kind": "fixture_rx",
+              "value": 89,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 1000,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            }
+          ],
+          "instruction_hook_count": 8407
+        },
+        {
+          "command": 19,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "old-header-during-tx",
+          "return_value": 1,
+          "send_attempts": 1,
+          "requested_sleep_calls": 0,
+          "requested_sleep_units": 0,
+          "source_hex": "5900",
+          "wire_hex": "590059",
+          "rx_count_at_return": 1,
+          "rx_prefix_at_return": "5900000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "interleave",
+              "site": "0x80005efc",
+              "irq_masked": false
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 89,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            }
+          ],
+          "instruction_hook_count": 241
+        }
+      ],
+      "observed_instructions": [
+        {
+          "address": "0x800009c4",
+          "bytes": "030052e3"
+        },
+        {
+          "address": "0x800009c8",
+          "bytes": "2a00009a"
+        },
+        {
+          "address": "0x80000a78",
+          "bytes": "822fb0e1"
+        },
+        {
+          "address": "0x80000a7c",
+          "bytes": "0130d124"
+        },
+        {
+          "address": "0x80000a80",
+          "bytes": "01c0d124"
+        },
+        {
+          "address": "0x80000a84",
+          "bytes": "0120d144"
+        },
+        {
+          "address": "0x80000a88",
+          "bytes": "0130c024"
+        },
+        {
+          "address": "0x80000a8c",
+          "bytes": "01c0c024"
+        },
+        {
+          "address": "0x80000a90",
+          "bytes": "0120c044"
+        },
+        {
+          "address": "0x80000a94",
+          "bytes": "1eff2fe1"
+        },
+        {
+          "address": "0x80000b4c",
+          "bytes": "0020a0e3"
+        },
+        {
+          "address": "0x80000b50",
+          "bytes": "00402de9"
+        },
+        {
+          "address": "0x80000b54",
+          "bytes": "0230a0e1"
+        },
+        {
+          "address": "0x80000b58",
+          "bytes": "02c0a0e1"
+        },
+        {
+          "address": "0x80000b5c",
+          "bytes": "02e0a0e1"
+        },
+        {
+          "address": "0x80000b60",
+          "bytes": "201051e2"
+        },
+        {
+          "address": "0x80000b64",
+          "bytes": "0c50a028"
+        },
+        {
+          "address": "0x80000b68",
+          "bytes": "0c50a028"
+        },
+        {
+          "address": "0x80000b6c",
+          "bytes": "20105122"
+        },
+        {
+          "address": "0x80000b70",
+          "bytes": "fbffff2a"
+        },
+        {
+          "address": "0x80000b74",
+          "bytes": "011eb0e1"
+        },
+        {
+          "address": "0x80000b78",
+          "bytes": "0c50a028"
+        },
+        {
+          "address": "0x80000b7c",
+          "bytes": "0c00a048"
+        },
+        {
+          "address": "0x80000b80",
+          "bytes": "0040bde8"
+        },
+        {
+          "address": "0x80000b84",
+          "bytes": "0111b0e1"
+        },
+        {
+          "address": "0x80000b88",
+          "bytes": "04208024"
+        },
+        {
+          "address": "0x80000b8c",
+          "bytes": "1eff2f01"
+        },
+        {
+          "address": "0x800031b8",
+          "bytes": "102090e5"
+        },
+        {
+          "address": "0x800031bc",
+          "bytes": "0130a0e3"
+        },
+        {
+          "address": "0x800031c0",
+          "bytes": "1311c2e1"
+        },
+        {
+          "address": "0x800031c4",
+          "bytes": "101080e5"
+        },
+        {
+          "address": "0x800031c8",
+          "bytes": "1eff2fe1"
+        },
+        {
+          "address": "0x800031cc",
+          "bytes": "102090e5"
+        },
+        {
+          "address": "0x800031d0",
+          "bytes": "0130a0e3"
+        },
+        {
+          "address": "0x800031d4",
+          "bytes": "131182e1"
+        },
+        {
+          "address": "0x800031d8",
+          "bytes": "101080e5"
+        },
+        {
+          "address": "0x800031dc",
+          "bytes": "1eff2fe1"
+        },
+        {
+          "address": "0x80005e84",
+          "bytes": "70402de9"
+        },
+        {
+          "address": "0x80005e88",
+          "bytes": "015081e2"
+        },
+        {
+          "address": "0x80005e8c",
+          "bytes": "c80055e3"
+        },
+        {
+          "address": "0x80005e90",
+          "bytes": "0060a0e1"
+        },
+        {
+          "address": "0x80005e94",
+          "bytes": "0140a0e1"
+        },
+        {
+          "address": "0x80005e98",
+          "bytes": "0000a083"
+        },
+        {
+          "address": "0x80005e9c",
+          "bytes": "7080bd88"
+        },
+        {
+          "address": "0x80005ea0",
+          "bytes": "0120a0e1"
+        },
+        {
+          "address": "0x80005ea4",
+          "bytes": "0010a0e1"
+        },
+        {
+          "address": "0x80005ea8",
+          "bytes": "60009fe5"
+        },
+        {
+          "address": "0x80005eac",
+          "bytes": "c4eaffeb"
+        },
+        {
+          "address": "0x80005eb0",
+          "bytes": "0010a0e3"
+        },
+        {
+          "address": "0x80005eb4",
+          "bytes": "000054e3"
+        },
+        {
+          "address": "0x80005eb8",
+          "bytes": "0100a0e1"
+        },
+        {
+          "address": "0x80005ebc",
+          "bytes": "0600009a"
+        },
+        {
+          "address": "0x80005ec0",
+          "bytes": "0020d6e7"
+        },
+        {
+          "address": "0x80005ec4",
+          "bytes": "010080e2"
+        },
+        {
+          "address": "0x80005ec8",
+          "bytes": "0108c0e3"
+        },
+        {
+          "address": "0x80005ecc",
+          "bytes": "021081e0"
+        },
+        {
+          "address": "0x80005ed0",
+          "bytes": "000054e1"
+        },
+        {
+          "address": "0x80005ed4",
+          "bytes": "ff1001e2"
+        },
+        {
+          "address": "0x80005ed8",
+          "bytes": "f8ffff8a"
+        },
+        {
+          "address": "0x80005edc",
+          "bytes": "2c609fe5"
+        },
+        {
+          "address": "0x80005ee0",
+          "bytes": "000055e3"
+        },
+        {
+          "address": "0x80005ee4",
+          "bytes": "0410c6e7"
+        },
+        {
+          "address": "0x80005ee8",
+          "bytes": "0040a0e3"
+        },
+        {
+          "address": "0x80005eec",
+          "bytes": "050000da"
+        },
+        {
+          "address": "0x80005ef0",
+          "bytes": "0410d6e7"
+        },
+        {
+          "address": "0x80005ef4",
+          "bytes": "0200a0e3"
+        },
+        {
+          "address": "0x80005ef8",
+          "bytes": "b20300eb"
+        },
+        {
+          "address": "0x80005efc",
+          "bytes": "014084e2"
+        },
+        {
+          "address": "0x80005f00",
+          "bytes": "040055e1"
+        },
+        {
+          "address": "0x80005f04",
+          "bytes": "f9ffffca"
+        },
+        {
+          "address": "0x80005f08",
+          "bytes": "0100a0e3"
+        },
+        {
+          "address": "0x80005f0c",
+          "bytes": "7080bde8"
+        },
+        {
+          "address": "0x80005f14",
+          "bytes": "300050e3"
+        },
+        {
+          "address": "0x80005f18",
+          "bytes": "0000a0a3"
+        },
+        {
+          "address": "0x80005f1c",
+          "bytes": "1eff2fa1"
+        },
+        {
+          "address": "0x80005f20",
+          "bytes": "f05f2de9"
+        },
+        {
+          "address": "0x80005f24",
+          "bytes": "64a19fe5"
+        },
+        {
+          "address": "0x80005f28",
+          "bytes": "0040a0e1"
+        },
+        {
+          "address": "0x80005f2c",
+          "bytes": "0000a0e3"
+        },
+        {
+          "address": "0x80005f30",
+          "bytes": "00008ae5"
+        },
+        {
+          "address": "0x80005f34",
+          "bytes": "58019fe5"
+        },
+        {
+          "address": "0x80005f38",
+          "bytes": "c810a0e3"
+        },
+        {
+          "address": "0x80005f3c",
+          "bytes": "02ebffeb"
+        },
+        {
+          "address": "0x80005f40",
+          "bytes": "50819fe5"
+        },
+        {
+          "address": "0x80005f44",
+          "bytes": "0c0054e3"
+        },
+        {
+          "address": "0x80005f48",
+          "bytes": "0d005413"
+        },
+        {
+          "address": "0x80005f4c",
+          "bytes": "0700000a"
+        },
+        {
+          "address": "0x80005f50",
+          "bytes": "0e0054e3"
+        },
+        {
+          "address": "0x80005f54",
+          "bytes": "0f005413"
+        },
+        {
+          "address": "0x80005f58",
+          "bytes": "0b005413"
+        },
+        {
+          "address": "0x80005f5c",
+          "bytes": "0300000a"
+        },
+        {
+          "address": "0x80005f60",
+          "bytes": "0a0054e3"
+        },
+        {
+          "address": "0x80005f64",
+          "bytes": "09005413"
+        },
+        {
+          "address": "0x80005f68",
+          "bytes": "0700000a"
+        },
+        {
+          "address": "0x80005f6c",
+          "bytes": "0c0000ea"
+        },
+        {
+          "address": "0x80005f8c",
+          "bytes": "0310a0e3"
+        },
+        {
+          "address": "0x80005f90",
+          "bytes": "0800a0e1"
+        },
+        {
+          "address": "0x80005f94",
+          "bytes": "87f4ffeb"
+        },
+        {
+          "address": "0x80005f98",
+          "bytes": "0210a0e3"
+        },
+        {
+          "address": "0x80005f9c",
+          "bytes": "0800a0e1"
+        },
+        {
+          "address": "0x80005fa0",
+          "bytes": "89f4ffeb"
+        },
+        {
+          "address": "0x80005fa4",
+          "bytes": "f0509fe5"
+        },
+        {
+          "address": "0x80005fa8",
+          "bytes": "840195e7"
+        },
+        {
+          "address": "0x80005fac",
+          "bytes": "849185e0"
+        },
+        {
+          "address": "0x80005fb0",
+          "bytes": "0410d9e5"
+        },
+        {
+          "address": "0x80005fb4",
+          "bytes": "b2ffffeb"
+        },
+        {
+          "address": "0x80005fb8",
+          "bytes": "840195e7"
+        },
+        {
+          "address": "0x80005fbc",
+          "bytes": "d0b09fe5"
+        },
+        {
+          "address": "0x80005fc0",
+          "bytes": "0060d0e5"
+        },
+        {
+          "address": "0x80005fc4",
+          "bytes": "7d7fa0e3"
+        },
+        {
+          "address": "0x80005fc8",
+          "bytes": "0050a0e3"
+        },
+        {
+          "address": "0x80005fcc",
+          "bytes": "00009ae5"
+        },
+        {
+          "address": "0x80005fd0",
+          "bytes": "000050e3"
+        },
+        {
+          "address": "0x80005fd4",
+          "bytes": "020000da"
+        },
+        {
+          "address": "0x80005fd8",
+          "bytes": "0010dbe5"
+        },
+        {
+          "address": "0x80005fdc",
+          "bytes": "060051e1"
+        },
+        {
+          "address": "0x80005fe0",
+          "bytes": "1500000a"
+        },
+        {
+          "address": "0x80005fe4",
+          "bytes": "0100a0e3"
+        },
+        {
+          "address": "0x80005fe8",
+          "bytes": "f36b01eb"
+        },
+        {
+          "address": "0x80005fec",
+          "bytes": "015085e2"
+        },
+        {
+          "address": "0x80005ff0",
+          "bytes": "070055e1"
+        },
+        {
+          "address": "0x80005ff4",
+          "bytes": "f4ffffba"
+        },
+        {
+          "address": "0x80005ff8",
+          "bytes": "0000a0e3"
+        },
+        {
+          "address": "0x80005ffc",
+          "bytes": "00008ae5"
+        },
+        {
+          "address": "0x80006000",
+          "bytes": "8c009fe5"
+        },
+        {
+          "address": "0x80006004",
+          "bytes": "c810a0e3"
+        },
+        {
+          "address": "0x80006008",
+          "bytes": "cfeaffeb"
+        },
+        {
+          "address": "0x8000600c",
+          "bytes": "88009fe5"
+        },
+        {
+          "address": "0x80006010",
+          "bytes": "0410d9e5"
+        },
+        {
+          "address": "0x80006014",
+          "bytes": "840190e7"
+        },
+        {
+          "address": "0x80006018",
+          "bytes": "99ffffeb"
+        },
+        {
+          "address": "0x8000601c",
+          "bytes": "7d5fa0e3"
+        },
+        {
+          "address": "0x80006020",
+          "bytes": "0040a0e3"
+        },
+        {
+          "address": "0x80006024",
+          "bytes": "00009ae5"
+        },
+        {
+          "address": "0x80006028",
+          "bytes": "000050e3"
+        },
+        {
+          "address": "0x8000602c",
+          "bytes": "0a0000da"
+        },
+        {
+          "address": "0x80006030",
+          "bytes": "0000dbe5"
+        },
+        {
+          "address": "0x80006034",
+          "bytes": "060050e1"
+        },
+        {
+          "address": "0x80006038",
+          "bytes": "0700001a"
+        },
+        {
+          "address": "0x8000603c",
+          "bytes": "0310a0e3"
+        },
+        {
+          "address": "0x80006040",
+          "bytes": "0800a0e1"
+        },
+        {
+          "address": "0x80006044",
+          "bytes": "5bf4ffeb"
+        },
+        {
+          "address": "0x80006048",
+          "bytes": "0210a0e3"
+        },
+        {
+          "address": "0x8000604c",
+          "bytes": "0800a0e1"
+        },
+        {
+          "address": "0x80006050",
+          "bytes": "58f4ffeb"
+        },
+        {
+          "address": "0x80006054",
+          "bytes": "0100a0e3"
+        },
+        {
+          "address": "0x80006058",
+          "bytes": "f09fbde8"
+        },
+        {
+          "address": "0x8000605c",
+          "bytes": "0100a0e3"
+        },
+        {
+          "address": "0x80006060",
+          "bytes": "d56b01eb"
+        },
+        {
+          "address": "0x80006064",
+          "bytes": "014084e2"
+        },
+        {
+          "address": "0x80006068",
+          "bytes": "050054e1"
+        },
+        {
+          "address": "0x8000606c",
+          "bytes": "ecffffba"
+        },
+        {
+          "address": "0x80006070",
+          "bytes": "0310a0e3"
+        },
+        {
+          "address": "0x80006074",
+          "bytes": "0800a0e1"
+        },
+        {
+          "address": "0x80006078",
+          "bytes": "4ef4ffeb"
+        },
+        {
+          "address": "0x8000607c",
+          "bytes": "0210a0e3"
+        },
+        {
+          "address": "0x80006080",
+          "bytes": "0800a0e1"
+        },
+        {
+          "address": "0x80006084",
+          "bytes": "4bf4ffeb"
+        },
+        {
+          "address": "0x80006088",
+          "bytes": "0000a0e3"
+        },
+        {
+          "address": "0x8000608c",
+          "bytes": "f09fbde8"
+        },
+        {
+          "address": "0x80006dc8",
+          "bytes": "000050e3"
+        },
+        {
+          "address": "0x80006dcc",
+          "bytes": "48009f05"
+        },
+        {
+          "address": "0x80006dd0",
+          "bytes": "04d04de2"
+        },
+        {
+          "address": "0x80006dd4",
+          "bytes": "0700000a"
+        },
+        {
+          "address": "0x80006dd8",
+          "bytes": "010050e3"
+        },
+        {
+          "address": "0x80006ddc",
+          "bytes": "3c009f05"
+        },
+        {
+          "address": "0x80006de0",
+          "bytes": "0400000a"
+        },
+        {
+          "address": "0x80006de4",
+          "bytes": "020050e3"
+        },
+        {
+          "address": "0x80006de8",
+          "bytes": "34009f05"
+        },
+        {
+          "address": "0x80006dec",
+          "bytes": "00008d05"
+        },
+        {
+          "address": "0x80006df0",
+          "bytes": "00009de5"
+        },
+        {
+          "address": "0x80006df4",
+          "bytes": "000000ea"
+        },
+        {
+          "address": "0x80006dfc",
+          "bytes": "7c0080e2"
+        },
+        {
+          "address": "0x80006e00",
+          "bytes": "002090e5"
+        },
+        {
+          "address": "0x80006e04",
+          "bytes": "020012e3"
+        },
+        {
+          "address": "0x80006e08",
+          "bytes": "fcffff0a"
+        },
+        {
+          "address": "0x80006e0c",
+          "bytes": "00009de5"
+        },
+        {
+          "address": "0x80006e10",
+          "bytes": "001080e5"
+        },
+        {
+          "address": "0x80006e14",
+          "bytes": "04d08de2"
+        },
+        {
+          "address": "0x80006e18",
+          "bytes": "1eff2fe1"
+        },
+        {
+          "address": "0x800073bc",
+          "bytes": "54009fe5"
+        },
+        {
+          "address": "0x800073c0",
+          "bytes": "04d04de2"
+        },
+        {
+          "address": "0x800073c4",
+          "bytes": "081080e2"
+        },
+        {
+          "address": "0x800073c8",
+          "bytes": "001091e5"
+        },
+        {
+          "address": "0x800073cc",
+          "bytes": "040011e3"
+        },
+        {
+          "address": "0x800073d0",
+          "bytes": "00108de5"
+        },
+        {
+          "address": "0x800073d4",
+          "bytes": "04d08d02"
+        },
+        {
+          "address": "0x800073d8",
+          "bytes": "1eff2f01"
+        },
+        {
+          "address": "0x800073dc",
+          "bytes": "000090e5"
+        },
+        {
+          "address": "0x800073e0",
+          "bytes": "ff1000e2"
+        },
+        {
+          "address": "0x800073e4",
+          "bytes": "30209fe5"
+        },
+        {
+          "address": "0x800073e8",
+          "bytes": "000092e5"
+        },
+        {
+          "address": "0x800073ec",
+          "bytes": "c80050e3"
+        },
+        {
+          "address": "0x800073f0",
+          "bytes": "04d08da2"
+        },
+        {
+          "address": "0x800073f4",
+          "bytes": "1eff2fa1"
+        },
+        {
+          "address": "0x800073f8",
+          "bytes": "000092e5"
+        },
+        {
+          "address": "0x800073fc",
+          "bytes": "1c309fe5"
+        },
+        {
+          "address": "0x80007400",
+          "bytes": "003083e0"
+        },
+        {
+          "address": "0x80007404",
+          "bytes": "010080e2"
+        },
+        {
+          "address": "0x80007408",
+          "bytes": "000082e5"
+        },
+        {
+          "address": "0x8000740c",
+          "bytes": "0010c3e5"
+        },
+        {
+          "address": "0x80007410",
+          "bytes": "04d08de2"
+        },
+        {
+          "address": "0x80007414",
+          "bytes": "1eff2fe1"
+        }
+      ]
+    },
+    {
+      "version": "V3.8",
+      "input_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+      "cases": [
+        {
+          "command": 9,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "missing",
+          "return_value": 0,
+          "send_attempts": 2,
+          "requested_sleep_calls": 1000,
+          "requested_sleep_units": 1000,
+          "source_hex": "5803",
+          "wire_hex": "58035b58035b",
+          "rx_count_at_return": 0,
+          "rx_prefix_at_return": "0000000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 91
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80005ffc",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 500,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 91
+            }
+          ],
+          "instruction_hook_count": 8399
+        },
+        {
+          "command": 9,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "one-byte-first-check",
+          "return_value": 1,
+          "send_attempts": 1,
+          "requested_sleep_calls": 0,
+          "requested_sleep_units": 0,
+          "source_hex": "5803",
+          "wire_hex": "58035b",
+          "rx_count_at_return": 1,
+          "rx_prefix_at_return": "5800000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 91
+            },
+            {
+              "t": 0,
+              "kind": "interleave",
+              "site": "0x80005fcc",
+              "irq_masked": false
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 88,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            }
+          ],
+          "instruction_hook_count": 256
+        },
+        {
+          "command": 9,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "five-bytes-first-check",
+          "return_value": 1,
+          "send_attempts": 1,
+          "requested_sleep_calls": 0,
+          "requested_sleep_units": 0,
+          "source_hex": "5803",
+          "wire_hex": "58035b",
+          "rx_count_at_return": 5,
+          "rx_prefix_at_return": "5832ff12ff",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 91
+            },
+            {
+              "t": 0,
+              "kind": "interleave",
+              "site": "0x80005fcc",
+              "irq_masked": false
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 88,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 50,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 1,
+              "new": 2
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 255,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 2,
+              "new": 3
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 18,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 3,
+              "new": 4
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 255,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 4,
+              "new": 5
+            }
+          ],
+          "instruction_hook_count": 348
+        },
+        {
+          "command": 9,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "wrong-header",
+          "return_value": 0,
+          "send_attempts": 2,
+          "requested_sleep_calls": 1000,
+          "requested_sleep_units": 1000,
+          "source_hex": "5803",
+          "wire_hex": "58035b58035b",
+          "rx_count_at_return": 0,
+          "rx_prefix_at_return": "0000000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 91
+            },
+            {
+              "t": 0,
+              "kind": "interleave",
+              "site": "0x80005fcc",
+              "irq_masked": false
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 89,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80005ffc",
+              "old": 1,
+              "new": 0
+            },
+            {
+              "t": 500,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 91
+            }
+          ],
+          "instruction_hook_count": 9922
+        },
+        {
+          "command": 9,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "first-after499-sleeps",
+          "return_value": 1,
+          "send_attempts": 1,
+          "requested_sleep_calls": 499,
+          "requested_sleep_units": 499,
+          "source_hex": "5803",
+          "wire_hex": "58035b",
+          "rx_count_at_return": 1,
+          "rx_prefix_at_return": "5800000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 91
+            },
+            {
+              "t": 499,
+              "kind": "interleave",
+              "site": "0x80060fbc",
+              "irq_masked": false
+            },
+            {
+              "t": 499,
+              "kind": "fixture_rx",
+              "value": 88,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 499,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            }
+          ],
+          "instruction_hook_count": 4248
+        },
+        {
+          "command": 9,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "first-after500-sleeps",
+          "return_value": 0,
+          "send_attempts": 2,
+          "requested_sleep_calls": 1000,
+          "requested_sleep_units": 1000,
+          "source_hex": "5803",
+          "wire_hex": "58035b58035b",
+          "rx_count_at_return": 0,
+          "rx_prefix_at_return": "0000000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 91
+            },
+            {
+              "t": 500,
+              "kind": "interleave",
+              "site": "0x80060fbc",
+              "irq_masked": false
+            },
+            {
+              "t": 500,
+              "kind": "fixture_rx",
+              "value": 88,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80005ffc",
+              "old": 1,
+              "new": 0
+            },
+            {
+              "t": 500,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 91
+            }
+          ],
+          "instruction_hook_count": 8422
+        },
+        {
+          "command": 9,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "second-first-check",
+          "return_value": 1,
+          "send_attempts": 2,
+          "requested_sleep_calls": 500,
+          "requested_sleep_units": 500,
+          "source_hex": "5803",
+          "wire_hex": "58035b58035b",
+          "rx_count_at_return": 1,
+          "rx_prefix_at_return": "5800000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 91
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80005ffc",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 500,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 91
+            },
+            {
+              "t": 500,
+              "kind": "interleave",
+              "site": "0x80006024",
+              "irq_masked": false
+            },
+            {
+              "t": 500,
+              "kind": "fixture_rx",
+              "value": 88,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            }
+          ],
+          "instruction_hook_count": 4428
+        },
+        {
+          "command": 9,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "second-after499-sleeps",
+          "return_value": 1,
+          "send_attempts": 2,
+          "requested_sleep_calls": 999,
+          "requested_sleep_units": 999,
+          "source_hex": "5803",
+          "wire_hex": "58035b58035b",
+          "rx_count_at_return": 1,
+          "rx_prefix_at_return": "5800000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 91
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80005ffc",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 500,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 91
+            },
+            {
+              "t": 999,
+              "kind": "interleave",
+              "site": "0x80060fbc",
+              "irq_masked": false
+            },
+            {
+              "t": 999,
+              "kind": "fixture_rx",
+              "value": 88,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 999,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            }
+          ],
+          "instruction_hook_count": 8420
+        },
+        {
+          "command": 9,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "second-after500-sleeps",
+          "return_value": 0,
+          "send_attempts": 2,
+          "requested_sleep_calls": 1000,
+          "requested_sleep_units": 1000,
+          "source_hex": "5803",
+          "wire_hex": "58035b58035b",
+          "rx_count_at_return": 1,
+          "rx_prefix_at_return": "5800000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 91
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80005ffc",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 500,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 91
+            },
+            {
+              "t": 1000,
+              "kind": "interleave",
+              "site": "0x80060fbc",
+              "irq_masked": false
+            },
+            {
+              "t": 1000,
+              "kind": "fixture_rx",
+              "value": 88,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 1000,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            }
+          ],
+          "instruction_hook_count": 8422
+        },
+        {
+          "command": 9,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "old-header-during-tx",
+          "return_value": 1,
+          "send_attempts": 1,
+          "requested_sleep_calls": 0,
+          "requested_sleep_units": 0,
+          "source_hex": "5803",
+          "wire_hex": "58035b",
+          "rx_count_at_return": 1,
+          "rx_prefix_at_return": "5800000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063654",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 88
+            },
+            {
+              "t": 0,
+              "kind": "interleave",
+              "site": "0x80005efc",
+              "irq_masked": false
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 88,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 3
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 91
+            }
+          ],
+          "instruction_hook_count": 256
+        },
+        {
+          "command": 19,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "missing",
+          "return_value": 0,
+          "send_attempts": 2,
+          "requested_sleep_calls": 1000,
+          "requested_sleep_units": 1000,
+          "source_hex": "5900",
+          "wire_hex": "590059590059",
+          "rx_count_at_return": 0,
+          "rx_prefix_at_return": "0000000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80005ffc",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 500,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 89
+            }
+          ],
+          "instruction_hook_count": 8384
+        },
+        {
+          "command": 19,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "one-byte-first-check",
+          "return_value": 1,
+          "send_attempts": 1,
+          "requested_sleep_calls": 0,
+          "requested_sleep_units": 0,
+          "source_hex": "5900",
+          "wire_hex": "590059",
+          "rx_count_at_return": 1,
+          "rx_prefix_at_return": "5900000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "interleave",
+              "site": "0x80005fcc",
+              "irq_masked": false
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 89,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            }
+          ],
+          "instruction_hook_count": 241
+        },
+        {
+          "command": 19,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "five-bytes-first-check",
+          "return_value": 1,
+          "send_attempts": 1,
+          "requested_sleep_calls": 0,
+          "requested_sleep_units": 0,
+          "source_hex": "5900",
+          "wire_hex": "590059",
+          "rx_count_at_return": 5,
+          "rx_prefix_at_return": "5932ff12ff",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "interleave",
+              "site": "0x80005fcc",
+              "irq_masked": false
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 89,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 50,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 1,
+              "new": 2
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 255,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 2,
+              "new": 3
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 18,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 3,
+              "new": 4
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 255,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 4,
+              "new": 5
+            }
+          ],
+          "instruction_hook_count": 333
+        },
+        {
+          "command": 19,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "wrong-header",
+          "return_value": 0,
+          "send_attempts": 2,
+          "requested_sleep_calls": 1000,
+          "requested_sleep_units": 1000,
+          "source_hex": "5900",
+          "wire_hex": "590059590059",
+          "rx_count_at_return": 0,
+          "rx_prefix_at_return": "0000000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "interleave",
+              "site": "0x80005fcc",
+              "irq_masked": false
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 88,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80005ffc",
+              "old": 1,
+              "new": 0
+            },
+            {
+              "t": 500,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 89
+            }
+          ],
+          "instruction_hook_count": 9907
+        },
+        {
+          "command": 19,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "first-after499-sleeps",
+          "return_value": 1,
+          "send_attempts": 1,
+          "requested_sleep_calls": 499,
+          "requested_sleep_units": 499,
+          "source_hex": "5900",
+          "wire_hex": "590059",
+          "rx_count_at_return": 1,
+          "rx_prefix_at_return": "5900000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 499,
+              "kind": "interleave",
+              "site": "0x80060fbc",
+              "irq_masked": false
+            },
+            {
+              "t": 499,
+              "kind": "fixture_rx",
+              "value": 89,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 499,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            }
+          ],
+          "instruction_hook_count": 4233
+        },
+        {
+          "command": 19,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "first-after500-sleeps",
+          "return_value": 0,
+          "send_attempts": 2,
+          "requested_sleep_calls": 1000,
+          "requested_sleep_units": 1000,
+          "source_hex": "5900",
+          "wire_hex": "590059590059",
+          "rx_count_at_return": 0,
+          "rx_prefix_at_return": "0000000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 500,
+              "kind": "interleave",
+              "site": "0x80060fbc",
+              "irq_masked": false
+            },
+            {
+              "t": 500,
+              "kind": "fixture_rx",
+              "value": 89,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80005ffc",
+              "old": 1,
+              "new": 0
+            },
+            {
+              "t": 500,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 89
+            }
+          ],
+          "instruction_hook_count": 8407
+        },
+        {
+          "command": 19,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "second-first-check",
+          "return_value": 1,
+          "send_attempts": 2,
+          "requested_sleep_calls": 500,
+          "requested_sleep_units": 500,
+          "source_hex": "5900",
+          "wire_hex": "590059590059",
+          "rx_count_at_return": 1,
+          "rx_prefix_at_return": "5900000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80005ffc",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 500,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 500,
+              "kind": "interleave",
+              "site": "0x80006024",
+              "irq_masked": false
+            },
+            {
+              "t": 500,
+              "kind": "fixture_rx",
+              "value": 89,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            }
+          ],
+          "instruction_hook_count": 4413
+        },
+        {
+          "command": 19,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "second-after499-sleeps",
+          "return_value": 1,
+          "send_attempts": 2,
+          "requested_sleep_calls": 999,
+          "requested_sleep_units": 999,
+          "source_hex": "5900",
+          "wire_hex": "590059590059",
+          "rx_count_at_return": 1,
+          "rx_prefix_at_return": "5900000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80005ffc",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 500,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 999,
+              "kind": "interleave",
+              "site": "0x80060fbc",
+              "irq_masked": false
+            },
+            {
+              "t": 999,
+              "kind": "fixture_rx",
+              "value": 89,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 999,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            }
+          ],
+          "instruction_hook_count": 8405
+        },
+        {
+          "command": 19,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "second-after500-sleeps",
+          "return_value": 0,
+          "send_attempts": 2,
+          "requested_sleep_calls": 1000,
+          "requested_sleep_units": 1000,
+          "source_hex": "5900",
+          "wire_hex": "590059590059",
+          "rx_count_at_return": 1,
+          "rx_prefix_at_return": "5900000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 500,
+              "kind": "rx_count",
+              "pc": "0x80005ffc",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 500,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 500,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 1000,
+              "kind": "interleave",
+              "site": "0x80060fbc",
+              "irq_masked": false
+            },
+            {
+              "t": 1000,
+              "kind": "fixture_rx",
+              "value": 89,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 1000,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            }
+          ],
+          "instruction_hook_count": 8407
+        },
+        {
+          "command": 19,
+          "caller_scope": "GaugeCmdTask startup command argument proven in earlier packet execution",
+          "scenario": "old-header-during-tx",
+          "return_value": 1,
+          "send_attempts": 1,
+          "requested_sleep_calls": 0,
+          "requested_sleep_units": 0,
+          "source_hex": "5900",
+          "wire_hex": "590059",
+          "rx_count_at_return": 1,
+          "rx_prefix_at_return": "5900000000",
+          "gpio_bits2_3_cleared": true,
+          "events": [
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80005f30",
+              "old": 0,
+              "new": 0
+            },
+            {
+              "t": 0,
+              "kind": "send_descriptor",
+              "pointer": "0x80063668",
+              "count": 2
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            },
+            {
+              "t": 0,
+              "kind": "interleave",
+              "site": "0x80005efc",
+              "irq_masked": false
+            },
+            {
+              "t": 0,
+              "kind": "fixture_rx",
+              "value": 89,
+              "source": "explicit host fixture, not hardware"
+            },
+            {
+              "t": 0,
+              "kind": "rx_count",
+              "pc": "0x80007408",
+              "old": 0,
+              "new": 1
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 0
+            },
+            {
+              "t": 0,
+              "kind": "uart_tx",
+              "value": 89
+            }
+          ],
+          "instruction_hook_count": 241
+        }
+      ],
+      "observed_instructions": [
+        {
+          "address": "0x800009c4",
+          "bytes": "030052e3"
+        },
+        {
+          "address": "0x800009c8",
+          "bytes": "2a00009a"
+        },
+        {
+          "address": "0x80000a78",
+          "bytes": "822fb0e1"
+        },
+        {
+          "address": "0x80000a7c",
+          "bytes": "0130d124"
+        },
+        {
+          "address": "0x80000a80",
+          "bytes": "01c0d124"
+        },
+        {
+          "address": "0x80000a84",
+          "bytes": "0120d144"
+        },
+        {
+          "address": "0x80000a88",
+          "bytes": "0130c024"
+        },
+        {
+          "address": "0x80000a8c",
+          "bytes": "01c0c024"
+        },
+        {
+          "address": "0x80000a90",
+          "bytes": "0120c044"
+        },
+        {
+          "address": "0x80000a94",
+          "bytes": "1eff2fe1"
+        },
+        {
+          "address": "0x80000b4c",
+          "bytes": "0020a0e3"
+        },
+        {
+          "address": "0x80000b50",
+          "bytes": "00402de9"
+        },
+        {
+          "address": "0x80000b54",
+          "bytes": "0230a0e1"
+        },
+        {
+          "address": "0x80000b58",
+          "bytes": "02c0a0e1"
+        },
+        {
+          "address": "0x80000b5c",
+          "bytes": "02e0a0e1"
+        },
+        {
+          "address": "0x80000b60",
+          "bytes": "201051e2"
+        },
+        {
+          "address": "0x80000b64",
+          "bytes": "0c50a028"
+        },
+        {
+          "address": "0x80000b68",
+          "bytes": "0c50a028"
+        },
+        {
+          "address": "0x80000b6c",
+          "bytes": "20105122"
+        },
+        {
+          "address": "0x80000b70",
+          "bytes": "fbffff2a"
+        },
+        {
+          "address": "0x80000b74",
+          "bytes": "011eb0e1"
+        },
+        {
+          "address": "0x80000b78",
+          "bytes": "0c50a028"
+        },
+        {
+          "address": "0x80000b7c",
+          "bytes": "0c00a048"
+        },
+        {
+          "address": "0x80000b80",
+          "bytes": "0040bde8"
+        },
+        {
+          "address": "0x80000b84",
+          "bytes": "0111b0e1"
+        },
+        {
+          "address": "0x80000b88",
+          "bytes": "04208024"
+        },
+        {
+          "address": "0x80000b8c",
+          "bytes": "1eff2f01"
+        },
+        {
+          "address": "0x800031b8",
+          "bytes": "102090e5"
+        },
+        {
+          "address": "0x800031bc",
+          "bytes": "0130a0e3"
+        },
+        {
+          "address": "0x800031c0",
+          "bytes": "1311c2e1"
+        },
+        {
+          "address": "0x800031c4",
+          "bytes": "101080e5"
+        },
+        {
+          "address": "0x800031c8",
+          "bytes": "1eff2fe1"
+        },
+        {
+          "address": "0x800031cc",
+          "bytes": "102090e5"
+        },
+        {
+          "address": "0x800031d0",
+          "bytes": "0130a0e3"
+        },
+        {
+          "address": "0x800031d4",
+          "bytes": "131182e1"
+        },
+        {
+          "address": "0x800031d8",
+          "bytes": "101080e5"
+        },
+        {
+          "address": "0x800031dc",
+          "bytes": "1eff2fe1"
+        },
+        {
+          "address": "0x80005e84",
+          "bytes": "70402de9"
+        },
+        {
+          "address": "0x80005e88",
+          "bytes": "015081e2"
+        },
+        {
+          "address": "0x80005e8c",
+          "bytes": "c80055e3"
+        },
+        {
+          "address": "0x80005e90",
+          "bytes": "0060a0e1"
+        },
+        {
+          "address": "0x80005e94",
+          "bytes": "0140a0e1"
+        },
+        {
+          "address": "0x80005e98",
+          "bytes": "0000a083"
+        },
+        {
+          "address": "0x80005e9c",
+          "bytes": "7080bd88"
+        },
+        {
+          "address": "0x80005ea0",
+          "bytes": "0120a0e1"
+        },
+        {
+          "address": "0x80005ea4",
+          "bytes": "0010a0e1"
+        },
+        {
+          "address": "0x80005ea8",
+          "bytes": "60009fe5"
+        },
+        {
+          "address": "0x80005eac",
+          "bytes": "c4eaffeb"
+        },
+        {
+          "address": "0x80005eb0",
+          "bytes": "0010a0e3"
+        },
+        {
+          "address": "0x80005eb4",
+          "bytes": "000054e3"
+        },
+        {
+          "address": "0x80005eb8",
+          "bytes": "0100a0e1"
+        },
+        {
+          "address": "0x80005ebc",
+          "bytes": "0600009a"
+        },
+        {
+          "address": "0x80005ec0",
+          "bytes": "0020d6e7"
+        },
+        {
+          "address": "0x80005ec4",
+          "bytes": "010080e2"
+        },
+        {
+          "address": "0x80005ec8",
+          "bytes": "0108c0e3"
+        },
+        {
+          "address": "0x80005ecc",
+          "bytes": "021081e0"
+        },
+        {
+          "address": "0x80005ed0",
+          "bytes": "000054e1"
+        },
+        {
+          "address": "0x80005ed4",
+          "bytes": "ff1001e2"
+        },
+        {
+          "address": "0x80005ed8",
+          "bytes": "f8ffff8a"
+        },
+        {
+          "address": "0x80005edc",
+          "bytes": "2c609fe5"
+        },
+        {
+          "address": "0x80005ee0",
+          "bytes": "000055e3"
+        },
+        {
+          "address": "0x80005ee4",
+          "bytes": "0410c6e7"
+        },
+        {
+          "address": "0x80005ee8",
+          "bytes": "0040a0e3"
+        },
+        {
+          "address": "0x80005eec",
+          "bytes": "050000da"
+        },
+        {
+          "address": "0x80005ef0",
+          "bytes": "0410d6e7"
+        },
+        {
+          "address": "0x80005ef4",
+          "bytes": "0200a0e3"
+        },
+        {
+          "address": "0x80005ef8",
+          "bytes": "b20300eb"
+        },
+        {
+          "address": "0x80005efc",
+          "bytes": "014084e2"
+        },
+        {
+          "address": "0x80005f00",
+          "bytes": "040055e1"
+        },
+        {
+          "address": "0x80005f04",
+          "bytes": "f9ffffca"
+        },
+        {
+          "address": "0x80005f08",
+          "bytes": "0100a0e3"
+        },
+        {
+          "address": "0x80005f0c",
+          "bytes": "7080bde8"
+        },
+        {
+          "address": "0x80005f14",
+          "bytes": "300050e3"
+        },
+        {
+          "address": "0x80005f18",
+          "bytes": "0000a0a3"
+        },
+        {
+          "address": "0x80005f1c",
+          "bytes": "1eff2fa1"
+        },
+        {
+          "address": "0x80005f20",
+          "bytes": "f05f2de9"
+        },
+        {
+          "address": "0x80005f24",
+          "bytes": "64a19fe5"
+        },
+        {
+          "address": "0x80005f28",
+          "bytes": "0040a0e1"
+        },
+        {
+          "address": "0x80005f2c",
+          "bytes": "0000a0e3"
+        },
+        {
+          "address": "0x80005f30",
+          "bytes": "00008ae5"
+        },
+        {
+          "address": "0x80005f34",
+          "bytes": "58019fe5"
+        },
+        {
+          "address": "0x80005f38",
+          "bytes": "c810a0e3"
+        },
+        {
+          "address": "0x80005f3c",
+          "bytes": "02ebffeb"
+        },
+        {
+          "address": "0x80005f40",
+          "bytes": "50819fe5"
+        },
+        {
+          "address": "0x80005f44",
+          "bytes": "0c0054e3"
+        },
+        {
+          "address": "0x80005f48",
+          "bytes": "0d005413"
+        },
+        {
+          "address": "0x80005f4c",
+          "bytes": "0700000a"
+        },
+        {
+          "address": "0x80005f50",
+          "bytes": "0e0054e3"
+        },
+        {
+          "address": "0x80005f54",
+          "bytes": "0f005413"
+        },
+        {
+          "address": "0x80005f58",
+          "bytes": "0b005413"
+        },
+        {
+          "address": "0x80005f5c",
+          "bytes": "0300000a"
+        },
+        {
+          "address": "0x80005f60",
+          "bytes": "0a0054e3"
+        },
+        {
+          "address": "0x80005f64",
+          "bytes": "09005413"
+        },
+        {
+          "address": "0x80005f68",
+          "bytes": "0700000a"
+        },
+        {
+          "address": "0x80005f6c",
+          "bytes": "0c0000ea"
+        },
+        {
+          "address": "0x80005f8c",
+          "bytes": "0310a0e3"
+        },
+        {
+          "address": "0x80005f90",
+          "bytes": "0800a0e1"
+        },
+        {
+          "address": "0x80005f94",
+          "bytes": "87f4ffeb"
+        },
+        {
+          "address": "0x80005f98",
+          "bytes": "0210a0e3"
+        },
+        {
+          "address": "0x80005f9c",
+          "bytes": "0800a0e1"
+        },
+        {
+          "address": "0x80005fa0",
+          "bytes": "89f4ffeb"
+        },
+        {
+          "address": "0x80005fa4",
+          "bytes": "f0509fe5"
+        },
+        {
+          "address": "0x80005fa8",
+          "bytes": "840195e7"
+        },
+        {
+          "address": "0x80005fac",
+          "bytes": "849185e0"
+        },
+        {
+          "address": "0x80005fb0",
+          "bytes": "0410d9e5"
+        },
+        {
+          "address": "0x80005fb4",
+          "bytes": "b2ffffeb"
+        },
+        {
+          "address": "0x80005fb8",
+          "bytes": "840195e7"
+        },
+        {
+          "address": "0x80005fbc",
+          "bytes": "d0b09fe5"
+        },
+        {
+          "address": "0x80005fc0",
+          "bytes": "0060d0e5"
+        },
+        {
+          "address": "0x80005fc4",
+          "bytes": "7d7fa0e3"
+        },
+        {
+          "address": "0x80005fc8",
+          "bytes": "0050a0e3"
+        },
+        {
+          "address": "0x80005fcc",
+          "bytes": "00009ae5"
+        },
+        {
+          "address": "0x80005fd0",
+          "bytes": "000050e3"
+        },
+        {
+          "address": "0x80005fd4",
+          "bytes": "020000da"
+        },
+        {
+          "address": "0x80005fd8",
+          "bytes": "0010dbe5"
+        },
+        {
+          "address": "0x80005fdc",
+          "bytes": "060051e1"
+        },
+        {
+          "address": "0x80005fe0",
+          "bytes": "1500000a"
+        },
+        {
+          "address": "0x80005fe4",
+          "bytes": "0100a0e3"
+        },
+        {
+          "address": "0x80005fe8",
+          "bytes": "f36b01eb"
+        },
+        {
+          "address": "0x80005fec",
+          "bytes": "015085e2"
+        },
+        {
+          "address": "0x80005ff0",
+          "bytes": "070055e1"
+        },
+        {
+          "address": "0x80005ff4",
+          "bytes": "f4ffffba"
+        },
+        {
+          "address": "0x80005ff8",
+          "bytes": "0000a0e3"
+        },
+        {
+          "address": "0x80005ffc",
+          "bytes": "00008ae5"
+        },
+        {
+          "address": "0x80006000",
+          "bytes": "8c009fe5"
+        },
+        {
+          "address": "0x80006004",
+          "bytes": "c810a0e3"
+        },
+        {
+          "address": "0x80006008",
+          "bytes": "cfeaffeb"
+        },
+        {
+          "address": "0x8000600c",
+          "bytes": "88009fe5"
+        },
+        {
+          "address": "0x80006010",
+          "bytes": "0410d9e5"
+        },
+        {
+          "address": "0x80006014",
+          "bytes": "840190e7"
+        },
+        {
+          "address": "0x80006018",
+          "bytes": "99ffffeb"
+        },
+        {
+          "address": "0x8000601c",
+          "bytes": "7d5fa0e3"
+        },
+        {
+          "address": "0x80006020",
+          "bytes": "0040a0e3"
+        },
+        {
+          "address": "0x80006024",
+          "bytes": "00009ae5"
+        },
+        {
+          "address": "0x80006028",
+          "bytes": "000050e3"
+        },
+        {
+          "address": "0x8000602c",
+          "bytes": "0a0000da"
+        },
+        {
+          "address": "0x80006030",
+          "bytes": "0000dbe5"
+        },
+        {
+          "address": "0x80006034",
+          "bytes": "060050e1"
+        },
+        {
+          "address": "0x80006038",
+          "bytes": "0700001a"
+        },
+        {
+          "address": "0x8000603c",
+          "bytes": "0310a0e3"
+        },
+        {
+          "address": "0x80006040",
+          "bytes": "0800a0e1"
+        },
+        {
+          "address": "0x80006044",
+          "bytes": "5bf4ffeb"
+        },
+        {
+          "address": "0x80006048",
+          "bytes": "0210a0e3"
+        },
+        {
+          "address": "0x8000604c",
+          "bytes": "0800a0e1"
+        },
+        {
+          "address": "0x80006050",
+          "bytes": "58f4ffeb"
+        },
+        {
+          "address": "0x80006054",
+          "bytes": "0100a0e3"
+        },
+        {
+          "address": "0x80006058",
+          "bytes": "f09fbde8"
+        },
+        {
+          "address": "0x8000605c",
+          "bytes": "0100a0e3"
+        },
+        {
+          "address": "0x80006060",
+          "bytes": "d56b01eb"
+        },
+        {
+          "address": "0x80006064",
+          "bytes": "014084e2"
+        },
+        {
+          "address": "0x80006068",
+          "bytes": "050054e1"
+        },
+        {
+          "address": "0x8000606c",
+          "bytes": "ecffffba"
+        },
+        {
+          "address": "0x80006070",
+          "bytes": "0310a0e3"
+        },
+        {
+          "address": "0x80006074",
+          "bytes": "0800a0e1"
+        },
+        {
+          "address": "0x80006078",
+          "bytes": "4ef4ffeb"
+        },
+        {
+          "address": "0x8000607c",
+          "bytes": "0210a0e3"
+        },
+        {
+          "address": "0x80006080",
+          "bytes": "0800a0e1"
+        },
+        {
+          "address": "0x80006084",
+          "bytes": "4bf4ffeb"
+        },
+        {
+          "address": "0x80006088",
+          "bytes": "0000a0e3"
+        },
+        {
+          "address": "0x8000608c",
+          "bytes": "f09fbde8"
+        },
+        {
+          "address": "0x80006dc8",
+          "bytes": "000050e3"
+        },
+        {
+          "address": "0x80006dcc",
+          "bytes": "48009f05"
+        },
+        {
+          "address": "0x80006dd0",
+          "bytes": "04d04de2"
+        },
+        {
+          "address": "0x80006dd4",
+          "bytes": "0700000a"
+        },
+        {
+          "address": "0x80006dd8",
+          "bytes": "010050e3"
+        },
+        {
+          "address": "0x80006ddc",
+          "bytes": "3c009f05"
+        },
+        {
+          "address": "0x80006de0",
+          "bytes": "0400000a"
+        },
+        {
+          "address": "0x80006de4",
+          "bytes": "020050e3"
+        },
+        {
+          "address": "0x80006de8",
+          "bytes": "34009f05"
+        },
+        {
+          "address": "0x80006dec",
+          "bytes": "00008d05"
+        },
+        {
+          "address": "0x80006df0",
+          "bytes": "00009de5"
+        },
+        {
+          "address": "0x80006df4",
+          "bytes": "000000ea"
+        },
+        {
+          "address": "0x80006dfc",
+          "bytes": "7c0080e2"
+        },
+        {
+          "address": "0x80006e00",
+          "bytes": "002090e5"
+        },
+        {
+          "address": "0x80006e04",
+          "bytes": "020012e3"
+        },
+        {
+          "address": "0x80006e08",
+          "bytes": "fcffff0a"
+        },
+        {
+          "address": "0x80006e0c",
+          "bytes": "00009de5"
+        },
+        {
+          "address": "0x80006e10",
+          "bytes": "001080e5"
+        },
+        {
+          "address": "0x80006e14",
+          "bytes": "04d08de2"
+        },
+        {
+          "address": "0x80006e18",
+          "bytes": "1eff2fe1"
+        },
+        {
+          "address": "0x800073bc",
+          "bytes": "54009fe5"
+        },
+        {
+          "address": "0x800073c0",
+          "bytes": "04d04de2"
+        },
+        {
+          "address": "0x800073c4",
+          "bytes": "081080e2"
+        },
+        {
+          "address": "0x800073c8",
+          "bytes": "001091e5"
+        },
+        {
+          "address": "0x800073cc",
+          "bytes": "040011e3"
+        },
+        {
+          "address": "0x800073d0",
+          "bytes": "00108de5"
+        },
+        {
+          "address": "0x800073d4",
+          "bytes": "04d08d02"
+        },
+        {
+          "address": "0x800073d8",
+          "bytes": "1eff2f01"
+        },
+        {
+          "address": "0x800073dc",
+          "bytes": "000090e5"
+        },
+        {
+          "address": "0x800073e0",
+          "bytes": "ff1000e2"
+        },
+        {
+          "address": "0x800073e4",
+          "bytes": "30209fe5"
+        },
+        {
+          "address": "0x800073e8",
+          "bytes": "000092e5"
+        },
+        {
+          "address": "0x800073ec",
+          "bytes": "c80050e3"
+        },
+        {
+          "address": "0x800073f0",
+          "bytes": "04d08da2"
+        },
+        {
+          "address": "0x800073f4",
+          "bytes": "1eff2fa1"
+        },
+        {
+          "address": "0x800073f8",
+          "bytes": "000092e5"
+        },
+        {
+          "address": "0x800073fc",
+          "bytes": "1c309fe5"
+        },
+        {
+          "address": "0x80007400",
+          "bytes": "003083e0"
+        },
+        {
+          "address": "0x80007404",
+          "bytes": "010080e2"
+        },
+        {
+          "address": "0x80007408",
+          "bytes": "000082e5"
+        },
+        {
+          "address": "0x8000740c",
+          "bytes": "0010c3e5"
+        },
+        {
+          "address": "0x80007410",
+          "bytes": "04d08de2"
+        },
+        {
+          "address": "0x80007414",
+          "bytes": "1eff2fe1"
+        }
+      ]
+    }
+  ],
+  "physical_device_operations": 0,
+  "limits": [
+    "Original helper tested only for startup descriptor IDs9/19 with valid buffers and initial FSM idle.",
+    "Sleep is a return-only scheduling model with explicit byte-delivery interleaves. Counts/units are not milliseconds or physical delay.",
+    "UART readiness/receive status and reply source are synthetic; exception entry, task order and external device semantics are unproven.",
+    "Matching one-byte header sufficiency is a helper ACK observation, not the measurement FSM's five-byte admission rule.",
+    "A reply delivered after the final modeled sleep can miss its final check; this establishes code order, not a warranted firmware timing change.",
+    "No source generator, firmware patch, full-device emulation or device operation occurs."
+  ]
+}

@@ -240,3 +240,8 @@ Original UART framing/ready polling and ISR append are now dynamically checked, 
 ## 2026-11-09: admitted-frame stability and caller ownership
 
 Admission-to-parse append stability is now bounded; known synchronous call ownership is better classified, including a previously absent tail edge0x8000404c→0x80005f14. A shared RX pointer alone is insufficient to claim a feasible live clear race: tested service paths gate fallback entry on idle. Next execute the synchronous helper for reachable command/caller preconditions and trace actual producers/other aliases before claiming system-wide exclusion. External ADC restart/buffering, installed identity and physical Base advantage remain unresolved. The existing local-model service issue has not been re-polled or presented as a new failure.
+
+
+## 2026-11-09: local model restored and startup-helper execution
+
+The local API availability question is resolved: the existing portable runtime/models were found under the legacy project's local-ai directory and the hidden loopback server was started. No reinstall/download was needed. Synchronous helper execution is now bounded for the two proven startup arguments9/19, including header-only success and final-sleep ordering. Remaining work: other reachable deferred-handler command arguments/message producers, buffer aliases/global ownership, installed-meter identity and external conversion/physical timing. One local-model semantic error was caught despite exact source grounding; further local work stays small and reviewed.

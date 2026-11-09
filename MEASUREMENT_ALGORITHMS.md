@@ -278,3 +278,8 @@ A newly executed original retry sequence on both versions admits a deliberately 
 ## 2026-11-09: admitted-frame stability and caller ownership
 
 Original state3-admitted frames retain their first five bytes through state5 while the original ISR appends at five controlled positions, including between value-byte reads.1,200 cases match the previous independent parser contract, including saturation/selector limits and buffer-cap crossing. Thus an append-only ISR alone is not a demonstrated prefix-corruption cause.24 service cases and classified known call sites also do not demonstrate an active-acquisition clear race from the synchronous helper. The earlier delayed matching-header acceptance remains a separate, valid counterexample.
+
+
+## 2026-11-09: local model restored and startup-helper execution
+
+Synchronous startup helper0x80005f14 accepts a matching first-byte ACK immediately for tested IDs9/19; its500 constant bounds per-attempt check/sleep iterations, not a mandatory delay.40 original-code cases verify immediate/wrong/missing/late/second-attempt replies, at most two sends and up to1,000 requested sleep(1) calls. A header arriving after the final sleep can miss the last check. Keep this startup ACK contract distinct from the asynchronous measurement FSM's five-byte parser admission. No physical time unit or Base-profile cause is inferred.

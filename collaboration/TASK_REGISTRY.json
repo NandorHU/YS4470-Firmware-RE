@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 16,
+  "revision": 17,
   "updated": "2026-11-09",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,7 +295,7 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Follow STATUS.md latest admission checkpoint. Execute synchronous helper success/failure under reachable caller/idle preconditions; trace fallback message producers/other aliases before claiming global RX ownership. Append-only ISR prefix stability is bounded; prior stale same-header ambiguity and physical ADC/latency questions remain open. Do not rerun frozen local-model jobs without resolved service access.",
+      "next_action": "See STATUS.md latest synchronous checkpoint. Startup helper IDs9/19 now executed; next trace further reachable deferred-handler arguments/producers and other aliases. Local service is restored; use new small frozen tasks with checked base+UART lessons and coordinator schema/quote/semantic validation. Do not rerun completed model/firmware matrices. Keep ADC conversion/physical timing questions separate.",
       "last_verified_result": {
         "profile_cases": 64,
         "transition_cases": 64,
@@ -314,7 +314,11 @@
         "service_idle_gate_cases": 24,
         "known_synchronous_bl_sites": 9,
         "new_synchronous_tail_edges": 1,
-        "database_entries": 62
+        "database_entries": 62,
+        "synchronous_startup_cases": 40,
+        "local_service_restored": true,
+        "local_extraction_requests_completed": 2,
+        "local_heldout_exercises": 1
       },
       "result_evidence": [
         "contributions/COORD-ADC-CADENCE/profile-validation.json",
@@ -322,7 +326,9 @@
         "contributions/COORD-ADC-CADENCE/uart/validation.json",
         "contributions/COORD-ADC-CADENCE/uart/ghidra-functions.json",
         "contributions/COORD-ADC-CADENCE/admission/validation.json",
-        "contributions/COORD-ADC-CADENCE/admission/synchronous-static.json"
+        "contributions/COORD-ADC-CADENCE/admission/synchronous-static.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/synchronous-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/runtime-verification.json"
       ]
     },
     {

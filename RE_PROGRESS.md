@@ -488,3 +488,8 @@ The UART run begun2026-11-08 is documented2026-11-09: original V3.6/V3.8 TX/chec
 ## 2026-11-09: admitted-frame stability and caller ownership
 
 The scheduled2026-11-09 continuation checked1,200 admitted-frame/ISR interleavings and24 service-idle gates on original3.6/3.8. The admitted prefix and independently specified parsed result stayed stable; buffer-limit crossing was included. All nine raw ARM BL candidates for0x80005f14 were assigned to known local CFGs, and an additional tail branch0x8000404c was validated. Two carefully scoped analyst database records bring the index to62. Static evidence remains separate from body execution/global ownership. Artifacts were generated in an isolated permitted writable workspace and integrated on the development branch; no original, device, main or Release change.
+
+
+## 2026-11-09: local model restored and startup-helper execution
+
+Restored the existing signed local Ollama0.40.15, reused both installed model manifests and verified coder14B GPU residency/context4096. Explicitly retried two requests that had only failed at transport; both completed. Four quotes were grounded but one semantic role was wrong; three extractions were accepted manually, no independent firmware finding. A new correction/held-out TX exercise passed without weight training. During that collaboration the coordinator executed40 original startup-helper cases, matching both originals. See contributions/COORD-ADC-CADENCE/synchronous/ for reproducible code, raw drafts/reviews and exact limits. Physical operations:0.

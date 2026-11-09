@@ -1,0 +1,39 @@
+{
+  "schema": "ys4470.local-heldout.v1",
+  "new_task": "tx-mmio-classification-after-checked-feedback",
+  "parent_review_sha256": "43614b49f55f7f99b94bbd0f51cfc7d6f5797ddbed4a52a631c2ae05df29896b",
+  "base_lessons_sha256": "7b135d7b5b1e58e68fa7ba4283902106547b7d76fe9736baacb065a3653217c4",
+  "lessons_sha256": "90a2a63698632ed05fe18accf1f8ca67df004b72f5fadb7ba28aea6f2fd99f50",
+  "context": {
+    "binary_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+    "entry": "0x80006dc8",
+    "options": {
+      "A": {
+        "address": "0x80006de8",
+        "bytes": "34009f05",
+        "assembly": "ldreq r0,[0x80006e24]"
+      },
+      "B": {
+        "address": "0x80006dfc",
+        "bytes": "7c0080e2",
+        "assembly": "add r0,r0,#0x7c"
+      },
+      "C": {
+        "address": "0x80006e00",
+        "bytes": "002090e5",
+        "assembly": "ldr r2,[r0,#0x0]"
+      },
+      "D": {
+        "address": "0x80006e10",
+        "bytes": "001080e5",
+        "assembly": "str r1,[r0,#0x0]"
+      }
+    },
+    "supplied_facts": "The caller selects UART2. The code has loaded its MMIO base and adjusts a pointer to base+0x7c before its ready-status loop. Arithmetic and pointer identities are supplied by coordinator tools."
+  },
+  "question": "Choose candidate IDs only. Which option reads UART readiness and which writes the UART data register? Return exactly JSON keys status_read and data_write, each A/B/C/D. No explanation.",
+  "model": "qwen2.5-coder:14b",
+  "model_digest": "9ec8897f747e246e970bc5cfdda85d22f1123dc2e3d34978a010a75968716849",
+  "endpoint": "http://127.0.0.1:11435",
+  "max_tokens": 80
+}

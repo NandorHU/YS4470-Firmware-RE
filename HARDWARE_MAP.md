@@ -198,3 +198,8 @@ The original UART2 transmitter now executes through its real ready loop at0x8000
 ## 2026-11-09: admitted-frame stability and caller ownership
 
 The new admission experiment uses the original UART ISR with controlled context-save/restore interleaves; no real IRQ entry, task priorities, byte cadence, serial adapter or physical device is observed. UART appends preserve the admitted prefix under tested valid counts. Known synchronous helper call paths are serialized by tested GaugeCmdTask startup/service-idle structure, but indirect/other-task ownership remains unproven. No physical latency or external ADC semantics are assigned.
+
+
+## 2026-11-09: local model restored and startup-helper execution
+
+The original synchronous helper's sender, UART2 output/ISR, memory copy/clear and GPIO helpers execute for startup descriptor IDs9/19. Native output frames are58035b and590059; GPIO bits2/3 are cleared on all40 tested exits. UART status/byte delivery and sleep scheduling remain models; no device access or ADC identity/physical latency is established. The local AI runtime was restored independently on the host GPU; its API-reported residency is analysis tooling, not meter emulation.

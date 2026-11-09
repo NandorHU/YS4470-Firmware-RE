@@ -318,3 +318,8 @@ RX0x805b408c..0x805b4154 exclusive and TX0x805b4154..0x805b421c exclusive are se
 ## 2026-11-09: admitted-frame stability and caller ownership
 
 The service's original literal0x80005d20 resolves to deferred-record storage0x805ac6d0. Its68-byte extent ends at0x805ac714, immediately before the result object and after the FSM's0x3c-byte region. In1,200 ISR/parser cases, first five RX bytes remain unchanged while up to196 further bytes arrive; valid count caps at200. This is conditional append stability, not immunity to another reset/writer. The synchronous helper's literal0x80006090 resolves to count0x805ab938 in both originals.
+
+
+## 2026-11-09: local model restored and startup-helper execution
+
+In the tested synchronous helper, matching one-/five-byte ACK input remains in shared RX/count when success returns. After the second attempt's final modeled sleep, a newly delivered matching header can remain at RX with count1 while the helper returns0, because no final recheck occurs. First-attempt delivery after its final sleep is cleared before retry. These are controlled memory/order observations at original0x80005f14 paths, not physical timing or a justified patch. See contributions/COORD-ADC-CADENCE/synchronous/synchronous-validation.json.
