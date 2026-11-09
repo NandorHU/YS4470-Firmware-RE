@@ -612,18 +612,20 @@
         "V3_8": "0x80004390",
         "V3_6": "0x80004390"
       },
-      "confidence": "confirmed_static_behavior",
+      "confidence": "confirmed_bounded_original_deferred_type2_type5_execution",
       "role": "Builds TransactionBuilder command lists from a decoded input record",
       "relationships": [
         "input case 4 builds [0x1b]",
         "input cases 3, 2, and 5 construct lists containing terminal command 0x1d",
-        "case 5 list is [0x0c,0x22,0x13,0x1d]"
+        "case 5 list is [0x0c,0x22,0x13,0x1d]",
+        "The Fast CONT choice at 0x8000d084 supplies tested type-2 list [0x0e,0x19,0x1d] or type-5 list [0x0c,0x22,0x13,0x1d]. Both original deferred paths use builder mode 3 and seed discard 2."
       ],
       "evidence": [
         "evidence/2026-11-05-measurement-command-1b-1d.json",
         "bounded PyGhidra TransactionBuilder caller trace",
         "evidence/2026-11-06-state5-saturation-path.json",
-        "evidence/2026-11-06-state5-discard-lifecycle.json"
+        "evidence/2026-11-06-state5-discard-lifecycle.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/deferred-measurement-validation.json"
       ],
       "limits": [
         "Input case codes are not mapped to physical measurement modes."

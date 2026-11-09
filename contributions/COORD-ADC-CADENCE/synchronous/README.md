@@ -308,3 +308,36 @@ dispatcher and measurement builder with the real queue.
 python -B contributions/COORD-ADC-CADENCE/synchronous/trace_type6_queue.py --out work/type6-queue-validation.json
 python -B contributions/COORD-ADC-CADENCE/synchronous/index_control_queue.py --out work/control-queue-index.json
 ```
+
+## Deferred type-2 and type-5 measurement
+
+The original choice suffix at `0x8000d084` reads the established
+Fast CONT word `0x805ac788` (see the root measurement algorithms).
+Value 1 takes the type-5 call at `0x8000d0a0` with bytes `22 13`.
+The tested values 0 and 2 take the type-2 call at `0x8000d0c8` with
+bytes `0e 19`. Both use the original producer and queue.
+
+| Record type | Original builder call | Mode | Command list |
+|---|---|---|---|
+| 2 | `0x8000447c` | 3 | `0e 19 1d` |
+| 5 | `0x80004410` | 3 | `0c 22 13 1d` |
+
+The original deferred dispatcher sets discard count 2, stores the
+primary configuration byte as a word and returns handled. With
+matching setup headers the original FSM emits the entire selected
+list. With the first ACK absent, it sends the first command twice
+and returns idle without sending later commands. The first admitted
+five-byte `0x1d` reply is consumed by the discard rule. In both
+controlled mixed orders the last queued record selects the list.
+
+The [replay](deferred-measurement-validation.json) contains 20
+cases, the two original hashes, byte-checked execution and exact wire
+frames. The caller suffix starts after its prior queue drain. Mixed
+records are an accumulated-queue fixture. Allocation, arrival and
+counter progression are modeled. Continue from `0x8000d39c`, where
+the type-2 caller loads byte +5 from a live object rather than an
+immediate value.
+
+```powershell
+python -B contributions/COORD-ADC-CADENCE/synchronous/trace_deferred_measurement.py --out work/deferred-measurement-validation.json
+```

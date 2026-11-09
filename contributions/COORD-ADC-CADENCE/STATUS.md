@@ -2,6 +2,14 @@
 
 ## Current checkpoint
 
+The [type-2/5 replay](synchronous/deferred-measurement-validation.json)
+follows the original Fast CONT choice through the real queue, deferred
+dispatcher and the complete tested command lists. Both originals agree
+in 20 cases. Next trace the producer at `0x8000d39c` and the dynamic
+record byte +5 through the type-2 clamp and descriptor selection.
+
+## Previous original queue checkpoint
+
 The [real-queue replay](synchronous/type6-queue-validation.json) covers
 38 cases across both originals. Type 6 uses a host-supplied record.
 The original service, constructor/send/receive, helper, UART2 setup and
