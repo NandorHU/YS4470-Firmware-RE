@@ -2,6 +2,14 @@
 
 ## Current checkpoint
 
+The [general type-1 replay](synchronous/general-type1-validation.json)
+covers four original producers and all eight ACK combinations on both
+images (64 cases). The handler always invokes `0x26 → record[4] → 0x19`.
+Next trace references to the queue handle at control object +4
+(`0x805aae90`) and alternate writers that could supply type 6.
+
+## Previous calibration UI checkpoint
+
 The [calibration UI replay](synchronous/calibration-ui-validation.json)
 binds the two buttons, confirms all seven status messages and follows four
 successive timer deadlines. Both originals agree in 40 status cases and

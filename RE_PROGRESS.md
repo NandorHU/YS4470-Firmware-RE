@@ -531,3 +531,7 @@ From `3907fb5877be718150b43a113beebf8e1dbaf955`, ran 16 scenarios per producer p
 ## 2026-11-09: calibration status UI
 
 From `056fa50572104a58f86ad309c903781bae457321`, verified the two button bindings and the original status renderer through the timer dispatcher, including four-tick sequences with waiting, result, reset and normal measurement request. The [calibration UI replay](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-validation.json) pins 40 status cases and eight linked sequences. The [producer index](contributions/COORD-ADC-CADENCE/synchronous/control-producer-index.json) checks 31 aligned branch candidates per original. The correct status reader is `0x8005dac4`.
+
+## 2026-11-09: general type-1 fallback
+
+Continued from `8879de87bb201ff0da9848e7ae71cf648e455558` with four producer suffixes and all eight ACK combinations on each original (64 cases). The handler uses `0x26 → record[4] → 0x19` across all tested returns. The [report](contributions/COORD-ADC-CADENCE/synchronous/general-type1-validation.json) pins original hashes, executed bytes, wire frames and entry state. Next check alternate writers and indirect aliases of the control queue handle.

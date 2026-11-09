@@ -242,3 +242,26 @@ remain separate from this index.
 python -B contributions/COORD-ADC-CADENCE/synchronous/trace_calibration_ui.py --out work/calibration-ui-validation.json
 python -B contributions/COORD-ADC-CADENCE/synchronous/index_control_producers.py --out work/control-producer-index.json
 ```
+
+## General type-1 fallback
+
+The producer suffixes at `0x8000e2dc`, `0x8000e36c`, `0x8000e3f4`
+and `0x8000e480` submit type-1 records with +4 equal to `0x09`,
+`0x0c`, `0x0f` and `0x0f`, respectively, and +5 equal to `0x19`.
+The idle service reaches the original handler. At `0x80003e94`,
+`0x80003ea4` and `0x80003eac`, it invokes the original helper with
+`0x26 → record[4] → 0x19`. The first call is followed by requested
+sleep(600) at `0x80003e9c`.
+
+The [validation report](general-type1-validation.json) covers all
+eight ACK-presence combinations for each caller and each original,
+64 cases total. The handler proceeds through all three calls even if
+all ACKs are absent. Each absent ACK causes its own two sends. The
+observed wire frames are `c000c0`, one of `58035b`/`58075f`/`580b63`,
+and `5a5a`. The status and flag are both zero at all three helper
+entries. This establishes the scoped firmware call order under
+the controlled queue, UART and sleep fixtures.
+
+```powershell
+python -B contributions/COORD-ADC-CADENCE/synchronous/trace_general_type1.py --out work/general-type1-validation.json
+```
