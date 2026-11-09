@@ -313,3 +313,7 @@ The prepared handoff does not silently release ownership or start a second agent
 ## 2026-11-09: original deferred producer paths
 
 With the FSM idle, type 0 requests `sleep(200)` at `0x80004038` before the `0x26` tail call. The three tested type-1 paths enter the helper directly via `0x80003eac`. Across 16 V3.6/V3.8 ARM926 cases, a matching first byte gave success with zero helper sleeps. No reply produced two sends and 1,000 requested helper sleeps. The sleep arguments describe the software path. See the [replay, firmware hashes and instruction bytes](contributions/COORD-ADC-CADENCE/synchronous/deferred-validation.json).
+
+## 2026-11-09: extended deferred status
+
+A successful `0x28`/`0x29` helper ACK reaches two RX clears followed by a status loop with up to 230 requested sleep(1000)/check iterations. At `0x80003f68`, the loop reads RX byte 0. A recognized `a0`/`a1` header takes the `0x26` exit even if its second byte maps to no status. An unknown first byte remained in place under modeled append-only arrivals, so later valid bytes did not exit the loop. See the [64 original ARM926 cases with both firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/extended-status-validation.json).

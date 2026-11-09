@@ -359,3 +359,7 @@ The prepared handoff does not silently release ownership or start a second agent
 ## 2026-11-09: original deferred producer paths
 
 Four original caller suffixes now run through the record producer at `0x80006778`, the idle service at `0x80005b6c`, the fallback at `0x80003dd8` and the synchronous helper at `0x80005f14`. Sixteen ARM926 cases across V3.6/V3.8 agree for IDs `0x26`, `0x27`, `0x2a` and `0x2b`, with a first-check header and with no reply. See the [replay, firmware hashes and instruction bytes](contributions/COORD-ADC-CADENCE/synchronous/deferred-validation.json).
+
+## 2026-11-09: extended deferred status
+
+Original callers `0x8000e50c` and `0x8000e5a0` reached the idle fallback's extended branch at `0x80003eb8` on V3.6 and V3.8. After the command ACK, two original critical sections cleared the RX count and buffer. The separate status loop mapped `a0 01..03` to 1–3 and `a1 01..04` to 4–7. See the [64 original ARM926 cases with both firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/extended-status-validation.json).

@@ -10,9 +10,9 @@ Beta.2 Release API currently404; retained historical installer is documented.
 The owner confirmed the old daily automation was stopped. The new coordinator
 `codex-ys4470-20261109-01a1c110` is recorded in upstream registry revision 19.
 
-Latest analysis: [deferred producer replay](../contributions/COORD-ADC-CADENCE/synchronous/README.md#deferred-producer-paths)
-covers four original producer suffixes and 16 original ARM926 cases on
-V3.6/V3.8. Next trace the extended `0x28`/`0x29` branch at `0x80003eb8`.
+Latest analysis: [extended deferred status](../contributions/COORD-ADC-CADENCE/synchronous/README.md#extended-status-after-0x280x29)
+covers the `0x28`/`0x29` producers and 64 original ARM926 cases on V3.6/V3.8.
+Next validate the `0x805ab920` reader candidate at `0x80005dac4`.
 
 ---
 

@@ -1416,15 +1416,18 @@
         "Original service0x80005d00 conditionally calls0x80003dd8 after InputDispatcher0x80004390 returns0.",
         "Seven BL calls to synchronous helper0x80005f14 plus tail branch0x8000404c inside the indexed handler CFG.",
         "Known handler entry receives a copied68-byte control record rooted in original deferred storage0x805ac6d0.",
-        "Four caller suffixes reach producer0x80006778 and idle fallback. Type 0 tail-calls with0x26 at0x8000404c. The three tested type-1 paths call with0x27/0x2a/0x2b at0x80003eac."
+        "Four caller suffixes reach producer0x80006778 and idle fallback. Type 0 tail-calls with0x26 at0x8000404c. Three type-1 paths call with0x27/0x2a/0x2b at0x80003eac.",
+        "The two extended type-1 producers at0x8000e50c/0x8000e5a0 reach0x80003eb8. A successful command ACK leads to two critical RX clears, followed by a status-byte poll at0x80003f68.",
+        "In 64 original ARM926 cases, recognized a0/a1 status headers lead to helper0x26 at0x80003fe8. Recognized second bytes can write values1..7 at0x805ab920."
       ],
       "evidence": [
         "contributions/COORD-ADC-CADENCE/admission/validation.json",
-        "contributions/COORD-ADC-CADENCE/synchronous/deferred-validation.json"
+        "contributions/COORD-ADC-CADENCE/synchronous/deferred-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/extended-status-validation.json"
       ],
       "limits": [
-        "The four producer suffixes begin after the caller's queue drain. Queue transfer, UART status/arrival and requested sleep are modeled.",
-        "Other callers, type-6 producer reachability, the extended0x28/0x29 path, indirect aliases and complete system-wide ownership remain open."
+        "The six tested producer suffixes begin after the caller's queue drain. Queue transfer, UART status/arrival and requested sleep are modeled.",
+        "Status consumers, other callers, type-6 producer reachability, indirect aliases and complete system-wide ownership remain open."
       ]
     },
     {
@@ -1434,7 +1437,7 @@
         "V3_8": "0x80005f14"
       },
       "confidence": "confirmed_bounded_original_synchronous_command_execution",
-      "role": "Synchronous descriptor sender and matching-header ACK wait with one retry. Tested startup IDs9/19 and producer-bound deferred IDs0x26/0x27/0x2a/0x2b.",
+      "role": "Synchronous descriptor sender and matching-header ACK wait with one retry. Tested startup IDs9/19 and producer-bound deferred IDs0x26..0x2b.",
       "name_status": "Analyst role label, not vendor symbol; legacy candidate database ID retained",
       "relationships": [
         "Original count pointer is loaded from literal0x80006090 ->0x805ab938.",
@@ -1444,16 +1447,18 @@
         "Original startup ID9 source5803 -> wire58035b; ID19 source5900 -> wire590059.",
         "Original deferred IDs0x26/0x27/0x2a/0x2b produce wire frames c000c0/c05515/c3c3/c4c4 in 16 cases across V3.6/V3.8.",
         "A matching first byte can return success before any requested sleep; the500 bound is a maximum per-attempt iteration count.",
-        "At most two sends and1000 requested sleep(1) calls in tested cases; GPIO bits2/3 and callee-saved registers are restored."
+        "At most two sends and1000 requested sleep(1) calls in tested cases; GPIO bits2/3 and callee-saved registers are restored.",
+        "Deferred IDs0x28/0x29 send c1c1/c2c2. Their matching-header ACK gates the caller's later, separate status loop."
       ],
       "evidence": [
         "contributions/COORD-ADC-CADENCE/admission/synchronous-static.json",
         "contributions/COORD-ADC-CADENCE/admission/validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/synchronous-validation.json",
-        "contributions/COORD-ADC-CADENCE/synchronous/deferred-validation.json"
+        "contributions/COORD-ADC-CADENCE/synchronous/deferred-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/extended-status-validation.json"
       ],
       "limits": [
-        "Execution covers the two tested startup and four tested deferred arguments with valid buffers and initial FSM idle.",
+        "Execution covers the two tested startup and six tested deferred arguments with valid buffers and initial FSM idle.",
         "Sleep scheduling, byte delivery, UART status and CPU-context ISR interleave are explicit models; actual exception/task timing is not established.",
         "A helper ACK needs a matching header, unlike the measurement FSM's five-byte admission rule; other command IDs/UI routes remain untested.",
         "Last-sleep reply ordering is a software boundary observation, not a physical delay/bug or warranted timing patch.",

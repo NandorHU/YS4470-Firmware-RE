@@ -2,6 +2,16 @@
 
 ## Current checkpoint
 
+The extended `0x28`/`0x29` producer paths agree in all 64 original ARM926
+cases. The command ACK gates the later status loop, which uses two critical
+RX clears before polling. The original handler writes status codes 1–7 to
+`0x805ab920` for the verified header/value pairs. See
+[method](synchronous/README.md#extended-status-after-0x280x29) and
+[validation](synchronous/extended-status-validation.json). Next validate
+the reader candidate at `0x80005dac4`. Earlier checkpoints below are historical.
+
+## Previous checkpoint
+
 Four producer suffixes now run through the original idle service and fallback
 to helper commands `0x26`, `0x27`, `0x2a` and `0x2b`. All 16 ARM926 cases
 agree across both original hashes. See [method](synchronous/README.md#deferred-producer-paths)

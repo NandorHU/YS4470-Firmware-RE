@@ -347,3 +347,7 @@ The prepared handoff does not silently release ownership or start a second agent
 ## 2026-11-09: original deferred producer paths
 
 The existing fallback and synchronous-helper entries now include the four producer-bound paths. At `0x8000404c`, type 0 tail-calls the helper with `0x26`. Tested type-1 records call it at `0x80003eac` with `0x27`, `0x2a` or `0x2b`. The database remains at 62 entries. See the [replay, firmware hashes and instruction bytes](contributions/COORD-ADC-CADENCE/synchronous/deferred-validation.json) for 16 original ARM926 cases across V3.6/V3.8.
+
+## 2026-11-09: extended deferred status
+
+The existing `0x80003dd8` and `0x80005f14` entries now include the `0x28`/`0x29` producer-bound branch and its `0x27 → command → 0x26` sequence when a status header is recognized. The two existing analyst entries remain scoped to tested paths. See the [64 original ARM926 cases with both firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/extended-status-validation.json).
