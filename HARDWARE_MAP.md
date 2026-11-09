@@ -193,3 +193,8 @@ The E2 profile experiment executes the original UART ISR with synthetic RX bytes
 ## 2026-11-09: original UART correlation proof
 
 The original UART2 transmitter now executes through its real ready loop at0x80006e00..0x80006e08 and register write0x80006e10. Descriptor source60 emits60 60 including checksum. Real ISR0x800073bc executes with synthetic status/data; UART2 MMIO remains inert guest memory. A160-instruction not-ready probe remains in TX before the FSM post-send timestamp, establishing no physical stall duration. No external ADC identity, conversion restart/buffering, actual baud or acoustic timing follows from these software cases. Hardware/device operations:0.
+
+
+## 2026-11-09: admitted-frame stability and caller ownership
+
+The new admission experiment uses the original UART ISR with controlled context-save/restore interleaves; no real IRQ entry, task priorities, byte cadence, serial adapter or physical device is observed. UART appends preserve the admitted prefix under tested valid counts. Known synchronous helper call paths are serialized by tested GaugeCmdTask startup/service-idle structure, but indirect/other-task ownership remains unproven. No physical latency or external ADC semantics are assigned.

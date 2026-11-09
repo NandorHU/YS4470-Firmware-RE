@@ -182,3 +182,8 @@ COORD-ADC-CADENCE remains in progress after the64-case equal-Highspeed matrix,64
 ## 2026-11-09: original UART correlation proof
 
 Continue COORD-ADC-CADENCE from contributions/COORD-ADC-CADENCE/STATUS.md and uart/README.md. Completed now:12,704 three-way original/C/Python transport cases,184 arrival schedules,12 explicit ISR interleaves,4 two-frame concatenations and six fresh Ghidra function exports. Next bound the original shared-buffer admission-to-parse interval and synchronous helper0x80005f14 actual callers/writers. Reuse existing packets and prepared local source indexes; do not repeat the completed profile or transport matrices without a code/input/guard change. External conversion behavior still blocks a justified physical speed/correlation fix.
+
+
+## 2026-11-09: admitted-frame stability and caller ownership
+
+Completed the bounded admission-to-parse step:1,200 original-code cases,24 service-gate cases, nine classified BL sites plus one tail branch, and95-instruction static synchronous-helper context per original. Next trace fallback message producers/other aliases and execute synchronous helper success/failure under reachable caller/idle preconditions. Keep broad physical ADC/latency questions separate. Do not rerun the completed transport/profile/admission matrices without changed code, inputs or unresolved guards. Exact continuation: contributions/COORD-ADC-CADENCE/STATUS.md.

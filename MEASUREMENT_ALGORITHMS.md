@@ -273,3 +273,8 @@ At equal Highspeed=1, Base/Direct share poll times; Direct moves audio from the 
 ## 2026-11-09: original UART correlation proof
 
 A newly executed original retry sequence on both versions admits a deliberately old same-command frame: request0, incomplete deadline30, retry selection31, RX clear/resend32, old frame33..37, raw50 publication38. Counter values are synthetic. A cross-command0x5e frame in a0x1d transaction rejects; the tested path distinguishes command header, not request instance. Concatenated frames publish only the first; the trailing frame is lost at the next state1 clear. See contributions/COORD-ADC-CADENCE/uart/validation.json. No timing/correlation patch is justified without actual external-response semantics.
+
+
+## 2026-11-09: admitted-frame stability and caller ownership
+
+Original state3-admitted frames retain their first five bytes through state5 while the original ISR appends at five controlled positions, including between value-byte reads.1,200 cases match the previous independent parser contract, including saturation/selector limits and buffer-cap crossing. Thus an append-only ISR alone is not a demonstrated prefix-corruption cause.24 service cases and classified known call sites also do not demonstrate an active-acquisition clear race from the synchronous helper. The earlier delayed matching-header acceptance remains a separate, valid counterexample.

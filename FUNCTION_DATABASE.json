@@ -101,7 +101,8 @@
         "PIO control trace 2026-11-05",
         "contributions/COORD-FSM-TIMEOUT/fsm-timeout.json",
         "contributions/COORD-FSM-TIMEOUT/fsm-timeout-ghidra.json",
-        "contributions/COORD-ADC-CADENCE/uart/validation.json"
+        "contributions/COORD-ADC-CADENCE/uart/validation.json",
+        "contributions/COORD-ADC-CADENCE/admission/validation.json"
       ],
       "limits": [
         "2026-11-08 proof: original V3.6/V3.8 only; historical Beta3 annotation is not a new execution result.",
@@ -159,12 +160,14 @@
       "evidence": [
         "existing project annotation",
         "contributions/COORD-FUNCTION-PACKETS/validation.json",
-        "contributions/COORD-ADC-CADENCE/profile-validation.json"
+        "contributions/COORD-ADC-CADENCE/profile-validation.json",
+        "contributions/COORD-ADC-CADENCE/admission/validation.json"
       ],
       "relationships": [
         "GaugeCmdTask0x80003dbc calls service at0x80003dd0",
         "idle original service calls FSM0x80004490 at0x80005d04; tail0x80005d14 requests sleep(1) through0x80060fbc",
-        "E2 callsite0x80005d04 enters step0x800107cc; branch0x80005d08 enters tail0x8005fb78"
+        "E2 callsite0x80005d04 enters step0x800107cc; branch0x80005d08 enters tail0x8005fb78",
+        "Deferred fallback0x80003dd8 is entered only with FSM+0x34 idle in24 bounded service cases; queue/sleep leaves modeled."
       ],
       "inferred_name": "GaugeCmdService",
       "name_status": "role label, not recovered factory symbol",
@@ -210,12 +213,14 @@
         "bounded UART2 trace 2026-11-05",
         "uart2_transport_assertions",
         "contributions/COORD-ADC-CADENCE/uart/validation.json",
-        "contributions/COORD-ADC-CADENCE/uart/ghidra-functions.json"
+        "contributions/COORD-ADC-CADENCE/uart/ghidra-functions.json",
+        "contributions/COORD-ADC-CADENCE/admission/validation.json"
       ],
       "relationships": [
         "uses UART2 base 0x01c25800",
         "tests +0x08 then reads +0x00",
-        "writes 0x805b408c; count 0x805ab938 capped at 200"
+        "writes 0x805b408c; count 0x805ab938 capped at 200",
+        "Original state3-admitted prefix remains stable against later valid-count ISR appends in1200 controlled original-code cases."
       ],
       "limits": [
         "New original/Python/C append proof covers nonnegative counts0..201, four interrupt status patterns and all256 byte values.",
@@ -1397,6 +1402,53 @@
         "Three task callees are return-only models in the outer-loop test.",
         "Service idle FSM→sleep(1) path is now executed separately on both originals; active original service and real RTOS cadence remain incomplete."
       ]
+    },
+    {
+      "id": "gauge_deferred_control_handler",
+      "addresses": {
+        "V3_6": "0x80003dd8",
+        "V3_8": "0x80003dd8"
+      },
+      "confidence": "confirmed_bounded_entry_routing_and_static_local_cfg_only",
+      "role": "Fallback control-record handler reached by GaugeCmdTask service after idle gating; body not dynamically executed in this experiment",
+      "name_status": "Analyst role label, not recovered vendor symbol",
+      "relationships": [
+        "Original service0x80005d00 conditionally calls0x80003dd8 after InputDispatcher0x80004390 returns0.",
+        "Seven BL calls to synchronous helper0x80005f14 plus tail branch0x8000404c inside the indexed handler CFG.",
+        "Known handler entry receives a copied68-byte control record rooted in original deferred storage0x805ac6d0."
+      ],
+      "evidence": [
+        "contributions/COORD-ADC-CADENCE/admission/validation.json"
+      ],
+      "limits": [
+        "Execution stops at handler entry; full command, UART configuration and blocking bodies are not newly executed.",
+        "Local ARM CFG only; other callers, message producers, indirect aliases and complete system-wide ownership remain open."
+      ]
+    },
+    {
+      "id": "synchronous_command_helper_candidate",
+      "addresses": {
+        "V3_6": "0x80005f14",
+        "V3_8": "0x80005f14"
+      },
+      "confidence": "static_candidate_with_validated_known_direct_callers",
+      "role": "Static descriptor-command send/response-wait helper candidate sharing the measurement RX buffer",
+      "name_status": "Analyst candidate role; no new whole-body execution proof",
+      "relationships": [
+        "Original count pointer is loaded from literal0x80006090 ->0x805ab938.",
+        "Known startup callers0x80003dc4/0x80003dcc precede GaugeCmdTask service loop.",
+        "Nine BL sites and one tail edge0x8000404c are validated across the startup wrapper/control-handler local CFGs.",
+        "Static calls include descriptor sender0x80005e84 and delay candidate0x80060fbc."
+      ],
+      "evidence": [
+        "contributions/COORD-ADC-CADENCE/admission/synchronous-static.json",
+        "contributions/COORD-ADC-CADENCE/admission/validation.json"
+      ],
+      "limits": [
+        "Identical95-instruction local ARM contexts do not establish all runtime paths, external protocol semantics or blocking duration.",
+        "Indirect/Thumb callers and other shared-buffer writers remain unclassified.",
+        "Do not infer an active-acquisition clear race from a shared pointer when tested known service paths are idle-gated."
+      ]
     }
   ],
   "session_updates": [
@@ -1837,5 +1889,13 @@
     "ghidra_instruction_byte_guards": 158,
     "physical_device_operations": 0,
     "scope": "Two original application hashes; controlled software fixtures, not physical ADC/latency evidence."
+  },
+  "admission_stability_proof": {
+    "report": "contributions/COORD-ADC-CADENCE/admission/validation.json",
+    "original_cases": 1200,
+    "service_gate_cases": 24,
+    "known_bl_sites": 9,
+    "additional_tail_branch": "0x8000404c -> 0x80005f14",
+    "scope": "Conditional append/prefix stability and bounded entry gating; no global ownership/physical latency claim."
   }
 }
