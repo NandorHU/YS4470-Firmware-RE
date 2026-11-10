@@ -1,0 +1,429 @@
+address	bytes_le	assembly	catalog
+0x8000ce40	1900a0e3	mov r0, #0x19	executed-producer-prefixes.json
+0x8000ce44	0800c5e5	strb r0, [r5, #8]	executed-producer-prefixes.json
+0x8000ce48	0020a0e1	mov r2, r0	direct-producer-suffixes.json
+0x8000ce4c	0710d5e5	ldrb r1, [r5, #7]	direct-producer-suffixes.json
+0x8000ce50	0200a0e3	mov r0, #2	direct-producer-suffixes.json
+0x8000ce54	47e6ffeb	bl #0x80006778	direct-producer-suffixes.json
+0x8000cef4	1920a0e3	mov r2, #0x19	direct-producer-suffixes.json
+0x8000cef8	0f10a0e3	mov r1, #0xf	direct-producer-suffixes.json
+0x8000cefc	0200a0e3	mov r0, #2	direct-producer-suffixes.json
+0x8000cf00	1ce6ffeb	bl #0x80006778	direct-producer-suffixes.json
+0x8000d094	1320a0e3	mov r2, #0x13	direct-producer-suffixes.json
+0x8000d098	2210a0e3	mov r1, #0x22	direct-producer-suffixes.json
+0x8000d09c	0500a0e3	mov r0, #5	direct-producer-suffixes.json
+0x8000d0a0	b4e5ffeb	bl #0x80006778	direct-producer-suffixes.json
+0x8000d0bc	1920a0e3	mov r2, #0x19	direct-producer-suffixes.json
+0x8000d0c0	0e10a0e3	mov r1, #0xe	direct-producer-suffixes.json
+0x8000d0c4	0200a0e3	mov r0, #2	direct-producer-suffixes.json
+0x8000d0c8	aae5ffeb	bl #0x80006778	direct-producer-suffixes.json
+0x8000d5b4	1920a0e3	mov r2, #0x19	direct-producer-suffixes.json
+0x8000d5b8	0c10a0e3	mov r1, #0xc	direct-producer-suffixes.json
+0x8000d5bc	0200a0e3	mov r0, #2	direct-producer-suffixes.json
+0x8000d5c0	6ce4ffeb	bl #0x80006778	direct-producer-suffixes.json
+0x8000d650	d4009fe5	ldr r0, [pc, #0xd4]	queue-uart-ui-refill.json
+0x8000d658	d0609fe5	ldr r6, [pc, #0xd0]	queue-uart-ui-refill.json
+0x8000d65c	0010a0e1	mov r1, r0	queue-uart-ui-refill.json
+0x8000d660	d03296e5	ldr r3, [r6, #0x2d0]	queue-uart-ui-refill.json
+0x8000d664	0020a0e3	mov r2, #0	queue-uart-ui-refill.json
+0x8000d668	0300a0e1	mov r0, r3	queue-uart-ui-refill.json
+0x8000d670	bc409fe5	ldr r4, [pc, #0xbc]	queue-uart-ui-refill.json
+0x8000d674	bc509fe5	ldr r5, [pc, #0xbc]	queue-uart-ui-refill.json
+0x8000d678	0100a0e3	mov r0, #1	queue-uart-ui-refill.json
+0x8000d67c	0100c4e5	strb r0, [r4, #1]	queue-uart-ui-refill.json
+0x8000d680	000095e5	ldr r0, [r5]	queue-uart-ui-refill.json
+0x8000d688	000095e5	ldr r0, [r5]	queue-uart-ui-refill.json
+0x8000d68c	6410a0e3	mov r1, #0x64	queue-uart-ui-refill.json
+0x8000d694	000095e5	ldr r0, [r5]	queue-uart-ui-refill.json
+0x8000d6a0	0710d4e5	ldrb r1, [r4, #7]	queue-uart-ui-refill.json
+0x8000d6a4	1300a0e3	mov r0, #0x13	queue-uart-ui-refill.json
+0x8000d6a8	090051e3	cmp r1, #9	queue-uart-ui-refill.json
+0x8000d6ac	0a005113	cmpne r1, #0xa	queue-uart-ui-refill.json
+0x8000d6b4	0c0051e3	cmp r1, #0xc	queue-uart-ui-refill.json
+0x8000d6b8	22005113	cmpne r1, #0x22	queue-uart-ui-refill.json
+0x8000d6c4	0800c4e5	strb r0, [r4, #8]	queue-uart-ui-refill.json
+0x8000d6c8	1320a0e3	mov r2, #0x13	queue-uart-ui-refill.json
+0x8000d6cc	0200a0e3	mov r0, #2	queue-uart-ui-refill.json
+0x8000d6d8	0c00a0e3	mov r0, #0xc	queue-uart-ui-refill.json
+0x8000d6dc	0700c4e5	strb r0, [r4, #7]	queue-uart-ui-refill.json
+0x8000d6e0	1500a0e3	mov r0, #0x15	queue-uart-ui-refill.json
+0x8000d6e4	0800c4e5	strb r0, [r4, #8]	queue-uart-ui-refill.json
+0x8000d6e8	0000a0e3	mov r0, #0	queue-uart-ui-refill.json
+0x8000d6ec	0200c4e5	strb r0, [r4, #2]	queue-uart-ui-refill.json
+0x8000d6f0	44009fe5	ldr r0, [pc, #0x44]	queue-uart-ui-refill.json
+0x8000d6f8	e83296e5	ldr r3, [r6, #0x2e8]	queue-uart-ui-refill.json
+0x8000d6fc	0010a0e1	mov r1, r0	queue-uart-ui-refill.json
+0x8000d700	0020a0e3	mov r2, #0	queue-uart-ui-refill.json
+0x8000d704	0300a0e1	mov r0, r3	queue-uart-ui-refill.json
+0x8000d70c	0710d4e5	ldrb r1, [r4, #7]	queue-uart-ui-refill.json
+0x8000d710	1520a0e3	mov r2, #0x15	queue-uart-ui-refill.json
+0x8000d714	0200a0e3	mov r0, #2	queue-uart-ui-refill.json
+0x8000d71c	7040bde8	pop {r4, r5, r6, lr}	queue-uart-ui-refill.json
+0x8000d720	0110a0e3	mov r1, #1	queue-uart-ui-refill.json
+0x8000d724	0500a0e3	mov r0, #5	queue-uart-ui-refill.json
+0x8000d7bc	1920a0e3	mov r2, #0x19	direct-producer-suffixes.json
+0x8000d7c0	0910a0e3	mov r1, #9	direct-producer-suffixes.json
+0x8000d7c4	0200a0e3	mov r0, #2	direct-producer-suffixes.json
+0x8000d7c8	eae3ffeb	bl #0x80006778	direct-producer-suffixes.json
+0x8000e2c4	44009fe5	ldr r0, [pc, #0x44]	queue-uart-ui-refill.json
+0x8000e2c8	0910a0e3	mov r1, #9	queue-uart-ui-refill.json
+0x8000e2cc	1920a0e3	mov r2, #0x19	queue-uart-ui-refill.json
+0x8000e2d0	0010c0e5	strb r1, [r0]	queue-uart-ui-refill.json
+0x8000e2d4	0120c0e5	strb r2, [r0, #1]	queue-uart-ui-refill.json
+0x8000e2d8	0100a0e3	mov r0, #1	queue-uart-ui-refill.json
+0x8000e354	40009fe5	ldr r0, [pc, #0x40]	queue-uart-ui-refill.json
+0x8000e358	0c10a0e3	mov r1, #0xc	queue-uart-ui-refill.json
+0x8000e35c	1920a0e3	mov r2, #0x19	queue-uart-ui-refill.json
+0x8000e360	0010c0e5	strb r1, [r0]	queue-uart-ui-refill.json
+0x8000e364	0120c0e5	strb r2, [r0, #1]	queue-uart-ui-refill.json
+0x8000e368	0100a0e3	mov r0, #1	queue-uart-ui-refill.json
+0x8000e3dc	40009fe5	ldr r0, [pc, #0x40]	queue-uart-ui-refill.json
+0x8000e3e0	0f10a0e3	mov r1, #0xf	queue-uart-ui-refill.json
+0x8000e3e4	1920a0e3	mov r2, #0x19	queue-uart-ui-refill.json
+0x8000e3e8	0010c0e5	strb r1, [r0]	queue-uart-ui-refill.json
+0x8000e3ec	0120c0e5	strb r2, [r0, #1]	queue-uart-ui-refill.json
+0x8000e3f0	0100a0e3	mov r0, #1	queue-uart-ui-refill.json
+0x8000e468	40009fe5	ldr r0, [pc, #0x40]	queue-uart-ui-refill.json
+0x8000e46c	0f10a0e3	mov r1, #0xf	queue-uart-ui-refill.json
+0x8000e470	1920a0e3	mov r2, #0x19	queue-uart-ui-refill.json
+0x8000e474	0010c0e5	strb r1, [r0]	queue-uart-ui-refill.json
+0x8000e478	0120c0e5	strb r2, [r0, #1]	queue-uart-ui-refill.json
+0x8000e47c	0100a0e3	mov r0, #1	queue-uart-ui-refill.json
+0x8000e6ac	40009fe5	ldr r0, [pc, #0x40]	executed-producer-prefixes.json
+0x8000e6b0	2b10a0e3	mov r1, #0x2b	executed-producer-prefixes.json
+0x8000e6b4	0020a0e3	mov r2, #0	executed-producer-prefixes.json
+0x8000e6b8	0010c0e5	strb r1, [r0]	direct-producer-suffixes.json
+0x8000e6bc	0120c0e5	strb r2, [r0, #1]	direct-producer-suffixes.json
+0x8000e6c0	0100a0e3	mov r0, #1	direct-producer-suffixes.json
+0x8000e6c4	2be0ffeb	bl #0x80006778	direct-producer-suffixes.json
+0x8000e738	40009fe5	ldr r0, [pc, #0x40]	executed-producer-prefixes.json
+0x8000e73c	2a10a0e3	mov r1, #0x2a	executed-producer-prefixes.json
+0x8000e740	0020a0e3	mov r2, #0	executed-producer-prefixes.json
+0x8000e744	0010c0e5	strb r1, [r0]	direct-producer-suffixes.json
+0x8000e748	0120c0e5	strb r2, [r0, #1]	direct-producer-suffixes.json
+0x8000e74c	0100a0e3	mov r0, #1	direct-producer-suffixes.json
+0x8000e750	08e0ffeb	bl #0x80006778	direct-producer-suffixes.json
+0x8000f408	1920a0e3	mov r2, #0x19	direct-producer-suffixes.json
+0x8000f40c	0a10a0e3	mov r1, #0xa	direct-producer-suffixes.json
+0x8000f410	0200a0e3	mov r0, #2	direct-producer-suffixes.json
+0x8000f414	d7dcffeb	bl #0x80006778	direct-producer-suffixes.json
+0x8000f490	1920a0e3	mov r2, #0x19	direct-producer-suffixes.json
+0x8000f494	0910a0e3	mov r1, #9	direct-producer-suffixes.json
+0x8000f498	0200a0e3	mov r0, #2	direct-producer-suffixes.json
+0x8000f49c	b5dcffeb	bl #0x80006778	direct-producer-suffixes.json
+0x80024ca4	3e1ba0e3	mov r1, #0xf800	queue-uart-ui-refill.json
+0x80024ca8	7e2ea0e3	mov r2, #0x7e0	queue-uart-ui-refill.json
+0x80024cac	201401e0	and r1, r1, r0, lsr #8	queue-uart-ui-refill.json
+0x80024cb0	a02202e0	and r2, r2, r0, lsr #5	queue-uart-ui-refill.json
+0x80024cb4	021081e1	orr r1, r1, r2	queue-uart-ui-refill.json
+0x80024cb8	000ca0e1	lsl r0, r0, #0x18	queue-uart-ui-refill.json
+0x80024cbc	04d04de2	sub sp, sp, #4	queue-uart-ui-refill.json
+0x80024cc0	a00d81e1	orr r0, r1, r0, lsr #27	queue-uart-ui-refill.json
+0x80024cc4	b000cde1	strh r0, [sp]	queue-uart-ui-refill.json
+0x80024cc8	0008a0e1	lsl r0, r0, #0x10	queue-uart-ui-refill.json
+0x80024ccc	2008a0e1	lsr r0, r0, #0x10	queue-uart-ui-refill.json
+0x80024cd0	04d08de2	add sp, sp, #4	queue-uart-ui-refill.json
+0x80032038	70402de9	push {r4, r5, r6, lr}	queue-uart-ui-refill.json
+0x8003203c	0150a0e1	mov r5, r1	queue-uart-ui-refill.json
+0x80032040	0040a0e1	mov r4, r0	queue-uart-ui-refill.json
+0x80032048	000055e3	cmp r5, #0	queue-uart-ui-refill.json
+0x8003204c	24509405	ldreq r5, [r4, #0x24]	queue-uart-ui-refill.json
+0x80032050	240094e5	ldr r0, [r4, #0x24]	queue-uart-ui-refill.json
+0x80032054	050050e1	cmp r0, r5	queue-uart-ui-refill.json
+0x80032058	4810d405	ldrbeq r1, [r4, #0x48]	queue-uart-ui-refill.json
+0x8003205c	08001103	tsteq r1, #8	queue-uart-ui-refill.json
+0x80032064	000050e3	cmp r0, #0	queue-uart-ui-refill.json
+0x8003206c	4810d4e5	ldrb r1, [r4, #0x48]	queue-uart-ui-refill.json
+0x80032070	080011e3	tst r1, #8	queue-uart-ui-refill.json
+0x800320a0	0010a0e3	mov r1, #0	queue-uart-ui-refill.json
+0x800320a4	241084e5	str r1, [r4, #0x24]	queue-uart-ui-refill.json
+0x800320a8	0500a0e1	mov r0, r5	queue-uart-ui-refill.json
+0x800320b0	010080e2	add r0, r0, #1	queue-uart-ui-refill.json
+0x800320b8	000050e3	cmp r0, #0	queue-uart-ui-refill.json
+0x800320bc	240084e5	str r0, [r4, #0x24]	queue-uart-ui-refill.json
+0x800320c4	0510a0e1	mov r1, r5	queue-uart-ui-refill.json
+0x800320cc	4800d4e5	ldrb r0, [r4, #0x48]	queue-uart-ui-refill.json
+0x800320d0	0810c0e3	bic r1, r0, #8	queue-uart-ui-refill.json
+0x800320d4	4810c4e5	strb r1, [r4, #0x48]	queue-uart-ui-refill.json
+0x800320d8	0400a0e1	mov r0, r4	queue-uart-ui-refill.json
+0x800320dc	7040bde8	pop {r4, r5, r6, lr}	queue-uart-ui-refill.json
+0x800338dc	f0412de9	push {r4, r5, r6, r7, r8, lr}	queue-uart-ui-refill.json
+0x800338e0	0350a0e1	mov r5, r3	queue-uart-ui-refill.json
+0x800338e4	0260a0e1	mov r6, r2	queue-uart-ui-refill.json
+0x800338e8	0170a0e1	mov r7, r1	queue-uart-ui-refill.json
+0x800338ec	0040a0e1	mov r4, r0	queue-uart-ui-refill.json
+0x800338f4	080094e5	ldr r0, [r4, #8]	queue-uart-ui-refill.json
+0x800338f8	0123a0e3	mov r2, #0x4000000	queue-uart-ui-refill.json
+0x800338fc	1a10d0e5	ldrb r1, [r0, #0x1a]	queue-uart-ui-refill.json
+0x80033900	611382e0	add r1, r2, r1, ror #6	queue-uart-ui-refill.json
+0x80033904	61cda0e1	ror ip, r1, #0x1a	queue-uart-ui-refill.json
+0x80033908	1ac0c0e5	strb ip, [r0, #0x1a]	queue-uart-ui-refill.json
+0x8003390c	081094e5	ldr r1, [r4, #8]	queue-uart-ui-refill.json
+0x80033910	3f000ce2	and r0, ip, #0x3f	queue-uart-ui-refill.json
+0x80033914	800080e0	add r0, r0, r0, lsl #1	queue-uart-ui-refill.json
+0x80033918	0c2091e5	ldr r2, [r1, #0xc]	queue-uart-ui-refill.json
+0x8003391c	0001a0e1	lsl r0, r0, #2	queue-uart-ui-refill.json
+0x80033920	0010a0e1	mov r1, r0	queue-uart-ui-refill.json
+0x80033924	0200a0e1	mov r0, r2	queue-uart-ui-refill.json
+0x8003392c	081094e5	ldr r1, [r4, #8]	queue-uart-ui-refill.json
+0x80033930	000050e3	cmp r0, #0	queue-uart-ui-refill.json
+0x80033934	0c0081e5	str r0, [r1, #0xc]	queue-uart-ui-refill.json
+0x80033938	081094e5	ldr r1, [r4, #8]	queue-uart-ui-refill.json
+0x80033940	1a10d1e5	ldrb r1, [r1, #0x1a]	queue-uart-ui-refill.json
+0x80033944	0330e0e3	mvn r3, #3	queue-uart-ui-refill.json
+0x80033948	3fc001e2	and ip, r1, #0x3f	queue-uart-ui-refill.json
+0x8003394c	8c208ce0	add r2, ip, ip, lsl #1	queue-uart-ui-refill.json
+0x80033950	0b10e0e3	mvn r1, #0xb	queue-uart-ui-refill.json
+0x80033954	022181e0	add r2, r1, r2, lsl #2	queue-uart-ui-refill.json
+0x80033958	027080e7	str r7, [r0, r2]	queue-uart-ui-refill.json
+0x8003395c	080094e5	ldr r0, [r4, #8]	queue-uart-ui-refill.json
+0x80033960	0c2090e5	ldr r2, [r0, #0xc]	queue-uart-ui-refill.json
+0x80033964	1a00d0e5	ldrb r0, [r0, #0x1a]	queue-uart-ui-refill.json
+0x80033968	3f0000e2	and r0, r0, #0x3f	queue-uart-ui-refill.json
+0x8003396c	800080e0	add r0, r0, r0, lsl #1	queue-uart-ui-refill.json
+0x80033970	000183e0	add r0, r3, r0, lsl #2	queue-uart-ui-refill.json
+0x80033974	0060c2e7	strb r6, [r2, r0]	queue-uart-ui-refill.json
+0x80033978	080094e5	ldr r0, [r4, #8]	queue-uart-ui-refill.json
+0x8003397c	0730e0e3	mvn r3, #7	queue-uart-ui-refill.json
+0x80033980	0c2090e5	ldr r2, [r0, #0xc]	queue-uart-ui-refill.json
+0x80033984	1a00d0e5	ldrb r0, [r0, #0x1a]	queue-uart-ui-refill.json
+0x80033988	3f0000e2	and r0, r0, #0x3f	queue-uart-ui-refill.json
+0x8003398c	800080e0	add r0, r0, r0, lsl #1	queue-uart-ui-refill.json
+0x80033990	000183e0	add r0, r3, r0, lsl #2	queue-uart-ui-refill.json
+0x80033994	005082e7	str r5, [r2, r0]	queue-uart-ui-refill.json
+0x80033998	080094e5	ldr r0, [r4, #8]	queue-uart-ui-refill.json
+0x8003399c	0c2090e5	ldr r2, [r0, #0xc]	queue-uart-ui-refill.json
+0x800339a0	1a00d0e5	ldrb r0, [r0, #0x1a]	queue-uart-ui-refill.json
+0x800339a4	3f0000e2	and r0, r0, #0x3f	queue-uart-ui-refill.json
+0x800339a8	800080e0	add r0, r0, r0, lsl #1	queue-uart-ui-refill.json
+0x800339ac	000181e0	add r0, r1, r0, lsl #2	queue-uart-ui-refill.json
+0x800339b0	020080e0	add r0, r0, r2	queue-uart-ui-refill.json
+0x800339b4	f081bde8	pop {r4, r5, r6, r7, r8, pc}	queue-uart-ui-refill.json
+0x8004078c	10402de9	push {r4, lr}	queue-uart-ui-refill.json
+0x80040790	0040a0e1	mov r4, r0	queue-uart-ui-refill.json
+0x80040798	040040e0	sub r0, r0, r4	queue-uart-ui-refill.json
+0x8004079c	1080bde8	pop {r4, pc}	queue-uart-ui-refill.json
+0x80040894	f0412de9	push {r4, r5, r6, r7, r8, lr}	queue-uart-ui-refill.json
+0x80040898	0060a0e1	mov r6, r0	queue-uart-ui-refill.json
+0x8004089c	4c009fe5	ldr r0, [pc, #0x4c]	queue-uart-ui-refill.json
+0x800408a0	0270a0e1	mov r7, r2	queue-uart-ui-refill.json
+0x800408a4	0150a0e1	mov r5, r1	queue-uart-ui-refill.json
+0x800408ac	0040b0e1	movs r4, r0	queue-uart-ui-refill.json
+0x800408b4	0000e0e3	mvn r0, #0	queue-uart-ui-refill.json
+0x800408b8	100084e5	str r0, [r4, #0x10]	queue-uart-ui-refill.json
+0x800408bc	0000a0e3	mov r0, #0	queue-uart-ui-refill.json
+0x800408c0	140084e5	str r0, [r4, #0x14]	queue-uart-ui-refill.json
+0x800408c4	005084e5	str r5, [r4]	queue-uart-ui-refill.json
+0x800408c8	086084e5	str r6, [r4, #8]	queue-uart-ui-refill.json
+0x800408d0	040084e5	str r0, [r4, #4]	queue-uart-ui-refill.json
+0x800408d4	18109fe5	ldr r1, [pc, #0x18]	queue-uart-ui-refill.json
+0x800408d8	0100a0e3	mov r0, #1	queue-uart-ui-refill.json
+0x800408dc	0c7084e5	str r7, [r4, #0xc]	queue-uart-ui-refill.json
+0x800408e0	0400c1e5	strb r0, [r1, #4]	queue-uart-ui-refill.json
+0x800408e4	0400a0e1	mov r0, r4	queue-uart-ui-refill.json
+0x800408e8	f081bde8	pop {r4, r5, r6, r7, r8, pc}	queue-uart-ui-refill.json
+0x800427ec	70402de9	push {r4, r5, r6, lr}	queue-uart-ui-refill.json
+0x800427f0	004051e2	subs r4, r1, #0	queue-uart-ui-refill.json
+0x800427f4	0060a0e1	mov r6, r0	queue-uart-ui-refill.json
+0x800427f8	fe55a0e3	mov r5, #0x3f800000	queue-uart-ui-refill.json
+0x80042800	010014e3	tst r4, #1	queue-uart-ui-refill.json
+0x80042808	0510a0e1	mov r1, r5	queue-uart-ui-refill.json
+0x8004280c	0600a0e1	mov r0, r6	queue-uart-ui-refill.json
+0x80042814	0050a0e1	mov r5, r0	queue-uart-ui-refill.json
+0x80042818	0610a0e1	mov r1, r6	queue-uart-ui-refill.json
+0x8004281c	0100a0e1	mov r0, r1	queue-uart-ui-refill.json
+0x80042824	c440a0e1	asr r4, r4, #1	queue-uart-ui-refill.json
+0x80042828	000054e3	cmp r4, #0	queue-uart-ui-refill.json
+0x8004282c	0060a0e1	mov r6, r0	queue-uart-ui-refill.json
+0x80042834	0500a0e1	mov r0, r5	queue-uart-ui-refill.json
+0x80042838	7080bde8	pop {r4, r5, r6, pc}	queue-uart-ui-refill.json
+0x80042a00	70402de9	push {r4, r5, r6, lr}	full-queue-audit.json
+0x80042a04	0040a0e1	mov r4, r0	full-queue-audit.json
+0x80042a0c	d554d4e1	ldrsb r5, [r4, #0x45]	full-queue-audit.json
+0x80042a10	000055e3	cmp r5, #0	full-queue-audit.json
+0x80042a14	0b0000da	ble #0x80042a48	full-queue-audit.json
+0x80042a48	0060e0e3	mvn r6, #0	full-queue-audit.json
+0x80042a4c	4560c4e5	strb r6, [r4, #0x45]	full-queue-audit.json
+0x80042a58	d454d4e1	ldrsb r5, [r4, #0x44]	full-queue-audit.json
+0x80042a5c	000055e3	cmp r5, #0	full-queue-audit.json
+0x80042a60	0b0000da	ble #0x80042a94	full-queue-audit.json
+0x80042a94	4460c4e5	strb r6, [r4, #0x44]	full-queue-audit.json
+0x80042a98	7040bde8	pop {r4, r5, r6, lr}	full-queue-audit.json
+0x80042a9c	1f7900ea	b #0x80060f20	full-queue-audit.json
+0x80044f20	1920a0e3	mov r2, #0x19	direct-producer-suffixes.json
+0x80044f24	0910a0e3	mov r1, #9	direct-producer-suffixes.json
+0x80044f28	0200a0e3	mov r0, #2	direct-producer-suffixes.json
+0x80044f2c	1106ffeb	bl #0x80006778	direct-producer-suffixes.json
+0x80044f74	1920a0e3	mov r2, #0x19	direct-producer-suffixes.json
+0x80044f78	0c10a0e3	mov r1, #0xc	direct-producer-suffixes.json
+0x80044f7c	0200a0e3	mov r0, #2	direct-producer-suffixes.json
+0x80044f80	fc05ffeb	bl #0x80006778	direct-producer-suffixes.json
+0x80044fd0	1920a0e3	mov r2, #0x19	direct-producer-suffixes.json
+0x80044fd4	0f10a0e3	mov r1, #0xf	direct-producer-suffixes.json
+0x80044fd8	0200a0e3	mov r0, #2	direct-producer-suffixes.json
+0x80044fdc	e505ffeb	bl #0x80006778	direct-producer-suffixes.json
+0x80045044	1920a0e3	mov r2, #0x19	direct-producer-suffixes.json
+0x80045048	0e10a0e3	mov r1, #0xe	direct-producer-suffixes.json
+0x8004504c	0200a0e3	mov r0, #2	direct-producer-suffixes.json
+0x80045050	c805ffeb	bl #0x80006778	direct-producer-suffixes.json
+0x800450c4	1920a0e3	mov r2, #0x19	direct-producer-suffixes.json
+0x800450c8	0e10a0e3	mov r1, #0xe	direct-producer-suffixes.json
+0x800450cc	0200a0e3	mov r0, #2	direct-producer-suffixes.json
+0x800450d0	a805ffeb	bl #0x80006778	direct-producer-suffixes.json
+0x80045130	1320a0e3	mov r2, #0x13	direct-producer-suffixes.json
+0x80045134	2210a0e3	mov r1, #0x22	direct-producer-suffixes.json
+0x80045138	0500a0e3	mov r0, #5	direct-producer-suffixes.json
+0x8004513c	8d05ffeb	bl #0x80006778	direct-producer-suffixes.json
+0x800518bc	f8009fe5	ldr r0, [pc, #0xf8]	queue-uart-ui-refill.json
+0x800518c0	0020a0e3	mov r2, #0	queue-uart-ui-refill.json
+0x800518c4	6410a0e3	mov r1, #0x64	queue-uart-ui-refill.json
+0x800518cc	ec709fe5	ldr r7, [pc, #0xec]	queue-uart-ui-refill.json
+0x800518d0	ec609fe5	ldr r6, [pc, #0xec]	queue-uart-ui-refill.json
+0x800518d4	000087e5	str r0, [r7]	queue-uart-ui-refill.json
+0x800519d4	1920a0e3	mov r2, #0x19	direct-producer-suffixes.json
+0x800519d8	0910a0e3	mov r1, #9	direct-producer-suffixes.json
+0x800519dc	0200a0e3	mov r0, #2	direct-producer-suffixes.json
+0x800519e0	64d3feeb	bl #0x80006778	direct-producer-suffixes.json
+0x8006100c	20209fe5	ldr r2, [pc, #0x20]	full-queue-audit.json
+0x80061010	10402de9	push {r4, lr}	full-queue-audit.json
+0x80061014	002092e5	ldr r2, [r2]	full-queue-audit.json
+0x80061018	0140a0e1	mov r4, r1	full-queue-audit.json
+0x8006101c	181082e2	add r1, r2, #0x18	full-queue-audit.json
+0x80061024	0400a0e1	mov r0, r4	full-queue-audit.json
+0x80061028	1040bde8	pop {r4, lr}	full-queue-audit.json
+0x8006102c	0110a0e3	mov r1, #1	full-queue-audit.json
+0x80061030	0286ffea	b #0x80042840	full-queue-audit.json
+0x80061184	10109fe5	ldr r1, [pc, #0x10]	full-queue-audit.json
+0x80061188	202091e5	ldr r2, [r1, #0x20]	full-queue-audit.json
+0x8006118c	002080e5	str r2, [r0]	full-queue-audit.json
+0x80061190	0c1091e5	ldr r1, [r1, #0xc]	full-queue-audit.json
+0x80061194	041080e5	str r1, [r0, #4]	full-queue-audit.json
+0x80061198	1eff2fe1	bx lr	full-queue-audit.json
+0x800612e0	0c009fe5	ldr r0, [pc, #0xc]	full-queue-audit.json
+0x800612e4	301090e5	ldr r1, [r0, #0x30]	full-queue-audit.json
+0x800612e8	011081e2	add r1, r1, #1	full-queue-audit.json
+0x800612ec	301080e5	str r1, [r0, #0x30]	full-queue-audit.json
+0x800612f0	1eff2fe1	bx lr	full-queue-audit.json
+0x80061964	3082feeb	bl #0x8000222c	full-queue-audit.json
+0x800619a0	100084e2	add r0, r4, #0x10	full-queue-audit.json
+0x800619a4	f30100eb	bl #0x80062178	full-queue-audit.json
+0x800619a8	000050e3	cmp r0, #0	full-queue-audit.json
+0x800619ac	edffff0a	beq #0x80061968	full-queue-audit.json
+0x800619b0	ebffffea	b #0x80061964	full-queue-audit.json
+0x80061afc	020059e3	cmp sb, #2	full-queue-audit.json
+0x80061b00	0500000a	beq #0x80061b1c	full-queue-audit.json
+0x80061b04	14009de5	ldr r0, [sp, #0x14]	full-queue-audit.json
+0x80061b08	000050e3	cmp r0, #0	full-queue-audit.json
+0x80061b0c	4000000a	beq #0x80061c14	full-queue-audit.json
+0x80061b10	000056e3	cmp r6, #0	full-queue-audit.json
+0x80061b14	4000000a	beq #0x80061c1c	full-queue-audit.json
+0x80061b18	420000ea	b #0x80061c28	full-queue-audit.json
+0x80061c14	c1fcffeb	bl #0x80060f20	full-queue-audit.json
+0x80061c18	140000ea	b #0x80061c70	full-queue-audit.json
+0x80061c1c	0d00a0e1	mov r0, sp	full-queue-audit.json
+0x80061c20	57fdffeb	bl #0x80061184	full-queue-audit.json
+0x80061c24	0160a0e3	mov r6, #1	full-queue-audit.json
+0x80061c28	bcfcffeb	bl #0x80060f20	full-queue-audit.json
+0x80061c2c	abfdffeb	bl #0x800612e0	full-queue-audit.json
+0x80061c30	b1fcffeb	bl #0x80060efc	full-queue-audit.json
+0x80061c34	d404d4e1	ldrsb r0, [r4, #0x44]	full-queue-audit.json
+0x80061c38	010070e3	cmn r0, #1	full-queue-audit.json
+0x80061c3c	4470c405	strbeq r7, [r4, #0x44]	full-queue-audit.json
+0x80061c40	d504d4e1	ldrsb r0, [r4, #0x45]	full-queue-audit.json
+0x80061c44	010070e3	cmn r0, #1	full-queue-audit.json
+0x80061c48	4570c405	strbeq r7, [r4, #0x45]	full-queue-audit.json
+0x80061c4c	b3fcffeb	bl #0x80060f20	full-queue-audit.json
+0x80061c50	14108de2	add r1, sp, #0x14	full-queue-audit.json
+0x80061c54	0d00a0e1	mov r0, sp	full-queue-audit.json
+0x80061c58	1d0000eb	bl #0x80061cd4	full-queue-audit.json
+0x80061c5c	000050e3	cmp r0, #0	full-queue-audit.json
+0x80061c60	0500000a	beq #0x80061c7c	full-queue-audit.json
+0x80061c64	0400a0e1	mov r0, r4	full-queue-audit.json
+0x80061c68	6483ffeb	bl #0x80042a00	full-queue-audit.json
+0x80061c6c	640100eb	bl #0x80062204	full-queue-audit.json
+0x80061c70	0000a0e3	mov r0, #0	full-queue-audit.json
+0x80061c74	1cd08de2	add sp, sp, #0x1c	full-queue-audit.json
+0x80061c78	f083bde8	pop {r4, r5, r6, r7, r8, sb, pc}	full-queue-audit.json
+0x80061c7c	9efcffeb	bl #0x80060efc	full-queue-audit.json
+0x80061c80	380094e5	ldr r0, [r4, #0x38]	full-queue-audit.json
+0x80061c84	3c1094e5	ldr r1, [r4, #0x3c]	full-queue-audit.json
+0x80061c88	010050e1	cmp r0, r1	full-queue-audit.json
+0x80061c8c	0050a013	movne r5, #0	full-queue-audit.json
+0x80061c90	0150a003	moveq r5, #1	full-queue-audit.json
+0x80061c94	a1fcffeb	bl #0x80060f20	full-queue-audit.json
+0x80061c98	000055e3	cmp r5, #0	full-queue-audit.json
+0x80061c9c	0800000a	beq #0x80061cc4	full-queue-audit.json
+0x80061ca0	14109de5	ldr r1, [sp, #0x14]	full-queue-audit.json
+0x80061ca4	100084e2	add r0, r4, #0x10	full-queue-audit.json
+0x80061ca8	d7fcffeb	bl #0x8006100c	full-queue-audit.json
+0x80061cac	0400a0e1	mov r0, r4	full-queue-audit.json
+0x80061cb0	5283ffeb	bl #0x80042a00	full-queue-audit.json
+0x80061cb4	520100eb	bl #0x80062204	full-queue-audit.json
+0x80061cb8	000050e3	cmp r0, #0	full-queue-audit.json
+0x80061cbc	5a81fe0b	bleq #0x8000222c	full-queue-audit.json
+0x80061cc0	88ffffea	b #0x80061ae8	full-queue-audit.json
+0x80061cd4	70402de9	push {r4, r5, r6, lr}	full-queue-audit.json
+0x80061cd8	0150a0e1	mov r5, r1	full-queue-audit.json
+0x80061cdc	0040a0e1	mov r4, r0	full-queue-audit.json
+0x80061ce0	85fcffeb	bl #0x80060efc	full-queue-audit.json
+0x80061ce4	6c109fe5	ldr r1, [pc, #0x6c]	full-queue-audit.json
+0x80061ce8	0c2091e5	ldr r2, [r1, #0xc]	full-queue-audit.json
+0x80061cec	000095e5	ldr r0, [r5]	full-queue-audit.json
+0x80061cf0	010070e3	cmn r0, #1	full-queue-audit.json
+0x80061cf4	0040a003	moveq r4, #0	full-queue-audit.json
+0x80061cf8	1300000a	beq #0x80061d4c	full-queue-audit.json
+0x80061cfc	003094e5	ldr r3, [r4]	full-queue-audit.json
+0x80061d00	20c091e5	ldr ip, [r1, #0x20]	full-queue-audit.json
+0x80061d04	0c0053e1	cmp r3, ip	full-queue-audit.json
+0x80061d08	0200000a	beq #0x80061d18	full-queue-audit.json
+0x80061d18	043094e5	ldr r3, [r4, #4]	full-queue-audit.json
+0x80061d1c	032042e0	sub r2, r2, r3	full-queue-audit.json
+0x80061d20	020050e1	cmp r0, r2	full-queue-audit.json
+0x80061d24	0700009a	bls #0x80061d48	full-queue-audit.json
+0x80061d28	020040e0	sub r0, r0, r2	full-queue-audit.json
+0x80061d2c	000085e5	str r0, [r5]	full-queue-audit.json
+0x80061d30	200091e5	ldr r0, [r1, #0x20]	full-queue-audit.json
+0x80061d34	000084e5	str r0, [r4]	full-queue-audit.json
+0x80061d38	0c0091e5	ldr r0, [r1, #0xc]	full-queue-audit.json
+0x80061d3c	040084e5	str r0, [r4, #4]	full-queue-audit.json
+0x80061d40	0040a0e3	mov r4, #0	full-queue-audit.json
+0x80061d44	000000ea	b #0x80061d4c	full-queue-audit.json
+0x80061d48	0140a0e3	mov r4, #1	full-queue-audit.json
+0x80061d4c	73fcffeb	bl #0x80060f20	full-queue-audit.json
+0x80061d50	0400a0e1	mov r0, r4	full-queue-audit.json
+0x80061d54	7080bde8	pop {r4, r5, r6, pc}	full-queue-audit.json
+0x80061e14	041065e2	rsb r1, r5, #4	full-queue-audit.json
+0x80061e1c	181084e5	str r1, [r4, #0x18]	full-queue-audit.json
+0x80061e20	244084e5	str r4, [r4, #0x24]	full-queue-audit.json
+0x80062178	70402de9	push {r4, r5, r6, lr}	full-queue-audit.json
+0x8006217c	0c0090e5	ldr r0, [r0, #0xc]	full-queue-audit.json
+0x80062180	0c4090e5	ldr r4, [r0, #0xc]	full-queue-audit.json
+0x80062184	180084e2	add r0, r4, #0x18	full-queue-audit.json
+0x80062188	14fbffeb	bl #0x80060de0	full-queue-audit.json
+0x8006218c	64509fe5	ldr r5, [pc, #0x64]	full-queue-audit.json
+0x80062190	300095e5	ldr r0, [r5, #0x30]	full-queue-audit.json
+0x80062194	000050e3	cmp r0, #0	full-queue-audit.json
+0x80062198	5c009f15	ldrne r0, [pc, #0x5c]	full-queue-audit.json
+0x8006219c	18108412	addne r1, r4, #0x18	full-queue-audit.json
+0x800621a0	0900000a	beq #0x800621cc	full-queue-audit.json
+0x800621a4	48fbffeb	bl #0x80060ecc	full-queue-audit.json
+0x800621a8	2c0094e5	ldr r0, [r4, #0x2c]	full-queue-audit.json
+0x800621ac	001095e5	ldr r1, [r5]	full-queue-audit.json
+0x800621b0	2c1091e5	ldr r1, [r1, #0x2c]	full-queue-audit.json
+0x800621b4	010050e1	cmp r0, r1	full-queue-audit.json
+0x800621b8	0100a083	movhi r0, #1	full-queue-audit.json
+0x800621bc	0010a081	movhi r1, r0	full-queue-audit.json
+0x800621c0	1c008585	strhi r0, [r5, #0x1c]	full-queue-audit.json
+0x800621c4	0000a093	movls r0, #0	full-queue-audit.json
+0x800621c8	7080bde8	pop {r4, r5, r6, pc}	full-queue-audit.json
+0x800621cc	040084e2	add r0, r4, #4	full-queue-audit.json
+0x800621d0	02fbffeb	bl #0x80060de0	full-queue-audit.json
+0x800621d4	2c0094e5	ldr r0, [r4, #0x2c]	full-queue-audit.json
+0x800621d8	101095e5	ldr r1, [r5, #0x10]	full-queue-audit.json
+0x800621dc	010050e1	cmp r0, r1	full-queue-audit.json
+0x800621e0	10008585	strhi r0, [r5, #0x10]	full-queue-audit.json
+0x800621e4	001180e0	add r1, r0, r0, lsl #2	full-queue-audit.json
+0x800621e8	10009fe5	ldr r0, [pc, #0x10]	full-queue-audit.json
+0x800621ec	010180e0	add r0, r0, r1, lsl #2	full-queue-audit.json
+0x800621f0	041084e2	add r1, r4, #4	full-queue-audit.json
+0x800621f4	eaffffea	b #0x800621a4	full-queue-audit.json

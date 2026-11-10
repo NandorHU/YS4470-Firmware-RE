@@ -419,3 +419,7 @@ Both complete original calibration button callbacks run from `0x8000e4c8` and `0
 ## 2026-11-10 — Queue entry candidates and full-queue waits
 
 The original sender at `0x80061acc` supports the tested zero-wait rejection, timed wait, and wake after a receive. Its `0x80061b18` interior edge executes after the sender resumes with the queue still full. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/queue-interior-full-validation.json).
+
+## 2026-11-10 — Direct control producers and result-block writer
+
+The original control-record builder `0x80006778` forwards the caller's type and low bytes of `r1` and `r2` to the original queue sender `0x80061acc`. The 31 indexed direct sites exercise record types 0–5. The `0x8005d34c` result writer clears six words for signed values below `0x40000000` in the tested suffix. [Factory hashes, original bytes and ARM926 replay](contributions/COORD-ADC-CADENCE/synchronous/control-producer-suffix-replay.json).

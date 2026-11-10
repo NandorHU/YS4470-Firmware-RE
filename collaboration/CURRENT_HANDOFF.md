@@ -10,9 +10,10 @@ Beta.2 Release API currently404; retained historical installer is documented.
 The owner confirmed the old daily automation was stopped. The new coordinator
 `codex-ys4470-20261109-01a1c110` is recorded in upstream registry revision 19.
 
-Latest analysis: [queue entry candidates and full-queue waits](../contributions/COORD-ADC-CADENCE/synchronous/README.md#queue-entry-candidates-and-full-queue-waits)
-executes original blocking sends and retains the bounded alias candidates.
-Next establish executable provenance for remaining indirect queue writers.
+Latest analysis: [direct control producers and result-block writer](../contributions/COORD-ADC-CADENCE/synchronous/README.md#direct-control-producers-and-result-block-writer)
+runs 66 original sends and eight result-writer cases across both images.
+Next trace the `r4` object at `0x80046548` and remaining indirect queue writers.
+The live registry is now at revision 42.
 
 ---
 

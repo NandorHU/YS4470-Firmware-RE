@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 41,
+  "revision": 42,
   "updated": "2026-11-10",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,7 +295,7 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Trace executable provenance for remaining indirect and synthesized queue-writer candidates. Use the expanded interior branch and field-signature index, prioritize real writes to the control queue handle or object, and run any newly confirmed producer under original idle/scheduler conditions.",
+      "next_action": "Resolve the remaining 0x80046548 field signature by tracing the original r4 base and 0x80030ad0 return. Continue register-indirect and synthesized queue-handle provenance from the expanded index, and run any genuine additional control producer under the original idle/scheduler conditions.",
       "last_verified_result": {
         "profile_cases": 64,
         "transition_cases": 64,
@@ -369,8 +369,10 @@
         "resident_index_queue_refill_sample_exact": 10,
         "original_full_queue_send_cases": 6,
         "raw_queue_interior_branch_candidates": 1,
-        "resident_index_drafts_reviewed": 2653,
-        "resident_index_exact_extractions_published": 2652
+        "original_direct_control_producer_suffix_cases": 66,
+        "original_result_field_writer_cases": 8,
+        "resident_index_drafts_reviewed": 3081,
+        "resident_index_exact_extractions_published": 3080
       },
       "result_evidence": [
         "contributions/COORD-ADC-CADENCE/profile-validation.json",
@@ -413,7 +415,9 @@
         "contributions/COORD-ADC-CADENCE/synchronous/calibration-button-queue-validation.json",
         "contributions/COORD-ADC-CADENCE/local-index/queue-uart-ui-refill.json",
         "contributions/COORD-ADC-CADENCE/synchronous/queue-interior-full-validation.json",
-        "contributions/COORD-ADC-CADENCE/local-index/review-2026-11-10/review.json"
+        "contributions/COORD-ADC-CADENCE/local-index/review-2026-11-10/review.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/control-producer-suffix-replay.json",
+        "contributions/COORD-ADC-CADENCE/local-index/review-2026-11-10-delta/review.json"
       ]
     },
     {

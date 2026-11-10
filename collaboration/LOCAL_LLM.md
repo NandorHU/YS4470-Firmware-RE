@@ -172,3 +172,12 @@ frozen packets and both originals. The [checked export](../contributions/COORD-A
 contains 2,652 exact instruction rows. One draft used the wrong identity
 and was excluded. The queue continued running during the review and
 received 160 additional original queue and scheduler addresses.
+
+## 2026-11-10 — Direct-producer and field-signature indexes
+
+The coordinator checked [428 additional instruction rows](../contributions/COORD-ADC-CADENCE/local-index/review-2026-11-10-delta/README.md)
+against both factory images and the frozen packets. The resident worker
+received 68 new direct-suffix addresses, eight additional executed
+prefix addresses, and 67 addresses from bounded field-signature
+contexts. All catalogs were checked against the originals and
+deduplicated before they entered the existing queue.
