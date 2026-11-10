@@ -1,0 +1,174 @@
+{
+  "schema": "ys4470.calibration-ui-live-local-index-review.v1",
+  "model": "qwen2.5-coder:14b",
+  "model_digest": "9ec8897f747e246e970bc5cfdda85d22f1123dc2e3d34978a010a75968716849",
+  "checked_lessons_sha256": "7b135d7b5b1e58e68fa7ba4283902106547b7d76fe9736baacb065a3653217c4",
+  "batches": 3,
+  "attempts": 6,
+  "verified": 6,
+  "results": [
+    {
+      "task": "calibration-ui-status-load",
+      "draft": {
+        "entry": "0x8005da88",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x8005dac4",
+        "quote": "0x8005dac4 ldr r0, [r0]",
+        "limitation": "Finite original address listing. GUI state and physical timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x8005dac4",
+        "assembly": "ldr r0, [r0]",
+        "bytes": "000090e5"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "122344b9c5f8e05146a13ec317f63a43f771be9f987642897d80bf41698e6c93",
+      "attempts": 1
+    },
+    {
+      "task": "calibration-ui-flag-load",
+      "draft": {
+        "entry": "0x8005dbec",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x8005dbfc",
+        "quote": "0x8005dbfc ldr r0, [r0]",
+        "limitation": "Finite original address listing. GUI state and physical timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x8005dbfc",
+        "assembly": "ldr r0, [r0]",
+        "bytes": "000090e5"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "ceb19fd2186901d08e0c69f7370d3cf734d97248a90eeabae7ac27561f3bf608",
+      "attempts": 1
+    },
+    {
+      "task": "calibration-timer-constructor-call",
+      "draft": {
+        "entry": "0x8004c4e0",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x8004c4ec",
+        "quote": "0x8004c4ec bl #0x80040894",
+        "limitation": "Finite original address listing. GUI state and physical timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x8004c4ec",
+        "assembly": "bl #0x80040894",
+        "bytes": "e8d0ffeb"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "d9849582ee0974e1f8f3f18b717a88eb4a7be9600f7a2622b8b969ce91f7bfa7",
+      "attempts": 1
+    },
+    {
+      "task": "calibration-timer-callback-indirect-call",
+      "draft": {
+        "entry": "0x800409ec",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x80040a0c",
+        "quote": "0x80040a0c blxne r1",
+        "limitation": "Finite original address listing. GUI state and physical timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x80040a0c",
+        "assembly": "blxne r1",
+        "bytes": "31ff2f11"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "8c01779a36b55f348d35a8416e1b1b9366dbfe56b1224b8d4eb6d2b2658f7f31",
+      "attempts": 1
+    },
+    {
+      "task": "calibration-status-two-formatter-call",
+      "draft": {
+        "entry": "0x8005db38",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x8005db44",
+        "quote": "0x8005db44 blx #0x80000544",
+        "limitation": "Finite original address listing. GUI state and physical timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x8005db44",
+        "assembly": "blx #0x80000544",
+        "bytes": "7e8afefa"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "a4857d6da56155a1abdfd762e4bb1045ce053543a29d106335ae4caf01132340",
+      "attempts": 1
+    },
+    {
+      "task": "calibration-result-period-store-call",
+      "draft": {
+        "entry": "0x8005de30",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x8005de38",
+        "quote": "0x8005de38 bl #0x80040b84",
+        "limitation": "Finite original address listing. GUI state and physical timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x8005de38",
+        "assembly": "bl #0x80040b84",
+        "bytes": "518bffeb"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "84f790beb2a1970060af8feb06fac63383eb5e0232fed812e3dedba2b7ad18e8",
+      "attempts": 1
+    }
+  ],
+  "limit": "Instruction indexing only. Original ARM926 tests supply the dynamic conclusions."
+}

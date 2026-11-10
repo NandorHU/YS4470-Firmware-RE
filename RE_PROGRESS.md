@@ -587,3 +587,7 @@ Executed 26 cases across the factory hashes. Started from the original loop afte
 ## 2026-11-10 — Scheduled long fallback and status waits
 
 Executed six original queue, service, SVC and IRQ schedules with 60,814 injected Timer0 interrupts across both factory images. The type-0 producer waits 200 counts and sends `c0 00 c0`. The extended `0x28`/`0x29` cases execute the 600 and two 500-count waits, then a 10,000-count gap between two critical RX clears. ACK suffix bytes and bytes received inside the gap are removed. A later `a0 02` or `a1 04` survives to the first 1,000-count poll and yields status 2 or 7. The original final helper and GPIO cleanup run. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-validation.json).
+
+## 2026-11-10 — Live calibration status and UI timer
+
+Executed four shared-memory status/UI schedules with 60 original callbacks and 60 one-count-early controls. Original IRQ-fed statuses 2 and 7 produce `Cal circuit 1 OK02` and `Cal over range04`. Waiting callbacks keep period 2,000. Status callbacks select 200. On the `0x29` phase, the timer sees status 7 at counter 12,702 while flag 1 remains set, then repeats the result with flag 0. The original formatter and label copy execute. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).

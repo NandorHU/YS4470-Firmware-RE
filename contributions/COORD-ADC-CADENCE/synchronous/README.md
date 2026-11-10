@@ -751,3 +751,32 @@ physical duration and peer behavior remain outside the replay.
 ```powershell
 python -B contributions/COORD-ADC-CADENCE/synchronous/trace_gauge_long_fallback.py
 ```
+
+## Live calibration status and UI timer
+
+[Replay evidence](calibration-ui-live-validation.json) contains four schedules, 60 original timer
+callbacks and 60 one-count-early controls. The writer and timer share
+one emulator. The harness starts from the factory-initialized globals,
+runs the original status producer and GaugeCmdTask chain, then invokes
+the original GUI timer runner `0x8004092c` on its counter edges after
+GaugeCmdTask yields. The constructor call at `0x8004c4ec` binds
+`0x8005da88`.
+
+For `0x28`, timer binding at counter 100 produces the first status 2
+display at 14,100, after the flag clears. For `0x29`, binding at 702
+puts the original timer deadline at 12,702 when the status writer
+has just set 7 and is still waiting on the final helper with flag 1.
+The callback reads status 7 without reading the flag. Its next result
+callback still displays the same text with flag 0. The waiting phase
+uses `Calibration ...` and retains 2,000. Status 2 formats
+`Cal circuit 1 OK02`, status 7 formats `Cal over range04`, and the
+result paths write period 200. The original formatter and label copy run.
+
+The GUI runner entry is host-scheduled. Fixed allocation, invalidation
+leaves and a one-item timer list support the original code. The tested
+statuses come from the original IRQ and writer path. Peripheral clocks,
+pixels and peer behavior are outside the replay.
+
+```powershell
+python -B contributions/COORD-ADC-CADENCE/synchronous/trace_calibration_ui_live.py
+```

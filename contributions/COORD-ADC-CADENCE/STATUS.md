@@ -2,6 +2,13 @@
 
 ## Current checkpoint
 
+The [live calibration timer replay](synchronous/calibration-ui-live-validation.json) covers four
+schedules and 60 original callbacks. The timer reads IRQ-written status
+directly, including status 7 before the busy flag clears. Next follow
+reset into the actual type-3 measurement queue.
+
+## Previous long fallback checkpoint
+
 The [scheduled long fallback replay](synchronous/gauge-long-fallback-validation.json) covers six
 cases and 60,814 injected timer interrupts across both factory images.
 The extended commands clear premature status twice and process the
