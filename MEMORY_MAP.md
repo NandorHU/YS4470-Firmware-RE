@@ -425,3 +425,7 @@ Drain `0x80003d74` requests a 68-byte temporary buffer and repeats original zero
 ## 2026-11-10 — Queue entry candidates and full-queue waits
 
 The replay checks the ten 68-byte records, message count at queue +0x38 and send-wait list at +0x10. Original task initialization at `0x80061e14..0x80061e20` establishes the inverted-priority value and owner of the event-list node. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/queue-interior-full-validation.json).
+
+## 2026-11-10 — Direct control producers and result-block writer
+
+The original constructor stores its returned queue handle at `0x805aae90` via `0x800029f4`. The control queue copies 68 bytes and updates its cursor and count. The `r5` literal at `0x8005d518` instead supplies `0x805ac714` to `0x8005d27c`. The tested `0x8005d35c` stores target this result block. [Factory hashes, original bytes and ARM926 replay](contributions/COORD-ADC-CADENCE/synchronous/control-producer-suffix-replay.json).

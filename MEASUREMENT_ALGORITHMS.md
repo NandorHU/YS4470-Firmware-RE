@@ -385,3 +385,7 @@ A queued type-3 measurement and older type-1 command are both drained before the
 ## 2026-11-10 — Queue entry candidates and full-queue waits
 
 A full queue rejects the original producer's type-3 zero-wait record immediately. The native `0x27` producer waits up to ten counts and either returns zero on timeout or stores its record after a competing receive frees a slot. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/queue-interior-full-validation.json).
+
+## 2026-11-10 — Direct control producers and result-block writer
+
+The original suffix at `0x8005d118` loads the local state byte and sends type 4 for `0x22` or type 3 for `0x21` in the tested cases, with both argument bytes zero. Type 3 supplies zero wait to the queue API. Other tested types supply ten counts. [Factory hashes, original bytes and ARM926 replay](contributions/COORD-ADC-CADENCE/synchronous/control-producer-suffix-replay.json).

@@ -431,3 +431,7 @@ Twelve linked button and queue cases execute both complete original callbacks on
 ## 2026-11-10 — Queue entry candidates and full-queue waits
 
 The expanded two-image queue index checks branch targets throughout the known queue ranges, immediate address formation, all byte phases for exact pointers, and a bounded queue-field signature. Six original scheduler/queue cases verify full-queue send behavior. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/queue-interior-full-validation.json).
+
+## 2026-11-10 — Direct control producers and result-block writer
+
+The two factory images agree on 66 ARM926 sends from 31 native caller suffixes and eight cases that resolve the `0x8005d35c` result writer. This bounds local argument formation and queue admission. Earlier caller paths, indirect targets and physical timing require separate evidence. [Factory hashes, original bytes and ARM926 replay](contributions/COORD-ADC-CADENCE/synchronous/control-producer-suffix-replay.json).

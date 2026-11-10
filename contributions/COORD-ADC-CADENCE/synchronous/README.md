@@ -865,3 +865,35 @@ queue allocation and IRQ entry are controlled.
 ```powershell
 python -B contributions/COORD-ADC-CADENCE/synchronous/trace_queue_interior_full.py
 ```
+
+## Direct control producers and result-block writer
+
+The [replay](control-producer-suffix-replay.json) starts at the original local argument
+setup for 31 direct ARM sites that call `0x80006778`. In 33 cases per
+factory image the original constructor at `0x800029dc` creates an empty
+control queue using a modeled allocator. Its only handle store occurs
+at `0x800029f4` and writes `0x805aae90`. The original send at
+`0x80061acc` copies all 68 bytes and increments the queue count once.
+
+The suffix beginning at `0x8005d118` reads the local state byte. The
+tested `0x21` and `0x22` inputs send types 3 and 4 respectively, each
+with zero argument bytes. The `0x8000d378` suffix sets a default second
+argument of `0x19` and uses the low byte of `r6` when its original
+condition is true. Ten local suffixes also check the original writes to
+the selection bytes. The tested direct sites emit types 0–5.
+
+Four result-writer cases per image run the original `r5` literal load
+at `0x8005d27c` followed by the writer suffix at `0x8005d34c`.
+The store at `0x8005d35c` targets `0x805ac74c`, within the result
+block at `0x805ac714`. The six result words clear for signed inputs
+below `0x40000000` and remain intact at the boundary. The queue
+object and handle stay byte-identical in these cases.
+
+The runs supply an idle scheduler and the incoming local state. The
+replay covers the local argument setup and the queue copy. Earlier
+caller reachability, intermediate GUI calls in the result-writer
+probe and native type-6 provenance remain open.
+
+```powershell
+python -B contributions/COORD-ADC-CADENCE/synchronous/trace_control_producer_suffixes.py --out control-producer-suffix-replay.json
+```

@@ -294,3 +294,7 @@ Return to the remaining fallback producer search. Resolve indirect queue aliases
 ## 2026-11-10 — Queue entry candidates and full-queue waits
 
 Resolve executable provenance and indirect dataflow for remaining queue-write candidates. Link any genuine additional producer to original arguments and queue admission before assigning native type-6 reachability. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/queue-interior-full-validation.json).
+
+## 2026-11-10 — Direct control producers and result-block writer
+
+Trace the `r4` object at `0x80046548` and its stored value from `0x80030ad0`, then follow register-indirect and synthesized queue-handle candidates. Keep the original result-block stores at `0x8005d35c` outside the control-writer candidate set for the tested base provenance. [Factory hashes, original bytes and ARM926 replay](contributions/COORD-ADC-CADENCE/synchronous/control-producer-suffix-replay.json).

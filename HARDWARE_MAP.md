@@ -305,3 +305,7 @@ The original queue drain acts on queued records. An already-issued `60 60` reque
 ## 2026-11-10 — Queue entry candidates and full-queue waits
 
 Injected Timer0 interrupts advance the original scheduler to the blocked send deadline. In the competing receive case the original SVC path makes the sender runnable while a slot is available. The elapsed counter values describe software behavior. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/queue-interior-full-validation.json).
+
+## 2026-11-10 — Direct control producers and result-block writer
+
+The caller-suffix replay starts with a modeled allocator, empty queue and idle scheduler. All 66 sends return without changing the scheduler count. The result-block boundary cases exercise ARM RAM stores without an injected interrupt or peripheral transaction. [Factory hashes, original bytes and ARM926 replay](contributions/COORD-ADC-CADENCE/synchronous/control-producer-suffix-replay.json).

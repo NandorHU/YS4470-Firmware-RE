@@ -2,6 +2,14 @@
 
 ## Current checkpoint
 
+The [direct caller replay](synchronous/control-producer-suffix-replay.json) checks 31 native sites
+across both original images. All 66 empty-queue sends copy one 68-byte
+record. Eight additional cases resolve the `0x8005d35c` signature to
+the result block. Next trace `0x80046548` and the remaining indirect
+queue-writer candidates.
+
+## Previous full-queue checkpoint
+
 The [full-queue replay](synchronous/queue-interior-full-validation.json) covers six original cases.
 The sender times out at ten counts or succeeds after a receive at count
 three. The interior branch match remains a raw encoding candidate.

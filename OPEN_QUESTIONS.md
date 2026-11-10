@@ -347,3 +347,7 @@ Trace indirect producers and alternate queue primitives for the still-host-suppl
 ## 2026-11-10 — Queue entry candidates and full-queue waits
 
 The raw candidate `0x8009ef10` decodes as an interior branch. Its surrounding bytes and raw inbound candidates lack a proven executable path. Native type-6 reachability and indirect or inlined queue writers remain open. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/queue-interior-full-validation.json).
+
+## 2026-11-10 — Direct control producers and result-block writer
+
+The bounded direct caller suffixes emit types 0–5. Indirect and synthesized producers, the `0x80046548` field signature and native type-6 provenance remain open. The original `0x8005d35c` writer targets the result block on the tested path. [Factory hashes, original bytes and ARM926 replay](contributions/COORD-ADC-CADENCE/synchronous/control-producer-suffix-replay.json).

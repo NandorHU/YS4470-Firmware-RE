@@ -1,6 +1,6 @@
 # Reverse-engineering progress
 
-**Last verified update:** 2026-11-08  
+**Last verified update:** 2026-11-10  
 **Development branch:** `re/2026-11-04-pyghidra-fel`
 
 ## Current continuation (2026-11-08)
@@ -603,3 +603,7 @@ Executed 12 original calibration button and queue cases on both factory hashes. 
 ## 2026-11-10 — Queue entry candidates and full-queue waits
 
 Executed six full-queue cases across both factory hashes. Zero wait returns immediately. The native `0x27` producer blocks until the 10-count deadline, or succeeds after an original receive at count 3. The timeout reaches interior `0x80061b18` through the sender's real back edge. The new static scan retains one raw interior branch candidate and five local field signatures. Independently checked 2,653 completed Ollama extracts against both originals and exported 2,652 exact instruction rows. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/queue-interior-full-validation.json).
+
+## 2026-11-10 — Direct control producers and result-block writer
+
+Executed 66 original sends and eight result-writer cases across the two manifest-pinned factory images. The native selection suffixes set types 0–5. The branch at `0x8005d130` emits either type 3 or 4 with zero argument bytes. The separate original suffix at `0x8005d35c` writes only the result block in the tested clear cases. Published [428 newly checked Ollama instruction extracts](contributions/COORD-ADC-CADENCE/local-index/review-2026-11-10-delta/review.json). [Factory hashes, original bytes and ARM926 replay](contributions/COORD-ADC-CADENCE/synchronous/control-producer-suffix-replay.json).
