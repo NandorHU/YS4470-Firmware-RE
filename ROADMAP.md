@@ -258,3 +258,7 @@ Link the original countdown suffix to its measurement task loop and place expiry
 ## 2026-11-10 — KeyTask and Fast CONT refresh ordering
 
 Trace `0x80060fbc` from the KeyTask and GaugeCmdTask service call boundaries into the scheduler. Test arguments 50 and 1 with known task state, and keep raw counter deadlines separate from physical timing. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/key-task-fast-cont-order-validation.json).
+
+## 2026-11-10 — Scheduler delays and task wakeup
+
+Follow the byte-checked IRQ branch at `0x8000232c` to the original tick helper and context selection. Establish source and ordering with a controlled pending IRQ and saved task context. Keep modeled raw ticks distinct from hardware elapsed time. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/scheduler-delay-wake-validation.json).

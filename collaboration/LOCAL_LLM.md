@@ -100,3 +100,12 @@ A separate, narrower batch indexed the immediate loads at `0x80006eec` and
 the two original images. The [coordinator review](../contributions/COORD-ADC-CADENCE/synchronous/key-task-local-index-review.json)
 contains the exact bytes, firmware hashes and limits. The local model supplied
 index drafts. The coordinator ran the original-code experiments.
+
+## 2026-11-10 — Scheduler instruction index
+
+The existing pinned local service remained reachable. Two successive
+batches each indexed two new instructions from short original V3.8 address
+listings using the checked lessons and bounded packet worker. All four
+drafts completed on the first attempt. The [coordinator review](../contributions/COORD-ADC-CADENCE/synchronous/scheduler-local-index-review.json)
+checks their exact addresses, bytes and decoded instructions against both
+factory images. The coordinator ran the original scheduler experiments.

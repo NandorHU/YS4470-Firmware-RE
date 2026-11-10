@@ -10,9 +10,9 @@ Beta.2 Release API currently404; retained historical installer is documented.
 The owner confirmed the old daily automation was stopped. The new coordinator
 `codex-ys4470-20261109-01a1c110` is recorded in upstream registry revision 19.
 
-Latest analysis: [KeyTask and Fast CONT refresh ordering](../contributions/COORD-ADC-CADENCE/synchronous/README.md#keytask-and-fast-cont-refresh-ordering)
-binds the original KeyTask entry and executes eight ordering schedules.
-Next trace the scheduler delay helper under verified task-state preconditions.
+Latest analysis: [scheduler delays and task wakeup](../contributions/COORD-ADC-CADENCE/synchronous/README.md#scheduler-delays-and-task-wakeup)
+executes original delay and tick helpers, including wrap and deferred ticks.
+Next run the original IRQ tick branch with controlled saved task contexts.
 
 ---
 

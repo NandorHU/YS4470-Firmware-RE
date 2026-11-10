@@ -395,3 +395,7 @@ Sixteen native-entry schedules across both factory images agree. The first refre
 ## 2026-11-10 — KeyTask and Fast CONT refresh ordering
 
 Eight original-code schedules confirm the KeyTask binding and show the ordering-dependent sound transition after native Fast CONT entry. The test reaches the original loop back edge and watchdog on both factory images, with a modeled key sample, delay and register shadows. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/key-task-fast-cont-order-validation.json).
+
+## 2026-11-10 — Scheduler delays and task wakeup
+
+Fifty V3.6/V3.8 ARM926 schedules cover original delay-list insertion and task wakeup, including deadline `0xffffffff`, overflow to zero, and tick deferral under suspend/unlock. The SVC handler and real IRQ delivery are outside the replay. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/scheduler-delay-wake-validation.json).

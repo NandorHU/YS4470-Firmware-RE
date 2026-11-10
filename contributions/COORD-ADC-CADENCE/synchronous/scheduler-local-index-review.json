@@ -1,0 +1,116 @@
+{
+  "schema": "ys4470.scheduler-local-index-review.v1",
+  "model": "qwen2.5-coder:14b",
+  "model_digest": "9ec8897f747e246e970bc5cfdda85d22f1123dc2e3d34978a010a75968716849",
+  "checked_lessons_sha256": "7b135d7b5b1e58e68fa7ba4283902106547b7d76fe9736baacb065a3653217c4",
+  "batches": 2,
+  "attempts": 4,
+  "verified": 4,
+  "results": [
+    {
+      "task": "delay-helper-tail-branch",
+      "draft": {
+        "entry": "0x80060fbc",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x80060ff0",
+        "quote": "0x80060ff0 b #0x8000222c",
+        "limitation": "Finite straight address listing. Scheduler state and actual time are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x80060ff0",
+        "assembly": "b #0x8000222c",
+        "bytes": "8d84feea"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "43aae35217518aed26c3434db400920fc9cd05a167ce00d0ee9d7abb5cfc5db7"
+    },
+    {
+      "task": "delay-deadline-store",
+      "draft": {
+        "entry": "0x80042840",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x8004288c",
+        "quote": "str r4, [r0, #4]",
+        "limitation": "Finite straight address listing. Scheduler state and actual time are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x8004288c",
+        "assembly": "str r4, [r0, #4]",
+        "bytes": "044080e5"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "3f848cc3c0b5d8b0fb342f858bd9a52278b79cc6c15ad23e6338c1f4dbecd2ff"
+    },
+    {
+      "task": "tick-wrap-list-pointer-store",
+      "draft": {
+        "entry": "0x80061fa4",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x80061ff8",
+        "quote": "str r1, [r7, #0x34]",
+        "limitation": "Static original code slice. Input scheduler state and elapsed time are outside the packet."
+      },
+      "checked_instruction": {
+        "address": "0x80061ff8",
+        "assembly": "str r1, [r7, #0x34]",
+        "bytes": "341087e5"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "5b326635afc4de7e239cb5873b74111de76c610001021f62a975fa8aaa781533"
+    },
+    {
+      "task": "tick-ready-insertion-call",
+      "draft": {
+        "entry": "0x80061fa4",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x800620c8",
+        "quote": "0x800620c8 bl #0x80060ecc",
+        "limitation": "Static original code slice. Input scheduler state and elapsed time are outside the packet."
+      },
+      "checked_instruction": {
+        "address": "0x800620c8",
+        "assembly": "bl #0x80060ecc",
+        "bytes": "7ffbffeb"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "8246f38b44dd1f3654c9944810d002353c8a4f5fbb276284a279e21af5ae7391"
+    }
+  ],
+  "limit": "Indexing only. Original ARM926 replays supply the dynamic conclusions."
+}

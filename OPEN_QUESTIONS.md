@@ -311,3 +311,7 @@ Test the ordering of the original measurement-task countdown and the UI timer re
 ## 2026-11-10 — KeyTask and Fast CONT refresh ordering
 
 Execute `0x80060fbc` and its original queue/yield paths under known scheduler preconditions. The KeyTask loop supplies argument 50 at `0x80005534`. The KeyTask and timer ordering fixture leaves preemption, clock units and acoustic timing open. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/key-task-fast-cont-order-validation.json).
+
+## 2026-11-10 — Scheduler delays and task wakeup
+
+Run the original interrupt vector and tick branch under controlled interrupt-controller and saved-context fixtures. The static binding at `0x8000232c` loads `0x80061fa4` from `0x800023a8` before the indirect call at `0x80002334`. Clock units and actual device cadence remain open. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/scheduler-delay-wake-validation.json).

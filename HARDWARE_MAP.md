@@ -269,3 +269,7 @@ The original sound gate `0x80006e4c` and PWM path `0x80042d40` set shadow contro
 ## 2026-11-10 — KeyTask and Fast CONT refresh ordering
 
 With an active count of 1, a KeyTask iteration before refresh writes duty zero and the subsequent refresh re-enables the PWM shadow. Refresh first reloads the count so the same KeyTask iteration leaves duty on. The original watchdog helper `0x800085c4` ORs `0x14af` into its register shadow in every tested loop. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/key-task-fast-cont-order-validation.json).
+
+## 2026-11-10 — Scheduler delays and task wakeup
+
+The delay replay executes `svc #0` at `0x8000222c` and intercepts the exception before context switching. The separate original tick helper runs via direct injection or deferred drain. The hardware IRQ source, clock divisor and timing remain unmeasured. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/scheduler-delay-wake-validation.json).

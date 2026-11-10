@@ -389,3 +389,7 @@ Native entry sets UI warmup at `0x805abefc+9` to 1. The first timer callback rai
 ## 2026-11-10 — KeyTask and Fast CONT refresh ordering
 
 The KeyTask loop stores the modeled key sample at `0x805abb9c`, decrements the countdown at `0x805ac714+0x50` when positive, and increments the word at `0x805ac714+0x18`. The sound gate uses a shared countdown store at `0x80006eb8` with incoming values 0 for the tested off path and 3 for the tested on path. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/key-task-fast-cont-order-validation.json).
+
+## 2026-11-10 — Scheduler delays and task wakeup
+
+Scheduler base `0x805abbbc` contains the raw tick at +0x0c, deferred tick count at +0x18, wrap count at +0x20, next current deadline at +0x28, suspend count at +0x30, and current/overflow list pointers at +0x34/+0x38. The original wait helper stores the task deadline at task +4 via `0x8004288c`. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/scheduler-delay-wake-validation.json).
