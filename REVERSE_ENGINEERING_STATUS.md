@@ -411,3 +411,7 @@ Forty factory-binary ARM926 cases link installed IRQ vectors to original Timer0 
 ## 2026-11-10 — Scheduled GaugeCmdTask service and fallback
 
 Twenty-six original ARM926 cases join the GaugeCmdTask loop and real queue to original SVC scheduling and Timer0/UART2 interrupts. They cover an original producer for `0x27`, first and second attempt ACK, full timeout, measurement-first deferral and replacement. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-scheduled-service-validation.json).
+
+## 2026-11-10 — Scheduled long fallback and status waits
+
+Six scheduled ARM926 cases execute three original producer paths across both factory hashes. The extended cases exercise the first status poll after two RX clears and run through final GPIO cleanup. A total of 60,814 controlled Timer0 interrupts validate the requested waits. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-validation.json).

@@ -405,3 +405,7 @@ The original UART2 ISR receives through registered IRQ3 slot `0x805ab950`, incre
 ## 2026-11-10 — Scheduled GaugeCmdTask service and fallback
 
 The original queue is constructed with ten 68-byte entries. The service keeps a deferred 68-byte record at `0x805ac6d0`, controlled by byte `0x805aae8c`. A later deferred record updates that slot before idle dispatch. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-scheduled-service-validation.json).
+
+## 2026-11-10 — Scheduled long fallback and status waits
+
+The IRQ-filled buffer at `0x805b408c` and count at `0x805ab938` are cleared under the original critical sections at `0x80003f24` and `0x80003f44`. The first clear saw three bytes and the second two. The status word at `0x805ab920` reflects the fresh prefix. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-validation.json).

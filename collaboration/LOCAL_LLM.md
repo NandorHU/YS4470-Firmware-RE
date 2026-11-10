@@ -133,3 +133,11 @@ with the checked lessons. All eight drafts completed on the first attempt.
 The [coordinator review](../contributions/COORD-ADC-CADENCE/synchronous/gauge-scheduled-local-index-review.json) checks their addresses, exact
 assembly and original bytes on both factory images. The coordinator ran the
 scheduled queue, IRQ and fallback experiments independently.
+
+## 2026-11-10 — Long fallback instruction index
+
+The pinned Ollama service ran three successive batches of two new
+instruction extracts using the checked lessons. All six drafts completed
+on the first attempt. The [coordinator review](../contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-local-index-review.json)
+checks each address, quote and original bytes on both factory images.
+The dynamic waits and UART behavior come from the original ARM926 replay.

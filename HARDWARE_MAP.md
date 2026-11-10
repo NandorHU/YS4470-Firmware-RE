@@ -285,3 +285,7 @@ The original setup writes Timer0 control 7 and interval 24000. IRQ13 and IRQ3 re
 ## 2026-11-10 — Scheduled GaugeCmdTask service and fallback
 
 The scheduled service replay supplies Timer0 IRQ13 and UART2 IRQ3 through the installed vector. UART2 IRQ fills the original buffer while GaugeCmdTask is asleep. Timer ticks wake the task and return to the polling code. Counter values are software observations. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-scheduled-service-validation.json).
+
+## 2026-11-10 — Scheduled long fallback and status waits
+
+The scheduled status chain runs the original GPIO cleanup operations. The GPIO shadow at `0x01c208c4` returns to `0x80` after the tested sequences. Timer0 and UART2 IRQ events are supplied by the host through the installed vector. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-validation.json).

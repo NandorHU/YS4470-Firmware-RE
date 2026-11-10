@@ -1,0 +1,174 @@
+{
+  "schema": "ys4470.gauge-long-fallback-local-index-review.v1",
+  "model": "qwen2.5-coder:14b",
+  "model_digest": "9ec8897f747e246e970bc5cfdda85d22f1123dc2e3d34978a010a75968716849",
+  "checked_lessons_sha256": "7b135d7b5b1e58e68fa7ba4283902106547b7d76fe9736baacb065a3653217c4",
+  "batches": 3,
+  "attempts": 6,
+  "verified": 6,
+  "results": [
+    {
+      "task": "type-one-first-long-delay",
+      "draft": {
+        "entry": "0x80003dd8",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x80003ebc",
+        "quote": "0x80003ebc bl #0x80060fbc",
+        "limitation": "Finite original address listing. Queue state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x80003ebc",
+        "assembly": "bl #0x80060fbc",
+        "bytes": "3e7401eb"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "fa197b2233a40f90b785fc4184fc9ac7438b6ff3805c44223c9be59d944cde03",
+      "attempts": 1
+    },
+    {
+      "task": "type-zero-wait-entry",
+      "draft": {
+        "entry": "0x80003dd8",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x80004034",
+        "quote": "0x80004034 mov r0, #0xc8",
+        "limitation": "Finite original address listing. Queue state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x80004034",
+        "assembly": "mov r0, #0xc8",
+        "bytes": "c800a0e3"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "dafa061282cf3e67e9df60942790c2ec2e9ed2004f9016d87bde7d1f69075589",
+      "attempts": 1
+    },
+    {
+      "task": "extended-status-delay-literal-load",
+      "draft": {
+        "entry": "0x80003f1c",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x80003f38",
+        "quote": "ldr r0, [pc, #0x128]",
+        "limitation": "Finite original address listing. Queue state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x80003f38",
+        "assembly": "ldr r0, [pc, #0x128]",
+        "bytes": "28019fe5"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "e594e50c00c09fd9d4c82b4a8cb30dbd3e44886f683f6727b6baad8c3cae3c61",
+      "attempts": 1
+    },
+    {
+      "task": "extended-status-second-count-clear",
+      "draft": {
+        "entry": "0x80003f1c",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x80003f44",
+        "quote": "0x80003f44 str r6, [r4]",
+        "limitation": "Finite original address listing. Queue state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x80003f44",
+        "assembly": "str r6, [r4]",
+        "bytes": "006084e5"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "4a93321d7cacb6cc04fb98ec84b4938429c685ef037bbee8c52b32c17e6bbd9a",
+      "attempts": 1
+    },
+    {
+      "task": "extended-28-producer-enqueue",
+      "draft": {
+        "entry": "0x8000e4f4",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x8000e50c",
+        "quote": "0x8000e50c bl #0x80006778",
+        "limitation": "Finite original address listing. Queue state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x8000e50c",
+        "assembly": "bl #0x80006778",
+        "bytes": "99e0ffeb"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "84514b10663da1464d6f09f8bb6392f77b2c5b71ddcab40151f158cc6fa325c1",
+      "attempts": 1
+    },
+    {
+      "task": "extended-29-producer-enqueue",
+      "draft": {
+        "entry": "0x8000e588",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x8000e5a0",
+        "quote": "0x8000e5a0 bl #0x80006778",
+        "limitation": "Finite original address listing. Queue state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x8000e5a0",
+        "assembly": "bl #0x80006778",
+        "bytes": "74e0ffeb"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "085e183311f934c62fc7a4c87d3ebb3de26a7cf1ae5574266c626fd537950465",
+      "attempts": 1
+    }
+  ],
+  "limit": "Instruction indexing only. Original ARM926 replays supply the dynamic conclusions."
+}

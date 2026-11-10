@@ -365,3 +365,7 @@ The original FSM at `0x80004490` consumes the buffer produced by the installed U
 ## 2026-11-10 — Scheduled GaugeCmdTask service and fallback
 
 When a type-3 measurement precedes a type-1 record, the service retains the fallback while the measurement FSM is busy. If another type-1 record is drained before the FSM goes idle, it replaces the deferred record. In the tested cases only the replacement command is sent. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-scheduled-service-validation.json).
+
+## 2026-11-10 — Scheduled long fallback and status waits
+
+The scheduled type-1 status chain clears the original RX buffer twice. Status behind the ACK and status arriving during the 10,000-count wait are removed in the fixtures. The next poll consumes the first two bytes received after the second clear and stores 2 for `a0 02` or 7 for `a1 04`. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-validation.json).

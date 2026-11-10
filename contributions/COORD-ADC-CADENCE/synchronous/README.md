@@ -716,3 +716,38 @@ duration and peer conversion outside the replay.
 ```powershell
 python -B contributions/COORD-ADC-CADENCE/synchronous/trace_gauge_scheduled_service.py
 ```
+
+## Scheduled long fallback and status waits
+
+[Replay evidence](gauge-long-fallback-validation.json) covers three original producer paths per
+factory image. The harness starts at the original producer suffixes
+`0x8000e61c` (type 0), `0x8000e4f4` (type 1, `0x28`) and
+`0x8000e588` (type 1, `0x29`). The original queue, GaugeCmdTask loop,
+SVC selection, Timer0 and UART2 IRQ paths execute. The already verified
+earlier queue-drain calls are outside this slice.
+
+The type-0 case waits 200 applied ticks, sends helper `0x26` frame
+`c0 00 c0`, and accepts the matching byte after the helper's first
+one-count wait. The extended commands wait 600 before helper `0x27`,
+then wait 500 twice before the command frame. Each matching ACK is
+delivered through UART2 IRQ during the first one-count helper wait.
+
+The command ACK carries two premature status bytes in each fixture.
+The critical clear at `0x80003f24` removes all three bytes. A different
+two-byte status packet arrives during the next 10,000-count wait.
+The critical clear at `0x80003f44` removes it. The first status poll,
+at `0x80003f68` after 1,000 additional applied ticks, sees only the
+fresh fixture `a0 02` or `a1 04`. The corresponding status is 2 or 7.
+Helper `0x26`, the 2,000- and 500-count waits and original GPIO cleanup
+complete before the next service sleep. The raw measurement stays at its
+seeded value.
+
+In each nonfinal tick of a wait the other task remains current and the
+selector stays out of the path. At the deadline the original IRQ selects
+GaugeCmdTask, which runs until its next SVC switches back. The six cases
+use 60,814 individually injected Timer0 interrupts. The timer source,
+physical duration and peer behavior remain outside the replay.
+
+```powershell
+python -B contributions/COORD-ADC-CADENCE/synchronous/trace_gauge_long_fallback.py
+```

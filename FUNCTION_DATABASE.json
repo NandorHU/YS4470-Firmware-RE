@@ -279,6 +279,7 @@
       "confidence": "confirmed_bounded_original_idle_service",
       "role": "Service called by GaugeCmdTask; idle path steps measurement FSM then requests sleep(1)",
       "evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/gauge-scheduled-service-validation.json",
         "existing project annotation",
         "contributions/COORD-FUNCTION-PACKETS/validation.json",
@@ -286,6 +287,7 @@
         "contributions/COORD-ADC-CADENCE/admission/validation.json"
       ],
       "relationships": [
+        "The scheduled long replay connects three original producer suffixes to real queue admission and the original type-0 and extended type-1 waits.",
         "The post-startup scheduled loop uses the real queue and real one-count SVC wait. It processes measurement IRQ input and dispatches the pending fallback only after the FSM becomes idle.",
         "GaugeCmdTask0x80003dbc calls service at0x80003dd0",
         "idle original service calls FSM0x80004490 at0x80005d04; tail0x80005d14 requests sleep(1) through0x80060fbc",
@@ -1563,6 +1565,7 @@
       "role": "Fallback control-record handler reached by GaugeCmdTask service after idle gating. The tested type-0/1 producer paths and host-supplied type-6 records execute the original handler body.",
       "name_status": "Analyst role label, not recovered vendor symbol",
       "relationships": [
+        "With real SVC and IRQ wake, type 0 waits 200 before helper 0x26. Extended commands 0x28/0x29 run two critical RX clears and recognize fresh status 2/7 after the post-clear wait.",
         "Under original queue and IRQ scheduling, a newer type-1 record replaces the deferred record while the FSM is busy. The original producer at 0x8000e7c4 reaches scheduled command 0x27.",
         "Original service0x80005d00 conditionally calls0x80003dd8 after InputDispatcher0x80004390 returns0.",
         "Seven BL calls to synchronous helper0x80005f14 plus tail branch0x8000404c inside the indexed handler CFG.",
@@ -1575,6 +1578,7 @@
         "Original queue order determines whether type-3/4 starts the measurement FSM before a deferred type-6 record or is suppressed by the pending flag."
       ],
       "evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/gauge-scheduled-service-validation.json",
         "contributions/COORD-ADC-CADENCE/admission/validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/deferred-validation.json",
@@ -1598,6 +1602,7 @@
       "role": "Synchronous descriptor sender and matching-header ACK wait with one retry. Tested startup IDs0x09/0x13 and producer-bound deferred IDs0x09/0x0c/0x0f/0x19/0x26..0x2b.",
       "name_status": "Analyst role label, not vendor symbol; legacy candidate database ID retained",
       "relationships": [
+        "Original long-delay callers and real UART2 IRQ deliver the matching bytes for helper 0x27, 0x28/0x29 and final 0x26 in the tested first-attempt status schedules.",
         "Original scheduled tests for 0x2a and 0x2b accept first-window or retry-window UART2 IRQ bytes. With no reply, two 500-count waits and two sends end in a zero return.",
         "Original count pointer is loaded from literal0x80006090 ->0x805ab938.",
         "Known startup callers0x80003dc4/0x80003dcc precede GaugeCmdTask service loop.",
@@ -1611,6 +1616,7 @@
         "The tested general type-1 caller chain proceeds after any helper return. Each absent ACK retries within its own helper call."
       ],
       "evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/gauge-scheduled-service-validation.json",
         "contributions/COORD-ADC-CADENCE/admission/synchronous-static.json",
         "contributions/COORD-ADC-CADENCE/admission/validation.json",

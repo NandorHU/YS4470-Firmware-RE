@@ -327,3 +327,7 @@ Drive the original queue/service loop as a scheduled task so the original wake/I
 ## 2026-11-10 — Scheduled GaugeCmdTask service and fallback
 
 Continue through the original longer-delay fallback branches, including the 200-count type-0 wait or the 600/500-count type-1 path. Bind reachable producers and track which UART replies are consumed. External peer conversion and physical latency remain open. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-scheduled-service-validation.json).
+
+## 2026-11-10 — Scheduled long fallback and status waits
+
+Run calibration timer `0x8005da88` against status written in the same scheduled execution, including while the status wait is in progress. The existing UI evidence uses explicit status snapshots. Peer conversion, later status schedules and physical timing remain separate questions. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-validation.json).
