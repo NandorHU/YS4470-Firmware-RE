@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 33,
+  "revision": 34,
   "updated": "2026-11-10",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,7 +295,7 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Join original Timer0 startup setup at 0x800617ec to installed low vectors and the scheduler context replay. Exercise the tick route and ordinary INTC vector dispatch under distinct controlled pending states. Keep oscillator and physical timing open.",
+      "next_action": "Run the original GaugeCmdTask queue/service loop using the validated IRQ ingress and scheduler delay. Follow the remaining reachable fallback 0x80003dd8 producers and helper 0x80005f14 under actual queue and idle preconditions. Keep peer conversion, interrupt arbitration and physical timing open.",
       "last_verified_result": {
         "profile_cases": 64,
         "transition_cases": 64,
@@ -349,7 +349,10 @@
         "original_vector_install_cases": 4,
         "original_irq_context_cases": 24,
         "original_svc_irq_delay_round_trips": 16,
-        "local_scheduler_irq_index_drafts_verified": 6
+        "local_scheduler_irq_index_drafts_verified": 6,
+        "original_timer0_uart2_irq_route_cases": 24,
+        "original_irq_fed_measurement_transport_cases": 16,
+        "local_timer0_uart2_index_drafts_verified": 6
       },
       "result_evidence": [
         "contributions/COORD-ADC-CADENCE/profile-validation.json",
@@ -379,7 +382,9 @@
         "contributions/COORD-ADC-CADENCE/synchronous/scheduler-delay-wake-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/scheduler-local-index-review.json",
         "contributions/COORD-ADC-CADENCE/synchronous/scheduler-irq-context-validation.json",
-        "contributions/COORD-ADC-CADENCE/synchronous/scheduler-irq-local-index-review.json"
+        "contributions/COORD-ADC-CADENCE/synchronous/scheduler-irq-local-index-review.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/timer0-uart2-irq-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/timer0-uart2-local-index-review.json"
       ]
     },
     {

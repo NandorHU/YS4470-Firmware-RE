@@ -391,3 +391,7 @@ Delay helper `0x80060fbc` takes the original KeyTask argument 50 and GaugeCmdTas
 ## 2026-11-10 — Installed vectors and scheduler context
 
 The vector install slice at `0x80000030` clears CP15 control bit 13 and copies the template from `0x800023b0`. Installed IRQ and SVC slots lead to handlers `0x800022c0` and `0x80002234`. Both execute the original task-context path, with selection through `0x800612f8` when requested. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/scheduler-irq-context-validation.json).
+
+## 2026-11-10 — Timer0 and UART2 through the installed IRQ route
+
+The linked replay starts at original Timer0 setup `0x800617ec` and UART2 registration tail `0x80006d5c`. IRQ bit 13 selects tick processing in `0x800022c0`. With bit 13 clear, the ordinary vector dispatcher `0x80005260` selects the registered UART2 ISR `0x800073bc` and returns to the interrupted task. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/timer0-uart2-irq-validation.json).

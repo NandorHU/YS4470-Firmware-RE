@@ -403,3 +403,7 @@ Fifty V3.6/V3.8 ARM926 schedules cover original delay-list insertion and task wa
 ## 2026-11-10 — Installed vectors and scheduler context
 
 Forty-four ARM926 schedules across the factory binaries cover low-vector installation, tick IRQ save and return, scheduler selection, and original delay/SVC-to-IRQ round trips. The emulator seeds exception entry and register shadows. No physical timing follows from these schedules. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/scheduler-irq-context-validation.json).
+
+## 2026-11-10 — Timer0 and UART2 through the installed IRQ route
+
+Forty factory-binary ARM926 cases link installed IRQ vectors to original Timer0 startup, UART2 registration, RX buffer, and the original measurement builder/FSM. Timer and UART input events are controlled fixtures. Both factory images agree. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/timer0-uart2-irq-validation.json).

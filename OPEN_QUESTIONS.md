@@ -319,3 +319,7 @@ Run the original interrupt vector and tick branch under controlled interrupt-con
 ## 2026-11-10 — Installed vectors and scheduler context
 
 Join the original Timer0 startup configuration to the installed vectors and pending-bit routing in one replay. Bind the ordinary IRQ vector handler and Timer0 tick branch under distinct pending states. A 24 MHz source and physical interrupt timing still require independent evidence. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/scheduler-irq-context-validation.json).
+
+## 2026-11-10 — Timer0 and UART2 through the installed IRQ route
+
+Drive the original queue/service loop as a scheduled task so the original wake/IRQ paths replace direct host FSM calls. Continue tracing fallback `0x80003dd8` and helper `0x80005f14` with proven producers and idle conditions. Mixed-pending hardware arbitration, peer internals and physical timing remain open. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/timer0-uart2-irq-validation.json).

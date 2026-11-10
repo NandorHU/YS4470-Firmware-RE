@@ -1,0 +1,174 @@
+{
+  "schema": "ys4470.timer0-uart2-local-index-review.v1",
+  "model": "qwen2.5-coder:14b",
+  "model_digest": "9ec8897f747e246e970bc5cfdda85d22f1123dc2e3d34978a010a75968716849",
+  "checked_lessons_sha256": "7b135d7b5b1e58e68fa7ba4283902106547b7d76fe9736baacb065a3653217c4",
+  "batches": 3,
+  "attempts": 6,
+  "verified": 6,
+  "results": [
+    {
+      "task": "timer-irq-number",
+      "draft": {
+        "entry": "0x800617ec",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x80061804",
+        "quote": "0x80061804 mov r1, #0xd",
+        "limitation": "Finite original address listing. Runtime state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x80061804",
+        "assembly": "mov r1, #0xd",
+        "bytes": "0d10a0e3"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "7a4886247dd25b1d4ff8000f720de659959cdee7f05396af262e4026c8c06769",
+      "attempts": 1
+    },
+    {
+      "task": "timer-register-handler-call",
+      "draft": {
+        "entry": "0x800617ec",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x8006180c",
+        "quote": "0x8006180c bl #0x80005274",
+        "limitation": "Finite original address listing. Runtime state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x8006180c",
+        "assembly": "bl #0x80005274",
+        "bytes": "988efeeb"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "43a224da3f59c26419c60abe04eb2cd021ab555829cab61dd4404558b430029b",
+      "attempts": 1
+    },
+    {
+      "task": "uart2-irq-registration-tail",
+      "draft": {
+        "entry": "0x80006d5c",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x80006d6c",
+        "quote": "0x80006d6c b #0x80005274",
+        "limitation": "Finite original address listing. Runtime state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x80006d6c",
+        "assembly": "b #0x80005274",
+        "bytes": "40f9ffea"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "2db73ebd573b882b5a23c81aee774a969ca6cf453d2abe29a00dfd4481a0edd8",
+      "attempts": 1
+    },
+    {
+      "task": "uart2-rx-byte-store",
+      "draft": {
+        "entry": "0x800073bc",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x8000740c",
+        "quote": "0x8000740c strb r1, [r3]",
+        "limitation": "Finite original address listing. Runtime state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x8000740c",
+        "assembly": "strb r1, [r3]",
+        "bytes": "0010c3e5"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "f5139a4128b8747aaed706282bc4d02d9d040387fac5294f39621b6550c645c0",
+      "attempts": 1
+    },
+    {
+      "task": "fsm-parser-first-byte-load",
+      "draft": {
+        "entry": "0x80004738",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x80004738",
+        "quote": "0x80004738 ldrb r4, [ip, #1]",
+        "limitation": "Finite original address listing. Runtime state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x80004738",
+        "assembly": "ldrb r4, [ip, #1]",
+        "bytes": "0140dce5"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "7a75661e37c4137340861dfe2164f368fccc15bafbccfed428d2ef27e8b749e3",
+      "attempts": 1
+    },
+    {
+      "task": "fsm-parser-shared-exit-branch",
+      "draft": {
+        "entry": "0x80004738",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x800047bc",
+        "quote": "0x800047bc b #0x80004518",
+        "limitation": "Finite original address listing. Runtime state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x800047bc",
+        "assembly": "b #0x80004518",
+        "bytes": "55ffffea"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "278a9be3e7165ab4601e728fe0cabf0932f0a74a58d7c089f5811b9e9ebbc2dc",
+      "attempts": 1
+    }
+  ],
+  "limit": "Address extraction only. The original ARM926 experiments supply the dynamic conclusions."
+}

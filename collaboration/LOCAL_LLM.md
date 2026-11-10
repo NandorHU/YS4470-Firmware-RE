@@ -117,3 +117,11 @@ instructions per batch. All six drafts completed on their first attempt.
 The [coordinator review](../contributions/COORD-ADC-CADENCE/synchronous/scheduler-irq-local-index-review.json) confirms exact addresses,
 bytes and decoded instructions against both factory images. The coordinator
 ran the original context-switch and vector-install tests independently.
+
+## 2026-11-10 — Timer0, UART2 and parser instruction index
+
+The pinned local model ran three new two-instruction batches with the
+checked lessons. All six drafts completed on their first attempt. The
+[coordinator review](../contributions/COORD-ADC-CADENCE/synchronous/timer0-uart2-local-index-review.json) pins addresses, quotes and
+original bytes for both firmware versions. The original ARM926 tests
+establish the linked IRQ and parser behavior.

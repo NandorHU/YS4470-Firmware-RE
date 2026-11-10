@@ -70,3 +70,11 @@ original tick and task selector, including SVC-to-IRQ wait and resume.
 The emulator supplies exception entry state and INTC/timer shadows. The
 earlier bridge proof remains the coverage for the ordinary vector-dispatch
 route.
+
+## Timer0 and UART2 routing with the original parser
+
+The [combined replay](../contributions/COORD-ADC-CADENCE/synchronous/timer0-uart2-irq-validation.json) runs Timer0 setup and UART2 registration
+in the same emulator that executes the installed IRQ vector. A controlled
+mixed-pending fixture takes the tick route without reading the UART vector
+latch. The separate UART route runs the original ISR and the linked FSM
+cases consume its buffer. Peripheral state and event timing are fixtures.
