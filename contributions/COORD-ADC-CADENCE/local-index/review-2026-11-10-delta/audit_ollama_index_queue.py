@@ -51,7 +51,7 @@ def main():
     parser.add_argument("--state", type=Path, required=True)
     parser.add_argument("--repo", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
-    parser.add_argument("--baseline", type=Path)
+    parser.add_argument("--baseline", type=Path, action="append", default=[])
     args = parser.parse_args()
     state, repo, output = args.state.resolve(), args.repo.resolve(), args.out.resolve()
     output.mkdir(parents=True, exist_ok=False)
@@ -65,15 +65,16 @@ def main():
         images[item["version"]] = raw
     assert images.keys() == ORIGINALS.keys()
     previous = set()
-    if args.baseline is not None:
-        baseline = json.loads((args.baseline / "review.json").read_bytes())
+    for snapshot in args.baseline:
+        old_count = len(previous)
+        baseline = json.loads((snapshot / "review.json").read_bytes())
         assert baseline["firmware_sha256"] == ORIGINALS
         previous.update(row["address"] for row in baseline["excluded"])
         for chunk in baseline["exported_chunks"]:
-            data = (args.baseline / chunk["path"]).read_bytes()
+            data = (snapshot / chunk["path"]).read_bytes()
             assert sha(data) == chunk["sha256"]
             previous.update(line.split("\t", 1)[0] for line in data.decode().splitlines()[1:])
-        assert len(previous) == baseline["reviewed_drafts"]
+        assert len(previous) - old_count == baseline["reviewed_drafts"]
 
     arm = Cs(CS_ARCH_ARM, CS_MODE_ARM)
     seen, accepted, rejected, retry_counts = set(), [], [], Counter()

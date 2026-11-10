@@ -181,3 +181,11 @@ received 68 new direct-suffix addresses, eight additional executed
 prefix addresses, and 67 addresses from bounded field-signature
 contexts. All catalogs were checked against the originals and
 deduplicated before they entered the existing queue.
+
+## 2026-11-10 — GUI field and glyph bitmap work
+
+The coordinator checked [201 additional instruction extracts](../contributions/COORD-ADC-CADENCE/local-index/review-2026-11-10-gui-field/README.md),
+including all 67 field-context addresses and the 134 addresses from the
+new GUI constructor catalog. The next batch has 93 verified ARM
+addresses from the original glyph lookup. Each catalog was checked
+against both originals and deduplicated before entering the resident queue.

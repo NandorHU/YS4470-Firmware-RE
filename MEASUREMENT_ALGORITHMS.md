@@ -389,3 +389,7 @@ A full queue rejects the original producer's type-3 zero-wait record immediately
 ## 2026-11-10 — Direct control producers and result-block writer
 
 The original suffix at `0x8005d118` loads the local state byte and sends type 4 for `0x22` or type 3 for `0x21` in the tested cases, with both argument bytes zero. Type 3 supplies zero wait to the queue API. Other tested types supply ten counts. [Factory hashes, original bytes and ARM926 replay](contributions/COORD-ADC-CADENCE/synchronous/control-producer-suffix-replay.json).
+
+## 2026-11-10 — GUI field provenance at 0x80046548
+
+The bounded initialization path preserves the control queue and its pending records while setting up GUI labels. The `0x80046548` signature is excluded from control-record producer candidates for this path. [Original replay, instruction bytes and firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/gui-field-provenance.json).

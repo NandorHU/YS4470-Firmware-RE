@@ -298,3 +298,7 @@ Resolve executable provenance and indirect dataflow for remaining queue-write ca
 ## 2026-11-10 — Direct control producers and result-block writer
 
 Trace the `r4` object at `0x80046548` and its stored value from `0x80030ad0`, then follow register-indirect and synthesized queue-handle candidates. Keep the original result-block stores at `0x8005d35c` outside the control-writer candidate set for the tested base provenance. [Factory hashes, original bytes and ARM926 replay](contributions/COORD-ADC-CADENCE/synchronous/control-producer-suffix-replay.json).
+
+## 2026-11-10 — GUI field provenance at 0x80046548
+
+Trace register-indirect and synthesized control-queue aliases and the native type-6 producer. The GUI field, result-block field and glyph bytes at `0x8009ef10` now have bounded provenance. [Original replay, instruction bytes and firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/gui-field-provenance.json).

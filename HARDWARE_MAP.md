@@ -309,3 +309,7 @@ Injected Timer0 interrupts advance the original scheduler to the blocked send de
 ## 2026-11-10 — Direct control producers and result-block writer
 
 The caller-suffix replay starts with a modeled allocator, empty queue and idle scheduler. All 66 sends return without changing the scheduler count. The result-block boundary cases exercise ARM RAM stores without an injected interrupt or peripheral transaction. [Factory hashes, original bytes and ARM926 replay](contributions/COORD-ADC-CADENCE/synchronous/control-producer-suffix-replay.json).
+
+## 2026-11-10 — GUI field provenance at 0x80046548
+
+The original GUI initializer and label routines executed against modeled allocation, display roots, containers and layout services. The test verifies RAM object and text state in ARM926 emulation. The factory font accessor also returns the verified glyph byte range in ROM. [Original replay, instruction bytes and firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/gui-field-provenance.json).

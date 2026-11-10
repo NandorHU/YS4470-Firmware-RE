@@ -2,6 +2,15 @@
 
 ## Current checkpoint
 
+The [GUI field replay](synchronous/gui-field-provenance.json) follows the original
+initializer from `0x80057948`. In four cases, the `0x80046548` store
+holds a constructed label pointer. The control handle and the empty
+or populated queue remain byte-identical. Eight original glyph lookups
+also locate `0x8009ef10` within the U+007D bitmap. Next trace indirect
+control-queue aliases and native type-6 provenance.
+
+## Previous direct-producer checkpoint
+
 The [direct caller replay](synchronous/control-producer-suffix-replay.json) checks 31 native sites
 across both original images. All 66 empty-queue sends copy one 68-byte
 record. Eight additional cases resolve the `0x8005d35c` signature to
