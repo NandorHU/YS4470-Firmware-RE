@@ -1,0 +1,119 @@
+{
+  "application_sha256": "e8c00750df2fc465b182c60d2c32dd8cd87cafc4a5cbff4f7e6abbfaec48c76a",
+  "controls": {
+    "positions": [
+      [
+        264,
+        77
+      ],
+      [
+        312,
+        70
+      ],
+      [
+        350,
+        77
+      ],
+      [
+        398,
+        70
+      ]
+    ],
+    "levels": [
+      [
+        40,
+        3633
+      ],
+      [
+        30,
+        2725
+      ],
+      [
+        20,
+        1816
+      ],
+      [
+        10,
+        908
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        10,
+        908
+      ],
+      [
+        20,
+        1816
+      ]
+    ],
+    "original_beta_and_profile_geometry_preserved": true,
+    "original_indirect_dispatches": 21,
+    "real_pwm_updates": 10
+  },
+  "font": {
+    "decoded_bitmap_sha256": "28eb1730e6aba9c6fcb6da0d135643d0498f6813cba4fed11be042c95911b3d6",
+    "lookup_cases": 95,
+    "allocation_bytes": 9612,
+    "truncated_bitmap_rejected": true,
+    "volume_label_glyph_advances_px": {
+      "Volume": 32,
+      "100%": 26
+    }
+  },
+  "profiles": [
+    {
+      "profile": 0,
+      "scenario": "stable-low",
+      "events": 25
+    },
+    {
+      "profile": 0,
+      "scenario": "contact-open",
+      "events": 26
+    },
+    {
+      "profile": 1,
+      "scenario": "stable-low",
+      "events": 25
+    },
+    {
+      "profile": 1,
+      "scenario": "contact-open",
+      "events": 26
+    },
+    {
+      "profile": 2,
+      "scenario": "stable-low",
+      "events": 56
+    },
+    {
+      "profile": 2,
+      "scenario": "contact-open",
+      "events": 57
+    },
+    {
+      "profile": 3,
+      "scenario": "stable-low",
+      "events": 70
+    },
+    {
+      "profile": 3,
+      "scenario": "contact-open",
+      "events": 71
+    }
+  ],
+  "models": [
+    "LVGL layout/text leaves",
+    "allocation",
+    "UART and RTOS schedule in the profile replay",
+    "PWM registers as RAM shadows"
+  ],
+  "physical_device_operations": 0
+}

@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 44,
+  "revision": 45,
   "updated": "2026-11-10",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -600,6 +600,39 @@
       "release_url": "https://github.com/NandorHU/YS4470-Firmware-RE/releases/tag/installer-v1.1.0-beta.2",
       "source_commit": "c12fdef3fcb56c1f6b504ac1330f02965e6bc727",
       "workflow_run": 42499845896
+    },
+    {
+      "id": "COORD-DIODE-VOLUME",
+      "title": "Add independent diode volume to the E2 GUI",
+      "status": "completed",
+      "owner": "codex-ys4470-20261109-01a1c110",
+      "branch": "re/2026-11-04-pyghidra-fel",
+      "base_commit": "aef50d8bf9caf6087e663cadff218ca9a00eaa02",
+      "inputs": [
+        "Hash-pinned factory V3.8 and public E2 edit chain",
+        "Owner-approved Volume − level + arrangement beside Beta Diode"
+      ],
+      "scope": "Build and validate an offline E2 application variant. Preserve the original E2 controls and unrelated sound behavior.",
+      "allowed_paths": [
+        "contributions/COORD-DIODE-VOLUME/**"
+      ],
+      "acceptance": [
+        "Use independent 0–100 volume with 10-point steps and mute, visible only with the diode header controls.",
+        "Verify original ARM event registration and PWM update, unaffected key tones, and E2 profile regressions."
+      ],
+      "completed_on": "2026-11-10",
+      "result_evidence": [
+        "contributions/COORD-DIODE-VOLUME/build-receipt.json",
+        "contributions/COORD-DIODE-VOLUME/validation.json"
+      ],
+      "validation": {
+        "original_indirect_dispatches": 21,
+        "original_pwm_updates": 10,
+        "original_font_bitmap_lookups": 95,
+        "profile_scenarios": 8,
+        "physical_device_operations": 0
+      },
+      "candidate_application_sha256": "e8c00750df2fc465b182c60d2c32dd8cd87cafc4a5cbff4f7e6abbfaec48c76a"
     }
   ],
   "handoff_prepared": {
