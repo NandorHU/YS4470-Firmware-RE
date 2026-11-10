@@ -411,3 +411,7 @@ The timer constructor at `0x8004c4ec` and runner `0x8004092c` execute in the sam
 ## 2026-11-10 — Calibration reset to fresh measurement
 
 Original stores `0x80046cb0` and `0x80046cb8` clear the calibration flag and status. At the next timer deadline, callback `0x8005da88` takes the original type-3 enqueue at `0x8005dc38`. [Shared ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).
+
+## 2026-11-10 — Calibration buttons and pending queue
+
+Both complete original calibration button callbacks run from `0x8000e4c8` and `0x8000e55c`. They reset the timer period, call the original queue drain at `0x80003d74`, enqueue a type-1 record, and format their mode labels. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-button-queue-validation.json).

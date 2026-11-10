@@ -339,3 +339,7 @@ After the original calibration reset stores, exercise the zero-status and zero-f
 ## 2026-11-10 — Calibration reset to fresh measurement
 
 Exercise the full original calibration button callbacks at `0x8000e4c8` and `0x8000e55c` through their original queue drain when a measurement or another calibration request is already queued. Preserve separate external peer and physical timing questions. [Shared ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).
+
+## 2026-11-10 — Calibration buttons and pending queue
+
+Trace indirect producers and alternate queue primitives for the still-host-supplied type-6 record. The direct producer index at `0x800067b8` alone cannot establish native type-6 reachability. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-button-queue-validation.json).

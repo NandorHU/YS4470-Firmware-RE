@@ -595,3 +595,7 @@ Executed four shared-memory status/UI schedules with 60 original callbacks and 6
 ## 2026-11-10 — Calibration reset to fresh measurement
 
 Ran four reset-to-measurement continuations on the two factory hashes. The original reset slice clears both words. The next original due callback, at 15,300 or 15,302 depending on the timer phase, enqueues type 3. GaugeCmdTask sends `60 60`; the original UART2 IRQ and parser consume `60 45 23 01 03` and publish 74565/3 by counter 15,304 or 15,306. The pre-request `.OL` display uses a seeded sentinel. [Shared ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).
+
+## 2026-11-10 — Calibration buttons and pending queue
+
+Executed 12 original calibration button and queue cases on both factory hashes. With a drain buffer, the button discards queued measurement and control records before its new calibration request. During active measurement it drains the queued control, leaves the in-flight request intact and defers calibration until the matching reply publishes. A forced null drain allocation leaves both records in the queue and appends the new request when space remains. The linked queued cases display original statuses 2 or 7. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-button-queue-validation.json).

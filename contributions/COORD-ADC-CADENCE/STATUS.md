@@ -2,6 +2,13 @@
 
 ## Current checkpoint
 
+The [calibration button replay](synchronous/calibration-button-queue-validation.json) covers 12 cases
+across both factory images. It distinguishes queued work, active
+measurement and drain allocation failure. Next resolve remaining
+indirect producers for the type-6 fallback.
+
+## Previous calibration reset checkpoint
+
 The [calibration reset replay](synchronous/calibration-ui-live-validation.json)
 follows the original reset into a real type-3 request and new IRQ-fed
 publication in four schedules. Next exercise full button callbacks and
