@@ -399,3 +399,7 @@ The linked replay starts at original Timer0 setup `0x800617ec` and UART2 registr
 ## 2026-11-10 — Scheduled GaugeCmdTask service and fallback
 
 The original GaugeCmdTask post-startup loop at `0x80003dd0` reaches service `0x80005b6c`, real queue receive, fallback `0x80003dd8` and helper `0x80005f14`. The original SVC/tick path schedules each bounded wait. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-scheduled-service-validation.json).
+
+## 2026-11-10 — Scheduled long fallback and status waits
+
+The original producers at `0x8000e61c`, `0x8000e4f4`, and `0x8000e588` run through the real GaugeCmdTask queue to fallback `0x80003dd8`. The scheduled type-0 case waits 200 before helper `0x26`. Type-1 cases `0x28` and `0x29` execute the status path through the first post-clear poll and cleanup. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-validation.json).

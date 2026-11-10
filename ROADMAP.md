@@ -274,3 +274,7 @@ Reuse the linked IRQ ingress to run a bounded original service-loop schedule wit
 ## 2026-11-10 — Scheduled GaugeCmdTask service and fallback
 
 Extend the scheduled harness to longer fallback waits and trace original producers for the status command chains. Preserve the distinction between scheduler counts, protocol progression and physical time. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-scheduled-service-validation.json).
+
+## 2026-11-10 — Scheduled long fallback and status waits
+
+Link the scheduled status path to the original calibration UI timer without copying status snapshots between emulators. Check the waiting label and selected result before and after the final fallback cleanup. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-validation.json).

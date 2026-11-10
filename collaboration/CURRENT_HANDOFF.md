@@ -10,9 +10,10 @@ Beta.2 Release API currently404; retained historical installer is documented.
 The owner confirmed the old daily automation was stopped. The new coordinator
 `codex-ys4470-20261109-01a1c110` is recorded in upstream registry revision 19.
 
-Latest analysis: [scheduled GaugeCmdTask service and fallback](../contributions/COORD-ADC-CADENCE/synchronous/README.md#scheduled-gaugecmdtask-service-and-fallback)
-runs the original service loop, real queue and fallback under SVC and IRQ.
-Next follow original producers into the longer-delay type-0/1 chains.
+Latest analysis: [scheduled long fallback and status waits](../contributions/COORD-ADC-CADENCE/synchronous/README.md#scheduled-long-fallback-and-status-waits)
+executes original type-0 and type-1 producers through scheduled IRQ waits,
+two RX clears and the first fresh status poll. Next link the resulting live
+status to the original calibration timer callback in the same replay.
 
 ---
 

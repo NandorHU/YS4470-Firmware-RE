@@ -2,6 +2,13 @@
 
 ## Current checkpoint
 
+The [scheduled long fallback replay](synchronous/gauge-long-fallback-validation.json) covers six
+cases and 60,814 injected timer interrupts across both factory images.
+The extended commands clear premature status twice and process the
+post-clear reply at the first poll. Next link status to the live UI timer.
+
+## Previous GaugeCmdTask checkpoint
+
 The [scheduled GaugeCmdTask replay](synchronous/gauge-scheduled-service-validation.json) runs 26
 cases with the original queue and loop, first and second ACK attempts,
 measurement deferral, and deferred replacement. Next trace the
