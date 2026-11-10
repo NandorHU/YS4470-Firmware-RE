@@ -632,3 +632,11 @@ byte-identical reports. [Factory hashes and original traces](contributions/COORD
 
 Checked [220 additional Ollama instruction rows](contributions/COORD-ADC-CADENCE/local-index/review-2026-11-10-control-events/review.json)
 against both originals and their frozen requests.
+
+## 2026-11-10 — E2 diode volume candidate
+
+The offline V3.8 E2 candidate adds separate diode volume beside Beta Diode.
+ARM926 replay checks original button registration and event dispatch,
+live PWM updates including mute, bitmap restoration, and the existing
+four profiles in eight modeled scenarios. See the
+[reproducible build and validation](contributions/COORD-DIODE-VOLUME/README.md).
