@@ -323,3 +323,7 @@ Join the original Timer0 startup configuration to the installed vectors and pend
 ## 2026-11-10 — Timer0 and UART2 through the installed IRQ route
 
 Drive the original queue/service loop as a scheduled task so the original wake/IRQ paths replace direct host FSM calls. Continue tracing fallback `0x80003dd8` and helper `0x80005f14` with proven producers and idle conditions. Mixed-pending hardware arbitration, peer internals and physical timing remain open. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/timer0-uart2-irq-validation.json).
+
+## 2026-11-10 — Scheduled GaugeCmdTask service and fallback
+
+Continue through the original longer-delay fallback branches, including the 200-count type-0 wait or the 600/500-count type-1 path. Bind reachable producers and track which UART replies are consumed. External peer conversion and physical latency remain open. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-scheduled-service-validation.json).

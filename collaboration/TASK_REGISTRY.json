@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 34,
+  "revision": 35,
   "updated": "2026-11-10",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,7 +295,7 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Run the original GaugeCmdTask queue/service loop using the validated IRQ ingress and scheduler delay. Follow the remaining reachable fallback 0x80003dd8 producers and helper 0x80005f14 under actual queue and idle preconditions. Keep peer conversion, interrupt arbitration and physical timing open.",
+      "next_action": "Extend the scheduled GaugeCmdTask harness to original longer-delay type-0/1 fallback producers, including the 200-count type-0 wait and the 600/500-count type-1 status chain. Use original queue admission and UART IRQ bytes. Keep external peer conversion and physical timing open.",
       "last_verified_result": {
         "profile_cases": 64,
         "transition_cases": 64,
@@ -352,7 +352,10 @@
         "local_scheduler_irq_index_drafts_verified": 6,
         "original_timer0_uart2_irq_route_cases": 24,
         "original_irq_fed_measurement_transport_cases": 16,
-        "local_timer0_uart2_index_drafts_verified": 6
+        "local_timer0_uart2_index_drafts_verified": 6,
+        "original_gauge_scheduled_service_cases": 26,
+        "original_gauge_scheduled_native_producer_cases": 2,
+        "local_gauge_scheduled_index_drafts_verified": 8
       },
       "result_evidence": [
         "contributions/COORD-ADC-CADENCE/profile-validation.json",
@@ -384,7 +387,9 @@
         "contributions/COORD-ADC-CADENCE/synchronous/scheduler-irq-context-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/scheduler-irq-local-index-review.json",
         "contributions/COORD-ADC-CADENCE/synchronous/timer0-uart2-irq-validation.json",
-        "contributions/COORD-ADC-CADENCE/synchronous/timer0-uart2-local-index-review.json"
+        "contributions/COORD-ADC-CADENCE/synchronous/timer0-uart2-local-index-review.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/gauge-scheduled-service-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/gauge-scheduled-local-index-review.json"
       ]
     },
     {

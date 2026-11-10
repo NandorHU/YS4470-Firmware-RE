@@ -2,6 +2,13 @@
 
 ## Current checkpoint
 
+The [scheduled GaugeCmdTask replay](synchronous/gauge-scheduled-service-validation.json) runs 26
+cases with the original queue and loop, first and second ACK attempts,
+measurement deferral, and deferred replacement. Next trace the
+longer-delay type-0/1 fallback chains from original producers.
+
+## Previous Timer0 and UART2 checkpoint
+
 The [Timer0 and UART2 replay](synchronous/timer0-uart2-irq-validation.json) covers 40 schedules.
 Original IRQ3 receive feeds the original measurement FSM while separately
 injected IRQ13 ticks advance the scheduler. Next integrate the original

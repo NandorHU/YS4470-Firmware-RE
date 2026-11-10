@@ -407,3 +407,7 @@ Forty-four ARM926 schedules across the factory binaries cover low-vector install
 ## 2026-11-10 — Timer0 and UART2 through the installed IRQ route
 
 Forty factory-binary ARM926 cases link installed IRQ vectors to original Timer0 startup, UART2 registration, RX buffer, and the original measurement builder/FSM. Timer and UART input events are controlled fixtures. Both factory images agree. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/timer0-uart2-irq-validation.json).
+
+## 2026-11-10 — Scheduled GaugeCmdTask service and fallback
+
+Twenty-six original ARM926 cases join the GaugeCmdTask loop and real queue to original SVC scheduling and Timer0/UART2 interrupts. They cover an original producer for `0x27`, first and second attempt ACK, full timeout, measurement-first deferral and replacement. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-scheduled-service-validation.json).

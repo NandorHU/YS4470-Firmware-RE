@@ -361,3 +361,7 @@ Original SVC handling makes the other ready task current after the `GaugeCmdTask
 ## 2026-11-10 — Timer0 and UART2 through the installed IRQ route
 
 The original FSM at `0x80004490` consumes the buffer produced by the installed UART2 IRQ path. Valid `0x1d` and `0x1b` replies publish raw 74565 with selectors 6 and 0, respectively, or consume discard 1 without publishing. The wrong-header frame triggers a retry and the four-byte prefix remains pending in the bounded schedule. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/timer0-uart2-irq-validation.json).
+
+## 2026-11-10 — Scheduled GaugeCmdTask service and fallback
+
+When a type-3 measurement precedes a type-1 record, the service retains the fallback while the measurement FSM is busy. If another type-1 record is drained before the FSM goes idle, it replaces the deferred record. In the tested cases only the replacement command is sent. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-scheduled-service-validation.json).

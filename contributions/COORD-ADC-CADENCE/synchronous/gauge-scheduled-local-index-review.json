@@ -1,0 +1,228 @@
+{
+  "schema": "ys4470.gauge-scheduled-local-index-review.v1",
+  "model": "qwen2.5-coder:14b",
+  "model_digest": "9ec8897f747e246e970bc5cfdda85d22f1123dc2e3d34978a010a75968716849",
+  "checked_lessons_sha256": "7b135d7b5b1e58e68fa7ba4283902106547b7d76fe9736baacb065a3653217c4",
+  "batches": 4,
+  "attempts": 8,
+  "verified": 8,
+  "results": [
+    {
+      "task": "gauge-loop-service-call",
+      "draft": {
+        "entry": "0x80003dbc",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x80003dd0",
+        "quote": "0x80003dd0 bl #0x80005b6c",
+        "limitation": "Finite original address listing. Queue state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x80003dd0",
+        "assembly": "bl #0x80005b6c",
+        "bytes": "650700eb"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "682bdf3a6bd792e5138860e17cd34215c2675b29f67776921fa72a445593f854",
+      "attempts": 1
+    },
+    {
+      "task": "gauge-service-delay-tail",
+      "draft": {
+        "entry": "0x80005b6c",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x80005d14",
+        "quote": "0x80005d14 b #0x80060fbc",
+        "limitation": "Finite original address listing. Queue state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x80005d14",
+        "assembly": "b #0x80060fbc",
+        "bytes": "a86c01ea"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "98b62a33ba7d15882a516e790cecf90f861fc8fd738e8f61635dfa3d9673fa47",
+      "attempts": 1
+    },
+    {
+      "task": "gauge-fallback-helper-call",
+      "draft": {
+        "entry": "0x80003dd8",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x80003eac",
+        "quote": "0x80003eac bl #0x80005f14",
+        "limitation": "Finite original address listing. Queue state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x80003eac",
+        "assembly": "bl #0x80005f14",
+        "bytes": "180800eb"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "6cd39fb02e2ba7756ab3deb13ce304e1b38a65ff2210b87b0c29551cae11c935",
+      "attempts": 1
+    },
+    {
+      "task": "gauge-helper-one-count-wait",
+      "draft": {
+        "entry": "0x80005fcc",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x80005fe8",
+        "quote": "0x80005fe8 bl #0x80060fbc",
+        "limitation": "Finite original address listing. Queue state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x80005fe8",
+        "assembly": "bl #0x80060fbc",
+        "bytes": "f36b01eb"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "95895fb8342fa54163d10e60c05b99380f2e872367cd686dd004d9558dde38fb",
+      "attempts": 1
+    },
+    {
+      "task": "gauge-deferred-record-copy",
+      "draft": {
+        "entry": "0x80005bb8",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x80005bd4",
+        "quote": "0x80005bd4 bl #0x80000a98",
+        "limitation": "Finite original address listing. Queue state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x80005bd4",
+        "assembly": "bl #0x80000a98",
+        "bytes": "afebffeb"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "0eca048e7ef0d8c5316c82894936b6c2c4621321d592748be336757e36e2667e",
+      "attempts": 1
+    },
+    {
+      "task": "gauge-deferred-fsm-idle-check",
+      "draft": {
+        "entry": "0x80005cc0",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x80005cc4",
+        "quote": "0x80005cc4 cmp r0, #0",
+        "limitation": "Finite original address listing. Queue state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x80005cc4",
+        "assembly": "cmp r0, #0",
+        "bytes": "000050e3"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "12b03b3fa4ffece22cb66c1bd33e9af6dbb5ed283c4c53a48a82fead5e9296ce",
+      "attempts": 1
+    },
+    {
+      "task": "gauge-native-producer-command",
+      "draft": {
+        "entry": "0x8000e7c4",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x8000e7d8",
+        "quote": "0x8000e7d8 mov r1, #0x27",
+        "limitation": "Finite original address listing. Queue state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x8000e7d8",
+        "assembly": "mov r1, #0x27",
+        "bytes": "2710a0e3"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "eaebf6987918e61e5a19d8778becaa09f6076a646e339746f285e457c9a213c0",
+      "attempts": 1
+    },
+    {
+      "task": "gauge-native-producer-enqueue-call",
+      "draft": {
+        "entry": "0x8000e7c4",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x8000e7e0",
+        "quote": "0x8000e7e0 bl #0x80006778",
+        "limitation": "Finite original address listing. Queue state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x8000e7e0",
+        "assembly": "bl #0x80006778",
+        "bytes": "e4dfffeb"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "bea2cce44620b16aa0a51dd6313470df465c22bcbcf60b8e30a128a3c042b62a",
+      "attempts": 1
+    }
+  ],
+  "limit": "Instruction indexing only. The original ARM926 experiment supplies the dynamic conclusions."
+}

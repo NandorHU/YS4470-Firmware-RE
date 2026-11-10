@@ -125,3 +125,11 @@ checked lessons. All six drafts completed on their first attempt. The
 [coordinator review](../contributions/COORD-ADC-CADENCE/synchronous/timer0-uart2-local-index-review.json) pins addresses, quotes and
 original bytes for both firmware versions. The original ARM926 tests
 establish the linked IRQ and parser behavior.
+
+## 2026-11-10 — Scheduled GaugeCmdTask instruction index
+
+The pinned local model processed four successive two-instruction batches
+with the checked lessons. All eight drafts completed on the first attempt.
+The [coordinator review](../contributions/COORD-ADC-CADENCE/synchronous/gauge-scheduled-local-index-review.json) checks their addresses, exact
+assembly and original bytes on both factory images. The coordinator ran the
+scheduled queue, IRQ and fallback experiments independently.

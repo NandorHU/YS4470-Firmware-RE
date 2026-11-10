@@ -281,3 +281,7 @@ With INTC pending bit 13 set in the register shadow, the original IRQ handler ca
 ## 2026-11-10 — Timer0 and UART2 through the installed IRQ route
 
 The original setup writes Timer0 control 7 and interval 24000. IRQ13 and IRQ3 register the Timer0 status helper and UART2 receive handler respectively. The mixed pending fixture takes the tick route before a separate host-injected UART event. Actual interrupt arbitration and timing are open. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/timer0-uart2-irq-validation.json).
+
+## 2026-11-10 — Scheduled GaugeCmdTask service and fallback
+
+The scheduled service replay supplies Timer0 IRQ13 and UART2 IRQ3 through the installed vector. UART2 IRQ fills the original buffer while GaugeCmdTask is asleep. Timer ticks wake the task and return to the polling code. Counter values are software observations. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-scheduled-service-validation.json).
