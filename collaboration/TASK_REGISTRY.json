@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 43,
+  "revision": 44,
   "updated": "2026-11-10",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,7 +295,7 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Trace register-indirect and synthesized control queue-handle and producer candidates. Prioritize call-site dataflow into original queue entry points, and replay any genuine additional producer under original idle/scheduler conditions. Native type-6 producer provenance remains open.",
+      "next_action": "Replay the registered callback at 0x8000cfd0 from the second GUI block through the original dispatcher and resolve its type-5 and type-2 sends under real local state. Continue synthesized and register-indirect control queue paths. Native type-6 producer provenance remains open.",
       "last_verified_result": {
         "profile_cases": 64,
         "transition_cases": 64,
@@ -373,8 +373,11 @@
         "original_result_field_writer_cases": 8,
         "original_gui_field_provenance_cases": 4,
         "original_glyph_bitmap_lookup_cases": 8,
-        "resident_index_drafts_reviewed": 3282,
-        "resident_index_exact_extractions_published": 3281
+        "original_gui_event_registration_runs": 4,
+        "original_gui_indirect_dispatch_cases": 56,
+        "original_gui_indirect_queue_sends": 26,
+        "resident_index_drafts_reviewed": 3502,
+        "resident_index_exact_extractions_published": 3501
       },
       "result_evidence": [
         "contributions/COORD-ADC-CADENCE/profile-validation.json",
@@ -421,7 +424,9 @@
         "contributions/COORD-ADC-CADENCE/synchronous/control-producer-suffix-replay.json",
         "contributions/COORD-ADC-CADENCE/local-index/review-2026-11-10-delta/review.json",
         "contributions/COORD-ADC-CADENCE/synchronous/gui-field-provenance.json",
-        "contributions/COORD-ADC-CADENCE/local-index/review-2026-11-10-gui-field/review.json"
+        "contributions/COORD-ADC-CADENCE/local-index/review-2026-11-10-gui-field/review.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/control-gui-event-validation.json",
+        "contributions/COORD-ADC-CADENCE/local-index/review-2026-11-10-control-events/review.json"
       ]
     },
     {

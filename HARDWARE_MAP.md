@@ -313,3 +313,7 @@ The caller-suffix replay starts with a modeled allocator, empty queue and idle s
 ## 2026-11-10 — GUI field provenance at 0x80046548
 
 The original GUI initializer and label routines executed against modeled allocation, display roots, containers and layout services. The test verifies RAM object and text state in ARM926 emulation. The factory font accessor also returns the verified glyph byte range in ROM. [Original replay, instruction bytes and firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/gui-field-provenance.json).
+
+## 2026-11-10 — Registered GUI callbacks and indirect queue producers
+
+The callback replay supplies an event code and initialized UI object. Original timer RAM stores disable the timer, change its period field, and re-enable it before the queue drain. The reported field values are software state from ARM926 emulation. The type-2 handler runs the original sound guard with sound disabled. [Original instruction bytes, factory hashes and replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-event-validation.json).

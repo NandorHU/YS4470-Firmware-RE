@@ -439,3 +439,7 @@ The two factory images agree on 66 ARM926 sends from 31 native caller suffixes a
 ## 2026-11-10 — GUI field provenance at 0x80046548
 
 Four original ARM926 cases on the two factory images identify the `0x80046548` field as a GUI label pointer. The test follows descriptor dispatch, child registration and text storage using two relocated fixture layouts with empty and populated control queues. Eight original glyph lookup cases resolve the raw interior branch match at `0x8009ef10` to the U+007D bitmap interval. [Original replay, instruction bytes and firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/gui-field-provenance.json).
+
+## 2026-11-10 — Registered GUI callbacks and indirect queue producers
+
+Across both factory images, 20 matched events invoke the original indirect callback and enqueue a type-0 or type-1 record. The 20 filter-mismatch events preserve the queue and timer. Two original registration blocks are verified on each image. A further 16 dispatch cases for `0x8000d294` produce six type-2 sends and ten unchanged-queue outcomes. [Original instruction bytes, factory hashes and replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-event-validation.json).

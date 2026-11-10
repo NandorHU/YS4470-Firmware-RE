@@ -427,3 +427,7 @@ The original control-record builder `0x80006778` forwards the caller's type and 
 ## 2026-11-10 — GUI field provenance at 0x80046548
 
 The original caller at `0x80057948` enters the initializer `0x80045ea8`. At `0x80046548` the initializer stores a child label returned by `0x80030ad0` and passes it to the text setter at `0x80032038`. The original class descriptor at `0x80068ee0` points to the label constructor `0x800309f0`. The bitmap accessor `0x8002c844` resolves U+007D through the factory font descriptor and the original glyph lookup at `0x8001d5b0`. [Original replay, instruction bytes and firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/gui-field-provenance.json).
+
+## 2026-11-10 — Registered GUI callbacks and indirect queue producers
+
+The original GUI registration helper `0x800338dc` stores a 12-byte callback descriptor. The original event dispatcher at `0x8001ae74` calls the matched handler through `blx r1` at `0x8001b030`. Ten handlers from the original block at `0x8004c3b4` reach the original drain and control-record builder. The second block dispatches `0x8000d294`, which toggles its local flag and can produce type 2. [Original instruction bytes, factory hashes and replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-event-validation.json).
