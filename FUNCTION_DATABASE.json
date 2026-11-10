@@ -58,10 +58,12 @@
       "confidence": "confirmed_bounded_original_arm926_execution",
       "role": "Save the interrupted task, route tick IRQ and restore the selected task",
       "relationships": [
+        "After original Timer0 and UART2 registration, pending bit 13 takes the tick branch without reading the vector latch even with both bits set in the fixture.",
         "INTC pending bit 13 routes to 0x80061fa4. A nonzero tick result reaches 0x800612f8.",
         "Restores banked task registers and status through 0x80002390. The tested tick path writes 0 and 1 to the INTC and timer shadows."
       ],
       "evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/timer0-uart2-irq-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/scheduler-irq-context-validation.json"
       ],
       "limits": [
@@ -205,6 +207,7 @@
       "confidence": "confirmed",
       "role": "Request/reply measurement state machine",
       "relationships": [
+        "Original builder and FSM admit matching five-byte replies from the installed UART2 IRQ-filled buffer, honor discard, retry wrong headers, and leave incomplete prefixes pending in the tested schedule.",
         "state 5 parser at 0x80004738",
         "transaction_builder",
         "state-1 PIO selector: command-dependent bits 2/3 using 0x01c208b4",
@@ -214,6 +217,7 @@
         "new bounded same-header old-frame counterexample across retry and RX-clear/TX interleave; state5 publishes original raw fixture"
       ],
       "evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/timer0-uart2-irq-validation.json",
         "ARM state-table trace",
         "PIO control trace 2026-11-05",
         "contributions/COORD-FSM-TIMEOUT/fsm-timeout.json",
@@ -326,6 +330,7 @@
       "confidence": "confirmed_bounded_original_arm926_execution",
       "role": "UART2 receive ISR; reads a byte after status condition and appends to bounded parser buffer",
       "evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/timer0-uart2-irq-validation.json",
         "prior ARM trace; buffer 0x805b408c, bound 200",
         "bounded UART2 trace 2026-11-05",
         "uart2_transport_assertions",
@@ -334,6 +339,7 @@
         "contributions/COORD-ADC-CADENCE/admission/validation.json"
       ],
       "relationships": [
+        "The original IRQ3 registration and installed vector reach this ISR. Ordinary dispatch preserves the interrupted context and appends to the same buffer used by the original measurement FSM.",
         "uses UART2 base 0x01c25800",
         "tests +0x08 then reads +0x00",
         "writes 0x805b408c; count 0x805ab938 capped at 200",
@@ -1204,10 +1210,12 @@
       "confidence": "confirmed_bounded_original_arm926_execution",
       "role": "INTC vector pointer dereference and ARM/Thumb handler tail dispatch",
       "relationships": [
+        "After UART2 registration the original dispatcher dereferences the IRQ3 slot in the ordinary route. The dedicated tick path skips the vector read.",
         "reads0x01c20400, then dereferences returned slot pointer",
         "called by non-timer IRQ bridge at0x80002324"
       ],
       "evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/timer0-uart2-irq-validation.json",
         "evidence/2026-11-07-intc-timer-path.json",
         "evidence/2026-11-07-intc-timer-ghidra.json"
       ],

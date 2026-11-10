@@ -2,6 +2,13 @@
 
 ## Current checkpoint
 
+The [Timer0 and UART2 replay](synchronous/timer0-uart2-irq-validation.json) covers 40 schedules.
+Original IRQ3 receive feeds the original measurement FSM while separately
+injected IRQ13 ticks advance the scheduler. Next integrate the original
+queue/service loop and trace remaining fallback paths.
+
+## Previous vector and context checkpoint
+
 The [vector and scheduler context replay](synchronous/scheduler-irq-context-validation.json) covers 44
 cases across both factory images. The original SVC and IRQ routes switch
 tasks and restore ARM/Thumb contexts. The blocked task resumes after 1 or

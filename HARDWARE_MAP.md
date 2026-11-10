@@ -277,3 +277,7 @@ The delay replay executes `svc #0` at `0x8000222c` and intercepts the exception 
 ## 2026-11-10 — Installed vectors and scheduler context
 
 With INTC pending bit 13 set in the register shadow, the original IRQ handler calls the tick helper and optionally the selector before writing 0 to `0x01c20410` and 1 to `0x01c20c04`. These are observed software writes. Peripheral acknowledgement semantics, tick frequency and hardware time remain open. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/scheduler-irq-context-validation.json).
+
+## 2026-11-10 — Timer0 and UART2 through the installed IRQ route
+
+The original setup writes Timer0 control 7 and interval 24000. IRQ13 and IRQ3 register the Timer0 status helper and UART2 receive handler respectively. The mixed pending fixture takes the tick route before a separate host-injected UART event. Actual interrupt arbitration and timing are open. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/timer0-uart2-irq-validation.json).

@@ -639,3 +639,42 @@ frequency are outside the replay.
 ```powershell
 python -B contributions/COORD-ADC-CADENCE/synchronous/trace_scheduler_irq_context.py
 ```
+
+## Timer0 and UART2 through the installed IRQ route
+
+[Replay evidence](timer0-uart2-irq-validation.json) records 24 routing and 16 linked transport
+cases across the two factory images. The original startup slice
+`0x800617ec..0x80061818` sets Timer0 control 7 and interval 24000, and
+registers IRQ13 with helper `0x8005bf54`. The original UART2 tail at
+`0x80006d5c` registers IRQ3 with ISR `0x800073bc`. Both registrations
+use the same handler table.
+
+After original low-vector installation, the IRQ entry examines INTC
+pending bit 13. With that bit set it executes the scheduler tick and
+does not read the INTC vector latch in the tested route. When both bits
+are set and the latch points to UART2, the tick route still runs. Only
+a later explicit UART IRQ appends the byte. This second event is injected
+by the harness. It does not establish whether hardware reasserts it.
+With only UART2 pending, `0x80005260` dereferences its registered slot.
+The original ISR appends at count 0 or 199, performs no buffer write at
+count 200 or with RX-ready clear, and leaves the scheduler count unchanged.
+ARM and Thumb interrupted task contexts are restored.
+
+The linked transport cases invoke original transaction builder
+`0x8000489c` and FSM `0x80004490`. In each tested reply a Timer0 IRQ
+advances the count between UART2 byte IRQs. The original FSM parses a
+matching five-byte frame from the shared IRQ-filled buffer. It publishes
+raw `0x012345` with selector 6 for command `0x1d` and selector 0 for
+`0x1b` with the test input selector 8. A pending discard consumes the
+valid frame without changing the stored measurement. A wrong header
+produces one retry. A four-byte prefix remains pending in this schedule.
+Neither malformed frame publishes.
+
+The host chooses entry points for builder/FSM calls and supplies pending
+bits, vector latch, UART status/data, and banked IRQ entry state. These are
+software-ordering tests with register shadows. Timer progression, interrupt
+arbitration and physical latency are outside their scope.
+
+```powershell
+python -B contributions/COORD-ADC-CADENCE/synchronous/trace_timer0_uart2_irq.py
+```

@@ -357,3 +357,7 @@ In the tested scheduler state the KeyTask and GaugeCmdTask delay requests become
 ## 2026-11-10 — Installed vectors and scheduler context
 
 Original SVC handling makes the other ready task current after the `GaugeCmdTask` or `KeyTask` delay. At the deadline the original tick IRQ restores the blocked task, and the delay returns to its saved continuation after 1 or 50 injected interrupts. The host supplies the interrupts and banked exception entry state. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/scheduler-irq-context-validation.json).
+
+## 2026-11-10 — Timer0 and UART2 through the installed IRQ route
+
+The original FSM at `0x80004490` consumes the buffer produced by the installed UART2 IRQ path. Valid `0x1d` and `0x1b` replies publish raw 74565 with selectors 6 and 0, respectively, or consume discard 1 without publishing. The wrong-header frame triggers a retry and the four-byte prefix remains pending in the bounded schedule. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/timer0-uart2-irq-validation.json).

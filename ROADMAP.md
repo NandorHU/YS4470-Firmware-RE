@@ -266,3 +266,7 @@ Follow the byte-checked IRQ branch at `0x8000232c` to the original tick helper a
 ## 2026-11-10 — Installed vectors and scheduler context
 
 Link the known Timer0 startup configuration and ordinary IRQ vector dispatch to the validated low-vector/context replay under separate pending-bit cases. Keep raw scheduler counters, GUI refresh and physical time separate. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/scheduler-irq-context-validation.json).
+
+## 2026-11-10 — Timer0 and UART2 through the installed IRQ route
+
+Reuse the linked IRQ ingress to run a bounded original service-loop schedule with real queue admission and delay. Then follow the remaining fallback producers and the helper under proven idle conditions, with separate evidence for the external peer. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/timer0-uart2-irq-validation.json).

@@ -10,10 +10,10 @@ Beta.2 Release API currently404; retained historical installer is documented.
 The owner confirmed the old daily automation was stopped. The new coordinator
 `codex-ys4470-20261109-01a1c110` is recorded in upstream registry revision 19.
 
-Latest analysis: [installed vectors and scheduler context](../contributions/COORD-ADC-CADENCE/synchronous/README.md#installed-vectors-and-scheduler-context)
-runs the original vector installation, SVC and tick IRQ through context
-selection and return. Next join the Timer0 startup configuration to the tick
-and ordinary IRQ paths in one controlled replay.
+Latest analysis: [Timer0 and UART2 through the installed IRQ route](../contributions/COORD-ADC-CADENCE/synchronous/README.md#timer0-and-uart2-through-the-installed-irq-route)
+links both original registrations to installed IRQ handling and the
+measurement parser. Next run the real queue/service loop as a scheduled
+task, using the same IRQ ingress and proven fallback preconditions.
 
 ---
 
