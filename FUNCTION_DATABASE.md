@@ -383,3 +383,7 @@ The original timer calls refresh `0x8005d048` after native mode entry at `0x8000
 ## 2026-11-10 — KeyTask and Fast CONT refresh ordering
 
 The original registration slice reaches `0x800059dc` with task entry `0x8000551c` and name pointer `0x80005a68` (`KeyTask`). One original loop body executes the watchdog update, sound countdown and sample-counter increment before the back edge to `0x80005528`. Task creation, key input and delay scheduling use fixtures. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/key-task-fast-cont-order-validation.json).
+
+## 2026-11-10 — Scheduler delays and task wakeup
+
+Delay helper `0x80060fbc` takes the original KeyTask argument 50 and GaugeCmdTask service tail argument 1. The ordered list helper stores deadlines and `0x80061fa4` applies ticks, drains due tasks and returns a yield flag in the tested fixtures. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/scheduler-delay-wake-validation.json).

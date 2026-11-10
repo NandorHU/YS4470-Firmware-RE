@@ -568,3 +568,41 @@ timing remain open.
 ```powershell
 python -B contributions/COORD-ADC-CADENCE/synchronous/trace_key_task_fast_cont_order.py
 ```
+
+## Scheduler delays and task wakeup
+
+[Replay evidence](scheduler-delay-wake-validation.json) records 26 delay and 24 wake schedules across
+the two factory images. The tested caller slices are `0x80005530` for
+KeyTask (argument 50) and `0x80005d10` for the GaugeCmdTask service tail
+(argument 1). A direct argument-zero case requests a yield without list
+writes. A positive argument removes the task from its ready list through
+`0x80060de0`, stores its unsigned deadline at `0x8004288c`, and inserts
+through `0x80060e74`. A deadline of `0xffffffff` stays on the current
+list, and a wrapped deadline of zero goes on the overflow list. The
+nonwrapped path lowers the next-current-deadline word when appropriate.
+
+With a pending yield, the unlock path invokes SVC through `0x8006230c`.
+Otherwise the delay helper uses its tail at `0x80060ff0`. Both routes
+execute the original `svc #0` instruction at `0x8000222c`. The emulator
+traps the exception and does not run the SVC handler.
+
+The wake cases call original `0x80061fa4` and keep the waiting task
+off the ready list until the 1st or 50th applied tick, according to the
+original caller argument. At counter wrap the two delay-list pointers
+swap and the wrap counter increments. The due task is unlinked, inserted
+on its priority-ready list, and requests yield against the fixture's
+lower-priority current task. In the deferred cases, the suspended tick
+increments the pending word and leaves the clock unchanged. Original
+unlock `0x80062204` applies the pending tick via `0x800622e4`.
+
+Task ownership and list nodes are controlled fixtures. The host selects
+the other ready task after the trapped SVC. The byte-checked IRQ dispatch
+at `0x8000232c` loads the tick entry from `0x800023a8` and reaches an
+indirect branch at `0x80002334`. This interrupt path was inspected
+statically. The next replay will exercise it with controlled exception
+and task context. These tests use software counters and supply no
+physical interval.
+
+```powershell
+python -B contributions/COORD-ADC-CADENCE/synchronous/trace_scheduler_delay_wake.py
+```

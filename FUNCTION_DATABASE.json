@@ -31,6 +31,46 @@
   },
   "functions": [
     {
+      "id": "scheduler_delay_and_yield",
+      "addresses": {
+        "V3_6": "0x80060fbc",
+        "V3_8": "0x80060fbc"
+      },
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Insert the current task into a deadline list and request scheduler yield",
+      "relationships": [
+        "Original KeyTask argument 50 via 0x80005534 and GaugeCmdTask service argument 1 via 0x80005d14.",
+        "0x80042840 removes the ready node, writes the deadline and inserts into the current or overflow list. Argument zero skips insertion.",
+        "Original unlock or the helper tail reaches SVC 0x8000222c, intercepted before context switching."
+      ],
+      "evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/scheduler-delay-wake-validation.json"
+      ],
+      "limits": [
+        "Controlled task and list fixtures. No context switching or physical timing."
+      ]
+    },
+    {
+      "id": "scheduler_tick_and_wake",
+      "addresses": {
+        "V3_6": "0x80061fa4",
+        "V3_8": "0x80061fa4"
+      },
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Advance or defer the raw tick, rotate delay lists at wrap, and requeue due tasks",
+      "relationships": [
+        "When suspended it increments the pending tick word. Original unlock 0x80062204 drains ticks via 0x800622e4.",
+        "At wrap the current and overflow lists are exchanged. Due tasks enter their priority-ready list and the helper returns a yield request when warranted by the tested priorities.",
+        "Static IRQ branch at 0x80002334 uses tick entry loaded through 0x800023a8."
+      ],
+      "evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/scheduler-delay-wake-validation.json"
+      ],
+      "limits": [
+        "Host supplies the tick and selects the other current task after trapped SVC. Original interrupt and context-switch handlers are outside the dynamic proof."
+      ]
+    },
+    {
       "id": "key_task_sound_countdown",
       "addresses": {
         "V3_6": "0x8000551c",

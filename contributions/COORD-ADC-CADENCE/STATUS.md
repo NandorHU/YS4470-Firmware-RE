@@ -2,6 +2,14 @@
 
 ## Current checkpoint
 
+The [scheduler delay and wake replay](synchronous/scheduler-delay-wake-validation.json) agrees in 50
+schedules across the two factory images. The tested waiting task becomes
+ready on the requested applied tick, including overflow-list rotation and
+deferred tick drain. Next run the original IRQ tick branch and context
+selection with controlled pending interrupt and task contexts.
+
+## Previous KeyTask checkpoint
+
 The [KeyTask ordering replay](synchronous/key-task-fast-cont-order-validation.json) executes eight
 schedules. KeyTask-first with active count 1 drives duty off before native
 refresh re-arms it. Refresh-first reloads the count before the KeyTask

@@ -1,0 +1,1407 @@
+{
+  "schema": "ys4470.scheduler-delay-paths.v1",
+  "versions": [
+    {
+      "version": "V3.6",
+      "input_sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+      "delay_cases": 13,
+      "wake_cases": 12
+    },
+    {
+      "version": "V3.8",
+      "input_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+      "delay_cases": 13,
+      "wake_cases": 12
+    }
+  ],
+  "delay_helper": "0x80060fbc",
+  "tick_helper": "0x80061fa4",
+  "cases": [
+    {
+      "delay": 0,
+      "caller": "0x80060fbc",
+      "clock": "normal",
+      "counter": 100,
+      "yield_pending": true,
+      "deadline": null,
+      "next_current_deadline": 105,
+      "ready": [
+        [
+          "0x10018104",
+          0
+        ]
+      ],
+      "current": [
+        [
+          "0x10018204",
+          105
+        ]
+      ],
+      "overflow": [],
+      "events": [
+        [
+          "delay",
+          0
+        ],
+        [
+          "yield",
+          "0x10000000",
+          false
+        ],
+        [
+          "svc",
+          2
+        ],
+        [
+          "ordered_insert",
+          "0x10018400"
+        ]
+      ]
+    },
+    {
+      "delay": 1,
+      "caller": "0x80005d10",
+      "clock": "normal",
+      "counter": 100,
+      "yield_pending": false,
+      "deadline": 101,
+      "next_current_deadline": 101,
+      "ready": [],
+      "current": [
+        [
+          "0x10018104",
+          101
+        ],
+        [
+          "0x10018204",
+          105
+        ]
+      ],
+      "overflow": [],
+      "events": [
+        [
+          "delay",
+          1
+        ],
+        [
+          "store",
+          "0x805abbec",
+          1
+        ],
+        [
+          "store",
+          "0x10018104",
+          101
+        ],
+        [
+          "ordered_insert",
+          "0x10018400"
+        ],
+        [
+          "store",
+          "0x805abbe4",
+          101
+        ],
+        [
+          "store",
+          "0x805abbec",
+          0
+        ],
+        [
+          "yield",
+          "0x10000000",
+          false
+        ],
+        [
+          "svc",
+          2
+        ],
+        [
+          "ordered_insert",
+          "0x10018400"
+        ]
+      ]
+    },
+    {
+      "delay": 1,
+      "caller": "0x80005d10",
+      "clock": "normal",
+      "counter": 100,
+      "yield_pending": true,
+      "deadline": 101,
+      "next_current_deadline": 101,
+      "ready": [],
+      "current": [
+        [
+          "0x10018104",
+          101
+        ],
+        [
+          "0x10018204",
+          105
+        ]
+      ],
+      "overflow": [],
+      "events": [
+        [
+          "delay",
+          1
+        ],
+        [
+          "store",
+          "0x805abbec",
+          1
+        ],
+        [
+          "store",
+          "0x10018104",
+          101
+        ],
+        [
+          "ordered_insert",
+          "0x10018400"
+        ],
+        [
+          "store",
+          "0x805abbe4",
+          101
+        ],
+        [
+          "store",
+          "0x805abbec",
+          0
+        ],
+        [
+          "yield",
+          "0x80062310",
+          true
+        ],
+        [
+          "svc",
+          2
+        ],
+        [
+          "ordered_insert",
+          "0x10018400"
+        ]
+      ]
+    },
+    {
+      "delay": 1,
+      "caller": "0x80005d10",
+      "clock": "max-deadline",
+      "counter": 4294967294,
+      "yield_pending": false,
+      "deadline": 4294967295,
+      "next_current_deadline": 4294967295,
+      "ready": [],
+      "current": [
+        [
+          "0x10018204",
+          4294967295
+        ],
+        [
+          "0x10018104",
+          4294967295
+        ]
+      ],
+      "overflow": [],
+      "events": [
+        [
+          "delay",
+          1
+        ],
+        [
+          "store",
+          "0x805abbec",
+          1
+        ],
+        [
+          "store",
+          "0x10018104",
+          4294967295
+        ],
+        [
+          "ordered_insert",
+          "0x10018400"
+        ],
+        [
+          "store",
+          "0x805abbec",
+          0
+        ],
+        [
+          "yield",
+          "0x10000000",
+          false
+        ],
+        [
+          "svc",
+          2
+        ],
+        [
+          "ordered_insert",
+          "0x10018400"
+        ]
+      ]
+    },
+    {
+      "delay": 1,
+      "caller": "0x80005d10",
+      "clock": "max-deadline",
+      "counter": 4294967294,
+      "yield_pending": true,
+      "deadline": 4294967295,
+      "next_current_deadline": 4294967295,
+      "ready": [],
+      "current": [
+        [
+          "0x10018204",
+          4294967295
+        ],
+        [
+          "0x10018104",
+          4294967295
+        ]
+      ],
+      "overflow": [],
+      "events": [
+        [
+          "delay",
+          1
+        ],
+        [
+          "store",
+          "0x805abbec",
+          1
+        ],
+        [
+          "store",
+          "0x10018104",
+          4294967295
+        ],
+        [
+          "ordered_insert",
+          "0x10018400"
+        ],
+        [
+          "store",
+          "0x805abbec",
+          0
+        ],
+        [
+          "yield",
+          "0x80062310",
+          true
+        ],
+        [
+          "svc",
+          2
+        ],
+        [
+          "ordered_insert",
+          "0x10018400"
+        ]
+      ]
+    },
+    {
+      "delay": 1,
+      "caller": "0x80005d10",
+      "clock": "overflow",
+      "counter": 4294967295,
+      "yield_pending": false,
+      "deadline": 0,
+      "next_current_deadline": 4294967295,
+      "ready": [],
+      "current": [
+        [
+          "0x10018204",
+          4294967295
+        ]
+      ],
+      "overflow": [
+        [
+          "0x10018104",
+          0
+        ]
+      ],
+      "events": [
+        [
+          "delay",
+          1
+        ],
+        [
+          "store",
+          "0x805abbec",
+          1
+        ],
+        [
+          "store",
+          "0x10018104",
+          0
+        ],
+        [
+          "ordered_insert",
+          "0x10018500"
+        ],
+        [
+          "store",
+          "0x805abbec",
+          0
+        ],
+        [
+          "yield",
+          "0x10000000",
+          false
+        ],
+        [
+          "svc",
+          2
+        ],
+        [
+          "ordered_insert",
+          "0x10018400"
+        ]
+      ]
+    },
+    {
+      "delay": 1,
+      "caller": "0x80005d10",
+      "clock": "overflow",
+      "counter": 4294967295,
+      "yield_pending": true,
+      "deadline": 0,
+      "next_current_deadline": 4294967295,
+      "ready": [],
+      "current": [
+        [
+          "0x10018204",
+          4294967295
+        ]
+      ],
+      "overflow": [
+        [
+          "0x10018104",
+          0
+        ]
+      ],
+      "events": [
+        [
+          "delay",
+          1
+        ],
+        [
+          "store",
+          "0x805abbec",
+          1
+        ],
+        [
+          "store",
+          "0x10018104",
+          0
+        ],
+        [
+          "ordered_insert",
+          "0x10018500"
+        ],
+        [
+          "store",
+          "0x805abbec",
+          0
+        ],
+        [
+          "yield",
+          "0x80062310",
+          true
+        ],
+        [
+          "svc",
+          2
+        ],
+        [
+          "ordered_insert",
+          "0x10018400"
+        ]
+      ]
+    },
+    {
+      "delay": 50,
+      "caller": "0x80005530",
+      "clock": "normal",
+      "counter": 100,
+      "yield_pending": false,
+      "deadline": 150,
+      "next_current_deadline": 105,
+      "ready": [],
+      "current": [
+        [
+          "0x10018204",
+          105
+        ],
+        [
+          "0x10018104",
+          150
+        ]
+      ],
+      "overflow": [],
+      "events": [
+        [
+          "delay",
+          50
+        ],
+        [
+          "store",
+          "0x805abbec",
+          1
+        ],
+        [
+          "store",
+          "0x10018104",
+          150
+        ],
+        [
+          "ordered_insert",
+          "0x10018400"
+        ],
+        [
+          "store",
+          "0x805abbec",
+          0
+        ],
+        [
+          "yield",
+          "0x80005538",
+          false
+        ],
+        [
+          "svc",
+          2
+        ],
+        [
+          "ordered_insert",
+          "0x10018400"
+        ]
+      ]
+    },
+    {
+      "delay": 50,
+      "caller": "0x80005530",
+      "clock": "normal",
+      "counter": 100,
+      "yield_pending": true,
+      "deadline": 150,
+      "next_current_deadline": 105,
+      "ready": [],
+      "current": [
+        [
+          "0x10018204",
+          105
+        ],
+        [
+          "0x10018104",
+          150
+        ]
+      ],
+      "overflow": [],
+      "events": [
+        [
+          "delay",
+          50
+        ],
+        [
+          "store",
+          "0x805abbec",
+          1
+        ],
+        [
+          "store",
+          "0x10018104",
+          150
+        ],
+        [
+          "ordered_insert",
+          "0x10018400"
+        ],
+        [
+          "store",
+          "0x805abbec",
+          0
+        ],
+        [
+          "yield",
+          "0x80062310",
+          true
+        ],
+        [
+          "svc",
+          2
+        ],
+        [
+          "ordered_insert",
+          "0x10018400"
+        ]
+      ]
+    },
+    {
+      "delay": 50,
+      "caller": "0x80005530",
+      "clock": "max-deadline",
+      "counter": 4294967245,
+      "yield_pending": false,
+      "deadline": 4294967295,
+      "next_current_deadline": 4294967250,
+      "ready": [],
+      "current": [
+        [
+          "0x10018204",
+          4294967250
+        ],
+        [
+          "0x10018104",
+          4294967295
+        ]
+      ],
+      "overflow": [],
+      "events": [
+        [
+          "delay",
+          50
+        ],
+        [
+          "store",
+          "0x805abbec",
+          1
+        ],
+        [
+          "store",
+          "0x10018104",
+          4294967295
+        ],
+        [
+          "ordered_insert",
+          "0x10018400"
+        ],
+        [
+          "store",
+          "0x805abbec",
+          0
+        ],
+        [
+          "yield",
+          "0x80005538",
+          false
+        ],
+        [
+          "svc",
+          2
+        ],
+        [
+          "ordered_insert",
+          "0x10018400"
+        ]
+      ]
+    },
+    {
+      "delay": 50,
+      "caller": "0x80005530",
+      "clock": "max-deadline",
+      "counter": 4294967245,
+      "yield_pending": true,
+      "deadline": 4294967295,
+      "next_current_deadline": 4294967250,
+      "ready": [],
+      "current": [
+        [
+          "0x10018204",
+          4294967250
+        ],
+        [
+          "0x10018104",
+          4294967295
+        ]
+      ],
+      "overflow": [],
+      "events": [
+        [
+          "delay",
+          50
+        ],
+        [
+          "store",
+          "0x805abbec",
+          1
+        ],
+        [
+          "store",
+          "0x10018104",
+          4294967295
+        ],
+        [
+          "ordered_insert",
+          "0x10018400"
+        ],
+        [
+          "store",
+          "0x805abbec",
+          0
+        ],
+        [
+          "yield",
+          "0x80062310",
+          true
+        ],
+        [
+          "svc",
+          2
+        ],
+        [
+          "ordered_insert",
+          "0x10018400"
+        ]
+      ]
+    },
+    {
+      "delay": 50,
+      "caller": "0x80005530",
+      "clock": "overflow",
+      "counter": 4294967246,
+      "yield_pending": false,
+      "deadline": 0,
+      "next_current_deadline": 4294967251,
+      "ready": [],
+      "current": [
+        [
+          "0x10018204",
+          4294967251
+        ]
+      ],
+      "overflow": [
+        [
+          "0x10018104",
+          0
+        ]
+      ],
+      "events": [
+        [
+          "delay",
+          50
+        ],
+        [
+          "store",
+          "0x805abbec",
+          1
+        ],
+        [
+          "store",
+          "0x10018104",
+          0
+        ],
+        [
+          "ordered_insert",
+          "0x10018500"
+        ],
+        [
+          "store",
+          "0x805abbec",
+          0
+        ],
+        [
+          "yield",
+          "0x80005538",
+          false
+        ],
+        [
+          "svc",
+          2
+        ],
+        [
+          "ordered_insert",
+          "0x10018400"
+        ]
+      ]
+    },
+    {
+      "delay": 50,
+      "caller": "0x80005530",
+      "clock": "overflow",
+      "counter": 4294967246,
+      "yield_pending": true,
+      "deadline": 0,
+      "next_current_deadline": 4294967251,
+      "ready": [],
+      "current": [
+        [
+          "0x10018204",
+          4294967251
+        ]
+      ],
+      "overflow": [
+        [
+          "0x10018104",
+          0
+        ]
+      ],
+      "events": [
+        [
+          "delay",
+          50
+        ],
+        [
+          "store",
+          "0x805abbec",
+          1
+        ],
+        [
+          "store",
+          "0x10018104",
+          0
+        ],
+        [
+          "ordered_insert",
+          "0x10018500"
+        ],
+        [
+          "store",
+          "0x805abbec",
+          0
+        ],
+        [
+          "yield",
+          "0x80062310",
+          true
+        ],
+        [
+          "svc",
+          2
+        ]
+      ]
+    }
+  ],
+  "wake_cases": [
+    {
+      "delay": 1,
+      "clock": "normal",
+      "deferred_ticks": false,
+      "start": 100,
+      "deadline": 101,
+      "applied_ticks": 1,
+      "samples": [
+        {
+          "tick_call": 1,
+          "raw_count": 101,
+          "wrap_count": 0,
+          "current_list": "0x10018400",
+          "yield_requested": true,
+          "ready": [
+            [
+              "0x10018104",
+              101
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "delay": 1,
+      "clock": "normal",
+      "deferred_ticks": true,
+      "start": 100,
+      "deadline": 101,
+      "applied_ticks": 1,
+      "samples": [
+        {
+          "tick_call": 1,
+          "raw_count": 101,
+          "wrap_count": 0,
+          "current_list": "0x10018400",
+          "yield_requested": true,
+          "ready": [
+            [
+              "0x10018104",
+              101
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "delay": 1,
+      "clock": "max-deadline",
+      "deferred_ticks": false,
+      "start": 4294967294,
+      "deadline": 4294967295,
+      "applied_ticks": 1,
+      "samples": [
+        {
+          "tick_call": 1,
+          "raw_count": 4294967295,
+          "wrap_count": 0,
+          "current_list": "0x10018400",
+          "yield_requested": true,
+          "ready": [
+            [
+              "0x10018104",
+              4294967295
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "delay": 1,
+      "clock": "max-deadline",
+      "deferred_ticks": true,
+      "start": 4294967294,
+      "deadline": 4294967295,
+      "applied_ticks": 1,
+      "samples": [
+        {
+          "tick_call": 1,
+          "raw_count": 4294967295,
+          "wrap_count": 0,
+          "current_list": "0x10018400",
+          "yield_requested": true,
+          "ready": [
+            [
+              "0x10018104",
+              4294967295
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "delay": 1,
+      "clock": "overflow",
+      "deferred_ticks": false,
+      "start": 4294967295,
+      "deadline": 0,
+      "applied_ticks": 1,
+      "samples": [
+        {
+          "tick_call": 1,
+          "raw_count": 0,
+          "wrap_count": 1,
+          "current_list": "0x10018500",
+          "yield_requested": true,
+          "ready": [
+            [
+              "0x10018104",
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "delay": 1,
+      "clock": "overflow",
+      "deferred_ticks": true,
+      "start": 4294967295,
+      "deadline": 0,
+      "applied_ticks": 1,
+      "samples": [
+        {
+          "tick_call": 1,
+          "raw_count": 0,
+          "wrap_count": 1,
+          "current_list": "0x10018500",
+          "yield_requested": true,
+          "ready": [
+            [
+              "0x10018104",
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "delay": 50,
+      "clock": "normal",
+      "deferred_ticks": false,
+      "start": 100,
+      "deadline": 150,
+      "applied_ticks": 50,
+      "samples": [
+        {
+          "tick_call": 1,
+          "raw_count": 101,
+          "wrap_count": 0,
+          "current_list": "0x10018400",
+          "yield_requested": false,
+          "ready": []
+        },
+        {
+          "tick_call": 49,
+          "raw_count": 149,
+          "wrap_count": 0,
+          "current_list": "0x10018400",
+          "yield_requested": false,
+          "ready": []
+        },
+        {
+          "tick_call": 50,
+          "raw_count": 150,
+          "wrap_count": 0,
+          "current_list": "0x10018400",
+          "yield_requested": true,
+          "ready": [
+            [
+              "0x10018104",
+              150
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "delay": 50,
+      "clock": "normal",
+      "deferred_ticks": true,
+      "start": 100,
+      "deadline": 150,
+      "applied_ticks": 50,
+      "samples": [
+        {
+          "tick_call": 1,
+          "raw_count": 101,
+          "wrap_count": 0,
+          "current_list": "0x10018400",
+          "yield_requested": false,
+          "ready": []
+        },
+        {
+          "tick_call": 49,
+          "raw_count": 149,
+          "wrap_count": 0,
+          "current_list": "0x10018400",
+          "yield_requested": false,
+          "ready": []
+        },
+        {
+          "tick_call": 50,
+          "raw_count": 150,
+          "wrap_count": 0,
+          "current_list": "0x10018400",
+          "yield_requested": true,
+          "ready": [
+            [
+              "0x10018104",
+              150
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "delay": 50,
+      "clock": "max-deadline",
+      "deferred_ticks": false,
+      "start": 4294967245,
+      "deadline": 4294967295,
+      "applied_ticks": 50,
+      "samples": [
+        {
+          "tick_call": 1,
+          "raw_count": 4294967246,
+          "wrap_count": 0,
+          "current_list": "0x10018400",
+          "yield_requested": false,
+          "ready": []
+        },
+        {
+          "tick_call": 49,
+          "raw_count": 4294967294,
+          "wrap_count": 0,
+          "current_list": "0x10018400",
+          "yield_requested": false,
+          "ready": []
+        },
+        {
+          "tick_call": 50,
+          "raw_count": 4294967295,
+          "wrap_count": 0,
+          "current_list": "0x10018400",
+          "yield_requested": true,
+          "ready": [
+            [
+              "0x10018104",
+              4294967295
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "delay": 50,
+      "clock": "max-deadline",
+      "deferred_ticks": true,
+      "start": 4294967245,
+      "deadline": 4294967295,
+      "applied_ticks": 50,
+      "samples": [
+        {
+          "tick_call": 1,
+          "raw_count": 4294967246,
+          "wrap_count": 0,
+          "current_list": "0x10018400",
+          "yield_requested": false,
+          "ready": []
+        },
+        {
+          "tick_call": 49,
+          "raw_count": 4294967294,
+          "wrap_count": 0,
+          "current_list": "0x10018400",
+          "yield_requested": false,
+          "ready": []
+        },
+        {
+          "tick_call": 50,
+          "raw_count": 4294967295,
+          "wrap_count": 0,
+          "current_list": "0x10018400",
+          "yield_requested": true,
+          "ready": [
+            [
+              "0x10018104",
+              4294967295
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "delay": 50,
+      "clock": "overflow",
+      "deferred_ticks": false,
+      "start": 4294967246,
+      "deadline": 0,
+      "applied_ticks": 50,
+      "samples": [
+        {
+          "tick_call": 1,
+          "raw_count": 4294967247,
+          "wrap_count": 0,
+          "current_list": "0x10018400",
+          "yield_requested": false,
+          "ready": []
+        },
+        {
+          "tick_call": 49,
+          "raw_count": 4294967295,
+          "wrap_count": 0,
+          "current_list": "0x10018400",
+          "yield_requested": false,
+          "ready": []
+        },
+        {
+          "tick_call": 50,
+          "raw_count": 0,
+          "wrap_count": 1,
+          "current_list": "0x10018500",
+          "yield_requested": true,
+          "ready": [
+            [
+              "0x10018104",
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "delay": 50,
+      "clock": "overflow",
+      "deferred_ticks": true,
+      "start": 4294967246,
+      "deadline": 0,
+      "applied_ticks": 50,
+      "samples": [
+        {
+          "tick_call": 1,
+          "raw_count": 4294967247,
+          "wrap_count": 0,
+          "current_list": "0x10018400",
+          "yield_requested": false,
+          "ready": []
+        },
+        {
+          "tick_call": 49,
+          "raw_count": 4294967295,
+          "wrap_count": 0,
+          "current_list": "0x10018400",
+          "yield_requested": false,
+          "ready": []
+        },
+        {
+          "tick_call": 50,
+          "raw_count": 0,
+          "wrap_count": 1,
+          "current_list": "0x10018500",
+          "yield_requested": true,
+          "ready": [
+            [
+              "0x10018104",
+              0
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "instruction_bytes": {
+    "0x8000222c": "000000ef",
+    "0x80002230": "1eff2fe1",
+    "0x80005530": "3200a0e3",
+    "0x80005534": "a06e01eb",
+    "0x80005d10": "0100a0e3",
+    "0x80005d14": "a86c01ea",
+    "0x80042840": "f0412de9",
+    "0x80042844": "78609fe5",
+    "0x80042848": "0170a0e1",
+    "0x8004284c": "0c5096e5",
+    "0x80042850": "0040a0e1",
+    "0x80042854": "000096e5",
+    "0x80042858": "040080e2",
+    "0x8004285c": "5f7900eb",
+    "0x80042860": "010074e3",
+    "0x80042864": "0600001a",
+    "0x80042884": "000096e5",
+    "0x80042888": "054084e0",
+    "0x8004288c": "044080e5",
+    "0x80042890": "000096e5",
+    "0x80042894": "050054e1",
+    "0x80042898": "041080e2",
+    "0x8004289c": "0200002a",
+    "0x800428a0": "380096e5",
+    "0x800428a4": "f041bde8",
+    "0x800428a8": "717900ea",
+    "0x800428ac": "340096e5",
+    "0x800428b0": "6f7900eb",
+    "0x800428b4": "280096e5",
+    "0x800428b8": "040050e1",
+    "0x800428bc": "28408685",
+    "0x800428c0": "f081bde8",
+    "0x80060de0": "082090e5",
+    "0x80060de4": "043090e5",
+    "0x80060de8": "101090e5",
+    "0x80060dec": "082083e5",
+    "0x80060df0": "0c0090e9",
+    "0x80060df4": "042083e5",
+    "0x80060df8": "042091e5",
+    "0x80060dfc": "000052e1",
+    "0x80060e00": "08209005",
+    "0x80060e04": "04208105",
+    "0x80060e08": "0020a0e3",
+    "0x80060e0c": "102080e5",
+    "0x80060e10": "000091e5",
+    "0x80060e14": "010040e2",
+    "0x80060e18": "000081e5",
+    "0x80060e1c": "1eff2fe1",
+    "0x80060e48": "081080e2",
+    "0x80060e4c": "0020e0e3",
+    "0x80060e50": "060080e9",
+    "0x80060e54": "0c1080e5",
+    "0x80060e58": "101080e5",
+    "0x80060e5c": "0010a0e3",
+    "0x80060e60": "001080e5",
+    "0x80060e64": "1eff2fe1",
+    "0x80060e74": "04402de5",
+    "0x80060e78": "00c091e5",
+    "0x80060e7c": "01007ce3",
+    "0x80060e80": "10209005",
+    "0x80060e84": "08208012",
+    "0x80060e88": "0400000a",
+    "0x80060e8c": "043092e5",
+    "0x80060e90": "004093e5",
+    "0x80060e94": "0c0054e1",
+    "0x80060e98": "0320a091",
+    "0x80060e9c": "faffff9a",
+    "0x80060ea0": "043092e5",
+    "0x80060ea4": "043081e5",
+    "0x80060ea8": "081083e5",
+    "0x80060eac": "082081e5",
+    "0x80060eb0": "041082e5",
+    "0x80060eb4": "100081e5",
+    "0x80060eb8": "001090e5",
+    "0x80060ebc": "011081e2",
+    "0x80060ec0": "001080e5",
+    "0x80060ec4": "04409de4",
+    "0x80060ec8": "1eff2fe1",
+    "0x80060ecc": "042090e5",
+    "0x80060ed0": "042081e5",
+    "0x80060ed4": "083092e5",
+    "0x80060ed8": "083081e5",
+    "0x80060edc": "083092e5",
+    "0x80060ee0": "041083e5",
+    "0x80060ee4": "081082e5",
+    "0x80060ee8": "100081e5",
+    "0x80060eec": "001090e5",
+    "0x80060ef0": "011081e2",
+    "0x80060ef4": "001080e5",
+    "0x80060ef8": "1eff2fe1",
+    "0x80060efc": "00000fe1",
+    "0x80060f00": "800080e3",
+    "0x80060f04": "00f021e1",
+    "0x80060f08": "0c009fe5",
+    "0x80060f0c": "001090e5",
+    "0x80060f10": "011081e2",
+    "0x80060f14": "001080e5",
+    "0x80060f18": "1eff2fe1",
+    "0x80060f20": "30009fe5",
+    "0x80060f24": "001090e5",
+    "0x80060f28": "000051e3",
+    "0x80060f2c": "1eff2f01",
+    "0x80060f30": "001090e5",
+    "0x80060f34": "011041e2",
+    "0x80060f38": "001080e5",
+    "0x80060f3c": "000090e5",
+    "0x80060f40": "000050e3",
+    "0x80060f44": "1eff2f11",
+    "0x80060f48": "00000fe1",
+    "0x80060f4c": "8000c0e3",
+    "0x80060f50": "00f021e1",
+    "0x80060f54": "1eff2fe1",
+    "0x80060fbc": "10402de9",
+    "0x80060fc0": "000050e3",
+    "0x80060fc4": "0800000a",
+    "0x80060fc8": "24109fe5",
+    "0x80060fcc": "302091e5",
+    "0x80060fd0": "012082e2",
+    "0x80060fd4": "302081e5",
+    "0x80060fd8": "0010a0e3",
+    "0x80060fdc": "1786ffeb",
+    "0x80060fe0": "870400eb",
+    "0x80060fe4": "000050e3",
+    "0x80060fe8": "1080bd18",
+    "0x80060fec": "1040bde8",
+    "0x80060ff0": "8d84feea",
+    "0x80061fa4": "f0472de9",
+    "0x80061fa8": "34719fe5",
+    "0x80061fac": "0060a0e3",
+    "0x80061fb0": "300097e5",
+    "0x80061fb4": "000050e3",
+    "0x80061fb8": "0700000a",
+    "0x80061fbc": "180097e5",
+    "0x80061fc0": "010080e2",
+    "0x80061fc4": "180087e5",
+    "0x80061fc8": "1c0097e5",
+    "0x80061fcc": "000050e3",
+    "0x80061fd0": "0160a013",
+    "0x80061fd4": "0600a0e1",
+    "0x80061fd8": "f087bde8",
+    "0x80061fdc": "0c0097e5",
+    "0x80061fe0": "015090e2",
+    "0x80061fe4": "0c5087e5",
+    "0x80061fe8": "0090e0e3",
+    "0x80061fec": "1000001a",
+    "0x80061ff0": "340097e5",
+    "0x80061ff4": "381097e5",
+    "0x80061ff8": "341087e5",
+    "0x80061ffc": "380087e5",
+    "0x80062000": "200097e5",
+    "0x80062004": "010080e2",
+    "0x80062008": "200087e5",
+    "0x8006200c": "340097e5",
+    "0x80062010": "000090e5",
+    "0x80062014": "000050e3",
+    "0x80062018": "28908705",
+    "0x8006201c": "0400000a",
+    "0x80062020": "340097e5",
+    "0x80062024": "0c0090e5",
+    "0x80062028": "0c0090e5",
+    "0x8006202c": "040090e5",
+    "0x80062030": "280087e5",
+    "0x80062034": "280097e5",
+    "0x80062038": "a8809fe5",
+    "0x8006203c": "050050e1",
+    "0x80062040": "0c00008a",
+    "0x80062044": "340097e5",
+    "0x80062048": "000090e5",
+    "0x8006204c": "000050e3",
+    "0x80062050": "0700000a",
+    "0x80062054": "340097e5",
+    "0x80062058": "0c0090e5",
+    "0x8006205c": "0c4090e5",
+    "0x80062060": "040094e5",
+    "0x80062064": "000055e1",
+    "0x80062068": "0900002a",
+    "0x80062074": "289087e5",
+    "0x80062078": "000097e5",
+    "0x8006207c": "2c0090e5",
+    "0x80062080": "000180e0",
+    "0x80062084": "000198e7",
+    "0x80062088": "010050e3",
+    "0x8006208c": "0160a083",
+    "0x80062090": "ccffffea",
+    "0x80062094": "040084e2",
+    "0x80062098": "50fbffeb",
+    "0x8006209c": "280094e5",
+    "0x800620a0": "000050e3",
+    "0x800620a4": "18008412",
+    "0x800620a8": "4cfbff1b",
+    "0x800620ac": "2c1094e5",
+    "0x800620b0": "100097e5",
+    "0x800620b4": "000051e1",
+    "0x800620b8": "10108785",
+    "0x800620bc": "010181e0",
+    "0x800620c0": "000188e0",
+    "0x800620c4": "041084e2",
+    "0x800620c8": "7ffbffeb",
+    "0x800620cc": "2c0094e5",
+    "0x800620d0": "001097e5",
+    "0x800620d4": "2c1091e5",
+    "0x800620d8": "010050e1",
+    "0x800620dc": "0160a023",
+    "0x800620e0": "d7ffffea",
+    "0x80062204": "f0472de9",
+    "0x80062208": "0070a0e3",
+    "0x8006220c": "3afbffeb",
+    "0x80062210": "04519fe5",
+    "0x80062214": "300095e5",
+    "0x80062218": "010040e2",
+    "0x8006221c": "300085e5",
+    "0x80062220": "300095e5",
+    "0x80062224": "000050e3",
+    "0x80062228": "3800001a",
+    "0x8006222c": "080095e5",
+    "0x80062230": "000050e3",
+    "0x80062234": "3500000a",
+    "0x80062238": "e0609fe5",
+    "0x8006223c": "0180a0e3",
+    "0x80062240": "000096e5",
+    "0x80062244": "000050e3",
+    "0x80062248": "78904612",
+    "0x8006224c": "2100000a",
+    "0x800622d8": "184095e5",
+    "0x800622dc": "000054e3",
+    "0x800622e0": "0600000a",
+    "0x800622e4": "2effffeb",
+    "0x800622e8": "000050e3",
+    "0x800622ec": "1c808515",
+    "0x800622f0": "014054e2",
+    "0x800622f4": "faffff1a",
+    "0x800622f8": "0000a0e3",
+    "0x800622fc": "180085e5",
+    "0x80062300": "1c0095e5",
+    "0x80062304": "000050e3",
+    "0x80062308": "0170a013",
+    "0x8006230c": "c67ffe1b",
+    "0x80062310": "02fbffeb",
+    "0x80062314": "0700a0e1",
+    "0x80062318": "f087bde8"
+  },
+  "static_tick_dispatch_bytes": {
+    "0x8000232c": "74009fe5",
+    "0x80002334": "10ff2fe1",
+    "0x800023a8": "a41f0680"
+  },
+  "limits": [
+    "Original delay/list routines, scheduler unlock and SVC instruction execute.",
+    "Minimal task and list fixtures. Wake tests inject ticks directly or through suspend/unlock, and seed the other task as current after the trapped yield.",
+    "The pending ready list is empty. The SVC trap is intercepted without running the exception handler, and no hardware IRQ is delivered.",
+    "List counter/deadline values do not establish physical duration."
+  ]
+}

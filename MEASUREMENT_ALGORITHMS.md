@@ -349,3 +349,7 @@ The second refresh passes scaled input 5 from retained raw 14023 to `0x80007c88`
 ## 2026-11-10 — KeyTask and Fast CONT refresh ordering
 
 The retained reading can reload the Fast CONT countdown to 3 before fresh UART publication. If KeyTask runs first, count 1 causes an off transition before the refresh re-arms sound. If refresh runs first, KeyTask decrements 3 to 2 without requesting off. Each later KeyTask iteration decrements once until expiry. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/key-task-fast-cont-order-validation.json).
+
+## 2026-11-10 — Scheduler delays and task wakeup
+
+In the tested scheduler state the KeyTask and GaugeCmdTask delay requests become deadlines at counter plus 50 and plus 1 respectively. Wrapped deadlines use the overflow list. The task becomes ready on the matching applied tick. UI refresh uses a separate timer path. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/scheduler-delay-wake-validation.json).
