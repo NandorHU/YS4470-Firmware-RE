@@ -1,15 +1,18 @@
-YS-4470 INSTALLER 1.1.0-beta.2
+YS-4470 Windows telepítő — gyors útmutató
 
-1. Extract the entire Windows-x64 ZIP.
-2. Double-click YS4470-Installer.exe. No Python installation is needed.
-3. To create a firmware file, click Save firmware file.
-   Factory V3.8 is included; no existing dump is required.
-4. To install: connect ONE meter in FEL mode, click Install and confirm.
-   Backup, second-read confirmation, application write and full readback are automatic.
-5. If USB detection fails, use the included USB driver setup button.
-   Select ONLY 1F3A:EFE8 and WinUSB in Zadig; approve the Windows prompt if asked.
+1. Csomagold ki a teljes ZIP-et, és indítsd el a YS4470-Installer.exe-t.
+2. Ellenőrizd a kiválasztott csomagot. A mellékelt dióda-hangerős béta V3.8 alapú.
+3. Csatlakoztass egy YS-4470-et FEL módban adatátvitelre alkalmas USB-kábellel.
+4. Válaszd az Install selected firmware in FEL mode gombot, majd erősítsd meg.
+5. Várd meg a Verified successfully jelzést. Ezután újraindíthatod a műszert.
 
-Wait for Verified successfully before power-cycling.
-Keep your automatic backup folder private and safe.
-The beta installer is simulation-tested; no new physical installation is claimed.
-Read README.md for exact supported images, recovery and limits.
+Következő verziónál cseréld ki a firmware/firmware.ysfw fájlt,
+vagy válaszd ki az új .ysfw fájlt a Choose firmware package gombbal.
+Ugyanaz az EXE marad.
+
+Ha a számítógép nem érzékeli a FEL eszközt, a USB driver setup
+gombbal nyisd meg a Zadigot. Csak az 1F3A:EFE8 azonosítójú FEL
+eszközhöz válaszd a WinUSB illesztőt.
+
+Az automatikus biztonsági mentés és a naplók a helyi gépen maradnak.
+A telepítőt szimulált eszközzel ellenőriztük. Fizikai műszeren még nem teszteltük.

@@ -1,0 +1,86 @@
+name: Publish reusable Windows installer
+
+on:
+  push:
+    branches: [release/reusable-installer-2.0]
+
+permissions:
+  contents: read
+concurrency:
+  group: ys4470-reusable-installer-2.0
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: github.repository == 'NandorHU/YS4470-Firmware-RE'
+    runs-on: windows-2022
+    timeout-minutes: 25
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12.10'
+          architecture: x64
+      - name: Install pinned build and validation tools
+        run: python -m pip install -r installer/requirements-build.lock.txt -r tools/analysis-requirements.txt keystone-engine==0.9.2
+      - name: Verify public inputs
+        run: python installer/prepare.py
+      - name: Check stock patcher regression
+        run: python -m unittest discover -s patcher -p test_patcher.py -v
+      - name: Rebuild and emulate the firmware
+        shell: pwsh
+        run: |
+          python -B contributions/COORD-DIODE-VOLUME/build_diode_volume.py --repo . --out work/diode-volume
+          if ($LASTEXITCODE -ne 0) { throw 'Firmware build failed' }
+          $image = 'work/diode-volume/ys4470-e2-diode-volume-OFFLINE.bin'
+          $expected = 'e8c00750df2fc465b182c60d2c32dd8cd87cafc4a5cbff4f7e6abbfaec48c76a'
+          if ((Get-FileHash -LiteralPath $image).Hash.ToLowerInvariant() -ne $expected) { throw 'Firmware image SHA-256 mismatch' }
+          python -B contributions/COORD-DIODE-VOLUME/test_diode_volume.py --repo . --candidate $image --out work/diode-volume/validation.json
+          if ($LASTEXITCODE -ne 0) { throw 'Firmware emulation failed' }
+          python -B installer/pack_firmware.py $image --family V3.8 --label 'E2 Diode Volume Beta' --out work/easy-installer/firmware.ysfw
+          if ($LASTEXITCODE -ne 0) { throw 'Firmware packaging failed' }
+      - name: Build the EXE and verify installation and restore offline
+        shell: pwsh
+        run: |
+          python -B installer/build.py --firmware-package work/easy-installer/firmware.ysfw
+          if ($LASTEXITCODE -ne 0) { throw 'Windows build failed' }
+          python -B installer/verify_release.py
+          if ($LASTEXITCODE -ne 0) { throw 'Windows build validation failed' }
+      - name: Verify and publish the new prerelease
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $tag = 'installer-v2.0.0-beta.1'
+          $repo = 'NandorHU/YS4470-Firmware-RE'
+          $matching = @(gh api "repos/$repo/releases?per_page=100" --paginate --jq '.[] | select(.tag_name == "installer-v2.0.0-beta.1") | .id')
+          if ($LASTEXITCODE -ne 0) { throw 'Could not inspect releases' }
+          if ($matching.Count -ne 0) { throw 'Release already exists; refusing to overwrite assets' }
+          $assets = @(Get-ChildItem -LiteralPath work/easy-installer/release -File | ForEach-Object FullName)
+          if ($assets.Count -ne 5) { throw 'Expected five release files' }
+          gh release create $tag @assets --repo $repo --target $env:GITHUB_SHA --draft --prerelease --title 'YS-4470 Reusable Windows Installer 2.0.0-beta.1' --notes-file installer/RELEASE-NOTES.md
+          if ($LASTEXITCODE -ne 0) { throw 'Could not create draft release' }
+          $ids = @(gh api "repos/$repo/releases?per_page=100" --paginate --jq '.[] | select(.tag_name == "installer-v2.0.0-beta.1" and .draft) | .id')
+          if ($LASTEXITCODE -ne 0 -or $ids.Count -ne 1) { throw 'Could not inspect draft release' }
+          $id = $ids[0]
+          $valid = $false
+          for ($attempt = 0; $attempt -lt 10; $attempt++) {
+            $release = gh api "repos/$repo/releases/$id" | ConvertFrom-Json
+            if ($LASTEXITCODE -ne 0) { throw 'Could not inspect draft assets' }
+            $valid = $release.assets.Count -eq $assets.Count
+            foreach ($file in $assets) {
+              $name = [IO.Path]::GetFileName($file)
+              $asset = @($release.assets | Where-Object { $_.name -eq $name })
+              $expected = 'sha256:' + (Get-FileHash -LiteralPath $file -Algorithm SHA256).Hash.ToLowerInvariant()
+              if ($asset.Count -ne 1 -or $asset[0].digest -ne $expected) { $valid = $false }
+            }
+            if ($valid) { break }
+            Start-Sleep -Seconds 3
+          }
+          if (-not $valid) { throw 'Uploaded asset verification failed; draft retained' }
+          gh api --method PATCH "repos/$repo/releases/$id" -F draft=false
+          if ($LASTEXITCODE -ne 0) { throw 'Could not publish verified draft' }

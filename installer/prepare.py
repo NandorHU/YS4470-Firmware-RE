@@ -15,9 +15,7 @@ def fetch(row,path):
 def main():
     lock=json.loads((HERE/'dependencies.lock.json').read_text());resources=WORK/'resources';cache=WORK/'downloads'
     for row in lock['factory']:
-        dest=ROOT/'original-firmware'/row['version']/'f1c100s.bin';raw=fetch(row,dest)
-        if row['version']=='V3.8':
-            target=resources/'factory/V3.8/f1c100s.bin';target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(raw)
+        dest=ROOT/'original-firmware'/row['version']/'f1c100s.bin';fetch(row,dest)
     archive=fetch(lock['fel'],cache/lock['fel']['name'])
     with zipfile.ZipFile(cache/lock['fel']['name'])as z:exe=z.read(lock['fel']['entry'])
     if sha(exe)!=lock['fel']['exe_sha256']:raise ValueError('FEL executable identity mismatch')
@@ -25,5 +23,5 @@ def main():
     (tools/'zadig-2.9.exe').write_bytes(fetch(lock['zadig'],cache/lock['zadig']['name']))
     for row in lock['sources']:fetch(row,cache/row['name'])
     shutil.copyfile(ROOT/'patcher/patch-data.json',resources/'patch-data.json')
-    print(json.dumps({'resources_ready':True,'factory':'V3.8','public_sources':len(lock['sources']),'device_access':False}))
+    print(json.dumps({'resources_ready':True,'public_sources':len(lock['sources']),'device_access':False}))
 if __name__=='__main__':main()

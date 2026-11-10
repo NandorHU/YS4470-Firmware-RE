@@ -1,7 +1,8 @@
 YS-4470 Installer - bundled components
 
-The original factory V3.8 application is included at the project owner's request.
-SHA-256: 7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290
+The external firmware package contains the project E2 diode-volume application
+built from the owner's published factory V3.8 input.
+Factory input SHA-256: 7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290
 Manufacturer rights are unchanged. No personal full-flash image is distributed.
 
 sunxi-fel: linux-sunxi/sunxi-tools, GPL-2.0-or-later.

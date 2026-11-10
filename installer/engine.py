@@ -5,6 +5,7 @@ from contextlib import contextmanager
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'patcher'))
 import ys4470_patch as patch
+from firmware_package import known_family, recorded_family
 FLASH=0x1000000;SECTOR=0x10000;CHUNK=0x40000
 FACTORY_SHA='7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290'
 FEL_SHA='cc1e338a238ab99dc0ca12bdb3558d2781f9e81ed411a9b92d1c4021a67a2acf'
@@ -75,10 +76,30 @@ class Engine:
     def install(self,variant='continuous',approved=False):
         if not approved:raise InstallError('The user must explicitly start installation')
         return self.run('install',variant)
+    def install_package(self, firmware, approved=False):
+        if not approved:
+            raise InstallError('The user must explicitly start installation')
+        firmware.validate()
+        known = known_family(firmware.image_sha256, self.data)
+        if known and known != firmware.family:
+            raise InstallError('The selected image belongs to another factory firmware family.')
+        return self.run('install', 'external-package', firmware=firmware)
+
+    def package_target(self, before, firmware):
+        off, _, current = patch.locate(before, self.data)
+        current_sha256 = patch.sha(current)
+        family = known_family(current_sha256, self.data) or recorded_family(current_sha256, self.root)
+        if family != firmware.family or current[:32] != firmware.image[:32]:
+            raise InstallError('The installed application is unknown or belongs to a different family. The automatic backup was saved.')
+        receipt = dict(package_label=firmware.label, firmware_family=firmware.family,
+                       factory_sha256=firmware.factory_sha256, application_sha256=firmware.image_sha256,
+                       previous_application_sha256=current_sha256)
+        return before[:off] + firmware.image + before[off + len(current):], receipt
+
     def restore(self,backup,approved=False):
         if not approved:raise InstallError('The user must explicitly approve restoration')
         return self.run('restore','continuous',Path(backup))
-    def run(self,action,variant,backup=None):
+    def run(self,action,variant,backup=None,firmware=None):
       with self.locked():
         run=self.root/(time.strftime('%Y%m%d-%H%M%S')+'-'+uuid.uuid4().hex[:8]);run.mkdir()
         transport=self.transport_factory(run);identity=None
@@ -86,7 +107,10 @@ class Engine:
             self.progress(0,'Checking device');identity=transport.probe()
             if identity.get('soc')!='F1C100s'or identity.get('bytes')!=FLASH or identity.get('flash')!='Winbond EF/40':raise InstallError('Unsupported device')
             before=self.read_full(transport,run,'backup-before',2,28)
-            if action=='install':
+            if action == 'install' and firmware is not None:
+                target, receipt = self.package_target(before, firmware)
+                allowed = self.blocks(before, target)
+            elif action=='install':
                 info=patch.inspect(before,self.data)
                 if not info['supported']:raise InstallError('Unsupported installed application. Your automatic backup was saved; no write occurred.')
                 state=info['recognized_states'][0]
@@ -122,6 +146,8 @@ class Engine:
             after=self.read_full(transport,run,'readback-after',70,29)
             if after!=target:raise InstallError('Readback differs. Keep FEL mode and use the saved backup for recovery; no automatic retry.')
             result={'success':True,'action':action,'variant':variant,'full_flash_sha256':patch.sha(after),'backup_sha256':backup_sha,'blocks_written':len(allowed),'boot_issued':False,'identity':identity}
+            if firmware is not None:
+                result.update(receipt)
             save_json(run/'result.json',result);self.progress(100,'Verified successfully');return run,result
         except Exception as e:
             save_json(run/'error.json',{'success':False,'action':action,'error':str(e),'identity':identity,'boot_issued':False})
