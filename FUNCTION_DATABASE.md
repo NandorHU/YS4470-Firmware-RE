@@ -423,3 +423,7 @@ The original sender at `0x80061acc` supports the tested zero-wait rejection, tim
 ## 2026-11-10 — Direct control producers and result-block writer
 
 The original control-record builder `0x80006778` forwards the caller's type and low bytes of `r1` and `r2` to the original queue sender `0x80061acc`. The 31 indexed direct sites exercise record types 0–5. The `0x8005d34c` result writer clears six words for signed values below `0x40000000` in the tested suffix. [Factory hashes, original bytes and ARM926 replay](contributions/COORD-ADC-CADENCE/synchronous/control-producer-suffix-replay.json).
+
+## 2026-11-10 — GUI field provenance at 0x80046548
+
+The original caller at `0x80057948` enters the initializer `0x80045ea8`. At `0x80046548` the initializer stores a child label returned by `0x80030ad0` and passes it to the text setter at `0x80032038`. The original class descriptor at `0x80068ee0` points to the label constructor `0x800309f0`. The bitmap accessor `0x8002c844` resolves U+007D through the factory font descriptor and the original glyph lookup at `0x8001d5b0`. [Original replay, instruction bytes and firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/gui-field-provenance.json).

@@ -351,3 +351,7 @@ The raw candidate `0x8009ef10` decodes as an interior branch. Its surrounding by
 ## 2026-11-10 — Direct control producers and result-block writer
 
 The bounded direct caller suffixes emit types 0–5. Indirect and synthesized producers, the `0x80046548` field signature and native type-6 provenance remain open. The original `0x8005d35c` writer targets the result block on the tested path. [Factory hashes, original bytes and ARM926 replay](contributions/COORD-ADC-CADENCE/synchronous/control-producer-suffix-replay.json).
+
+## 2026-11-10 — GUI field provenance at 0x80046548
+
+The two non-queue field-signature candidates now have bounded original execution evidence. The raw `0x8009ef10` match falls inside a factory glyph bitmap verified by original lookup. Synthesized or register-indirect handle aliases and native type-6 record creation remain open. [Original replay, instruction bytes and firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/gui-field-provenance.json).

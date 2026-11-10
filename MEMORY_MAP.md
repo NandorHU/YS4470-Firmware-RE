@@ -429,3 +429,7 @@ The replay checks the ten 68-byte records, message count at queue +0x38 and send
 ## 2026-11-10 — Direct control producers and result-block writer
 
 The original constructor stores its returned queue handle at `0x805aae90` via `0x800029f4`. The control queue copies 68 bytes and updates its cursor and count. The `r5` literal at `0x8005d518` instead supplies `0x805ac714` to `0x8005d27c`. The tested `0x8005d35c` stores target this result block. [Factory hashes, original bytes and ARM926 replay](contributions/COORD-ADC-CADENCE/synchronous/control-producer-suffix-replay.json).
+
+## 2026-11-10 — GUI field provenance at 0x80046548
+
+The initializer at `0x80045ea8` preserves its caller's context in `r4`. Original stores place a label pointer at context `+0x38`, a parent pointer at `+0x3c` and a second label at `+0x40`. Both the actual control handle at `0x805aae90` and the allocated queue remain byte-identical. The font descriptor `0x800a56d4` reaches the packed U+007D glyph at `0x8009eec2..0x8009ef6c`, including the raw branch-like word at `0x8009ef10`. [Original replay, instruction bytes and firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/gui-field-provenance.json).

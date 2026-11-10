@@ -607,3 +607,15 @@ Executed six full-queue cases across both factory hashes. Zero wait returns imme
 ## 2026-11-10 — Direct control producers and result-block writer
 
 Executed 66 original sends and eight result-writer cases across the two manifest-pinned factory images. The native selection suffixes set types 0–5. The branch at `0x8005d130` emits either type 3 or 4 with zero argument bytes. The separate original suffix at `0x8005d35c` writes only the result block in the tested clear cases. Published [428 newly checked Ollama instruction extracts](contributions/COORD-ADC-CADENCE/local-index/review-2026-11-10-delta/review.json). [Factory hashes, original bytes and ARM926 replay](contributions/COORD-ADC-CADENCE/synchronous/control-producer-suffix-replay.json).
+
+## 2026-11-10 — GUI label field and glyph bitmap provenance
+
+Four original ARM926 initialization cases across the two factory images
+verify the GUI label store at `0x80046548` and the unchanged control
+queue. Eight original font lookups show that the raw branch-like word
+at `0x8009ef10` belongs to the factory U+007D bitmap interval. The
+two independent report runs were byte-identical.
+[Original replay and hashes](contributions/COORD-ADC-CADENCE/synchronous/gui-field-provenance.json).
+
+Checked 201 additional Ollama drafts against the original bytes and
+frozen requests. All 201 were retained as [instruction indexes](contributions/COORD-ADC-CADENCE/local-index/review-2026-11-10-gui-field/review.json).

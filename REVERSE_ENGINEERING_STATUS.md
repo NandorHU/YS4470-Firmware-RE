@@ -435,3 +435,7 @@ The expanded two-image queue index checks branch targets throughout the known qu
 ## 2026-11-10 — Direct control producers and result-block writer
 
 The two factory images agree on 66 ARM926 sends from 31 native caller suffixes and eight cases that resolve the `0x8005d35c` result writer. This bounds local argument formation and queue admission. Earlier caller paths, indirect targets and physical timing require separate evidence. [Factory hashes, original bytes and ARM926 replay](contributions/COORD-ADC-CADENCE/synchronous/control-producer-suffix-replay.json).
+
+## 2026-11-10 — GUI field provenance at 0x80046548
+
+Four original ARM926 cases on the two factory images identify the `0x80046548` field as a GUI label pointer. The test follows descriptor dispatch, child registration and text storage using two relocated fixture layouts with empty and populated control queues. Eight original glyph lookup cases resolve the raw interior branch match at `0x8009ef10` to the U+007D bitmap interval. [Original replay, instruction bytes and firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/gui-field-provenance.json).

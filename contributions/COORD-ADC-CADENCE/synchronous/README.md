@@ -897,3 +897,46 @@ probe and native type-6 provenance remain open.
 ```powershell
 python -B contributions/COORD-ADC-CADENCE/synchronous/trace_control_producer_suffixes.py --out control-producer-suffix-replay.json
 ```
+
+## GUI field provenance at 0x80046548
+
+The [original replay](gui-field-provenance.json) starts at `0x80057948`, carries
+the original context through `0x800579b8` into `0x80045ea8`, and stops
+at `0x800466c4`. The original constructor `0x80030ad0` creates and
+registers each child, including the label stored at context `+0x38`
+by `0x80046548`. The descriptor literal at `0x80030af0` names
+`0x80068ee0`. The original indirect call at `0x80034928` reaches the
+descriptor's callback `0x800309f0`.
+
+The original callback sets the initial text to `Text`. The initializer
+then sets the label at context `+0x38` to the empty string at
+`0x800462f0`. The neighboring context `+0x3c` is a parent pointer
+and `+0x40` a separate child label. The original text setter and its
+Thumb length and copy routines execute. The replay checks six created
+labels and child lists in each case.
+
+The two layouts use different context and heap addresses and start
+with zero or three records in the original control queue. The control
+block and the entire queue allocation are checked byte-for-byte.
+Allocation, display roots, parents and selected layout and styling
+leaves are fixtures. The test covers initialization up to the stop
+address and the stores on that path.
+
+```powershell
+python -B contributions/COORD-ADC-CADENCE/synchronous/trace_gui_field_provenance.py --out gui-field-provenance.json
+```
+
+### Interior branch-like word in the font bitmap
+
+The factory font descriptor at `0x800a56d4` selects the original
+bitmap accessor `0x8002c844`. The format descriptor at `0x800a56bc`
+supplies the glyph table and bitmap base. The original lookup and
+cache map U+007C, U+007D and U+007E to glyph indices 93, 94 and 95.
+Both cold and warm U+007D lookups return `0x8009eec2`.
+
+Glyph 94 has an 11 by 31 bounding box. The packed bytes occupy
+`[0x8009eec2, 0x8009ef6d)`, as checked against the next glyph offset
+and the packed length. The raw word `000bffda` at `0x8009ef10`
+is 78 bytes into that interval. The lookup cases use the original font
+data and check the actual cache accesses. They cover the identified
+font resource; register-indirect queue-writer coverage remains open.
