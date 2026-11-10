@@ -289,3 +289,7 @@ The scheduled service replay supplies Timer0 IRQ13 and UART2 IRQ3 through the in
 ## 2026-11-10 — Scheduled long fallback and status waits
 
 The scheduled status chain runs the original GPIO cleanup operations. The GPIO shadow at `0x01c208c4` returns to `0x80` after the tested sequences. Timer0 and UART2 IRQ events are supplied by the host through the installed vector. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-validation.json).
+
+## 2026-11-10 — Live calibration status and UI timer
+
+The linked status UI test uses the installed Timer0 and UART2 IRQ paths, an emulated register shadow, and modeled GUI leaves. Software period changes from 2,000 to 200 are verified through original timer writes. Physical display and timing are outside the test. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).

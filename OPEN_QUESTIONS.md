@@ -331,3 +331,7 @@ Continue through the original longer-delay fallback branches, including the 200-
 ## 2026-11-10 — Scheduled long fallback and status waits
 
 Run calibration timer `0x8005da88` against status written in the same scheduled execution, including while the status wait is in progress. The existing UI evidence uses explicit status snapshots. Peer conversion, later status schedules and physical timing remain separate questions. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-validation.json).
+
+## 2026-11-10 — Live calibration status and UI timer
+
+After the original calibration reset stores, exercise the zero-status and zero-flag UI callback through the real measurement queue in the same emulator. Keep hardware timing and peer conversion outside the software proof. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).

@@ -415,3 +415,7 @@ Twenty-six original ARM926 cases join the GaugeCmdTask loop and real queue to or
 ## 2026-11-10 — Scheduled long fallback and status waits
 
 Six scheduled ARM926 cases execute three original producer paths across both factory hashes. The extended cases exercise the first status poll after two RX clears and run through final GPIO cleanup. A total of 60,814 controlled Timer0 interrupts validate the requested waits. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-validation.json).
+
+## 2026-11-10 — Live calibration status and UI timer
+
+Four linked schedules and 60 original timer callbacks reproduce the calibration wait and result texts in V3.6/V3.8. Both status writer and timer reader use one memory image. The host chooses the GUI runner entry and models allocation and invalidation. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).

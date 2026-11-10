@@ -369,3 +369,7 @@ When a type-3 measurement precedes a type-1 record, the service retains the fall
 ## 2026-11-10 — Scheduled long fallback and status waits
 
 The scheduled type-1 status chain clears the original RX buffer twice. Status behind the ACK and status arriving during the 10,000-count wait are removed in the fixtures. The next poll consumes the first two bytes received after the second clear and stores 2 for `a0 02` or 7 for `a1 04`. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-validation.json).
+
+## 2026-11-10 — Live calibration status and UI timer
+
+The original UI timer reports `Calibration ...` for live status zero with flag 1. Fresh status 2 or 7 takes precedence over the flag, generates the corresponding original text, and changes the period to 200. In the `0x29` schedule the first result is visible while the flag remains 1. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).

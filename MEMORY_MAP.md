@@ -409,3 +409,7 @@ The original queue is constructed with ten 68-byte entries. The service keeps a 
 ## 2026-11-10 — Scheduled long fallback and status waits
 
 The IRQ-filled buffer at `0x805b408c` and count at `0x805ab938` are cleared under the original critical sections at `0x80003f24` and `0x80003f44`. The first clear saw three bytes and the second two. The status word at `0x805ab920` reflects the fresh prefix. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-validation.json).
+
+## 2026-11-10 — Live calibration status and UI timer
+
+The original callback reads the same `0x805ab920` and `0x805ab91c` words written by the scheduled GaugeCmdTask. The timer handle at `0x805abeb8` points to the fixture timer whose period and last-count words change through original code. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).

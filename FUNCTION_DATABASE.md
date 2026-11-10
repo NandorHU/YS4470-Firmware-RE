@@ -403,3 +403,7 @@ The original GaugeCmdTask post-startup loop at `0x80003dd0` reaches service `0x8
 ## 2026-11-10 — Scheduled long fallback and status waits
 
 The original producers at `0x8000e61c`, `0x8000e4f4`, and `0x8000e588` run through the real GaugeCmdTask queue to fallback `0x80003dd8`. The scheduled type-0 case waits 200 before helper `0x26`. Type-1 cases `0x28` and `0x29` execute the status path through the first post-clear poll and cleanup. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-validation.json).
+
+## 2026-11-10 — Live calibration status and UI timer
+
+The timer constructor at `0x8004c4ec` and runner `0x8004092c` execute in the same emulator as the scheduled status writer. The callback `0x8005da88` reads the live result at `0x8005dac4` and reads the flag at `0x8005dbfc` only for status zero. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).

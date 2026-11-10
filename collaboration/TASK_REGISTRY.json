@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 36,
+  "revision": 37,
   "updated": "2026-11-10",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,7 +295,7 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Link original calibration timer callback 0x8005da88 to the live scheduled status path in the same emulator. Exercise waiting flag and statuses 2 and 7 from IRQ-delivered replies with original timer due checks and controlled GUI leaves. Keep external peer behavior and physical timing open.",
+      "next_action": "Follow original calibration reset stores 0x80046cb0/0x80046cb8 into the live timer callback and real type-3 enqueue at 0x8005dc38. Keep the shared emulator, original queue, IRQ-fed response and software timing boundaries.",
       "last_verified_result": {
         "profile_cases": 64,
         "transition_cases": 64,
@@ -358,7 +358,10 @@
         "local_gauge_scheduled_index_drafts_verified": 8,
         "original_gauge_long_fallback_cases": 6,
         "original_gauge_long_fallback_timer_irqs": 60814,
-        "local_gauge_long_fallback_index_drafts_verified": 6
+        "local_gauge_long_fallback_index_drafts_verified": 6,
+        "original_live_calibration_ui_schedules": 4,
+        "original_live_calibration_ui_callbacks": 60,
+        "local_calibration_ui_index_drafts_verified": 6
       },
       "result_evidence": [
         "contributions/COORD-ADC-CADENCE/profile-validation.json",
@@ -394,7 +397,9 @@
         "contributions/COORD-ADC-CADENCE/synchronous/gauge-scheduled-service-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/gauge-scheduled-local-index-review.json",
         "contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-validation.json",
-        "contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-local-index-review.json"
+        "contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-local-index-review.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-local-index-review.json"
       ]
     },
     {

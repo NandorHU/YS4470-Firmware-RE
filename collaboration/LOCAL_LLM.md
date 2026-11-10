@@ -141,3 +141,10 @@ instruction extracts using the checked lessons. All six drafts completed
 on the first attempt. The [coordinator review](../contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-local-index-review.json)
 checks each address, quote and original bytes on both factory images.
 The dynamic waits and UART behavior come from the original ARM926 replay.
+
+## 2026-11-10 — Live calibration UI instruction index
+
+The checked Ollama worker completed six new extracts across three
+batches. The [coordinator review](../contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-local-index-review.json) confirms
+the instruction addresses and original bytes on both factory images.
+The shared-memory timer behavior was tested independently.

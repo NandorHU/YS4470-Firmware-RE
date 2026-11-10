@@ -278,3 +278,7 @@ Extend the scheduled harness to longer fallback waits and trace original produce
 ## 2026-11-10 — Scheduled long fallback and status waits
 
 Link the scheduled status path to the original calibration UI timer without copying status snapshots between emulators. Check the waiting label and selected result before and after the final fallback cleanup. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-validation.json).
+
+## 2026-11-10 — Live calibration status and UI timer
+
+Continue the live calibration chain through the original reset stores, the type-3 enqueue at `0x8005dc38`, and the scheduled measurement reply. Preserve original UI formatting and separate the controlled GUI runner from hardware timing. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).
