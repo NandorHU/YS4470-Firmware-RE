@@ -355,3 +355,7 @@ The bounded direct caller suffixes emit types 0–5. Indirect and synthesized pr
 ## 2026-11-10 — GUI field provenance at 0x80046548
 
 The two non-queue field-signature candidates now have bounded original execution evidence. The raw `0x8009ef10` match falls inside a factory glyph bitmap verified by original lookup. Synthesized or register-indirect handle aliases and native type-6 record creation remain open. [Original replay, instruction bytes and firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/gui-field-provenance.json).
+
+## 2026-11-10 — Registered GUI callbacks and indirect queue producers
+
+The first GUI table resolves ten concrete register-indirect producers. The second block resolves the event-to-record path of `0x8000d294` for eight binary flag combinations. Other callbacks, synthesized control-queue aliases and native type-6 creation remain open. [Original instruction bytes, factory hashes and replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-event-validation.json).

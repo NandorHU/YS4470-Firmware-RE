@@ -940,3 +940,39 @@ and the packed length. The raw word `000bffda` at `0x8009ef10`
 is 78 bytes into that interval. The lookup cases use the original font
 data and check the actual cache accesses. They cover the identified
 font resource; register-indirect queue-writer coverage remains open.
+
+## Registered GUI callbacks and indirect queue producers
+
+The [replay](control-gui-event-validation.json) executes the original registration block
+`[0x8004c3b4, 0x8004c47c)` with ten seeded UI object pointers. The
+literal table at `0x8004c50c` supplies the native callbacks. The
+original helper at `0x800338dc` initializes an event descriptor
+for each object with filter 1 and a zero user value.
+
+The original event sender at `0x8002c758` enters the dispatcher
+at `0x8001ae74`. In each of the 20 matched cases across both images,
+the dispatcher loads the callback from its runtime descriptor and
+calls it through `0x8001b030`. The callback changes the original
+timer fields, receives both previously queued records, and appends
+one new 68-byte record via `0x80006778` and `0x80061acc`.
+The 20 event-code-2 cases preserve the entire queue, timer and
+selection. The scheduler count stays fixed.
+
+The second original registration block
+`[0x800517f4, 0x800518bc)` binds nine filter-1 callbacks and one
+filter-`0x1c` callback. The replay also dispatches `0x8000d294`
+from this block. Across all eight binary combinations of the
+three local bytes at `0x805abefc`, the handler toggles byte +2.
+With byte +0 equal to 1, clearing +2 sends type 2 with argument
+`0x0c` and second byte `0x15` or `0x19`, depending on byte +1.
+Setting +2 sends type 2 with `0x22, 0x15` when +1 is 1.
+The other five combinations leave the queue intact.
+
+UI objects and input events are supplied. Allocators, formatting,
+text display and selected style helpers are modeled. The type-2
+sound helper executes its disabled branch. The test covers the original dispatch,
+queue and timer RAM stores under the idle scheduler fixture.
+
+```powershell
+python -B contributions/COORD-ADC-CADENCE/synchronous/trace_control_gui_events.py --out control-gui-event-validation.json
+```

@@ -619,3 +619,16 @@ two independent report runs were byte-identical.
 
 Checked 201 additional Ollama drafts against the original bytes and
 frozen requests. All 201 were retained as [instruction indexes](contributions/COORD-ADC-CADENCE/local-index/review-2026-11-10-gui-field/review.json).
+
+## 2026-11-10 — Indirect GUI dispatch into the control queue
+
+Executed 56 original ARM926 event cases and four original registration
+runs across the manifest-pinned V3.6 and V3.8 images. The first block
+dispatches ten registered handlers through `0x8001b030`; 20 matched
+cases enqueue types 0 or 1 and 20 filtered cases preserve the queue.
+The second block's `0x8000d294` yields six type-2 sends and ten
+unchanged queues over its state matrix. Two independent runs gave
+byte-identical reports. [Factory hashes and original traces](contributions/COORD-ADC-CADENCE/synchronous/control-gui-event-validation.json).
+
+Checked [220 additional Ollama instruction rows](contributions/COORD-ADC-CADENCE/local-index/review-2026-11-10-control-events/review.json)
+against both originals and their frozen requests.

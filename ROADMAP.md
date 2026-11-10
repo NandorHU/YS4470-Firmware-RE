@@ -302,3 +302,7 @@ Trace the `r4` object at `0x80046548` and its stored value from `0x80030ad0`, th
 ## 2026-11-10 — GUI field provenance at 0x80046548
 
 Trace register-indirect and synthesized control-queue aliases and the native type-6 producer. The GUI field, result-block field and glyph bytes at `0x8009ef10` now have bounded provenance. [Original replay, instruction bytes and firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/gui-field-provenance.json).
+
+## 2026-11-10 — Registered GUI callbacks and indirect queue producers
+
+Use the verified second registration block at `0x800517f4` to replay `0x8000cfd0` from the original event dispatcher. Keep remaining register-indirect paths and native type-6 provenance separate. [Original instruction bytes, factory hashes and replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-event-validation.json).

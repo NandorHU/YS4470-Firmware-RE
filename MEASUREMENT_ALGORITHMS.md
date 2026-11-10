@@ -393,3 +393,7 @@ The original suffix at `0x8005d118` loads the local state byte and sends type 4 
 ## 2026-11-10 — GUI field provenance at 0x80046548
 
 The bounded initialization path preserves the control queue and its pending records while setting up GUI labels. The `0x80046548` signature is excluded from control-record producer candidates for this path. [Original replay, instruction bytes and firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/gui-field-provenance.json).
+
+## 2026-11-10 — Registered GUI callbacks and indirect queue producers
+
+With two records pending, each matched callback drains both and enqueues one new control record. The original callbacks emit types 0 and 1. The callback at `0x8000e5f0` emits prefix `000000000913`; the neighboring event-code probe leaves the queue unchanged. The second block's `0x8000d294` toggles its flag in every tested state. Three of the eight states emit type 2. [Original instruction bytes, factory hashes and replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-event-validation.json).

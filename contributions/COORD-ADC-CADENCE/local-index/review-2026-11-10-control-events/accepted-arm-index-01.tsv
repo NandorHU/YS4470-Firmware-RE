@@ -1,0 +1,221 @@
+address	bytes_le	assembly	catalog
+0x8001afe8	0050a0e3	mov r5, #0	control-event-registration.json
+0x8001afec	260000ea	b #0x8001b08c	control-event-registration.json
+0x8001aff0	0160a0e3	mov r6, #1	control-event-registration.json
+0x8001aff4	f0ffffea	b #0x8001afbc	control-event-registration.json
+0x8001aff8	001090e5	ldr r1, [r0]	control-event-registration.json
+0x8001affc	000051e3	cmp r1, #0	control-event-registration.json
+0x8001b000	1200000a	beq #0x8001b050	control-event-registration.json
+0x8001b004	0810d0e5	ldrb r1, [r0, #8]	control-event-registration.json
+0x8001b008	7f20d1e3	bics r2, r1, #0x7f	control-event-registration.json
+0x8001b00c	0f00001a	bne #0x8001b050	control-event-registration.json
+0x8001b010	000051e3	cmp r1, #0	control-event-registration.json
+0x8001b014	0820d415	ldrbne r2, [r4, #8]	control-event-registration.json
+0x8001b018	02005111	cmpne r1, r2	control-event-registration.json
+0x8001b01c	0b00001a	bne #0x8001b050	control-event-registration.json
+0x8001b020	041090e5	ldr r1, [r0, #4]	control-event-registration.json
+0x8001b024	0c1084e5	str r1, [r4, #0xc]	control-event-registration.json
+0x8001b028	001090e5	ldr r1, [r0]	control-event-registration.json
+0x8001b02c	0400a0e1	mov r0, r4	control-event-registration.json
+0x8001b030	31ff2fe1	blx r1	control-event-registration.json
+0x8001b034	1800d4e5	ldrb r0, [r4, #0x18]	control-event-registration.json
+0x8001b038	020010e3	tst r0, #2	control-event-registration.json
+0x8001b03c	0100000a	beq #0x8001b048	control-event-registration.json
+0x8001b040	0100a0e3	mov r0, #1	control-event-registration.json
+0x8001b044	f081bde8	pop {r4, r5, r6, r7, r8, pc}	control-event-registration.json
+0x8001b048	010010e3	tst r0, #1	control-event-registration.json
+0x8001b04c	4d00001a	bne #0x8001b188	control-event-registration.json
+0x8001b050	041094e5	ldr r1, [r4, #4]	control-event-registration.json
+0x8001b054	015085e2	add r5, r5, #1	control-event-registration.json
+0x8001b058	081091e5	ldr r1, [r1, #8]	control-event-registration.json
+0x8001b05c	0500a0e1	mov r0, r5	control-event-registration.json
+0x8001b060	000051e3	cmp r1, #0	control-event-registration.json
+0x8001b064	0300000a	beq #0x8001b078	control-event-registration.json
+0x8001b068	1a20d1e5	ldrb r2, [r1, #0x1a]	control-event-registration.json
+0x8001b06c	3f2002e2	and r2, r2, #0x3f	control-event-registration.json
+0x8001b070	000052e1	cmp r2, r0	control-event-registration.json
+0x8001b074	0100008a	bhi #0x8001b080	control-event-registration.json
+0x8001b078	0000a0e3	mov r0, #0	control-event-registration.json
+0x8001b07c	020000ea	b #0x8001b08c	control-event-registration.json
+0x8001b080	0c1091e5	ldr r1, [r1, #0xc]	control-event-registration.json
+0x8001b084	850085e0	add r0, r5, r5, lsl #1	control-event-registration.json
+0x8001b088	000181e0	add r0, r1, r0, lsl #2	control-event-registration.json
+0x8001b08c	000050e3	cmp r0, #0	control-event-registration.json
+0x8001b090	0200000a	beq #0x8001b0a0	control-event-registration.json
+0x8001b094	000056e3	cmp r6, #0	control-event-registration.json
+0x8001b098	3c00000a	beq #0x8001b190	control-event-registration.json
+0x8001b09c	d5ffffea	b #0x8001aff8	control-event-registration.json
+0x8001b0a0	000056e3	cmp r6, #0	control-event-registration.json
+0x8001b0a4	3900000a	beq #0x8001b190	control-event-registration.json
+0x8001b0a8	040094e5	ldr r0, [r4, #4]	control-event-registration.json
+0x8001b0ac	041090e5	ldr r1, [r0, #4]	control-event-registration.json
+0x8001b0b0	000051e3	cmp r1, #0	control-event-registration.json
+0x8001b0b4	3500000a	beq #0x8001b190	control-event-registration.json
+0x8001b0b8	1810d4e5	ldrb r1, [r4, #0x18]	control-event-registration.json
+0x8001b0bc	040011e3	tst r1, #4	control-event-registration.json
+0x8001b0c0	3200001a	bne #0x8001b190	control-event-registration.json
+0x8001b0c4	0810d4e5	ldrb r1, [r4, #8]	control-event-registration.json
+0x8001b0c8	230051e3	cmp r1, #0x23	control-event-registration.json
+0x8001b0cc	24005113	cmpne r1, #0x24	control-event-registration.json
+0x8001b0d0	2400000a	beq #0x8001b168	control-event-registration.json
+0x8001b0d4	0119a0e3	mov r1, #0x4000	control-event-registration.json
+0x8001b0d8	0a7100eb	bl #0x80037508	control-event-registration.json
+0x8001b0dc	000050e3	cmp r0, #0	control-event-registration.json
+0x8001b0e0	2a00000a	beq #0x8001b190	control-event-registration.json
+0x8001d5b0	000051e3	cmp r1, #0	glyph-bitmap-lookup.json
+0x8001d5b4	0000a003	moveq r0, #0	glyph-bitmap-lookup.json
+0x8001d5b8	1eff2f01	bxeq lr	glyph-bitmap-lookup.json
+0x8001d5bc	f0472de9	push {r4, r5, r6, r7, r8, sb, sl, lr}	glyph-bitmap-lookup.json
+0x8001d5c0	104090e5	ldr r4, [r0, #0x10]	glyph-bitmap-lookup.json
+0x8001d5c4	0160a0e1	mov r6, r1	glyph-bitmap-lookup.json
+0x8001d5c8	141094e5	ldr r1, [r4, #0x14]	glyph-bitmap-lookup.json
+0x8001d5cc	08d04de2	sub sp, sp, #8	glyph-bitmap-lookup.json
+0x8001d5d0	000051e3	cmp r1, #0	glyph-bitmap-lookup.json
+0x8001d5d4	0400000a	beq #0x8001d5ec	glyph-bitmap-lookup.json
+0x8001d5d8	000091e5	ldr r0, [r1]	glyph-bitmap-lookup.json
+0x8001d5dc	060050e1	cmp r0, r6	glyph-bitmap-lookup.json
+0x8001d5e0	04009105	ldreq r0, [r1, #4]	glyph-bitmap-lookup.json
+0x8001d5e4	08d08d02	addeq sp, sp, #8	glyph-bitmap-lookup.json
+0x8001d5e8	f087bd08	popeq {r4, r5, r6, r7, r8, sb, sl, pc}	glyph-bitmap-lookup.json
+0x8001d5ec	b251d4e1	ldrh r5, [r4, #0x12]	glyph-bitmap-lookup.json
+0x8001d5f0	0020a0e3	mov r2, #0	glyph-bitmap-lookup.json
+0x8001d5f4	fe0cd5e3	bics r0, r5, #0xfe00	glyph-bitmap-lookup.json
+0x8001d5f8	08309415	ldrne r3, [r4, #8]	glyph-bitmap-lookup.json
+0x8001d5fc	0470a013	movne r7, #4	glyph-bitmap-lookup.json
+0x8001d600	0b00000a	beq #0x8001d634	glyph-bitmap-lookup.json
+0x8001d604	020182e0	add r0, r2, r2, lsl #2	glyph-bitmap-lookup.json
+0x8001d608	00c193e7	ldr ip, [r3, r0, lsl #2]	glyph-bitmap-lookup.json
+0x8001d60c	000187e0	add r0, r7, r0, lsl #2	glyph-bitmap-lookup.json
+0x8001d610	b00093e1	ldrh r0, [r3, r0]	glyph-bitmap-lookup.json
+0x8001d614	0cc046e0	sub ip, r6, ip	glyph-bitmap-lookup.json
+0x8001d618	0c0050e1	cmp r0, ip	glyph-bitmap-lookup.json
+0x8001d61c	0d00002a	bhs #0x8001d658	glyph-bitmap-lookup.json
+0x8001d620	010082e2	add r0, r2, #1	glyph-bitmap-lookup.json
+0x8001d624	0128c0e3	bic r2, r0, #0x10000	glyph-bitmap-lookup.json
+0x8001d628	fe0cc5e3	bic r0, r5, #0xfe00	glyph-bitmap-lookup.json
+0x8001d62c	000052e1	cmp r2, r0	glyph-bitmap-lookup.json
+0x8001d630	f3ffff3a	blo #0x8001d604	glyph-bitmap-lookup.json
+0x8001d634	000051e3	cmp r1, #0	glyph-bitmap-lookup.json
+0x8001d638	0300000a	beq #0x8001d64c	glyph-bitmap-lookup.json
+0x8001d63c	006081e5	str r6, [r1]	glyph-bitmap-lookup.json
+0x8001d640	141094e5	ldr r1, [r4, #0x14]	glyph-bitmap-lookup.json
+0x8001d644	0000a0e3	mov r0, #0	glyph-bitmap-lookup.json
+0x8001d648	040081e5	str r0, [r1, #4]	glyph-bitmap-lookup.json
+0x8001d64c	0000a0e3	mov r0, #0	glyph-bitmap-lookup.json
+0x8001d650	08d08de2	add sp, sp, #8	glyph-bitmap-lookup.json
+0x8001d654	f087bde8	pop {r4, r5, r6, r7, r8, sb, sl, pc}	glyph-bitmap-lookup.json
+0x8001d658	025182e0	add r5, r2, r2, lsl #2	glyph-bitmap-lookup.json
+0x8001d65c	1200a0e3	mov r0, #0x12	glyph-bitmap-lookup.json
+0x8001d660	050180e0	add r0, r0, r5, lsl #2	glyph-bitmap-lookup.json
+0x8001d664	0000d3e7	ldrb r0, [r3, r0]	glyph-bitmap-lookup.json
+0x8001d668	0070a0e3	mov r7, #0	glyph-bitmap-lookup.json
+0x8001d66c	0680a0e3	mov r8, #6	glyph-bitmap-lookup.json
+0x8001d670	020050e3	cmp r0, #2	glyph-bitmap-lookup.json
+0x8001d674	0a00000a	beq #0x8001d6a4	glyph-bitmap-lookup.json
+0x8001d678	000050e3	cmp r0, #0	glyph-bitmap-lookup.json
+0x8001d67c	0c90a0e3	mov sb, #0xc	glyph-bitmap-lookup.json
+0x8001d680	0b00000a	beq #0x8001d6b4	glyph-bitmap-lookup.json
+0x8001d684	10319fe5	ldr r3, [pc, #0x110]	glyph-bitmap-lookup.json
+0x8001d688	030050e3	cmp r0, #3	glyph-bitmap-lookup.json
+0x8001d68c	1020a0e3	mov r2, #0x10	glyph-bitmap-lookup.json
+0x8001d690	0810a0e3	mov r1, #8	glyph-bitmap-lookup.json
+0x8001d694	0d00000a	beq #0x8001d6d0	glyph-bitmap-lookup.json
+0x8001d698	010050e3	cmp r0, #1	glyph-bitmap-lookup.json
+0x8001d69c	1e00000a	beq #0x8001d71c	glyph-bitmap-lookup.json
+0x8001d6a0	340000ea	b #0x8001d778	glyph-bitmap-lookup.json
+0x8001d6a4	050188e0	add r0, r8, r5, lsl #2	glyph-bitmap-lookup.json
+0x8001d6a8	b00093e1	ldrh r0, [r3, r0]	glyph-bitmap-lookup.json
+0x8001d6ac	0c7080e0	add r7, r0, ip	glyph-bitmap-lookup.json
+0x8001d6b0	300000ea	b #0x8001d778	glyph-bitmap-lookup.json
+0x8001d778	140094e5	ldr r0, [r4, #0x14]	glyph-bitmap-lookup.json
+0x8001d77c	000050e3	cmp r0, #0	glyph-bitmap-lookup.json
+0x8001d780	0200000a	beq #0x8001d790	glyph-bitmap-lookup.json
+0x8001d784	006080e5	str r6, [r0]	glyph-bitmap-lookup.json
+0x8001d788	140094e5	ldr r0, [r4, #0x14]	glyph-bitmap-lookup.json
+0x8001d78c	047080e5	str r7, [r0, #4]	glyph-bitmap-lookup.json
+0x8001d790	0700a0e1	mov r0, r7	glyph-bitmap-lookup.json
+0x8001d794	08d08de2	add sp, sp, #8	glyph-bitmap-lookup.json
+0x8001d798	f087bde8	pop {r4, r5, r6, r7, r8, sb, sl, pc}	glyph-bitmap-lookup.json
+0x8002c758	000050e3	cmp r0, #0	control-event-registration.json
+0x8002c75c	0100a003	moveq r0, #1	control-event-registration.json
+0x8002c760	1eff2f01	bxeq lr	control-event-registration.json
+0x8002c764	10402de9	push {r4, lr}	control-event-registration.json
+0x8002c768	20d04de2	sub sp, sp, #0x20	control-event-registration.json
+0x8002c76c	00008de5	str r0, [sp]	control-event-registration.json
+0x8002c770	04008de5	str r0, [sp, #4]	control-event-registration.json
+0x8002c774	0000a0e3	mov r0, #0	control-event-registration.json
+0x8002c778	0c008de5	str r0, [sp, #0xc]	control-event-registration.json
+0x8002c77c	1800dde5	ldrb r0, [sp, #0x18]	control-event-registration.json
+0x8002c780	30409fe5	ldr r4, [pc, #0x30]	control-event-registration.json
+0x8002c784	0810cde5	strb r1, [sp, #8]	control-event-registration.json
+0x8002c788	0700c0e3	bic r0, r0, #7	control-event-registration.json
+0x8002c78c	10208de5	str r2, [sp, #0x10]	control-event-registration.json
+0x8002c790	1800cde5	strb r0, [sp, #0x18]	control-event-registration.json
+0x8002c794	040094e5	ldr r0, [r4, #4]	control-event-registration.json
+0x8002c798	14008de5	str r0, [sp, #0x14]	control-event-registration.json
+0x8002c79c	0d00a0e1	mov r0, sp	control-event-registration.json
+0x8002c7a0	04d084e5	str sp, [r4, #4]	control-event-registration.json
+0x8002c7a4	b2b9ffeb	bl #0x8001ae74	control-event-registration.json
+0x8002c7a8	14109de5	ldr r1, [sp, #0x14]	control-event-registration.json
+0x8002c7ac	041084e5	str r1, [r4, #4]	control-event-registration.json
+0x8002c7b0	20d08de2	add sp, sp, #0x20	control-event-registration.json
+0x8002c7b4	1080bde8	pop {r4, pc}	control-event-registration.json
+0x8002c844	10402de9	push {r4, lr}	glyph-bitmap-lookup.json
+0x8002c848	090051e3	cmp r1, #9	glyph-bitmap-lookup.json
+0x8002c84c	104090e5	ldr r4, [r0, #0x10]	glyph-bitmap-lookup.json
+0x8002c850	2010a003	moveq r1, #0x20	glyph-bitmap-lookup.json
+0x8002c854	55c3ffeb	bl #0x8001d5b0	glyph-bitmap-lookup.json
+0x8002c858	000050e3	cmp r0, #0	glyph-bitmap-lookup.json
+0x8002c85c	1080bd08	popeq {r4, pc}	glyph-bitmap-lookup.json
+0x8002c860	041094e5	ldr r1, [r4, #4]	glyph-bitmap-lookup.json
+0x8002c864	800181e0	add r0, r1, r0, lsl #3	glyph-bitmap-lookup.json
+0x8002c868	b211d4e1	ldrh r1, [r4, #0x12]	glyph-bitmap-lookup.json
+0x8002c86c	030911e3	tst r1, #0xc000	glyph-bitmap-lookup.json
+0x8002c870	0000a013	movne r0, #0	glyph-bitmap-lookup.json
+0x8002c874	1080bd18	popne {r4, pc}	glyph-bitmap-lookup.json
+0x8002c878	000090e5	ldr r0, [r0]	glyph-bitmap-lookup.json
+0x8002c87c	001094e5	ldr r1, [r4]	glyph-bitmap-lookup.json
+0x8002c880	0006a0e1	lsl r0, r0, #0xc	glyph-bitmap-lookup.json
+0x8002c884	2006a0e1	lsr r0, r0, #0xc	glyph-bitmap-lookup.json
+0x8002c888	010080e0	add r0, r0, r1	glyph-bitmap-lookup.json
+0x8002c88c	1080bde8	pop {r4, pc}	glyph-bitmap-lookup.json
+0x8004c3b4	50119fe5	ldr r1, [pc, #0x150]	control-event-registration.json
+0x8004c3b8	240494e5	ldr r0, [r4, #0x424]	control-event-registration.json
+0x8004c3bc	0030a0e3	mov r3, #0	control-event-registration.json
+0x8004c3c0	0120a0e3	mov r2, #1	control-event-registration.json
+0x8004c3c4	449dffeb	bl #0x800338dc	control-event-registration.json
+0x8004c3c8	40119fe5	ldr r1, [pc, #0x140]	control-event-registration.json
+0x8004c3cc	2c0494e5	ldr r0, [r4, #0x42c]	control-event-registration.json
+0x8004c3d0	0030a0e3	mov r3, #0	control-event-registration.json
+0x8004c3d4	0120a0e3	mov r2, #1	control-event-registration.json
+0x8004c3d8	3f9dffeb	bl #0x800338dc	control-event-registration.json
+0x8004c3dc	30119fe5	ldr r1, [pc, #0x130]	control-event-registration.json
+0x8004c3e0	800494e5	ldr r0, [r4, #0x480]	control-event-registration.json
+0x8004c3e4	0030a0e3	mov r3, #0	control-event-registration.json
+0x8004c3e8	0120a0e3	mov r2, #1	control-event-registration.json
+0x8004c3ec	3a9dffeb	bl #0x800338dc	control-event-registration.json
+0x8004c3f0	20119fe5	ldr r1, [pc, #0x120]	control-event-registration.json
+0x8004c3f4	780494e5	ldr r0, [r4, #0x478]	control-event-registration.json
+0x8004c3f8	0030a0e3	mov r3, #0	control-event-registration.json
+0x8004c3fc	0120a0e3	mov r2, #1	control-event-registration.json
+0x8004c400	359dffeb	bl #0x800338dc	control-event-registration.json
+0x8004c404	10119fe5	ldr r1, [pc, #0x110]	control-event-registration.json
+0x8004c408	700494e5	ldr r0, [r4, #0x470]	control-event-registration.json
+0x8004c40c	0030a0e3	mov r3, #0	control-event-registration.json
+0x8004c410	0120a0e3	mov r2, #1	control-event-registration.json
+0x8004c414	309dffeb	bl #0x800338dc	control-event-registration.json
+0x8004c418	00119fe5	ldr r1, [pc, #0x100]	control-event-registration.json
+0x8004c41c	680494e5	ldr r0, [r4, #0x468]	control-event-registration.json
+0x8004c420	0030a0e3	mov r3, #0	control-event-registration.json
+0x8004c424	0120a0e3	mov r2, #1	control-event-registration.json
+0x8004c428	2b9dffeb	bl #0x800338dc	control-event-registration.json
+0x8004c42c	f0109fe5	ldr r1, [pc, #0xf0]	control-event-registration.json
+0x8004c430	4c0494e5	ldr r0, [r4, #0x44c]	control-event-registration.json
+0x8004c434	0030a0e3	mov r3, #0	control-event-registration.json
+0x8004c438	0120a0e3	mov r2, #1	control-event-registration.json
+0x8004c43c	269dffeb	bl #0x800338dc	control-event-registration.json
+0x8004c440	e0109fe5	ldr r1, [pc, #0xe0]	control-event-registration.json
+0x8004c444	440494e5	ldr r0, [r4, #0x444]	control-event-registration.json
+0x8004c448	0030a0e3	mov r3, #0	control-event-registration.json
+0x8004c44c	0120a0e3	mov r2, #1	control-event-registration.json
+0x8004c450	219dffeb	bl #0x800338dc	control-event-registration.json

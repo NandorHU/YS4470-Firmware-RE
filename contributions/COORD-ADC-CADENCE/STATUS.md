@@ -2,6 +2,14 @@
 
 ## Current checkpoint
 
+The [GUI event replay](synchronous/control-gui-event-validation.json) follows original callback
+registration and the indirect call at `0x8001b030`. The first ten
+handlers drain two prior records and enqueue one type-0 or type-1
+record on a matched event. The second block's `0x8000d294` emits type 2
+under three tested local states per firmware. Next replay `0x8000cfd0`.
+
+## Previous GUI field checkpoint
+
 The [GUI field replay](synchronous/gui-field-provenance.json) follows the original
 initializer from `0x80057948`. In four cases, the `0x80046548` store
 holds a constructed label pointer. The control handle and the empty

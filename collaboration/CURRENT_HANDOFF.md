@@ -10,11 +10,10 @@ Beta.2 Release API currently404; retained historical installer is documented.
 The owner confirmed the old daily automation was stopped. The new coordinator
 `codex-ys4470-20261109-01a1c110` is recorded in upstream registry revision 19.
 
-Latest analysis: [GUI field provenance](../contributions/COORD-ADC-CADENCE/synchronous/README.md#gui-field-provenance-at-0x80046548)
-traces the original initializer from `0x80057948` and identifies the
-`0x80046548` store as a GUI label pointer. Original lookup also locates
-`0x8009ef10` inside the U+007D bitmap. The live registry is now at
-revision 43. Next trace remaining register-indirect queue candidates.
+Latest analysis: [registered GUI callbacks](../contributions/COORD-ADC-CADENCE/synchronous/README.md#registered-gui-callbacks-and-indirect-queue-producers)
+replays 56 event cases and verifies 26 indirect queue sends across both
+images. The live registry is at revision 44. Next dispatch `0x8000cfd0`
+through the verified second registration block.
 
 ---
 

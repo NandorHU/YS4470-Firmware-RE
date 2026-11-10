@@ -433,3 +433,7 @@ The original constructor stores its returned queue handle at `0x805aae90` via `0
 ## 2026-11-10 — GUI field provenance at 0x80046548
 
 The initializer at `0x80045ea8` preserves its caller's context in `r4`. Original stores place a label pointer at context `+0x38`, a parent pointer at `+0x3c` and a second label at `+0x40`. Both the actual control handle at `0x805aae90` and the allocated queue remain byte-identical. The font descriptor `0x800a56d4` reaches the packed U+007D glyph at `0x8009eec2..0x8009ef6c`, including the raw branch-like word at `0x8009ef10`. [Original replay, instruction bytes and firmware hashes](contributions/COORD-ADC-CADENCE/synchronous/gui-field-provenance.json).
+
+## 2026-11-10 — Registered GUI callbacks and indirect queue producers
+
+The event descriptor stores the handler pointer at +0, the user value at +4, and the filter byte at +8. The original dispatcher temporarily links the event frame at `0x805abc18` and restores the prior value on return. The type-2 handler uses three state bytes at `0x805abefc` and writes the outgoing pair at offsets +7 and +8 on a send. The original control handle at `0x805aae90` remains unchanged. [Original instruction bytes, factory hashes and replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-event-validation.json).
