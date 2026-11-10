@@ -341,3 +341,7 @@ The [rendering and sound replay](contributions/COORD-ADC-CADENCE/synchronous/ref
 ## 2026-11-10 — Native mode entry and sound expiry
 
 For the tested UI mode transitions 1 to 4 and 4 to 3, `0x8000cfd0` sets warmup to 1 while preserving the stored result and filter history. The deferred configuration starts with discard 2 and its terminal frame leaves discard 1. Countdown expiry clears active sound state while preserving the measurement and filter snapshot. [ARM926 replay and factory image hashes](contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-validation.json).
+
+## 2026-11-10 — First refreshes after native Fast CONT entry
+
+The second refresh passes scaled input 5 from retained raw 14023 to `0x80007c88`. A populated ring keeps median 5 and requests sound with arguments (10, 1). The empty filter receives the same input, advances to fill 1 and calls the gate with (0, 0). Neither case has a newly published measurement by that callback. [ARM926 replay and factory image hashes](contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-first-refresh-validation.json).

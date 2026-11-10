@@ -261,3 +261,7 @@ The [rendering and sound replay](contributions/COORD-ADC-CADENCE/synchronous/ref
 ## 2026-11-10 — Native mode entry and sound expiry
 
 The sound countdown suffix calls the original gate with selector 5 and action 0 when active countdown 0 or 1 expires in the tested entry states. The original PWM path writes the duty-off value in the register shadow. The replay models the peripheral and establishes no acoustic or electrical timing. [ARM926 replay and factory image hashes](contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-validation.json).
+
+## 2026-11-10 — First refreshes after native Fast CONT entry
+
+The original sound gate `0x80006e4c` and PWM path `0x80042d40` set shadow control `0x7f` and period word `0x176f0a8c` on the second refresh with populated retained history. With empty history, the same stored reading leaves shadow duty zero on that refresh. The peripheral uses a register shadow. [ARM926 replay and factory image hashes](contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-first-refresh-validation.json).

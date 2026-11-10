@@ -59,7 +59,7 @@ class ModeReplay(RefreshReplay):
             bytes(self.u.mem_read(ACTIVE + 4, 12)).hex(),
         )
 
-    def run_case(self, old_mode, fast, discard):
+    def run_case(self, old_mode, fast, discard, *, history=HISTORY_BYTES, filter_state=FILTER_BYTES):
         self.prepare()
         self.ui_models, self.measurement_starts = [], []
         self.u.mem_write(TIMER_STATE, b"\1" + bytes(0x13))
@@ -71,8 +71,8 @@ class ModeReplay(RefreshReplay):
         self.put(RESULT + 0x1C, STORED[0])
         self.put(RESULT + 0x20, STORED[1])
         self.u.mem_write(CTRL + 1, bytes((discard,)))
-        self.u.mem_write(HISTORY, HISTORY_BYTES)
-        self.u.mem_write(ACTIVE + 4, FILTER_BYTES)
+        self.u.mem_write(HISTORY, history)
+        self.u.mem_write(ACTIVE + 4, filter_state)
         before = self.snapshot()
         self.invoke(ENTRY)
         mode = 3 if old_mode == 4 else 4

@@ -1190,12 +1190,14 @@
       "confidence": "confirmed_bounded_original_arm926_execution",
       "role": "Three-value stability filter with retained median and sound-selector tailcalls",
       "relationships": [
+        "On the second native refresh, input 5 enables the sound gate with a retained populated ring and median 5. Empty history takes the (0, 0) gate call on the same input and keeps the PWM duty shadow zero.",
         "Native mode changes and the tested sound countdown suffix preserve the seeded ring, index, count and median. Expiring active sound changes the active word and PWM shadow through the original sound gate.",
         "caller0x80003970 in Fast CONT ResultDispatch branch",
         "history0x805ac7b8; index/count/retained median at0x805ab924+4/+8/+0xc",
         "tailcalls sound_control_gate; pure-C reconstruction/fast_cont.c matches tested behavior"
       ],
       "evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-first-refresh-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-validation.json",
         "evidence/2026-11-07-fast-cont-filter.json",
         "evidence/2026-11-07-fast-cont-filter-ghidra.json"
@@ -1211,8 +1213,9 @@
         "V3_8": "0x8005d048"
       },
       "confidence": "confirmed_bounded_original_arm926_execution",
-      "role": "Refresh callback: poll request, two-call warmup, stored-result processing and period selection",
+      "role": "Refresh callback: poll request, warmup byte gate, stored-result processing and period selection",
       "relationships": [
+        "After native Fast CONT entry, refresh 1 advances warmup from 1 to 2 without dispatch. Refresh 2 dispatches the retained result before the first fresh UART publication in all 16 schedules.",
         "UI object0x805abefc; warmup+9",
         "event4 enqueued for config0x22, otherwise event3; ResultDispatch call0x8005d1a0",
         "callback handle root0x805abeb8",
@@ -1220,6 +1223,7 @@
         "Linked original rendering and Fast CONT fixtures connect stored-result reuse to three filter inputs and a PWM shadow write."
       ],
       "evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-first-refresh-validation.json",
         "evidence/2026-11-07-result-freshness.json",
         "evidence/2026-11-07-result-freshness-ghidra.json",
         "contributions/COORD-ADC-CADENCE/synchronous/refresh-publication-validation.json",

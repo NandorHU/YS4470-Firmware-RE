@@ -10,9 +10,10 @@ Beta.2 Release API currently404; retained historical installer is documented.
 The owner confirmed the old daily automation was stopped. The new coordinator
 `codex-ys4470-20261109-01a1c110` is recorded in upstream registry revision 19.
 
-Latest analysis: [native mode entry and sound expiry](../contributions/COORD-ADC-CADENCE/synchronous/README.md#native-mode-entry-and-sound-expiry)
-replays native mode changes and countdown expiry on both originals. Next follow
-the first two refresh callbacks after native Fast CONT entry, before fresh publication.
+Latest analysis: [first refreshes after native Fast CONT entry](../contributions/COORD-ADC-CADENCE/synchronous/README.md#first-refreshes-after-native-fast-cont-entry)
+shows the second refresh can turn on the PWM shadow from the stored reading
+and retained filter before the first new UART result is published. Next exercise
+expiry and refresh in both orders through the original measurement loop.
 
 ---
 

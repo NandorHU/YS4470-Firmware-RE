@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 29,
+  "revision": 30,
   "updated": "2026-11-10",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,7 +295,7 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Execute the first two original refresh callbacks after native Fast CONT entry with absent and valid replies. Check retained median, sound reactivation and first fresh publication through the original queue, parser, filter and PWM shadow. Native type-6 reachability, peer internals and physical timing remain open.",
+      "next_action": "Run the original measurement-loop countdown around native Fast CONT refreshes using both orderings at expiry. Determine when a refresh reloads the count and when the PWM shadow switches off. Keep model counter values and peripheral access separate from physical timing.",
       "last_verified_result": {
         "profile_cases": 64,
         "transition_cases": 64,
@@ -339,7 +339,8 @@
         "original_refresh_rendering_sequences": 18,
         "integrated_fast_cont_pwm_sequences": 2,
         "original_native_mode_transition_cases": 16,
-        "original_sound_countdown_suffix_cases": 12
+        "original_sound_countdown_suffix_cases": 12,
+        "original_native_fast_cont_first_refresh_schedules": 16
       },
       "result_evidence": [
         "contributions/COORD-ADC-CADENCE/profile-validation.json",
@@ -362,7 +363,8 @@
         "contributions/COORD-ADC-CADENCE/synchronous/measurement-plan-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/refresh-publication-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/refresh-rendering-validation.json",
-        "contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-validation.json"
+        "contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-first-refresh-validation.json"
       ]
     },
     {

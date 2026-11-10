@@ -2,6 +2,14 @@
 
 ## Current checkpoint
 
+The [first-refresh replay](synchronous/native-fast-cont-first-refresh-validation.json) covers 16 schedules
+across both factory images. The second callback uses the retained measurement
+before the first fresh publication. A populated filter reactivates the PWM
+shadow even after prior sound expiry. The empty-filter control stays off on
+the same callback. Next exercise expiry and refresh in both orders.
+
+## Previous native entry checkpoint
+
 The [native entry and countdown replay](synchronous/native-fast-cont-validation.json)
 covers 16 mode changes and 12 sound countdown suffixes on the two originals.
 Native mode entry and terminal configuration preserve the seeded raw result and

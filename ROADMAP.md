@@ -250,3 +250,7 @@ After the [rendering and sound replay](contributions/COORD-ADC-CADENCE/synchrono
 ## 2026-11-10 — Native mode entry and sound expiry
 
 Carry the retained history from native mode 4 entry into the first two original refresh callbacks. Compare absent and valid replies before first fresh publication and inspect any sound reactivation through the original filter and PWM shadow. [ARM926 replay and factory image hashes](contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-validation.json).
+
+## 2026-11-10 — First refreshes after native Fast CONT entry
+
+Link the original countdown suffix to its measurement task loop and place expiry on either side of an original Fast CONT callback. Track raw scheduler counts and register shadow independently of physical latency. [ARM926 replay and factory image hashes](contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-first-refresh-validation.json).
