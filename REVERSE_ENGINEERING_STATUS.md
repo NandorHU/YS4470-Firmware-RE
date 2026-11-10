@@ -391,3 +391,7 @@ Across V3.6 and V3.8, 16 original UI transition and 12 original countdown suffix
 ## 2026-11-10 — First refreshes after native Fast CONT entry
 
 Sixteen native-entry schedules across both factory images agree. The first refresh enqueues a request while advancing warmup. At the second refresh the populated filter activates the PWM shadow from a retained reading before first fresh publication. The empty-filter control stays off on that refresh. [ARM926 replay and factory image hashes](contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-first-refresh-validation.json).
+
+## 2026-11-10 — KeyTask and Fast CONT refresh ordering
+
+Eight original-code schedules confirm the KeyTask binding and show the ordering-dependent sound transition after native Fast CONT entry. The test reaches the original loop back edge and watchdog on both factory images, with a modeled key sample, delay and register shadows. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/key-task-fast-cont-order-validation.json).

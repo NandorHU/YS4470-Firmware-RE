@@ -1,0 +1,78 @@
+{
+  "schema": "ys4470.key-task-local-index-review.v1",
+  "model": "qwen2.5-coder:14b",
+  "model_digest": "9ec8897f747e246e970bc5cfdda85d22f1123dc2e3d34978a010a75968716849",
+  "checked_lessons_sha256": "7b135d7b5b1e58e68fa7ba4283902106547b7d76fe9736baacb065a3653217c4",
+  "initial_batch": {
+    "tasks": 2,
+    "attempts": 4,
+    "accepted": 0,
+    "reason": "Evidence addresses returned as function entries. Sound-store answer also incorrectly claimed zero for both predecessors."
+  },
+  "followup_batch": {
+    "tasks": 2,
+    "attempts": 2,
+    "accepted": 2,
+    "results": [
+      {
+        "task": "cadence-index-reload-immediate",
+        "state": "draft",
+        "draft": {
+          "entry": "0x80006e4c",
+          "instruction_mode": "ARM",
+          "evidence_address": "0x80006eec",
+          "quote": "0x80006eec mov r0,#0x3",
+          "limitation": "The instruction at 0x80006eec places the value 0x3 into register r0."
+        },
+        "response_sha256": "9fb51006e4a73a8fbb9d841bd7c184d8c74b84b8ed03a063c794045509a3afe7",
+        "originals": [
+          {
+            "version": "V3.6",
+            "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+            "address": "0x80006eec",
+            "bytes": "0300a0e3",
+            "assembly": "mov r0, #3"
+          },
+          {
+            "version": "V3.8",
+            "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+            "address": "0x80006eec",
+            "bytes": "0300a0e3",
+            "assembly": "mov r0, #3"
+          }
+        ],
+        "coordinator_review": "Verified address, original bytes and decoded operands on both originals."
+      },
+      {
+        "task": "cadence-index-period-immediate",
+        "state": "draft",
+        "draft": {
+          "entry": "0x8005d048",
+          "instruction_mode": "ARM",
+          "evidence_address": "0x8005d244",
+          "quote": "0x8005d244 mov r1,#0x19",
+          "limitation": "The instruction at 0x8005d244 is part of the ARM assembly code for the function at entry 0x8005d048. The instruction mode is ARM, and the raw immediate value is 0x19."
+        },
+        "response_sha256": "fb419f77813028fe13463e45ab8ccb24e836b6466010f726a5c4d4b46914e163",
+        "originals": [
+          {
+            "version": "V3.6",
+            "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+            "address": "0x8005d244",
+            "bytes": "1910a0e3",
+            "assembly": "mov r1, #0x19"
+          },
+          {
+            "version": "V3.8",
+            "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+            "address": "0x8005d244",
+            "bytes": "1910a0e3",
+            "assembly": "mov r1, #0x19"
+          }
+        ],
+        "coordinator_review": "Verified address, original bytes and decoded operands on both originals."
+      }
+    ]
+  },
+  "limit": "Indexing only. The original ARM926 replay is the source of the ordering result."
+}

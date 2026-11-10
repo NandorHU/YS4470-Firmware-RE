@@ -265,3 +265,7 @@ The sound countdown suffix calls the original gate with selector 5 and action 0 
 ## 2026-11-10 — First refreshes after native Fast CONT entry
 
 The original sound gate `0x80006e4c` and PWM path `0x80042d40` set shadow control `0x7f` and period word `0x176f0a8c` on the second refresh with populated retained history. With empty history, the same stored reading leaves shadow duty zero on that refresh. The peripheral uses a register shadow. [ARM926 replay and factory image hashes](contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-first-refresh-validation.json).
+
+## 2026-11-10 — KeyTask and Fast CONT refresh ordering
+
+With an active count of 1, a KeyTask iteration before refresh writes duty zero and the subsequent refresh re-enables the PWM shadow. Refresh first reloads the count so the same KeyTask iteration leaves duty on. The original watchdog helper `0x800085c4` ORs `0x14af` into its register shadow in every tested loop. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/key-task-fast-cont-order-validation.json).

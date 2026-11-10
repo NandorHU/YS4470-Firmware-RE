@@ -379,3 +379,7 @@ The original Diode/Buzzer callback `0x8000cfd0` ran through the queue and dispat
 ## 2026-11-10 — First refreshes after native Fast CONT entry
 
 The original timer calls refresh `0x8005d048` after native mode entry at `0x8000cfd0`. The first refresh moves warmup 1 to 2 and returns. The second reaches ResultDispatch `0x800037c0`, filter call `0x80003970` and renderer `0x8000326c` while the result still holds the prior measurement. [ARM926 replay and factory image hashes](contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-first-refresh-validation.json).
+
+## 2026-11-10 — KeyTask and Fast CONT refresh ordering
+
+The original registration slice reaches `0x800059dc` with task entry `0x8000551c` and name pointer `0x80005a68` (`KeyTask`). One original loop body executes the watchdog update, sound countdown and sample-counter increment before the back edge to `0x80005528`. Task creation, key input and delay scheduling use fixtures. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/key-task-fast-cont-order-validation.json).

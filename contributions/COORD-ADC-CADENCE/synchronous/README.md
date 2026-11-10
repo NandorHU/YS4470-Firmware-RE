@@ -536,3 +536,35 @@ Run from the repository root with both factory images and Unicorn available.
 ```powershell
 python -B contributions/COORD-ADC-CADENCE/synchronous/trace_native_fast_cont_refresh.py
 ```
+
+## KeyTask and Fast CONT refresh ordering
+
+[Replay evidence](key-task-fast-cont-order-validation.json) covers both factory hashes and eight original
+ARM926 schedules. The registration slice `0x800059c0..0x800059dc`
+supplies entry `0x8000551c` and name `KeyTask` at `0x80005a68`.
+The task creation call is observed at its boundary.
+
+The loop samples a controlled key input, stores it at `0x805abb9c`,
+requests delay 50 at `0x80005534`, executes watchdog update
+`0x800085c4`, decrements a positive sound count, tests active sound,
+increments the result sample counter, and takes the original back edge
+at `0x80005578`. The watchdog and PWM are register shadows. Key sampling
+and the scheduler delay are modeled leaves.
+
+After original native mode entry and a warmup refresh that consumes the
+remaining discard, the second refresh uses the retained reading. With an
+initial active count of 1, KeyTask-first reaches the off call at
+`0x80005568` before the refresh reloads the count to 3. Refresh-first
+reloads 3 before the decrement to 2 and leaves duty on. With initial count 2
+neither ordering requests off in the first pair. The remaining count then
+expires after two or three isolated KeyTask iterations without a new
+refresh. The harness chooses ordering between whole calls, retains the
+seeded measurement and withholds the second poll's service.
+
+The loop delay argument 50 and refresh period word 25 describe distinct
+software interfaces. The scheduler, clock units, external peer and physical
+timing remain open.
+
+```powershell
+python -B contributions/COORD-ADC-CADENCE/synchronous/trace_key_task_fast_cont_order.py
+```

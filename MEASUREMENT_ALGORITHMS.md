@@ -345,3 +345,7 @@ For the tested UI mode transitions 1 to 4 and 4 to 3, `0x8000cfd0` sets warmup t
 ## 2026-11-10 — First refreshes after native Fast CONT entry
 
 The second refresh passes scaled input 5 from retained raw 14023 to `0x80007c88`. A populated ring keeps median 5 and requests sound with arguments (10, 1). The empty filter receives the same input, advances to fill 1 and calls the gate with (0, 0). Neither case has a newly published measurement by that callback. [ARM926 replay and factory image hashes](contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-first-refresh-validation.json).
+
+## 2026-11-10 — KeyTask and Fast CONT refresh ordering
+
+The retained reading can reload the Fast CONT countdown to 3 before fresh UART publication. If KeyTask runs first, count 1 causes an off transition before the refresh re-arms sound. If refresh runs first, KeyTask decrements 3 to 2 without requesting off. Each later KeyTask iteration decrements once until expiry. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/key-task-fast-cont-order-validation.json).
