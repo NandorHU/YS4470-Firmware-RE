@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 37,
+  "revision": 38,
   "updated": "2026-11-10",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -361,7 +361,8 @@
         "local_gauge_long_fallback_index_drafts_verified": 6,
         "original_live_calibration_ui_schedules": 4,
         "original_live_calibration_ui_callbacks": 60,
-        "local_calibration_ui_index_drafts_verified": 6
+        "local_calibration_ui_index_drafts_verified": 6,
+        "resident_index_queue_smoke_exact_drafts": 30
       },
       "result_evidence": [
         "contributions/COORD-ADC-CADENCE/profile-validation.json",
@@ -399,7 +400,8 @@
         "contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-local-index-review.json",
         "contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json",
-        "contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-local-index-review.json"
+        "contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-local-index-review.json",
+        "contributions/COORD-ADC-CADENCE/local-index/resident-index-queue-smoke.json"
       ]
     },
     {

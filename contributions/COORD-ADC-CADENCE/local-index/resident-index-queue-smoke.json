@@ -1,0 +1,25 @@
+{
+  "schema": "ys4470.resident-index-queue-smoke.v1",
+  "catalog_addresses": 2255,
+  "checked_firmware_sha256": {
+    "V3.6": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+    "V3.8": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+  },
+  "running_sample": {
+    "completed_batches": 15,
+    "checked_drafts": 30,
+    "exact_byte_bound_quotes": 30,
+    "pending_instructions": 2185,
+    "example_addresses": [
+      "0x80003288",
+      "0x800032f8",
+      "0x80003308",
+      "0x80003318",
+      "0x80003328",
+      "0x800033c0"
+    ]
+  },
+  "duplicate_process_exit": 1,
+  "periodic_monitor_reused": true,
+  "scope": "Startup smoke and static extraction checks. Semantic review is a coordinator task."
+}

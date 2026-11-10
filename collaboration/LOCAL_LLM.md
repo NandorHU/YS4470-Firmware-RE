@@ -148,3 +148,11 @@ The checked Ollama worker completed six new extracts across three
 batches. The [coordinator review](../contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-local-index-review.json) confirms
 the instruction addresses and original bytes on both factory images.
 The shared-memory timer behavior was tested independently.
+
+## 2026-11-10 — Resident instruction queue
+
+The owner requested a continuous local worker alongside the coordinator.
+The [resident queue](../contributions/COORD-ADC-CADENCE/local-index/README.md) processes new
+factory-byte-checked instruction windows in bounded batches and writes
+local receipts for periodic review. The coordinator’s existing three-hour
+heartbeat checks progress and continues the next original-code analysis.
