@@ -262,3 +262,7 @@ Trace `0x80060fbc` from the KeyTask and GaugeCmdTask service call boundaries int
 ## 2026-11-10 — Scheduler delays and task wakeup
 
 Follow the byte-checked IRQ branch at `0x8000232c` to the original tick helper and context selection. Establish source and ordering with a controlled pending IRQ and saved task context. Keep modeled raw ticks distinct from hardware elapsed time. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/scheduler-delay-wake-validation.json).
+
+## 2026-11-10 — Installed vectors and scheduler context
+
+Link the known Timer0 startup configuration and ordinary IRQ vector dispatch to the validated low-vector/context replay under separate pending-bit cases. Keep raw scheduler counters, GUI refresh and physical time separate. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/scheduler-irq-context-validation.json).

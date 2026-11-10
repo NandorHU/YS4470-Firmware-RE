@@ -606,3 +606,36 @@ physical interval.
 ```powershell
 python -B contributions/COORD-ADC-CADENCE/synchronous/trace_scheduler_delay_wake.py
 ```
+
+## Installed vectors and scheduler context
+
+[Replay evidence](scheduler-irq-context-validation.json) covers 4 vector installations, 24 tick IRQ
+scenarios and 16 original delay/SVC-to-IRQ round trips across the factory
+images. The original slice `0x80000030..0x80000060` clears CP15 control
+bit 13 and copies the 64-byte template at `0x800023b0` to low memory.
+The test enters through the resulting SVC slot at `0x08` and IRQ slot
+at `0x18`.
+
+The IRQ handler `0x800022c0` saves the interrupted r0–r14, status, critical
+nesting and IRQ LR. With INTC pending bit 13, the original handler calls
+`0x80061fa4` and calls the selector `0x800612f8` only on a nonzero tick
+result. Idle, future-deadline and suspended scenarios return to the same
+task. A due higher-priority task, a deadline at wrap, or an eligible
+same-priority peer produces a switch. Both ARM and Thumb states are restored.
+The writes to the two register shadows precede the exception return at
+`0x80002390`.
+
+The original delay calls supply 1 or 50. Their `svc #0` reaches the
+installed SVC slot and original handler `0x80002234`, then restores the
+other ready task via `0x800022bc`. Subsequent tick IRQs leave that task
+current until the delayed task is due. The last tick restores the original
+task and its delay continuation, including KeyTask return `0x80005538`.
+Cases cover ARM and Thumb peer contexts and deadlines that wrap.
+
+The host seeds banked CPU state on exception entry and controls task frames,
+list membership and register shadows. Silicon interrupt delivery and clock
+frequency are outside the replay.
+
+```powershell
+python -B contributions/COORD-ADC-CADENCE/synchronous/trace_scheduler_irq_context.py
+```

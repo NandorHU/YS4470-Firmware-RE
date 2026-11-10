@@ -353,3 +353,7 @@ The retained reading can reload the Fast CONT countdown to 3 before fresh UART p
 ## 2026-11-10 — Scheduler delays and task wakeup
 
 In the tested scheduler state the KeyTask and GaugeCmdTask delay requests become deadlines at counter plus 50 and plus 1 respectively. Wrapped deadlines use the overflow list. The task becomes ready on the matching applied tick. UI refresh uses a separate timer path. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/scheduler-delay-wake-validation.json).
+
+## 2026-11-10 — Installed vectors and scheduler context
+
+Original SVC handling makes the other ready task current after the `GaugeCmdTask` or `KeyTask` delay. At the deadline the original tick IRQ restores the blocked task, and the delay returns to its saved continuation after 1 or 50 injected interrupts. The host supplies the interrupts and banked exception entry state. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/scheduler-irq-context-validation.json).

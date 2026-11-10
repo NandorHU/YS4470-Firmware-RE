@@ -61,3 +61,12 @@ python tools/trace_intc_timer_path.py `
 Evidence: `evidence/2026-11-07-intc-timer-path.json` and
 `evidence/2026-11-07-intc-timer-ghidra.json`. Next: bound the tick/scheduler
 bodies and the consumer of FSM timeout field+0x30 before assigning timing units.
+
+## Linked vector and context replay
+
+The later [scheduler context replay](../contributions/COORD-ADC-CADENCE/synchronous/scheduler-irq-context-validation.json) executes original
+low-vector installation and extends the pending-bit-13 route through the
+original tick and task selector, including SVC-to-IRQ wait and resume.
+The emulator supplies exception entry state and INTC/timer shadows. The
+earlier bridge proof remains the coverage for the ordinary vector-dispatch
+route.
