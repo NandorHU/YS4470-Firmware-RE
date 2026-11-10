@@ -395,3 +395,7 @@ The vector install slice at `0x80000030` clears CP15 control bit 13 and copies t
 ## 2026-11-10 — Timer0 and UART2 through the installed IRQ route
 
 The linked replay starts at original Timer0 setup `0x800617ec` and UART2 registration tail `0x80006d5c`. IRQ bit 13 selects tick processing in `0x800022c0`. With bit 13 clear, the ordinary vector dispatcher `0x80005260` selects the registered UART2 ISR `0x800073bc` and returns to the interrupted task. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/timer0-uart2-irq-validation.json).
+
+## 2026-11-10 — Scheduled GaugeCmdTask service and fallback
+
+The original GaugeCmdTask post-startup loop at `0x80003dd0` reaches service `0x80005b6c`, real queue receive, fallback `0x80003dd8` and helper `0x80005f14`. The original SVC/tick path schedules each bounded wait. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-scheduled-service-validation.json).

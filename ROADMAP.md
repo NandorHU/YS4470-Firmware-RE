@@ -270,3 +270,7 @@ Link the known Timer0 startup configuration and ordinary IRQ vector dispatch to 
 ## 2026-11-10 — Timer0 and UART2 through the installed IRQ route
 
 Reuse the linked IRQ ingress to run a bounded original service-loop schedule with real queue admission and delay. Then follow the remaining fallback producers and the helper under proven idle conditions, with separate evidence for the external peer. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/timer0-uart2-irq-validation.json).
+
+## 2026-11-10 — Scheduled GaugeCmdTask service and fallback
+
+Extend the scheduled harness to longer fallback waits and trace original producers for the status command chains. Preserve the distinction between scheduler counts, protocol progression and physical time. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-scheduled-service-validation.json).

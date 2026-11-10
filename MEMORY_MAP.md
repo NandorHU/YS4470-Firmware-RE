@@ -401,3 +401,7 @@ The low vector install copies 64 bytes to address 0. IRQ and SVC save an 18-word
 ## 2026-11-10 — Timer0 and UART2 through the installed IRQ route
 
 The original UART2 ISR receives through registered IRQ3 slot `0x805ab950`, increments RX count `0x805ab938`, and stores the byte in the 200-byte buffer at `0x805b408c`. Tests cover the last slot, a full buffer and absent RX-ready status. Timer0 IRQ13 follows the dedicated tick branch without reading that UART slot. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/timer0-uart2-irq-validation.json).
+
+## 2026-11-10 — Scheduled GaugeCmdTask service and fallback
+
+The original queue is constructed with ten 68-byte entries. The service keeps a deferred 68-byte record at `0x805ac6d0`, controlled by byte `0x805aae8c`. A later deferred record updates that slot before idle dispatch. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/gauge-scheduled-service-validation.json).

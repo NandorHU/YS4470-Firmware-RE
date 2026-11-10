@@ -10,10 +10,9 @@ Beta.2 Release API currently404; retained historical installer is documented.
 The owner confirmed the old daily automation was stopped. The new coordinator
 `codex-ys4470-20261109-01a1c110` is recorded in upstream registry revision 19.
 
-Latest analysis: [Timer0 and UART2 through the installed IRQ route](../contributions/COORD-ADC-CADENCE/synchronous/README.md#timer0-and-uart2-through-the-installed-irq-route)
-links both original registrations to installed IRQ handling and the
-measurement parser. Next run the real queue/service loop as a scheduled
-task, using the same IRQ ingress and proven fallback preconditions.
+Latest analysis: [scheduled GaugeCmdTask service and fallback](../contributions/COORD-ADC-CADENCE/synchronous/README.md#scheduled-gaugecmdtask-service-and-fallback)
+runs the original service loop, real queue and fallback under SVC and IRQ.
+Next follow original producers into the longer-delay type-0/1 chains.
 
 ---
 

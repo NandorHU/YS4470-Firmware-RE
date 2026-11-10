@@ -678,3 +678,41 @@ arbitration and physical latency are outside their scope.
 ```powershell
 python -B contributions/COORD-ADC-CADENCE/synchronous/trace_timer0_uart2_irq.py
 ```
+
+## Scheduled GaugeCmdTask service and fallback
+
+[Replay evidence](gauge-scheduled-service-validation.json) contains 26 cases across the two factory images.
+The harness enters the original post-startup loop at `0x80003dd0`.
+The original queue constructor uses an allocated fixture of 760 bytes
+and sets ten 68-byte entries. Enqueue, dequeue, deferred copy, FSM and
+fallback execute from original bytes. The already-covered startup IDs
+9 and 19 are outside this replay.
+
+For `0x2a` and `0x2b`, the original helper `0x80005f14` waits through
+the original SVC path. UART2 IRQ fills the RX buffer while the other
+task is current, and an injected Timer0 IRQ wakes GaugeCmdTask. A
+matching byte in the first window returns 1. With no match, the
+first 500 one-count waits end in an original retry and receive reset.
+The second attempt can return 1. Without a reply it waits another 500
+counts and returns 0. In the wrong-then-match case the harness leaves
+the wrong first byte in place until retry, then offers a matching byte.
+
+A type-3 record starts a measurement before a queued type-1 fallback.
+The service preserves the deferred record while the FSM is busy. If
+another type-1 record is queued during that interval, the next service
+pass drains it into the same deferred slot. The fallback invokes only
+the newer command after the measurement publishes and the FSM goes
+idle. The original producer slice `0x8000e7c4..0x8000e7e4` supplies
+type 1, `0x27`, and secondary `0x13` to the real queue. The scheduled
+helper sends `c0 55 15` and accepts a matching UART2 IRQ byte.
+
+The original scheduler and exception handlers run. Queue allocation,
+initial task frames, incoming interrupts and UART data are controlled.
+For the replacement case the host invokes the original enqueue entry
+while GaugeCmdTask is waiting. The other task runs to a fixed stop
+boundary. The tick counts establish software ordering, with physical
+duration and peer conversion outside the replay.
+
+```powershell
+python -B contributions/COORD-ADC-CADENCE/synchronous/trace_gauge_scheduled_service.py
+```
