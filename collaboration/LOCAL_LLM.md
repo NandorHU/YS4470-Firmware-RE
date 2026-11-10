@@ -86,3 +86,17 @@ A fresh checksum-extraction task completed in6.656s with46 generated tokens; its
 ## 2026-11-09: local model restored and startup-helper execution
 
 The owner explicitly asked the coordinator to start the local model while away. I located the existing signed portable executable at the legacy project's local-ai/runtime/ollama.exe and models under local-ai/models, then started a hidden loopback-only0.40.15 server with OLLAMA_NO_CLOUD=1, one request/model, flash attention/q8_0 cache; logs/temp are in an isolated writable workspace. Executable SHA256544216ca2082b8bc19b4ba94b513f0098fa06774b232f3c140090e3449e322a5; coder digest remains9ec8897f747e246e970bc5cfdda85d22f1123dc2e3d34978a010a75968716849. The API reports size=size_vram9,107,029,359/context4096. Two explicit retries of transport-only failures produced183 tokens in12.062s; both violated requested JSON keys and one grounded pointer quote was semantically wrong. Manual review accepted3/4 extractions. A separate checked UART lesson and NEW held-out TX-ID question produced a correct response (19 tokens/1.094s), not a fine-tune/general improvement result. Base lessons/frozen jobs were not edited. Use contributions/COORD-ADC-CADENCE/synchronous/ for runtime recovery, raw replies, feedback and limits; no model tools or generated-code execution are enabled.
+
+## 2026-11-10 — KeyTask ordering index
+
+The existing pinned Ollama server was restarted after confirming the loopback
+port was free. Two new address-extraction tasks used the checked lessons and
+bounded packet worker. Both exhausted their two attempts after returning the
+evidence address as the function entry. The claim that the countdown store
+receives zero in both paths also disagrees with the original binary.
+
+A separate, narrower batch indexed the immediate loads at `0x80006eec` and
+`0x8005d244`. Both completed on the first attempt and were checked against
+the two original images. The [coordinator review](../contributions/COORD-ADC-CADENCE/synchronous/key-task-local-index-review.json)
+contains the exact bytes, firmware hashes and limits. The local model supplied
+index drafts. The coordinator ran the original-code experiments.

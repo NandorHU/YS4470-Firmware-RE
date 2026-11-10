@@ -2,6 +2,13 @@
 
 ## Current checkpoint
 
+The [KeyTask ordering replay](synchronous/key-task-fast-cont-order-validation.json) executes eight
+schedules. KeyTask-first with active count 1 drives duty off before native
+refresh re-arms it. Refresh-first reloads the count before the KeyTask
+decrement. Next execute the scheduler delay helper with known task state.
+
+## Previous first-refresh checkpoint
+
 The [first-refresh replay](synchronous/native-fast-cont-first-refresh-validation.json) covers 16 schedules
 across both factory images. The second callback uses the retained measurement
 before the first fresh publication. A populated filter reactivates the PWM

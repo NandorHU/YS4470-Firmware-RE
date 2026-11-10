@@ -307,3 +307,7 @@ Follow the first two original refresh callbacks after native mode 4 entry, with 
 ## 2026-11-10 — First refreshes after native Fast CONT entry
 
 Test the ordering of the original measurement-task countdown and the UI timer refresh around expiry. Measure the modeled countdown reload and duty shadow in both orders. Native scheduling interleaves, peer internals and physical time remain open. [ARM926 replay and factory image hashes](contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-first-refresh-validation.json).
+
+## 2026-11-10 — KeyTask and Fast CONT refresh ordering
+
+Execute `0x80060fbc` and its original queue/yield paths under known scheduler preconditions. The KeyTask loop supplies argument 50 at `0x80005534`. The KeyTask and timer ordering fixture leaves preemption, clock units and acoustic timing open. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/key-task-fast-cont-order-validation.json).

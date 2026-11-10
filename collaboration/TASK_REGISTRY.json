@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 30,
+  "revision": 31,
   "updated": "2026-11-10",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,7 +295,7 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Run the original measurement-loop countdown around native Fast CONT refreshes using both orderings at expiry. Determine when a refresh reloads the count and when the PWM shadow switches off. Keep model counter values and peripheral access separate from physical timing.",
+      "next_action": "Follow original delay helper 0x80060fbc from KeyTask argument 50 and the GaugeCmdTask service argument 1. Execute the original queue/yield paths with bounded scheduler and task-state fixtures. Keep software counts, UI timer periods and physical time separate.",
       "last_verified_result": {
         "profile_cases": 64,
         "transition_cases": 64,
@@ -314,7 +314,7 @@
         "service_idle_gate_cases": 24,
         "known_synchronous_bl_sites": 9,
         "new_synchronous_tail_edges": 1,
-        "database_entries": 63,
+        "database_entries": 64,
         "synchronous_startup_cases": 40,
         "local_service_restored": true,
         "local_extraction_requests_completed": 2,
@@ -340,7 +340,9 @@
         "integrated_fast_cont_pwm_sequences": 2,
         "original_native_mode_transition_cases": 16,
         "original_sound_countdown_suffix_cases": 12,
-        "original_native_fast_cont_first_refresh_schedules": 16
+        "original_native_fast_cont_first_refresh_schedules": 16,
+        "original_key_task_fast_cont_order_schedules": 8,
+        "local_key_task_index_drafts_verified": 2
       },
       "result_evidence": [
         "contributions/COORD-ADC-CADENCE/profile-validation.json",
@@ -364,7 +366,9 @@
         "contributions/COORD-ADC-CADENCE/synchronous/refresh-publication-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/refresh-rendering-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-validation.json",
-        "contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-first-refresh-validation.json"
+        "contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-first-refresh-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/key-task-fast-cont-order-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/key-task-local-index-review.json"
       ]
     },
     {

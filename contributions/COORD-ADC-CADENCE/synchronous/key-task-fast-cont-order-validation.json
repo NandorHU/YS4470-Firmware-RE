@@ -1,0 +1,734 @@
+{
+  "schema": "ys4470.key-task-fast-cont-ordering.v1",
+  "versions": [
+    {
+      "version": "V3.6",
+      "input_sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+      "schedules": 4
+    },
+    {
+      "version": "V3.8",
+      "input_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+      "schedules": 4
+    }
+  ],
+  "key_task_entry": "0x8000551c",
+  "registration_site": "0x800059dc",
+  "registration_name": "KeyTask",
+  "registration_args": [
+    "0x8000551c",
+    "0x80005a68",
+    "0x800",
+    "0x0"
+  ],
+  "schedules": [
+    {
+      "loop_first": false,
+      "initial_countdown": 1,
+      "before": {
+        "active": 1,
+        "countdown": 1,
+        "ring": [
+          5,
+          6,
+          7
+        ],
+        "index": 2,
+        "fill": 3,
+        "median": 5,
+        "pwm_control": "0x7f",
+        "pwm_period": "0x176f0a8c"
+      },
+      "first_loop": {
+        "key_sample": 291,
+        "delay_argument": 50,
+        "watchdog_after": "0x114af",
+        "sample_counter_after": 1,
+        "sound_gate_calls": [],
+        "sound_after": {
+          "active": 1,
+          "countdown": 2,
+          "ring": [
+            5,
+            6,
+            5
+          ],
+          "index": 0,
+          "fill": 3,
+          "median": 5,
+          "pwm_control": "0x7f",
+          "pwm_period": "0x176f0a8c"
+        }
+      },
+      "refresh": {
+        "tick": 200,
+        "period_after": 25,
+        "warmup": [
+          2,
+          2
+        ],
+        "stored_at_entry": [
+          14023,
+          3
+        ],
+        "render_records": [
+          {
+            "raw": [
+              14023,
+              3
+            ],
+            "mode": 4,
+            "configuration": 34,
+            "text": "5.000",
+            "unit": "",
+            "scale_bits": "0x40a00000",
+            "flags": "0001"
+          }
+        ],
+        "filter_inputs": [
+          5
+        ],
+        "sound_gate_calls": [
+          [
+            "0x80003970",
+            10,
+            1
+          ]
+        ],
+        "sound_after_callback": {
+          "active": 1,
+          "countdown": 3,
+          "ring": [
+            5,
+            6,
+            5
+          ],
+          "index": 0,
+          "fill": 3,
+          "median": 5,
+          "pwm_control": "0x7f",
+          "pwm_period": "0x176f0a8c"
+        }
+      },
+      "after_both": {
+        "active": 1,
+        "countdown": 2,
+        "ring": [
+          5,
+          6,
+          5
+        ],
+        "index": 0,
+        "fill": 3,
+        "median": 5,
+        "pwm_control": "0x7f",
+        "pwm_period": "0x176f0a8c"
+      },
+      "followup_without_refresh": [
+        {
+          "key_sample": 291,
+          "delay_argument": 50,
+          "watchdog_after": "0x114af",
+          "sample_counter_after": 2,
+          "sound_gate_calls": [],
+          "sound_after": {
+            "active": 1,
+            "countdown": 1,
+            "ring": [
+              5,
+              6,
+              5
+            ],
+            "index": 0,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x176f0a8c"
+          }
+        },
+        {
+          "key_sample": 291,
+          "delay_argument": 50,
+          "watchdog_after": "0x114af",
+          "sample_counter_after": 3,
+          "sound_gate_calls": [
+            [
+              "0x80005568",
+              5,
+              0
+            ]
+          ],
+          "sound_after": {
+            "active": 0,
+            "countdown": 0,
+            "ring": [
+              5,
+              6,
+              5
+            ],
+            "index": 0,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x20750000"
+          }
+        }
+      ]
+    },
+    {
+      "loop_first": false,
+      "initial_countdown": 2,
+      "before": {
+        "active": 1,
+        "countdown": 2,
+        "ring": [
+          5,
+          6,
+          7
+        ],
+        "index": 2,
+        "fill": 3,
+        "median": 5,
+        "pwm_control": "0x7f",
+        "pwm_period": "0x176f0a8c"
+      },
+      "first_loop": {
+        "key_sample": 291,
+        "delay_argument": 50,
+        "watchdog_after": "0x114af",
+        "sample_counter_after": 1,
+        "sound_gate_calls": [],
+        "sound_after": {
+          "active": 1,
+          "countdown": 2,
+          "ring": [
+            5,
+            6,
+            5
+          ],
+          "index": 0,
+          "fill": 3,
+          "median": 5,
+          "pwm_control": "0x7f",
+          "pwm_period": "0x176f0a8c"
+        }
+      },
+      "refresh": {
+        "tick": 200,
+        "period_after": 25,
+        "warmup": [
+          2,
+          2
+        ],
+        "stored_at_entry": [
+          14023,
+          3
+        ],
+        "render_records": [
+          {
+            "raw": [
+              14023,
+              3
+            ],
+            "mode": 4,
+            "configuration": 34,
+            "text": "5.000",
+            "unit": "",
+            "scale_bits": "0x40a00000",
+            "flags": "0001"
+          }
+        ],
+        "filter_inputs": [
+          5
+        ],
+        "sound_gate_calls": [
+          [
+            "0x80003970",
+            10,
+            1
+          ]
+        ],
+        "sound_after_callback": {
+          "active": 1,
+          "countdown": 3,
+          "ring": [
+            5,
+            6,
+            5
+          ],
+          "index": 0,
+          "fill": 3,
+          "median": 5,
+          "pwm_control": "0x7f",
+          "pwm_period": "0x176f0a8c"
+        }
+      },
+      "after_both": {
+        "active": 1,
+        "countdown": 2,
+        "ring": [
+          5,
+          6,
+          5
+        ],
+        "index": 0,
+        "fill": 3,
+        "median": 5,
+        "pwm_control": "0x7f",
+        "pwm_period": "0x176f0a8c"
+      },
+      "followup_without_refresh": [
+        {
+          "key_sample": 291,
+          "delay_argument": 50,
+          "watchdog_after": "0x114af",
+          "sample_counter_after": 2,
+          "sound_gate_calls": [],
+          "sound_after": {
+            "active": 1,
+            "countdown": 1,
+            "ring": [
+              5,
+              6,
+              5
+            ],
+            "index": 0,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x176f0a8c"
+          }
+        },
+        {
+          "key_sample": 291,
+          "delay_argument": 50,
+          "watchdog_after": "0x114af",
+          "sample_counter_after": 3,
+          "sound_gate_calls": [
+            [
+              "0x80005568",
+              5,
+              0
+            ]
+          ],
+          "sound_after": {
+            "active": 0,
+            "countdown": 0,
+            "ring": [
+              5,
+              6,
+              5
+            ],
+            "index": 0,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x20750000"
+          }
+        }
+      ]
+    },
+    {
+      "loop_first": true,
+      "initial_countdown": 1,
+      "before": {
+        "active": 1,
+        "countdown": 1,
+        "ring": [
+          5,
+          6,
+          7
+        ],
+        "index": 2,
+        "fill": 3,
+        "median": 5,
+        "pwm_control": "0x7f",
+        "pwm_period": "0x176f0a8c"
+      },
+      "first_loop": {
+        "key_sample": 291,
+        "delay_argument": 50,
+        "watchdog_after": "0x114af",
+        "sample_counter_after": 1,
+        "sound_gate_calls": [
+          [
+            "0x80005568",
+            5,
+            0
+          ]
+        ],
+        "sound_after": {
+          "active": 0,
+          "countdown": 0,
+          "ring": [
+            5,
+            6,
+            7
+          ],
+          "index": 2,
+          "fill": 3,
+          "median": 5,
+          "pwm_control": "0x7f",
+          "pwm_period": "0x20750000"
+        }
+      },
+      "refresh": {
+        "tick": 200,
+        "period_after": 25,
+        "warmup": [
+          2,
+          2
+        ],
+        "stored_at_entry": [
+          14023,
+          3
+        ],
+        "render_records": [
+          {
+            "raw": [
+              14023,
+              3
+            ],
+            "mode": 4,
+            "configuration": 34,
+            "text": "5.000",
+            "unit": "",
+            "scale_bits": "0x40a00000",
+            "flags": "0001"
+          }
+        ],
+        "filter_inputs": [
+          5
+        ],
+        "sound_gate_calls": [
+          [
+            "0x80003970",
+            10,
+            1
+          ]
+        ],
+        "sound_after_callback": {
+          "active": 1,
+          "countdown": 3,
+          "ring": [
+            5,
+            6,
+            5
+          ],
+          "index": 0,
+          "fill": 3,
+          "median": 5,
+          "pwm_control": "0x7f",
+          "pwm_period": "0x176f0a8c"
+        }
+      },
+      "after_both": {
+        "active": 1,
+        "countdown": 3,
+        "ring": [
+          5,
+          6,
+          5
+        ],
+        "index": 0,
+        "fill": 3,
+        "median": 5,
+        "pwm_control": "0x7f",
+        "pwm_period": "0x176f0a8c"
+      },
+      "followup_without_refresh": [
+        {
+          "key_sample": 291,
+          "delay_argument": 50,
+          "watchdog_after": "0x114af",
+          "sample_counter_after": 2,
+          "sound_gate_calls": [],
+          "sound_after": {
+            "active": 1,
+            "countdown": 2,
+            "ring": [
+              5,
+              6,
+              5
+            ],
+            "index": 0,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x176f0a8c"
+          }
+        },
+        {
+          "key_sample": 291,
+          "delay_argument": 50,
+          "watchdog_after": "0x114af",
+          "sample_counter_after": 3,
+          "sound_gate_calls": [],
+          "sound_after": {
+            "active": 1,
+            "countdown": 1,
+            "ring": [
+              5,
+              6,
+              5
+            ],
+            "index": 0,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x176f0a8c"
+          }
+        },
+        {
+          "key_sample": 291,
+          "delay_argument": 50,
+          "watchdog_after": "0x114af",
+          "sample_counter_after": 4,
+          "sound_gate_calls": [
+            [
+              "0x80005568",
+              5,
+              0
+            ]
+          ],
+          "sound_after": {
+            "active": 0,
+            "countdown": 0,
+            "ring": [
+              5,
+              6,
+              5
+            ],
+            "index": 0,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x20750000"
+          }
+        }
+      ]
+    },
+    {
+      "loop_first": true,
+      "initial_countdown": 2,
+      "before": {
+        "active": 1,
+        "countdown": 2,
+        "ring": [
+          5,
+          6,
+          7
+        ],
+        "index": 2,
+        "fill": 3,
+        "median": 5,
+        "pwm_control": "0x7f",
+        "pwm_period": "0x176f0a8c"
+      },
+      "first_loop": {
+        "key_sample": 291,
+        "delay_argument": 50,
+        "watchdog_after": "0x114af",
+        "sample_counter_after": 1,
+        "sound_gate_calls": [],
+        "sound_after": {
+          "active": 1,
+          "countdown": 1,
+          "ring": [
+            5,
+            6,
+            7
+          ],
+          "index": 2,
+          "fill": 3,
+          "median": 5,
+          "pwm_control": "0x7f",
+          "pwm_period": "0x176f0a8c"
+        }
+      },
+      "refresh": {
+        "tick": 200,
+        "period_after": 25,
+        "warmup": [
+          2,
+          2
+        ],
+        "stored_at_entry": [
+          14023,
+          3
+        ],
+        "render_records": [
+          {
+            "raw": [
+              14023,
+              3
+            ],
+            "mode": 4,
+            "configuration": 34,
+            "text": "5.000",
+            "unit": "",
+            "scale_bits": "0x40a00000",
+            "flags": "0001"
+          }
+        ],
+        "filter_inputs": [
+          5
+        ],
+        "sound_gate_calls": [
+          [
+            "0x80003970",
+            10,
+            1
+          ]
+        ],
+        "sound_after_callback": {
+          "active": 1,
+          "countdown": 3,
+          "ring": [
+            5,
+            6,
+            5
+          ],
+          "index": 0,
+          "fill": 3,
+          "median": 5,
+          "pwm_control": "0x7f",
+          "pwm_period": "0x176f0a8c"
+        }
+      },
+      "after_both": {
+        "active": 1,
+        "countdown": 3,
+        "ring": [
+          5,
+          6,
+          5
+        ],
+        "index": 0,
+        "fill": 3,
+        "median": 5,
+        "pwm_control": "0x7f",
+        "pwm_period": "0x176f0a8c"
+      },
+      "followup_without_refresh": [
+        {
+          "key_sample": 291,
+          "delay_argument": 50,
+          "watchdog_after": "0x114af",
+          "sample_counter_after": 2,
+          "sound_gate_calls": [],
+          "sound_after": {
+            "active": 1,
+            "countdown": 2,
+            "ring": [
+              5,
+              6,
+              5
+            ],
+            "index": 0,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x176f0a8c"
+          }
+        },
+        {
+          "key_sample": 291,
+          "delay_argument": 50,
+          "watchdog_after": "0x114af",
+          "sample_counter_after": 3,
+          "sound_gate_calls": [],
+          "sound_after": {
+            "active": 1,
+            "countdown": 1,
+            "ring": [
+              5,
+              6,
+              5
+            ],
+            "index": 0,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x176f0a8c"
+          }
+        },
+        {
+          "key_sample": 291,
+          "delay_argument": 50,
+          "watchdog_after": "0x114af",
+          "sample_counter_after": 4,
+          "sound_gate_calls": [
+            [
+              "0x80005568",
+              5,
+              0
+            ]
+          ],
+          "sound_after": {
+            "active": 0,
+            "countdown": 0,
+            "ring": [
+              5,
+              6,
+              5
+            ],
+            "index": 0,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x20750000"
+          }
+        }
+      ]
+    }
+  ],
+  "instruction_bytes": {
+    "0x8000551c": "58509fe5",
+    "0x80005520": "58609fe5",
+    "0x80005524": "58409fe5",
+    "0x80005528": "bbf3ffeb",
+    "0x8000552c": "000085e5",
+    "0x80005530": "3200a0e3",
+    "0x80005534": "a06e01eb",
+    "0x80005538": "210c00eb",
+    "0x8000553c": "500094e5",
+    "0x80005540": "000050e3",
+    "0x80005544": "010040c2",
+    "0x80005548": "500084c5",
+    "0x8000554c": "000096e5",
+    "0x80005550": "010050e3",
+    "0x80005554": "50009405",
+    "0x80005558": "00005003",
+    "0x8000555c": "0200001a",
+    "0x80005560": "0010a0e3",
+    "0x80005564": "0500a0e3",
+    "0x80005568": "370600eb",
+    "0x8000556c": "180094e5",
+    "0x80005570": "010080e2",
+    "0x80005574": "180084e5",
+    "0x80005578": "eaffffea",
+    "0x800059c0": "9c009fe5",
+    "0x800059c4": "0030a0e3",
+    "0x800059c8": "04008de5",
+    "0x800059cc": "9c009fe5",
+    "0x800059d0": "022ba0e3",
+    "0x800059d4": "8c108fe2",
+    "0x800059d8": "00408de5",
+    "0x80006eb8": "500085e5",
+    "0x80006ef0": "f0ffffea",
+    "0x800085c4": "10109fe5",
+    "0x800085c8": "000091e5",
+    "0x800085cc": "050b80e3",
+    "0x800085d0": "af0080e3",
+    "0x800085d4": "000081e5",
+    "0x800085d8": "1eff2fe1",
+    "0x8005d248": "4d8effeb"
+  },
+  "limits": [
+    "Original registration argument setup, KeyTask loop, watchdog helper, timer/refresh and sound paths execute.",
+    "Task creation is observed at its call boundary; key sampling and delay scheduling are modeled.",
+    "Each loop runs through its backward branch. The host chooses callback ordering between whole loop iterations.",
+    "Hardware state is a register shadow. There is no measured time unit or physical timing."
+  ]
+}

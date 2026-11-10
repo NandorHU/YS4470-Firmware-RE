@@ -31,6 +31,26 @@
   },
   "functions": [
     {
+      "id": "key_task_sound_countdown",
+      "addresses": {
+        "V3_6": "0x8000551c",
+        "V3_8": "0x8000551c"
+      },
+      "confidence": "confirmed_registration_argument_and_bounded_original_arm926_execution",
+      "role": "KeyTask loop with key-sample store, watchdog update, sound countdown and sample-counter increment",
+      "relationships": [
+        "Registration boundary at 0x800059dc passes entry 0x8000551c and name pointer 0x80005a68 (KeyTask).",
+        "Loop calls the delay helper with argument 50 at 0x80005534, calls watchdog helper 0x800085c4 and branches back at 0x80005578.",
+        "Active countdown expiry calls the sound gate with (5, 0) at 0x80005568. A Fast CONT refresh before the iteration can reload the countdown to 3."
+      ],
+      "evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/key-task-fast-cont-order-validation.json"
+      ],
+      "limits": [
+        "Task creation observed at the call boundary. Key sampling and scheduler delay modeled. No physical timing."
+      ]
+    },
+    {
       "id": "result_dispatch",
       "addresses": {
         "V3_6": "0x800037c0",
