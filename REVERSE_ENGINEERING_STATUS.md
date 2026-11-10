@@ -419,3 +419,7 @@ Six scheduled ARM926 cases execute three original producer paths across both fac
 ## 2026-11-10 — Live calibration status and UI timer
 
 Four linked schedules and 60 original timer callbacks reproduce the calibration wait and result texts in V3.6/V3.8. Both status writer and timer reader use one memory image. The host chooses the GUI runner entry and models allocation and invalidation. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).
+
+## 2026-11-10 — Calibration reset to fresh measurement
+
+Four additional reset-to-measurement continuations run in the same original scheduler/UI schedules on both factory versions. Each uses the original enqueue, service, IRQ-fed parser and result stores after reset. [Shared ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).

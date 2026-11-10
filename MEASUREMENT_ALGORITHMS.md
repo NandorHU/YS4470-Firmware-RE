@@ -373,3 +373,7 @@ The scheduled type-1 status chain clears the original RX buffer twice. Status be
 ## 2026-11-10 — Live calibration status and UI timer
 
 The original UI timer reports `Calibration ...` for live status zero with flag 1. Fresh status 2 or 7 takes precedence over the flag, generates the corresponding original text, and changes the period to 200. In the `0x29` schedule the first result is visible while the flag remains 1. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).
+
+## 2026-11-10 — Calibration reset to fresh measurement
+
+When both reset words are zero, the original calibration callback adds a real type-3 request. The next scheduled service pass drains it, and an IRQ-fed matching reply replaces the seeded measurement with raw 74565 and selector 3. [Shared ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).

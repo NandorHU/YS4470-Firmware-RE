@@ -591,3 +591,7 @@ Executed six original queue, service, SVC and IRQ schedules with 60,814 injected
 ## 2026-11-10 — Live calibration status and UI timer
 
 Executed four shared-memory status/UI schedules with 60 original callbacks and 60 one-count-early controls. Original IRQ-fed statuses 2 and 7 produce `Cal circuit 1 OK02` and `Cal over range04`. Waiting callbacks keep period 2,000. Status callbacks select 200. On the `0x29` phase, the timer sees status 7 at counter 12,702 while flag 1 remains set, then repeats the result with flag 0. The original formatter and label copy execute. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).
+
+## 2026-11-10 — Calibration reset to fresh measurement
+
+Ran four reset-to-measurement continuations on the two factory hashes. The original reset slice clears both words. The next original due callback, at 15,300 or 15,302 depending on the timer phase, enqueues type 3. GaugeCmdTask sends `60 60`; the original UART2 IRQ and parser consume `60 45 23 01 03` and publish 74565/3 by counter 15,304 or 15,306. The pre-request `.OL` display uses a seeded sentinel. [Shared ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).

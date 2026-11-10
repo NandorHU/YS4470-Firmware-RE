@@ -780,3 +780,20 @@ pixels and peer behavior are outside the replay.
 ```powershell
 python -B contributions/COORD-ADC-CADENCE/synchronous/trace_calibration_ui_live.py
 ```
+
+## Calibration reset to fresh measurement
+
+The [same scheduled replay](calibration-ui-live-validation.json) also
+continues after each of the four linked calibration schedules. Original
+reset stores at `0x80046cb0` and `0x80046cb8` clear the flag and status
+at counter 15,203. The next original timer callback reads both zeros and
+uses the real queue at call site `0x8005dc38`. The queue receives type 3
+with prefix `030000000000`. One-count-early controls still produce no
+callback.
+
+The next original service pass dequeues the request and sends `60 60`.
+The UART2 IRQ receives `60 45 23 01 03` and the original parser
+publishes raw 74565 and selector 3. Both timer phases reach the same
+result. The pre-request label `.OL` uses a seeded over-range raw value.
+The original reset slice stops after the two stores. The host schedules
+the GUI runner and the peripheral interrupts as before.
