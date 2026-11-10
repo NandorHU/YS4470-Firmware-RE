@@ -343,3 +343,7 @@ Exercise the full original calibration button callbacks at `0x8000e4c8` and `0x8
 ## 2026-11-10 — Calibration buttons and pending queue
 
 Trace indirect producers and alternate queue primitives for the still-host-supplied type-6 record. The direct producer index at `0x800067b8` alone cannot establish native type-6 reachability. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-button-queue-validation.json).
+
+## 2026-11-10 — Queue entry candidates and full-queue waits
+
+The raw candidate `0x8009ef10` decodes as an interior branch. Its surrounding bytes and raw inbound candidates lack a proven executable path. Native type-6 reachability and indirect or inlined queue writers remain open. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/queue-interior-full-validation.json).

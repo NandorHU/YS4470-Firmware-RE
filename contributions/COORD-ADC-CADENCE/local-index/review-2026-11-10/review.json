@@ -1,0 +1,103 @@
+{
+  "schema": "ys4470.resident-arm-index-review.v1",
+  "firmware_sha256": {
+    "V3.6": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+    "V3.8": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+  },
+  "model": "qwen2.5-coder:14b",
+  "checked_lessons_sha256": "7b135d7b5b1e58e68fa7ba4283902106547b7d76fe9736baacb065a3653217c4",
+  "reviewed_batches": 1327,
+  "reviewed_drafts": 2653,
+  "exact_extractions": 2652,
+  "excluded_drafts": 1,
+  "attempts_per_draft": {
+    "1": 2653
+  },
+  "exclusions_by_reason": {
+    "wrong_identity": 1
+  },
+  "source_catalogs": {
+    "cal-0000.json": {
+      "sha256": "b250bf5a87509e6bc23066065dbf5add79b8efded2704ca7aaf68d87f09b73cb",
+      "addresses": 500,
+      "exact": 485,
+      "excluded": 1
+    },
+    "cal-0500.json": {
+      "sha256": "544a9258914decd9195bd678ae88b9dc8b30708d0bd11ad8c97917d92602719d",
+      "addresses": 500,
+      "exact": 486,
+      "excluded": 0
+    },
+    "cal-1000.json": {
+      "sha256": "c0fed064a7c4f44bdda32ecd580cad55e1e250cd8cc0cb3507801ce53ab27a67",
+      "addresses": 500,
+      "exact": 492,
+      "excluded": 0
+    },
+    "cal-1500.json": {
+      "sha256": "3469f75d3df14cc2925547e23b203cf2c41ee906aa5657e5ebc5dd25ba5d5ddb",
+      "addresses": 500,
+      "exact": 498,
+      "excluded": 0
+    },
+    "cal-2000.json": {
+      "sha256": "1d9d0c992ea5b03a33e8bf273a5e27ba1be740bd260c6a4a9dc75195c36bf95c",
+      "addresses": 255,
+      "exact": 253,
+      "excluded": 0
+    },
+    "full-queue-audit.json": {
+      "sha256": "6a24e321d7d8ae253773eb2f28b263e9cd21fa419aa2429ee8de807b6627f9e3",
+      "addresses": 160,
+      "exact": 4,
+      "excluded": 0
+    },
+    "queue-uart-ui-refill.json": {
+      "sha256": "8ed6c5109957641ce7562f25162d3aecfe170561ff9ca32665ff5d15c33d6254",
+      "addresses": 630,
+      "exact": 434,
+      "excluded": 0
+    }
+  },
+  "exported_chunks": [
+    {
+      "path": "accepted-arm-index-01.tsv",
+      "rows": 500,
+      "sha256": "03c6599fcfb534d289548570f92a78acc6f36063103e7566b17f1ecd6bd79808"
+    },
+    {
+      "path": "accepted-arm-index-02.tsv",
+      "rows": 500,
+      "sha256": "c8dbe1dd22e52123028fe7e4e306b612a59a76710b1beef86e31f6295f6dc263"
+    },
+    {
+      "path": "accepted-arm-index-03.tsv",
+      "rows": 500,
+      "sha256": "2f41b81ae23915af5f420090184c60ba88e13b60aedc8764de65604ec9d2e925"
+    },
+    {
+      "path": "accepted-arm-index-04.tsv",
+      "rows": 500,
+      "sha256": "964579b191cebbbe2ad4e219db954d17e034165774519c7f4436ebda091de1c2"
+    },
+    {
+      "path": "accepted-arm-index-05.tsv",
+      "rows": 500,
+      "sha256": "2d071477873edbc38b0765568443a0862317978d7aee9278e0d47db6eaca9ed8"
+    },
+    {
+      "path": "accepted-arm-index-06.tsv",
+      "rows": 152,
+      "sha256": "287ac42eb6ce996b8d05b55e430f85d3b1995335dbae6896333fd835d710e043"
+    }
+  ],
+  "excluded": [
+    {
+      "address": "0x80003fbc",
+      "catalog": "cal-0000.json",
+      "reason": "wrong_identity"
+    }
+  ],
+  "scope": "Original-byte and exact-quote verification. No model-supplied semantic conclusions are published."
+}

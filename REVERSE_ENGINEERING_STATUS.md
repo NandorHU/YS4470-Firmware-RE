@@ -427,3 +427,7 @@ Four additional reset-to-measurement continuations run in the same original sche
 ## 2026-11-10 — Calibration buttons and pending queue
 
 Twelve linked button and queue cases execute both complete original callbacks on V3.6 and V3.8. They cover successful drain with pending work, an active IRQ-fed measurement, and allocation failure with queue space. The scheduled queued cases reach the original calibration status labels. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-button-queue-validation.json).
+
+## 2026-11-10 — Queue entry candidates and full-queue waits
+
+The expanded two-image queue index checks branch targets throughout the known queue ranges, immediate address formation, all byte phases for exact pointers, and a bounded queue-field signature. Six original scheduler/queue cases verify full-queue send behavior. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/queue-interior-full-validation.json).

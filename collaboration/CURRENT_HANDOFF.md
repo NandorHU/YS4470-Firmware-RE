@@ -10,9 +10,9 @@ Beta.2 Release API currently404; retained historical installer is documented.
 The owner confirmed the old daily automation was stopped. The new coordinator
 `codex-ys4470-20261109-01a1c110` is recorded in upstream registry revision 19.
 
-Latest analysis: [calibration buttons and pending queue](../contributions/COORD-ADC-CADENCE/synchronous/README.md#calibration-buttons-and-pending-queue)
-executes both complete button callbacks through original queue and IRQ paths.
-Next resolve remaining indirect producer paths for the type-6 fallback.
+Latest analysis: [queue entry candidates and full-queue waits](../contributions/COORD-ADC-CADENCE/synchronous/README.md#queue-entry-candidates-and-full-queue-waits)
+executes original blocking sends and retains the bounded alias candidates.
+Next establish executable provenance for remaining indirect queue writers.
 
 ---
 

@@ -2,6 +2,13 @@
 
 ## Current checkpoint
 
+The [full-queue replay](synchronous/queue-interior-full-validation.json) covers six original cases.
+The sender times out at ten counts or succeeds after a receive at count
+three. The interior branch match remains a raw encoding candidate.
+Next resolve executable provenance of remaining indirect queue writers.
+
+## Previous calibration button checkpoint
+
 The [calibration button replay](synchronous/calibration-button-queue-validation.json) covers 12 cases
 across both factory images. It distinguishes queued work, active
 measurement and drain allocation failure. Next resolve remaining

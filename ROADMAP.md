@@ -290,3 +290,7 @@ Extend the linked replay to the full original button callbacks and real queue dr
 ## 2026-11-10 — Calibration buttons and pending queue
 
 Return to the remaining fallback producer search. Resolve indirect queue aliases for the original type-6 handler and test any new producer under the original idle gate. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-button-queue-validation.json).
+
+## 2026-11-10 — Queue entry candidates and full-queue waits
+
+Resolve executable provenance and indirect dataflow for remaining queue-write candidates. Link any genuine additional producer to original arguments and queue admission before assigning native type-6 reachability. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/queue-interior-full-validation.json).

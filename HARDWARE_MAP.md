@@ -301,3 +301,7 @@ After calibration reset the original service sends `60 60`. The replay delivers 
 ## 2026-11-10 — Calibration buttons and pending queue
 
 The original queue drain acts on queued records. An already-issued `60 60` request can still receive and publish through UART2 after a calibration button runs. Hardware button input, interrupt timing and pixels are outside the replay. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-button-queue-validation.json).
+
+## 2026-11-10 — Queue entry candidates and full-queue waits
+
+Injected Timer0 interrupts advance the original scheduler to the blocked send deadline. In the competing receive case the original SVC path makes the sender runnable while a slot is available. The elapsed counter values describe software behavior. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/queue-interior-full-validation.json).

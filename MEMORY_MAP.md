@@ -421,3 +421,7 @@ The reset stores clear `0x805ab91c` and `0x805ab920`. A 68-byte record with pref
 ## 2026-11-10 — Calibration buttons and pending queue
 
 Drain `0x80003d74` requests a 68-byte temporary buffer and repeats original zero-wait queue receive `0x800618dc`. The tested button records have prefixes `010000002800` and `010000002900`. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-button-queue-validation.json).
+
+## 2026-11-10 — Queue entry candidates and full-queue waits
+
+The replay checks the ten 68-byte records, message count at queue +0x38 and send-wait list at +0x10. Original task initialization at `0x80061e14..0x80061e20` establishes the inverted-priority value and owner of the event-list node. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/queue-interior-full-validation.json).

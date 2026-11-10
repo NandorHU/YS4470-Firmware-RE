@@ -48,3 +48,14 @@ UART and calibration/measurement traces. Each word was checked against
 both factory binaries before it entered the resident inbox. The running
 worker took the new jobs without a restart. A sample of ten completed
 drafts passed the exact address and quote checks.
+
+## Audited resident output
+
+The [published index](review-2026-11-10/README.md) contains 2,652 exact
+instruction extracts from 2,653 completed resident drafts. A separate
+auditor verifies the frozen manifest, source packet, completion reason,
+requested address, exact quote and both factory binary words. One draft
+was excluded for an identity mismatch.
+
+A [160-address catalog](full-queue-audit.json) adds newly covered
+queue and scheduler instructions to the same running resident process.

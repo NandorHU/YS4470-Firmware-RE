@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 40,
+  "revision": 41,
   "updated": "2026-11-10",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,7 +295,7 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Resolve remaining indirect references and alternate queue primitives for native type-6 fallback reachability, starting from the published control queue index. Bind any new producer to original call arguments and execute it under the original idle/scheduler preconditions. Keep host-supplied type-6 behavior and peer semantics separate.",
+      "next_action": "Trace executable provenance for remaining indirect and synthesized queue-writer candidates. Use the expanded interior branch and field-signature index, prioritize real writes to the control queue handle or object, and run any newly confirmed producer under original idle/scheduler conditions.",
       "last_verified_result": {
         "profile_cases": 64,
         "transition_cases": 64,
@@ -366,7 +366,11 @@
         "original_calibration_reset_to_measurement_cases": 4,
         "original_calibration_button_queue_cases": 12,
         "resident_index_queue_refill_words": 630,
-        "resident_index_queue_refill_sample_exact": 10
+        "resident_index_queue_refill_sample_exact": 10,
+        "original_full_queue_send_cases": 6,
+        "raw_queue_interior_branch_candidates": 1,
+        "resident_index_drafts_reviewed": 2653,
+        "resident_index_exact_extractions_published": 2652
       },
       "result_evidence": [
         "contributions/COORD-ADC-CADENCE/profile-validation.json",
@@ -407,7 +411,9 @@
         "contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-local-index-review.json",
         "contributions/COORD-ADC-CADENCE/local-index/resident-index-queue-smoke.json",
         "contributions/COORD-ADC-CADENCE/synchronous/calibration-button-queue-validation.json",
-        "contributions/COORD-ADC-CADENCE/local-index/queue-uart-ui-refill.json"
+        "contributions/COORD-ADC-CADENCE/local-index/queue-uart-ui-refill.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/queue-interior-full-validation.json",
+        "contributions/COORD-ADC-CADENCE/local-index/review-2026-11-10/review.json"
       ]
     },
     {
