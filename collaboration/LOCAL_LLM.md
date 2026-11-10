@@ -156,3 +156,11 @@ The [resident queue](../contributions/COORD-ADC-CADENCE/local-index/README.md) p
 factory-byte-checked instruction windows in bounded batches and writes
 local receipts for periodic review. The coordinator’s existing three-hour
 heartbeat checks progress and continues the next original-code analysis.
+
+## 2026-11-10 — Resident queue refill
+
+The first resident catalog completed and the same process resumed from a
+[630-address refill](../contributions/COORD-ADC-CADENCE/local-index/queue-uart-ui-refill.json). The coordinator checked the words
+against both factory images before publishing the catalog to the inbox.
+Ten recent drafts matched the exact address and quote check. They remain
+static index evidence.

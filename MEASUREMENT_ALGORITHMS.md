@@ -377,3 +377,7 @@ The original UI timer reports `Calibration ...` for live status zero with flag 1
 ## 2026-11-10 — Calibration reset to fresh measurement
 
 When both reset words are zero, the original calibration callback adds a real type-3 request. The next scheduled service pass drains it, and an IRQ-fed matching reply replaces the seeded measurement with raw 74565 and selector 3. [Shared ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).
+
+## 2026-11-10 — Calibration buttons and pending queue
+
+A queued type-3 measurement and older type-1 command are both drained before the new calibration request. An active measurement completes first and leaves the calibration fallback pending until the FSM becomes idle. With the drain allocation forced to fail and room in the queue, both old records stay ahead of the new request. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-button-queue-validation.json).

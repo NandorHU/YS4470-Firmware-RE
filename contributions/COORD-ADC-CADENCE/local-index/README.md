@@ -39,3 +39,12 @@ catalogs to `inbox` using the same schema. A file named `stop.request`
 asks the worker to stop after its current batch. Remove the marker before
 starting the same command to resume from saved jobs. Jobs left with an orphaned
 wrapper lock require coordinator review.
+
+## Queue, UART and UI refill
+
+The [additional catalog](queue-uart-ui-refill.json) contains 630
+previously unqueued ARM words selected from original control-queue,
+UART and calibration/measurement traces. Each word was checked against
+both factory binaries before it entered the resident inbox. The running
+worker took the new jobs without a restart. A sample of ten completed
+drafts passed the exact address and quote checks.

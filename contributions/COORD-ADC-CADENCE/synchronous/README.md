@@ -797,3 +797,36 @@ publishes raw 74565 and selector 3. Both timer phases reach the same
 result. The pre-request label `.OL` uses a seeded over-range raw value.
 The original reset slice stops after the two stores. The host schedules
 the GUI runner and the peripheral interrupts as before.
+
+## Calibration buttons and pending queue
+
+[Replay evidence](calibration-button-queue-validation.json) covers both complete original button
+callbacks, `0x8000e4c8` and `0x8000e55c`, in 12 cases across the two
+factory images. Each callback resets the original timer to 2,000, calls
+the drain at `0x80003d74`, enqueues a type-1 record and formats its mode
+label. The drain uses an allocated 68-byte fixture, then runs the actual
+zero-wait receive until the queue is empty.
+
+With an old type-3 measurement and type-1 control still queued, the
+drain reads both in order. Only the new calibration request is consumed
+by GaugeCmdTask. The original scheduled status path and UI timer reach
+status 2 or 7 with their factory labels.
+
+With the measurement already sent, the button drains only the queued
+control request. GaugeCmdTask defers the new calibration record while
+the measurement is busy. A matching UART2 IRQ reply publishes raw
+74565 and selector 3. The original fallback then begins its 600-count
+wait. This case ends at that wait.
+
+The null-allocation fixture makes the drain return before receiving a
+record. With room in the queue, the button still appends the new
+calibration request behind both original pending records.
+
+Heap allocation/free, GUI invalidation, task initialization and incoming
+IRQs are fixtures. The original queue, scheduler, formatter and status
+logic execute. These cases establish software behavior with controlled
+counter progression.
+
+```powershell
+python -B contributions/COORD-ADC-CADENCE/synchronous/trace_calibration_button_queue.py
+```

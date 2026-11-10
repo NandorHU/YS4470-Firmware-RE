@@ -297,3 +297,7 @@ The linked status UI test uses the installed Timer0 and UART2 IRQ paths, an emul
 ## 2026-11-10 — Calibration reset to fresh measurement
 
 After calibration reset the original service sends `60 60`. The replay delivers a matching reply by UART2 IRQ and advances the service using injected Timer0 IRQs. The label `.OL` uses an explicitly seeded over-range raw value. [Shared ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).
+
+## 2026-11-10 — Calibration buttons and pending queue
+
+The original queue drain acts on queued records. An already-issued `60 60` request can still receive and publish through UART2 after a calibration button runs. Hardware button input, interrupt timing and pixels are outside the replay. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-button-queue-validation.json).

@@ -417,3 +417,7 @@ The original callback reads the same `0x805ab920` and `0x805ab91c` words written
 ## 2026-11-10 — Calibration reset to fresh measurement
 
 The reset stores clear `0x805ab91c` and `0x805ab920`. A 68-byte record with prefix `030000000000` enters the original queue, and the accepted response updates `0x805ac730` and `0x805ac734`. [Shared ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).
+
+## 2026-11-10 — Calibration buttons and pending queue
+
+Drain `0x80003d74` requests a 68-byte temporary buffer and repeats original zero-wait queue receive `0x800618dc`. The tested button records have prefixes `010000002800` and `010000002900`. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-button-queue-validation.json).

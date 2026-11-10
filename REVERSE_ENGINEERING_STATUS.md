@@ -423,3 +423,7 @@ Four linked schedules and 60 original timer callbacks reproduce the calibration 
 ## 2026-11-10 — Calibration reset to fresh measurement
 
 Four additional reset-to-measurement continuations run in the same original scheduler/UI schedules on both factory versions. Each uses the original enqueue, service, IRQ-fed parser and result stores after reset. [Shared ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).
+
+## 2026-11-10 — Calibration buttons and pending queue
+
+Twelve linked button and queue cases execute both complete original callbacks on V3.6 and V3.8. They cover successful drain with pending work, an active IRQ-fed measurement, and allocation failure with queue space. The scheduled queued cases reach the original calibration status labels. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-button-queue-validation.json).

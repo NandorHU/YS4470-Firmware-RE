@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 39,
+  "revision": 40,
   "updated": "2026-11-10",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,7 +295,7 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Run complete original calibration button callbacks 0x8000e4c8 and 0x8000e55c with the original queue drain and pending measurement/control records, then link their producers to the scheduled status/UI chain. Keep exact fixture and hardware boundaries.",
+      "next_action": "Resolve remaining indirect references and alternate queue primitives for native type-6 fallback reachability, starting from the published control queue index. Bind any new producer to original call arguments and execute it under the original idle/scheduler preconditions. Keep host-supplied type-6 behavior and peer semantics separate.",
       "last_verified_result": {
         "profile_cases": 64,
         "transition_cases": 64,
@@ -314,7 +314,7 @@
         "service_idle_gate_cases": 24,
         "known_synchronous_bl_sites": 9,
         "new_synchronous_tail_edges": 1,
-        "database_entries": 69,
+        "database_entries": 72,
         "synchronous_startup_cases": 40,
         "local_service_restored": true,
         "local_extraction_requests_completed": 2,
@@ -363,7 +363,10 @@
         "original_live_calibration_ui_callbacks": 60,
         "local_calibration_ui_index_drafts_verified": 6,
         "resident_index_queue_smoke_exact_drafts": 30,
-        "original_calibration_reset_to_measurement_cases": 4
+        "original_calibration_reset_to_measurement_cases": 4,
+        "original_calibration_button_queue_cases": 12,
+        "resident_index_queue_refill_words": 630,
+        "resident_index_queue_refill_sample_exact": 10
       },
       "result_evidence": [
         "contributions/COORD-ADC-CADENCE/profile-validation.json",
@@ -402,7 +405,9 @@
         "contributions/COORD-ADC-CADENCE/synchronous/gauge-long-fallback-local-index-review.json",
         "contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-local-index-review.json",
-        "contributions/COORD-ADC-CADENCE/local-index/resident-index-queue-smoke.json"
+        "contributions/COORD-ADC-CADENCE/local-index/resident-index-queue-smoke.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/calibration-button-queue-validation.json",
+        "contributions/COORD-ADC-CADENCE/local-index/queue-uart-ui-refill.json"
       ]
     },
     {

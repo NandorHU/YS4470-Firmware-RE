@@ -31,6 +31,63 @@
   },
   "functions": [
     {
+      "id": "calibration_button_circuit_one",
+      "addresses": {
+        "V3_6": "0x8000e4c8",
+        "V3_8": "0x8000e4c8"
+      },
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Reset calibration timer, drain queued work, and request type-1 command 0x28",
+      "relationships": [
+        "Calls original drain 0x80003d74 before enqueue 0x80006778.",
+        "Formats Cal Circuit 1 mode through the original label path."
+      ],
+      "evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/calibration-button-queue-validation.json"
+      ],
+      "limits": [
+        "Callback entry is controlled; GUI objects and allocator are fixtures."
+      ]
+    },
+    {
+      "id": "calibration_button_circuit_two",
+      "addresses": {
+        "V3_6": "0x8000e55c",
+        "V3_8": "0x8000e55c"
+      },
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Reset calibration timer, drain queued work, and request type-1 command 0x29",
+      "relationships": [
+        "Calls original drain 0x80003d74 before enqueue 0x80006778.",
+        "Formats Cal Circuit 2 mode through the original label path."
+      ],
+      "evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/calibration-button-queue-validation.json"
+      ],
+      "limits": [
+        "Callback entry is controlled; GUI objects and allocator are fixtures."
+      ]
+    },
+    {
+      "id": "measurement_queue_drain",
+      "addresses": {
+        "V3_6": "0x80003d74",
+        "V3_8": "0x80003d74"
+      },
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Drain queued measurement/control records through repeated zero-wait receive",
+      "relationships": [
+        "Requests a 68-byte temporary buffer and invokes original 0x800618dc while records are available.",
+        "Null allocation returns before dequeue. The tested active measurement remains in the separate FSM."
+      ],
+      "evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/calibration-button-queue-validation.json"
+      ],
+      "limits": [
+        "Allocation result is controlled. Full-queue behavior after allocation failure is outside the replay."
+      ]
+    },
+    {
       "id": "install_low_exception_vectors",
       "addresses": {
         "V3_6": "0x80000030",

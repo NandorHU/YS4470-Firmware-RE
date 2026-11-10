@@ -286,3 +286,7 @@ Continue the live calibration chain through the original reset stores, the type-
 ## 2026-11-10 — Calibration reset to fresh measurement
 
 Extend the linked replay to the full original button callbacks and real queue drain under a bounded pending-work schedule. The current writer starts at known producer suffixes after drain. [Shared ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).
+
+## 2026-11-10 — Calibration buttons and pending queue
+
+Return to the remaining fallback producer search. Resolve indirect queue aliases for the original type-6 handler and test any new producer under the original idle gate. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-button-queue-validation.json).
