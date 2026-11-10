@@ -1,77 +1,64 @@
-# YS-4470 Installer 1.1.0-beta.2 — English Windows GUI
+# YS-4470 reusable Windows installer
 
-Download the Windows-x64 ZIP from this Release, extract it, and double-click
-**YS4470-Installer.exe**. The package includes its Python/Tcl/Tk runtime, the
-SHA-pinned original factory V3.8 application, the FEL utility and the official
-USB-driver helper. No Python installation, firmware selection or manual dump
-is needed. All application text is English.
+Extract the Windows x64 ZIP, then open `YS4470-Installer.exe`. The ZIP
+includes the current V3.8 E2 diode-volume beta as
+`firmware/firmware.ysfw`. For another update, replace that single file or
+choose a new `.ysfw` in the app. The EXE contains the runtime and tools.
+It loads firmware from the selected external package each time.
 
-## Save firmware without a device
+## Install and restore
 
-Click **Save firmware file** and choose a new filename. The bundled original
-V3.8 is patched and checked against the released1.0 continuous application hash.
-The original factory image is also supplied under `factory/V3.8/` in the ZIP.
+1. Extract the complete ZIP. Run the EXE, and check the selected package.
+2. Connect one YS-4470 in FEL mode using a USB data cable. If the FEL
+   device is missing, open the included driver helper and select WinUSB
+   for the device with USB ID `1F3A:EFE8`. Driver setup requires approval.
+3. Choose **Install selected firmware in FEL mode** and confirm the
+   package name and firmware family. Wait for verified full readback.
+4. After verification, power-cycle the meter. Keep the automatic backup
+   folder private. Use **Restore from an automatic backup** with its
+   `backup-before.bin` and the accompanying plan and manifest if needed.
 
-## Install to a meter
+The installer accepts exactly one F1C100s with the supported 16 MiB
+Winbond flash and a recognized application from the matching firmware
+family. This release's included package targets V3.8. It supports
+factory V3.8, the known V3.8 1.0/experimental images and future images
+previously verified by this installer on the same Windows backup store.
+An unrecognized existing application is backed up and refused. The two
+backup reads must match. Changes are confined to complete application
+sectors, and the entire flash is read back after the write. Firmware
+packages are application images. Personal backups stay on the local PC.
 
-1. Put one YS-4470 into FEL mode and connect a USB data cable with stable power.
-2. Click **Install to meter in FEL mode** and confirm the named operation.
-3. Wait for **Verified successfully**. Only then disconnect/power-cycle.
+A package SHA-256 checks consistency with its manifest. Obtain packages
+from the project Release or another source you trust. This installer is
+a beta tested with a simulated flash and a compiled Windows self-test.
+It has not been exercised against a physical meter.
 
-The installer detects exactly one F1C100s with the expected16 MiB Winbond flash.
-It reads a full automatic backup, checks the installed application identity,
-reads the complete flash a second time and requires an identical result.
-Only then does it write the changed64 KiB application sectors. A third complete
-readback must match every intended byte before100% success is shown.
-Bootloader, logo, and all bytes outside guarded application edits are preserved.
-There is no automatic reset, unknown-image override or blind retry.
+## Package a new firmware version
 
-The exact factory V3.6/V3.8 application identities and known patched variants
-are supported. A V3.6 device retains its version-specific factory bytes; that
-port is offline-tested only. The newly packaged installer/FEL binary has not
-been physically tested on a meter. Firmware1.0's earlier device test does not
-certify this beta installer, every board or measurement accuracy.
+Create a `.ysfw` from the reviewed, full-length application binary for
+the corresponding factory firmware family. Use a fresh output name.
+The EXE does not have to be rebuilt.
 
-## USB driver: included, with Windows approval
-
-If detection fails, click **USB driver setup**. The included official Zadig
-helper opens. Select **only USB VID1F3A / PIDEFE8**, choose **WinUSB**, and click
-Install Driver. Windows may ask for administrator approval. Then close Zadig
-and retry installation. Do not select a keyboard, mouse or another device.
-
-Driver selection and the Windows approval remain explicit user steps. The
-package does not silently change drivers, install certificates, disable
-security controls or bypass Windows prompts. No download is required by the
-installed GUI; all tools are bundled and verified by SHA-256.
-
-## Automatic backups and recovery
-
-Backups/logs are stored under `%LOCALAPPDATA%/YS4470 Installer/backups/` in a
-new folder for each operation. Keep the folder private: it contains your own
-complete flash data. It is never uploaded or part of a Release package.
-
-If writing or verification fails, keep FEL mode and use **Restore from an
-automatic backup**, selecting that run's `backup-before.bin`. The backup must
-match its confirmed manifest and write plan. Changes outside the prior plan
-cause restoration to be refused. Recovery also requires full readback equality.
-No automatic retry or reboot is issued after failure.
-
-## Build and tests
-
-The source and dependency archives accompany this Release. The GUI uses the
-same tested public patch resource as `patcher/`. Build on64-bit Windows with
-Python3.12.10 and `requirements-build.lock.txt`:
-
-```text
-python installer/prepare.py
-python -m unittest discover -s patcher -p test_patcher.py -v
-python -m unittest discover -s installer -p test_engine.py -v
-python installer/build.py
+```powershell
+python installer/pack_firmware.py new-firmware.bin --family V3.8 --label "New E2 build" --out new-firmware.ysfw
 ```
 
-`prepare.py` downloads only the public SHA-pinned inputs in dependencies.lock.json.
-It never reads a device. Tests use synthetic personalized flash fixtures and a
-fake transport. `--self-test-report` on the built EXE verifies bundled resources
-without opening a GUI, USB or device. Sources and third-party notices are in
-the separate Sources ZIP. Public GitHub-hosted standard Windows build runners
-are used; no paid inference API is involved.
+The firmware must preserve its factory-family header and the existing
+application geometry. A change in the final partial sector is rejected
+because the installer writes only complete sectors contained in the
+application.
+
+## Reproduce the Windows release
+
+Use 64-bit Python 3.12.10 with the pinned build dependencies. Run
+`python installer/prepare.py` to verify the public build inputs. Build
+the E2 diode-volume application as documented in
+`contributions/COORD-DIODE-VOLUME`, then package it.
+
+```powershell
+python installer/build.py --firmware-package path/to/firmware.ysfw
+python installer/verify_release.py
+```
+
+The Windows and source ZIPs, separate firmware package, SHA-256 list
+and test receipt are written to `work/easy-installer/release`.

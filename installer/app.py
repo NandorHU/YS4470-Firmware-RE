@@ -1,34 +1,47 @@
-"""English Windows GUI; bundled runtime, factory application and driver helper."""
+"""Windows GUI with a replaceable, external YS-4470 firmware package."""
 from __future__ import annotations
 import argparse,json,os,queue,subprocess,sys,threading
 from pathlib import Path
 import tkinter as tk
 from tkinter import ttk,filedialog,messagebox
-from engine import Engine,FelTransport,factory_image,save_bytes,save_json,patch
-VERSION='1.1.0-beta.2'
+from engine import Engine,FelTransport,save_bytes,save_json,patch
+from firmware_package import read_package
+VERSION='2.0.0-beta.1'
 ZADIG_SHA='4ecaa95df3da3621486a043aef8b3050b8bafe7c901402871e816229ef82039b'
 def resources():return Path(getattr(sys,'_MEIPASS',Path(__file__).resolve().parents[1]/'work/easy-installer/resources'))
+def portable_folder():
+    if getattr(sys, 'frozen', False):
+        return Path(sys.executable).resolve().parent
+    return Path(__file__).resolve().parents[1]
+
 def user_root():
     if os.name=='nt':return Path(os.environ.get('LOCALAPPDATA',str(Path.home())))/'YS4470 Installer'
     return Path.home()/'.ys4470-installer'
-def self_test():
+def self_test(package_path=None):
     from engine import FEL_SHA
-    root=resources();data=patch.load_patch(root/'patch-data.json');image=factory_image(root,data)
+    root=resources();patch.load_patch(root/'patch-data.json')
     assert patch.sha((root/'tools/sunxi-fel.exe').read_bytes())==FEL_SHA
     assert patch.sha((root/'tools/zadig-2.9.exe').read_bytes())==ZADIG_SHA
     interpreter=tk.Tcl()
-    return {'version':VERSION,'resources_valid':True,'factory_v38_output_sha256':patch.sha(image),
-      'tcl_patchlevel':interpreter.eval('info patchlevel'),'device_access':False}
+    result = {'version':VERSION,'resources_valid':True,'tcl_patchlevel':interpreter.eval('info patchlevel'),
+              'device_access':False}
+    if package_path:
+        result['external_firmware'] = read_package(package_path).manifest()
+    return result
 class App:
     def __init__(self,window):
         self.window=window;self.root=resources();self.data=patch.load_patch(self.root/'patch-data.json')
-        factory_image(self.root,self.data);self.events=queue.Queue();self.busy=False
-        window.title('YS-4470 Firmware Installer '+VERSION);window.geometry('700x470');window.minsize(640,440)
+        self.events=queue.Queue();self.busy=False
+        self.firmware_path = portable_folder() / 'firmware' / 'firmware.ysfw'
+        window.title('YS-4470 Firmware Installer '+VERSION);window.geometry('700x490');window.minsize(640,460)
         frame=ttk.Frame(window,padding=22);frame.pack(fill='both',expand=True)
-        ttk.Label(frame,text='YS-4470 · highspeedv2 1.0',font=('Segoe UI',18,'bold')).pack(anchor='w')
-        ttk.Label(frame,text='Factory V3.8 is included. No Python setup or manual firmware dump is required.',wraplength=630).pack(anchor='w',pady=(6,18))
+        ttk.Label(frame,text='YS-4470 Firmware Installer',font=('Segoe UI',18,'bold')).pack(anchor='w')
+        ttk.Label(frame,text='Replace firmware/firmware.ysfw beside the installer, or select another firmware package. No Python setup is required.',wraplength=630).pack(anchor='w',pady=(6,10))
+        self.firmware_label = tk.StringVar()
+        self.describe_package()
+        ttk.Label(frame,textvariable=self.firmware_label,wraplength=630).pack(anchor='w',pady=(0,10))
         self.buttons=[]
-        for label,command in [('1. Save firmware file (no meter required)',self.build),('2. Install to meter in FEL mode',self.install),('USB driver setup (only if detection fails)',self.driver),('Restore from an automatic backup',self.restore)]:
+        for label,command in [('1. Choose firmware package…',self.choose_package),('2. Install selected firmware in FEL mode',self.install),('USB driver setup (only if detection fails)',self.driver),('Restore from an automatic backup',self.restore)]:
             b=ttk.Button(frame,text=label,command=command);b.pack(fill='x',pady=4);self.buttons.append(b)
         self.status=tk.StringVar(value='Ready. For installation: connect one YS-4470 in FEL mode using a USB data cable.')
         ttk.Label(frame,textvariable=self.status,wraplength=630).pack(anchor='w',pady=(18,8))
@@ -38,13 +51,21 @@ class App:
     def close(self):
         if self.busy:messagebox.showinfo('Operation in progress','Wait for the operation to finish. Do not disconnect the meter.')
         else:self.window.destroy()
-    def build(self):
-        name=filedialog.asksaveasfilename(title='Save verified 1.0 firmware',initialfile='f1c100s-1.0.bin',defaultextension='.bin',filetypes=[('Firmware','*.bin')])
-        if not name:return
+    def describe_package(self):
         try:
-            image=factory_image(self.root,self.data);save_bytes(Path(name),image)
-            messagebox.showinfo('Firmware ready','Verified firmware saved. No device was accessed.\n\n'+name)
-        except Exception as e:messagebox.showerror('Could not save firmware',str(e))
+            package = read_package(self.firmware_path)
+        except Exception as e:
+            self.firmware_label.set(f'No usable firmware package selected. {e}')
+        else:
+            self.firmware_label.set(f'Selected: {package.label} · {package.family} · {self.firmware_path.name}')
+
+    def choose_package(self):
+        name = filedialog.askopenfilename(title='Choose YS-4470 firmware package',
+                                         initialdir=str(self.firmware_path.parent),
+                                         filetypes=[('YS-4470 firmware package','*.ysfw')])
+        if name:
+            self.firmware_path = Path(name)
+            self.describe_package()
     def engine(self):
         return Engine(self.data,user_root()/'backups',lambda run:FelTransport(self.root/'tools/sunxi-fel.exe',run),lambda value,text:self.events.put(('progress',value,text)))
     def start(self,operation):
@@ -56,8 +77,16 @@ class App:
             except Exception as e:self.events.put(('error',str(e)))
         threading.Thread(target=work,daemon=False).start()
     def install(self):
-        if messagebox.askyesno('Install application firmware','Start installation on the connected YS-4470?\n\nA complete backup is saved and confirmed before any write. Bootloader and logo stay unchanged. V3.6/V3.8 exact application identities are required. Keep stable USB and power until full readback verification finishes.'):
-            self.start(lambda:self.engine().install(approved=True))
+        try:
+            firmware = read_package(self.firmware_path)
+        except Exception as e:
+            messagebox.showerror('Firmware package rejected', str(e))
+            return
+        detail = (f'Install {firmware.label} ({firmware.family}) on the connected YS-4470?\n'
+                  f'SHA-256: {firmware.image_sha256}\n\n'
+                  'A complete backup is saved and confirmed before any write. Keep USB and power stable until full readback verification finishes.')
+        if messagebox.askyesno('Install application firmware', detail):
+            self.start(lambda:self.engine().install_package(firmware,approved=True))
     def restore(self):
         name=filedialog.askopenfilename(title='Select automatic backup-before.bin',initialdir=str(user_root()/'backups'),filetypes=[('Automatic backup','backup-before.bin')])
         if name and messagebox.askyesno('Restore application','Restore this verified automatic backup? The device must still match outside the original write plan.'):
@@ -90,9 +119,9 @@ class App:
         except queue.Empty:pass
         self.window.after(100,self.poll)
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--self-test-report',type=Path);args=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('--self-test-report',type=Path);ap.add_argument('--firmware-package',type=Path);args=ap.parse_args()
     if args.self_test_report:
-        save_json(args.self_test_report,self_test());return
+        save_json(args.self_test_report,self_test(args.firmware_package));return
     root=tk.Tk()
     try:App(root)
     except Exception as e:messagebox.showerror('Package integrity failed',str(e));root.destroy();return
