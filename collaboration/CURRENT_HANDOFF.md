@@ -10,9 +10,10 @@ Beta.2 Release API currently404; retained historical installer is documented.
 The owner confirmed the old daily automation was stopped. The new coordinator
 `codex-ys4470-20261109-01a1c110` is recorded in upstream registry revision 19.
 
-Latest analysis: [live calibration status and UI timer](../contributions/COORD-ADC-CADENCE/synchronous/README.md#live-calibration-status-and-ui-timer)
-runs the IRQ-fed writer and original UI timer in one memory image. Next
-follow the original reset stores through the live type-3 queue path.
+Latest analysis: [calibration reset to fresh measurement](../contributions/COORD-ADC-CADENCE/synchronous/README.md#calibration-reset-to-fresh-measurement)
+runs the original reset, timer, type-3 queue and IRQ-fed publication in
+one memory image. Next exercise the full button callbacks and queue drain
+with pending work.
 
 ---
 

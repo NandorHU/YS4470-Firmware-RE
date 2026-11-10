@@ -335,3 +335,7 @@ Run calibration timer `0x8005da88` against status written in the same scheduled 
 ## 2026-11-10 — Live calibration status and UI timer
 
 After the original calibration reset stores, exercise the zero-status and zero-flag UI callback through the real measurement queue in the same emulator. Keep hardware timing and peer conversion outside the software proof. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).
+
+## 2026-11-10 — Calibration reset to fresh measurement
+
+Exercise the full original calibration button callbacks at `0x8000e4c8` and `0x8000e55c` through their original queue drain when a measurement or another calibration request is already queued. Preserve separate external peer and physical timing questions. [Shared ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).

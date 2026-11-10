@@ -293,3 +293,7 @@ The scheduled status chain runs the original GPIO cleanup operations. The GPIO s
 ## 2026-11-10 — Live calibration status and UI timer
 
 The linked status UI test uses the installed Timer0 and UART2 IRQ paths, an emulated register shadow, and modeled GUI leaves. Software period changes from 2,000 to 200 are verified through original timer writes. Physical display and timing are outside the test. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).
+
+## 2026-11-10 — Calibration reset to fresh measurement
+
+After calibration reset the original service sends `60 60`. The replay delivers a matching reply by UART2 IRQ and advances the service using injected Timer0 IRQs. The label `.OL` uses an explicitly seeded over-range raw value. [Shared ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).

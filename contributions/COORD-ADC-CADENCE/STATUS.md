@@ -2,6 +2,13 @@
 
 ## Current checkpoint
 
+The [calibration reset replay](synchronous/calibration-ui-live-validation.json)
+follows the original reset into a real type-3 request and new IRQ-fed
+publication in four schedules. Next exercise full button callbacks and
+their queue drain with pending work.
+
+## Previous live calibration checkpoint
+
 The [live calibration timer replay](synchronous/calibration-ui-live-validation.json) covers four
 schedules and 60 original callbacks. The timer reads IRQ-written status
 directly, including status 7 before the busy flag clears. Next follow

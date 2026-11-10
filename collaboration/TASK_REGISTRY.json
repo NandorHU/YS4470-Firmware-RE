@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 38,
+  "revision": 39,
   "updated": "2026-11-10",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,7 +295,7 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Follow original calibration reset stores 0x80046cb0/0x80046cb8 into the live timer callback and real type-3 enqueue at 0x8005dc38. Keep the shared emulator, original queue, IRQ-fed response and software timing boundaries.",
+      "next_action": "Run complete original calibration button callbacks 0x8000e4c8 and 0x8000e55c with the original queue drain and pending measurement/control records, then link their producers to the scheduled status/UI chain. Keep exact fixture and hardware boundaries.",
       "last_verified_result": {
         "profile_cases": 64,
         "transition_cases": 64,
@@ -362,7 +362,8 @@
         "original_live_calibration_ui_schedules": 4,
         "original_live_calibration_ui_callbacks": 60,
         "local_calibration_ui_index_drafts_verified": 6,
-        "resident_index_queue_smoke_exact_drafts": 30
+        "resident_index_queue_smoke_exact_drafts": 30,
+        "original_calibration_reset_to_measurement_cases": 4
       },
       "result_evidence": [
         "contributions/COORD-ADC-CADENCE/profile-validation.json",

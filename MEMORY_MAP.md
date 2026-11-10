@@ -413,3 +413,7 @@ The IRQ-filled buffer at `0x805b408c` and count at `0x805ab938` are cleared unde
 ## 2026-11-10 — Live calibration status and UI timer
 
 The original callback reads the same `0x805ab920` and `0x805ab91c` words written by the scheduled GaugeCmdTask. The timer handle at `0x805abeb8` points to the fixture timer whose period and last-count words change through original code. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).
+
+## 2026-11-10 — Calibration reset to fresh measurement
+
+The reset stores clear `0x805ab91c` and `0x805ab920`. A 68-byte record with prefix `030000000000` enters the original queue, and the accepted response updates `0x805ac730` and `0x805ac734`. [Shared ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).

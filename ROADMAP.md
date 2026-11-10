@@ -282,3 +282,7 @@ Link the scheduled status path to the original calibration UI timer without copy
 ## 2026-11-10 — Live calibration status and UI timer
 
 Continue the live calibration chain through the original reset stores, the type-3 enqueue at `0x8005dc38`, and the scheduled measurement reply. Preserve original UI formatting and separate the controlled GUI runner from hardware timing. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).
+
+## 2026-11-10 — Calibration reset to fresh measurement
+
+Extend the linked replay to the full original button callbacks and real queue drain under a bounded pending-work schedule. The current writer starts at known producer suffixes after drain. [Shared ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).

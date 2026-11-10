@@ -1643,6 +1643,7 @@
       "role": "Reads deferred calibration status and updates the original result label and timer.",
       "name_status": "Analyst label grounded by original callback binding and displayed strings",
       "relationships": [
+        "Original reset stores lead to the real type-3 queue path and a fresh IRQ-fed publication in four linked schedules.",
         "The shared-memory scheduled replay reads live status 7 while the writer flag is still set, formats the result, and changes period to 200.",
         "Timer registration at 0x8004c4ec uses callback 0x8005da88 and period 2000. Original due-path indirect call is at 0x80040a0c.",
         "Loads status at 0x8005dac4 from 0x805ab920 and, for zero status, flag at 0x8005dbfc from 0x805ab91c.",

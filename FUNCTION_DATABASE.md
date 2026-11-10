@@ -407,3 +407,7 @@ The original producers at `0x8000e61c`, `0x8000e4f4`, and `0x8000e588` run throu
 ## 2026-11-10 — Live calibration status and UI timer
 
 The timer constructor at `0x8004c4ec` and runner `0x8004092c` execute in the same emulator as the scheduled status writer. The callback `0x8005da88` reads the live result at `0x8005dac4` and reads the flag at `0x8005dbfc` only for status zero. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).
+
+## 2026-11-10 — Calibration reset to fresh measurement
+
+Original stores `0x80046cb0` and `0x80046cb8` clear the calibration flag and status. At the next timer deadline, callback `0x8005da88` takes the original type-3 enqueue at `0x8005dc38`. [Shared ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-ui-live-validation.json).
