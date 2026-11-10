@@ -381,3 +381,7 @@ The [rendering and sound replay](contributions/COORD-ADC-CADENCE/synchronous/ref
 ## 2026-11-10 — Native mode entry and sound expiry
 
 In the replay the raw result/selector, ring at `0x805ac7b8`, and index/count/median at `0x805ab924+4/+8/+0xc` survive both native mode change with terminal configuration frame and the tested countdown suffix. The countdown path writes the active word at `0x805ab924` in the tested expiry cases. [ARM926 replay and factory image hashes](contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-validation.json).
+
+## 2026-11-10 — First refreshes after native Fast CONT entry
+
+Native entry sets UI warmup at `0x805abefc+9` to 1. The first timer callback raises it to 2. On the next callback the retained ring at `0x805ac7b8` changes from [5, 6, 7] to [5, 6, 5], and the active flag at `0x805ab924` becomes 1. The empty-filter comparison leaves active 0. The published result and selector at `0x805ac730`/`0x805ac734` still hold the prior measurement at that point. [ARM926 replay and factory image hashes](contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-first-refresh-validation.json).

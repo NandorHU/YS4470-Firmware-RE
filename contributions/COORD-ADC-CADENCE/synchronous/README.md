@@ -498,3 +498,41 @@ Run from the repository root with the same factory inputs and Unicorn setup.
 ```powershell
 python -B contributions/COORD-ADC-CADENCE/synchronous/trace_native_fast_cont.py
 ```
+
+## First refreshes after native Fast CONT entry
+
+[Replay evidence](native-fast-cont-first-refresh-validation.json) covers 16 schedules across the two factory
+images, with four original timer callbacks per schedule. The matrix varies
+presence of the first reply, prior active sound with a countdown of 1, and
+populated versus empty filter state. All runs take the actual mode callback
+`0x8000cfd0`, type-5 configuration through the queue and FSM, and four
+type-4 poll records produced by timer callback `0x8005d048`.
+
+The first callback enqueues the poll and advances warmup from 1 to 2 without
+a ResultDispatch call. The second enqueues another poll, reaches ResultDispatch
+at `0x8005d1a0`, and changes the timer period from 100 to 25 counter units.
+At that point ResultDispatch still reads the seeded raw 14023 and selector 3.
+The first valid poll reply consumes the remaining discard. First publication
+follows poll 2 when the first reply is present and poll 3 when it is missing.
+The next callback reads the newly published raw value.
+
+The second callback passes filter input 5 from call site `0x80003970`.
+In the populated case the ring becomes [5, 6, 5], median remains 5, and the
+sound gate receives (10, 1). The countdown becomes 3 and the PWM shadow
+holds control `0x7f` and period `0x176f0a8c`. This also happens after
+original expiry at `0x8000553c` has switched off the prior sound. For the
+same retained raw value with empty history the ring becomes [5, 1000, 1000],
+fill becomes 1, median remains -1, and the gate receives (0, 0). The PWM duty
+shadow stays zero on that callback.
+
+The stored value, initial ring and optional prior active sound are controlled
+fixtures. The original task suffix executes for expiry with its explicit
+register preconditions. Timer list, heap, GUI leaves, numeric formatting,
+UART arrivals and peripheral shadow use controlled models. These schedules
+bound software ordering and register effects.
+
+Run from the repository root with both factory images and Unicorn available.
+
+```powershell
+python -B contributions/COORD-ADC-CADENCE/synchronous/trace_native_fast_cont_refresh.py
+```

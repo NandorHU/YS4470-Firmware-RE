@@ -1,0 +1,2521 @@
+{
+  "schema": "ys4470.native-fast-cont-first-refresh.v1",
+  "versions": [
+    {
+      "version": "V3.6",
+      "input_sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+      "schedules": 8
+    },
+    {
+      "version": "V3.8",
+      "input_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+      "schedules": 8
+    }
+  ],
+  "init_globals_sha256": "524ba48c4f8e6b7876fc1da735f82f197eb436947e65eac043f2d9f2b96f8be0",
+  "mode_entry": "0x8000cfd0",
+  "refresh_entry": "0x8005d048",
+  "renderer": "0x8000326c",
+  "filter_entry": "0x80007c88",
+  "sound_gate": "0x80006e4c",
+  "schedules": [
+    {
+      "missing_first_reply": false,
+      "initially_active": false,
+      "retained_history": false,
+      "mode": {
+        "old_mode": 1,
+        "new_mode": 4,
+        "fast_cont": 1,
+        "record_prefix": "050000002213",
+        "commands": [
+          "0xc",
+          "0x22",
+          "0x13",
+          "0x1d"
+        ],
+        "wire_hex": "58075f68076f5900596060",
+        "discard": [
+          0,
+          0,
+          2,
+          1
+        ],
+        "retained_snapshot": [
+          [
+            14023,
+            3
+          ],
+          "e8030000e8030000e8030000",
+          "0000000000000000ffffffff"
+        ]
+      },
+      "before_expiry": {
+        "active": 0,
+        "countdown": 0,
+        "ring": [
+          1000,
+          1000,
+          1000
+        ],
+        "index": 0,
+        "fill": 0,
+        "median": 4294967295,
+        "pwm_control": "0x0",
+        "pwm_period": "0x0"
+      },
+      "expiry_calls": [],
+      "after_expiry": {
+        "active": 0,
+        "countdown": 0,
+        "ring": [
+          1000,
+          1000,
+          1000
+        ],
+        "index": 0,
+        "fill": 0,
+        "median": 4294967295,
+        "pwm_control": "0x0",
+        "pwm_period": "0x0"
+      },
+      "first_published_after_request": 2,
+      "refreshes": [
+        {
+          "tick": 100,
+          "period_after": 100,
+          "warmup": [
+            1,
+            2
+          ],
+          "stored_at_entry": [
+            14023,
+            3
+          ],
+          "render_records": [],
+          "filter_inputs": [],
+          "sound_gate_calls": [],
+          "sound_after_callback": {
+            "active": 0,
+            "countdown": 0,
+            "ring": [
+              1000,
+              1000,
+              1000
+            ],
+            "index": 0,
+            "fill": 0,
+            "median": 4294967295,
+            "pwm_control": "0x0",
+            "pwm_period": "0x0"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 10001,
+            "offered_selector": 3,
+            "finished_tick": 103,
+            "discard_before": 1,
+            "discard_after": 0,
+            "published": false,
+            "stored_after": [
+              14023,
+              3
+            ]
+          }
+        },
+        {
+          "tick": 200,
+          "period_after": 25,
+          "warmup": [
+            2,
+            2
+          ],
+          "stored_at_entry": [
+            14023,
+            3
+          ],
+          "render_records": [
+            {
+              "raw": [
+                14023,
+                3
+              ],
+              "mode": 4,
+              "configuration": 34,
+              "text": "5.000",
+              "unit": "",
+              "scale_bits": "0x40a00000",
+              "flags": "0001"
+            }
+          ],
+          "filter_inputs": [
+            5
+          ],
+          "sound_gate_calls": [
+            [
+              "0x80003970",
+              0,
+              0
+            ]
+          ],
+          "sound_after_callback": {
+            "active": 0,
+            "countdown": 0,
+            "ring": [
+              5,
+              1000,
+              1000
+            ],
+            "index": 1,
+            "fill": 1,
+            "median": 4294967295,
+            "pwm_control": "0x0",
+            "pwm_period": "0x0"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 20002,
+            "offered_selector": 3,
+            "finished_tick": 203,
+            "discard_before": 0,
+            "discard_after": 0,
+            "published": true,
+            "stored_after": [
+              20002,
+              0
+            ]
+          }
+        },
+        {
+          "tick": 225,
+          "period_after": 25,
+          "warmup": [
+            2,
+            2
+          ],
+          "stored_at_entry": [
+            20002,
+            0
+          ],
+          "render_records": [
+            {
+              "raw": [
+                20002,
+                0
+              ],
+              "mode": 4,
+              "configuration": 34,
+              "text": "7.132",
+              "unit": "",
+              "scale_bits": "0x40e43827",
+              "flags": "0001"
+            }
+          ],
+          "filter_inputs": [
+            7
+          ],
+          "sound_gate_calls": [
+            [
+              "0x80003970",
+              0,
+              0
+            ]
+          ],
+          "sound_after_callback": {
+            "active": 0,
+            "countdown": 0,
+            "ring": [
+              5,
+              7,
+              1000
+            ],
+            "index": 2,
+            "fill": 2,
+            "median": 4294967295,
+            "pwm_control": "0x0",
+            "pwm_period": "0x0"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 30003,
+            "offered_selector": 3,
+            "finished_tick": 228,
+            "discard_before": 0,
+            "discard_after": 0,
+            "published": true,
+            "stored_after": [
+              30003,
+              0
+            ]
+          }
+        },
+        {
+          "tick": 250,
+          "period_after": 25,
+          "warmup": [
+            2,
+            2
+          ],
+          "stored_at_entry": [
+            30003,
+            0
+          ],
+          "render_records": [
+            {
+              "raw": [
+                30003,
+                0
+              ],
+              "mode": 4,
+              "configuration": 34,
+              "text": "10.698",
+              "unit": "",
+              "scale_bits": "0x412b2a1d",
+              "flags": "0001"
+            }
+          ],
+          "filter_inputs": [
+            10
+          ],
+          "sound_gate_calls": [
+            [
+              "0x80003970",
+              0,
+              0
+            ]
+          ],
+          "sound_after_callback": {
+            "active": 0,
+            "countdown": 0,
+            "ring": [
+              5,
+              7,
+              10
+            ],
+            "index": 0,
+            "fill": 3,
+            "median": 4294967295,
+            "pwm_control": "0x0",
+            "pwm_period": "0x0"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 40004,
+            "offered_selector": 3,
+            "finished_tick": 253,
+            "discard_before": 0,
+            "discard_after": 0,
+            "published": true,
+            "stored_after": [
+              40004,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "missing_first_reply": false,
+      "initially_active": false,
+      "retained_history": true,
+      "mode": {
+        "old_mode": 1,
+        "new_mode": 4,
+        "fast_cont": 1,
+        "record_prefix": "050000002213",
+        "commands": [
+          "0xc",
+          "0x22",
+          "0x13",
+          "0x1d"
+        ],
+        "wire_hex": "58075f68076f5900596060",
+        "discard": [
+          0,
+          0,
+          2,
+          1
+        ],
+        "retained_snapshot": [
+          [
+            14023,
+            3
+          ],
+          "050000000600000007000000",
+          "020000000300000005000000"
+        ]
+      },
+      "before_expiry": {
+        "active": 0,
+        "countdown": 0,
+        "ring": [
+          5,
+          6,
+          7
+        ],
+        "index": 2,
+        "fill": 3,
+        "median": 5,
+        "pwm_control": "0x0",
+        "pwm_period": "0x0"
+      },
+      "expiry_calls": [],
+      "after_expiry": {
+        "active": 0,
+        "countdown": 0,
+        "ring": [
+          5,
+          6,
+          7
+        ],
+        "index": 2,
+        "fill": 3,
+        "median": 5,
+        "pwm_control": "0x0",
+        "pwm_period": "0x0"
+      },
+      "first_published_after_request": 2,
+      "refreshes": [
+        {
+          "tick": 100,
+          "period_after": 100,
+          "warmup": [
+            1,
+            2
+          ],
+          "stored_at_entry": [
+            14023,
+            3
+          ],
+          "render_records": [],
+          "filter_inputs": [],
+          "sound_gate_calls": [],
+          "sound_after_callback": {
+            "active": 0,
+            "countdown": 0,
+            "ring": [
+              5,
+              6,
+              7
+            ],
+            "index": 2,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x0",
+            "pwm_period": "0x0"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 10001,
+            "offered_selector": 3,
+            "finished_tick": 103,
+            "discard_before": 1,
+            "discard_after": 0,
+            "published": false,
+            "stored_after": [
+              14023,
+              3
+            ]
+          }
+        },
+        {
+          "tick": 200,
+          "period_after": 25,
+          "warmup": [
+            2,
+            2
+          ],
+          "stored_at_entry": [
+            14023,
+            3
+          ],
+          "render_records": [
+            {
+              "raw": [
+                14023,
+                3
+              ],
+              "mode": 4,
+              "configuration": 34,
+              "text": "5.000",
+              "unit": "",
+              "scale_bits": "0x40a00000",
+              "flags": "0001"
+            }
+          ],
+          "filter_inputs": [
+            5
+          ],
+          "sound_gate_calls": [
+            [
+              "0x80003970",
+              10,
+              1
+            ]
+          ],
+          "sound_after_callback": {
+            "active": 1,
+            "countdown": 3,
+            "ring": [
+              5,
+              6,
+              5
+            ],
+            "index": 0,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x176f0a8c"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 20002,
+            "offered_selector": 3,
+            "finished_tick": 203,
+            "discard_before": 0,
+            "discard_after": 0,
+            "published": true,
+            "stored_after": [
+              20002,
+              0
+            ]
+          }
+        },
+        {
+          "tick": 225,
+          "period_after": 25,
+          "warmup": [
+            2,
+            2
+          ],
+          "stored_at_entry": [
+            20002,
+            0
+          ],
+          "render_records": [
+            {
+              "raw": [
+                20002,
+                0
+              ],
+              "mode": 4,
+              "configuration": 34,
+              "text": "7.132",
+              "unit": "",
+              "scale_bits": "0x40e43827",
+              "flags": "0001"
+            }
+          ],
+          "filter_inputs": [
+            7
+          ],
+          "sound_gate_calls": [
+            [
+              "0x80003970",
+              10,
+              1
+            ]
+          ],
+          "sound_after_callback": {
+            "active": 1,
+            "countdown": 3,
+            "ring": [
+              7,
+              6,
+              5
+            ],
+            "index": 1,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x176f0a8c"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 30003,
+            "offered_selector": 3,
+            "finished_tick": 228,
+            "discard_before": 0,
+            "discard_after": 0,
+            "published": true,
+            "stored_after": [
+              30003,
+              0
+            ]
+          }
+        },
+        {
+          "tick": 250,
+          "period_after": 25,
+          "warmup": [
+            2,
+            2
+          ],
+          "stored_at_entry": [
+            30003,
+            0
+          ],
+          "render_records": [
+            {
+              "raw": [
+                30003,
+                0
+              ],
+              "mode": 4,
+              "configuration": 34,
+              "text": "10.698",
+              "unit": "",
+              "scale_bits": "0x412b2a1d",
+              "flags": "0001"
+            }
+          ],
+          "filter_inputs": [
+            10
+          ],
+          "sound_gate_calls": [
+            [
+              "0x80003970",
+              10,
+              1
+            ]
+          ],
+          "sound_after_callback": {
+            "active": 1,
+            "countdown": 3,
+            "ring": [
+              7,
+              10,
+              5
+            ],
+            "index": 2,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x176f0a8c"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 40004,
+            "offered_selector": 3,
+            "finished_tick": 253,
+            "discard_before": 0,
+            "discard_after": 0,
+            "published": true,
+            "stored_after": [
+              40004,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "missing_first_reply": false,
+      "initially_active": true,
+      "retained_history": false,
+      "mode": {
+        "old_mode": 1,
+        "new_mode": 4,
+        "fast_cont": 1,
+        "record_prefix": "050000002213",
+        "commands": [
+          "0xc",
+          "0x22",
+          "0x13",
+          "0x1d"
+        ],
+        "wire_hex": "58075f68076f5900596060",
+        "discard": [
+          0,
+          0,
+          2,
+          1
+        ],
+        "retained_snapshot": [
+          [
+            14023,
+            3
+          ],
+          "e8030000e8030000e8030000",
+          "0000000000000000ffffffff"
+        ]
+      },
+      "before_expiry": {
+        "active": 1,
+        "countdown": 1,
+        "ring": [
+          1000,
+          1000,
+          1000
+        ],
+        "index": 0,
+        "fill": 0,
+        "median": 4294967295,
+        "pwm_control": "0x7f",
+        "pwm_period": "0x176f0a8c"
+      },
+      "expiry_calls": [
+        [
+          "0x80005568",
+          5,
+          0
+        ]
+      ],
+      "after_expiry": {
+        "active": 0,
+        "countdown": 0,
+        "ring": [
+          1000,
+          1000,
+          1000
+        ],
+        "index": 0,
+        "fill": 0,
+        "median": 4294967295,
+        "pwm_control": "0x7f",
+        "pwm_period": "0x20750000"
+      },
+      "first_published_after_request": 2,
+      "refreshes": [
+        {
+          "tick": 100,
+          "period_after": 100,
+          "warmup": [
+            1,
+            2
+          ],
+          "stored_at_entry": [
+            14023,
+            3
+          ],
+          "render_records": [],
+          "filter_inputs": [],
+          "sound_gate_calls": [],
+          "sound_after_callback": {
+            "active": 0,
+            "countdown": 0,
+            "ring": [
+              1000,
+              1000,
+              1000
+            ],
+            "index": 0,
+            "fill": 0,
+            "median": 4294967295,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x20750000"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 10001,
+            "offered_selector": 3,
+            "finished_tick": 103,
+            "discard_before": 1,
+            "discard_after": 0,
+            "published": false,
+            "stored_after": [
+              14023,
+              3
+            ]
+          }
+        },
+        {
+          "tick": 200,
+          "period_after": 25,
+          "warmup": [
+            2,
+            2
+          ],
+          "stored_at_entry": [
+            14023,
+            3
+          ],
+          "render_records": [
+            {
+              "raw": [
+                14023,
+                3
+              ],
+              "mode": 4,
+              "configuration": 34,
+              "text": "5.000",
+              "unit": "",
+              "scale_bits": "0x40a00000",
+              "flags": "0001"
+            }
+          ],
+          "filter_inputs": [
+            5
+          ],
+          "sound_gate_calls": [
+            [
+              "0x80003970",
+              0,
+              0
+            ]
+          ],
+          "sound_after_callback": {
+            "active": 0,
+            "countdown": 0,
+            "ring": [
+              5,
+              1000,
+              1000
+            ],
+            "index": 1,
+            "fill": 1,
+            "median": 4294967295,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x20750000"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 20002,
+            "offered_selector": 3,
+            "finished_tick": 203,
+            "discard_before": 0,
+            "discard_after": 0,
+            "published": true,
+            "stored_after": [
+              20002,
+              0
+            ]
+          }
+        },
+        {
+          "tick": 225,
+          "period_after": 25,
+          "warmup": [
+            2,
+            2
+          ],
+          "stored_at_entry": [
+            20002,
+            0
+          ],
+          "render_records": [
+            {
+              "raw": [
+                20002,
+                0
+              ],
+              "mode": 4,
+              "configuration": 34,
+              "text": "7.132",
+              "unit": "",
+              "scale_bits": "0x40e43827",
+              "flags": "0001"
+            }
+          ],
+          "filter_inputs": [
+            7
+          ],
+          "sound_gate_calls": [
+            [
+              "0x80003970",
+              0,
+              0
+            ]
+          ],
+          "sound_after_callback": {
+            "active": 0,
+            "countdown": 0,
+            "ring": [
+              5,
+              7,
+              1000
+            ],
+            "index": 2,
+            "fill": 2,
+            "median": 4294967295,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x20750000"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 30003,
+            "offered_selector": 3,
+            "finished_tick": 228,
+            "discard_before": 0,
+            "discard_after": 0,
+            "published": true,
+            "stored_after": [
+              30003,
+              0
+            ]
+          }
+        },
+        {
+          "tick": 250,
+          "period_after": 25,
+          "warmup": [
+            2,
+            2
+          ],
+          "stored_at_entry": [
+            30003,
+            0
+          ],
+          "render_records": [
+            {
+              "raw": [
+                30003,
+                0
+              ],
+              "mode": 4,
+              "configuration": 34,
+              "text": "10.698",
+              "unit": "",
+              "scale_bits": "0x412b2a1d",
+              "flags": "0001"
+            }
+          ],
+          "filter_inputs": [
+            10
+          ],
+          "sound_gate_calls": [
+            [
+              "0x80003970",
+              0,
+              0
+            ]
+          ],
+          "sound_after_callback": {
+            "active": 0,
+            "countdown": 0,
+            "ring": [
+              5,
+              7,
+              10
+            ],
+            "index": 0,
+            "fill": 3,
+            "median": 4294967295,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x20750000"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 40004,
+            "offered_selector": 3,
+            "finished_tick": 253,
+            "discard_before": 0,
+            "discard_after": 0,
+            "published": true,
+            "stored_after": [
+              40004,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "missing_first_reply": false,
+      "initially_active": true,
+      "retained_history": true,
+      "mode": {
+        "old_mode": 1,
+        "new_mode": 4,
+        "fast_cont": 1,
+        "record_prefix": "050000002213",
+        "commands": [
+          "0xc",
+          "0x22",
+          "0x13",
+          "0x1d"
+        ],
+        "wire_hex": "58075f68076f5900596060",
+        "discard": [
+          0,
+          0,
+          2,
+          1
+        ],
+        "retained_snapshot": [
+          [
+            14023,
+            3
+          ],
+          "050000000600000007000000",
+          "020000000300000005000000"
+        ]
+      },
+      "before_expiry": {
+        "active": 1,
+        "countdown": 1,
+        "ring": [
+          5,
+          6,
+          7
+        ],
+        "index": 2,
+        "fill": 3,
+        "median": 5,
+        "pwm_control": "0x7f",
+        "pwm_period": "0x176f0a8c"
+      },
+      "expiry_calls": [
+        [
+          "0x80005568",
+          5,
+          0
+        ]
+      ],
+      "after_expiry": {
+        "active": 0,
+        "countdown": 0,
+        "ring": [
+          5,
+          6,
+          7
+        ],
+        "index": 2,
+        "fill": 3,
+        "median": 5,
+        "pwm_control": "0x7f",
+        "pwm_period": "0x20750000"
+      },
+      "first_published_after_request": 2,
+      "refreshes": [
+        {
+          "tick": 100,
+          "period_after": 100,
+          "warmup": [
+            1,
+            2
+          ],
+          "stored_at_entry": [
+            14023,
+            3
+          ],
+          "render_records": [],
+          "filter_inputs": [],
+          "sound_gate_calls": [],
+          "sound_after_callback": {
+            "active": 0,
+            "countdown": 0,
+            "ring": [
+              5,
+              6,
+              7
+            ],
+            "index": 2,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x20750000"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 10001,
+            "offered_selector": 3,
+            "finished_tick": 103,
+            "discard_before": 1,
+            "discard_after": 0,
+            "published": false,
+            "stored_after": [
+              14023,
+              3
+            ]
+          }
+        },
+        {
+          "tick": 200,
+          "period_after": 25,
+          "warmup": [
+            2,
+            2
+          ],
+          "stored_at_entry": [
+            14023,
+            3
+          ],
+          "render_records": [
+            {
+              "raw": [
+                14023,
+                3
+              ],
+              "mode": 4,
+              "configuration": 34,
+              "text": "5.000",
+              "unit": "",
+              "scale_bits": "0x40a00000",
+              "flags": "0001"
+            }
+          ],
+          "filter_inputs": [
+            5
+          ],
+          "sound_gate_calls": [
+            [
+              "0x80003970",
+              10,
+              1
+            ]
+          ],
+          "sound_after_callback": {
+            "active": 1,
+            "countdown": 3,
+            "ring": [
+              5,
+              6,
+              5
+            ],
+            "index": 0,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x176f0a8c"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 20002,
+            "offered_selector": 3,
+            "finished_tick": 203,
+            "discard_before": 0,
+            "discard_after": 0,
+            "published": true,
+            "stored_after": [
+              20002,
+              0
+            ]
+          }
+        },
+        {
+          "tick": 225,
+          "period_after": 25,
+          "warmup": [
+            2,
+            2
+          ],
+          "stored_at_entry": [
+            20002,
+            0
+          ],
+          "render_records": [
+            {
+              "raw": [
+                20002,
+                0
+              ],
+              "mode": 4,
+              "configuration": 34,
+              "text": "7.132",
+              "unit": "",
+              "scale_bits": "0x40e43827",
+              "flags": "0001"
+            }
+          ],
+          "filter_inputs": [
+            7
+          ],
+          "sound_gate_calls": [
+            [
+              "0x80003970",
+              10,
+              1
+            ]
+          ],
+          "sound_after_callback": {
+            "active": 1,
+            "countdown": 3,
+            "ring": [
+              7,
+              6,
+              5
+            ],
+            "index": 1,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x176f0a8c"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 30003,
+            "offered_selector": 3,
+            "finished_tick": 228,
+            "discard_before": 0,
+            "discard_after": 0,
+            "published": true,
+            "stored_after": [
+              30003,
+              0
+            ]
+          }
+        },
+        {
+          "tick": 250,
+          "period_after": 25,
+          "warmup": [
+            2,
+            2
+          ],
+          "stored_at_entry": [
+            30003,
+            0
+          ],
+          "render_records": [
+            {
+              "raw": [
+                30003,
+                0
+              ],
+              "mode": 4,
+              "configuration": 34,
+              "text": "10.698",
+              "unit": "",
+              "scale_bits": "0x412b2a1d",
+              "flags": "0001"
+            }
+          ],
+          "filter_inputs": [
+            10
+          ],
+          "sound_gate_calls": [
+            [
+              "0x80003970",
+              10,
+              1
+            ]
+          ],
+          "sound_after_callback": {
+            "active": 1,
+            "countdown": 3,
+            "ring": [
+              7,
+              10,
+              5
+            ],
+            "index": 2,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x176f0a8c"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 40004,
+            "offered_selector": 3,
+            "finished_tick": 253,
+            "discard_before": 0,
+            "discard_after": 0,
+            "published": true,
+            "stored_after": [
+              40004,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "missing_first_reply": true,
+      "initially_active": false,
+      "retained_history": false,
+      "mode": {
+        "old_mode": 1,
+        "new_mode": 4,
+        "fast_cont": 1,
+        "record_prefix": "050000002213",
+        "commands": [
+          "0xc",
+          "0x22",
+          "0x13",
+          "0x1d"
+        ],
+        "wire_hex": "58075f68076f5900596060",
+        "discard": [
+          0,
+          0,
+          2,
+          1
+        ],
+        "retained_snapshot": [
+          [
+            14023,
+            3
+          ],
+          "e8030000e8030000e8030000",
+          "0000000000000000ffffffff"
+        ]
+      },
+      "before_expiry": {
+        "active": 0,
+        "countdown": 0,
+        "ring": [
+          1000,
+          1000,
+          1000
+        ],
+        "index": 0,
+        "fill": 0,
+        "median": 4294967295,
+        "pwm_control": "0x0",
+        "pwm_period": "0x0"
+      },
+      "expiry_calls": [],
+      "after_expiry": {
+        "active": 0,
+        "countdown": 0,
+        "ring": [
+          1000,
+          1000,
+          1000
+        ],
+        "index": 0,
+        "fill": 0,
+        "median": 4294967295,
+        "pwm_control": "0x0",
+        "pwm_period": "0x0"
+      },
+      "first_published_after_request": 3,
+      "refreshes": [
+        {
+          "tick": 100,
+          "period_after": 100,
+          "warmup": [
+            1,
+            2
+          ],
+          "stored_at_entry": [
+            14023,
+            3
+          ],
+          "render_records": [],
+          "filter_inputs": [],
+          "sound_gate_calls": [],
+          "sound_after_callback": {
+            "active": 0,
+            "countdown": 0,
+            "ring": [
+              1000,
+              1000,
+              1000
+            ],
+            "index": 0,
+            "fill": 0,
+            "median": 4294967295,
+            "pwm_control": "0x0",
+            "pwm_period": "0x0"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "missing",
+            "offered_raw": 10001,
+            "offered_selector": 3,
+            "finished_tick": 164,
+            "discard_before": 1,
+            "discard_after": 1,
+            "published": false,
+            "stored_after": [
+              14023,
+              3
+            ]
+          }
+        },
+        {
+          "tick": 200,
+          "period_after": 25,
+          "warmup": [
+            2,
+            2
+          ],
+          "stored_at_entry": [
+            14023,
+            3
+          ],
+          "render_records": [
+            {
+              "raw": [
+                14023,
+                3
+              ],
+              "mode": 4,
+              "configuration": 34,
+              "text": "5.000",
+              "unit": "",
+              "scale_bits": "0x40a00000",
+              "flags": "0001"
+            }
+          ],
+          "filter_inputs": [
+            5
+          ],
+          "sound_gate_calls": [
+            [
+              "0x80003970",
+              0,
+              0
+            ]
+          ],
+          "sound_after_callback": {
+            "active": 0,
+            "countdown": 0,
+            "ring": [
+              5,
+              1000,
+              1000
+            ],
+            "index": 1,
+            "fill": 1,
+            "median": 4294967295,
+            "pwm_control": "0x0",
+            "pwm_period": "0x0"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 20002,
+            "offered_selector": 3,
+            "finished_tick": 203,
+            "discard_before": 1,
+            "discard_after": 0,
+            "published": false,
+            "stored_after": [
+              14023,
+              3
+            ]
+          }
+        },
+        {
+          "tick": 225,
+          "period_after": 25,
+          "warmup": [
+            2,
+            2
+          ],
+          "stored_at_entry": [
+            14023,
+            3
+          ],
+          "render_records": [
+            {
+              "raw": [
+                14023,
+                3
+              ],
+              "mode": 4,
+              "configuration": 34,
+              "text": "5.000",
+              "unit": "",
+              "scale_bits": "0x40a00000",
+              "flags": "0001"
+            }
+          ],
+          "filter_inputs": [
+            5
+          ],
+          "sound_gate_calls": [
+            [
+              "0x80003970",
+              0,
+              0
+            ]
+          ],
+          "sound_after_callback": {
+            "active": 0,
+            "countdown": 0,
+            "ring": [
+              5,
+              5,
+              1000
+            ],
+            "index": 2,
+            "fill": 2,
+            "median": 4294967295,
+            "pwm_control": "0x0",
+            "pwm_period": "0x0"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 30003,
+            "offered_selector": 3,
+            "finished_tick": 228,
+            "discard_before": 0,
+            "discard_after": 0,
+            "published": true,
+            "stored_after": [
+              30003,
+              0
+            ]
+          }
+        },
+        {
+          "tick": 250,
+          "period_after": 25,
+          "warmup": [
+            2,
+            2
+          ],
+          "stored_at_entry": [
+            30003,
+            0
+          ],
+          "render_records": [
+            {
+              "raw": [
+                30003,
+                0
+              ],
+              "mode": 4,
+              "configuration": 34,
+              "text": "10.698",
+              "unit": "",
+              "scale_bits": "0x412b2a1d",
+              "flags": "0001"
+            }
+          ],
+          "filter_inputs": [
+            10
+          ],
+          "sound_gate_calls": [
+            [
+              "0x80003970",
+              0,
+              0
+            ]
+          ],
+          "sound_after_callback": {
+            "active": 0,
+            "countdown": 0,
+            "ring": [
+              5,
+              5,
+              10
+            ],
+            "index": 0,
+            "fill": 3,
+            "median": 4294967295,
+            "pwm_control": "0x0",
+            "pwm_period": "0x0"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 40004,
+            "offered_selector": 3,
+            "finished_tick": 253,
+            "discard_before": 0,
+            "discard_after": 0,
+            "published": true,
+            "stored_after": [
+              40004,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "missing_first_reply": true,
+      "initially_active": false,
+      "retained_history": true,
+      "mode": {
+        "old_mode": 1,
+        "new_mode": 4,
+        "fast_cont": 1,
+        "record_prefix": "050000002213",
+        "commands": [
+          "0xc",
+          "0x22",
+          "0x13",
+          "0x1d"
+        ],
+        "wire_hex": "58075f68076f5900596060",
+        "discard": [
+          0,
+          0,
+          2,
+          1
+        ],
+        "retained_snapshot": [
+          [
+            14023,
+            3
+          ],
+          "050000000600000007000000",
+          "020000000300000005000000"
+        ]
+      },
+      "before_expiry": {
+        "active": 0,
+        "countdown": 0,
+        "ring": [
+          5,
+          6,
+          7
+        ],
+        "index": 2,
+        "fill": 3,
+        "median": 5,
+        "pwm_control": "0x0",
+        "pwm_period": "0x0"
+      },
+      "expiry_calls": [],
+      "after_expiry": {
+        "active": 0,
+        "countdown": 0,
+        "ring": [
+          5,
+          6,
+          7
+        ],
+        "index": 2,
+        "fill": 3,
+        "median": 5,
+        "pwm_control": "0x0",
+        "pwm_period": "0x0"
+      },
+      "first_published_after_request": 3,
+      "refreshes": [
+        {
+          "tick": 100,
+          "period_after": 100,
+          "warmup": [
+            1,
+            2
+          ],
+          "stored_at_entry": [
+            14023,
+            3
+          ],
+          "render_records": [],
+          "filter_inputs": [],
+          "sound_gate_calls": [],
+          "sound_after_callback": {
+            "active": 0,
+            "countdown": 0,
+            "ring": [
+              5,
+              6,
+              7
+            ],
+            "index": 2,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x0",
+            "pwm_period": "0x0"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "missing",
+            "offered_raw": 10001,
+            "offered_selector": 3,
+            "finished_tick": 164,
+            "discard_before": 1,
+            "discard_after": 1,
+            "published": false,
+            "stored_after": [
+              14023,
+              3
+            ]
+          }
+        },
+        {
+          "tick": 200,
+          "period_after": 25,
+          "warmup": [
+            2,
+            2
+          ],
+          "stored_at_entry": [
+            14023,
+            3
+          ],
+          "render_records": [
+            {
+              "raw": [
+                14023,
+                3
+              ],
+              "mode": 4,
+              "configuration": 34,
+              "text": "5.000",
+              "unit": "",
+              "scale_bits": "0x40a00000",
+              "flags": "0001"
+            }
+          ],
+          "filter_inputs": [
+            5
+          ],
+          "sound_gate_calls": [
+            [
+              "0x80003970",
+              10,
+              1
+            ]
+          ],
+          "sound_after_callback": {
+            "active": 1,
+            "countdown": 3,
+            "ring": [
+              5,
+              6,
+              5
+            ],
+            "index": 0,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x176f0a8c"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 20002,
+            "offered_selector": 3,
+            "finished_tick": 203,
+            "discard_before": 1,
+            "discard_after": 0,
+            "published": false,
+            "stored_after": [
+              14023,
+              3
+            ]
+          }
+        },
+        {
+          "tick": 225,
+          "period_after": 25,
+          "warmup": [
+            2,
+            2
+          ],
+          "stored_at_entry": [
+            14023,
+            3
+          ],
+          "render_records": [
+            {
+              "raw": [
+                14023,
+                3
+              ],
+              "mode": 4,
+              "configuration": 34,
+              "text": "5.000",
+              "unit": "",
+              "scale_bits": "0x40a00000",
+              "flags": "0001"
+            }
+          ],
+          "filter_inputs": [
+            5
+          ],
+          "sound_gate_calls": [
+            [
+              "0x80003970",
+              10,
+              1
+            ]
+          ],
+          "sound_after_callback": {
+            "active": 1,
+            "countdown": 3,
+            "ring": [
+              5,
+              6,
+              5
+            ],
+            "index": 1,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x176f0a8c"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 30003,
+            "offered_selector": 3,
+            "finished_tick": 228,
+            "discard_before": 0,
+            "discard_after": 0,
+            "published": true,
+            "stored_after": [
+              30003,
+              0
+            ]
+          }
+        },
+        {
+          "tick": 250,
+          "period_after": 25,
+          "warmup": [
+            2,
+            2
+          ],
+          "stored_at_entry": [
+            30003,
+            0
+          ],
+          "render_records": [
+            {
+              "raw": [
+                30003,
+                0
+              ],
+              "mode": 4,
+              "configuration": 34,
+              "text": "10.698",
+              "unit": "",
+              "scale_bits": "0x412b2a1d",
+              "flags": "0001"
+            }
+          ],
+          "filter_inputs": [
+            10
+          ],
+          "sound_gate_calls": [
+            [
+              "0x80003970",
+              10,
+              1
+            ]
+          ],
+          "sound_after_callback": {
+            "active": 1,
+            "countdown": 3,
+            "ring": [
+              5,
+              10,
+              5
+            ],
+            "index": 2,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x176f0a8c"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 40004,
+            "offered_selector": 3,
+            "finished_tick": 253,
+            "discard_before": 0,
+            "discard_after": 0,
+            "published": true,
+            "stored_after": [
+              40004,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "missing_first_reply": true,
+      "initially_active": true,
+      "retained_history": false,
+      "mode": {
+        "old_mode": 1,
+        "new_mode": 4,
+        "fast_cont": 1,
+        "record_prefix": "050000002213",
+        "commands": [
+          "0xc",
+          "0x22",
+          "0x13",
+          "0x1d"
+        ],
+        "wire_hex": "58075f68076f5900596060",
+        "discard": [
+          0,
+          0,
+          2,
+          1
+        ],
+        "retained_snapshot": [
+          [
+            14023,
+            3
+          ],
+          "e8030000e8030000e8030000",
+          "0000000000000000ffffffff"
+        ]
+      },
+      "before_expiry": {
+        "active": 1,
+        "countdown": 1,
+        "ring": [
+          1000,
+          1000,
+          1000
+        ],
+        "index": 0,
+        "fill": 0,
+        "median": 4294967295,
+        "pwm_control": "0x7f",
+        "pwm_period": "0x176f0a8c"
+      },
+      "expiry_calls": [
+        [
+          "0x80005568",
+          5,
+          0
+        ]
+      ],
+      "after_expiry": {
+        "active": 0,
+        "countdown": 0,
+        "ring": [
+          1000,
+          1000,
+          1000
+        ],
+        "index": 0,
+        "fill": 0,
+        "median": 4294967295,
+        "pwm_control": "0x7f",
+        "pwm_period": "0x20750000"
+      },
+      "first_published_after_request": 3,
+      "refreshes": [
+        {
+          "tick": 100,
+          "period_after": 100,
+          "warmup": [
+            1,
+            2
+          ],
+          "stored_at_entry": [
+            14023,
+            3
+          ],
+          "render_records": [],
+          "filter_inputs": [],
+          "sound_gate_calls": [],
+          "sound_after_callback": {
+            "active": 0,
+            "countdown": 0,
+            "ring": [
+              1000,
+              1000,
+              1000
+            ],
+            "index": 0,
+            "fill": 0,
+            "median": 4294967295,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x20750000"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "missing",
+            "offered_raw": 10001,
+            "offered_selector": 3,
+            "finished_tick": 164,
+            "discard_before": 1,
+            "discard_after": 1,
+            "published": false,
+            "stored_after": [
+              14023,
+              3
+            ]
+          }
+        },
+        {
+          "tick": 200,
+          "period_after": 25,
+          "warmup": [
+            2,
+            2
+          ],
+          "stored_at_entry": [
+            14023,
+            3
+          ],
+          "render_records": [
+            {
+              "raw": [
+                14023,
+                3
+              ],
+              "mode": 4,
+              "configuration": 34,
+              "text": "5.000",
+              "unit": "",
+              "scale_bits": "0x40a00000",
+              "flags": "0001"
+            }
+          ],
+          "filter_inputs": [
+            5
+          ],
+          "sound_gate_calls": [
+            [
+              "0x80003970",
+              0,
+              0
+            ]
+          ],
+          "sound_after_callback": {
+            "active": 0,
+            "countdown": 0,
+            "ring": [
+              5,
+              1000,
+              1000
+            ],
+            "index": 1,
+            "fill": 1,
+            "median": 4294967295,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x20750000"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 20002,
+            "offered_selector": 3,
+            "finished_tick": 203,
+            "discard_before": 1,
+            "discard_after": 0,
+            "published": false,
+            "stored_after": [
+              14023,
+              3
+            ]
+          }
+        },
+        {
+          "tick": 225,
+          "period_after": 25,
+          "warmup": [
+            2,
+            2
+          ],
+          "stored_at_entry": [
+            14023,
+            3
+          ],
+          "render_records": [
+            {
+              "raw": [
+                14023,
+                3
+              ],
+              "mode": 4,
+              "configuration": 34,
+              "text": "5.000",
+              "unit": "",
+              "scale_bits": "0x40a00000",
+              "flags": "0001"
+            }
+          ],
+          "filter_inputs": [
+            5
+          ],
+          "sound_gate_calls": [
+            [
+              "0x80003970",
+              0,
+              0
+            ]
+          ],
+          "sound_after_callback": {
+            "active": 0,
+            "countdown": 0,
+            "ring": [
+              5,
+              5,
+              1000
+            ],
+            "index": 2,
+            "fill": 2,
+            "median": 4294967295,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x20750000"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 30003,
+            "offered_selector": 3,
+            "finished_tick": 228,
+            "discard_before": 0,
+            "discard_after": 0,
+            "published": true,
+            "stored_after": [
+              30003,
+              0
+            ]
+          }
+        },
+        {
+          "tick": 250,
+          "period_after": 25,
+          "warmup": [
+            2,
+            2
+          ],
+          "stored_at_entry": [
+            30003,
+            0
+          ],
+          "render_records": [
+            {
+              "raw": [
+                30003,
+                0
+              ],
+              "mode": 4,
+              "configuration": 34,
+              "text": "10.698",
+              "unit": "",
+              "scale_bits": "0x412b2a1d",
+              "flags": "0001"
+            }
+          ],
+          "filter_inputs": [
+            10
+          ],
+          "sound_gate_calls": [
+            [
+              "0x80003970",
+              0,
+              0
+            ]
+          ],
+          "sound_after_callback": {
+            "active": 0,
+            "countdown": 0,
+            "ring": [
+              5,
+              5,
+              10
+            ],
+            "index": 0,
+            "fill": 3,
+            "median": 4294967295,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x20750000"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 40004,
+            "offered_selector": 3,
+            "finished_tick": 253,
+            "discard_before": 0,
+            "discard_after": 0,
+            "published": true,
+            "stored_after": [
+              40004,
+              0
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "missing_first_reply": true,
+      "initially_active": true,
+      "retained_history": true,
+      "mode": {
+        "old_mode": 1,
+        "new_mode": 4,
+        "fast_cont": 1,
+        "record_prefix": "050000002213",
+        "commands": [
+          "0xc",
+          "0x22",
+          "0x13",
+          "0x1d"
+        ],
+        "wire_hex": "58075f68076f5900596060",
+        "discard": [
+          0,
+          0,
+          2,
+          1
+        ],
+        "retained_snapshot": [
+          [
+            14023,
+            3
+          ],
+          "050000000600000007000000",
+          "020000000300000005000000"
+        ]
+      },
+      "before_expiry": {
+        "active": 1,
+        "countdown": 1,
+        "ring": [
+          5,
+          6,
+          7
+        ],
+        "index": 2,
+        "fill": 3,
+        "median": 5,
+        "pwm_control": "0x7f",
+        "pwm_period": "0x176f0a8c"
+      },
+      "expiry_calls": [
+        [
+          "0x80005568",
+          5,
+          0
+        ]
+      ],
+      "after_expiry": {
+        "active": 0,
+        "countdown": 0,
+        "ring": [
+          5,
+          6,
+          7
+        ],
+        "index": 2,
+        "fill": 3,
+        "median": 5,
+        "pwm_control": "0x7f",
+        "pwm_period": "0x20750000"
+      },
+      "first_published_after_request": 3,
+      "refreshes": [
+        {
+          "tick": 100,
+          "period_after": 100,
+          "warmup": [
+            1,
+            2
+          ],
+          "stored_at_entry": [
+            14023,
+            3
+          ],
+          "render_records": [],
+          "filter_inputs": [],
+          "sound_gate_calls": [],
+          "sound_after_callback": {
+            "active": 0,
+            "countdown": 0,
+            "ring": [
+              5,
+              6,
+              7
+            ],
+            "index": 2,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x20750000"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "missing",
+            "offered_raw": 10001,
+            "offered_selector": 3,
+            "finished_tick": 164,
+            "discard_before": 1,
+            "discard_after": 1,
+            "published": false,
+            "stored_after": [
+              14023,
+              3
+            ]
+          }
+        },
+        {
+          "tick": 200,
+          "period_after": 25,
+          "warmup": [
+            2,
+            2
+          ],
+          "stored_at_entry": [
+            14023,
+            3
+          ],
+          "render_records": [
+            {
+              "raw": [
+                14023,
+                3
+              ],
+              "mode": 4,
+              "configuration": 34,
+              "text": "5.000",
+              "unit": "",
+              "scale_bits": "0x40a00000",
+              "flags": "0001"
+            }
+          ],
+          "filter_inputs": [
+            5
+          ],
+          "sound_gate_calls": [
+            [
+              "0x80003970",
+              10,
+              1
+            ]
+          ],
+          "sound_after_callback": {
+            "active": 1,
+            "countdown": 3,
+            "ring": [
+              5,
+              6,
+              5
+            ],
+            "index": 0,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x176f0a8c"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 20002,
+            "offered_selector": 3,
+            "finished_tick": 203,
+            "discard_before": 1,
+            "discard_after": 0,
+            "published": false,
+            "stored_after": [
+              14023,
+              3
+            ]
+          }
+        },
+        {
+          "tick": 225,
+          "period_after": 25,
+          "warmup": [
+            2,
+            2
+          ],
+          "stored_at_entry": [
+            14023,
+            3
+          ],
+          "render_records": [
+            {
+              "raw": [
+                14023,
+                3
+              ],
+              "mode": 4,
+              "configuration": 34,
+              "text": "5.000",
+              "unit": "",
+              "scale_bits": "0x40a00000",
+              "flags": "0001"
+            }
+          ],
+          "filter_inputs": [
+            5
+          ],
+          "sound_gate_calls": [
+            [
+              "0x80003970",
+              10,
+              1
+            ]
+          ],
+          "sound_after_callback": {
+            "active": 1,
+            "countdown": 3,
+            "ring": [
+              5,
+              6,
+              5
+            ],
+            "index": 1,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x176f0a8c"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 30003,
+            "offered_selector": 3,
+            "finished_tick": 228,
+            "discard_before": 0,
+            "discard_after": 0,
+            "published": true,
+            "stored_after": [
+              30003,
+              0
+            ]
+          }
+        },
+        {
+          "tick": 250,
+          "period_after": 25,
+          "warmup": [
+            2,
+            2
+          ],
+          "stored_at_entry": [
+            30003,
+            0
+          ],
+          "render_records": [
+            {
+              "raw": [
+                30003,
+                0
+              ],
+              "mode": 4,
+              "configuration": 34,
+              "text": "10.698",
+              "unit": "",
+              "scale_bits": "0x412b2a1d",
+              "flags": "0001"
+            }
+          ],
+          "filter_inputs": [
+            10
+          ],
+          "sound_gate_calls": [
+            [
+              "0x80003970",
+              10,
+              1
+            ]
+          ],
+          "sound_after_callback": {
+            "active": 1,
+            "countdown": 3,
+            "ring": [
+              5,
+              10,
+              5
+            ],
+            "index": 2,
+            "fill": 3,
+            "median": 5,
+            "pwm_control": "0x7f",
+            "pwm_period": "0x176f0a8c"
+          },
+          "request": {
+            "command": "0x1b",
+            "fault": "none",
+            "offered_raw": 40004,
+            "offered_selector": 3,
+            "finished_tick": 253,
+            "discard_before": 0,
+            "discard_after": 0,
+            "published": true,
+            "stored_after": [
+              40004,
+              0
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "instruction_bytes": {
+    "0x8000326c": "000050e3",
+    "0x800037c0": "f05f2de9",
+    "0x80003970": "c41000eb",
+    "0x80004490": "f05f2de9",
+    "0x8000553c": "500094e5",
+    "0x80005568": "370600eb",
+    "0x80005b6c": "f04f2de9",
+    "0x80006e4c": "70402de9",
+    "0x80007c88": "f0002de9",
+    "0x8000cfd0": "f05f2de9",
+    "0x8004092c": "f05f2de9",
+    "0x80042d40": "ff5f2de9",
+    "0x8005d048": "f0412de9",
+    "0x8005d04c": "00529fe5",
+    "0x8005d050": "00429fe5",
+    "0x8005d054": "000095e5",
+    "0x8005d058": "88d04de2",
+    "0x8005d05c": "010050e3",
+    "0x8005d060": "0060a0e3",
+    "0x8005d064": "2b00001a",
+    "0x8005d118": "0700d4e5",
+    "0x8005d11c": "0020a0e3",
+    "0x8005d120": "0210a0e1",
+    "0x8005d124": "220050e3",
+    "0x8005d128": "0400a003",
+    "0x8005d12c": "0300a013",
+    "0x8005d130": "90a5feeb",
+    "0x8005d134": "0700d4e5",
+    "0x8005d138": "09c0a0e3",
+    "0x8005d13c": "28319fe5",
+    "0x8005d140": "300050e3",
+    "0x8005d144": "07c0c425",
+    "0x8005d148": "0720d4e5",
+    "0x8005d14c": "0010a0e3",
+    "0x8005d150": "0000a0e3",
+    "0x8005d154": "0070d3e7",
+    "0x8005d158": "010080e2",
+    "0x8005d15c": "020057e1",
+    "0x8005d160": "0110a003",
+    "0x8005d164": "070050e3",
+    "0x8005d168": "f9ffffba",
+    "0x8005d16c": "fc009fe5",
+    "0x8005d170": "010051e3",
+    "0x8005d174": "07c0c415",
+    "0x8005d178": "201090e5",
+    "0x8005d17c": "070051e3",
+    "0x8005d180": "206080a5",
+    "0x8005d184": "0900d4e5",
+    "0x8005d188": "020050e3",
+    "0x8005d18c": "01008032",
+    "0x8005d190": "0900c435",
+    "0x8005d194": "88d08d32",
+    "0x8005d198": "f081bd38",
+    "0x8005d19c": "0d00a0e1",
+    "0x8005d1a0": "8699feeb",
+    "0x8005d1a4": "0d00a0e1",
+    "0x8005d1a8": "2f98feeb",
+    "0x8005d1ac": "000095e5",
+    "0x8005d1b0": "020050e3",
+    "0x8005d1b4": "0900001a",
+    "0x8005d1e0": "0200d4e5",
+    "0x8005d1e4": "88209fe5",
+    "0x8005d1e8": "010050e3",
+    "0x8005d1ec": "0010d405",
+    "0x8005d1f0": "01005103",
+    "0x8005d1f4": "0900000a",
+    "0x8005d1f8": "0010d4e5",
+    "0x8005d1fc": "040051e3",
+    "0x8005d200": "0e00000a",
+    "0x8005d240": "000092e5",
+    "0x8005d244": "1910a0e3",
+    "0x8005d248": "4d8effeb",
+    "0x8005d24c": "88d08de2",
+    "0x8005d250": "f081bde8"
+  },
+  "limits": [
+    "Original mode callback, timer, refresh, queue, UART, FSM, renderer, filter and sound/PWM code execute.",
+    "Stored raw result, populated or empty filter, optional prior active sound, GUI leaves, UART arrivals and counter advances are fixtures.",
+    "Active sound expiry enters the original task suffix, with no surrounding watchdog or outer loop.",
+    "Numeric formatting, timer list, heap and peripheral access use the existing controlled models. Timer counts are not physical time."
+  ]
+}

@@ -303,3 +303,7 @@ The [rendering and sound replay](contributions/COORD-ADC-CADENCE/synchronous/ref
 ## 2026-11-10 — Native mode entry and sound expiry
 
 Follow the first two original refresh callbacks after native mode 4 entry, with absent and valid replies, to determine when retained history influences sound before fresh publication. The aligned literal scan covers named state pointers only. Synthesized aliases and paths in other tasks remain open. [ARM926 replay and factory image hashes](contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-validation.json).
+
+## 2026-11-10 — First refreshes after native Fast CONT entry
+
+Test the ordering of the original measurement-task countdown and the UI timer refresh around expiry. Measure the modeled countdown reload and duty shadow in both orders. Native scheduling interleaves, peer internals and physical time remain open. [ARM926 replay and factory image hashes](contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-first-refresh-validation.json).

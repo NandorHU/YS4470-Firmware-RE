@@ -375,3 +375,7 @@ The [rendering and sound replay](contributions/COORD-ADC-CADENCE/synchronous/ref
 ## 2026-11-10 — Native mode entry and sound expiry
 
 The original Diode/Buzzer callback `0x8000cfd0` ran through the queue and dispatcher in 16 cases across V3.6 and V3.8. The sound countdown suffix `0x8000553c` reached the original gate `0x80006e4c` from `0x80005568` in active, expiring cases. [ARM926 replay and factory image hashes](contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-validation.json).
+
+## 2026-11-10 — First refreshes after native Fast CONT entry
+
+The original timer calls refresh `0x8005d048` after native mode entry at `0x8000cfd0`. The first refresh moves warmup 1 to 2 and returns. The second reaches ResultDispatch `0x800037c0`, filter call `0x80003970` and renderer `0x8000326c` while the result still holds the prior measurement. [ARM926 replay and factory image hashes](contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-first-refresh-validation.json).
