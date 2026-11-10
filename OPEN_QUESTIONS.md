@@ -299,3 +299,7 @@ The [configuration-to-publication replay](contributions/COORD-ADC-CADENCE/synchr
 ## 2026-11-09: refresh rendering and sound
 
 The [rendering and sound replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-rendering-validation.json) links a single publication to three Fast CONT updates in a controlled mode-4 fixture. Next trace native mode entry and filter-reset writers, then test which transitions actually invalidate the prior stored result. Numeric string conversion and final widget updates are modeled in this replay.
+
+## 2026-11-10 — Native mode entry and sound expiry
+
+Follow the first two original refresh callbacks after native mode 4 entry, with absent and valid replies, to determine when retained history influences sound before fresh publication. The aligned literal scan covers named state pointers only. Synthesized aliases and paths in other tasks remain open. [ARM926 replay and factory image hashes](contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-validation.json).

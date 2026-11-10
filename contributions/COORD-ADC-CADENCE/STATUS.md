@@ -2,6 +2,15 @@
 
 ## Current checkpoint
 
+The [native entry and countdown replay](synchronous/native-fast-cont-validation.json)
+covers 16 mode changes and 12 sound countdown suffixes on the two originals.
+Native mode entry and terminal configuration preserve the seeded raw result and
+filter history. Active countdown expiry switches off PWM duty in the shadow
+while preserving both. Next execute the first two refresh callbacks after
+native Fast CONT entry before fresh publication.
+
+## Previous rendering checkpoint
+
 The [rendering and sound replay](synchronous/refresh-rendering-validation.json)
 adds original scaling and renderer execution to 18 lifecycle schedules.
 Two further Fast CONT fixtures use the original sound path and show one

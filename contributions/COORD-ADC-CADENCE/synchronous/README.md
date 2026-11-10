@@ -460,3 +460,41 @@ Next trace native mode entry and filter-reset writers.
 ```powershell
 python -B contributions/COORD-ADC-CADENCE/synchronous/trace_refresh_rendering.py --out work/refresh-rendering-validation.json
 ```
+
+## Native mode entry and sound expiry
+
+[Validation evidence](native-fast-cont-validation.json) records both factory
+SHA-256s, per-case outputs, aligned literal hits and executed instruction bytes.
+The two images agree in eight mode-transition cases and six countdown suffix
+cases each.
+
+The event-1 registration at `0x80051894..0x800518a4` loads callback
+`0x8000cfd0` via literal `0x800519b4`. The original callback switches mode
+1 to 4 and mode 4 to 3, sets the refresh warmup byte to 1, updates the timer,
+and reaches the original queue and dispatcher. Type 5 sends
+`[0x0c, 0x22, 0x13, 0x1d]` only on 1-to-4 with Fast CONT enabled.
+The other tested cases use type 2 with `[0x0e, 0x19, 0x1d]`. Both seed discard
+2 and the configuration terminal frame leaves 1. The stored raw 14023 and
+selector 3, ring [5, 6, 7], index 2, count 3 and median 5 are seeded fixtures
+and survive callback, dispatch and terminal frame. Graphical leaves, callback
+feedback, heap, counters and UART arrivals are controlled.
+
+The original task-loop suffix `0x8000553c..0x80005578` reaches the sound gate
+at call site `0x80005568` with (5, 0) when active countdown 0 or 1 expires.
+It clears the active word and writes zero duty through the original PWM path.
+Active countdown 2 decrements to 1. No tested suffix modifies the stored result
+or filter history. The suffix ends at the outer-loop continuation and uses a
+PWM register shadow.
+
+The aligned ARM PC-relative literal scan found `0x80005520`,
+`0x80006e84`, `0x80007c8c` and `0x80007c90` for the named state and ring
+addresses. The scan covers literal loads for these values. Synthesized aliases
+and other task paths remain open. The next replay will link native entry to
+the first two refresh callbacks and test the influence of retained history
+on sound before fresh publication.
+
+Run from the repository root with the same factory inputs and Unicorn setup.
+
+```powershell
+python -B contributions/COORD-ADC-CADENCE/synchronous/trace_native_fast_cont.py
+```

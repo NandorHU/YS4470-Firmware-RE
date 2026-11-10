@@ -383,3 +383,7 @@ The [configuration-to-publication replay](contributions/COORD-ADC-CADENCE/synchr
 ## 2026-11-09: refresh rendering and sound
 
 The [rendering and sound replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-rendering-validation.json) adds 18 lifecycle sequences with original scaling and renderer control, plus two integrated Fast CONT/PWM sequences. It verifies stale value reuse across the prior busy overlap and reconfiguration. Widget updates and numeric formatting are explicit fixtures.
+
+## 2026-11-10 — Native mode entry and sound expiry
+
+Across V3.6 and V3.8, 16 original UI transition and 12 original countdown suffix cases agree. Fast CONT selects type 5 for the tested mode 1 to 4 transition with the setting enabled. The tested mode 4 to 3 transition selects type 2. Both preserve the seeded stored result and filter history through configuration. [ARM926 replay and factory image hashes](contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-validation.json).

@@ -1,7 +1,7 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 28,
-  "updated": "2026-11-09",
+  "revision": 29,
+  "updated": "2026-11-10",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
   "research_baseline_commit": "7e173ffdaa7dffd67a2d998f3fa8b28036e99485",
@@ -295,7 +295,7 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Trace native Fast CONT mode entry and filter-reset writers. Verify which transitions invalidate the prior stored result using the original queue, parser, renderer and PWM fixtures. Native type-6 reachability, peer internals and physical timing remain open.",
+      "next_action": "Execute the first two original refresh callbacks after native Fast CONT entry with absent and valid replies. Check retained median, sound reactivation and first fresh publication through the original queue, parser, filter and PWM shadow. Native type-6 reachability, peer internals and physical timing remain open.",
       "last_verified_result": {
         "profile_cases": 64,
         "transition_cases": 64,
@@ -337,7 +337,9 @@
         "compiled_measurement_plan_differential_cases": 4108,
         "original_refresh_publication_sequences": 18,
         "original_refresh_rendering_sequences": 18,
-        "integrated_fast_cont_pwm_sequences": 2
+        "integrated_fast_cont_pwm_sequences": 2,
+        "original_native_mode_transition_cases": 16,
+        "original_sound_countdown_suffix_cases": 12
       },
       "result_evidence": [
         "contributions/COORD-ADC-CADENCE/profile-validation.json",
@@ -359,7 +361,8 @@
         "contributions/COORD-ADC-CADENCE/synchronous/dynamic-type2-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/measurement-plan-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/refresh-publication-validation.json",
-        "contributions/COORD-ADC-CADENCE/synchronous/refresh-rendering-validation.json"
+        "contributions/COORD-ADC-CADENCE/synchronous/refresh-rendering-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-validation.json"
       ]
     },
     {
