@@ -1509,12 +1509,14 @@
       },
       "bounded_end_exclusive": "0x80061cd4",
       "confidence": "confirmed_bounded_original_arm926_execution",
-      "role": "Available send-to-back item copy/count/wrap and full wait0 rejection",
+      "role": "Send-to-back copy, count and wrap with full-queue timeout and wake after receive",
       "relationships": [
+        "The original native 0x27 producer waits up to ten counts. An original receive at the third count wakes the sender, which fills the freed slot.",
         "real memcpy0x800009c4 and critical helpers execute",
         "no waiting tasks; blocked sends not executed"
       ],
       "evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/queue-interior-full-validation.json",
         "evidence/2026-11-07-refresh-side-effects.json",
         "evidence/2026-11-07-refresh-side-effects-ghidra.json"
       ],

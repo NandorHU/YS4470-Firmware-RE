@@ -830,3 +830,38 @@ counter progression.
 ```powershell
 python -B contributions/COORD-ADC-CADENCE/synchronous/trace_calibration_button_queue.py
 ```
+
+## Queue entry candidates and full-queue waits
+
+[Replay evidence](queue-interior-full-validation.json) pins both original firmware hashes. The
+static index covers external immediate branches into three known queue
+regions, including function interiors. It checks ARM B/BL, Thumb BLX,
+immediate ADR and literal loads, and four byte phases for exact pointers.
+The index finds 38 external raw branch matches, eight object
+materializations and seven exact object words. The single raw interior
+match at `0x8009ef10` decodes as `ble #0x80061b18`. The byte
+neighborhood and the two raw incoming matches are retained for
+provenance review. Native type-6 production remains unresolved.
+
+The field scan looks for an ARM word store to +0x38 with same-base
+loads at +0x3c and +0x40 within 512 bytes. Three matches occur in the
+known queue implementation. The other two neighborhoods have local GUI
+or result evidence. At `0x80046548` the stored value is passed to
+the original label routine. At `0x8005d35c` the base literal resolves
+to the measurement result object at `0x805ac714`. This bounded
+signature leaves aliases and alternative access patterns open.
+
+Six ARM926 cases fill the original ten-entry queue. A type-3 zero-wait
+request returns zero immediately. The original `0x27` producer at
+`0x8000e7c4` blocks on the full queue. With only injected ticks, it
+resumes after ten and returns zero, reaching `0x80061b18` from the
+sender's back edge. In the other schedule, an original receive at the
+third count removes the head and wakes the blocked sender. It returns
+one and writes its 68-byte record into the newly available slot. The
+other records remain unchanged. Task event-list ownership and priority
+are seeded from the original task-creation instructions, and initial
+queue allocation and IRQ entry are controlled.
+
+```powershell
+python -B contributions/COORD-ADC-CADENCE/synchronous/trace_queue_interior_full.py
+```

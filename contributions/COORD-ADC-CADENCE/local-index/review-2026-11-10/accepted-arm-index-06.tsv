@@ -1,0 +1,153 @@
+address	bytes_le	assembly	catalog
+0x80061af0	3c1094e5	ldr r1, [r4, #0x3c]	cal-1000.json
+0x80061af4	010050e1	cmp r0, r1	cal-1000.json
+0x80061af8	0700003a	blo #0x80061b1c	cal-1000.json
+0x80061b1c	385094e5	ldr r5, [r4, #0x38]	cal-1000.json
+0x80061b20	0060a0e3	mov r6, #0	cal-1000.json
+0x80061b24	402094e5	ldr r2, [r4, #0x40]	cal-1000.json
+0x80061b28	000052e3	cmp r2, #0	cal-1000.json
+0x80061b2c	1100000a	beq #0x80061b78	cal-1000.json
+0x80061b30	000059e3	cmp sb, #0	cal-1000.json
+0x80061b34	1700000a	beq #0x80061b98	cal-1000.json
+0x80061b98	080094e5	ldr r0, [r4, #8]	cal-1000.json
+0x80061b9c	0810a0e1	mov r1, r8	cal-1000.json
+0x80061ba0	877bfeeb	bl #0x800009c4	cal-1000.json
+0x80061ba4	080094e5	ldr r0, [r4, #8]	cal-1000.json
+0x80061ba8	401094e5	ldr r1, [r4, #0x40]	cal-1000.json
+0x80061bac	010080e0	add r0, r0, r1	cal-1000.json
+0x80061bb0	080084e5	str r0, [r4, #8]	cal-1000.json
+0x80061bb4	041094e5	ldr r1, [r4, #4]	cal-1000.json
+0x80061bb8	010050e1	cmp r0, r1	cal-1000.json
+0x80061bbc	00009425	ldrhs r0, [r4]	cal-1000.json
+0x80061bc0	08008425	strhs r0, [r4, #8]	cal-1000.json
+0x80061bc4	010000ea	b #0x80061bd0	cal-1000.json
+0x80061bd0	010085e2	add r0, r5, #1	cal-1000.json
+0x80061bd4	380084e5	str r0, [r4, #0x38]	cal-1000.json
+0x80061bd8	240094e5	ldr r0, [r4, #0x24]	cal-1000.json
+0x80061bdc	000050e3	cmp r0, #0	cal-1000.json
+0x80061be0	0400000a	beq #0x80061bf8	cal-1000.json
+0x80061bf8	000056e3	cmp r6, #0	cal-1000.json
+0x80061bfc	0000000a	beq #0x80061c04	cal-1000.json
+0x80061c04	c5fcffeb	bl #0x80060f20	cal-1000.json
+0x80061c08	0100a0e3	mov r0, #1	cal-1000.json
+0x80061c0c	1cd08de2	add sp, sp, #0x1c	cal-1000.json
+0x80061c10	f083bde8	pop {r4, r5, r6, r7, r8, sb, pc}	cal-1000.json
+0x80061f84	10402de9	push {r4, lr}	cal-1000.json
+0x80061f88	dbfbffeb	bl #0x80060efc	cal-1000.json
+0x80061f8c	0c009fe5	ldr r0, [pc, #0xc]	cal-1000.json
+0x80061f90	0c4090e5	ldr r4, [r0, #0xc]	cal-1000.json
+0x80061f94	e1fbffeb	bl #0x80060f20	cal-1000.json
+0x80061f98	0400a0e1	mov r0, r4	cal-1000.json
+0x80061f9c	1080bde8	pop {r4, pc}	cal-1000.json
+0x80061fa4	f0472de9	push {r4, r5, r6, r7, r8, sb, sl, lr}	cal-1000.json
+0x80061fa8	34719fe5	ldr r7, [pc, #0x134]	cal-1000.json
+0x80061fac	0060a0e3	mov r6, #0	cal-1000.json
+0x80061fb0	300097e5	ldr r0, [r7, #0x30]	cal-1000.json
+0x80061fb4	000050e3	cmp r0, #0	cal-1000.json
+0x80061fb8	0700000a	beq #0x80061fdc	cal-1000.json
+0x80061fbc	180097e5	ldr r0, [r7, #0x18]	cal-1000.json
+0x80061fc0	010080e2	add r0, r0, #1	cal-1000.json
+0x80061fc4	180087e5	str r0, [r7, #0x18]	cal-1000.json
+0x80061fc8	1c0097e5	ldr r0, [r7, #0x1c]	cal-1000.json
+0x80061fcc	000050e3	cmp r0, #0	cal-1000.json
+0x80061fd0	0160a013	movne r6, #1	cal-1000.json
+0x80061fd4	0600a0e1	mov r0, r6	cal-1000.json
+0x80061fd8	f087bde8	pop {r4, r5, r6, r7, r8, sb, sl, pc}	cal-1000.json
+0x80061fdc	0c0097e5	ldr r0, [r7, #0xc]	cal-1000.json
+0x80061fe0	015090e2	adds r5, r0, #1	cal-1000.json
+0x80061fe4	0c5087e5	str r5, [r7, #0xc]	cal-1000.json
+0x80061fe8	0090e0e3	mvn sb, #0	cal-1000.json
+0x80061fec	1000001a	bne #0x80062034	cal-1000.json
+0x80061ff0	340097e5	ldr r0, [r7, #0x34]	cal-1000.json
+0x80061ff4	381097e5	ldr r1, [r7, #0x38]	cal-1000.json
+0x80061ffc	380087e5	str r0, [r7, #0x38]	cal-1000.json
+0x80062000	200097e5	ldr r0, [r7, #0x20]	cal-1000.json
+0x80062004	010080e2	add r0, r0, #1	cal-1000.json
+0x80062008	200087e5	str r0, [r7, #0x20]	cal-1000.json
+0x8006200c	340097e5	ldr r0, [r7, #0x34]	cal-1000.json
+0x80062010	000090e5	ldr r0, [r0]	cal-1000.json
+0x80062014	000050e3	cmp r0, #0	cal-1000.json
+0x80062018	28908705	streq sb, [r7, #0x28]	cal-1000.json
+0x8006201c	0400000a	beq #0x80062034	cal-1000.json
+0x80062020	340097e5	ldr r0, [r7, #0x34]	cal-1000.json
+0x80062024	0c0090e5	ldr r0, [r0, #0xc]	cal-1000.json
+0x80062028	0c0090e5	ldr r0, [r0, #0xc]	cal-1000.json
+0x8006202c	040090e5	ldr r0, [r0, #4]	cal-1000.json
+0x80062030	280087e5	str r0, [r7, #0x28]	cal-1000.json
+0x80062034	280097e5	ldr r0, [r7, #0x28]	cal-1000.json
+0x80062038	a8809fe5	ldr r8, [pc, #0xa8]	cal-1000.json
+0x8006203c	050050e1	cmp r0, r5	cal-1000.json
+0x80062040	0c00008a	bhi #0x80062078	cal-1000.json
+0x80062044	340097e5	ldr r0, [r7, #0x34]	cal-1000.json
+0x80062048	000090e5	ldr r0, [r0]	cal-1000.json
+0x8006204c	000050e3	cmp r0, #0	cal-1000.json
+0x80062050	0700000a	beq #0x80062074	cal-1000.json
+0x80062054	340097e5	ldr r0, [r7, #0x34]	cal-1000.json
+0x80062058	0c0090e5	ldr r0, [r0, #0xc]	cal-1000.json
+0x8006205c	0c4090e5	ldr r4, [r0, #0xc]	cal-1000.json
+0x80062060	040094e5	ldr r0, [r4, #4]	cal-1000.json
+0x80062064	000055e1	cmp r5, r0	cal-1000.json
+0x80062068	0900002a	bhs #0x80062094	cal-1000.json
+0x80062074	289087e5	str sb, [r7, #0x28]	cal-1000.json
+0x80062078	000097e5	ldr r0, [r7]	cal-1000.json
+0x8006207c	2c0090e5	ldr r0, [r0, #0x2c]	cal-1000.json
+0x80062080	000180e0	add r0, r0, r0, lsl #2	cal-1000.json
+0x80062084	000198e7	ldr r0, [r8, r0, lsl #2]	cal-1000.json
+0x80062088	010050e3	cmp r0, #1	cal-1000.json
+0x8006208c	0160a083	movhi r6, #1	cal-1000.json
+0x80062090	ccffffea	b #0x80061fc8	cal-1000.json
+0x80062094	040084e2	add r0, r4, #4	cal-1000.json
+0x80062098	50fbffeb	bl #0x80060de0	cal-1000.json
+0x8006209c	280094e5	ldr r0, [r4, #0x28]	cal-1000.json
+0x800620a0	000050e3	cmp r0, #0	cal-1000.json
+0x800620a4	18008412	addne r0, r4, #0x18	cal-1000.json
+0x800620a8	4cfbff1b	blne #0x80060de0	cal-1000.json
+0x800620ac	2c1094e5	ldr r1, [r4, #0x2c]	cal-1000.json
+0x800620b0	100097e5	ldr r0, [r7, #0x10]	cal-1000.json
+0x800620b4	000051e1	cmp r1, r0	cal-1000.json
+0x800620b8	10108785	strhi r1, [r7, #0x10]	cal-1000.json
+0x800620bc	010181e0	add r0, r1, r1, lsl #2	cal-1000.json
+0x800620c0	000188e0	add r0, r8, r0, lsl #2	cal-1000.json
+0x800620c4	041084e2	add r1, r4, #4	cal-1000.json
+0x800620cc	2c0094e5	ldr r0, [r4, #0x2c]	cal-1000.json
+0x800620d0	001097e5	ldr r1, [r7]	cal-1000.json
+0x800620d4	2c1091e5	ldr r1, [r1, #0x2c]	cal-1000.json
+0x800620d8	010050e1	cmp r0, r1	cal-1000.json
+0x800620dc	0160a023	movhs r6, #1	cal-1000.json
+0x800620e0	d7ffffea	b #0x80062044	cal-1000.json
+0x80062204	f0472de9	push {r4, r5, r6, r7, r8, sb, sl, lr}	cal-1000.json
+0x80062208	0070a0e3	mov r7, #0	cal-1000.json
+0x8006220c	3afbffeb	bl #0x80060efc	cal-1000.json
+0x80062210	04519fe5	ldr r5, [pc, #0x104]	cal-1000.json
+0x80062214	300095e5	ldr r0, [r5, #0x30]	cal-1000.json
+0x80062218	010040e2	sub r0, r0, #1	cal-1000.json
+0x8006221c	300085e5	str r0, [r5, #0x30]	cal-1000.json
+0x80062220	300095e5	ldr r0, [r5, #0x30]	cal-1000.json
+0x80062224	000050e3	cmp r0, #0	cal-1000.json
+0x80062228	3800001a	bne #0x80062310	cal-1000.json
+0x8006222c	080095e5	ldr r0, [r5, #8]	cal-1000.json
+0x80062230	000050e3	cmp r0, #0	cal-1000.json
+0x80062234	3500000a	beq #0x80062310	cal-1000.json
+0x80062238	e0609fe5	ldr r6, [pc, #0xe0]	cal-1000.json
+0x8006223c	0180a0e3	mov r8, #1	cal-1000.json
+0x80062240	000096e5	ldr r0, [r6]	cal-1000.json
+0x80062244	000050e3	cmp r0, #0	cal-1000.json
+0x80062248	78904612	subne sb, r6, #0x78	cal-1000.json
+0x8006224c	2100000a	beq #0x800622d8	cal-1000.json
+0x800622d8	184095e5	ldr r4, [r5, #0x18]	cal-1000.json
+0x800622dc	000054e3	cmp r4, #0	cal-1000.json
+0x800622e0	0600000a	beq #0x80062300	cal-1000.json
+0x800622e4	2effffeb	bl #0x80061fa4	cal-1000.json
+0x800622e8	000050e3	cmp r0, #0	cal-1000.json
+0x800622ec	1c808515	strne r8, [r5, #0x1c]	cal-1000.json
+0x800622f0	014054e2	subs r4, r4, #1	cal-1000.json
+0x800622f4	faffff1a	bne #0x800622e4	cal-1000.json
+0x800622f8	0000a0e3	mov r0, #0	cal-1000.json
+0x800622fc	180085e5	str r0, [r5, #0x18]	cal-1000.json
+0x80062300	1c0095e5	ldr r0, [r5, #0x1c]	cal-1000.json
+0x80062304	000050e3	cmp r0, #0	cal-1000.json
+0x80062308	0170a013	movne r7, #1	cal-1000.json
+0x8006230c	c67ffe1b	blne #0x8000222c	cal-1000.json
+0x80062310	02fbffeb	bl #0x80060f20	cal-1000.json
+0x80062314	0700a0e1	mov r0, r7	cal-1000.json
+0x80062318	f087bde8	pop {r4, r5, r6, r7, r8, sb, sl, pc}	cal-1000.json

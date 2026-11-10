@@ -415,3 +415,7 @@ Original stores `0x80046cb0` and `0x80046cb8` clear the calibration flag and sta
 ## 2026-11-10 — Calibration buttons and pending queue
 
 Both complete original calibration button callbacks run from `0x8000e4c8` and `0x8000e55c`. They reset the timer period, call the original queue drain at `0x80003d74`, enqueue a type-1 record, and format their mode labels. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-button-queue-validation.json).
+
+## 2026-11-10 — Queue entry candidates and full-queue waits
+
+The original sender at `0x80061acc` supports the tested zero-wait rejection, timed wait, and wake after a receive. Its `0x80061b18` interior edge executes after the sender resumes with the queue still full. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/queue-interior-full-validation.json).

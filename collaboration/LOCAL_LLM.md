@@ -164,3 +164,11 @@ The first resident catalog completed and the same process resumed from a
 against both factory images before publishing the catalog to the inbox.
 Ten recent drafts matched the exact address and quote check. They remain
 static index evidence.
+
+## 2026-11-10 — First complete resident snapshot review
+
+The coordinator audited 2,653 completed resident drafts against the
+frozen packets and both originals. The [checked export](../contributions/COORD-ADC-CADENCE/local-index/review-2026-11-10/README.md)
+contains 2,652 exact instruction rows. One draft used the wrong identity
+and was excluded. The queue continued running during the review and
+received 160 additional original queue and scheduler addresses.

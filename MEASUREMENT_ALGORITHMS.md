@@ -381,3 +381,7 @@ When both reset words are zero, the original calibration callback adds a real ty
 ## 2026-11-10 — Calibration buttons and pending queue
 
 A queued type-3 measurement and older type-1 command are both drained before the new calibration request. An active measurement completes first and leaves the calibration fallback pending until the FSM becomes idle. With the drain allocation forced to fail and room in the queue, both old records stay ahead of the new request. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-button-queue-validation.json).
+
+## 2026-11-10 — Queue entry candidates and full-queue waits
+
+A full queue rejects the original producer's type-3 zero-wait record immediately. The native `0x27` producer waits up to ten counts and either returns zero on timeout or stores its record after a competing receive frees a slot. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/queue-interior-full-validation.json).

@@ -599,3 +599,7 @@ Ran four reset-to-measurement continuations on the two factory hashes. The origi
 ## 2026-11-10 — Calibration buttons and pending queue
 
 Executed 12 original calibration button and queue cases on both factory hashes. With a drain buffer, the button discards queued measurement and control records before its new calibration request. During active measurement it drains the queued control, leaves the in-flight request intact and defers calibration until the matching reply publishes. A forced null drain allocation leaves both records in the queue and appends the new request when space remains. The linked queued cases display original statuses 2 or 7. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/calibration-button-queue-validation.json).
+
+## 2026-11-10 — Queue entry candidates and full-queue waits
+
+Executed six full-queue cases across both factory hashes. Zero wait returns immediately. The native `0x27` producer blocks until the 10-count deadline, or succeeds after an original receive at count 3. The timeout reaches interior `0x80061b18` through the sender's real back edge. The new static scan retains one raw interior branch candidate and five local field signatures. Independently checked 2,653 completed Ollama extracts against both originals and exported 2,652 exact instruction rows. [Original ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/queue-interior-full-validation.json).
