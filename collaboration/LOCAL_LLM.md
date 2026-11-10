@@ -109,3 +109,11 @@ listings using the checked lessons and bounded packet worker. All four
 drafts completed on the first attempt. The [coordinator review](../contributions/COORD-ADC-CADENCE/synchronous/scheduler-local-index-review.json)
 checks their exact addresses, bytes and decoded instructions against both
 factory images. The coordinator ran the original scheduler experiments.
+
+## 2026-11-10 — IRQ, SVC and low-vector instruction index
+
+The existing pinned service ran three successive batches with two new
+instructions per batch. All six drafts completed on their first attempt.
+The [coordinator review](../contributions/COORD-ADC-CADENCE/synchronous/scheduler-irq-local-index-review.json) confirms exact addresses,
+bytes and decoded instructions against both factory images. The coordinator
+ran the original context-switch and vector-install tests independently.

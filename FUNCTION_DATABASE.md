@@ -387,3 +387,7 @@ The original registration slice reaches `0x800059dc` with task entry `0x8000551c
 ## 2026-11-10 — Scheduler delays and task wakeup
 
 Delay helper `0x80060fbc` takes the original KeyTask argument 50 and GaugeCmdTask service tail argument 1. The ordered list helper stores deadlines and `0x80061fa4` applies ticks, drains due tasks and returns a yield flag in the tested fixtures. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/scheduler-delay-wake-validation.json).
+
+## 2026-11-10 — Installed vectors and scheduler context
+
+The vector install slice at `0x80000030` clears CP15 control bit 13 and copies the template from `0x800023b0`. Installed IRQ and SVC slots lead to handlers `0x800022c0` and `0x80002234`. Both execute the original task-context path, with selection through `0x800612f8` when requested. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/scheduler-irq-context-validation.json).

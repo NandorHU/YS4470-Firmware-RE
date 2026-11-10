@@ -273,3 +273,7 @@ With an active count of 1, a KeyTask iteration before refresh writes duty zero a
 ## 2026-11-10 — Scheduler delays and task wakeup
 
 The delay replay executes `svc #0` at `0x8000222c` and intercepts the exception before context switching. The separate original tick helper runs via direct injection or deferred drain. The hardware IRQ source, clock divisor and timing remain unmeasured. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/scheduler-delay-wake-validation.json).
+
+## 2026-11-10 — Installed vectors and scheduler context
+
+With INTC pending bit 13 set in the register shadow, the original IRQ handler calls the tick helper and optionally the selector before writing 0 to `0x01c20410` and 1 to `0x01c20c04`. These are observed software writes. Peripheral acknowledgement semantics, tick frequency and hardware time remain open. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/scheduler-irq-context-validation.json).

@@ -315,3 +315,7 @@ Execute `0x80060fbc` and its original queue/yield paths under known scheduler pr
 ## 2026-11-10 — Scheduler delays and task wakeup
 
 Run the original interrupt vector and tick branch under controlled interrupt-controller and saved-context fixtures. The static binding at `0x8000232c` loads `0x80061fa4` from `0x800023a8` before the indirect call at `0x80002334`. Clock units and actual device cadence remain open. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/scheduler-delay-wake-validation.json).
+
+## 2026-11-10 — Installed vectors and scheduler context
+
+Join the original Timer0 startup configuration to the installed vectors and pending-bit routing in one replay. Bind the ordinary IRQ vector handler and Timer0 tick branch under distinct pending states. A 24 MHz source and physical interrupt timing still require independent evidence. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/scheduler-irq-context-validation.json).

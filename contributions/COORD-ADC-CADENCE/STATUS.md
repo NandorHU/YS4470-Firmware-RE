@@ -2,6 +2,14 @@
 
 ## Current checkpoint
 
+The [vector and scheduler context replay](synchronous/scheduler-irq-context-validation.json) covers 44
+cases across both factory images. The original SVC and IRQ routes switch
+tasks and restore ARM/Thumb contexts. The blocked task resumes after 1 or
+50 injected IRQ ticks. Next connect Timer0 setup to the tick and ordinary
+IRQ routes under controlled pending states.
+
+## Previous scheduler delay checkpoint
+
 The [scheduler delay and wake replay](synchronous/scheduler-delay-wake-validation.json) agrees in 50
 schedules across the two factory images. The tested waiting task becomes
 ready on the requested applied tick, including overflow-list rotation and

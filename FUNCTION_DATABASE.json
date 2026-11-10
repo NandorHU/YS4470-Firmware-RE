@@ -31,6 +31,63 @@
   },
   "functions": [
     {
+      "id": "install_low_exception_vectors",
+      "addresses": {
+        "V3_6": "0x80000030",
+        "V3_8": "0x80000030"
+      },
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Select low vectors and copy the original 64-byte vector template",
+      "relationships": [
+        "Clears CP15 control bit 13 and copies 0x800023b0..0x800023f0 to address zero.",
+        "Installed SVC slot 0x08 and IRQ slot 0x18 dispatch to the original handlers."
+      ],
+      "evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/scheduler-irq-context-validation.json"
+      ],
+      "limits": [
+        "Original bounded boot slice only. Hardware exception entry is modeled."
+      ]
+    },
+    {
+      "id": "irq_tick_context_save_restore",
+      "addresses": {
+        "V3_6": "0x800022c0",
+        "V3_8": "0x800022c0"
+      },
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Save the interrupted task, route tick IRQ and restore the selected task",
+      "relationships": [
+        "INTC pending bit 13 routes to 0x80061fa4. A nonzero tick result reaches 0x800612f8.",
+        "Restores banked task registers and status through 0x80002390. The tested tick path writes 0 and 1 to the INTC and timer shadows."
+      ],
+      "evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/scheduler-irq-context-validation.json"
+      ],
+      "limits": [
+        "IRQ entry and registers are controlled fixtures. No silicon interrupt or physical timing."
+      ]
+    },
+    {
+      "id": "svc_scheduler_context_switch",
+      "addresses": {
+        "V3_6": "0x80002234",
+        "V3_8": "0x80002234"
+      },
+      "confidence": "confirmed_bounded_original_arm926_execution",
+      "role": "Save SVC task context, select another task and return into its saved state",
+      "relationships": [
+        "Installed slot 0x08 routes the original delay SVC to this handler.",
+        "Selector 0x800612f8 updates the current task. The saved original caller continuation is recovered after the delayed task wakes through the IRQ path."
+      ],
+      "evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/scheduler-irq-context-validation.json"
+      ],
+      "limits": [
+        "The emulator supplies banked SVC entry state after the original instruction traps."
+      ]
+    },
+    {
       "id": "scheduler_delay_and_yield",
       "addresses": {
         "V3_6": "0x80060fbc",

@@ -393,3 +393,7 @@ The KeyTask loop stores the modeled key sample at `0x805abb9c`, decrements the c
 ## 2026-11-10 — Scheduler delays and task wakeup
 
 Scheduler base `0x805abbbc` contains the raw tick at +0x0c, deferred tick count at +0x18, wrap count at +0x20, next current deadline at +0x28, suspend count at +0x30, and current/overflow list pointers at +0x34/+0x38. The original wait helper stores the task deadline at task +4 via `0x8004288c`. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/scheduler-delay-wake-validation.json).
+
+## 2026-11-10 — Installed vectors and scheduler context
+
+The low vector install copies 64 bytes to address 0. IRQ and SVC save an 18-word task frame and publish its address in the first word of the interrupted task object. The tested frame carries critical nesting, saved status, the task's r0–r14 and adjusted exception LR. [Original ARM926 replay and input hashes](contributions/COORD-ADC-CADENCE/synchronous/scheduler-irq-context-validation.json).

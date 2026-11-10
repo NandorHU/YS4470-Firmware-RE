@@ -1,0 +1,174 @@
+{
+  "schema": "ys4470.scheduler-irq-local-index-review.v1",
+  "model": "qwen2.5-coder:14b",
+  "model_digest": "9ec8897f747e246e970bc5cfdda85d22f1123dc2e3d34978a010a75968716849",
+  "checked_lessons_sha256": "7b135d7b5b1e58e68fa7ba4283902106547b7d76fe9736baacb065a3653217c4",
+  "batches": 3,
+  "attempts": 6,
+  "verified": 6,
+  "results": [
+    {
+      "task": "irq-user-register-save",
+      "draft": {
+        "entry": "0x800022c0",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x800022e0",
+        "quote": "0x800022e0 stmdb lr, {r0, r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, ip, sp, lr} ^",
+        "limitation": "Finite original address listing. Runtime state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x800022e0",
+        "assembly": "stmdb lr, {r0, r1, r2, r3, r4, r5, r6, r7, r8, sb, sl, fp, ip, sp, lr} ^",
+        "bytes": "ff7f4ee9"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "e2e67cf7a87fe518861de83fcd750b73e665e74815d22cdebf9f656688419ae4",
+      "attempts": 1
+    },
+    {
+      "task": "irq-exception-return",
+      "draft": {
+        "entry": "0x800022c0",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x80002390",
+        "quote": "0x80002390 subs pc, lr, #4",
+        "limitation": "Finite original address listing. Runtime state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x80002390",
+        "assembly": "subs pc, lr, #4",
+        "bytes": "04f05ee2"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "1a1c795f8794c6d68e50de7580d5f6cc778960603cd8abf452d0925de7eb9afd",
+      "attempts": 1
+    },
+    {
+      "task": "svc-save-stack-pointer",
+      "draft": {
+        "entry": "0x80002234",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x80002280",
+        "quote": "0x80002280 str lr, [r1]",
+        "limitation": "Finite original address listing. Runtime state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x80002280",
+        "assembly": "str lr, [r1]",
+        "bytes": "00e081e5"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "1fb02008f275ac3ebbe504c54993d8d3ee8dfa33596b2271a38fa1d44b949d78",
+      "attempts": 1
+    },
+    {
+      "task": "selector-publish-current-task",
+      "draft": {
+        "entry": "0x800612f8",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x800613b4",
+        "quote": "0x800613b4 str r1, [r4]",
+        "limitation": "Finite original address listing. Runtime state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x800613b4",
+        "assembly": "str r1, [r4]",
+        "bytes": "001084e5"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "3846bd25b8e9c0dc7f5d1fa2e02618ce67881bd6496fe7070178df2ea491674e",
+      "attempts": 1
+    },
+    {
+      "task": "boot-write-vector-control",
+      "draft": {
+        "entry": "0x80000030",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x80000038",
+        "quote": "0x80000038 mcr p15, #0, r0, c1, c0, #0",
+        "limitation": "Finite original address listing. Runtime state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x80000038",
+        "assembly": "mcr p15, #0, r0, c1, c0, #0",
+        "bytes": "100f01ee"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "280a2ec73aee0af3acc1b5970d5e3c8a6cacf9510b8ad447d8665af98ea9d5d7",
+      "attempts": 1
+    },
+    {
+      "task": "boot-vector-second-store",
+      "draft": {
+        "entry": "0x80000030",
+        "instruction_mode": "ARM",
+        "evidence_address": "0x8000005c",
+        "quote": "0x8000005c stm r1!, {r2, r3, r4, r5, r6, r7, r8, sl}",
+        "limitation": "Finite original address listing. Runtime state and timing are outside this packet."
+      },
+      "checked_instruction": {
+        "address": "0x8000005c",
+        "assembly": "stm r1!, {r2, r3, r4, r5, r6, r7, r8, sl}",
+        "bytes": "fc05a1e8"
+      },
+      "originals": [
+        {
+          "version": "V3.6",
+          "sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9"
+        },
+        {
+          "version": "V3.8",
+          "sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+        }
+      ],
+      "receipt_sha256": "41cf1548d463f717f627338a5e3dfba1cc70f864ef5288e5280b72a36f85523f",
+      "attempts": 1
+    }
+  ],
+  "limit": "Address extraction only. The original ARM926 experiments establish the dynamic behavior."
+}
