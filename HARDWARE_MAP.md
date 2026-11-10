@@ -257,3 +257,7 @@ In the [configuration-to-publication replay](contributions/COORD-ADC-CADENCE/syn
 ## 2026-11-09: refresh rendering and sound
 
 The [rendering and sound replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-rendering-validation.json) exercises original PWM setup at `0x80042d40`. The third reuse of one stored result sets PWM shadow control `0x7f` and period word `0x176f0a8c` in the tested mode-4 fixture. No physical probe or sound timing was measured.
+
+## 2026-11-10 — Native mode entry and sound expiry
+
+The sound countdown suffix calls the original gate with selector 5 and action 0 when active countdown 0 or 1 expires in the tested entry states. The original PWM path writes the duty-off value in the register shadow. The replay models the peripheral and establishes no acoustic or electrical timing. [ARM926 replay and factory image hashes](contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-validation.json).

@@ -371,3 +371,7 @@ The existing callback `0x8005d048` now runs from its original timer and enqueues
 ## 2026-11-09: refresh rendering and sound
 
 The [rendering and sound replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-rendering-validation.json) executes original ResultDispatch `0x800037c0`, renderer `0x8000326c`, and a controlled Fast CONT path through `0x80007c88` and sound gate `0x80006e4c` on both originals.
+
+## 2026-11-10 — Native mode entry and sound expiry
+
+The original Diode/Buzzer callback `0x8000cfd0` ran through the queue and dispatcher in 16 cases across V3.6 and V3.8. The sound countdown suffix `0x8000553c` reached the original gate `0x80006e4c` from `0x80005568` in active, expiring cases. [ARM926 replay and factory image hashes](contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-validation.json).

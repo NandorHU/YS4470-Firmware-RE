@@ -337,3 +337,7 @@ The [configuration-to-publication replay](contributions/COORD-ADC-CADENCE/synchr
 ## 2026-11-09: refresh rendering and sound
 
 The [rendering and sound replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-rendering-validation.json) matches original float32 scaling on 18 lifecycle schedules. In the Fast CONT fixture the same stored raw 14023 becomes helper input 5 on three callbacks. Fill reaches 3, median becomes 5, and the original sound gate receives selector 10 and action 1. No additional UART frame is admitted in those three callbacks.
+
+## 2026-11-10 — Native mode entry and sound expiry
+
+For the tested UI mode transitions 1 to 4 and 4 to 3, `0x8000cfd0` sets warmup to 1 while preserving the stored result and filter history. The deferred configuration starts with discard 2 and its terminal frame leaves discard 1. Countdown expiry clears active sound state while preserving the measurement and filter snapshot. [ARM926 replay and factory image hashes](contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-validation.json).

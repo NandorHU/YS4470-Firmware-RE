@@ -246,3 +246,7 @@ The [configuration-to-publication replay](contributions/COORD-ADC-CADENCE/synchr
 ## 2026-11-09: refresh rendering and sound
 
 After the [rendering and sound replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-rendering-validation.json), trace native Fast CONT mode entry and filter resets before attributing result freshness or proposing a change. Reuse the original queue, parser, renderer and PWM fixtures to isolate which event actually invalidates stored data.
+
+## 2026-11-10 — Native mode entry and sound expiry
+
+Carry the retained history from native mode 4 entry into the first two original refresh callbacks. Compare absent and valid replies before first fresh publication and inspect any sound reactivation through the original filter and PWM shadow. [ARM926 replay and factory image hashes](contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-validation.json).

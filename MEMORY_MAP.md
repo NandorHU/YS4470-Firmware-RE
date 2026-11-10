@@ -377,3 +377,7 @@ The [configuration-to-publication replay](contributions/COORD-ADC-CADENCE/synchr
 ## 2026-11-09: refresh rendering and sound
 
 The [rendering and sound replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-rendering-validation.json) links result words at `0x805ac730`/`0x805ac734` to the original render record. It checks scaled float32 at record +0x3c, value and unit fields at +0/+0x32, and the filter count and median at `0x805ab92c`/`0x805ab930`.
+
+## 2026-11-10 — Native mode entry and sound expiry
+
+In the replay the raw result/selector, ring at `0x805ac7b8`, and index/count/median at `0x805ab924+4/+8/+0xc` survive both native mode change with terminal configuration frame and the tested countdown suffix. The countdown path writes the active word at `0x805ab924` in the tested expiry cases. [ARM926 replay and factory image hashes](contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-validation.json).

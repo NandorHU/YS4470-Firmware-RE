@@ -555,3 +555,7 @@ From `0d1072d7c39910ad939ce0d74db38c01d4a8181f`, executed the original configura
 ## 2026-11-09: refresh rendering and sound
 
 From `6d8f5a8bf3aa6d719d28993b7e5d92914ceaf3d8`, extended the lifecycle to original ResultDispatch/renderer and ran a separate integrated original Fast CONT sound path. The [rendering and sound replay](contributions/COORD-ADC-CADENCE/synchronous/refresh-rendering-validation.json) pins 20 sequences with both input hashes. The original numeric formatter exceeded the instruction limit and was replaced in the harness by a scoped format model.
+
+## 2026-11-10 — Native mode entry and sound expiry
+
+Executed 16 native mode transitions from `0x8000cfd0` through the original timer update, queue, deferred dispatcher and UART/FSM path and 12 countdown suffix cases from `0x8000553c`. Both exact factory images agree. The tested mode change sets warmup to 1 and retains the seeded result and filter history through the terminal configuration frame. Active countdown 0/1 takes the original gate with arguments (5, 0), clears active state and sets duty off in the PWM shadow. Active countdown 2 decrements to 1. Both replays keep the original result and filter history. The evidence records input SHA-256s, instruction bytes, fixtures and boundaries. [ARM926 replay and factory image hashes](contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-validation.json).

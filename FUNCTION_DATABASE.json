@@ -887,17 +887,19 @@
       "confidence": "confirmed_static_ui_association_and_bounded_execution",
       "role": "Registered GUI callback associated with literal Diode/Buzzer labels",
       "relationships": [
+        "The original mode callback, timer update and deferred queue/FSM ran in 16 cases. The tested mode transition sets warmup to 1 and preserves the seeded result and filter snapshot through terminal configuration.",
         "registration object +0x2b8 at 0x80051894..0x800518a4, event argument 1",
         "label objects +0x2c0 Diode and +0x2c4 Buzzer are manipulated by this callback",
         "Diode tail supplies event (2,0x0e,0x19)",
         "Buzzer branch supplies event (5,0x22,0x13) iff word 0x805ac788 == 1; otherwise (2,0x0e,0x19)"
       ],
       "evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-validation.json",
         "evidence/2026-11-06-measurement-event-sources.json",
         "evidence/2026-11-07-fast-cont-setting.json"
       ],
       "limits": [
-        "Complete GUI callback and framework are not emulated.",
+        "The mode callback and original queue/FSM execute with modeled graphical leaves and callback feedback.",
         "UI association does not establish analog measurement semantics or audible behavior."
       ]
     },
@@ -1188,11 +1190,13 @@
       "confidence": "confirmed_bounded_original_arm926_execution",
       "role": "Three-value stability filter with retained median and sound-selector tailcalls",
       "relationships": [
+        "Native mode changes and the tested sound countdown suffix preserve the seeded ring, index, count and median. Expiring active sound changes the active word and PWM shadow through the original sound gate.",
         "caller0x80003970 in Fast CONT ResultDispatch branch",
         "history0x805ac7b8; index/count/retained median at0x805ab924+4/+8/+0xc",
         "tailcalls sound_control_gate; pure-C reconstruction/fast_cont.c matches tested behavior"
       ],
       "evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/native-fast-cont-validation.json",
         "evidence/2026-11-07-fast-cont-filter.json",
         "evidence/2026-11-07-fast-cont-filter-ghidra.json"
       ],
