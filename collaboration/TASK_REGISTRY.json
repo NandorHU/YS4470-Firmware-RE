@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 60,
+  "revision": 61,
   "updated": "2026-11-11",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,7 +295,7 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Follow native label event 0x15 through 0x800158c4 and 0x800265bc. Verify clipping, alignment and glyph positions before the raster callback. Keep native type-6 producer provenance and physical timing open.",
+      "next_action": "Execute the original 4-bit packed-alpha compositor at 0x80014688 (branch 0x800149d4) into an isolated RGB565 buffer, using the verified draw context and glyph inputs. Compare clipped output with the original bitmap nibbles. Keep physical LCD timing and native type-6 producer provenance open.",
       "last_verified_result": {
         "original_factory_filter_cases": 10,
         "original_ac_highspeed_comparison_cases": 104,
@@ -309,6 +309,7 @@
         "original_ac_label_binding_cases": 4,
         "original_factory_bound_ac_layout_schedules": 4,
         "original_factory_ac_font_glyph_cases": 64,
+        "original_factory_ac_draw_cases": 48,
         "original_ac_signed_cutoff_cases": 936,
         "original_ac_native_initializer_cases": 2,
         "original_ac_native_renderer_cases": 16,
@@ -415,6 +416,7 @@
         "resident_index_exact_extractions_published": 3501
       },
       "result_evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/factory-ac-draw-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/ac-label-bindings-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/factory-bound-ac-layout-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/factory-ac-font-glyphs-validation.json",

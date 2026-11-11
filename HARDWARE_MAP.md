@@ -373,3 +373,7 @@ The C reconstruction builds the 64-byte USB report in RAM. The original FIFO tra
 ## Factory AC label bindings, wrapping and glyphs (2026-11-11)
 
 Both font lookup callbacks return packed 4-bit alpha spans from the original image. The checks stop before framebuffer compositing or LCD controller activity. [factory-ac-font-glyphs-validation](contributions/COORD-ADC-CADENCE/synchronous/factory-ac-font-glyphs-validation.json).
+
+## Native AC draw event and packed-alpha boundary (2026-11-11)
+
+The original software draw context reaches the packed-alpha compositor through `0x8002a0c4`. The harness stops at that boundary. No panel bus or display controller writes are exercised. [Original draw evidence](contributions/COORD-ADC-CADENCE/synchronous/factory-ac-draw-validation.json).

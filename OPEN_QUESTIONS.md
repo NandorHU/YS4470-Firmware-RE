@@ -415,3 +415,7 @@ Recover the actual AC label construction and font/style bindings for GUI offsets
 ## Factory AC label bindings, wrapping and glyphs (2026-11-11)
 
 Follow native label event 0x15 through 0x800158c4 and 0x800265bc. Verify clipping, alignment and glyph positions before the raster callback. Keep native type-6 producer provenance and physical timing open. [factory-bound-ac-layout-validation](contributions/COORD-ADC-CADENCE/synchronous/factory-bound-ac-layout-validation.json) · [factory-ac-font-glyphs-validation](contributions/COORD-ADC-CADENCE/synchronous/factory-ac-font-glyphs-validation.json).
+
+## Native AC draw event and packed-alpha boundary (2026-11-11)
+
+Execute the original 4-bit packed-alpha compositor at 0x80014688 (branch 0x800149d4) into an isolated RGB565 buffer, using the verified draw context and glyph inputs. Compare clipped output with the original bitmap nibbles. Keep physical LCD timing and native type-6 producer provenance open. [Original draw evidence](contributions/COORD-ADC-CADENCE/synchronous/factory-ac-draw-validation.json).
