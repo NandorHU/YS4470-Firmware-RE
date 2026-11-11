@@ -990,3 +990,15 @@ python -B contributions/COORD-ADC-CADENCE/synchronous/trace_control_gui_cfd0.py 
 ```
 
 [Recorded cases, original hashes and executed instruction bytes](control-gui-cfd0-validation.json).
+
+## Enabled secondary command from the registered Diode/Buzzer callback (2026-11-11)
+
+Both factory images pass 48 ARM926 cases in total. The original writer `0x8005a3bc` stores bit 0 of the halfword at widget `+0x20` into `0x805ac788`. The registered callback uses that word to select the type-5 or type-2 record. The separate secondary command builds a 64-byte frame and reaches the original sender `0x80060ccc`. The hardware-facing `0x8005fc08` call is modeled.
+
+The harness seeds the widget halfword to 0, 1 or 2, runs the original setting writer, seeds ready byte 1 and runs the original null-input path at `0x8005e750` to set both guard words. Per image, the 24 cases cover modes 3/4 and the idle return-0, idle return-1, busy and missing-second-word scenarios. The original secondary sender executes its copy and busy logic. The modeled transport receives the same 64 bytes when called. It returns 0 or 1 to exercise both original busy outcomes. The primary control-queue record is sent in every case. No USB operation or physical timing was tested.
+
+```powershell
+python -B contributions/COORD-ADC-CADENCE/synchronous/trace_control_gui_cfd0_secondary.py --out control-gui-cfd0-secondary-validation.json
+```
+
+[Recorded cases, original hashes and executed instruction bytes](control-gui-cfd0-secondary-validation.json).

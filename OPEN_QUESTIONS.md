@@ -363,3 +363,7 @@ The first GUI table resolves ten concrete register-indirect producers. The secon
 ## Diode/Buzzer continuation (2026-11-11)
 
 Trace the writers of 0x805ac788 and verify the enabled 0x8005f254 route from the registered 0x8000cfd0 callback with realistic queue preconditions. Keep other indirect sends and native type-6 provenance open. [Bounded ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-validation.json).
+
+## Secondary channel continuation (2026-11-11)
+
+Trace the device-ready and busy-clear producers for 0x805aac40 and 0x805aac70. Replay the original 0x8005fc08 channel-1 sender with bounded modeled peripheral state. Keep native type-6 provenance open. The register and actual timing remain outside the current replay. [ARM926 replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-secondary-validation.json).

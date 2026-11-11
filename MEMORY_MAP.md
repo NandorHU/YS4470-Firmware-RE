@@ -441,3 +441,7 @@ The event descriptor stores the handler pointer at +0, the user value at +4, and
 ## Diode/Buzzer event state (2026-11-11)
 
 The callback `0x8000cfd0` tests the word at `0x805ac788` for equality to 1 on the tested 3-to-4 transition. It updates the mode byte at `0x805abefc` to 4, or changes it from 4 to 3 on the other branch. Bytes `+6..+10` of that state become `02 22 13 01 00` for type 5 and `02 0e 19 01 00` for type 2. The test seeds `0x805aac40` to 0 for the secondary command guard. [ARM926 replay and firmware identities](contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-validation.json).
+
+## Diode/Buzzer setting and sender state (2026-11-11)
+
+The writer at `0x8005a3dc` stores the GUI widget flag into `0x805ac788`. The secondary sender checks `0x805aac40` and words at `0x805aac48` and `0x805aac4c`. Busy byte `0x805aac70` blocks the outgoing call, is set before a send, and is cleared by the observed nonzero return path. [ARM926 replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-secondary-validation.json).

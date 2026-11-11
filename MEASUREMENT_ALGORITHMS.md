@@ -401,3 +401,7 @@ With two records pending, each matched callback drains both and enqueues one new
 ## Diode/Buzzer configuration records (2026-11-11)
 
 The original second registration block and dispatcher route event 1 from GUI object `+0x2b8` to `0x8000cfd0`. Both factory images agree in 24 ARM926 cases. Mode 3 with word `0x805ac788 == 1` sends type 5 (`05 00 00 00 22 13`). Mode 3 with word 0 or 2 and mode 4 with any tested word send type 2 (`02 00 00 00 0e 19`). Event 2 leaves the callback and queue untouched. The scheduler is idle and selected UI leaves are modeled. Each dispatched case drains the two seeded records and appends the selected record. These observations end at enqueue. [ARM926 replay and firmware identities](contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-validation.json).
+
+## Diode/Buzzer setting and secondary frame (2026-11-11)
+
+The original callback sends the verified control-queue record independently of the secondary sender outcomes tested. The separate frame starts `00 10 40 02 04 04 ff ff` when moving to mode 4 and `00 10 40 02 04 03 ff ff` when moving to mode 3, followed by 56 zero bytes. [Original-image replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-secondary-validation.json).
