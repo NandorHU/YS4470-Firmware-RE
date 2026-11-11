@@ -3,6 +3,17 @@
 **Last verified update:** 2026-11-11  
 **Development branch:** `re/2026-11-04-pyghidra-fel`
 
+## 2026-11-11 — Larger diode controls and quiet-volume candidate
+
+The Windows beta used 30×30 controls and requested 5% PWM duty at its
+10% setting. The updated E2 application uses 42×38 controls and 0.25% duty
+at that step. Both original diode tone call sites and live updates use the
+same new curve. Maximum duty follows the factory menu slider's 25% maximum.
+The full 0–100 scale, eight profile scenarios, 95 bitmap lookups and two
+simulated package installs passed. Physical screen and acoustic validation
+remain open. [Build receipt](contributions/COORD-DIODE-VOLUME/build-receipt.json)
+· [Validation](contributions/COORD-DIODE-VOLUME/validation.json).
+
 ## Original 4-bit glyph expansion to blend input (2026-11-11)
 
 The original 4-bit path at `0x80014688` selects the 16-entry table `0x80068fc6` through `0x800149d4`. Opaque input maps a nibble to 17 times its value. At opacity below 253 the original scales intermediate levels by multiplication and an eight-bit right shift, and maps level 15 to the supplied opacity. For 36 V3.6/V3.8 cases the bytes submitted through `0x800289f8` matched independent high/low-nibble expansion, including clips that start on a low nibble. The tests use factory glyphs with synthetic clip and opacity. Scratch allocation, external masks and final RGB565 blend are modeled. The previous ten Ollama draw-dispatch excerpts matched both images and Capstone, with zero token-limit, rejected or missing results. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-alpha-mask-validation.json).

@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 62,
+  "revision": 63,
   "updated": "2026-11-11",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -699,13 +699,15 @@
         "factory_settings_sector_cases": 16,
         "factory_settings_short_transfer_cases": 12,
         "factory_global_volume_cases": 28,
-        "original_indirect_dispatches": 21,
-        "original_pwm_updates": 10,
+        "original_indirect_dispatches": 29,
+        "original_pwm_updates": 50,
+        "simulated_quiet_candidate_installs": 2,
         "original_font_bitmap_lookups": 95,
         "profile_scenarios": 8,
         "physical_device_operations": 0
       },
-      "candidate_application_sha256": "e8c00750df2fc465b182c60d2c32dd8cd87cafc4a5cbff4f7e6abbfaec48c76a"
+      "released_application_sha256": "e8c00750df2fc465b182c60d2c32dd8cd87cafc4a5cbff4f7e6abbfaec48c76a",
+      "candidate_application_sha256": "d2c0556fe02e47771746f83e38d5860a2146e4a620a6e3fc46b354bd61273bb6"
     }
   ],
   "handoff_prepared": {

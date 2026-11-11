@@ -12,6 +12,24 @@ applies to the next diode tone and immediately updates a continuous diode
 tone that still owns PWM. The original global sound enable, the short key
 tone and the diode watchdog retain their roles.
 
+## Larger controls and quiet-volume candidate (2026-11-11)
+
+The two buttons now use 42×38 firmware pixels and the factory font used by
+Beta Diode. The adjacent caption and percentage use the factory 19-pixel
+font. The control row sits to the left of Beta Diode and Base.
+
+The original PWM routine receives the following requested duty percentages
+for the eleven volume levels: 0, 0.25, 0.5, 1, 2, 3.5, 5.5, 8.5, 12.5,
+18 and 25. The menu volume slider's maximum also requests 25% duty.
+The diode level remains separate from the shared menu setting. Both
+diode tone starts and active continuous-tone updates use the same curve.
+
+The ARM926 check covers all levels, both diode call sites and PWM registers
+in RAM. The reusable Windows installer accepted the candidate package in
+two simulated upgrades, from factory V3.8 and the released diode-volume
+beta. Screen appearance and acoustic volume remain to be checked on the device.
+The published installer still bundles the earlier application.
+
 ## Build and check
 
 From the repository root, use the project's analysis environment and
@@ -28,7 +46,7 @@ python -B contributions/COORD-DIODE-VOLUME/test_diode_volume.py --repo . --candi
 
 The GUI construction and visibility hooks are at `0x80051c0c` and
 `0x8005d048`. Buttons use the same event-1 dispatch as the factory controls.
-The sound hook at `0x80006ec0` applies the separate value to the two E2 diode
+The sound hook at `0x80006ecc` applies the separate value to the two E2 diode
 caller return addresses. A live update uses the original critical section
 and PWM routine while the continuous diode tone owns the output.
 

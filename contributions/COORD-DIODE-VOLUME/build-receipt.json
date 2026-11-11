@@ -1,18 +1,18 @@
 {
   "schema": "ys4470.diode-volume.e2.v1",
   "base_application_sha256": "b04fb5bca7a052abfc5b1621bf50e03fd4f8116bf5cef849f1994e44d4b603b1",
-  "application_sha256": "e8c00750df2fc465b182c60d2c32dd8cd87cafc4a5cbff4f7e6abbfaec48c76a",
+  "application_sha256": "d2c0556fe02e47771746f83e38d5860a2146e4a620a6e3fc46b354bd61273bb6",
   "image_bytes": 5943296,
   "bitmap_sha256": "28eb1730e6aba9c6fcb6da0d135643d0498f6813cba4fed11be042c95911b3d6",
   "bitmap_bytes": 9612,
   "packed_bytes": 7979,
-  "overlay_bytes": 1432,
+  "overlay_bytes": 1500,
   "edits": [
     {
       "address": "0x8006b688",
       "bytes": 9612,
       "before_sha256": "28eb1730e6aba9c6fcb6da0d135643d0498f6813cba4fed11be042c95911b3d6",
-      "after_sha256": "98322b81c667ff004486091f828e193b20ee38131d57b728427b9e75df064e4b"
+      "after_sha256": "87805d15519036c25f24396205529ebd1cf556eb733b22b78af1a2bbcfacbb57"
     },
     {
       "address": "0x80051c0c",
@@ -27,10 +27,10 @@
       "after_sha256": "ab8e54204bf13e475b7374af0f2d86536cee1b9bab0d668578a3192be467e929"
     },
     {
-      "address": "0x80006ec0",
+      "address": "0x80006ecc",
       "bytes": 4,
-      "before_sha256": "7a4f87d45cd2a43b194c7d3ac9131096dc9f5a478b7a22bca3997b4adfb37f58",
-      "after_sha256": "b23b644170b7c2a47518d43727d0c6857990096f9303fd7125586ee7016ef391"
+      "before_sha256": "35290347f3d97c3886fd5a84bcf65928aff475b044fa8b9301ba991d3c24c1ab",
+      "after_sha256": "35290b255a8be7f327a1f9272afccd9a8dd57406ce51acbe78d3b5fad57213d4"
     },
     {
       "address": "0x8006eafc",

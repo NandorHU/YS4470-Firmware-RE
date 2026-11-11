@@ -25,16 +25,18 @@ tick_hook:
 
 tone_volume:
     ldr ip, [sp, #12]
-    ldr r0, =0x80003a78
-    cmp ip, r0
-    ldrne r0, =0x80060cb0
-    cmpne ip, r0
-    ldrne r0, [r2, #12]
-    bxne lr
+    ldr r3, =0x80003a78
+    cmp ip, r3
+    ldrne r3, =0x80060cb0
+    cmpne ip, r3
+    bne 0x800630a4
     ldr r0, =volume_state
     ldr r0, [r0]
-    add r0, r0, r0, lsl #2
-    lsl r0, r0, #1
+    b volume_gain
+
+volume_gain:
+    ldr ip, =gain_table
+    ldr r0, [ip, r0, lsl #2]
     bx lr
 
 create_volume:
@@ -52,26 +54,26 @@ create_volume:
     cmp r5, #0
     popeq {r4-r8, pc}
     mov r0, r5
-    mov r1, #312
+    mov r1, #288
     ldr r2, =minus_text
     mvn r3, #0
     bl make_button
     str r0, [r4, #4]
     mov r0, r5
-    ldr r1, =398
+    ldr r1, =383
     ldr r2, =plus_text
     mov r3, #1
     bl make_button
     str r0, [r4, #12]
     mov r0, r5
-    ldr r1, =350
-    mov r2, #43
+    ldr r1, =333
+    mov r2, #46
     mov r3, #0
     bl make_text
     str r0, [r4, #8]
     mov r0, r5
-    mov r1, #264
-    mov r2, #43
+    mov r1, #226
+    mov r2, #58
     ldr r3, =caption_text
     bl make_text
     str r0, [r4, #16]
@@ -89,14 +91,14 @@ make_text:
     popeq {r4-r8, pc}
     mov r4, r0
     mov r1, r5
-    mov r2, #77
+    mov r2, #74
     bl 0x8003a160
     mov r0, r4
     mov r1, r6
-    mov r2, #22
+    mov r2, #24
     bl 0x8003a2c8
     mov r0, r4
-    ldr r1, =0x8006b66c
+    ldr r1, =0x8006eaf8
     mov r2, #0
     bl 0x8003aa58
     mov r0, r4
@@ -120,11 +122,11 @@ make_button:
     popeq {r4-r8, pc}
     mov r4, r0
     mov r1, r5
-    mov r2, #70
+    mov r2, #66
     bl 0x8003a160
     mov r0, r4
-    mov r1, #30
-    mov r2, #30
+    mov r1, #42
+    mov r2, #38
     bl 0x8003a2c8
     mov r0, r4
     ldr r1, =0x2945
@@ -134,6 +136,10 @@ make_button:
     mov r1, #6
     mov r2, #0
     bl 0x8003a7b8
+    mov r0, r4
+    ldr r1, =0x80080888
+    mov r2, #0
+    bl 0x8003aa58
     mov r0, r4
     bl 0x80030ad0
     cmp r0, #0
@@ -262,8 +268,8 @@ volume_click:
     ldr r0, [r0, #0x50]
     cmp r0, #3
     bls changed
-    add r0, r6, r6, lsl #2
-    bl 0x800630a4
+    mov r0, r6
+    bl volume_gain
     mov r2, r0
     mov r0, #0
     ldr r1, =1321
@@ -347,6 +353,9 @@ decode_failed:
 
 .ltorg
 .align 2
+@ PWM duty in percent, passed as float32 to the factory routine.
+gain_table:
+.float 0.0, 0.25, 0.5, 1.0, 2.0, 3.5, 5.5, 8.5, 12.5, 18.0, 25.0
 volume_state:
 .word 6, 0, 0, 0, 0, 0xffffffff
 minus_text:
