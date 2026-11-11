@@ -361,3 +361,7 @@ The highspeed callback follows the original timer deadline and enqueues a real t
 ## Original AC formatter and native highspeed fallback callers (2026-11-11)
 
 The native fallback schedule sends the preparation frame, the configuration frame and the trailing frame with original Timer0/UART2 IRQ and SVC execution. One missing configuration reply incurs the native 500-wait attempt. Units in the evidence are modeled counters. [native-highspeed-buttons-validation](contributions/COORD-ADC-CADENCE/synchronous/native-highspeed-buttons-validation.json).
+
+## Native AC widget storage and USB export (2026-11-11)
+
+The original USB report-4 submission uses channel 1 FIFO `0x01c13004`. Busy blocks writes after the frame is built. Disabled mode or either zero readiness word stops before building a frame. [ac-usb-export-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-usb-export-validation.json).

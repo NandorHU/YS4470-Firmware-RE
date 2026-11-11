@@ -481,3 +481,7 @@ Factory Filter is word `0x805ac784` at settings `+0x14`. The highspeed callback 
 ## Original AC formatter and native highspeed fallback callers (2026-11-11)
 
 Runtime slot `0x80d5b894` receives the locale table pointer before numeric formatting. The four highspeed buttons write `0x805ac08c` and its adjacent argument byte before enqueue. [ac-native-formatter-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-native-formatter-validation.json) · [native-highspeed-buttons-validation](contributions/COORD-ADC-CADENCE/synchronous/native-highspeed-buttons-validation.json).
+
+## Native AC widget storage and USB export (2026-11-11)
+
+The AC widget unit-pointer table begins at `0x805aae98`; USB export uses the adjacent table at `0x805ab3d8`. The export mirror contains one category byte and twenty text bytes. [ac-usb-export-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-usb-export-validation.json) · [ac-widget-text-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-widget-text-validation.json).

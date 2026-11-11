@@ -403,3 +403,7 @@ Execute original numeric formatting after the C runtime locale initializer at 0x
 ## Original AC formatter and native highspeed fallback callers (2026-11-11)
 
 Follow the regular renderer call to 0x80045184 through 0x8005f1a8 and the original channel-1 sender, checking report text, units and USB gates. Keep native type-6 producer provenance and physical timing open. [ac-native-formatter-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-native-formatter-validation.json).
+
+## Native AC widget storage and USB export (2026-11-11)
+
+Map the original export category and unit routing outside AC configurations 9 and 10, then follow widget layout after native text storage. Keep native type-6 producer provenance and physical timing open. [ac-usb-export-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-usb-export-validation.json) · [ac-widget-text-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-widget-text-validation.json).

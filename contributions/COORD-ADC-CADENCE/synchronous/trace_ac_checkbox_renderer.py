@@ -27,6 +27,7 @@ VIEW_LEAVES = (0x8000406C, 0x80004114, 0x80004314, 0x80002E44, WIDGET_TEXT, DISP
 
 class NativeViewReplay(RefreshAcReplay):
     string = RenderingReplay.string
+    primary_widget, unit_widget = PRIMARY_WIDGET, UNIT_WIDGET
 
     def __init__(self, raw, table):
         super().__init__(raw)
@@ -74,7 +75,7 @@ class NativeViewReplay(RefreshAcReplay):
             ))
         if pc in VIEW_LEAVES:
             if pc == WIDGET_TEXT:
-                assert r0 in (PRIMARY_WIDGET, UNIT_WIDGET)
+                assert r0 in (self.primary_widget, self.unit_widget)
                 self.emitted.append([hex(r0), self.string(r1)])
             if pc == DISPLAY:
                 assert r1 == 0
@@ -92,8 +93,8 @@ class NativeViewReplay(RefreshAcReplay):
     def prepare_refresh_state(self, initial, warmup):
         configured = super().prepare_refresh_state(initial, warmup)
         self.u.mem_write(UNIT_TABLE, self.table)
-        self.put(0x805AC38C, PRIMARY_WIDGET)
-        self.put(0x805AC390, UNIT_WIDGET)
+        self.put(0x805AC38C, self.primary_widget)
+        self.put(0x805AC390, self.unit_widget)
         self.put(SETTINGS + 0x14, 0)
         return configured
 
@@ -107,7 +108,7 @@ class NativeViewReplay(RefreshAcReplay):
             assert record["configuration"] in (9, 10)
             assert (record["raw"], record["selector"]) == row["result_at_refresh"]
             self.check_record(record)
-            assert outputs == [[hex(PRIMARY_WIDGET), record["text"]], [hex(UNIT_WIDGET), record["unit"]],
+            assert outputs == [[hex(self.primary_widget), record["text"]], [hex(self.unit_widget), record["unit"]],
                                ["display_text", record["text"]]]
         else:
             assert not new and not outputs
