@@ -425,3 +425,7 @@ The original timer enqueues a type-3 measurement after the AC checkbox configura
 ## Global volume and preview gain (2026-11-11)
 
 The factory volume handler `0x80057d34` reads slider `+0x3a0`, caps the input at 100 and stores half at settings `+0x0c`. The original preview passes half that stored value to the modeled PWM call. The global field survives the tested save/load round trip. The value describes the preview call, with no acoustic measurement. [Slider replay](contributions/COORD-DIODE-VOLUME/factory-volume-slider-validation.json).
+
+## AC result text from the native renderer (2026-11-11)
+
+The original renderer applies the power-of-ten exponent at `0x80063817 + 7 * configuration + selector` to the stored sample. The resulting float bits and three-decimal formatting requests agree in all tested V3.6 and V3.8 schedules. [Original replay evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-renderer-validation.json).
