@@ -468,4 +468,4 @@ The CRC-protected factory record starts at SPI offset `0xf00000`. In a valid loa
 
 ## AC result text from the native renderer (2026-11-11)
 
-The AC renderer reads its unit pointers from `0x805aae98` in the replay and passes text to widget handles held at `0x805ac38c` and `0x805ac390`. The report records the SHA-256 of the V3.8 initialization table shared by both test models. [Original replay evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-renderer-validation.json).
+The AC renderer reads its unit pointers from `0x805aae98` in the replay and passes text to widget handles held at `0x805ac38c` and `0x805ac390`. The original scatter descriptors at `0x805aaa68` and `0x805aaa78` restore identical unit-table bytes in both firmware builds. [Original replay evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-renderer-validation.json).

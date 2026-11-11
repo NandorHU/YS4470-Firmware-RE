@@ -133,12 +133,14 @@ def main():
         assert digest == item["sha256"] and len(raw) == item["size_bytes"]
         images[item["version"]] = digest
         originals.append((item["version"], raw))
-    init = restore_globals(next(raw for version, raw in originals if version == "V3.8"))
-    offset = UNIT_TABLE - INIT_BASE
-    table = init[offset:offset + TABLE_SIZE]
-    assert len(table) == TABLE_SIZE
+    tables = {}
     observations = []
-    for _, raw in originals:
+    for version, raw in originals:
+        init = restore_globals(raw)
+        offset = UNIT_TABLE - INIT_BASE
+        table = init[offset:offset + TABLE_SIZE]
+        assert len(table) == TABLE_SIZE
+        tables[version] = hashlib.sha256(table).hexdigest()
         coverage, cases = {}, []
         for case in product((0, 1), (0, 2), (False, True)):
             replay = NativeViewReplay(raw, table)
@@ -149,10 +151,16 @@ def main():
             coverage.update(replay.coverage)
         observations.append(dict(cases=cases, instruction_bytes={hex(pc): v for pc, v in sorted(coverage.items())}))
     assert images.keys() == {"V3.6", "V3.8"} and observations[0] == observations[1]
+    assert len(set(tables.values())) == 1
     report = dict(schema="ys4470.ac-checkbox-native-renderer.v1", images=images,
-                  factory_unit_table_sha256=hashlib.sha256(table).hexdigest(), **observations[0], limits=[
+                  factory_unit_table_sha256=tables["V3.8"], **observations[0],
+                  factory_initialization=dict(
+                      scatter_descriptors={"0x805aaa68": "0x80000124", "0x805aaa78": "0x800000c8"},
+                      unit_table_address=hex(UNIT_TABLE), unit_table_size=TABLE_SIZE,
+                      unit_table_sha256_by_image=tables),
+                  limits=[
         "The original mode-0 result dispatcher, floating-point scale and renderer execute after the native checkbox and UART path.",
-        "The unit table is restored from the original V3.8 initialization stream and reused in both models. The numeric formatter, selected GUI calls and display sink are modeled.",
+        "Each image initializes its own unit table through its original scatter descriptors and code. The numeric formatter, selected GUI calls and display sink are modeled.",
         "The test checks CPU-visible text and labels against the original scale table and stored result. Physical input, conversion units and screen pixels remain outside the model.",
     ])
     args.out.write_bytes((json.dumps(report, indent=2) + "\n").encode())

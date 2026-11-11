@@ -4354,9 +4354,21 @@
     "0x800630c4": "2204a1e0",
     "0x800630c8": "1eff2f31"
   },
+  "factory_initialization": {
+    "scatter_descriptors": {
+      "0x805aaa68": "0x80000124",
+      "0x805aaa78": "0x800000c8"
+    },
+    "unit_table_address": "0x805aae98",
+    "unit_table_size": 1344,
+    "unit_table_sha256_by_image": {
+      "V3.6": "147d551d80153b3b7c8eaece22f82ff0be0923e885eed47f4918d1a4fda4a368",
+      "V3.8": "147d551d80153b3b7c8eaece22f82ff0be0923e885eed47f4918d1a4fda4a368"
+    }
+  },
   "limits": [
     "The original mode-0 result dispatcher, floating-point scale and renderer execute after the native checkbox and UART path.",
-    "The unit table is restored from the original V3.8 initialization stream and reused in both models. The numeric formatter, selected GUI calls and display sink are modeled.",
+    "Each image initializes its own unit table through its original scatter descriptors and code. The numeric formatter, selected GUI calls and display sink are modeled.",
     "The test checks CPU-visible text and labels against the original scale table and stored result. Physical input, conversion units and screen pixels remain outside the model."
   ]
 }

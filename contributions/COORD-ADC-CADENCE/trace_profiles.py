@@ -27,11 +27,16 @@ def jsonwrite(p,o):p.write_text(json.dumps(o,indent=2)+'\n',encoding='utf8')
 
 def restore_globals(original):
     """Execute the original scatter-copy/decompress routines, without hardware."""
-    assert sha(original)==V38_SHA
+    assert sha(original) in (V36_SHA, V38_SHA)
     u=Uc(UC_ARCH_ARM,UC_MODE_ARM);u.ctl_set_cpu_model(UC_CPU_ARM_926)
     u.mem_map(0x7fff0000,0x2100000);u.mem_write(BASE,original)
-    for entry,src,dst,n in ((0x80000124,0x805aaab4,0x805ac098,0x468),
-                            (0x800000c8,0x805ac098,0x805aaab4,0x15e4)):
+    descriptors = (
+        (0x805aaa68, (0x805aaab4, 0x805ac098, 0x468, 0x80000124)),
+        (0x805aaa78, (0x805ac098, 0x805aaab4, 0x15e4, 0x800000c8)),
+    )
+    for address, expected in descriptors:
+        src, dst, n, entry = struct.unpack_from("<4I", original, address - BASE)
+        assert (src, dst, n, entry) == expected
         for r,v in ((UC_ARM_REG_R0,src),(UC_ARM_REG_R1,dst),(UC_ARM_REG_R2,n),
                     (UC_ARM_REG_SP,SP),(UC_ARM_REG_LR,END),(UC_ARM_REG_CPSR,0x13)):
             u.reg_write(r,v)
