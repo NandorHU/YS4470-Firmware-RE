@@ -442,4 +442,8 @@ Four original ARM926 cases on the two factory images identify the `0x80046548` f
 
 ## 2026-11-10 — Registered GUI callbacks and indirect queue producers
 
-Across both factory images, 20 matched events invoke the original indirect callback and enqueue a type-0 or type-1 record. The 20 filter-mismatch events preserve the queue and timer. Two original registration blocks are verified on each image. A further 16 dispatch cases for `0x8000d294` produce six type-2 sends and ten unchanged-queue outcomes. [Original instruction bytes, factory hashes and replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-event-validation.json).
+Across both factory images, 20 matched events invoke the original indirect callback and enqueue a type-0 or type-1 record. The 20 filter-mismatch events preserve the queue and timer. Two original registration blocks are verified on each image. A further 16 dispatch cases for `0x8000d294` produce six type-2 sends and ten unchanged-queue outcomes. [Original instruction bytes, factory hashes and replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-event-validation.json).
+
+## Registered Diode/Buzzer callback (2026-11-11)
+
+The original second registration block and dispatcher route event 1 from GUI object `+0x2b8` to `0x8000cfd0`. Both factory images agree in 24 ARM926 cases. Mode 3 with word `0x805ac788 == 1` sends type 5 (`05 00 00 00 22 13`). Mode 3 with word 0 or 2 and mode 4 with any tested word send type 2 (`02 00 00 00 0e 19`). Event 2 leaves the callback and queue untouched. The scheduler is idle and selected UI leaves are modeled. [Reproducer and original-byte evidence](contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-validation.json).

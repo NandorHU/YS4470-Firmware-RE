@@ -305,4 +305,8 @@ Trace register-indirect and synthesized control-queue aliases and the native typ
 
 ## 2026-11-10 — Registered GUI callbacks and indirect queue producers
 
-Use the verified second registration block at `0x800517f4` to replay `0x8000cfd0` from the original event dispatcher. Keep remaining register-indirect paths and native type-6 provenance separate. [Original instruction bytes, factory hashes and replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-event-validation.json).
+Use the verified second registration block at `0x800517f4` to replay `0x8000cfd0` from the original event dispatcher. Keep remaining register-indirect paths and native type-6 provenance separate. [Original instruction bytes, factory hashes and replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-event-validation.json).
+
+## Current bounded continuation (2026-11-11)
+
+Trace the writers of 0x805ac788 and verify the enabled 0x8005f254 route from the registered 0x8000cfd0 callback with realistic queue preconditions. Keep other indirect sends and native type-6 provenance open. [ARM926 replay and firmware identities](contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-validation.json).
