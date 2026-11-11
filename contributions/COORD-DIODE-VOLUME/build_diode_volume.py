@@ -90,7 +90,7 @@ def build(image):
     replace(BITMAP, (program + packed).ljust(len(bitmap), b"\0"), bitmap)
     word(0x80051C0C, branch(0x80051C0C, BITMAP), branch(0x80051C0C, 0x80060A08))
     word(0x8005D048, branch(0x8005D048, BITMAP + 4), branch(0x8005D048, 0x8001B5CC))
-    word(0x80006EC0, branch(0x80006EC0, BITMAP + 8, link=True), 0xE592000C)
+    word(0x80006ECC, branch(0x80006ECC, BITMAP + 8, link=True), branch(0x80006ECC, 0x800630A4, link=True))
     word(FONT + 4, BITMAP + 12, 0x8002C844)
     assert output[:32] == image[:32] and len(output) == len(image)
     return bytes(output), dict(

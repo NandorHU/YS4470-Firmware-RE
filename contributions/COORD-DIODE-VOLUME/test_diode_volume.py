@@ -34,6 +34,7 @@ PROPERTIES = {
 }
 ARGS = (UC_ARM_REG_R0, UC_ARM_REG_R1, UC_ARM_REG_R2, UC_ARM_REG_R3)
 GUI_TRACE_RANGE = (0x8004ED34, 0x80051C10)
+GAIN = dict(zip(range(0, 101, 10), (0.0, 0.25, 0.5, 1.0, 2.0, 3.5, 5.5, 8.5, 12.5, 18.0, 25.0)))
 
 
 class Replay:
@@ -122,6 +123,8 @@ class Replay:
                 obj["pos"] = regs[1:3]
             elif pc == 0x8003A2C8:
                 obj["size"] = regs[1:3]
+            elif pc == 0x8003AA58:
+                obj["font"] = r1
             elif pc == LABEL_SET:
                 raw = bytes(u.mem_read(r1, 48)).split(b"\0", 1)[0]
                 obj["text"] = raw.decode("utf-8", errors="replace")
@@ -182,8 +185,8 @@ def check_controls(e2, image, receipt):
     label, = [p for p, o in app.objects.items() if o.get("text") == "60%"]
     caption, = [p for p, o in app.objects.items() if o.get("text") == "Volume"]
     objects = (caption, down, label, up)
-    assert [app.objects[p]["pos"] for p in objects] == [[264, 77], [312, 70], [350, 77], [398, 70]]
-    assert [app.objects[p]["size"] for p in objects] == [[43, 22], [30, 30], [43, 22], [30, 30]]
+    assert [app.objects[p]["pos"] for p in objects] == [[226, 74], [288, 66], [333, 74], [383, 66]]
+    assert [app.objects[p]["size"] for p in objects] == [[58, 24], [42, 38], [46, 24], [42, 38]]
     root = app.get(CTX + 0x268)
     assert app.objects[root]["size"] == [854, 480] and all(app.objects[p]["parent"] == root for p in objects)
     for off in (4, 12):
@@ -194,6 +197,10 @@ def check_controls(e2, image, receipt):
     assert app.objects[beta]["pos"][0] == 430
     assert all(app.objects[p]["pos"][0] + app.objects[p]["size"][0] < 430 for p in objects)
 
+    for left, right in zip(objects, objects[1:]):
+        assert app.objects[left]["pos"][0] + app.objects[left]["size"][0] < app.objects[right]["pos"][0]
+    assert all(app.objects[p]["font"] == 0x8006EAF8 for p in (caption, label))
+    assert all(app.objects[p]["font"] == app.objects[beta]["font"] == 0x80080888 for p in (down, up))
     for p, delta, text in ((down, 0xFFFFFFFF, "-"), (up, 1, "+")):
         assert any(o.get("text") == text and o["parent"] == p for o in app.objects.values())
         ext = app.get(p + 8)
@@ -219,7 +226,7 @@ def check_controls(e2, image, receipt):
     app.put(SETTINGS + 16, 1)
     app.call(EVENT, down, 1, 0)
     assert app.objects[label]["text"] == "50%" and not app.pwm
-    for return_pc, half, pitch in ((0x80003A78, 25.0, 1321), (0x80060CB0, 25.0, 1321),
+    for return_pc, half, pitch in ((0x80003A78, GAIN[50], 1321), (0x80060CB0, GAIN[50], 1321),
                                    (STOP, 40.0, 2888)):
         app.call(GATE, 5, 1, stop=return_pc)
         assert app.float_half(half) and app.pwm[-1][1] == pitch
@@ -230,8 +237,9 @@ def check_controls(e2, image, receipt):
     app.put(RESULT + 0x50, 13)
     app.put(ACTIVE, 1)
     levels = []
-    for button, expected in ((down, 40), (down, 30), (down, 20), (down, 10),
-                             (down, 0), (down, 0), (up, 10), (up, 20)):
+    steps = [(down, level) for level in range(40, -1, -10)] + [(down, 0)]
+    steps += [(up, level) for level in range(10, 101, 10)]
+    for button, expected in steps:
         prev = len(app.pwm)
         app.call(EVENT, button, 1, 0)
         assert app.objects[label]["text"] == f"{expected}%"
@@ -239,22 +247,28 @@ def check_controls(e2, image, receipt):
         if levels and expected == levels[-1][0]:
             assert len(app.pwm) == prev
         else:
-            assert len(app.pwm) == prev + 1 and app.float_half(expected / 2)
+            assert len(app.pwm) == prev + 1 and app.float_half(GAIN[expected])
         assert (period >> 16) + 1 == 18168
         assert bool(period & 0xFFFF) == bool(expected)
         assert app.get(RESULT + 0x50) == 13 and app.get(ACTIVE) == 1 and app.get(SETTINGS + 12) == 80
-        levels.append([expected, period & 0xFFFF])
+        ticks = period & 0xFFFF
+        assert abs(100 * ticks / 18168 - GAIN[expected]) < 0.01
+        for return_pc in (0x80003A78, 0x80060CB0):
+            app.call(GATE, 5, 1, stop=return_pc)
+            assert app.float_half(GAIN[expected]) and app.get(PWM + 4) == period
+        app.put(RESULT + 0x50, 13)
+        levels.append([expected, ticks])
 
     # Key beep ownership, mode transition, and original alternate header.
     app.put(RESULT + 0x50, 3)
     pwm_count = len(app.pwm)
-    app.call(EVENT, up, 1, 0)
-    assert app.objects[label]["text"] == "30%" and len(app.pwm) == pwm_count
+    app.call(EVENT, down, 1, 0)
+    assert app.objects[label]["text"] == "90%" and len(app.pwm) == pwm_count
     app.byte(MODE, 4)
     app.update()
     assert all(app.hidden(p) for p in objects)
-    app.call(EVENT, up, 1, 0)
-    assert app.objects[label]["text"] == "30%" and len(app.pwm) == pwm_count
+    app.call(EVENT, down, 1, 0)
+    assert app.objects[label]["text"] == "90%" and len(app.pwm) == pwm_count
     app.byte(MODE, 3)
     app.update()
     assert not any(app.hidden(p) for p in objects)
@@ -264,7 +278,8 @@ def check_controls(e2, image, receipt):
     app.put(app.get(ALT) + 28, 0)
     app.update()
     assert all(app.hidden(p) for p in objects)
-    return dict(positions=[app.objects[p]["pos"] for p in objects], levels=levels,
+    return dict(positions=[app.objects[p]["pos"] for p in objects],
+                sizes=[app.objects[p]["size"] for p in objects], levels=levels, requested_pwm_duty_percent=GAIN,
                 original_beta_and_profile_geometry_preserved=True,
                 original_indirect_dispatches=len(app.dispatches), real_pwm_updates=len(app.pwm))
 
@@ -287,13 +302,14 @@ def check_font(e2, image, receipt):
     assert corrupt.frees == [corrupt.allocations[0][1]] and not corrupt.bitmap_writes
     metrics = 0x81110000
     widths = {}
-    for label in ("Volume", "100%"):
+    for label, font, available in (("Volume", 0x8006EAF8, 58), ("100%", 0x8006EAF8, 46),
+                                    ("-", 0x80080888, 42), ("+", 0x80080888, 42)):
         width = 0
         for idx, ch in enumerate(label):
             following = ord(label[idx + 1]) if idx + 1 < len(label) else 0
-            assert new.call(0x8002C9C0, 0x8006B66C, metrics, ord(ch), following) == 1
+            assert new.call(0x8002C9C0, font, metrics, ord(ch), following) == 1
             width += struct.unpack("<H", new.u.mem_read(metrics + 4, 2))[0]
-        assert width + 2 * (len(label) - 1) <= 43
+        assert width + 2 * (len(label) - 1) <= available
         widths[label] = width
     return dict(decoded_bitmap_sha256=digest(original), lookup_cases=95, allocation_bytes=len(original),
                 truncated_bitmap_rejected=True, volume_label_glyph_advances_px=widths)
@@ -318,7 +334,7 @@ def check_profiles(e2, image, original, root):
             assert len(old_events) == len(new_events)
             for before, after in zip(old_events, new_events):
                 if after["kind"] == "sound_control" and after["args"][1] == 1321 and after["args"][2]:
-                    assert struct.unpack("<f", struct.pack("<I", after["args"][2]))[0] == 30.0
+                    assert struct.unpack("<f", struct.pack("<I", after["args"][2]))[0] == GAIN[60]
                     after = after | {"args": [*after["args"][:2], before["args"][2], after["args"][3]]}
                 assert before == after, (profile, scenario, before, after)
             assert new["counts"]["sound_control"] >= 1
