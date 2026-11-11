@@ -12,7 +12,7 @@ from trace_control_gui_events import (
 )
 from trace_scheduler_delay_wake import BASE
 from unicorn.arm_const import (
-    UC_ARM_REG_LR, UC_ARM_REG_PC, UC_ARM_REG_R0, UC_ARM_REG_R1, UC_ARM_REG_R2,
+    UC_ARM_REG_CPSR, UC_ARM_REG_LR, UC_ARM_REG_PC, UC_ARM_REG_R0, UC_ARM_REG_R1, UC_ARM_REG_R2,
 )
 
 CALLBACK = 0x8000CFD0
@@ -57,7 +57,7 @@ class CallbackReplay(EventReplay):
             return
         if pc == PREPARE_SECONDARY:
             self.secondary.append([hex(lr), r0, r1, r2])
-        if pc == SECONDARY_RETURN:
+        if pc == SECONDARY_RETURN and u.reg_read(UC_ARM_REG_CPSR) & (1 << 30):
             self.secondary_returns.append(r0)
         if any(lo <= pc < hi for lo, hi in NATIVE_WINDOWS):
             assert size == 4
@@ -81,9 +81,9 @@ class CallbackReplay(EventReplay):
         self.secondary, self.secondary_returns = [], []
         u = self.u
         u.mem_write(MODE, bytes((mode,)) + b"\xA5" * 10)
-        self.put(SETTING, setting)
+        self.prepare_setting(setting)
         self.put(SOUND_ENABLE, 0)
-        self.put(SECONDARY_READY, 0)
+        self.prepare_secondary()
         for offset, widget in WIDGETS.items():
             self.put(UI + offset, widget)
         self.dispatch()
@@ -96,7 +96,7 @@ class CallbackReplay(EventReplay):
             next_mode = 3 if mode == 4 else 4
             assert after == bytes((next_mode, 0)) + b"\xA5" * 4 + bytes((2, *expected[4:], 1, 0))
             assert self.secondary == [["0x8000d198", 4, 3, 255] if mode == 4 else ["0x8000d080", 4, 4, 255]]
-            assert self.secondary_returns == [0xFFFFFFFF]
+            self.check_secondary()
             prefix = expected.hex()
         else:
             assert not any((self.calls, self.producer_args, self.copies, self.drained,
@@ -110,6 +110,15 @@ class CallbackReplay(EventReplay):
                     queue_count=self.read(QUEUE + 0x38), timer_stores=self.timer_stores,
                     secondary_args=self.secondary, secondary_returns=self.secondary_returns,
                     modeled_ui_calls=self.ui_leaves)
+
+    def prepare_secondary(self):
+        self.put(SECONDARY_READY, 0)
+
+    def prepare_setting(self, setting):
+        self.put(SETTING, setting)
+
+    def check_secondary(self):
+        assert self.secondary_returns == [0xFFFFFFFF]
 
 
 def main():

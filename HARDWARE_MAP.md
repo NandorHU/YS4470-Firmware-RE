@@ -321,3 +321,7 @@ The callback replay supplies an event code and initialized UI object. Original t
 ## Diode/Buzzer event boundary (2026-11-11)
 
 The registered callback `0x8000cfd0` executes the original timer-object stores, drain and queue send in both factory images. The observed timer-object value is 100. This replay uses an idle scheduler and disabled secondary and sound paths and provides no hardware conversion, PWM or latency measurement. [ARM926 replay and firmware identities](contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-validation.json).
+
+## Secondary transport boundary (2026-11-11)
+
+The original `0x80060ccc` path copies 64 bytes and calls `0x8005fc08` with channel argument 1 if its busy byte is clear. The call was modeled. [ARM926 replay and firmware identities](contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-secondary-validation.json).

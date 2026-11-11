@@ -310,3 +310,7 @@ Use the verified second registration block at `0x800517f4` to replay `0x8000cfd0
 ## Current bounded continuation (2026-11-11)
 
 Trace the writers of 0x805ac788 and verify the enabled 0x8005f254 route from the registered 0x8000cfd0 callback with realistic queue preconditions. Keep other indirect sends and native type-6 provenance open. [ARM926 replay and firmware identities](contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-validation.json).
+
+## Secondary channel continuation (2026-11-11)
+
+Trace the device-ready and busy-clear producers for 0x805aac40 and 0x805aac70. Replay the original 0x8005fc08 channel-1 sender with bounded modeled peripheral state. Keep native type-6 provenance open. [Last verified experiment](contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-secondary-validation.json).

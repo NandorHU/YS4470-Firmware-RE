@@ -435,3 +435,7 @@ The original GUI registration helper `0x800338dc` stores a 12-byte callback desc
 ## Registered Diode/Buzzer callback dispatch (2026-11-11)
 
 The original second registration block and dispatcher route event 1 from GUI object `+0x2b8` to `0x8000cfd0`. Both factory images agree in 24 ARM926 cases. Mode 3 with word `0x805ac788 == 1` sends type 5 (`05 00 00 00 22 13`). Mode 3 with word 0 or 2 and mode 4 with any tested word send type 2 (`02 00 00 00 0e 19`). Event 2 leaves the callback and queue untouched. The scheduler is idle and selected UI leaves are modeled. The original producer is `0x80006778`, reached at callsites `0x8000d0a0` and `0x8000d0c8`. [ARM926 replay, original hashes and instruction bytes](contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-validation.json).
+
+## Diode/Buzzer setting writer and secondary sender (2026-11-11)
+
+Both factory images pass 48 ARM926 cases in total. The original writer `0x8005a3bc` stores bit 0 of the halfword at widget `+0x20` into `0x805ac788`. The registered callback uses that word to select the type-5 or type-2 record. The separate secondary command builds a 64-byte frame and reaches the original sender `0x80060ccc`. The hardware-facing `0x8005fc08` call is modeled. Writer store `0x8005a3dc`; command entry `0x8005f254`; sender call at `0x8005f2ec`. [Original-image replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-secondary-validation.json).
