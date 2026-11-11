@@ -459,3 +459,7 @@ The original timer enqueues a type-3 measurement after the AC checkbox configura
 ## Factory settings event and global volume (2026-11-11)
 
 Original registration `0x8001b2d0` binds the settings save callback `0x800453c8` to GUI context `+0x394`. In the three tested event codes, event 1 reaches the original CRC and storage routine. The other tested events leave the record unchanged. A Fast CONT checkbox update alone changes the RAM word. The factory volume handler `0x80057d34` reads slider `+0x3a0`, caps the input at 100 and stores half at settings `+0x0c`. The original preview passes half that stored value to the modeled PWM call. The global field survives the tested save/load round trip. [Save callback](contributions/COORD-DIODE-VOLUME/factory-settings-ui-validation.json) · [Slider and preview](contributions/COORD-DIODE-VOLUME/factory-volume-slider-validation.json).
+
+## AC result text from the native renderer (2026-11-11)
+
+The original result dispatcher at `0x800037c0` reaches renderer `0x8000326c` after the native checkbox, UART and refresh path. In 16 ARM926 cases, configuration 9 requests signed three-place formatting and configuration 10 requests three-place formatting without an explicit positive sign. Both use V in the tested selectors. A delayed UART reply can leave the previous stored result on screen until a later refresh. [Original replay evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-renderer-validation.json).

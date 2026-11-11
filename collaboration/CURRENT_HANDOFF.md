@@ -10,6 +10,10 @@ Beta.2 Release API currently404; retained historical installer is documented.
 The owner confirmed the old daily automation was stopped. The new coordinator
 `codex-ys4470-20261109-01a1c110` is recorded in upstream registry revision 19.
 
+## AC result text from the native renderer (2026-11-11)
+
+The original result dispatcher at `0x800037c0` reaches renderer `0x8000326c` after the native checkbox, UART and refresh path. In 16 ARM926 cases, configuration 9 requests signed three-place formatting and configuration 10 requests three-place formatting without an explicit positive sign. Both use V in the tested selectors. A delayed UART reply can leave the previous stored result on screen until a later refresh. The harness models formatter and GUI sinks, and supplies the original V3.8 unit table to both builds. Pixel output, physical scaling and independent V3.6 unit-table initialization remain open. Recover and verify the V3.6-native unit-table initialization, then extend the original AC result presentation to signed samples and unit/scale boundaries. Keep native type-6 producer provenance and physical timing open. [Original replay evidence](../contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-renderer-validation.json).
+
 ## Factory settings research (2026-11-11)
 
 Original registration `0x8001b2d0` binds the settings save callback `0x800453c8` to GUI context `+0x394`. In the three tested event codes, event 1 reaches the original CRC and storage routine. The other tested events leave the record unchanged. A Fast CONT checkbox update alone changes the RAM word. The tested global volume field survives the factory loader. A safe separate diode-volume location remains open. Registry revision 52 links the evidence from the diode-volume task. [Settings evidence](../contributions/COORD-DIODE-VOLUME/factory-settings-ui-validation.json) · [Global volume](../contributions/COORD-DIODE-VOLUME/factory-volume-slider-validation.json).

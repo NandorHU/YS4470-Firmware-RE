@@ -465,3 +465,7 @@ The original AC callback issues type 2 through handle `0x805aae90`. While the me
 ## Settings field persistence boundaries (2026-11-11)
 
 The CRC-protected factory record starts at SPI offset `0xf00000`. In a valid load the original loader overwrites record offsets `0x1c..0x2b`, `0x2d..0x35` and `0x3e..0x43` after copying. The global volume word at `+0x0c` and Fast CONT at `+0x18` survived the synthetic round trip. [Settings event and loader](contributions/COORD-DIODE-VOLUME/factory-settings-ui-validation.json) · [Global volume](contributions/COORD-DIODE-VOLUME/factory-volume-slider-validation.json).
+
+## AC result text from the native renderer (2026-11-11)
+
+The AC renderer reads its unit pointers from `0x805aae98` in the replay and passes text to widget handles held at `0x805ac38c` and `0x805ac390`. The report records the SHA-256 of the V3.8 initialization table shared by both test models. [Original replay evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-renderer-validation.json).

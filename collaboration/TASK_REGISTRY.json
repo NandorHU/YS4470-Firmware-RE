@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 52,
+  "revision": 53,
   "updated": "2026-11-11",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,8 +295,9 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Execute the native result dispatcher and renderer on the already verified AC refresh schedules. Keep conversion units and physical timing open; retain native type-6 provenance as a separate question.",
+      "next_action": "Recover and verify the V3.6-native unit-table initialization, then extend the original AC result presentation to signed samples and unit/scale boundaries. Keep native type-6 producer provenance and physical timing open.",
       "last_verified_result": {
+        "original_ac_native_renderer_cases": 16,
         "original_ac_checkbox_refresh_cases": 16,
         "original_ac_in_flight_reconfiguration_cases": 8,
         "original_ac_rapid_toggle_cases": 16,
@@ -400,6 +401,7 @@
         "resident_index_exact_extractions_published": 3501
       },
       "result_evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-renderer-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-rapid-toggle-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-refresh-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-reconfigure-validation.json",

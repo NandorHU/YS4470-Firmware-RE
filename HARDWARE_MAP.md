@@ -345,3 +345,7 @@ The original configuration and measurement stages execute in ARM926 and are sepa
 ## Settings flash sector boundary (2026-11-11)
 
 At `0x80006374` the original save reads a 4 KiB sector. A blank record prefix goes directly to one 72-byte program. A nonblank prefix takes erase, scratch merge and sixteen 256-byte program calls. Both paths preserve the adjacent synthetic bytes when transfers succeed. When the in-memory SPI model returns a short page header, the original skips that page, makes no second sector read and still reaches the completion log. This is an offline fault case. [Native sector replay](contributions/COORD-DIODE-VOLUME/factory-settings-sector-validation.json) · [Modeled transfer failure](contributions/COORD-DIODE-VOLUME/factory-settings-write-failure-validation.json).
+
+## AC result text from the native renderer (2026-11-11)
+
+The ARM926 result path reads UART-fed state through a modeled Timer0 schedule. Tests check values at modeled GUI calls. Screen pixels and physical scaling remain open. [Original replay evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-renderer-validation.json).
