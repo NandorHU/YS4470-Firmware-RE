@@ -485,3 +485,7 @@ Runtime slot `0x80d5b894` receives the locale table pointer before numeric forma
 ## Native AC widget storage and USB export (2026-11-11)
 
 The AC widget unit-pointer table begins at `0x805aae98`; USB export uses the adjacent table at `0x805ab3d8`. The export mirror contains one category byte and twenty text bytes. [ac-usb-export-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-usb-export-validation.json) · [ac-widget-text-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-widget-text-validation.json).
+
+## USB report reconstruction and original AC label geometry (2026-11-11)
+
+The label layout uses the original character-decoder table at `0x805abdc0`, the glyph cache at `0x805abe7c`, and a label word at `+0x30` which is reset to `0xffffffff` during layout. Export cache field layout is one category byte followed by twenty text bytes. [ac-widget-layout-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-widget-layout-validation.json) · [factory-usb-export-routing-validation](contributions/COORD-ADC-CADENCE/synchronous/factory-usb-export-routing-validation.json).

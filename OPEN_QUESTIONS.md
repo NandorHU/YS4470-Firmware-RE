@@ -407,3 +407,7 @@ Follow the regular renderer call to 0x80045184 through 0x8005f1a8 and the origin
 ## Native AC widget storage and USB export (2026-11-11)
 
 Map the original export category and unit routing outside AC configurations 9 and 10, then follow widget layout after native text storage. Keep native type-6 producer provenance and physical timing open. [ac-usb-export-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-usb-export-validation.json) · [ac-widget-text-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-widget-text-validation.json).
+
+## USB report reconstruction and original AC label geometry (2026-11-11)
+
+Recover the actual AC label construction and font/style bindings for GUI offsets +0x2f4 and +0x2f8. Use those bindings to extend the native layout replay. Keep native type-6 producer provenance and physical timing open. [ac-widget-layout-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-widget-layout-validation.json).

@@ -57,3 +57,26 @@ not reconstructed here. No third-party reference driver code is copied.
 ## 2026-11-09: original UART correlation proof
 
 uart_transport.c/.h add two independently written pure-C data components: bounded source framing with additive checksum and RX status/count-gated byte append. The ARM object is compiled separately and executes independently from original code;12,704 original/Python/C cases pass across both factory versions. These functions are not MMIO drivers, complete UART framing protocol or request correlation. Proven domain excludes corrupt signed RX counts, overlapping buffers and the original source-count+1 wrap at UINT_MAX. See ../contributions/COORD-ADC-CADENCE/uart/README.md for build commands, exact hashes, code-section relocation checks and limits.
+
+## USB report reconstruction and original AC label geometry (2026-11-11)
+
+The independently written `usb_measurement_export.c` and `.h` reproduce
+the text/category mirror and 64-byte report. The supported suffix paths and
+caller inputs are defined in the header. See the [original routing](../contributions/COORD-ADC-CADENCE/synchronous/factory-usb-export-routing-validation.json)
+and [compiled ARM926 comparison](../contributions/COORD-ADC-CADENCE/synchronous/usb-export-reconstruction-validation.json).
+
+With Zig 0.13.0 and a Python environment with Unicorn and pyelftools:
+
+```powershell
+zig cc -target arm-freestanding-eabi -mcpu=arm926ej_s -marm -O2 `
+  -ffreestanding -fno-builtin -std=c11 -Wall -Wextra -Werror -nostdlib `
+  '-Wl,--image-base=0x10100000' '-Wl,-e,ys4470_export_update' `
+  '-Wl,--no-gc-sections' '-Wl,-u,ys4470_export_report' `
+  reconstruction/usb_measurement_export.c -o usb-measurement-export.elf
+python -B contributions/COORD-ADC-CADENCE/synchronous/test_usb_measurement_export_reconstruction.py `
+  --elf usb-measurement-export.elf --out usb-export-reconstruction-validation.json
+```
+
+The resulting ELF is a test artifact with a freestanding entry symbol.
+The comparison executes both functions under Unicorn ARM926. USB mode,
+endpoint readiness and physical transfer belong to the caller.

@@ -67,15 +67,21 @@ class WidgetReplay(NativeNormal):
             self.return_leaf(u, lr, buffer)
             return
         if pc == LAYOUT:
-            assert (r0, lr) == (widget, return_pc) and self.read(widget + TEXT_POINTER) == POOL[widget]
-            buffer = bytes(u.mem_read(POOL[widget], BUFFER_SIZE))
-            assert buffer == (text.encode("ascii") + b"\0").ljust(BUFFER_SIZE, b"\xA5")
-            assert not u.mem_read(widget + FLAGS, 1)[0] & STATIC_TEXT
-            self.widget_actions.append(["layout", hex(widget), text])
-            self.return_leaf(u, lr, 0)
-            return
+            assert (r0, lr) == (widget, return_pc)
+            self.check_layout_input(u, widget, text)
+            return self.layout(u, widget, text, return_pc)
         assert size in (2, 4) and any(lo <= pc < hi for lo, hi in WINDOWS), hex(pc)
         self.widget_instructions[pc] = bytes(u.mem_read(pc, size)).hex()
+
+    def check_layout_input(self, u, widget, text):
+        assert self.read(widget + TEXT_POINTER) == POOL[widget]
+        buffer = bytes(u.mem_read(POOL[widget], BUFFER_SIZE))
+        assert buffer == (text.encode("ascii") + b"\0").ljust(BUFFER_SIZE, b"\xA5")
+        assert not u.mem_read(widget + FLAGS, 1)[0] & STATIC_TEXT
+        self.widget_actions.append(["layout", hex(widget), text])
+
+    def layout(self, u, widget, text, return_pc):
+        self.return_leaf(u, return_pc, 0)
 
     def write(self, u, access, address, size, value, data):
         if self.widget_call is not None:
