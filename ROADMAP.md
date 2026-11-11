@@ -326,3 +326,7 @@ Bound additional Thumb-to-ARM and synthesized references to control producer 0x8
 ## AC measurement refresh continuation (2026-11-11)
 
 Follow original 0x8005d048 refresh after the verified AC checkbox release and type-2 UART configuration. Determine which later measurement frames publish and preserve the type-6 provenance question. Review candidate alternate queue writers when a credible code path appears. [Last verified ARM926 replay](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-uart-validation.json).
+
+## AC native result presentation (2026-11-11)
+
+Execute the native result dispatcher and renderer on the already verified AC refresh schedules. Keep conversion units and physical timing open; retain native type-6 provenance as a separate question. [Last refresh replay](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-refresh-validation.json).

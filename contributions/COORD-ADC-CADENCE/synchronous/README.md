@@ -1053,3 +1053,20 @@ python -B "$task/index_control_synthesized.py" --out control-synthesized-referen
 ```
 
 [Native checkbox event](ac-checkbox-release-validation.json) · [Linked UART replay](ac-checkbox-uart-validation.json) · [Address audit](control-synthesized-references.json).
+
+## AC publication and reconfiguration during measurement (2026-11-11)
+
+The original timer enqueues a type-3 measurement after the AC checkbox configuration. The first valid reply consumes the remaining discard slot. The next valid reply publishes, and a missing reply delays publication by one request. The modeled view receives the latest stored result on a later native refresh. The checked timer deadline is the native comparison at `0x800409d8`, with an unchanged queue one model count before the deadline. Once warmup reaches 2, the tested mode-0 path changes the timer-object field from 2000 to 200. The view hooks record the result available at dispatch and render entry.
+
+A second AC release during an active measurement produces a type-2 record. The original service defers that record until the old FSM is idle. An admitted old reply can still publish before the new configuration starts. With two additional releases, the earlier request is drained from the queue or replaced in the deferred slot, and only the last reaches the UART in the tested schedules. The test sequences two native releases either side of one original service call. It verifies the difference between GUI drain at `0x80003d74` and replacement of the pending copy at `0x805ac6d0`. The old request completes or exhausts its reply wait before the new configuration can run. Repeated release in the recorded scenario can still reconfigure to the original selection.
+
+The tests supply USB-independent UART2 reply bytes and Timer0 events. Timer-list and view calls are modeled, and original SVC yields are recorded without switching tasks. The test establishes ordering of software operations under the listed schedules.
+
+```powershell
+$task = 'contributions/COORD-ADC-CADENCE/synchronous'
+python -B "$task/trace_ac_checkbox_refresh.py" --out ac-checkbox-refresh-validation.json
+python -B "$task/trace_ac_checkbox_reconfigure.py" --out ac-checkbox-reconfigure-validation.json
+python -B "$task/trace_ac_checkbox_rapid_toggle.py" --out ac-checkbox-rapid-toggle-validation.json
+```
+
+[Refresh](ac-checkbox-refresh-validation.json) · [In-flight reconfiguration](ac-checkbox-reconfigure-validation.json) · [Rapid toggles](ac-checkbox-rapid-toggle-validation.json).

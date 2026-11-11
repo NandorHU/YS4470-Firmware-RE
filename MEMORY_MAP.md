@@ -457,3 +457,7 @@ The endpoint-2 report reaches `0x805ac5e0`, length is stored at `0x805aac5c`, an
 ## AC checkbox state and control address audit (2026-11-11)
 
 The AC widget pointer is stored at GUI context `+0x300`. Original state writer `0x8003a394` updates widget halfword `+0x20`. The audit finds six literal loads of control base `0x805aae8c` and two of deferred address `0x805ac6d0`, all previously known. The tested immediate encodings produce no added reference to the handle or producer. [Native class event](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-release-validation.json) · [Bounded reference index](contributions/COORD-ADC-CADENCE/synchronous/control-synthesized-references.json).
+
+## AC queue and deferred-slot interaction (2026-11-11)
+
+The original AC callback issues type 2 through handle `0x805aae90`. While the measurement FSM is active, service places the record at `0x805ac6d0` and sets `0x805aae8c`. Subsequent queue drain or service replacement explains the two observed last-request paths. [In-flight record replay](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-reconfigure-validation.json) · [Rapid toggles](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-rapid-toggle-validation.json).
