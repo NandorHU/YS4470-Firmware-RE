@@ -396,4 +396,8 @@ The bounded initialization path preserves the control queue and its pending reco
 
 ## 2026-11-10 — Registered GUI callbacks and indirect queue producers
 
-With two records pending, each matched callback drains both and enqueues one new control record. The original callbacks emit types 0 and 1. The callback at `0x8000e5f0` emits prefix `000000000913`; the neighboring event-code probe leaves the queue unchanged. The second block's `0x8000d294` toggles its flag in every tested state. Three of the eight states emit type 2. [Original instruction bytes, factory hashes and replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-event-validation.json).
+With two records pending, each matched callback drains both and enqueues one new control record. The original callbacks emit types 0 and 1. The callback at `0x8000e5f0` emits prefix `000000000913`; the neighboring event-code probe leaves the queue unchanged. The second block's `0x8000d294` toggles its flag in every tested state. Three of the eight states emit type 2. [Original instruction bytes, factory hashes and replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-event-validation.json).
+
+## Diode/Buzzer configuration records (2026-11-11)
+
+The original second registration block and dispatcher route event 1 from GUI object `+0x2b8` to `0x8000cfd0`. Both factory images agree in 24 ARM926 cases. Mode 3 with word `0x805ac788 == 1` sends type 5 (`05 00 00 00 22 13`). Mode 3 with word 0 or 2 and mode 4 with any tested word send type 2 (`02 00 00 00 0e 19`). Event 2 leaves the callback and queue untouched. The scheduler is idle and selected UI leaves are modeled. Each dispatched case drains the two seeded records and appends the selected record. These observations end at enqueue. [ARM926 replay and firmware identities](contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-validation.json).

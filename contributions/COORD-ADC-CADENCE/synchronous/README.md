@@ -976,3 +976,17 @@ queue and timer RAM stores under the idle scheduler fixture.
 ```powershell
 python -B contributions/COORD-ADC-CADENCE/synchronous/trace_control_gui_events.py --out control-gui-event-validation.json
 ```
+
+## Second GUI block, callback `0x8000cfd0` (2026-11-11)
+
+The original second registration block and dispatcher route event 1 from GUI object `+0x2b8` to `0x8000cfd0`. Both factory images agree in 24 ARM926 cases. Mode 3 with word `0x805ac788 == 1` sends type 5 (`05 00 00 00 22 13`). Mode 3 with word 0 or 2 and mode 4 with any tested word send type 2 (`02 00 00 00 0e 19`). Event 2 leaves the callback and queue untouched. The scheduler is idle and selected UI leaves are modeled.
+
+The callback executes the original timer-object stores, a secondary helper with arguments `(4, 4, 255)` or `(4, 3, 255)`, and the queue drain at `0x80003d74`. The secondary guard at `0x805aac40` is seeded to 0, so the helper returns `0xffffffff`. The scheduler tick remains 100 and the previous event chain is restored. Physical input, timing and the downstream consumer are outside this run.
+
+From the repository root with `tools/analysis-requirements.txt` installed, run:
+
+```powershell
+python -B contributions/COORD-ADC-CADENCE/synchronous/trace_control_gui_cfd0.py --out control-gui-cfd0-validation.json
+```
+
+[Recorded cases, original hashes and executed instruction bytes](control-gui-cfd0-validation.json).

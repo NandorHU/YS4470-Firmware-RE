@@ -197,3 +197,7 @@ This snapshot covers the 93 glyph-lookup and 127 event-registration
 addresses. The existing worker received a separate catalog of 78
 byte-checked addresses from the second GUI registration block and
 the next callback.
+
+## 2026-11-11 — Diode/Buzzer callback instruction index
+
+The coordinator checked ten exact callback-window drafts at `0x8000d06c..0x8000d080` and `0x8000d118..0x8000d124` against both factory images. The independent ARM926 replay establishes the dispatcher and queue observations. [Replay and firmware identities](../contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-validation.json).

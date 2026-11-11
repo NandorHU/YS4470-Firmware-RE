@@ -430,4 +430,8 @@ The original caller at `0x80057948` enters the initializer `0x80045ea8`. At `0x8
 
 ## 2026-11-10 — Registered GUI callbacks and indirect queue producers
 
-The original GUI registration helper `0x800338dc` stores a 12-byte callback descriptor. The original event dispatcher at `0x8001ae74` calls the matched handler through `blx r1` at `0x8001b030`. Ten handlers from the original block at `0x8004c3b4` reach the original drain and control-record builder. The second block dispatches `0x8000d294`, which toggles its local flag and can produce type 2. [Original instruction bytes, factory hashes and replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-event-validation.json).
+The original GUI registration helper `0x800338dc` stores a 12-byte callback descriptor. The original event dispatcher at `0x8001ae74` calls the matched handler through `blx r1` at `0x8001b030`. Ten handlers from the original block at `0x8004c3b4` reach the original drain and control-record builder. The second block dispatches `0x8000d294`, which toggles its local flag and can produce type 2. [Original instruction bytes, factory hashes and replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-event-validation.json).
+
+## Registered Diode/Buzzer callback dispatch (2026-11-11)
+
+The original second registration block and dispatcher route event 1 from GUI object `+0x2b8` to `0x8000cfd0`. Both factory images agree in 24 ARM926 cases. Mode 3 with word `0x805ac788 == 1` sends type 5 (`05 00 00 00 22 13`). Mode 3 with word 0 or 2 and mode 4 with any tested word send type 2 (`02 00 00 00 0e 19`). Event 2 leaves the callback and queue untouched. The scheduler is idle and selected UI leaves are modeled. The original producer is `0x80006778`, reached at callsites `0x8000d0a0` and `0x8000d0c8`. [ARM926 replay, original hashes and instruction bytes](contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-validation.json).

@@ -1,7 +1,7 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 45,
-  "updated": "2026-11-10",
+  "revision": 46,
+  "updated": "2026-11-11",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
   "research_baseline_commit": "7e173ffdaa7dffd67a2d998f3fa8b28036e99485",
@@ -295,8 +295,11 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Replay the registered callback at 0x8000cfd0 from the second GUI block through the original dispatcher and resolve its type-5 and type-2 sends under real local state. Continue synthesized and register-indirect control queue paths. Native type-6 producer provenance remains open.",
+      "next_action": "Trace the writers of 0x805ac788 and verify the enabled 0x8005f254 route from the registered 0x8000cfd0 callback with realistic queue preconditions. Keep other indirect sends and native type-6 provenance open.",
       "last_verified_result": {
+        "original_cfd0_registered_dispatch_cases": 24,
+        "original_cfd0_registered_queue_sends": 12,
+        "original_cfd0_model_quotes_checked": 10,
         "profile_cases": 64,
         "transition_cases": 64,
         "candidate_cases": 16,
@@ -380,6 +383,7 @@
         "resident_index_exact_extractions_published": 3501
       },
       "result_evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-validation.json",
         "contributions/COORD-ADC-CADENCE/profile-validation.json",
         "contributions/COORD-ADC-CADENCE/README.md",
         "contributions/COORD-ADC-CADENCE/uart/validation.json",

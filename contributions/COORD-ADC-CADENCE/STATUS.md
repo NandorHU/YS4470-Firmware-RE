@@ -1,5 +1,9 @@
 # COORD-ADC-CADENCE — continuation, 2026-11-09
 
+## Current checkpoint (2026-11-11)
+
+The original second registration block and dispatcher route event 1 from GUI object `+0x2b8` to `0x8000cfd0`. Both factory images agree in 24 ARM926 cases. Mode 3 with word `0x805ac788 == 1` sends type 5 (`05 00 00 00 22 13`). Mode 3 with word 0 or 2 and mode 4 with any tested word send type 2 (`02 00 00 00 0e 19`). Event 2 leaves the callback and queue untouched. The scheduler is idle and selected UI leaves are modeled. Trace the writers of 0x805ac788 and verify the enabled 0x8005f254 route from the registered 0x8000cfd0 callback with realistic queue preconditions. Keep other indirect sends and native type-6 provenance open. [ARM926 replay and original hashes](synchronous/control-gui-cfd0-validation.json).
+
 ## Current checkpoint
 
 The [GUI event replay](synchronous/control-gui-event-validation.json) follows original callback

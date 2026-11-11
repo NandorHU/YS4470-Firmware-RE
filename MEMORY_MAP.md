@@ -436,4 +436,8 @@ The initializer at `0x80045ea8` preserves its caller's context in `r4`. Original
 
 ## 2026-11-10 — Registered GUI callbacks and indirect queue producers
 
-The event descriptor stores the handler pointer at +0, the user value at +4, and the filter byte at +8. The original dispatcher temporarily links the event frame at `0x805abc18` and restores the prior value on return. The type-2 handler uses three state bytes at `0x805abefc` and writes the outgoing pair at offsets +7 and +8 on a send. The original control handle at `0x805aae90` remains unchanged. [Original instruction bytes, factory hashes and replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-event-validation.json).
+The event descriptor stores the handler pointer at +0, the user value at +4, and the filter byte at +8. The original dispatcher temporarily links the event frame at `0x805abc18` and restores the prior value on return. The type-2 handler uses three state bytes at `0x805abefc` and writes the outgoing pair at offsets +7 and +8 on a send. The original control handle at `0x805aae90` remains unchanged. [Original instruction bytes, factory hashes and replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-event-validation.json).
+
+## Diode/Buzzer event state (2026-11-11)
+
+The callback `0x8000cfd0` tests the word at `0x805ac788` for equality to 1 on the tested 3-to-4 transition. It updates the mode byte at `0x805abefc` to 4, or changes it from 4 to 3 on the other branch. Bytes `+6..+10` of that state become `02 22 13 01 00` for type 5 and `02 0e 19 01 00` for type 2. The test seeds `0x805aac40` to 0 for the secondary command guard. [ARM926 replay and firmware identities](contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-validation.json).

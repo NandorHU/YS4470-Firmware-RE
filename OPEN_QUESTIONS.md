@@ -358,4 +358,8 @@ The two non-queue field-signature candidates now have bounded original execution
 
 ## 2026-11-10 — Registered GUI callbacks and indirect queue producers
 
-The first GUI table resolves ten concrete register-indirect producers. The second block resolves the event-to-record path of `0x8000d294` for eight binary flag combinations. Other callbacks, synthesized control-queue aliases and native type-6 creation remain open. [Original instruction bytes, factory hashes and replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-event-validation.json).
+The first GUI table resolves ten concrete register-indirect producers. The second block resolves the event-to-record path of `0x8000d294` for eight binary flag combinations. Other callbacks, synthesized control-queue aliases and native type-6 creation remain open. [Original instruction bytes, factory hashes and replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-event-validation.json).
+
+## Diode/Buzzer continuation (2026-11-11)
+
+Trace the writers of 0x805ac788 and verify the enabled 0x8005f254 route from the registered 0x8000cfd0 callback with realistic queue preconditions. Keep other indirect sends and native type-6 provenance open. [Bounded ARM926 replay and factory hashes](contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-validation.json).

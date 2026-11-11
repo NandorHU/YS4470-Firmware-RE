@@ -1,7 +1,11 @@
 # Reverse-engineering progress
 
-**Last verified update:** 2026-11-10  
+**Last verified update:** 2026-11-11  
 **Development branch:** `re/2026-11-04-pyghidra-fel`
+
+## 2026-11-11 — Original Diode/Buzzer dispatcher and queue sends
+
+The original second registration block and dispatcher route event 1 from GUI object `+0x2b8` to `0x8000cfd0`. Both factory images agree in 24 ARM926 cases. Mode 3 with word `0x805ac788 == 1` sends type 5 (`05 00 00 00 22 13`). Mode 3 with word 0 or 2 and mode 4 with any tested word send type 2 (`02 00 00 00 0e 19`). Event 2 leaves the callback and queue untouched. The scheduler is idle and selected UI leaves are modeled. There were 12 native sends and 12 filtered events across the two images. The original `0x8005f254` helper returns `0xffffffff` with the seeded secondary channel disabled. [ARM926 replay, original hashes and instruction bytes](contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-validation.json).
 
 ## Current continuation (2026-11-08)
 

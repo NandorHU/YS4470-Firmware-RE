@@ -316,4 +316,8 @@ The original GUI initializer and label routines executed against modeled allocat
 
 ## 2026-11-10 — Registered GUI callbacks and indirect queue producers
 
-The callback replay supplies an event code and initialized UI object. Original timer RAM stores disable the timer, change its period field, and re-enable it before the queue drain. The reported field values are software state from ARM926 emulation. The type-2 handler runs the original sound guard with sound disabled. [Original instruction bytes, factory hashes and replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-event-validation.json).
+The callback replay supplies an event code and initialized UI object. Original timer RAM stores disable the timer, change its period field, and re-enable it before the queue drain. The reported field values are software state from ARM926 emulation. The type-2 handler runs the original sound guard with sound disabled. [Original instruction bytes, factory hashes and replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-event-validation.json).
+
+## Diode/Buzzer event boundary (2026-11-11)
+
+The registered callback `0x8000cfd0` executes the original timer-object stores, drain and queue send in both factory images. The observed timer-object value is 100. This replay uses an idle scheduler and disabled secondary and sound paths and provides no hardware conversion, PWM or latency measurement. [ARM926 replay and firmware identities](contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-validation.json).
