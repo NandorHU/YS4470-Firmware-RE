@@ -1,0 +1,2 @@
+# The E2 replay verifies this file's exact committed bytes on every platform.
+contributions/COORD-ADC-CADENCE/profile-chain.json -text
