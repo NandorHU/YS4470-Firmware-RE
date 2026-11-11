@@ -1,0 +1,156 @@
+{
+  "schema": "ys4470.control-synthesized-references.v1",
+  "images": {
+    "V3.6": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+    "V3.8": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+  },
+  "exact_words": {
+    "0x805aae8c": [
+      {
+        "address": "0x800029fc",
+        "file_phase": 0
+      },
+      {
+        "address": "0x80003db8",
+        "file_phase": 0
+      },
+      {
+        "address": "0x8000448c",
+        "file_phase": 0
+      },
+      {
+        "address": "0x8000481c",
+        "file_phase": 0
+      },
+      {
+        "address": "0x80005d18",
+        "file_phase": 0
+      },
+      {
+        "address": "0x800067c4",
+        "file_phase": 0
+      }
+    ],
+    "0x805aae90": [],
+    "0x805ac6d0": [
+      {
+        "address": "0x80005d20",
+        "file_phase": 0
+      }
+    ],
+    "0x80006778": [],
+    "0x80061acc": [],
+    "0x800618dc": []
+  },
+  "references": [
+    {
+      "isa": "ARM",
+      "target": "0x805aae8c",
+      "kind": "literal",
+      "literal": "0x800029fc",
+      "instructions": [
+        {
+          "address": "0x800029f0",
+          "bytes": "04109fe5",
+          "assembly": "ldr r1, [pc, #4]"
+        }
+      ]
+    },
+    {
+      "isa": "ARM",
+      "target": "0x805aae8c",
+      "kind": "literal",
+      "literal": "0x80003db8",
+      "instructions": [
+        {
+          "address": "0x80003d78",
+          "bytes": "38009fe5",
+          "assembly": "ldr r0, [pc, #0x38]"
+        }
+      ]
+    },
+    {
+      "isa": "ARM",
+      "target": "0x805aae8c",
+      "kind": "literal",
+      "literal": "0x8000448c",
+      "instructions": [
+        {
+          "address": "0x800043c4",
+          "bytes": "c0309fe5",
+          "assembly": "ldr r3, [pc, #0xc0]"
+        }
+      ]
+    },
+    {
+      "isa": "ARM",
+      "target": "0x805aae8c",
+      "kind": "literal",
+      "literal": "0x8000481c",
+      "instructions": [
+        {
+          "address": "0x8000476c",
+          "bytes": "a8c09fe5",
+          "assembly": "ldr ip, [pc, #0xa8]"
+        }
+      ]
+    },
+    {
+      "isa": "ARM",
+      "target": "0x805aae8c",
+      "kind": "literal",
+      "literal": "0x80005d18",
+      "instructions": [
+        {
+          "address": "0x80005b70",
+          "bytes": "a0419fe5",
+          "assembly": "ldr r4, [pc, #0x1a0]"
+        }
+      ]
+    },
+    {
+      "isa": "ARM",
+      "target": "0x805ac6d0",
+      "kind": "literal",
+      "literal": "0x80005d20",
+      "instructions": [
+        {
+          "address": "0x80005bc8",
+          "bytes": "50019fe5",
+          "assembly": "ldr r0, [pc, #0x150]"
+        }
+      ]
+    },
+    {
+      "isa": "ARM",
+      "target": "0x805ac6d0",
+      "kind": "literal",
+      "literal": "0x80005d20",
+      "instructions": [
+        {
+          "address": "0x80005cd8",
+          "bytes": "40109fe5",
+          "assembly": "ldr r1, [pc, #0x40]"
+        }
+      ]
+    },
+    {
+      "isa": "ARM",
+      "target": "0x805aae8c",
+      "kind": "literal",
+      "literal": "0x800067c4",
+      "instructions": [
+        {
+          "address": "0x8000677c",
+          "bytes": "40009fe5",
+          "assembly": "ldr r0, [pc, #0x40]"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Aligned ARM and halfword-aligned Thumb immediate encodings are scanned throughout the raw image. Exact pointer bytes are checked at all byte phases.",
+    "ARM pairs are adjacent, same-condition operations and track one register only. No value flow across branches, computed tables, RAM aliases or interworking veneers is inferred.",
+    "Raw encoding hits may be data. Existing original-execution evidence is required to classify an actual runtime caller."
+  ]
+}

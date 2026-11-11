@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 49,
+  "revision": 50,
   "updated": "2026-11-11",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,8 +295,11 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Bound additional Thumb-to-ARM and synthesized references to control producer 0x80006778, then classify credible indirect or alternate queue writers. Keep native type-6 provenance open unless demonstrated from an original caller.",
+      "next_action": "Follow original 0x8005d048 refresh after the verified AC checkbox release and type-2 UART configuration. Determine which later measurement frames publish and preserve the type-6 provenance question. Review candidate alternate queue writers when a credible code path appears.",
       "last_verified_result": {
+        "original_ac_checkbox_release_cases": 32,
+        "original_ac_checkbox_to_uart_cases": 8,
+        "raw_control_address_materializations_per_image": 8,
         "original_usb_rx_echo_cases": 16,
         "original_gui_remaining_second_block_cases": 64,
         "original_gui_remaining_second_block_sends": 24,
@@ -394,6 +397,9 @@
         "resident_index_exact_extractions_published": 3501
       },
       "result_evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-uart-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-release-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/control-synthesized-references.json",
         "contributions/COORD-ADC-CADENCE/synchronous/control-gui-second-final-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/control-gui-second-group-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/secondary-usb-rx-validation.json",

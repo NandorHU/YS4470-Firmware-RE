@@ -333,3 +333,7 @@ Original channel-1 code saves and restores USB endpoint index `0x01c13042`, poll
 ## USB endpoint-2 receive boundary (2026-11-11)
 
 The original RX handler `0x800603f4` selects endpoint 2, copies the report from FIFO `0x01c13008` and clears RXCSR mask `0x0d` at `0x01c13086` on the tested path. These are modeled register and FIFO observations. [Original USB RX replay](contributions/COORD-ADC-CADENCE/synchronous/secondary-usb-rx-validation.json).
+
+## AC selection UART traffic (2026-11-11)
+
+With matching replies, unchecked-to-checked emits `58 04 5c 5a 5a 60 60` and checked-to-unchecked emits `58 03 5b 5a 5a 60 60`. Without replies, the original FSM sends the first command twice. In both tested outcomes the stored result stays unchanged. Bytes are recorded from CPU writes to the UART2 model and the peer response is supplied by the harness. [ARM926 replay](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-uart-validation.json).
