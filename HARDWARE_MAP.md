@@ -349,3 +349,7 @@ At `0x80006374` the original save reads a 4 KiB sector. A blank record prefix go
 ## AC result text from the native renderer (2026-11-11)
 
 The ARM926 result path reads UART-fed state through a modeled Timer0 schedule. Tests check values at modeled GUI calls. Screen pixels and physical scaling remain open. [Original replay evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-renderer-validation.json).
+
+## Signed AC samples, selector clamp and display cutoffs (2026-11-11)
+
+The original UART parser sign-extends the 24-bit sample at `0x8000474c` and clamps selector bytes above 6 to 6 at `0x80004764`. The 936 synthetic UART cases execute the original checkbox, UART IRQ, parser, dispatcher and renderer in both factory images. The settings word is seeded, and the formatter and display sinks are modeled. Physical ADC and voltage scaling remain open. [Original replay evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-result-boundaries-validation.json).

@@ -469,3 +469,7 @@ The CRC-protected factory record starts at SPI offset `0xf00000`. In a valid loa
 ## AC result text from the native renderer (2026-11-11)
 
 The AC renderer reads its unit pointers from `0x805aae98` in the replay and passes text to widget handles held at `0x805ac38c` and `0x805ac390`. The original scatter descriptors at `0x805aaa68` and `0x805aaa78` restore identical unit-table bytes in both firmware builds. [Original replay evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-renderer-validation.json).
+
+## Signed AC samples, selector clamp and display cutoffs (2026-11-11)
+
+Signed result and clamped selector are stored at `0x805ac730` and `0x805ac734`. The configuration-10 dispatcher uses settings word `0x805ac784` and float literals `0x80003c50` (2.5) and `0x80003c54` (5.5). [Original replay evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-result-boundaries-validation.json).

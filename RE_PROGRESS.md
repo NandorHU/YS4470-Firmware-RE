@@ -3,6 +3,10 @@
 **Last verified update:** 2026-11-11  
 **Development branch:** `re/2026-11-04-pyghidra-fel`
 
+## Signed AC samples, selector clamp and display cutoffs (2026-11-11)
+
+The original UART parser sign-extends the 24-bit sample at `0x8000474c` and clamps selector bytes above 6 to 6 at `0x80004764`. Configuration 9 keeps negative values and explicit signs. Configuration 10 zeroes scaled results below 2.5, or below 5.5 when settings `+0x14` equals 1. Values equal to the active cutoff survive. Both use V for all seven effective selectors. Wire sample `0x7fffff` becomes `.OL` and clears the unit. The 936 synthetic UART cases execute the original checkbox, UART IRQ, parser, dispatcher and renderer in both factory images. The settings word is seeded, and the formatter and display sinks are modeled. Eight new Ollama instruction excerpts from the previous AC scale batch matched both original images and Capstone. [Original replay evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-result-boundaries-validation.json).
+
 ## AC result text from the native renderer (2026-11-11)
 
 The original result dispatcher at `0x800037c0` reaches renderer `0x8000326c` after the native checkbox, UART and refresh path. In 16 ARM926 cases, configuration 9 requests signed three-place formatting and configuration 10 requests three-place formatting without an explicit positive sign. Both use V in the tested selectors. A delayed UART reply can leave the previous stored result on screen until a later refresh. Each factory image now initializes its own unit table. The original scatter copy and decompressor at `0x80000124` and `0x800000c8` restore all 5604 initialized bytes identically in V3.6 and V3.8. The harness models formatter and GUI sinks. Pixel output and physical scaling remain open. [Original replay evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-renderer-validation.json).
