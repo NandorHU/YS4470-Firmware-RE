@@ -1,5 +1,9 @@
 # COORD-ADC-CADENCE — continuation, 2026-11-09
 
+## USB RX and remaining GUI callback checkpoint (2026-11-11)
+
+The original USB mode-1 RX handler copies 64-byte type-3 reports from the modeled endpoint-2 FIFO, updates both guard words and stores the 61-byte record at `0x805ac640`. In the eight packet-ready cases across both images the original builder prepares the echo. Four idle cases write it to the channel-1 FIFO and four busy cases suppress that write. The second GUI registration block now has bounded original-dispatch replays for all ten callbacks. The eight newly exercised callbacks add 64 cases and 24 sends across V3.6 and V3.8. Every new send has record type 2. The 0x1c handler `0x8000f3b4` uses widget bit 0 to select argument 9 or 10 and writes timer-object value 2000. Bound additional Thumb-to-ARM and synthesized references to control producer 0x80006778, then classify credible indirect or alternate queue writers. Keep native type-6 provenance open unless demonstrated from an original caller. [USB](synchronous/secondary-usb-rx-validation.json) · [GUI](synchronous/control-gui-second-final-validation.json).
+
 ## USB TX lifecycle checkpoint (2026-11-11)
 
 The original source-26 registration suffix `0x8005fa64` installs `0x800606ec`. In one ARM926 state, original submit `0x80060ccc` and sender `0x8005fc08` write the frame, a second submit is suppressed while busy, and a ready TX interrupt clears the flag at `0x800606d4`. A subsequent submit writes its frame. The IRQ vector and exception return execute original bytes. Replay the original mode-1 USB RX endpoint through 0x800603f4 and 0x800606e0 to verify FIFO copy, guard-word initialization and RX status handling. Then trace the mode-1 producer paths that originate native type-6 control-queue records; keep hardware timing open. [Reproducible lifecycle](synchronous/secondary-usb-lifecycle-validation.json).

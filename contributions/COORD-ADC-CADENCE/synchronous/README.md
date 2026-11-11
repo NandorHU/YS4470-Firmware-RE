@@ -1019,3 +1019,20 @@ python -B "$task/trace_secondary_channel1.py" --out secondary-channel1-validatio
 python -B "$task/trace_secondary_usb_irq.py" --out secondary-usb-irq-validation.json
 python -B "$task/trace_secondary_usb_lifecycle.py" --out secondary-usb-lifecycle-validation.json
 ```
+
+## Native USB RX echo and remaining second-block callbacks (2026-11-11)
+
+The original USB mode-1 RX handler copies 64-byte type-3 reports from the modeled endpoint-2 FIFO, updates both guard words and stores the 61-byte record at `0x805ac640`. In the eight packet-ready cases across both images the original builder prepares the echo. Four idle cases write it to the channel-1 FIFO and four busy cases suppress that write. The test directly enters the original IRQ handler with modeled endpoint-2 status and FIFO contents. Logging is modeled. The active reply path executes the original application receiver, builder, sender and channel-1 FIFO writes. The record's application semantics and physical USB remain outside the test.
+
+The second GUI registration block now has bounded original-dispatch replays for all ten callbacks. The eight newly exercised callbacks add 64 cases and 24 sends across V3.6 and V3.8. Every new send has record type 2. The 0x1c handler `0x8000f3b4` uses widget bit 0 to select argument 9 or 10 and writes timer-object value 2000. `0x8000cfb8` resets two bytes and calls the modeled grid-cell writer 84 times. `0x8000d43c` flips mode byte +3 and dispatches style operations. Neither of those two callbacks touches the queue in the tested states. `0x8000d648` drains the queue and sends only for selectors 9, 10, 12 and 0x22 among the five tested. The scheduler is idle, selected UI leaves are modeled, and event codes and object state are fixture inputs.
+
+From the repository root:
+
+```powershell
+$task = 'contributions/COORD-ADC-CADENCE/synchronous'
+python -B "$task/trace_secondary_usb_rx.py" --out secondary-usb-rx-validation.json
+python -B "$task/trace_control_gui_second_group.py" --out control-gui-second-group-validation.json
+python -B "$task/trace_control_gui_second_final.py" --out control-gui-second-final-validation.json
+```
+
+[USB RX report](secondary-usb-rx-validation.json) · [Five GUI callbacks](control-gui-second-group-validation.json) · [Final GUI callbacks](control-gui-second-final-validation.json).

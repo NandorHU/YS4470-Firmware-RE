@@ -409,3 +409,7 @@ The original callback sends the verified control-queue record independently of t
 ## Secondary command transport boundary (2026-11-11)
 
 The 64-byte secondary frame can be transmitted by the original channel-1 sender and subsequent frames are suppressed while its busy byte is set. In the recorded lifecycle a ready USB TX interrupt releases that gate; these tests end at the USB register and IRQ boundary. The original primary measurement-queue result was established in the earlier dispatcher replay. [USB lifecycle](contributions/COORD-ADC-CADENCE/synchronous/secondary-usb-lifecycle-validation.json).
+
+## Second GUI registration block, complete callback coverage (2026-11-11)
+
+The second GUI registration block now has bounded original-dispatch replays for all ten callbacks. The eight newly exercised callbacks add 64 cases and 24 sends across V3.6 and V3.8. Every new send has record type 2. The 0x1c handler `0x8000f3b4` uses widget bit 0 to select argument 9 or 10 and writes timer-object value 2000. The value 2000 is the timer object's raw field in the test. [Five callbacks](contributions/COORD-ADC-CADENCE/synchronous/control-gui-second-group-validation.json) · [Three callbacks](contributions/COORD-ADC-CADENCE/synchronous/control-gui-second-final-validation.json).

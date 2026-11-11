@@ -329,3 +329,7 @@ The original `0x80060ccc` path copies 64 bytes and calls `0x8005fc08` with chann
 ## Secondary USB channel-1 transmit path (2026-11-11)
 
 Original channel-1 code saves and restores USB endpoint index `0x01c13042`, polls bit 0 at `0x01c13082`, and writes little-endian words and byte tails to FIFO address `0x01c13004`. The register model is CPU-visible; it does not simulate on-wire USB. [Sender cases](contributions/COORD-ADC-CADENCE/synchronous/secondary-channel1-validation.json) · [Interrupt lifecycle](contributions/COORD-ADC-CADENCE/synchronous/secondary-usb-lifecycle-validation.json).
+
+## USB endpoint-2 receive boundary (2026-11-11)
+
+The original RX handler `0x800603f4` selects endpoint 2, copies the report from FIFO `0x01c13008` and clears RXCSR mask `0x0d` at `0x01c13086` on the tested path. These are modeled register and FIFO observations. [Original USB RX replay](contributions/COORD-ADC-CADENCE/synchronous/secondary-usb-rx-validation.json).

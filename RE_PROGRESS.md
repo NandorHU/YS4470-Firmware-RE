@@ -3,6 +3,10 @@
 **Last verified update:** 2026-11-11  
 **Development branch:** `re/2026-11-04-pyghidra-fel`
 
+## 2026-11-11 — USB RX echo and remaining GUI callback coverage
+
+The original USB mode-1 RX handler copies 64-byte type-3 reports from the modeled endpoint-2 FIFO, updates both guard words and stores the 61-byte record at `0x805ac640`. In the eight packet-ready cases across both images the original builder prepares the echo. Four idle cases write it to the channel-1 FIFO and four busy cases suppress that write. The second GUI registration block now has bounded original-dispatch replays for all ten callbacks. The eight newly exercised callbacks add 64 cases and 24 sends across V3.6 and V3.8. Every new send has record type 2. The 0x1c handler `0x8000f3b4` uses widget bit 0 to select argument 9 or 10 and writes timer-object value 2000. The new suites pass 16 USB and 64 GUI cases. [USB RX](contributions/COORD-ADC-CADENCE/synchronous/secondary-usb-rx-validation.json) · [Five callbacks](contributions/COORD-ADC-CADENCE/synchronous/control-gui-second-group-validation.json) · [Final three callbacks](contributions/COORD-ADC-CADENCE/synchronous/control-gui-second-final-validation.json).
+
 ## 2026-11-11 — Native secondary USB sender and interrupt lifecycle
 
 The original source-26 registration suffix `0x8005fa64` installs `0x800606ec`. In one ARM926 state, original submit `0x80060ccc` and sender `0x8005fc08` write the frame, a second submit is suppressed while busy, and a ready TX interrupt clears the flag at `0x800606d4`. A subsequent submit writes its frame. The IRQ vector and exception return execute original bytes. Across both factory versions, 12 sender, 22 mode-entry/IRQ and 16 linked lifecycle cases pass. The native ten-million-poll timeout still writes to the FIFO and returns `0xffffffff` under the modeled busy state. [Sender](contributions/COORD-ADC-CADENCE/synchronous/secondary-channel1-validation.json) · [Mode-entry and IRQ](contributions/COORD-ADC-CADENCE/synchronous/secondary-usb-irq-validation.json) · [Registered lifecycle](contributions/COORD-ADC-CADENCE/synchronous/secondary-usb-lifecycle-validation.json).
