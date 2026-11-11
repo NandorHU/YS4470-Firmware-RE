@@ -390,4 +390,4 @@ The tested factory settings save trigger and global-volume load path are now tra
 
 ## AC result text from the native renderer (2026-11-11)
 
-Recover and verify the V3.6-native unit-table initialization, then extend the original AC result presentation to signed samples and unit/scale boundaries. Keep native type-6 producer provenance and physical timing open. [Original replay evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-renderer-validation.json).
+Extend the original AC result presentation to signed samples and unit/scale boundaries. Keep native type-6 producer provenance and physical timing open. [Original replay evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-renderer-validation.json).

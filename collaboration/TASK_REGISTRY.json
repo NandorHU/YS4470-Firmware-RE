@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 53,
+  "revision": 54,
   "updated": "2026-11-11",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,8 +295,9 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Recover and verify the V3.6-native unit-table initialization, then extend the original AC result presentation to signed samples and unit/scale boundaries. Keep native type-6 producer provenance and physical timing open.",
+      "next_action": "Extend the original AC result presentation to signed samples and unit/scale boundaries. Keep native type-6 producer provenance and physical timing open.",
       "last_verified_result": {
+        "original_ac_native_initializer_cases": 2,
         "original_ac_native_renderer_cases": 16,
         "original_ac_checkbox_refresh_cases": 16,
         "original_ac_in_flight_reconfiguration_cases": 8,
