@@ -493,3 +493,7 @@ The label layout uses the original character-decoder table at `0x805abdc0`, the 
 ## Factory AC label bindings, wrapping and glyphs (2026-11-11)
 
 The numeric and unit font caches use `0x805ac090` and `0x805abe8c`. The highspeed test now explicitly initializes the original calibration status and flag words at `0x805ab920` and `0x805ab91c`; the earlier highspeed report reproduces byte for byte. [factory-ac-font-glyphs-validation](contributions/COORD-ADC-CADENCE/synchronous/factory-ac-font-glyphs-validation.json) · [ac-highspeed-result-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-highspeed-result-validation.json).
+
+## Native AC draw event and packed-alpha boundary (2026-11-11)
+
+The draw context has a clip pointer at `+0x08` and a glyph callback at `+0x20`. The original painter restores the clip pointer after the tested draw. The compositor receives the original bitmap pointer and a rectangle derived from glyph offset, width, height and font baseline. [Original draw evidence](contributions/COORD-ADC-CADENCE/synchronous/factory-ac-draw-validation.json).
