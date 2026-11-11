@@ -1,0 +1,756 @@
+{
+  "schema": "ys4470.factory-ac-font-glyphs.v1",
+  "images": {
+    "V3.6": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+    "V3.8": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+  },
+  "fonts": [
+    {
+      "label_offset": "0x2f4",
+      "font": "0x804b000c",
+      "cache": "0x805ac090",
+      "glyphs": [
+        {
+          "character": "+",
+          "glyph_id": 12,
+          "advance": 83,
+          "box": [
+            76,
+            79
+          ],
+          "offsets": [
+            4,
+            12
+          ],
+          "bitmap_span": [
+            "0x803e7dff",
+            "0x803e89b9"
+          ],
+          "packed_alpha_sha256": "7ba948cbd1458742a313bdcc72a54a2576e1061159daf43a7711f886af70b90f",
+          "nonzero_alpha_samples": 1782
+        },
+        {
+          "character": "-",
+          "glyph_id": 14,
+          "advance": 65,
+          "box": [
+            46,
+            12
+          ],
+          "offsets": [
+            10,
+            46
+          ],
+          "bitmap_span": [
+            "0x803e8afc",
+            "0x803e8c10"
+          ],
+          "packed_alpha_sha256": "3bfcee474251d9d75c6cbdd54e569e2b3a51e10a47dba00b2a496ae6c4bee8d0",
+          "nonzero_alpha_samples": 551
+        },
+        {
+          "character": ".",
+          "glyph_id": 15,
+          "advance": 38,
+          "box": [
+            17,
+            17
+          ],
+          "offsets": [
+            10,
+            -6
+          ],
+          "bitmap_span": [
+            "0x803e8c10",
+            "0x803e8ca1"
+          ],
+          "packed_alpha_sha256": "9f5e92230fda28bb8a9d463e5de0f78e485c8945c7513f8b266d37389c79f7fe",
+          "nonzero_alpha_samples": 289
+        },
+        {
+          "character": "0",
+          "glyph_id": 17,
+          "advance": 83,
+          "box": [
+            72,
+            115
+          ],
+          "offsets": [
+            6,
+            -7
+          ],
+          "bitmap_span": [
+            "0x803e9989",
+            "0x803ea9b5"
+          ],
+          "packed_alpha_sha256": "b3ac4d6e2a9b1e32102549752818d2264c043fe8ddfcd80a5d358dd9a748c857",
+          "nonzero_alpha_samples": 3281
+        },
+        {
+          "character": "1",
+          "glyph_id": 18,
+          "advance": 83,
+          "box": [
+            37,
+            112
+          ],
+          "offsets": [
+            17,
+            -6
+          ],
+          "bitmap_span": [
+            "0x803ea9b5",
+            "0x803eb1cd"
+          ],
+          "packed_alpha_sha256": "1c49cbb8d42182c6be4726b0a31af7d6015f9b66de39e3a4e309a590b6e88a69",
+          "nonzero_alpha_samples": 1855
+        },
+        {
+          "character": "2",
+          "glyph_id": 19,
+          "advance": 83,
+          "box": [
+            67,
+            114
+          ],
+          "offsets": [
+            7,
+            -6
+          ],
+          "bitmap_span": [
+            "0x803eb1cd",
+            "0x803ec0b8"
+          ],
+          "packed_alpha_sha256": "a44d6cf2321fc1d9d59413bc7055dfde99cbbe45ea67d4b4bedfd4b106c38971",
+          "nonzero_alpha_samples": 2825
+        },
+        {
+          "character": "3",
+          "glyph_id": 20,
+          "advance": 83,
+          "box": [
+            66,
+            115
+          ],
+          "offsets": [
+            7,
+            -7
+          ],
+          "bitmap_span": [
+            "0x803ec0b8",
+            "0x803ecf8b"
+          ],
+          "packed_alpha_sha256": "3840f9a851c00e6bc6d6db621993546f02110c662d957d1622f203047d29cbbe",
+          "nonzero_alpha_samples": 2906
+        },
+        {
+          "character": "4",
+          "glyph_id": 21,
+          "advance": 83,
+          "box": [
+            76,
+            113
+          ],
+          "offsets": [
+            2,
+            -7
+          ],
+          "bitmap_span": [
+            "0x803ecf8b",
+            "0x803ee051"
+          ],
+          "packed_alpha_sha256": "9697164bcac94dd87443f23fb23a5cf60abf1829d594a25b1a6092a448b4b833",
+          "nonzero_alpha_samples": 3230
+        },
+        {
+          "character": "5",
+          "glyph_id": 22,
+          "advance": 83,
+          "box": [
+            63,
+            114
+          ],
+          "offsets": [
+            12,
+            -8
+          ],
+          "bitmap_span": [
+            "0x803ee051",
+            "0x803eee58"
+          ],
+          "packed_alpha_sha256": "3eb4308125a7026c5bbfa06794f2015c299f418158be1a1b41bdec4f2ff8bdff",
+          "nonzero_alpha_samples": 2980
+        },
+        {
+          "character": "6",
+          "glyph_id": 23,
+          "advance": 83,
+          "box": [
+            70,
+            115
+          ],
+          "offsets": [
+            7,
+            -7
+          ],
+          "bitmap_span": [
+            "0x803eee58",
+            "0x803efe11"
+          ],
+          "packed_alpha_sha256": "c16c5138025ca1980838d2f3a064061cb48a5c4b56ac2344f9a2c18bc5bac158",
+          "nonzero_alpha_samples": 3547
+        },
+        {
+          "character": "7",
+          "glyph_id": 24,
+          "advance": 83,
+          "box": [
+            67,
+            113
+          ],
+          "offsets": [
+            7,
+            -6
+          ],
+          "bitmap_span": [
+            "0x803efe11",
+            "0x803f0cdb"
+          ],
+          "packed_alpha_sha256": "2f6c6b6442937cce9efdf4ce97e0fa63de121c10a5e9cd24a79c0bb8d00c212a",
+          "nonzero_alpha_samples": 2325
+        },
+        {
+          "character": "8",
+          "glyph_id": 25,
+          "advance": 83,
+          "box": [
+            73,
+            115
+          ],
+          "offsets": [
+            5,
+            -7
+          ],
+          "bitmap_span": [
+            "0x803f0cdb",
+            "0x803f1d41"
+          ],
+          "packed_alpha_sha256": "5ffb7929adf26c60e1b6f006a9b4ec38b90e2f14679716d5b517078f2b7e0756",
+          "nonzero_alpha_samples": 3965
+        },
+        {
+          "character": "9",
+          "glyph_id": 26,
+          "advance": 83,
+          "box": [
+            70,
+            115
+          ],
+          "offsets": [
+            6,
+            -7
+          ],
+          "bitmap_span": [
+            "0x803f1d41",
+            "0x803f2cfa"
+          ],
+          "packed_alpha_sha256": "6e50a8c708e6c20c6dcde508116bbcfee02d45baf59ca1023d9c47b3ed8ab30c",
+          "nonzero_alpha_samples": 3534
+        },
+        {
+          "character": "O",
+          "glyph_id": 48,
+          "advance": 112,
+          "box": [
+            97,
+            115
+          ],
+          "offsets": [
+            7,
+            -7
+          ],
+          "bitmap_span": [
+            "0x804050cb",
+            "0x80406695"
+          ],
+          "packed_alpha_sha256": "780e255ee6730e30f75e925054b1b33b1d439bc3b65e3529ff74e73c4d9c1636",
+          "nonzero_alpha_samples": 3883
+        },
+        {
+          "character": "L",
+          "glyph_id": 45,
+          "advance": 78,
+          "box": [
+            65,
+            113
+          ],
+          "offsets": [
+            11,
+            -6
+          ],
+          "bitmap_span": [
+            "0x80401a32",
+            "0x8040288b"
+          ],
+          "packed_alpha_sha256": "08f118fe63f8dc1fe9eee00d2c6f5b525a7b0a3d629a76b6d64414a67a76a355",
+          "nonzero_alpha_samples": 2066
+        },
+        {
+          "character": "V",
+          "glyph_id": 55,
+          "advance": 96,
+          "box": [
+            95,
+            112
+          ],
+          "offsets": [
+            0,
+            -6
+          ],
+          "bitmap_span": [
+            "0x8040d1e7",
+            "0x8040e6af"
+          ],
+          "packed_alpha_sha256": "798612cd3885f510356254fd00030e4b47d782ca356569080a3667864bc2877b",
+          "nonzero_alpha_samples": 2958
+        }
+      ]
+    },
+    {
+      "label_offset": "0x2f8",
+      "font": "0x800d0bb4",
+      "cache": "0x805abe8c",
+      "glyphs": [
+        {
+          "character": "+",
+          "glyph_id": 12,
+          "advance": 27,
+          "box": [
+            25,
+            26
+          ],
+          "offsets": [
+            1,
+            4
+          ],
+          "bitmap_span": [
+            "0x800bb7a0",
+            "0x800bb8e5"
+          ],
+          "packed_alpha_sha256": "cfad98758afc4d01e3875dbf28dd3ffde8014bdf89fc93cae411ca0264546ab8",
+          "nonzero_alpha_samples": 210
+        },
+        {
+          "character": "-",
+          "glyph_id": 14,
+          "advance": 21,
+          "box": [
+            15,
+            4
+          ],
+          "offsets": [
+            3,
+            15
+          ],
+          "bitmap_span": [
+            "0x800bb90c",
+            "0x800bb92a"
+          ],
+          "packed_alpha_sha256": "2aaf31a8b18c95cc642334313404de4c9e7f3fe8b147446fd3245fd676d7eb48",
+          "nonzero_alpha_samples": 60
+        },
+        {
+          "character": ".",
+          "glyph_id": 15,
+          "advance": 12,
+          "box": [
+            6,
+            6
+          ],
+          "offsets": [
+            3,
+            -2
+          ],
+          "bitmap_span": [
+            "0x800bb92a",
+            "0x800bb93c"
+          ],
+          "packed_alpha_sha256": "e12c246663f46f6359d15fed86a667c1caec721bd91aeaa659c7f8b91983650a",
+          "nonzero_alpha_samples": 36
+        },
+        {
+          "character": "0",
+          "glyph_id": 17,
+          "advance": 27,
+          "box": [
+            24,
+            36
+          ],
+          "offsets": [
+            1,
+            -2
+          ],
+          "bitmap_span": [
+            "0x800bba92",
+            "0x800bbc42"
+          ],
+          "packed_alpha_sha256": "2e71dd7d9a741d72b76adcb41960c971947716a17a6b3a55588189ea774f682a",
+          "nonzero_alpha_samples": 376
+        },
+        {
+          "character": "1",
+          "glyph_id": 18,
+          "advance": 27,
+          "box": [
+            12,
+            36
+          ],
+          "offsets": [
+            5,
+            -2
+          ],
+          "bitmap_span": [
+            "0x800bbc42",
+            "0x800bbd1a"
+          ],
+          "packed_alpha_sha256": "4114ff17715ac6fd46dfa7b540438e6eb67e23ea380e0c06cc7c9e2732bce11f",
+          "nonzero_alpha_samples": 180
+        },
+        {
+          "character": "2",
+          "glyph_id": 19,
+          "advance": 27,
+          "box": [
+            22,
+            36
+          ],
+          "offsets": [
+            2,
+            -2
+          ],
+          "bitmap_span": [
+            "0x800bbd1a",
+            "0x800bbea6"
+          ],
+          "packed_alpha_sha256": "50fbeaef5caa5c40fb73e8927aaa8848bdefd2f38ec7658ea5d2e12119a80343",
+          "nonzero_alpha_samples": 324
+        },
+        {
+          "character": "3",
+          "glyph_id": 20,
+          "advance": 27,
+          "box": [
+            22,
+            36
+          ],
+          "offsets": [
+            2,
+            -2
+          ],
+          "bitmap_span": [
+            "0x800bbea6",
+            "0x800bc032"
+          ],
+          "packed_alpha_sha256": "4fe043e9f870a875e018d586e9515f5ca76a7fee19f8a4d85ebec76f81c64962",
+          "nonzero_alpha_samples": 335
+        },
+        {
+          "character": "4",
+          "glyph_id": 21,
+          "advance": 27,
+          "box": [
+            25,
+            36
+          ],
+          "offsets": [
+            0,
+            -2
+          ],
+          "bitmap_span": [
+            "0x800bc032",
+            "0x800bc1f4"
+          ],
+          "packed_alpha_sha256": "8076bc0e5e4ed5d2c7c720b62bfe7b93ea5d84ae38d3cf5c5ccd0d04845b38a3",
+          "nonzero_alpha_samples": 371
+        },
+        {
+          "character": "5",
+          "glyph_id": 22,
+          "advance": 27,
+          "box": [
+            21,
+            36
+          ],
+          "offsets": [
+            3,
+            -2
+          ],
+          "bitmap_span": [
+            "0x800bc1f4",
+            "0x800bc36e"
+          ],
+          "packed_alpha_sha256": "e2b1d8f6234fb04ed6cd995910fc481794275ac9e74b932828f27a42896f9bbe",
+          "nonzero_alpha_samples": 345
+        },
+        {
+          "character": "6",
+          "glyph_id": 23,
+          "advance": 27,
+          "box": [
+            23,
+            36
+          ],
+          "offsets": [
+            2,
+            -2
+          ],
+          "bitmap_span": [
+            "0x800bc36e",
+            "0x800bc50c"
+          ],
+          "packed_alpha_sha256": "4580478e1865ffd3088c048b36e4db0ca5fbddeea0e12b9b94367c182d10efb1",
+          "nonzero_alpha_samples": 407
+        },
+        {
+          "character": "7",
+          "glyph_id": 24,
+          "advance": 27,
+          "box": [
+            22,
+            36
+          ],
+          "offsets": [
+            2,
+            -2
+          ],
+          "bitmap_span": [
+            "0x800bc50c",
+            "0x800bc698"
+          ],
+          "packed_alpha_sha256": "938309c1b0acb2cb638e1384aab024cf691f924122e5937262e0ade1ed2ca5af",
+          "nonzero_alpha_samples": 263
+        },
+        {
+          "character": "8",
+          "glyph_id": 25,
+          "advance": 27,
+          "box": [
+            24,
+            36
+          ],
+          "offsets": [
+            1,
+            -2
+          ],
+          "bitmap_span": [
+            "0x800bc698",
+            "0x800bc848"
+          ],
+          "packed_alpha_sha256": "1e4eed186a1920072c6c88433c9b9e069b771beaed0ca1815fa06e4705debc4c",
+          "nonzero_alpha_samples": 457
+        },
+        {
+          "character": "9",
+          "glyph_id": 26,
+          "advance": 27,
+          "box": [
+            23,
+            36
+          ],
+          "offsets": [
+            2,
+            -2
+          ],
+          "bitmap_span": [
+            "0x800bc848",
+            "0x800bc9e6"
+          ],
+          "packed_alpha_sha256": "1629b03dd6592d84c264bda3f1cefe498517d561b58a737f43773b4286a11855",
+          "nonzero_alpha_samples": 406
+        },
+        {
+          "character": "O",
+          "glyph_id": 48,
+          "advance": 36,
+          "box": [
+            32,
+            36
+          ],
+          "offsets": [
+            2,
+            -2
+          ],
+          "bitmap_span": [
+            "0x800be8fc",
+            "0x800beb3c"
+          ],
+          "packed_alpha_sha256": "1b8952d71739c4e982b5d2f8935a2743914de8b876aa7ad3967f70965896ea99",
+          "nonzero_alpha_samples": 451
+        },
+        {
+          "character": "L",
+          "glyph_id": 45,
+          "advance": 25,
+          "box": [
+            22,
+            37
+          ],
+          "offsets": [
+            3,
+            -2
+          ],
+          "bitmap_span": [
+            "0x800be32d",
+            "0x800be4c4"
+          ],
+          "packed_alpha_sha256": "faec35410c9fc4b7dd7f97c3c007342a33d920c69326d14cb3f00d6567d7a53f",
+          "nonzero_alpha_samples": 245
+        },
+        {
+          "character": "V",
+          "glyph_id": 55,
+          "advance": 31,
+          "box": [
+            31,
+            36
+          ],
+          "offsets": [
+            0,
+            -2
+          ],
+          "bitmap_span": [
+            "0x800bf66c",
+            "0x800bf89a"
+          ],
+          "packed_alpha_sha256": "492aea804a0d525d4124269acc22b66f9b42129ebaace2f6c7646b33466a3db8",
+          "nonzero_alpha_samples": 347
+        }
+      ]
+    }
+  ],
+  "instruction_bytes": {
+    "0x8001d5b0": "000051e3",
+    "0x8001d5b4": "0000a003",
+    "0x8001d5b8": "1eff2f01",
+    "0x8001d5bc": "f0472de9",
+    "0x8001d5c0": "104090e5",
+    "0x8001d5c4": "0160a0e1",
+    "0x8001d5c8": "141094e5",
+    "0x8001d5cc": "08d04de2",
+    "0x8001d5d0": "000051e3",
+    "0x8001d5d4": "0400000a",
+    "0x8001d5d8": "000091e5",
+    "0x8001d5dc": "060050e1",
+    "0x8001d5e0": "04009105",
+    "0x8001d5e4": "08d08d02",
+    "0x8001d5e8": "f087bd08",
+    "0x8001d5ec": "b251d4e1",
+    "0x8001d5f0": "0020a0e3",
+    "0x8001d5f4": "fe0cd5e3",
+    "0x8001d5f8": "08309415",
+    "0x8001d5fc": "0470a013",
+    "0x8001d600": "0b00000a",
+    "0x8001d604": "020182e0",
+    "0x8001d608": "00c193e7",
+    "0x8001d60c": "000187e0",
+    "0x8001d610": "b00093e1",
+    "0x8001d614": "0cc046e0",
+    "0x8001d618": "0c0050e1",
+    "0x8001d61c": "0d00002a",
+    "0x8001d658": "025182e0",
+    "0x8001d65c": "1200a0e3",
+    "0x8001d660": "050180e0",
+    "0x8001d664": "0000d3e7",
+    "0x8001d668": "0070a0e3",
+    "0x8001d66c": "0680a0e3",
+    "0x8001d670": "020050e3",
+    "0x8001d674": "0a00000a",
+    "0x8001d6a4": "050188e0",
+    "0x8001d6a8": "b00093e1",
+    "0x8001d6ac": "0c7080e0",
+    "0x8001d6b0": "300000ea",
+    "0x8001d778": "140094e5",
+    "0x8001d77c": "000050e3",
+    "0x8001d780": "0200000a",
+    "0x8001d784": "006080e5",
+    "0x8001d788": "140094e5",
+    "0x8001d78c": "047080e5",
+    "0x8001d790": "0700a0e1",
+    "0x8001d794": "08d08de2",
+    "0x8001d798": "f087bde8",
+    "0x8002c844": "10402de9",
+    "0x8002c848": "090051e3",
+    "0x8002c84c": "104090e5",
+    "0x8002c850": "2010a003",
+    "0x8002c854": "55c3ffeb",
+    "0x8002c858": "000050e3",
+    "0x8002c85c": "1080bd08",
+    "0x8002c860": "041094e5",
+    "0x8002c864": "800181e0",
+    "0x8002c868": "b211d4e1",
+    "0x8002c86c": "030911e3",
+    "0x8002c870": "0000a013",
+    "0x8002c874": "1080bd18",
+    "0x8002c878": "000090e5",
+    "0x8002c87c": "001094e5",
+    "0x8002c880": "0006a0e1",
+    "0x8002c884": "2006a0e1",
+    "0x8002c888": "010080e0",
+    "0x8002c88c": "1080bde8",
+    "0x8002c9c0": "f0472de9",
+    "0x8002c9c4": "090052e3",
+    "0x8002c9c8": "0140a0e1",
+    "0x8002c9cc": "0050a0e1",
+    "0x8002c9d0": "0080a0e3",
+    "0x8002c9d4": "2020a003",
+    "0x8002c9d8": "107095e5",
+    "0x8002c9dc": "08d04de2",
+    "0x8002c9e0": "03a0a0e1",
+    "0x8002c9e4": "0180a003",
+    "0x8002c9e8": "0210a0e1",
+    "0x8002c9ec": "efc2ffeb",
+    "0x8002c9f0": "009050e2",
+    "0x8002c9f4": "08d08d02",
+    "0x8002c9f8": "f087bd08",
+    "0x8002c9fc": "0c0097e5",
+    "0x8002ca00": "0060a0e3",
+    "0x8002ca04": "000050e3",
+    "0x8002ca08": "1600000a",
+    "0x8002ca68": "b011d7e1",
+    "0x8002ca6c": "040097e5",
+    "0x8002ca70": "000058e3",
+    "0x8002ca74": "960101e0",
+    "0x8002ca78": "4122a0e1",
+    "0x8002ca7c": "8911b0e7",
+    "0x8002ca80": "211aa0e1",
+    "0x8002ca84": "8110a011",
+    "0x8002ca88": "021081e0",
+    "0x8002ca8c": "081081e2",
+    "0x8002ca90": "2112a0e1",
+    "0x8002ca94": "b410c4e1",
+    "0x8002ca98": "0510d0e5",
+    "0x8002ca9c": "b810c4e1",
+    "0x8002caa0": "0410d0e5",
+    "0x8002caa4": "b610c4e1",
+    "0x8002caa8": "d620d0e1",
+    "0x8002caac": "ba20c4e1",
+    "0x8002cab0": "d700d0e1",
+    "0x8002cab4": "bc00c4e1",
+    "0x8002cab8": "0e00d4e5",
+    "0x8002cabc": "b221d7e1",
+    "0x8002cac0": "0f00c0e3",
+    "0x8002cac4": "8229a0e1",
+    "0x8002cac8": "220e80e1",
+    "0x8002cacc": "1000c0e3",
+    "0x8002cad0": "0e00c4e5",
+    "0x8002cad4": "0200000a",
+    "0x8002cae4": "0100a0e3",
+    "0x8002cae8": "08d08de2",
+    "0x8002caec": "f087bde8"
+  },
+  "limits": [
+    "Original descriptor and cold/warm bitmap lookup execute for each glyph.",
+    "Alpha spans are checked against the original file and represented by SHA-256.",
+    "No glyph compositing, LCD pixels, or physical display timing are exercised."
+  ]
+}

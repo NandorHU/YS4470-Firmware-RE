@@ -20,7 +20,7 @@ OUTER_RECT = (10, 20, 89, 69)
 WINDOWS = (
     (LAYOUT, 0x8003181C), (0x80031E88, 0x80031E98), (0x80035B44, 0x80035C08),
     (0x80021874, 0x800218A8), (0x8003924C, 0x80039294),
-    (0x80041078, 0x80041690), (0x8000B404, 0x8000B49C),
+    (0x80041078, 0x80041690), (0x8000B300, 0x8000B800),
     (0x8001D5B0, 0x8001D79C), (0x8002C8A4, 0x8002CBCC),
 )
 
@@ -42,20 +42,45 @@ class LayoutReplay(WidgetReplay):
         self.advances = [(struct.unpack_from("<I", raw, GLYPHS + 8 * index - BASE)[0] >> 20) + 8
                          for index in range(1, 96)]
         self.layout_call = None
+        self.layout_lines = []
         self.layout_rows, self.style_reads = [], []
         self.layout_instructions = {}
 
     def prepare_refresh_state(self, initial, warmup):
         setup = super().prepare_refresh_state(initial, warmup)
         self.u.mem_write(CHARACTER_ROUTINES, self.characters)
-        self.u.mem_write(CACHE, bytes(8))
+        for cache in self.font_caches():
+            self.u.mem_write(cache, bytes(8))
         return setup
 
     def layout(self, u, widget, text, return_pc):
         assert self.layout_call is None
-        u.mem_write(widget + 0x14, struct.pack("<4h", *OUTER_RECT))
+        u.mem_write(widget + 0x14, struct.pack("<4h", *self.outer_rect(widget)))
+        self.layout_lines.clear()
         self.layout_call = (widget, text, return_pc)
         self.layout_instructions[LAYOUT] = bytes(u.mem_read(LAYOUT, 4)).hex()
+
+    def outer_rect(self, widget):
+        return OUTER_RECT
+
+    def styles_for(self, widget):
+        return {0x32: 1, 0x12: self.padding, 0x13: self.padding, 0x10: 2, 0x11: 3,
+                0x57: FONT, 0x59: self.line, 0x58: self.letter, 1: 80, 4: 50}
+
+    def font_caches(self):
+        return (CACHE,)
+
+    def content_rect(self, widget):
+        left, top, right, bottom = self.outer_rect(widget)
+        styles = self.styles_for(widget)
+        border = styles[0x32]
+        return (left + border + styles[0x12], top + border + styles[0x10],
+                right - border - styles[0x13], bottom - border - styles[0x11])
+
+    def check_dimensions(self, widget, text, width, height):
+        advances = [self.advances[ord(char) - 32] >> 4 for char in text]
+        positive = [value for value in advances if value > 0]
+        assert (width, height) == (sum(positive) + max(0, len(positive) - 1) * self.letter, self.line_height)
 
     def code(self, u, pc, size, data):
         if self.layout_call is None:
@@ -70,10 +95,8 @@ class LayoutReplay(WidgetReplay):
         ))
         if pc == STYLE:
             assert r0 == widget and r1 == 0
-            styles = {0x32: 1, 0x12: self.padding, 0x13: self.padding, 0x10: 2, 0x11: 3,
-                      0x57: FONT, 0x59: self.line, 0x58: self.letter, 1: 80, 4: 50}
             self.style_reads.append(r2)
-            self.return_leaf(u, lr, styles[r2])
+            self.return_leaf(u, lr, self.styles_for(widget)[r2])
             return
         if pc == INVALIDATE:
             assert (r0, lr) == (widget, 0x80031E90)
@@ -81,16 +104,18 @@ class LayoutReplay(WidgetReplay):
             return
         if pc == AFTER_RECTANGLE:
             bounds = struct.unpack("<4h", u.mem_read(sp + 0x48, 8))
-            assert bounds == (OUTER_RECT[0] + 1 + self.padding, OUTER_RECT[1] + 3,
-                              OUTER_RECT[2] - 1 - self.padding, OUTER_RECT[3] - 4)
+            assert bounds == self.content_rect(widget)
         if pc == MEASURE:
-            assert (self.string(r1), r2, r3, lr) == (text, FONT, self.letter, AFTER_MEASURE)
-            assert struct.unpack("<3I", u.mem_read(sp, 12)) == (self.line, 78 - 2 * self.padding, 2)
+            styles = self.styles_for(widget)
+            left, _, right, _ = self.content_rect(widget)
+            assert (self.string(r1), r2, r3, lr) == (text, styles[0x57], styles[0x58], AFTER_MEASURE)
+            flags = (self.text_flags & 0x30) >> 4
+            assert struct.unpack("<3I", u.mem_read(sp, 12)) == (styles[0x59], right - left + 1, flags)
+        if pc == 0x80041140:
+            self.layout_lines.append(self.string(r0)[:r1])
         if pc == AFTER_MEASURE:
             width, height = struct.unpack("<2h", u.mem_read(sp + 0x44, 4))
-            advances = [self.advances[ord(char) - 32] >> 4 for char in text]
-            positive = [value for value in advances if value > 0]
-            assert (width, height) == (sum(positive) + max(0, len(positive) - 1) * self.letter, self.line_height)
+            self.check_dimensions(widget, text, width, height)
             self.layout_rows.append([hex(widget), text, width, height])
         assert size == 4 and any(lo <= pc < hi for lo, hi in WINDOWS), hex(pc)
         self.layout_instructions[pc] = bytes(u.mem_read(pc, size)).hex()
@@ -100,7 +125,7 @@ class LayoutReplay(WidgetReplay):
             if address == self.layout_call[0] + 0x30:
                 assert (u.reg_read(UC_ARM_REG_PC), size, value) == (0x80031724, 4, 0xFFFFFFFF)
                 return
-            if address in (CACHE, CACHE + 4):
+            if any(cache <= address < cache + 8 for cache in self.font_caches()):
                 assert size == 4
                 return
         super().write(u, access, address, size, value, data)

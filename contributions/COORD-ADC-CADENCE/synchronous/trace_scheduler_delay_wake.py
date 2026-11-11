@@ -38,6 +38,8 @@ WINDOWS = (
 
 
 class DelayReplay:
+    invoke_instruction_limit = 10_000
+
     def __init__(self, raw):
         self.u = u = Uc(UC_ARCH_ARM, UC_MODE_ARM)
         u.ctl_set_cpu_model(UC_CPU_ARM_926)
@@ -94,7 +96,7 @@ class DelayReplay:
         u.reg_write(UC_ARM_REG_CPSR, 0x13)
         u.reg_write(UC_ARM_REG_SP, STACK)
         u.reg_write(UC_ARM_REG_LR, RET)
-        u.emu_start(entry, 0, count=10000)
+        u.emu_start(entry, 0, count=self.invoke_instruction_limit)
         assert u.reg_read(UC_ARM_REG_PC) == stop
         assert u.reg_read(UC_ARM_REG_SP) == STACK and self.read(SCHED + 0x3C) == 0
         assert not u.reg_read(UC_ARM_REG_CPSR) & 0x80
