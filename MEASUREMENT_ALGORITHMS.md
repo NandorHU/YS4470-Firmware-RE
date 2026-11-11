@@ -405,3 +405,7 @@ The original second registration block and dispatcher route event 1 from GUI obj
 ## Diode/Buzzer setting and secondary frame (2026-11-11)
 
 The original callback sends the verified control-queue record independently of the secondary sender outcomes tested. The separate frame starts `00 10 40 02 04 04 ff ff` when moving to mode 4 and `00 10 40 02 04 03 ff ff` when moving to mode 3, followed by 56 zero bytes. [Original-image replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-secondary-validation.json).
+
+## Secondary command transport boundary (2026-11-11)
+
+The 64-byte secondary frame can be transmitted by the original channel-1 sender and subsequent frames are suppressed while its busy byte is set. In the recorded lifecycle a ready USB TX interrupt releases that gate; these tests end at the USB register and IRQ boundary. The original primary measurement-queue result was established in the earlier dispatcher replay. [USB lifecycle](contributions/COORD-ADC-CADENCE/synchronous/secondary-usb-lifecycle-validation.json).

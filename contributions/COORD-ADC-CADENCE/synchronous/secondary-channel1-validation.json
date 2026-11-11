@@ -1,0 +1,593 @@
+{
+  "schema": "ys4470.secondary-channel1.v1",
+  "images": {
+    "V3.6": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+    "V3.8": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+  },
+  "cases": [
+    {
+      "name": "disabled",
+      "input": "001040020404ffff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "enabled": 0,
+      "chunk_limit": 64,
+      "modeled_polls": [],
+      "native_timeout_polls": null,
+      "poll_counters_before_fifo": [],
+      "result": 4294967295,
+      "events": [],
+      "log_return_sites": [
+        "0x8005fcfc"
+      ],
+      "coverage": {
+        "0x8005fc08": "f84f2de9",
+        "0x8005fc38": "2d00000a",
+        "0x8005fd00": "f88fbde8"
+      }
+    },
+    {
+      "name": "ready",
+      "input": "001040020404ffff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "enabled": 1,
+      "chunk_limit": 64,
+      "modeled_polls": [
+        0
+      ],
+      "native_timeout_polls": null,
+      "poll_counters_before_fifo": [
+        10000000
+      ],
+      "result": 0,
+      "events": [
+        [
+          "index",
+          1
+        ],
+        [
+          "fifo",
+          4,
+          "00104002"
+        ],
+        [
+          "fifo",
+          4,
+          "0404ffff"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "txcsr",
+          1
+        ],
+        [
+          "index",
+          3
+        ]
+      ],
+      "log_return_sites": [
+        "0x8005fc48"
+      ],
+      "coverage": {
+        "0x800078dc": "b208d2e1",
+        "0x800078e4": "010080e3",
+        "0x800079d4": "4200d0e5",
+        "0x80007be4": "4200c1e5",
+        "0x80007c58": "00c083e5",
+        "0x8005fc08": "f84f2de9",
+        "0x8005fc38": "2d00000a",
+        "0x8005fc64": "0200a0e3",
+        "0x8005fc84": "070054e1",
+        "0x8005fc9c": "e69ffeeb",
+        "0x8005fcbc": "0600000a",
+        "0x8005fcc8": "e5ffffca",
+        "0x8005fcd8": "f88fbde8"
+      }
+    },
+    {
+      "name": "two_busy_polls",
+      "input": "001040020404ffff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "enabled": 1,
+      "chunk_limit": 64,
+      "modeled_polls": [
+        1,
+        1,
+        0
+      ],
+      "native_timeout_polls": null,
+      "poll_counters_before_fifo": [
+        9999998
+      ],
+      "result": 0,
+      "events": [
+        [
+          "index",
+          1
+        ],
+        [
+          "fifo",
+          4,
+          "00104002"
+        ],
+        [
+          "fifo",
+          4,
+          "0404ffff"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "txcsr",
+          1
+        ],
+        [
+          "index",
+          3
+        ]
+      ],
+      "log_return_sites": [
+        "0x8005fc48"
+      ],
+      "coverage": {
+        "0x800078dc": "b208d2e1",
+        "0x800078e4": "010080e3",
+        "0x800079d4": "4200d0e5",
+        "0x80007be4": "4200c1e5",
+        "0x80007c58": "00c083e5",
+        "0x8005fc08": "f84f2de9",
+        "0x8005fc38": "2d00000a",
+        "0x8005fc64": "0200a0e3",
+        "0x8005fc84": "070054e1",
+        "0x8005fc9c": "e69ffeeb",
+        "0x8005fcbc": "0600000a",
+        "0x8005fcc8": "e5ffffca",
+        "0x8005fcd8": "f88fbde8"
+      }
+    },
+    {
+      "name": "two_chunks_with_byte_tails",
+      "input": "000102030405060708090a",
+      "enabled": 1,
+      "chunk_limit": 7,
+      "modeled_polls": [
+        0,
+        1,
+        0
+      ],
+      "native_timeout_polls": null,
+      "poll_counters_before_fifo": [
+        10000000,
+        9999999
+      ],
+      "result": 0,
+      "events": [
+        [
+          "index",
+          1
+        ],
+        [
+          "fifo",
+          4,
+          "00010203"
+        ],
+        [
+          "fifo",
+          1,
+          "04"
+        ],
+        [
+          "fifo",
+          1,
+          "05"
+        ],
+        [
+          "fifo",
+          1,
+          "06"
+        ],
+        [
+          "txcsr",
+          1
+        ],
+        [
+          "fifo",
+          4,
+          "0708090a"
+        ],
+        [
+          "txcsr",
+          1
+        ],
+        [
+          "index",
+          3
+        ]
+      ],
+      "log_return_sites": [
+        "0x8005fc48"
+      ],
+      "coverage": {
+        "0x800078dc": "b208d2e1",
+        "0x800078e4": "010080e3",
+        "0x800079d4": "4200d0e5",
+        "0x80007be4": "4200c1e5",
+        "0x80007c58": "00c083e5",
+        "0x80007c70": "00c0c3e5",
+        "0x8005fc08": "f84f2de9",
+        "0x8005fc38": "2d00000a",
+        "0x8005fc64": "0200a0e3",
+        "0x8005fc84": "070054e1",
+        "0x8005fc9c": "e69ffeeb",
+        "0x8005fcbc": "0600000a",
+        "0x8005fcc8": "e5ffffca",
+        "0x8005fcd8": "f88fbde8"
+      }
+    },
+    {
+      "name": "three_chunks",
+      "input": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20",
+      "enabled": 1,
+      "chunk_limit": 16,
+      "modeled_polls": [
+        0,
+        0,
+        0
+      ],
+      "native_timeout_polls": null,
+      "poll_counters_before_fifo": [
+        10000000,
+        10000000,
+        10000000
+      ],
+      "result": 0,
+      "events": [
+        [
+          "index",
+          1
+        ],
+        [
+          "fifo",
+          4,
+          "00010203"
+        ],
+        [
+          "fifo",
+          4,
+          "04050607"
+        ],
+        [
+          "fifo",
+          4,
+          "08090a0b"
+        ],
+        [
+          "fifo",
+          4,
+          "0c0d0e0f"
+        ],
+        [
+          "txcsr",
+          1
+        ],
+        [
+          "fifo",
+          4,
+          "10111213"
+        ],
+        [
+          "fifo",
+          4,
+          "14151617"
+        ],
+        [
+          "fifo",
+          4,
+          "18191a1b"
+        ],
+        [
+          "fifo",
+          4,
+          "1c1d1e1f"
+        ],
+        [
+          "txcsr",
+          1
+        ],
+        [
+          "fifo",
+          1,
+          "20"
+        ],
+        [
+          "txcsr",
+          1
+        ],
+        [
+          "index",
+          3
+        ]
+      ],
+      "log_return_sites": [
+        "0x8005fc48"
+      ],
+      "coverage": {
+        "0x800078dc": "b208d2e1",
+        "0x800078e4": "010080e3",
+        "0x800079d4": "4200d0e5",
+        "0x80007be4": "4200c1e5",
+        "0x80007c58": "00c083e5",
+        "0x80007c70": "00c0c3e5",
+        "0x8005fc08": "f84f2de9",
+        "0x8005fc38": "2d00000a",
+        "0x8005fc64": "0200a0e3",
+        "0x8005fc84": "070054e1",
+        "0x8005fc9c": "e69ffeeb",
+        "0x8005fcbc": "0600000a",
+        "0x8005fcc8": "e5ffffca",
+        "0x8005fcd8": "f88fbde8"
+      }
+    },
+    {
+      "name": "native_poll_timeout",
+      "input": "001040020404ffff0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "enabled": 1,
+      "chunk_limit": 64,
+      "modeled_polls": [],
+      "native_timeout_polls": 10000000,
+      "poll_counters_before_fifo": [
+        0
+      ],
+      "result": 4294967295,
+      "events": [
+        [
+          "index",
+          1
+        ],
+        [
+          "fifo",
+          4,
+          "00104002"
+        ],
+        [
+          "fifo",
+          4,
+          "0404ffff"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "fifo",
+          4,
+          "00000000"
+        ],
+        [
+          "txcsr",
+          1
+        ],
+        [
+          "index",
+          3
+        ]
+      ],
+      "log_return_sites": [
+        "0x8005fc48",
+        "0x8005fcec"
+      ],
+      "coverage": {
+        "0x800078dc": "b208d2e1",
+        "0x800078e4": "010080e3",
+        "0x800079d4": "4200d0e5",
+        "0x80007be4": "4200c1e5",
+        "0x80007c58": "00c083e5",
+        "0x8005fc08": "f84f2de9",
+        "0x8005fc38": "2d00000a",
+        "0x8005fc84": "070054e1",
+        "0x8005fc9c": "e69ffeeb",
+        "0x8005fcbc": "0600000a",
+        "0x8005fcf0": "f88fbde8"
+      }
+    }
+  ],
+  "limits": [
+    "Original ARM926 code performs selector stores, status polls, FIFO writes, ready-bit update and index restoration. Log calls are modeled.",
+    "The indexed registers are an offline byte/halfword model. Inputs seed the channel gate, chunk limit, and poll status. The timeout holds the status busy through the unmodified 10,000,000-iteration loop.",
+    "Register writes describe the CPU-visible trace. USB traffic, hardware response, physical timing and the later busy-clear producer remain outside this replay."
+  ]
+}

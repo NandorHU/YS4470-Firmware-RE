@@ -451,3 +451,7 @@ The original second registration block and dispatcher route event 1 from GUI obj
 ## Diode/Buzzer setting and secondary transport boundary (2026-11-11)
 
 Both factory images pass 48 ARM926 cases in total. The original writer `0x8005a3bc` stores bit 0 of the halfword at widget `+0x20` into `0x805ac788`. The registered callback uses that word to select the type-5 or type-2 record. The separate secondary command builds a 64-byte frame and reaches the original sender `0x80060ccc`. The hardware-facing `0x8005fc08` call is modeled. [ARM926 replay and original hashes](contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-secondary-validation.json).
+
+## Secondary USB transmit lifecycle (2026-11-11)
+
+The original source-26 registration suffix `0x8005fa64` installs `0x800606ec`. In one ARM926 state, original submit `0x80060ccc` and sender `0x8005fc08` write the frame, a second submit is suppressed while busy, and a ready TX interrupt clears the flag at `0x800606d4`. A subsequent submit writes its frame. The IRQ vector and exception return execute original bytes. The offline sender, mode-entry/IRQ and linked lifecycle suites pass 50 new cases across both exact factory images. [Lifecycle evidence and hashes](contributions/COORD-ADC-CADENCE/synchronous/secondary-usb-lifecycle-validation.json).

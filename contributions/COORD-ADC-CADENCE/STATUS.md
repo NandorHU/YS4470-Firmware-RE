@@ -1,5 +1,9 @@
 # COORD-ADC-CADENCE — continuation, 2026-11-09
 
+## USB TX lifecycle checkpoint (2026-11-11)
+
+The original source-26 registration suffix `0x8005fa64` installs `0x800606ec`. In one ARM926 state, original submit `0x80060ccc` and sender `0x8005fc08` write the frame, a second submit is suppressed while busy, and a ready TX interrupt clears the flag at `0x800606d4`. A subsequent submit writes its frame. The IRQ vector and exception return execute original bytes. Replay the original mode-1 USB RX endpoint through 0x800603f4 and 0x800606e0 to verify FIFO copy, guard-word initialization and RX status handling. Then trace the mode-1 producer paths that originate native type-6 control-queue records; keep hardware timing open. [Reproducible lifecycle](synchronous/secondary-usb-lifecycle-validation.json).
+
 ## Secondary command checkpoint (2026-11-11)
 
 Both factory images pass 48 ARM926 cases in total. The original writer `0x8005a3bc` stores bit 0 of the halfword at widget `+0x20` into `0x805ac788`. The registered callback uses that word to select the type-5 or type-2 record. The separate secondary command builds a 64-byte frame and reaches the original sender `0x80060ccc`. The hardware-facing `0x8005fc08` call is modeled. Trace the device-ready and busy-clear producers for 0x805aac40 and 0x805aac70. Replay the original 0x8005fc08 channel-1 sender with bounded modeled peripheral state. Keep native type-6 provenance open. [Original-code replay](synchronous/control-gui-cfd0-secondary-validation.json).

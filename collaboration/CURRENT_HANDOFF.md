@@ -10,6 +10,10 @@ Beta.2 Release API currently404; retained historical installer is documented.
 The owner confirmed the old daily automation was stopped. The new coordinator
 `codex-ys4470-20261109-01a1c110` is recorded in upstream registry revision 19.
 
+## Secondary USB send and busy lifecycle (2026-11-11)
+
+The original source-26 registration suffix `0x8005fa64` installs `0x800606ec`. In one ARM926 state, original submit `0x80060ccc` and sender `0x8005fc08` write the frame, a second submit is suppressed while busy, and a ready TX interrupt clears the flag at `0x800606d4`. A subsequent submit writes its frame. The IRQ vector and exception return execute original bytes. Registry revision 48 advances the owned task. Replay the original mode-1 USB RX endpoint through 0x800603f4 and 0x800606e0 to verify FIFO copy, guard-word initialization and RX status handling. Then trace the mode-1 producer paths that originate native type-6 control-queue records; keep hardware timing open. [Native lifecycle evidence](../contributions/COORD-ADC-CADENCE/synchronous/secondary-usb-lifecycle-validation.json).
+
 ## Diode/Buzzer setting writer and secondary command (2026-11-11)
 
 Both factory images pass 48 ARM926 cases in total. The original writer `0x8005a3bc` stores bit 0 of the halfword at widget `+0x20` into `0x805ac788`. The registered callback uses that word to select the type-5 or type-2 record. The separate secondary command builds a 64-byte frame and reaches the original sender `0x80060ccc`. The hardware-facing `0x8005fc08` call is modeled. Registry revision 47 records the next bounded step. Trace the device-ready and busy-clear producers for 0x805aac40 and 0x805aac70. Replay the original 0x8005fc08 channel-1 sender with bounded modeled peripheral state. Keep native type-6 provenance open. [ARM926 replay](../contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-secondary-validation.json).

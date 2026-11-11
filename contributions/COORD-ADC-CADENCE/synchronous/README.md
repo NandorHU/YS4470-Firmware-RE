@@ -1002,3 +1002,20 @@ python -B contributions/COORD-ADC-CADENCE/synchronous/trace_control_gui_cfd0_sec
 ```
 
 [Recorded cases, original hashes and executed instruction bytes](control-gui-cfd0-secondary-validation.json).
+
+## Native USB sender and registered transmit interrupt (2026-11-11)
+
+The original source-26 registration suffix `0x8005fa64` installs `0x800606ec`. In one ARM926 state, original submit `0x80060ccc` and sender `0x8005fc08` write the frame, a second submit is suppressed while busy, and a ready TX interrupt clears the flag at `0x800606d4`. A subsequent submit writes its frame. The IRQ vector and exception return execute original bytes.
+
+- The standalone sender executes six cases per factory image, including the full `10,000,000`-poll timeout with the original counter and status held busy. It checks each FIFO write, the status write and endpoint restoration. The timeout still copies one chunk and returns `0xffffffff`. [Sender evidence](secondary-channel1-validation.json).
+- The direct interrupt and mode-entry suite executes eleven cases per image. A ready endpoint TX interrupt clears busy only under the tested mode 1. Endpoint 2 also clears it in its positive control. The mode setter runs only to the next hardware initialization call for changed modes. [Mode and IRQ evidence](secondary-usb-irq-validation.json).
+- The linked suite executes eight cases per image. It installs the original low vectors, registers source 26 using the original suffix, and executes the sender, dispatcher, interrupt and exception return on shared state. The harness injects CPU-visible endpoint status and supplies already-built frames. The suite checks ARM and Thumb foreground context. [Linked lifecycle evidence](secondary-usb-lifecycle-validation.json).
+
+From the repository root with the pinned analysis requirements installed:
+
+```powershell
+$task = 'contributions/COORD-ADC-CADENCE/synchronous'
+python -B "$task/trace_secondary_channel1.py" --out secondary-channel1-validation.json
+python -B "$task/trace_secondary_usb_irq.py" --out secondary-usb-irq-validation.json
+python -B "$task/trace_secondary_usb_lifecycle.py" --out secondary-usb-lifecycle-validation.json
+```
