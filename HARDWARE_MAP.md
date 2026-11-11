@@ -365,3 +365,7 @@ The native fallback schedule sends the preparation frame, the configuration fram
 ## Native AC widget storage and USB export (2026-11-11)
 
 The original USB report-4 submission uses channel 1 FIFO `0x01c13004`. Busy blocks writes after the frame is built. Disabled mode or either zero readiness word stops before building a frame. [ac-usb-export-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-usb-export-validation.json).
+
+## USB report reconstruction and original AC label geometry (2026-11-11)
+
+The C reconstruction builds the 64-byte USB report in RAM. The original FIFO transfer and the channel readiness logic are verified in the previous AC replay. Label dimensions precede display-controller writes. [usb-export-reconstruction-validation](contributions/COORD-ADC-CADENCE/synchronous/usb-export-reconstruction-validation.json) · [ac-widget-layout-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-widget-layout-validation.json).

@@ -1,0 +1,28 @@
+{
+  "schema": "ys4470.usb-export-reconstruction.v1",
+  "images": {
+    "V3.6": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+    "V3.8": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+  },
+  "original_evidence_sha256": {
+    "factory-usb-export-routing-validation.json": "9600717891b874e324e5225ee7d39dc76dabe82a6909c67b3e5e2c4ed84883f3",
+    "ac-usb-export-validation.json": "635b55e8d2c9123a319c950e63eb863a04a49a1632be7cb2bf741b70da9acbde"
+  },
+  "linked_elf_sha256": "b4cc0b7481c09d8787fca86f3280665c52c93d586a935f7a3292e7d56472feb4",
+  "source_sha256": {
+    "usb_measurement_export.c": "211c5f7f40584e0b6931c6eeb974c0945015cc46ee830990e36a3a2e581583c8",
+    "usb_measurement_export.h": "80306e6025e62e46937a0cd696d6e64d4c89b274b4f72b3805df220d7354f23f"
+  },
+  "c_mirror_cases": 273,
+  "c_report_cases": 30,
+  "unsupported_suffix_cases": 1,
+  "link_entries": {
+    "ys4470_export_update": "0x10110130",
+    "ys4470_export_report": "0x10110414"
+  },
+  "limits": [
+    "A shared original observation is compared once with the compiled C.",
+    "The reconstruction covers text/category routing, the mirror and report bytes.",
+    "USB gates, FIFO transfers and enumeration remain outside the C component."
+  ]
+}
