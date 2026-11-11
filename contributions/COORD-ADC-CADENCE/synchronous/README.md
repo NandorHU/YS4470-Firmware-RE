@@ -1036,3 +1036,20 @@ python -B "$task/trace_control_gui_second_final.py" --out control-gui-second-fin
 ```
 
 [USB RX report](secondary-usb-rx-validation.json) · [Five GUI callbacks](control-gui-second-group-validation.json) · [Final GUI callbacks](control-gui-second-final-validation.json).
+
+## AC checkbox class event and UART configuration (2026-11-11)
+
+The AC checkbox class at `0x80068e70` and its base handler `0x80035428` execute the original release-to-value-change path. Checkable release event 8 toggles widget state bit 0 and emits nested event `0x1c`, which reaches the registered callback `0x8000f3b4`. The same original queue record goes through service, FSM and modeled Timer0/UART2 IRQs without host re-enqueue. The constructor stores a checkbox at GUI context `+0x300` and assigns the factory text `交流`. The event test uses the original class pointers, an object without styles and a seeded outer event. It covers checkable and non-checkable controls, checked and pressed bits, and a non-release control.
+
+With matching replies, unchecked-to-checked emits `58 04 5c 5a 5a 60 60` and checked-to-unchecked emits `58 03 5b 5a 5a 60 60`. Without replies, the original FSM sends the first command twice. In both tested outcomes the stored result stays unchanged. The linked test records one SVC yield without switching tasks. Both IRQ handlers execute with host-controlled arrival inputs. The addresses, hashes and bounds are in the reports.
+
+The address audit extends prior direct branch and Thumb BLX indexes with unaligned pointer bytes, ARM and Thumb PC-relative materializations, and adjacent same-condition ARM immediate pairs. It finds the six known control-base loads and two deferred-record loads. Computed tables and longer value chains remain outside that scan.
+
+```powershell
+$task = 'contributions/COORD-ADC-CADENCE/synchronous'
+python -B "$task/trace_ac_checkbox_release.py" --out ac-checkbox-release-validation.json
+python -B "$task/trace_ac_checkbox_uart.py" --out ac-checkbox-uart-validation.json
+python -B "$task/index_control_synthesized.py" --out control-synthesized-references.json
+```
+
+[Native checkbox event](ac-checkbox-release-validation.json) · [Linked UART replay](ac-checkbox-uart-validation.json) · [Address audit](control-synthesized-references.json).

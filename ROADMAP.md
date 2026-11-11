@@ -322,3 +322,7 @@ Replay the original mode-1 USB RX endpoint through 0x800603f4 and 0x800606e0 to 
 ## Native type-6 provenance continuation (2026-11-11)
 
 Bound additional Thumb-to-ARM and synthesized references to control producer 0x80006778, then classify credible indirect or alternate queue writers. Keep native type-6 provenance open unless demonstrated from an original caller. [Last GUI replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-second-final-validation.json).
+
+## AC measurement refresh continuation (2026-11-11)
+
+Follow original 0x8005d048 refresh after the verified AC checkbox release and type-2 UART configuration. Determine which later measurement frames publish and preserve the type-6 provenance question. Review candidate alternate queue writers when a credible code path appears. [Last verified ARM926 replay](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-uart-validation.json).

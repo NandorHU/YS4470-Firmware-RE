@@ -453,3 +453,7 @@ The writer at `0x8005a3dc` stores the GUI widget flag into `0x805ac788`. The sec
 ## Mode-1 receive buffers (2026-11-11)
 
 The endpoint-2 report reaches `0x805ac5e0`, length is stored at `0x805aac5c`, and the type-3 record payload is copied to `0x805ac640`. Original mode-1 application handler writes 1 to both `0x805aac48` and `0x805aac4c`. [Receive replay and original bytes](contributions/COORD-ADC-CADENCE/synchronous/secondary-usb-rx-validation.json).
+
+## AC checkbox state and control address audit (2026-11-11)
+
+The AC widget pointer is stored at GUI context `+0x300`. Original state writer `0x8003a394` updates widget halfword `+0x20`. The audit finds six literal loads of control base `0x805aae8c` and two of deferred address `0x805ac6d0`, all previously known. The tested immediate encodings produce no added reference to the handle or producer. [Native class event](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-release-validation.json) · [Bounded reference index](contributions/COORD-ADC-CADENCE/synchronous/control-synthesized-references.json).
