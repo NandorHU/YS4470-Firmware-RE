@@ -330,3 +330,7 @@ Follow original 0x8005d048 refresh after the verified AC checkbox release and ty
 ## AC native result presentation (2026-11-11)
 
 Execute the native result dispatcher and renderer on the already verified AC refresh schedules. Keep conversion units and physical timing open; retain native type-6 provenance as a separate question. [Last refresh replay](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-refresh-validation.json).
+
+## Factory settings follow-up (2026-11-11)
+
+Any independent diode-volume persistence needs a proven field or a versioned storage contract and an explicit write policy. The factory save path and its simulated short-transfer behavior now have reproducible evidence. [Storage evidence](contributions/COORD-DIODE-VOLUME/factory-settings-sector-validation.json) · [Failure boundary](contributions/COORD-DIODE-VOLUME/factory-settings-write-failure-validation.json).

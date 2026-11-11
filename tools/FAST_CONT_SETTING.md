@@ -79,3 +79,7 @@ execution. No physical flash writes occur.
 Next: follow the additional Fast CONT read at 0x80003878 in ResultDispatch
 into sound control, keeping timing and actual buzzer behavior unassigned.
 
+
+## Factory save event verified (2026-11-11)
+
+Original registration `0x8001b2d0` binds the settings save callback `0x800453c8` to GUI context `+0x394`. In the three tested event codes, event 1 reaches the original CRC and storage routine. The other tested events leave the record unchanged. A Fast CONT checkbox update alone changes the RAM word. At `0x80006374` the original save reads a 4 KiB sector. A blank record prefix goes directly to one 72-byte program. A nonblank prefix takes erase, scratch merge and sixteen 256-byte program calls. Both paths preserve the adjacent synthetic bytes when transfers succeed. [Original event and round-trip evidence](../contributions/COORD-DIODE-VOLUME/factory-settings-ui-validation.json) · [Original sector wrapper](../contributions/COORD-DIODE-VOLUME/factory-settings-sector-validation.json).

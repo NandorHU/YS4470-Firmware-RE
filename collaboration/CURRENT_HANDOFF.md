@@ -10,6 +10,10 @@ Beta.2 Release API currently404; retained historical installer is documented.
 The owner confirmed the old daily automation was stopped. The new coordinator
 `codex-ys4470-20261109-01a1c110` is recorded in upstream registry revision 19.
 
+## Factory settings research (2026-11-11)
+
+Original registration `0x8001b2d0` binds the settings save callback `0x800453c8` to GUI context `+0x394`. In the three tested event codes, event 1 reaches the original CRC and storage routine. The other tested events leave the record unchanged. A Fast CONT checkbox update alone changes the RAM word. The tested global volume field survives the factory loader. A safe separate diode-volume location remains open. Registry revision 52 links the evidence from the diode-volume task. [Settings evidence](../contributions/COORD-DIODE-VOLUME/factory-settings-ui-validation.json) · [Global volume](../contributions/COORD-DIODE-VOLUME/factory-volume-slider-validation.json).
+
 ## AC refresh and last-request behavior (2026-11-11)
 
 The original timer enqueues a type-3 measurement after the AC checkbox configuration. The first valid reply consumes the remaining discard slot. The next valid reply publishes, and a missing reply delays publication by one request. The modeled view receives the latest stored result on a later native refresh. A second AC release during an active measurement produces a type-2 record. The original service defers that record until the old FSM is idle. An admitted old reply can still publish before the new configuration starts. With two additional releases, the earlier request is drained from the queue or replaced in the deferred slot, and only the last reaches the UART in the tested schedules. Registry revision 51 advances the owned task. Execute the native result dispatcher and renderer on the already verified AC refresh schedules. Keep conversion units and physical timing open; retain native type-6 provenance as a separate question. [Refresh evidence](../contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-refresh-validation.json) · [Rapid-toggle evidence](../contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-rapid-toggle-validation.json).

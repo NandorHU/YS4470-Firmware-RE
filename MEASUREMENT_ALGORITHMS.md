@@ -421,3 +421,7 @@ The AC checkbox class at `0x80068e70` and its base handler `0x80035428` execute 
 ## AC refresh and delayed configuration (2026-11-11)
 
 The original timer enqueues a type-3 measurement after the AC checkbox configuration. The first valid reply consumes the remaining discard slot. The next valid reply publishes, and a missing reply delays publication by one request. The modeled view receives the latest stored result on a later native refresh. A second AC release during an active measurement produces a type-2 record. The original service defers that record until the old FSM is idle. An admitted old reply can still publish before the new configuration starts. With two additional releases, the earlier request is drained from the queue or replaced in the deferred slot, and only the last reaches the UART in the tested schedules. [Validated schedules](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-rapid-toggle-validation.json).
+
+## Global volume and preview gain (2026-11-11)
+
+The factory volume handler `0x80057d34` reads slider `+0x3a0`, caps the input at 100 and stores half at settings `+0x0c`. The original preview passes half that stored value to the modeled PWM call. The global field survives the tested save/load round trip. The value describes the preview call, with no acoustic measurement. [Slider replay](contributions/COORD-DIODE-VOLUME/factory-volume-slider-validation.json).
