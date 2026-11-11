@@ -357,3 +357,7 @@ The original UART parser sign-extends the 24-bit sample at `0x8000474c` and clam
 ## Factory Filter and the separate highspeed AC label (2026-11-11)
 
 The highspeed callback follows the original timer deadline and enqueues a real type-3 measurement request. UART2 and Timer0 inputs are supplied by the harness. The period becomes raw value 200. [ac-highspeed-result-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-highspeed-result-validation.json).
+
+## Original AC formatter and native highspeed fallback callers (2026-11-11)
+
+The native fallback schedule sends the preparation frame, the configuration frame and the trailing frame with original Timer0/UART2 IRQ and SVC execution. One missing configuration reply incurs the native 500-wait attempt. Units in the evidence are modeled counters. [native-highspeed-buttons-validation](contributions/COORD-ADC-CADENCE/synchronous/native-highspeed-buttons-validation.json).
