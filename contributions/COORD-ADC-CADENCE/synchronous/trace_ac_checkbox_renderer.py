@@ -38,6 +38,7 @@ class NativeViewReplay(RefreshAcReplay):
         if self.phase == "refresh" and pc == DISPATCH_RESULT:
             assert not self.in_view and u.reg_read(UC_ARM_REG_LR) == 0x8005D1A4
             self.in_view = True
+            self.numeric_format = None
             self.view_entries.append([hex(pc), list(self.result_words())])
         if self.in_view and pc == VIEW_END:
             self.in_view = False
@@ -50,7 +51,7 @@ class NativeViewReplay(RefreshAcReplay):
             fmt = self.string(r1, 8)
             assert size == 2
             if fmt == "%s":
-                assert lr == 0x800037FC
+                assert lr in (0x800037FC, 0x80003838)
                 formatted = self.string(r2, 32).encode("ascii")
             else:
                 assert (lr in FORMATTING_CALLERS and fmt == "%.3f") or (lr, fmt) == (0x80003B78, "%+.3f"), (hex(lr), fmt)
@@ -105,12 +106,7 @@ class NativeViewReplay(RefreshAcReplay):
             record, = new
             assert record["configuration"] in (9, 10)
             assert (record["raw"], record["selector"]) == row["result_at_refresh"]
-            offset = 0x80063817 - BASE + 7 * record["configuration"] + record["selector"]
-            expected = f32(f32(record["raw"]) / 10 ** self.raw[offset])
-            assert record["scale_bits"] == hex(struct.unpack("<I", struct.pack("<f", expected))[0])
-            assert record["unit"] == "V"
-            assert record["format"] == ("+.3f" if record["configuration"] == 9 else ".3f")
-            assert record["text"] == format(expected, record["format"])
+            self.check_record(record)
             assert outputs == [[hex(PRIMARY_WIDGET), record["text"]], [hex(UNIT_WIDGET), record["unit"]],
                                ["display_text", record["text"]]]
         else:
@@ -118,6 +114,28 @@ class NativeViewReplay(RefreshAcReplay):
         row["native_render_record"] = new
         row["render_output"] = outputs
         return row
+
+
+    def check_record(self, record):
+        configuration = record["configuration"]
+        raw, selector = record["raw"], record["selector"]
+        if raw == 0x7FFFFF:
+            assert (record["text"], record["unit"], record["format"], record["scale_bits"], record["flags"]) == (
+                ".OL", "", None, "0x0", "0101",
+            )
+            return
+        signed = raw if raw < 0x80000000 else raw - 0x100000000
+        offset = 0x80063817 - BASE + 7 * configuration + selector
+        expected = f32(f32(signed) / 10 ** self.raw[offset])
+        if configuration == 10:
+            cutoff = 5.5 if self.read(SETTINGS + 0x14) == 1 else 2.5
+            if expected < cutoff:
+                expected = 0.0
+        assert record["scale_bits"] == hex(struct.unpack("<I", struct.pack("<f", expected))[0])
+        assert record["unit"] == "V"
+        assert record["format"] == ("+.3f" if configuration == 9 else ".3f")
+        assert record["text"] == format(expected, record["format"])
+        assert record["flags"] == "0001"
 
 
 def main():

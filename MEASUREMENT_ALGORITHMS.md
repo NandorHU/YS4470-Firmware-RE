@@ -429,3 +429,7 @@ The factory volume handler `0x80057d34` reads slider `+0x3a0`, caps the input at
 ## AC result text from the native renderer (2026-11-11)
 
 The original renderer applies the power-of-ten exponent at `0x80063817 + 7 * configuration + selector` to the stored sample. The resulting float bits and three-decimal formatting requests agree in all tested V3.6 and V3.8 schedules. [Original replay evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-renderer-validation.json).
+
+## Signed AC samples, selector clamp and display cutoffs (2026-11-11)
+
+Configuration 9 keeps negative values and explicit signs. Configuration 10 zeroes scaled results below 2.5, or below 5.5 when settings `+0x14` equals 1. Values equal to the active cutoff survive. Both use V for all seven effective selectors. Wire sample `0x7fffff` becomes `.OL` and clears the unit. Scale exponents are `[3, 2, 1, 0, 0, 0, 0]` in both configurations. [Original replay evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-result-boundaries-validation.json).

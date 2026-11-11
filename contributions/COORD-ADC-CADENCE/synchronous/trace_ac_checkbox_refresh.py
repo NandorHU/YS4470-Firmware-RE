@@ -136,7 +136,11 @@ class RefreshAcReplay(CheckboxUartReplay):
         assert bytes(r[1] for r in rows if r[0] == "tx") == b"\x60\x60" * (1 if deliver else 2)
         assert [r for r in rows if r[0] == "parse"] == ([["parse", 5, packet.hex()]] if deliver else [])
         published = deliver and discard == 0
-        assert self.result_words() == ((payload_raw, payload_selector) if published else before)
+        # The original command-0x1d parser sign-extends the wire sample and
+        # clamps the selector before publishing either result word.
+        sample_word = payload_raw | (0xFF000000 if payload_raw & 0x800000 else 0)
+        expected = (sample_word, min(payload_selector, 6))
+        assert self.result_words() == (expected if published else before)
         assert self.u.mem_read(CTRL + 1, 1)[0] == max(0, discard - int(deliver))
         return dict(reply=packet.hex() if deliver else None, offered_raw=payload_raw,
                     discard_before=discard, published=published, stored_after=self.result_words(),
