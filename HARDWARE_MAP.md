@@ -337,3 +337,7 @@ The original RX handler `0x800603f4` selects endpoint 2, copies the report from 
 ## AC selection UART traffic (2026-11-11)
 
 With matching replies, unchecked-to-checked emits `58 04 5c 5a 5a 60 60` and checked-to-unchecked emits `58 03 5b 5a 5a 60 60`. Without replies, the original FSM sends the first command twice. In both tested outcomes the stored result stays unchanged. Bytes are recorded from CPU writes to the UART2 model and the peer response is supplied by the harness. [ARM926 replay](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-uart-validation.json).
+
+## AC refresh UART observation (2026-11-11)
+
+The original configuration and measurement stages execute in ARM926 and are separated by UART2 and Timer0 inputs supplied by the harness. The timer object retains 2000 during warmup and takes 200 once the tested warm path reaches the view. The numbers are raw fields. [Refresh replay](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-refresh-validation.json).

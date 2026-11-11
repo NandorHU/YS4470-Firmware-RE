@@ -1,5 +1,9 @@
 # COORD-ADC-CADENCE — continuation, 2026-11-09
 
+## AC refresh and concurrent toggles (2026-11-11)
+
+The original timer enqueues a type-3 measurement after the AC checkbox configuration. The first valid reply consumes the remaining discard slot. The next valid reply publishes, and a missing reply delays publication by one request. The modeled view receives the latest stored result on a later native refresh. A second AC release during an active measurement produces a type-2 record. The original service defers that record until the old FSM is idle. An admitted old reply can still publish before the new configuration starts. With two additional releases, the earlier request is drained from the queue or replaced in the deferred slot, and only the last reaches the UART in the tested schedules. Execute the native result dispatcher and renderer on the already verified AC refresh schedules. Keep conversion units and physical timing open; retain native type-6 provenance as a separate question. [Original execution](synchronous/ac-checkbox-rapid-toggle-validation.json).
+
 ## AC checkbox and UART checkpoint (2026-11-11)
 
 The AC checkbox class at `0x80068e70` and its base handler `0x80035428` execute the original release-to-value-change path. Checkable release event 8 toggles widget state bit 0 and emits nested event `0x1c`, which reaches the registered callback `0x8000f3b4`. The same original queue record goes through service, FSM and modeled Timer0/UART2 IRQs without host re-enqueue. Follow original 0x8005d048 refresh after the verified AC checkbox release and type-2 UART configuration. Determine which later measurement frames publish and preserve the type-6 provenance question. Review candidate alternate queue writers when a credible code path appears. [Original execution](synchronous/ac-checkbox-uart-validation.json).

@@ -379,3 +379,7 @@ Bound additional Thumb-to-ARM and synthesized references to control producer 0x8
 ## AC refresh and type-6 provenance (2026-11-11)
 
 Follow original 0x8005d048 refresh after the verified AC checkbox release and type-2 UART configuration. Determine which later measurement frames publish and preserve the type-6 provenance question. Review candidate alternate queue writers when a credible code path appears. The new bounded immediate-reference index contains no new type-6 producer candidate. [Reference index](contributions/COORD-ADC-CADENCE/synchronous/control-synthesized-references.json) · [Last dynamic result](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-uart-validation.json).
+
+## AC renderer continuation (2026-11-11)
+
+Execute the native result dispatcher and renderer on the already verified AC refresh schedules. Keep conversion units and physical timing open; retain native type-6 provenance as a separate question. [Verified refresh](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-refresh-validation.json).
