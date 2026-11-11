@@ -381,3 +381,7 @@ The original software draw context reaches the packed-alpha compositor through `
 ## Original 4-bit glyph expansion to blend input (2026-11-11)
 
 The original software glyph path emits an 8-bit alpha buffer at the blend dispatch. The test stops before framebuffer writes. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-alpha-mask-validation.json).
+
+## Original AC glyphs into an RGB565 framebuffer (2026-11-11)
+
+Factory code writes RGB565 pixels through draw context `+0x00` in the emulated CPU buffer. Display lookup and flags were supplied by the fixture. The test covers the software pixel buffer and leaves the physical LCD path open. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-rgb565-frame-validation.json).

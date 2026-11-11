@@ -423,3 +423,7 @@ Execute the original 4-bit packed-alpha compositor at 0x80014688 (branch 0x80014
 ## Original 4-bit glyph expansion to blend input (2026-11-11)
 
 Execute the actual blend callback installed at draw context +0x54 (0x8002a0bc) after 0x800289f8 into an isolated RGB565 buffer. Reuse the verified alpha regions and compare changed and untouched pixels. Keep physical LCD timing and native type-6 producer provenance open. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-alpha-mask-validation.json).
+
+## Original AC glyphs into an RGB565 framebuffer (2026-11-11)
+
+Trace the native display refresh setup that assigns draw-context +0x00/+0x04/+0x08 and the display-driver flags used by 0x80028a5c. Verify which RGB565 or custom callback path it selects for the normal AC screen. Keep physical LCD timing and native type-6 producer provenance open. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-rgb565-frame-validation.json).

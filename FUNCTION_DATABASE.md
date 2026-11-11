@@ -495,3 +495,7 @@ Label event `0x15` reaches original paint `0x800158c4` and text draw `0x800265bc
 ## Original 4-bit glyph expansion to blend input (2026-11-11)
 
 The original 4-bit path at `0x80014688` selects the 16-entry table `0x80068fc6` through `0x800149d4`. Opaque input maps a nibble to 17 times its value. At opacity below 253 the original scales intermediate levels by multiplication and an eight-bit right shift, and maps level 15 to the supplied opacity. For 36 V3.6/V3.8 cases the bytes submitted through `0x800289f8` matched independent high/low-nibble expansion, including clips that start on a low nibble. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-alpha-mask-validation.json).
+
+## Original AC glyphs into an RGB565 framebuffer (2026-11-11)
+
+Draw context initialization at `0x80029cc8` binds `+0x54` to `0x80028a5c`. The `+0x48` callback `0x8002a0bc` forwards descriptor `+0x14` to `0x80032a80`. The original normal masked color path reaches `0x8001b8c0` and `0x80024fa4` in the framebuffer fixture. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-rgb565-frame-validation.json).
