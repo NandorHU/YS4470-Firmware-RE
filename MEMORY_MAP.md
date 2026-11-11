@@ -497,3 +497,7 @@ The numeric and unit font caches use `0x805ac090` and `0x805abe8c`. The highspee
 ## Native AC draw event and packed-alpha boundary (2026-11-11)
 
 The draw context has a clip pointer at `+0x08` and a glyph callback at `+0x20`. The original painter restores the clip pointer after the tested draw. The compositor receives the original bitmap pointer and a rectangle derived from glyph offset, width, height and font baseline. [Original draw evidence](contributions/COORD-ADC-CADENCE/synchronous/factory-ac-draw-validation.json).
+
+## Original 4-bit glyph expansion to blend input (2026-11-11)
+
+The 4-bit alpha table is at `0x80068fc6`. The opacity-adjusted table is cached at `0x809b5518`, keyed by the opacity and format fields at `0x805abe08`. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-alpha-mask-validation.json).

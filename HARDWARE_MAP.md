@@ -377,3 +377,7 @@ Both font lookup callbacks return packed 4-bit alpha spans from the original ima
 ## Native AC draw event and packed-alpha boundary (2026-11-11)
 
 The original software draw context reaches the packed-alpha compositor through `0x8002a0c4`. The harness stops at that boundary. No panel bus or display controller writes are exercised. [Original draw evidence](contributions/COORD-ADC-CADENCE/synchronous/factory-ac-draw-validation.json).
+
+## Original 4-bit glyph expansion to blend input (2026-11-11)
+
+The original software glyph path emits an 8-bit alpha buffer at the blend dispatch. The test stops before framebuffer writes. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-alpha-mask-validation.json).

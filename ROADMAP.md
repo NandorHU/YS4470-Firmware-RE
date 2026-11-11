@@ -366,3 +366,7 @@ Follow native label event 0x15 through 0x800158c4 and 0x800265bc. Verify clippin
 ## Native AC draw event and packed-alpha boundary (2026-11-11)
 
 Execute the original 4-bit packed-alpha compositor at 0x80014688 (branch 0x800149d4) into an isolated RGB565 buffer, using the verified draw context and glyph inputs. Compare clipped output with the original bitmap nibbles. Keep physical LCD timing and native type-6 producer provenance open. [Original draw evidence](contributions/COORD-ADC-CADENCE/synchronous/factory-ac-draw-validation.json).
+
+## Original 4-bit glyph expansion to blend input (2026-11-11)
+
+Execute the actual blend callback installed at draw context +0x54 (0x8002a0bc) after 0x800289f8 into an isolated RGB565 buffer. Reuse the verified alpha regions and compare changed and untouched pixels. Keep physical LCD timing and native type-6 producer provenance open. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-alpha-mask-validation.json).
