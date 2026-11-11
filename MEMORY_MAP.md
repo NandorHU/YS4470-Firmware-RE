@@ -449,3 +449,7 @@ The writer at `0x8005a3dc` stores the GUI widget flag into `0x805ac788`. The sec
 ## USB busy and IRQ routing state (2026-11-11)
 
 `0x805aac70` is set by `0x80060d48` before the secondary send and cleared at `0x800606d4` on the tested mode-1 ready TX interrupt. The original mode-1 enable wrapper `0x80060664` stores 1 into `0x805aac40` through `0x8005fa28` if the old mode differs. IRQ source 26 uses handler slot `0x805ab9ac`. [Mode and IRQ cases](contributions/COORD-ADC-CADENCE/synchronous/secondary-usb-irq-validation.json) · [Registered lifecycle](contributions/COORD-ADC-CADENCE/synchronous/secondary-usb-lifecycle-validation.json).
+
+## Mode-1 receive buffers (2026-11-11)
+
+The endpoint-2 report reaches `0x805ac5e0`, length is stored at `0x805aac5c`, and the type-3 record payload is copied to `0x805ac640`. Original mode-1 application handler writes 1 to both `0x805aac48` and `0x805aac4c`. [Receive replay and original bytes](contributions/COORD-ADC-CADENCE/synchronous/secondary-usb-rx-validation.json).

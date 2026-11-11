@@ -318,3 +318,7 @@ Trace the device-ready and busy-clear producers for 0x805aac40 and 0x805aac70. R
 ## Secondary USB receive continuation (2026-11-11)
 
 Replay the original mode-1 USB RX endpoint through 0x800603f4 and 0x800606e0 to verify FIFO copy, guard-word initialization and RX status handling. Then trace the mode-1 producer paths that originate native type-6 control-queue records; keep hardware timing open. [Verified transmit lifecycle](contributions/COORD-ADC-CADENCE/synchronous/secondary-usb-lifecycle-validation.json).
+
+## Native type-6 provenance continuation (2026-11-11)
+
+Bound additional Thumb-to-ARM and synthesized references to control producer 0x80006778, then classify credible indirect or alternate queue writers. Keep native type-6 provenance open unless demonstrated from an original caller. [Last GUI replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-second-final-validation.json).

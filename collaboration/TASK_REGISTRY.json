@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 48,
+  "revision": 49,
   "updated": "2026-11-11",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,8 +295,12 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Replay the original mode-1 USB RX endpoint through 0x800603f4 and 0x800606e0 to verify FIFO copy, guard-word initialization and RX status handling. Then trace the mode-1 producer paths that originate native type-6 control-queue records; keep hardware timing open.",
+      "next_action": "Bound additional Thumb-to-ARM and synthesized references to control producer 0x80006778, then classify credible indirect or alternate queue writers. Keep native type-6 provenance open unless demonstrated from an original caller.",
       "last_verified_result": {
+        "original_usb_rx_echo_cases": 16,
+        "original_gui_remaining_second_block_cases": 64,
+        "original_gui_remaining_second_block_sends": 24,
+        "local_usb_rx_quotes_checked": 58,
         "original_usb_sender_cases": 12,
         "original_usb_mode_and_irq_cases": 22,
         "original_registered_usb_lifecycle_cases": 16,
@@ -390,6 +394,9 @@
         "resident_index_exact_extractions_published": 3501
       },
       "result_evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/control-gui-second-final-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/control-gui-second-group-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/secondary-usb-rx-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/secondary-usb-lifecycle-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-secondary-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-validation.json",

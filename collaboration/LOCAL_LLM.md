@@ -209,3 +209,7 @@ The coordinator queued 46 new addresses in four small catalogs covering the read
 ## 2026-11-11 — Native sender and guard-word index review
 
 All 52 previously queued excerpts around `0x8005fc08` and `0x8005e750` passed independent exact instruction, address and original-byte checks on both firmware images. There were no incomplete, rejected or missing excerpts. [Independent execution and firmware identities](../contributions/COORD-ADC-CADENCE/synchronous/secondary-usb-lifecycle-validation.json).
+
+## 2026-11-11 — USB RX and TX-clear address extracts
+
+All 58 extracts in the RX FIFO, mode dispatch, type-3 record and TX busy-clear catalogs passed independent original-byte and instruction checks on both factory images. There were zero incomplete, rejected or missing results. [Separate runtime evidence](../contributions/COORD-ADC-CADENCE/synchronous/secondary-usb-rx-validation.json).
