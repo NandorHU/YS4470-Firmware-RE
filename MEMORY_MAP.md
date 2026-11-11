@@ -473,3 +473,7 @@ The AC renderer reads its unit pointers from `0x805aae98` in the replay and pass
 ## Signed AC samples, selector clamp and display cutoffs (2026-11-11)
 
 Signed result and clamped selector are stored at `0x805ac730` and `0x805ac734`. The configuration-10 dispatcher uses settings word `0x805ac784` and float literals `0x80003c50` (2.5) and `0x80003c54` (5.5). [Original replay evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-result-boundaries-validation.json).
+
+## Factory Filter and the separate highspeed AC label (2026-11-11)
+
+Factory Filter is word `0x805ac784` at settings `+0x14`. The highspeed callback reads its separate selection byte from `0x805ac08c`. Its configuration-10 cutoff literal is at `0x8005df28`. [factory-filter-setting-validation](contributions/COORD-DIODE-VOLUME/factory-filter-setting-validation.json) · [ac-highspeed-result-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-highspeed-result-validation.json).

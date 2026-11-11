@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 55,
+  "revision": 56,
   "updated": "2026-11-11",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,8 +295,10 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Trace the factory settings +0x14 checkbox registration, label and save/load path into the configuration-10 display cutoff. Compare the separate highspeed formatter at 0x8005dc3c once the normal display setting is proven. Keep native type-6 producer provenance and physical timing open.",
+      "next_action": "Execute original numeric formatting after the C runtime locale initializer at 0x800001d0, and compare normal and highspeed AC text with the modeled formatter. Keep native type-6 producer provenance and physical timing open.",
       "last_verified_result": {
+        "original_factory_filter_cases": 10,
+        "original_ac_highspeed_comparison_cases": 104,
         "original_ac_signed_cutoff_cases": 936,
         "original_ac_native_initializer_cases": 2,
         "original_ac_native_renderer_cases": 16,
@@ -403,6 +405,8 @@
         "resident_index_exact_extractions_published": 3501
       },
       "result_evidence": [
+        "contributions/COORD-DIODE-VOLUME/factory-filter-setting-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/ac-highspeed-result-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/ac-result-boundaries-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-renderer-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-rapid-toggle-validation.json",
