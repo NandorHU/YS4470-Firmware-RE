@@ -26,8 +26,7 @@ def samples(selector):
     return sorted(values)
 
 
-def replay_path(raw, table, initial_checkbox, cutoff_setting):
-    replay = NativeViewReplay(raw, table)
+def replay_path(replay, initial_checkbox, cutoff_setting):
     replay.prepare_refresh_state(initial_checkbox, 2)
     replay.put(SETTINGS + 0x14, cutoff_setting)
     replay.timer_refresh(2)
@@ -46,7 +45,7 @@ def replay_path(raw, table, initial_checkbox, cutoff_setting):
             rows.append([sample, selector, packet["reply"], record["raw"], record["selector"],
                          record["scale_bits"], record["text"], record["unit"], record["flags"]])
     return dict(configuration=9 if initial_checkbox else 10, cutoff_setting=cutoff_setting,
-                cases=rows), replay.coverage
+                cases=rows)
 
 
 def main():
@@ -69,9 +68,9 @@ def main():
             assert tuple(raw[start:start+7]) == EXPONENTS
         paths, coverage = [], {}
         for initial_checkbox, cutoff_setting in product((0, 1), repeat=2):
-            path, instructions = replay_path(raw, table, initial_checkbox, cutoff_setting)
-            paths.append(path)
-            coverage.update(instructions)
+            replay = NativeViewReplay(raw, table)
+            paths.append(replay_path(replay, initial_checkbox, cutoff_setting))
+            coverage.update(replay.coverage)
         observations.append((paths, coverage))
     assert images.keys() == {"V3.6", "V3.8"} and observations[0] == observations[1]
     paths, coverage = observations[0]

@@ -346,3 +346,7 @@ Trace the factory settings +0x14 checkbox registration, label and save/load path
 ## Factory Filter and the separate highspeed AC label (2026-11-11)
 
 Execute original numeric formatting after the C runtime locale initializer at 0x800001d0, and compare normal and highspeed AC text with the modeled formatter. Keep native type-6 producer provenance and physical timing open. [ac-highspeed-result-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-highspeed-result-validation.json).
+
+## Original AC formatter and native highspeed fallback callers (2026-11-11)
+
+Follow the regular renderer call to 0x80045184 through 0x8005f1a8 and the original channel-1 sender, checking report text, units and USB gates. Keep native type-6 producer provenance and physical timing open. [ac-native-formatter-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-native-formatter-validation.json).

@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 56,
+  "revision": 57,
   "updated": "2026-11-11",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,10 +295,12 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Execute original numeric formatting after the C runtime locale initializer at 0x800001d0, and compare normal and highspeed AC text with the modeled formatter. Keep native type-6 producer provenance and physical timing open.",
+      "next_action": "Follow the regular renderer call to 0x80045184 through 0x8005f1a8 and the original channel-1 sender, checking report text, units and USB gates. Keep native type-6 producer provenance and physical timing open.",
       "last_verified_result": {
         "original_factory_filter_cases": 10,
         "original_ac_highspeed_comparison_cases": 104,
+        "original_ac_formatter_cases": 1040,
+        "original_native_highspeed_fallback_cases": 24,
         "original_ac_signed_cutoff_cases": 936,
         "original_ac_native_initializer_cases": 2,
         "original_ac_native_renderer_cases": 16,
@@ -405,6 +407,8 @@
         "resident_index_exact_extractions_published": 3501
       },
       "result_evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/ac-native-formatter-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/native-highspeed-buttons-validation.json",
         "contributions/COORD-DIODE-VOLUME/factory-filter-setting-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/ac-highspeed-result-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/ac-result-boundaries-validation.json",

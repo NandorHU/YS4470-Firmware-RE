@@ -437,3 +437,7 @@ Configuration 9 keeps negative values and explicit signs. Configuration 10 zeroe
 ## Factory Filter and the separate highspeed AC label (2026-11-11)
 
 The original highspeed timer callback `0x8005da88` queues a type-3 request and formats the stored result. Its configuration-10 path at `0x8005dd34` uses 2.5 with both Filter values. The regular dispatcher uses 5.5 with Filter enabled. Five highspeed labels per image differ from the corresponding regular labels in the tested 2.5–5.5 interval. [ac-highspeed-result-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-highspeed-result-validation.json).
+
+## Original AC formatter and native highspeed fallback callers (2026-11-11)
+
+The original C locale initializer `0x800001d0` writes `0x805aaaa4` to slot `0x80d5b894` at `0x800001e0`. The initialized decimal separator is a period. The original Thumb formatter `0x80000544` then agrees with both previous label datasets across 936 regular and 104 highspeed samples, including signed results and overload text. Widget and label sinks, timer-list traversal and UART/Timer0 inputs are modeled. The highspeed configuration-10 result remains a seeded-selector case. [ac-native-formatter-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-native-formatter-validation.json).
