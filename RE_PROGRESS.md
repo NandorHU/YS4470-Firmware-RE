@@ -3,6 +3,10 @@
 **Last verified update:** 2026-11-11  
 **Development branch:** `re/2026-11-04-pyghidra-fel`
 
+## Original 4-bit glyph expansion to blend input (2026-11-11)
+
+The original 4-bit path at `0x80014688` selects the 16-entry table `0x80068fc6` through `0x800149d4`. Opaque input maps a nibble to 17 times its value. At opacity below 253 the original scales intermediate levels by multiplication and an eight-bit right shift, and maps level 15 to the supplied opacity. For 36 V3.6/V3.8 cases the bytes submitted through `0x800289f8` matched independent high/low-nibble expansion, including clips that start on a low nibble. The tests use factory glyphs with synthetic clip and opacity. Scratch allocation, external masks and final RGB565 blend are modeled. The previous ten Ollama draw-dispatch excerpts matched both images and Capstone, with zero token-limit, rejected or missing results. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-alpha-mask-validation.json).
+
 ## Native AC draw event and packed-alpha boundary (2026-11-11)
 
 Label event `0x15` reaches original paint `0x800158c4` and text draw `0x800265bc`. The original context initializer `0x80029cc8` installs glyph callback `0x8002a0c4` at `+0x20`. The callback resolves font metrics and bitmap pointers, checks the ink rectangle against the draw clip, and reaches the packed-alpha compositor boundary `0x80014688`. The 48 cases confirm centered numeric glyph origins and right-aligned units, including a wrapped second numeric line. A full viewport reaches both lines for `+8388606.000`. A viewport ending at y=260 reaches only the first. A disjoint viewport reaches no glyph calls. The base event check, style readback, clip region and composition leaf are modeled. Draw coordinates are CPU-visible arguments. Framebuffer blending and physical LCD output remain open. Ten more Ollama label-binding excerpts matched both original images and Capstone. [Original draw evidence](contributions/COORD-ADC-CADENCE/synchronous/factory-ac-draw-validation.json).
