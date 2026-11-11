@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 47,
+  "revision": 48,
   "updated": "2026-11-11",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,8 +295,12 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Trace the device-ready and busy-clear producers for 0x805aac40 and 0x805aac70. Replay the original 0x8005fc08 channel-1 sender with bounded modeled peripheral state. Keep native type-6 provenance open.",
+      "next_action": "Replay the original mode-1 USB RX endpoint through 0x800603f4 and 0x800606e0 to verify FIFO copy, guard-word initialization and RX status handling. Then trace the mode-1 producer paths that originate native type-6 control-queue records; keep hardware timing open.",
       "last_verified_result": {
+        "original_usb_sender_cases": 12,
+        "original_usb_mode_and_irq_cases": 22,
+        "original_registered_usb_lifecycle_cases": 16,
+        "local_native_usb_sender_quotes_checked": 52,
         "original_cfd0_secondary_cases": 48,
         "modeled_cfd0_secondary_transport_calls": 24,
         "original_cfd0_secondary_model_quotes_checked": 46,
@@ -386,6 +390,7 @@
         "resident_index_exact_extractions_published": 3501
       },
       "result_evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/secondary-usb-lifecycle-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-secondary-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-validation.json",
         "contributions/COORD-ADC-CADENCE/profile-validation.json",

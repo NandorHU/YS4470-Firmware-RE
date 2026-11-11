@@ -367,3 +367,7 @@ Trace the writers of 0x805ac788 and verify the enabled 0x8005f254 route from the
 ## Secondary channel continuation (2026-11-11)
 
 Trace the device-ready and busy-clear producers for 0x805aac40 and 0x805aac70. Replay the original 0x8005fc08 channel-1 sender with bounded modeled peripheral state. Keep native type-6 provenance open. The register and actual timing remain outside the current replay. [ARM926 replay](contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-secondary-validation.json).
+
+## Secondary USB receive continuation (2026-11-11)
+
+Replay the original mode-1 USB RX endpoint through 0x800603f4 and 0x800606e0 to verify FIFO copy, guard-word initialization and RX status handling. Then trace the mode-1 producer paths that originate native type-6 control-queue records; keep hardware timing open. [Verified TX and IRQ boundary](contributions/COORD-ADC-CADENCE/synchronous/secondary-usb-lifecycle-validation.json).

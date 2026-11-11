@@ -205,3 +205,7 @@ The coordinator checked ten exact callback-window drafts at `0x8000d06c..0x8000d
 ## 2026-11-11 — Diode/Buzzer secondary command excerpts
 
 The coordinator queued 46 new addresses in four small catalogs covering the readiness guard, frame tail, transport edge and setting writer. All 46 exact quotes passed independent checks against the manifest-pinned V3.6 and V3.8 bytes, with zero incomplete, rejected or missing results. These are instruction extracts. The runtime evidence comes from the [separate original-code replay](../contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-secondary-validation.json).
+
+## 2026-11-11 — Native sender and guard-word index review
+
+All 52 previously queued excerpts around `0x8005fc08` and `0x8005e750` passed independent exact instruction, address and original-byte checks on both firmware images. There were no incomplete, rejected or missing excerpts. [Independent execution and firmware identities](../contributions/COORD-ADC-CADENCE/synchronous/secondary-usb-lifecycle-validation.json).

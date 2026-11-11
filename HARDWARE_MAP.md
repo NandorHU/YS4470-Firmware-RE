@@ -325,3 +325,7 @@ The registered callback `0x8000cfd0` executes the original timer-object stores, 
 ## Secondary transport boundary (2026-11-11)
 
 The original `0x80060ccc` path copies 64 bytes and calls `0x8005fc08` with channel argument 1 if its busy byte is clear. The call was modeled. [ARM926 replay and firmware identities](contributions/COORD-ADC-CADENCE/synchronous/control-gui-cfd0-secondary-validation.json).
+
+## Secondary USB channel-1 transmit path (2026-11-11)
+
+Original channel-1 code saves and restores USB endpoint index `0x01c13042`, polls bit 0 at `0x01c13082`, and writes little-endian words and byte tails to FIFO address `0x01c13004`. The register model is CPU-visible; it does not simulate on-wire USB. [Sender cases](contributions/COORD-ADC-CADENCE/synchronous/secondary-channel1-validation.json) · [Interrupt lifecycle](contributions/COORD-ADC-CADENCE/synchronous/secondary-usb-lifecycle-validation.json).
