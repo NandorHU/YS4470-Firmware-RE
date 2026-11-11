@@ -461,3 +461,7 @@ The 48 cases confirm centered numeric glyph origins and right-aligned units, inc
 ## Original 4-bit glyph expansion to blend input (2026-11-11)
 
 The original 4-bit path at `0x80014688` selects the 16-entry table `0x80068fc6` through `0x800149d4`. Opaque input maps a nibble to 17 times its value. At opacity below 253 the original scales intermediate levels by multiplication and an eight-bit right shift, and maps level 15 to the supplied opacity. For 36 V3.6/V3.8 cases the bytes submitted through `0x800289f8` matched independent high/low-nibble expansion, including clips that start on a low nibble. The tests use factory glyphs with synthetic clip and opacity. Scratch allocation, external masks and final RGB565 blend are modeled. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-alpha-mask-validation.json).
+
+## Original AC glyphs into an RGB565 framebuffer (2026-11-11)
+
+The normal-mode masked RGB565 path skips zero mask bytes and uses the solid color for opaque mask bytes when draw opacity is at least 253. Below 253 it combines the supplied nonzero mask with draw opacity before mixing. The mixer rounds its ratio with `(alpha + 4) >> 3`. The packed-color reference matched every pixel in the 36 original cases. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-rgb565-frame-validation.json).

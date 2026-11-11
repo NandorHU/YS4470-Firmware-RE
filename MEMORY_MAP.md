@@ -501,3 +501,7 @@ The draw context has a clip pointer at `+0x08` and a glyph callback at `+0x20`. 
 ## Original 4-bit glyph expansion to blend input (2026-11-11)
 
 The 4-bit alpha table is at `0x80068fc6`. The opacity-adjusted table is cached at `0x809b5518`, keyed by the opacity and format fields at `0x805abe08`. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-alpha-mask-validation.json).
+
+## Original AC glyphs into an RGB565 framebuffer (2026-11-11)
+
+The tested draw context uses `+0x00` for pixel buffer, `+0x04` for buffer rectangle and `+0x08` for clip. The original initializer binds `+0x54` to `0x80028a5c` and `+0x48` to `0x8002a0bc`. The proof uses a seeded 160 × 160 RGB565 buffer. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-rgb565-frame-validation.json).

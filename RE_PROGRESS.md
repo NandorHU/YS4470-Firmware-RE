@@ -3,6 +3,10 @@
 **Last verified update:** 2026-11-11  
 **Development branch:** `re/2026-11-04-pyghidra-fel`
 
+## Original AC glyphs into an RGB565 framebuffer (2026-11-11)
+
+The original draw context initializer `0x80029cc8` installs `0x80028a5c` at `+0x54` and `0x8002a0bc` at `+0x48`. The latter forwards descriptor `+0x14` to the free helper. The native dispatch at `0x800289f8` reaches `0x80028a5c`, the masked RGB565 fill `0x8001b8c0` and pixel mixer `0x80024fa4`. In 36 V3.6/V3.8 ARM926 cases, every framebuffer pixel matched the reference. Observed pixel stores stayed within the clip. The cases use three factory glyphs, three opacities and full or trimmed clips. The framebuffer, draw color and display flags are fixtures. Scratch allocation, display lookup and external masks are modeled. Physical LCD output and timing remain open. The 20 previous Ollama excerpts matched both original images and Capstone. There were zero token-limited, incorrect or missing excerpts. Four catalogs add 66 newly checked instructions in the callback binding, frame addressing, mask and pixel mixer. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-rgb565-frame-validation.json).
+
 ## 2026-11-11 — Larger diode controls and quiet-volume candidate
 
 The Windows beta used 30×30 controls and requested 5% PWM duty at its
