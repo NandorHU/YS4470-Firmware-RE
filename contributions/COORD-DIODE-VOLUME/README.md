@@ -45,3 +45,19 @@ PWM register writes with shadow MMIO, volume limits and ownership, glyph
 widths and 95 bitmap lookups, and eight E2 profile scenarios. GUI
 layout calls and allocation are modeled. There is no physical display,
 touch, sound or cold-boot validation for this application variant.
+
+## Factory persistence research (2026-11-11)
+
+Original registration `0x8001b2d0` binds the settings save callback `0x800453c8` to GUI context `+0x394`. In the three tested event codes, event 1 reaches the original CRC and storage routine. The other tested events leave the record unchanged. A Fast CONT checkbox update alone changes the RAM word. At `0x80006374` the original save reads a 4 KiB sector. A blank record prefix goes directly to one 72-byte program. A nonblank prefix takes erase, scratch merge and sixteen 256-byte program calls. Both paths preserve the adjacent synthetic bytes when transfers succeed. When the in-memory SPI model returns a short page header, the original skips that page, makes no second sector read and still reaches the completion log. This is an offline fault case.
+
+The factory volume handler `0x80057d34` reads slider `+0x3a0`, caps the input at 100 and stores half at settings `+0x0c`. The original preview passes half that stored value to the modeled PWM call. The global field survives the tested save/load round trip. The valid-record loader overwrites selected metadata spans after validation. The independent diode-volume overlay still uses its runtime state. These tests identify the factory behavior needed to evaluate future storage options.
+
+```powershell
+$task = 'contributions/COORD-DIODE-VOLUME'
+python -B "$task/trace_factory_settings_roundtrip.py" --out factory-settings-ui-validation.json
+python -B "$task/trace_factory_settings_sector.py" --out factory-settings-sector-validation.json
+python -B "$task/trace_factory_settings_write_failure.py" --out factory-settings-write-failure-validation.json
+python -B "$task/trace_factory_volume_slider.py" --out factory-volume-slider-validation.json
+```
+
+[Settings event](factory-settings-ui-validation.json) · [Sector merge](factory-settings-sector-validation.json) · [Short transfer](factory-settings-write-failure-validation.json) · [Global volume](factory-volume-slider-validation.json).

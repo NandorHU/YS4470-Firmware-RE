@@ -461,3 +461,7 @@ The AC widget pointer is stored at GUI context `+0x300`. Original state writer `
 ## AC queue and deferred-slot interaction (2026-11-11)
 
 The original AC callback issues type 2 through handle `0x805aae90`. While the measurement FSM is active, service places the record at `0x805ac6d0` and sets `0x805aae8c`. Subsequent queue drain or service replacement explains the two observed last-request paths. [In-flight record replay](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-reconfigure-validation.json) · [Rapid toggles](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-rapid-toggle-validation.json).
+
+## Settings field persistence boundaries (2026-11-11)
+
+The CRC-protected factory record starts at SPI offset `0xf00000`. In a valid load the original loader overwrites record offsets `0x1c..0x2b`, `0x2d..0x35` and `0x3e..0x43` after copying. The global volume word at `+0x0c` and Fast CONT at `+0x18` survived the synthetic round trip. [Settings event and loader](contributions/COORD-DIODE-VOLUME/factory-settings-ui-validation.json) · [Global volume](contributions/COORD-DIODE-VOLUME/factory-volume-slider-validation.json).

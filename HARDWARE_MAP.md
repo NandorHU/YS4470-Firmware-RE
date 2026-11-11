@@ -341,3 +341,7 @@ With matching replies, unchecked-to-checked emits `58 04 5c 5a 5a 60 60` and che
 ## AC refresh UART observation (2026-11-11)
 
 The original configuration and measurement stages execute in ARM926 and are separated by UART2 and Timer0 inputs supplied by the harness. The timer object retains 2000 during warmup and takes 200 once the tested warm path reaches the view. The numbers are raw fields. [Refresh replay](contributions/COORD-ADC-CADENCE/synchronous/ac-checkbox-refresh-validation.json).
+
+## Settings flash sector boundary (2026-11-11)
+
+At `0x80006374` the original save reads a 4 KiB sector. A blank record prefix goes directly to one 72-byte program. A nonblank prefix takes erase, scratch merge and sixteen 256-byte program calls. Both paths preserve the adjacent synthetic bytes when transfers succeed. When the in-memory SPI model returns a short page header, the original skips that page, makes no second sector read and still reaches the completion log. This is an offline fault case. [Native sector replay](contributions/COORD-DIODE-VOLUME/factory-settings-sector-validation.json) · [Modeled transfer failure](contributions/COORD-DIODE-VOLUME/factory-settings-write-failure-validation.json).

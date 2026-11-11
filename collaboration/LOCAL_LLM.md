@@ -213,3 +213,7 @@ All 52 previously queued excerpts around `0x8005fc08` and `0x8005e750` passed in
 ## 2026-11-11 — USB RX and TX-clear address extracts
 
 All 58 extracts in the RX FIFO, mode dispatch, type-3 record and TX busy-clear catalogs passed independent original-byte and instruction checks on both factory images. There were zero incomplete, rejected or missing results. [Separate runtime evidence](../contributions/COORD-ADC-CADENCE/synchronous/secondary-usb-rx-validation.json).
+
+## 2026-11-11 — Native checkbox and timer excerpts
+
+All 38 new extracts from the checkbox release, class delegation, nested event and timer deadline catalogs passed independent original-byte and instruction checks on both factory images. There were zero incomplete, rejected or missing results.

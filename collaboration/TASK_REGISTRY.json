@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 51,
+  "revision": 52,
   "updated": "2026-11-11",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -654,10 +654,18 @@
       ],
       "completed_on": "2026-11-10",
       "result_evidence": [
+        "contributions/COORD-DIODE-VOLUME/factory-settings-ui-validation.json",
+        "contributions/COORD-DIODE-VOLUME/factory-settings-sector-validation.json",
+        "contributions/COORD-DIODE-VOLUME/factory-settings-write-failure-validation.json",
+        "contributions/COORD-DIODE-VOLUME/factory-volume-slider-validation.json",
         "contributions/COORD-DIODE-VOLUME/build-receipt.json",
         "contributions/COORD-DIODE-VOLUME/validation.json"
       ],
       "validation": {
+        "factory_settings_ui_cases": 24,
+        "factory_settings_sector_cases": 16,
+        "factory_settings_short_transfer_cases": 12,
+        "factory_global_volume_cases": 28,
         "original_indirect_dispatches": 21,
         "original_pwm_updates": 10,
         "original_font_bitmap_lookups": 95,
