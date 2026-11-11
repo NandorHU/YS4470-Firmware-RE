@@ -12,6 +12,7 @@ from trace_ac_checkbox_refresh import (
 )
 from trace_ac_checkbox_renderer import BASE, INIT_BASE, SETTINGS, TABLE_SIZE, UNIT_TABLE, restore_globals
 from trace_control_gui_events import LABEL, QUEUE, RECORD_SIZE, TIMER, UI
+from trace_extended_status import FLAG as CALIBRATION_FLAG, STATUS as CALIBRATION_STATUS
 from trace_gauge_scheduled_service import GaugeReplay
 from trace_refresh_rendering import WIDGET_TEXT, WINDOWS as RENDER_WINDOWS, RenderingReplay, f32
 from trace_refresh_publication import TIMER_LIST, TIMER_STATE, TIMER_CURSOR
@@ -22,7 +23,7 @@ from unicorn.arm_const import (
 )
 
 CALLBACK, RESULT_BRANCH = 0x8005DA88, 0x8005DC3C
-SELECTION, CALIBRATION_FLAG, CALIBRATION_STATUS = 0x805AC08C, 0x805AB920, 0x805AC094
+SELECTION = 0x805AC08C
 UNIT_COPY, OVERLOAD_COPY = 0x8005DC78, 0x8005DC98
 UNCLAMPED_10, SIGNED_9, CLAMPED_10 = 0x8005DCF0, 0x8005DD30, 0x8005DD5C
 SAMPLES = ((-12345, 0), (-1, 3), (0, 0), (2499, 0), (2500, 0), (2501, 0),
@@ -47,6 +48,9 @@ class HighspeedReplay(RefreshAcReplay):
         if pc == CALLBACK:
             assert r0 == TIMER and lr == 0x80040A10
             self.callbacks += 1
+        if pc in (0x8005DAC4, 0x8005DBFC):
+            assert r0 == (CALIBRATION_STATUS if pc == 0x8005DAC4 else CALIBRATION_FLAG)
+            assert self.read(r0) == 0
         if pc == PRODUCER:
             assert (r0, r1, r2, lr) == (3, 0, 0, RESULT_BRANCH)
         if pc == QUEUE_SEND:

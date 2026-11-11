@@ -23,6 +23,8 @@ SAMPLES = ((-12345, 0), (550, 1), (0x7FFFFF, 6))
 
 class WidgetReplay(NativeNormal):
     primary_widget, unit_widget = WIDGETS
+    text_flags = 0x20
+    samples = SAMPLES
 
     def __init__(self, raw, table):
         super().__init__(raw, table)
@@ -91,7 +93,7 @@ class WidgetReplay(NativeNormal):
                 if address == widget + TEXT_POINTER:
                     assert size == 4 and (pc, value) in ((0x800320A4, 0), (0x800320BC, POOL[widget]))
                 else:
-                    assert (pc, size, value) == (0x800320D4, 1, 0x20)
+                    assert (pc, size, value) == (0x800320D4, 1, self.text_flags)
                 return
             if POOL[widget] <= address and address + size <= POOL[widget] + len(text) + 1:
                 return
@@ -110,7 +112,7 @@ class WidgetReplay(NativeNormal):
             expected.extend((["allocate", hex(POOL[widget]), len(text) + 1], ["layout", hex(widget), text]))
             assert self.read(widget + TEXT_POINTER) == POOL[widget]
             assert self.string(POOL[widget]) == text
-            assert self.u.mem_read(widget + FLAGS, 1) == b"\x20"
+            assert self.u.mem_read(widget + FLAGS, 1) == bytes((self.text_flags,))
             assert bytes(self.u.mem_read(ORIGINAL[widget], 7)) == b"borrow\0"
         assert self.widget_actions[start:] == expected
         return dict(widget_value=record["text"], widget_unit=record["unit"], actions=expected)
@@ -120,7 +122,7 @@ class WidgetReplay(NativeNormal):
         for widget in WIDGETS:
             self.u.mem_write(widget, bytes(0x80))
             self.u.mem_write(ORIGINAL[widget], b"borrow\0")
-            self.u.mem_write(widget + FLAGS, bytes((0x20 | (STATIC_TEXT if ownership == "borrowed" else 0),)))
+            self.u.mem_write(widget + FLAGS, bytes((self.text_flags | (STATIC_TEXT if ownership == "borrowed" else 0),)))
             if ownership == "borrowed":
                 self.put(widget + TEXT_POINTER, ORIGINAL[widget])
             elif ownership == "owned":
@@ -131,7 +133,7 @@ class WidgetReplay(NativeNormal):
         assert not self.measurement(100, 0, True)["published"]
         self.render_once("owned")
         observed = []
-        for sample, selector in SAMPLES:
+        for sample, selector in self.samples:
             assert self.measurement(sample & 0xFFFFFF, selector, True)["published"]
             observed.append(dict(sample=sample, selector=selector, **self.render_once("owned")))
         return dict(configuration=9 if initial else 10, original_widget_ownership=ownership,

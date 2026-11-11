@@ -358,3 +358,7 @@ Map the original export category and unit routing outside AC configurations 9 an
 ## USB report reconstruction and original AC label geometry (2026-11-11)
 
 Recover the actual AC label construction and font/style bindings for GUI offsets +0x2f4 and +0x2f8. Use those bindings to extend the native layout replay. Keep native type-6 producer provenance and physical timing open. [ac-widget-layout-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-widget-layout-validation.json).
+
+## Factory AC label bindings, wrapping and glyphs (2026-11-11)
+
+Follow native label event 0x15 through 0x800158c4 and 0x800265bc. Verify clipping, alignment and glyph positions before the raster callback. Keep native type-6 producer provenance and physical timing open. [factory-bound-ac-layout-validation](contributions/COORD-ADC-CADENCE/synchronous/factory-bound-ac-layout-validation.json) · [factory-ac-font-glyphs-validation](contributions/COORD-ADC-CADENCE/synchronous/factory-ac-font-glyphs-validation.json).

@@ -489,3 +489,7 @@ The AC widget unit-pointer table begins at `0x805aae98`; USB export uses the adj
 ## USB report reconstruction and original AC label geometry (2026-11-11)
 
 The label layout uses the original character-decoder table at `0x805abdc0`, the glyph cache at `0x805abe7c`, and a label word at `+0x30` which is reset to `0xffffffff` during layout. Export cache field layout is one category byte followed by twenty text bytes. [ac-widget-layout-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-widget-layout-validation.json) · [factory-usb-export-routing-validation](contributions/COORD-ADC-CADENCE/synchronous/factory-usb-export-routing-validation.json).
+
+## Factory AC label bindings, wrapping and glyphs (2026-11-11)
+
+The numeric and unit font caches use `0x805ac090` and `0x805abe8c`. The highspeed test now explicitly initializes the original calibration status and flag words at `0x805ab920` and `0x805ab91c`; the earlier highspeed report reproduces byte for byte. [factory-ac-font-glyphs-validation](contributions/COORD-ADC-CADENCE/synchronous/factory-ac-font-glyphs-validation.json) · [ac-highspeed-result-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-highspeed-result-validation.json).
