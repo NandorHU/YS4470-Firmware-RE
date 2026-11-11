@@ -467,3 +467,7 @@ The original result dispatcher at `0x800037c0` reaches renderer `0x8000326c` aft
 ## Signed AC samples, selector clamp and display cutoffs (2026-11-11)
 
 The original UART parser sign-extends the 24-bit sample at `0x8000474c` and clamps selector bytes above 6 to 6 at `0x80004764`. At `0x800037c0` the original display dispatcher consumes both words. Its configuration-9 branch begins at `0x80003b5c`, the configuration-10 branch at `0x80003b80`. [Original replay evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-result-boundaries-validation.json).
+
+## Factory Filter and the separate highspeed AC label (2026-11-11)
+
+Factory checkbox `+0x328` registers `0x8005a534` for event `0x1c` at `0x8005490c`. A native release reaches the store at `0x8005a554` and toggles settings word `0x805ac784`. The nearby English label is Filter. The word survives valid CRC save/load, and the invalid-record path defaults it to 1 and prepares a CRC-correct rewrite. The original highspeed timer callback `0x8005da88` queues a type-3 request and formats the stored result. Its configuration-10 path at `0x8005dd34` uses 2.5 with both Filter values. The regular dispatcher uses 5.5 with Filter enabled. Five highspeed labels per image differ from the corresponding regular labels in the tested 2.5–5.5 interval. [factory-filter-setting-validation](contributions/COORD-DIODE-VOLUME/factory-filter-setting-validation.json) · [ac-highspeed-result-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-highspeed-result-validation.json).

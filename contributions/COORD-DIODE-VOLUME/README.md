@@ -61,3 +61,7 @@ python -B "$task/trace_factory_volume_slider.py" --out factory-volume-slider-val
 ```
 
 [Settings event](factory-settings-ui-validation.json) · [Sector merge](factory-settings-sector-validation.json) · [Short transfer](factory-settings-write-failure-validation.json) · [Global volume](factory-volume-slider-validation.json).
+
+## Factory Filter and the separate highspeed AC label (2026-11-11)
+
+Factory checkbox `+0x328` registers `0x8005a534` for event `0x1c` at `0x8005490c`. A native release reaches the store at `0x8005a554` and toggles settings word `0x805ac784`. The nearby English label is Filter. The word survives valid CRC save/load, and the invalid-record path defaults it to 1 and prepares a CRC-correct rewrite. The Filter field is occupied by factory AC behavior. [factory-filter-setting-validation](factory-filter-setting-validation.json) · [ac-highspeed-result-validation](../COORD-ADC-CADENCE/synchronous/ac-highspeed-result-validation.json).

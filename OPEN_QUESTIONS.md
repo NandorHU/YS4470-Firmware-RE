@@ -395,3 +395,7 @@ Extend the original AC result presentation to signed samples and unit/scale boun
 ## Signed AC samples, selector clamp and display cutoffs (2026-11-11)
 
 Trace the factory settings +0x14 checkbox registration, label and save/load path into the configuration-10 display cutoff. Compare the separate highspeed formatter at 0x8005dc3c once the normal display setting is proven. Keep native type-6 producer provenance and physical timing open. [Original replay evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-result-boundaries-validation.json).
+
+## Factory Filter and the separate highspeed AC label (2026-11-11)
+
+Execute original numeric formatting after the C runtime locale initializer at 0x800001d0, and compare normal and highspeed AC text with the modeled formatter. Keep native type-6 producer provenance and physical timing open. [ac-highspeed-result-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-highspeed-result-validation.json).

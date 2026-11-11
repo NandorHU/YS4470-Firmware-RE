@@ -353,3 +353,7 @@ The ARM926 result path reads UART-fed state through a modeled Timer0 schedule. T
 ## Signed AC samples, selector clamp and display cutoffs (2026-11-11)
 
 The original UART parser sign-extends the 24-bit sample at `0x8000474c` and clamps selector bytes above 6 to 6 at `0x80004764`. The 936 synthetic UART cases execute the original checkbox, UART IRQ, parser, dispatcher and renderer in both factory images. The settings word is seeded, and the formatter and display sinks are modeled. Physical ADC and voltage scaling remain open. [Original replay evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-result-boundaries-validation.json).
+
+## Factory Filter and the separate highspeed AC label (2026-11-11)
+
+The highspeed callback follows the original timer deadline and enqueues a real type-3 measurement request. UART2 and Timer0 inputs are supplied by the harness. The period becomes raw value 200. [ac-highspeed-result-validation](contributions/COORD-ADC-CADENCE/synchronous/ac-highspeed-result-validation.json).
