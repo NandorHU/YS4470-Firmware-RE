@@ -509,3 +509,7 @@ The tested draw context uses `+0x00` for pixel buffer, `+0x04` for buffer rectan
 ## Native display buffers, rotated flush and compiled copy reconstruction (2026-11-12)
 
 The native driver is `0x80b45b34`, its buffer descriptor is `0x809b5618`, its draw buffers are `0x809b5634` and `0x80a7d8b4`, and the panel buffer is `0x80b45b84`. The descriptor reports 96,000 pixels. Driver flags initialize to `0x413c`. Callback `0x800115f4` writes RGB565 with 480-pixel stride. Completion `0x80025c7c` clears descriptor words `+0x10` and `+0x14`. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/display-refresh-setup-validation.json) · [Original copy evidence](contributions/COORD-ADC-CADENCE/synchronous/display-flush-validation.json).
+
+## Native dirty refresh and complete glyph-to-panel buffer replay (2026-11-12)
+
+The original dirty path assigns the active descriptor buffer at `0x80043c8c` and `0x80043d1c` to draw context `+0x00`. It uses a stack-backed rectangle for `+0x04/+0x08`. Capacity 96,000 and full logical width 854 produce a 112-row maximum chunk. Descriptor `+0x18` bit 1 marks the last chunk in the tested path. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/display-dirty-regions-validation.json).

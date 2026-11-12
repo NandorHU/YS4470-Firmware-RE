@@ -389,3 +389,7 @@ Factory code writes RGB565 pixels through draw context `+0x00` in the emulated C
 ## Native display buffers, rotated flush and compiled copy reconstruction (2026-11-12)
 
 The native initializer passes `480, 854, 0x80b45b84, 0` to panel setup `0x80006b2c`, which is modeled in these tests. The original flush writes only CPU RAM at that panel buffer. Twenty rotation cases cover logical corners, a full-width row, square in-place rotation and rectangular scratch rotation. Physical panel transfer and timing remain open. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/display-rotation-validation.json).
+
+## Native dirty refresh and complete glyph-to-panel buffer replay (2026-11-12)
+
+The integrated proof compares the RAM draw buffer and complete physical-orientation RAM panel buffer after original glyph and rotation code. Display initialization remains modeled at its hardware boundary. The result leaves physical LCD transfer and timing open. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/native-glyph-pipeline-validation.json).
