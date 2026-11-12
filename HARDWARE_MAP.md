@@ -393,3 +393,7 @@ The native initializer passes `480, 854, 0x80b45b84, 0` to panel setup `0x80006b
 ## Native dirty refresh and complete glyph-to-panel buffer replay (2026-11-12)
 
 The integrated proof compares the RAM draw buffer and complete physical-orientation RAM panel buffer after original glyph and rotation code. Display initialization remains modeled at its hardware boundary. The result leaves physical LCD transfer and timing open. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/native-glyph-pipeline-validation.json).
+
+## Original display object traversal and ancestor post-draw events (2026-11-12)
+
+The original object traversal executes entirely against a synthetic object tree in CPU RAM. Native panel output and timing remain open. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/display-object-traversal-validation.json).

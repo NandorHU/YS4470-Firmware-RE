@@ -382,3 +382,7 @@ Execute the original dirty-area refresh setup at 0x80043a58..0x80043b20 with the
 ## Native dirty refresh and complete glyph-to-panel buffer replay (2026-11-12)
 
 Follow native renderer 0x800430d0 into object traversal 0x80044378 and 0x80043eb0, using the verified AC label objects and styles. Replace the selected-glyph boundary with the original numeric/unit label draw while preserving the tested dirty buffer, rotation and flush. Keep physical LCD timing and native type-6 producer provenance open. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/native-glyph-pipeline-validation.json).
+
+## Original display object traversal and ancestor post-draw events (2026-11-12)
+
+Execute renderer 0x80043eb0 with verified AC numeric/unit label objects, styles, geometry and native dirty context. Follow its hidden, opacity and clip gates into the actual label draw event before connecting the tested glyph/rotation/flush chain. Preserve sibling and ancestor-event ordering. Keep physical LCD timing and native type-6 producer provenance open. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/display-object-traversal-validation.json).
