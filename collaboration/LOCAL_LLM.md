@@ -228,3 +228,7 @@ because a two-instruction job can span address prefixes. Six additional small
 catalogs cover 88 newly observed rotation, copy and completion instructions.
 These extracts support indexing. Runtime claims come from the original ARM926
 tests. [Review receipt](../contributions/COORD-ADC-CADENCE/synchronous/display-local-index-review.json).
+
+## Original display object traversal and ancestor post-draw events (2026-11-12)
+
+The 71 dirty-region selection, capacity, chunk-area and tail extracts all passed exact original-byte and quotation review. The coordinator queued 82 new instructions in traversal/renderer entry and 264 further renderer-body instructions in catalogs of at most 16. These prospective instruction indexes leave runtime behavior to the coordinator's ARM926 tests. The existing server and worker are reused. [Original ARM926 evidence](../contributions/COORD-ADC-CADENCE/synchronous/display-object-traversal-validation.json).

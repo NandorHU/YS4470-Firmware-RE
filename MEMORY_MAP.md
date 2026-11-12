@@ -513,3 +513,7 @@ The native driver is `0x80b45b34`, its buffer descriptor is `0x809b5618`, its dr
 ## Native dirty refresh and complete glyph-to-panel buffer replay (2026-11-12)
 
 The original dirty path assigns the active descriptor buffer at `0x80043c8c` and `0x80043d1c` to draw context `+0x00`. It uses a stack-backed rectangle for `+0x04/+0x08`. Capacity 96,000 and full logical width 854 produce a 112-row maximum chunk. Descriptor `+0x18` bit 1 marks the last chunk in the tested path. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/display-dirty-regions-validation.json).
+
+## Original display object traversal and ancestor post-draw events (2026-11-12)
+
+The tested object representation uses parent at `+0x04` and child metadata at `+0x08`. Metadata `+0x00` points to child pointers and `+0x04` holds the count. The active display's `+0x10` supplies the default root. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/display-object-traversal-validation.json).

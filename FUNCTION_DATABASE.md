@@ -507,3 +507,7 @@ Display setup `0x8003b080` calls original buffer initializer `0x800259b4`, drive
 ## Native dirty refresh and complete glyph-to-panel buffer replay (2026-11-12)
 
 The native dirty-buffer setup reaches render dispatch `0x800430d0` through calls at `0x80043cc0` and `0x80043d38`. It assigns context `+0x00/+0x04/+0x08` from the selected native buffer and each dirty chunk. A selected original glyph call then reaches original alpha, RGB565, rotation and panel-copy paths in the same emulation. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/display-dirty-regions-validation.json) · [Integrated glyph execution](contributions/COORD-ADC-CADENCE/synchronous/native-glyph-pipeline-validation.json).
+
+## Original display object traversal and ancestor post-draw events (2026-11-12)
+
+Original traversal `0x80044378` renders the requested node, then walks its parents. At each parent it calls renderer `0x80043eb0` for siblings after the current child and sends parent events `0x17`, `0x18` and `0x19` in order. The original parent getter `0x80035eb4`, child count `0x80035abc` and default-root getter `0x80025d84` execute. Thirty-two V3.6/V3.8 schedules cover both child orders, six node selections and populated or empty default roots. The tree, child arrays and active display are fixtures. Renderer and event dispatch bodies are modeled. Recursive painting and native label integration remain open. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/display-object-traversal-validation.json).
