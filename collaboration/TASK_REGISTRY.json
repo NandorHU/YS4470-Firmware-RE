@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 65,
+  "revision": 66,
   "updated": "2026-11-11",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,7 +295,7 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Execute the original dirty-area refresh setup at 0x80043a58..0x80043b20 with the native display resolution helpers. Follow the assigned buffer and clip into 0x800430d0 and connect one original glyph draw to rotated flush. Keep active-display scheduling, physical LCD timing and native type-6 producer provenance open.",
+      "next_action": "Follow native renderer 0x800430d0 into object traversal 0x80044378 and 0x80043eb0, using the verified AC label objects and styles. Replace the selected-glyph boundary with the original numeric/unit label draw while preserving the tested dirty buffer, rotation and flush. Keep physical LCD timing and native type-6 producer provenance open.",
       "last_verified_result": {
         "original_factory_filter_cases": 10,
         "original_ac_highspeed_comparison_cases": 104,
@@ -318,6 +318,8 @@
         "original_native_display_rotation_cases": 20,
         "compiled_display_buffer_comparisons": 26,
         "compiled_display_invalid_rectangle_checks": 8,
+        "original_native_dirty_refresh_schedules": 20,
+        "original_native_glyph_panel_cases": 12,
         "original_ac_signed_cutoff_cases": 936,
         "original_ac_native_initializer_cases": 2,
         "original_ac_native_renderer_cases": 16,
@@ -424,6 +426,8 @@
         "resident_index_exact_extractions_published": 3501
       },
       "result_evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/display-dirty-regions-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/native-glyph-pipeline-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/display-refresh-setup-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/display-flush-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/display-rotation-validation.json",

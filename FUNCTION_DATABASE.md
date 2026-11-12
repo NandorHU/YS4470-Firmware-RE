@@ -503,3 +503,7 @@ Draw context initialization at `0x80029cc8` binds `+0x54` to `0x80028a5c`. The `
 ## Native display buffers, rotated flush and compiled copy reconstruction (2026-11-12)
 
 Display setup `0x8003b080` calls original buffer initializer `0x800259b4`, driver initializer `0x800259e0` and registration prefix `0x80025a5c`, whose draw-context callback is `0x80029cc8`. Refresh dispatch `0x80026e60` reaches `0x80029d9c`. Native rotation `0x80012930` reaches flush `0x800115f4`, followed by completion `0x80025c7c`. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/display-refresh-setup-validation.json) · [Rotation execution](contributions/COORD-ADC-CADENCE/synchronous/display-rotation-validation.json).
+
+## Native dirty refresh and complete glyph-to-panel buffer replay (2026-11-12)
+
+The native dirty-buffer setup reaches render dispatch `0x800430d0` through calls at `0x80043cc0` and `0x80043d38`. It assigns context `+0x00/+0x04/+0x08` from the selected native buffer and each dirty chunk. A selected original glyph call then reaches original alpha, RGB565, rotation and panel-copy paths in the same emulation. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/display-dirty-regions-validation.json) · [Integrated glyph execution](contributions/COORD-ADC-CADENCE/synchronous/native-glyph-pipeline-validation.json).

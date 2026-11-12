@@ -378,3 +378,7 @@ Trace the native display refresh setup that assigns draw-context +0x00/+0x04/+0x
 ## Native display buffers, rotated flush and compiled copy reconstruction (2026-11-12)
 
 Execute the original dirty-area refresh setup at 0x80043a58..0x80043b20 with the native display resolution helpers. Follow the assigned buffer and clip into 0x800430d0 and connect one original glyph draw to rotated flush. Keep active-display scheduling, physical LCD timing and native type-6 producer provenance open. [Compiled display component](contributions/COORD-ADC-CADENCE/synchronous/display-copy-reconstruction-validation.json).
+
+## Native dirty refresh and complete glyph-to-panel buffer replay (2026-11-12)
+
+Follow native renderer 0x800430d0 into object traversal 0x80044378 and 0x80043eb0, using the verified AC label objects and styles. Replace the selected-glyph boundary with the original numeric/unit label draw while preserving the tested dirty buffer, rotation and flush. Keep physical LCD timing and native type-6 producer provenance open. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/native-glyph-pipeline-validation.json).
