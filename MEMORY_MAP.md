@@ -505,3 +505,7 @@ The 4-bit alpha table is at `0x80068fc6`. The opacity-adjusted table is cached a
 ## Original AC glyphs into an RGB565 framebuffer (2026-11-11)
 
 The tested draw context uses `+0x00` for pixel buffer, `+0x04` for buffer rectangle and `+0x08` for clip. The original initializer binds `+0x54` to `0x80028a5c` and `+0x48` to `0x8002a0bc`. The proof uses a seeded 160 × 160 RGB565 buffer. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-rgb565-frame-validation.json).
+
+## Native display buffers, rotated flush and compiled copy reconstruction (2026-11-12)
+
+The native driver is `0x80b45b34`, its buffer descriptor is `0x809b5618`, its draw buffers are `0x809b5634` and `0x80a7d8b4`, and the panel buffer is `0x80b45b84`. The descriptor reports 96,000 pixels. Driver flags initialize to `0x413c`. Callback `0x800115f4` writes RGB565 with 480-pixel stride. Completion `0x80025c7c` clears descriptor words `+0x10` and `+0x14`. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/display-refresh-setup-validation.json) · [Original copy evidence](contributions/COORD-ADC-CADENCE/synchronous/display-flush-validation.json).

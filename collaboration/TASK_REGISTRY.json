@@ -1,6 +1,6 @@
 {
   "schema": "ys4470.task-registry.v1",
-  "revision": 64,
+  "revision": 65,
   "updated": "2026-11-11",
   "repository": "NandorHU/YS4470-Firmware-RE",
   "integration_branch": "re/2026-11-04-pyghidra-fel",
@@ -295,7 +295,7 @@
         "Keep raw counter cadence separate from milliseconds and acoustic timing.",
         "Same-input profile matrix with UART/FSM/audio/display event boundaries, exact modeled leaves and unresolved evidence."
       ],
-      "next_action": "Trace the native display refresh setup that assigns draw-context +0x00/+0x04/+0x08 and the display-driver flags used by 0x80028a5c. Verify which RGB565 or custom callback path it selects for the normal AC screen. Keep physical LCD timing and native type-6 producer provenance open.",
+      "next_action": "Execute the original dirty-area refresh setup at 0x80043a58..0x80043b20 with the native display resolution helpers. Follow the assigned buffer and clip into 0x800430d0 and connect one original glyph draw to rotated flush. Keep active-display scheduling, physical LCD timing and native type-6 producer provenance open.",
       "last_verified_result": {
         "original_factory_filter_cases": 10,
         "original_ac_highspeed_comparison_cases": 104,
@@ -312,6 +312,12 @@
         "original_factory_ac_draw_cases": 48,
         "original_ac_alpha_mask_cases": 36,
         "original_ac_rgb565_frame_cases": 36,
+        "original_native_display_setup_cases": 2,
+        "original_native_display_buffer_bindings": 8,
+        "original_native_display_flush_cases": 32,
+        "original_native_display_rotation_cases": 20,
+        "compiled_display_buffer_comparisons": 26,
+        "compiled_display_invalid_rectangle_checks": 8,
         "original_ac_signed_cutoff_cases": 936,
         "original_ac_native_initializer_cases": 2,
         "original_ac_native_renderer_cases": 16,
@@ -418,6 +424,11 @@
         "resident_index_exact_extractions_published": 3501
       },
       "result_evidence": [
+        "contributions/COORD-ADC-CADENCE/synchronous/display-refresh-setup-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/display-flush-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/display-rotation-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/display-copy-reconstruction-validation.json",
+        "contributions/COORD-ADC-CADENCE/synchronous/display-local-index-review.json",
         "contributions/COORD-ADC-CADENCE/synchronous/ac-rgb565-frame-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/ac-alpha-mask-validation.json",
         "contributions/COORD-ADC-CADENCE/synchronous/factory-ac-draw-validation.json",

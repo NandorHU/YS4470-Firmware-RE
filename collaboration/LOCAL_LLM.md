@@ -217,3 +217,14 @@ All 58 extracts in the RX FIFO, mode dispatch, type-3 record and TX busy-clear c
 ## 2026-11-11 — Native checkbox and timer excerpts
 
 All 38 new extracts from the checkbox release, class delegation, nested event and timer deadline catalogs passed independent original-byte and instruction checks on both factory images. There were zero incomplete, rejected or missing results.
+
+## 2026-11-12 — Display callback and framebuffer index review
+
+Review of 121 excerpts across the four prior RGB565 catalogs and four new
+display-setup catalogs accepted 120 exact original instructions. The quote
+for `0x80024fbc` incorrectly cited `0x80024fb4` and was rejected.
+No records are missing. The external review helper now scans all job folders
+because a two-instruction job can span address prefixes. Six additional small
+catalogs cover 88 newly observed rotation, copy and completion instructions.
+These extracts support indexing. Runtime claims come from the original ARM926
+tests. [Review receipt](../contributions/COORD-ADC-CADENCE/synchronous/display-local-index-review.json).

@@ -1,0 +1,27 @@
+{
+  "schema": "ys4470.display-copy-reconstruction.v1",
+  "images": {
+    "V3.6": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+    "V3.8": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+  },
+  "original_evidence_sha256": {
+    "display-flush-validation.json": "b1a96fe651373fbaca0d66cacd3ceeda4459a282a972bb05768a2a0663612bc2",
+    "display-rotation-validation.json": "47b393c6c196597e6ddd78f9805afc6ac6fbd79ed70e050e2fbe4adfb44418df"
+  },
+  "comparisons": {
+    "ys4470_panel_copy": 16,
+    "ys4470_panel_copy_rotated": 10
+  },
+  "rejected_rectangles": 8,
+  "source_sha256": {
+    "display_copy.c": "e5165c29a4af45502811fd383cd9021feb948170c95e2721110276bfbfc81206",
+    "display_copy.h": "2b1a73e0baa35481283b7edee3fba4ee41f82794b6bb3ddc72acf5ad71c81471"
+  },
+  "linked_elf_sha256": "db36ff52fe5c82a87710d901ce8ac0a4e661b43e650e471e7ded7bde3e685550",
+  "limits": [
+    "Compiled freestanding C executes as ARM926 code in Unicorn.",
+    "The complete panel buffer hashes match the original replay cases.",
+    "C leaves source pixels intact and exposes a checked rectangle interface.",
+    "Native allocation, source mutation, busy flags, display scheduling and LCD hardware are outside this C component."
+  ]
+}
