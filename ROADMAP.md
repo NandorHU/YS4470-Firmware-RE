@@ -374,3 +374,7 @@ Execute the actual blend callback installed at draw context +0x54 (0x8002a0bc) a
 ## Original AC glyphs into an RGB565 framebuffer (2026-11-11)
 
 Trace the native display refresh setup that assigns draw-context +0x00/+0x04/+0x08 and the display-driver flags used by 0x80028a5c. Verify which RGB565 or custom callback path it selects for the normal AC screen. Keep physical LCD timing and native type-6 producer provenance open. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-rgb565-frame-validation.json).
+
+## Native display buffers, rotated flush and compiled copy reconstruction (2026-11-12)
+
+Execute the original dirty-area refresh setup at 0x80043a58..0x80043b20 with the native display resolution helpers. Follow the assigned buffer and clip into 0x800430d0 and connect one original glyph draw to rotated flush. Keep active-display scheduling, physical LCD timing and native type-6 producer provenance open. [Compiled display component](contributions/COORD-ADC-CADENCE/synchronous/display-copy-reconstruction-validation.json).

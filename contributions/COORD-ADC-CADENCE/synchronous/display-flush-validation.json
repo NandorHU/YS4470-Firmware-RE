@@ -1,0 +1,475 @@
+{
+  "schema": "ys4470.native-display-flush.v1",
+  "images": {
+    "V3.6": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+    "V3.8": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+  },
+  "cases": [
+    {
+      "source": "0x809b5634",
+      "rectangle": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pixels_copied": 1,
+      "completion_flags": [
+        0,
+        0
+      ],
+      "frame_sha256": "ad28563f8794e704363db80f33d586b39ce9d0b566f2ad196dc1a9ccd7cf61d9",
+      "outside_pixels_unchanged": 409919
+    },
+    {
+      "source": "0x809b5634",
+      "rectangle": [
+        479,
+        853,
+        479,
+        853
+      ],
+      "pixels_copied": 1,
+      "completion_flags": [
+        0,
+        0
+      ],
+      "frame_sha256": "2b73381c9661ebdc517b540c477073bfb2c85e7e479b4d1d58dfc3d202db473a",
+      "outside_pixels_unchanged": 409919
+    },
+    {
+      "source": "0x809b5634",
+      "rectangle": [
+        0,
+        400,
+        479,
+        400
+      ],
+      "pixels_copied": 480,
+      "completion_flags": [
+        0,
+        0
+      ],
+      "frame_sha256": "aff4295ce83e333251b5808d74844c22313efd79fc26759db7f64a7f89ceb0b2",
+      "outside_pixels_unchanged": 409440
+    },
+    {
+      "source": "0x809b5634",
+      "rectangle": [
+        17,
+        200,
+        25,
+        206
+      ],
+      "pixels_copied": 63,
+      "completion_flags": [
+        0,
+        0
+      ],
+      "frame_sha256": "486b08bcae724fa023f9d4c7be98c427492cd4302b6abe04aca8d3bd0a265ebb",
+      "outside_pixels_unchanged": 409857
+    },
+    {
+      "source": "0x809b5634",
+      "rectangle": [
+        477,
+        851,
+        479,
+        853
+      ],
+      "pixels_copied": 9,
+      "completion_flags": [
+        0,
+        0
+      ],
+      "frame_sha256": "905a57fb80d1575abb158d68bf797906fe545f2fa661bbc1af44a9ee0cc0593e",
+      "outside_pixels_unchanged": 409911
+    },
+    {
+      "source": "0x809b5634",
+      "rectangle": [
+        0,
+        0,
+        479,
+        1
+      ],
+      "pixels_copied": 960,
+      "completion_flags": [
+        0,
+        0
+      ],
+      "frame_sha256": "0f651f8a058b3e434a4d4c632231b361203ffb72132bda62af9acd84bb54363a",
+      "outside_pixels_unchanged": 408960
+    },
+    {
+      "source": "0x809b5634",
+      "rectangle": [
+        20,
+        30,
+        19,
+        30
+      ],
+      "pixels_copied": 0,
+      "completion_flags": [
+        0,
+        0
+      ],
+      "frame_sha256": "7ee2302dc31ada9089b980579c902c40e3a908f09df86de588ced861660475b9",
+      "outside_pixels_unchanged": 409920
+    },
+    {
+      "source": "0x809b5634",
+      "rectangle": [
+        20,
+        30,
+        25,
+        29
+      ],
+      "pixels_copied": 0,
+      "completion_flags": [
+        0,
+        0
+      ],
+      "frame_sha256": "7ee2302dc31ada9089b980579c902c40e3a908f09df86de588ced861660475b9",
+      "outside_pixels_unchanged": 409920
+    },
+    {
+      "source": "0x80a7d8b4",
+      "rectangle": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pixels_copied": 1,
+      "completion_flags": [
+        0,
+        0
+      ],
+      "frame_sha256": "ad28563f8794e704363db80f33d586b39ce9d0b566f2ad196dc1a9ccd7cf61d9",
+      "outside_pixels_unchanged": 409919
+    },
+    {
+      "source": "0x80a7d8b4",
+      "rectangle": [
+        479,
+        853,
+        479,
+        853
+      ],
+      "pixels_copied": 1,
+      "completion_flags": [
+        0,
+        0
+      ],
+      "frame_sha256": "2b73381c9661ebdc517b540c477073bfb2c85e7e479b4d1d58dfc3d202db473a",
+      "outside_pixels_unchanged": 409919
+    },
+    {
+      "source": "0x80a7d8b4",
+      "rectangle": [
+        0,
+        400,
+        479,
+        400
+      ],
+      "pixels_copied": 480,
+      "completion_flags": [
+        0,
+        0
+      ],
+      "frame_sha256": "aff4295ce83e333251b5808d74844c22313efd79fc26759db7f64a7f89ceb0b2",
+      "outside_pixels_unchanged": 409440
+    },
+    {
+      "source": "0x80a7d8b4",
+      "rectangle": [
+        17,
+        200,
+        25,
+        206
+      ],
+      "pixels_copied": 63,
+      "completion_flags": [
+        0,
+        0
+      ],
+      "frame_sha256": "486b08bcae724fa023f9d4c7be98c427492cd4302b6abe04aca8d3bd0a265ebb",
+      "outside_pixels_unchanged": 409857
+    },
+    {
+      "source": "0x80a7d8b4",
+      "rectangle": [
+        477,
+        851,
+        479,
+        853
+      ],
+      "pixels_copied": 9,
+      "completion_flags": [
+        0,
+        0
+      ],
+      "frame_sha256": "905a57fb80d1575abb158d68bf797906fe545f2fa661bbc1af44a9ee0cc0593e",
+      "outside_pixels_unchanged": 409911
+    },
+    {
+      "source": "0x80a7d8b4",
+      "rectangle": [
+        0,
+        0,
+        479,
+        1
+      ],
+      "pixels_copied": 960,
+      "completion_flags": [
+        0,
+        0
+      ],
+      "frame_sha256": "0f651f8a058b3e434a4d4c632231b361203ffb72132bda62af9acd84bb54363a",
+      "outside_pixels_unchanged": 408960
+    },
+    {
+      "source": "0x80a7d8b4",
+      "rectangle": [
+        20,
+        30,
+        19,
+        30
+      ],
+      "pixels_copied": 0,
+      "completion_flags": [
+        0,
+        0
+      ],
+      "frame_sha256": "7ee2302dc31ada9089b980579c902c40e3a908f09df86de588ced861660475b9",
+      "outside_pixels_unchanged": 409920
+    },
+    {
+      "source": "0x80a7d8b4",
+      "rectangle": [
+        20,
+        30,
+        25,
+        29
+      ],
+      "pixels_copied": 0,
+      "completion_flags": [
+        0,
+        0
+      ],
+      "frame_sha256": "7ee2302dc31ada9089b980579c902c40e3a908f09df86de588ced861660475b9",
+      "outside_pixels_unchanged": 409920
+    }
+  ],
+  "native_driver": "0x80b45b34",
+  "flush_callback": "0x800115f4",
+  "panel_buffer": "0x80b45b84",
+  "panel_dimensions": [
+    480,
+    854
+  ],
+  "instruction_bytes": {
+    "0x800115f4": "f0002de9",
+    "0x800115f8": "f2c0d1e1",
+    "0x800115fc": "f630d1e1",
+    "0x80011600": "0c0053e1",
+    "0x80011604": "50309fa5",
+    "0x80011608": "005093a5",
+    "0x8001160c": "100000ba",
+    "0x80011610": "f030d1e1",
+    "0x80011614": "f440d1e1",
+    "0x80011618": "030054e1",
+    "0x8001161c": "0c426ca0",
+    "0x80011620": "044385a0",
+    "0x80011624": "060000ba",
+    "0x80011628": "b260d2e0",
+    "0x8001162c": "837084e0",
+    "0x80011630": "013083e2",
+    "0x80011634": "b060c7e1",
+    "0x80011638": "f460d1e1",
+    "0x8001163c": "030056e1",
+    "0x80011640": "f8ffffaa",
+    "0x80011644": "f630d1e1",
+    "0x80011648": "01c08ce2",
+    "0x8001164c": "0c0053e1",
+    "0x80011650": "eeffffaa",
+    "0x80011654": "f000bde8",
+    "0x80011658": "875100ea",
+    "0x800259b4": "f0412de9",
+    "0x800259b8": "0150a0e1",
+    "0x800259bc": "0370a0e1",
+    "0x800259c0": "0260a0e1",
+    "0x800259c4": "0040a0e1",
+    "0x800259c8": "1c10a0e3",
+    "0x800259cc": "103500eb",
+    "0x800259d0": "600084e8",
+    "0x800259d4": "085084e5",
+    "0x800259d8": "0c7084e5",
+    "0x800259dc": "f081bde8",
+    "0x800259e0": "38402de9",
+    "0x800259e4": "0040a0e1",
+    "0x800259e8": "5010a0e3",
+    "0x800259ec": "083500eb",
+    "0x800259f0": "5c009fe5",
+    "0x800259f4": "b000c4e1",
+    "0x800259f8": "1e0ea0e3",
+    "0x800259fc": "b200c4e1",
+    "0x80025a00": "0000e0e3",
+    "0x80025a04": "b400c4e1",
+    "0x80025a08": "b600c4e1",
+    "0x80025a0c": "0000a0e3",
+    "0x80025a10": "b800c4e1",
+    "0x80025a14": "ba00c4e1",
+    "0x80025a18": "100094e5",
+    "0x80025a1c": "0709c0e3",
+    "0x80025a20": "ff0dc0e3",
+    "0x80025a24": "010980e3",
+    "0x80025a28": "420f80e3",
+    "0x80025a2c": "100084e5",
+    "0x80025a30": "7e0ea0e3",
+    "0x80025a34": "b000cde1",
+    "0x80025a38": "b803c4e1",
+    "0x80025a3c": "14009fe5",
+    "0x80025a40": "400084e5",
+    "0x80025a44": "440084e5",
+    "0x80025a48": "5800a0e3",
+    "0x80025a4c": "480084e5",
+    "0x80025a50": "3880bde8",
+    "0x80025a5c": "f8402de9",
+    "0x80025a60": "0050a0e1",
+    "0x80025a64": "c4019fe5",
+    "0x80025a68": "da93ffeb",
+    "0x80025a6c": "0040b0e1",
+    "0x80025a70": "0300000a",
+    "0x80025a74": "3c0095e5",
+    "0x80025a78": "000050e3",
+    "0x80025a7c": "0100000a",
+    "0x80025a88": "480095e5",
+    "0x80025a8c": "5b3300eb",
+    "0x80025a90": "0060b0e1",
+    "0x80025a94": "5600000a",
+    "0x80025a98": "402095e5",
+    "0x80025a9c": "0010a0e1",
+    "0x80025aa0": "0500a0e1",
+    "0x80025aa4": "32ff2fe1",
+    "0x80025aa8": "3c6085e5",
+    "0x80025aac": "571fa0e3",
+    "0x80025ab0": "0400a0e1",
+    "0x80025ab4": "d63400eb",
+    "0x80025ab8": "0100a0e3",
+    "0x80025abc": "540184e5",
+    "0x80025ac0": "6c719fe5",
+    "0x80025ac4": "005084e5",
+    "0x80025c7c": "0c2090e5",
+    "0x80025c80": "0010a0e3",
+    "0x80025c84": "101082e5",
+    "0x80025c88": "0c0090e5",
+    "0x80025c8c": "141080e5",
+    "0x80025c90": "1eff2fe1",
+    "0x80029cc8": "10402de9",
+    "0x80029ccc": "0140a0e1",
+    "0x80029cd0": "5810a0e3",
+    "0x80029cd4": "0400a0e1",
+    "0x80029cd8": "4d2400eb",
+    "0x80029cdc": "7c009fe5",
+    "0x80029ce0": "140084e5",
+    "0x80029ce4": "78009fe5",
+    "0x80029ce8": "100084e5",
+    "0x80029cec": "74009fe5",
+    "0x80029cf0": "300084e5",
+    "0x80029cf4": "70009fe5",
+    "0x80029cf8": "200084e5",
+    "0x80029cfc": "6c009fe5",
+    "0x80029d00": "180084e5",
+    "0x80029d04": "68009fe5",
+    "0x80029d08": "240084e5",
+    "0x80029d0c": "64009fe5",
+    "0x80029d10": "280084e5",
+    "0x80029d14": "60009fe5",
+    "0x80029d18": "2c0084e5",
+    "0x80029d1c": "5c009fe5",
+    "0x80029d20": "340084e5",
+    "0x80029d24": "58009fe5",
+    "0x80029d28": "380084e5",
+    "0x80029d2c": "54009fe5",
+    "0x80029d30": "3c0084e5",
+    "0x80029d34": "50009fe5",
+    "0x80029d38": "400084e5",
+    "0x80029d3c": "4c009fe5",
+    "0x80029d40": "440084e5",
+    "0x80029d44": "48009fe5",
+    "0x80029d48": "480084e5",
+    "0x80029d4c": "44009fe5",
+    "0x80029d50": "540084e5",
+    "0x80029d54": "2c00a0e3",
+    "0x80029d58": "4c0084e5",
+    "0x80029d5c": "1080bde8",
+    "0x80032e14": "032010e2",
+    "0x80032e18": "0030a0e3",
+    "0x80032e1c": "04206212",
+    "0x80032e20": "0600000a",
+    "0x80032e40": "200051e3",
+    "0x80032e44": "0a00009a",
+    "0x80032e48": "043080e4",
+    "0x80032e4c": "043080e4",
+    "0x80032e50": "043080e4",
+    "0x80032e54": "043080e4",
+    "0x80032e58": "043080e4",
+    "0x80032e5c": "043080e4",
+    "0x80032e60": "201041e2",
+    "0x80032e64": "043080e4",
+    "0x80032e68": "200051e3",
+    "0x80032e6c": "043080e4",
+    "0x80032e70": "f4ffff8a",
+    "0x80032e74": "040051e3",
+    "0x80032e78": "0300009a",
+    "0x80032e7c": "041041e2",
+    "0x80032e80": "040051e3",
+    "0x80032e84": "043080e4",
+    "0x80032e88": "fbffff8a",
+    "0x80032e8c": "000051e3",
+    "0x80032e90": "1eff2f01",
+    "0x80032e94": "011051e2",
+    "0x80032e98": "0130c0e4",
+    "0x80032e9c": "fcffff1a",
+    "0x80032ea0": "1eff2fe1",
+    "0x8003b080": "70009fe5",
+    "0x8003b084": "10402de9",
+    "0x8003b088": "6c109fe5",
+    "0x8003b08c": "6c409fe5",
+    "0x8003b090": "000081e5",
+    "0x8003b094": "002080e2",
+    "0x8003b098": "0030a0e3",
+    "0x8003b09c": "0410a0e1",
+    "0x8003b0a0": "1e0ea0e3",
+    "0x8003b0a4": "a02effeb",
+    "0x8003b0a8": "5c109fe5",
+    "0x8003b0ac": "50309fe5",
+    "0x8003b0b0": "50209fe5",
+    "0x8003b0b4": "1c0041e2",
+    "0x8003b0b8": "3daaffeb",
+    "0x8003b0bc": "4c009fe5",
+    "0x8003b0c0": "46aaffeb",
+    "0x8003b0c4": "44009fe5",
+    "0x8003b0c8": "1e2ea0e3",
+    "0x8003b0cc": "40109fe5",
+    "0x8003b0d0": "b020c0e1",
+    "0x8003b0d4": "b240c0e1",
+    "0x8003b0d8": "141080e5",
+    "0x8003b0dc": "34109fe5",
+    "0x8003b0e0": "0c1080e5",
+    "0x8003b0e4": "101090e5",
+    "0x8003b0e8": "341081e3",
+    "0x8003b0ec": "101080e5",
+    "0x8003b0f0": "1040bde8",
+    "0x8003b0f4": "58aaffea"
+  },
+  "limits": [
+    "The native callback copies RGB565 rows with stride 480 and calls original completion.",
+    "Native initialization derives the source buffers, callback and panel buffer address.",
+    "Panel hardware setup and allocations are modeled. Source pixels and rectangles are fixtures.",
+    "Valid rectangles and inverted-axis no-op cases are tested. Caller clipping remains open.",
+    "Rotation, scheduler-driven refresh and physical LCD output and timing remain open."
+  ]
+}

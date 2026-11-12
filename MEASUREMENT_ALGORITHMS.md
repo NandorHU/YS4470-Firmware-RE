@@ -465,3 +465,7 @@ The original 4-bit path at `0x80014688` selects the 16-entry table `0x80068fc6` 
 ## Original AC glyphs into an RGB565 framebuffer (2026-11-11)
 
 The normal-mode masked RGB565 path skips zero mask bytes and uses the solid color for opaque mask bytes when draw opacity is at least 253. Below 253 it combines the supplied nonzero mask with draw opacity before mixing. The mixer rounds its ratio with `(alpha + 4) >> 3`. The packed-color reference matched every pixel in the 36 original cases. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-rgb565-frame-validation.json).
+
+## Native display buffers, rotated flush and compiled copy reconstruction (2026-11-12)
+
+The original native display path maps logical coordinates `(x,y)` to panel coordinates `(479-y,x)`. Both square source rotation and rectangular scratch rotation reach the original flush. The 20 cases compare every panel pixel and verify both completion flags. The freestanding C component reproduces 26 distinct copy/rotation framebuffer hashes on ARM926. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/display-rotation-validation.json) · [Compiled C comparison](contributions/COORD-ADC-CADENCE/synchronous/display-copy-reconstruction-validation.json).

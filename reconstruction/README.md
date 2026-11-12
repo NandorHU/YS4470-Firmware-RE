@@ -80,3 +80,32 @@ python -B contributions/COORD-ADC-CADENCE/synchronous/test_usb_measurement_expor
 The resulting ELF is a test artifact with a freestanding entry symbol.
 The comparison executes both functions under Unicorn ARM926. USB mode,
 endpoint readiness and physical transfer belong to the caller.
+
+## Native display copy and rotation reconstruction (2026-11-12)
+
+The independently written `display_copy.c` and `display_copy.h` provide a
+checked RGB565 rectangle copy and the native 854 × 480 logical orientation
+into a 480 × 854 panel buffer. The complete output buffer matches the
+[original copy](../contributions/COORD-ADC-CADENCE/synchronous/display-flush-validation.json) and
+[original rotation](../contributions/COORD-ADC-CADENCE/synchronous/display-rotation-validation.json) replay observations.
+Source and destination storage must be separate. The rectangle interface
+rejects inverted or out-of-bounds coordinates before writing.
+
+With Zig 0.13.0 and the existing Unicorn and pyelftools environment, build
+and compare the freestanding ARM926 code from the repository root.
+
+```powershell
+zig cc -target arm-freestanding-eabi -mcpu=arm926ej_s -marm -O2 `
+  -ffreestanding -fno-builtin -std=c11 -Wall -Wextra -Werror -nostdlib `
+  '-Wl,--image-base=0x10100000' '-Wl,-e,ys4470_panel_copy' `
+  '-Wl,--no-gc-sections' '-Wl,-u,ys4470_panel_copy_rotated' `
+  reconstruction/display_copy.c -o display-copy.elf
+python -B contributions/COORD-ADC-CADENCE/synchronous/test_display_copy_reconstruction.py `
+  --elf display-copy.elf --out display-copy-reconstruction-validation.json
+```
+
+There are 26 distinct original framebuffer comparisons and eight invalid
+rectangle checks. This component preserves its input pixel storage.
+The original rotation's allocation and source mutation, the native busy
+flags, display scheduling and physical panel hardware remain outside its
+interface. [Compiled comparison](../contributions/COORD-ADC-CADENCE/synchronous/display-copy-reconstruction-validation.json).

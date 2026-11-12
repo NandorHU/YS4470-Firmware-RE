@@ -385,3 +385,7 @@ The original software glyph path emits an 8-bit alpha buffer at the blend dispat
 ## Original AC glyphs into an RGB565 framebuffer (2026-11-11)
 
 Factory code writes RGB565 pixels through draw context `+0x00` in the emulated CPU buffer. Display lookup and flags were supplied by the fixture. The test covers the software pixel buffer and leaves the physical LCD path open. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/ac-rgb565-frame-validation.json).
+
+## Native display buffers, rotated flush and compiled copy reconstruction (2026-11-12)
+
+The native initializer passes `480, 854, 0x80b45b84, 0` to panel setup `0x80006b2c`, which is modeled in these tests. The original flush writes only CPU RAM at that panel buffer. Twenty rotation cases cover logical corners, a full-width row, square in-place rotation and rectangular scratch rotation. Physical panel transfer and timing remain open. [Original ARM926 evidence](contributions/COORD-ADC-CADENCE/synchronous/display-rotation-validation.json).
