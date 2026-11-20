@@ -1,14 +1,11 @@
-# YS-4470 1.0 - continuation notes
+# YS-4470 — continuation notes
 
-Repository: https://github.com/NandorHU/YS4470-Firmware-RE
-Release: https://github.com/NandorHU/YS4470-Firmware-RE/releases/tag/v1.0
+The current user-facing release is [Windows installer 2.0.0-beta.6-v2v4](https://github.com/NandorHU/YS4470-Firmware-RE/releases/tag/installer-v2.0.0-beta.6-v2v4). Its standalone EXE embeds the firmware. No personal input firmware or separate factory-image download is required for installation.
 
-The README and PROJECT-STATUS.md describe the goal, current implementation, research addresses, and next steps.
+The project owner reports a substantial real-device improvement over earlier builds and near-instant sound. This is a qualitative hardware result. Objective latency and complete accuracy/mode regression remain outstanding.
 
-The 1.0 continuous build was installed and tested. A complete 16 MiB readback matched the intended image byte for byte, and the build works well on the tested device. The physical verification record is in evidence/physical-install-1.0.json. Earlier offline manifests retain their creation-time status.
+Beta source: branch `re/2026-11-20-diode-v2v4`. v2/v4 combine ownprotocol-style polling, a `59 00` fixed-range request and experimental `68 0a` chip configuration. v4 adds early contact-tone logic. This changes measurement commands and sound policy, not the system processor clock. The chip command's precise internal effect remains unproven.
 
-Measurement speed takes priority over continuous sound. The patch adds no sleep or extra measurement command and retains the core Beta3 timing and display optimizations. Objective physical latency measurements are still needed. A separate timed-tone fallback remains available.
+The root 1.0 builder and offline patcher are historical developer tools, not current installation instructions. Preserve original evidence and hashes; archived evidence is not interchangeable with current release evidence.
 
-Compiled firmware belongs in Release assets only. Keep full flash backups, USB logs, native external executables, and local out/inputs/tools directories private. The portable build requires an exact hash-verified Beta3 full backup. This project provides binary patches, not the manufacturer's complete source code.
-
-Further experimental device writes and physical tests require explicit approval. Next steps are latency measurements and complete mode regression; improved accuracy, new ranges, and maximum hardware speed have not been established.
+Keep full flash backups, calibration dumps, USB logs, credentials and local workspace paths private. Device writes remain user-initiated through the installer. Next work: measure contact-to-sound and contact-to-stable-reading timing separately and verify measurement correctness.

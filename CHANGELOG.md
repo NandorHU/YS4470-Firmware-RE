@@ -1,3 +1,11 @@
+# 2.0.0-beta.6-v2v4 — November 20, 2026
+
+- Standalone Windows installer with embedded firmware; no separate factory-image download or personal firmware input required.
+- Beta Diode switches between v2 and v4; v2 is the power-on default.
+- Faster polling, a fixed-range request and additional measuring-chip configuration; v4 adds early contact-tone logic. No system-CPU overclock.
+- Owner hardware feedback: substantially faster than earlier builds, with near-instant audible feedback — a practical responsiveness breakthrough.
+- Quantitative latency, accuracy and full mode regression remain outstanding; early tone is not a stable measurement indication.
+
 # 1.0 - November 2, 2026
 
 First numbered build based on the tested Beta3 firmware.

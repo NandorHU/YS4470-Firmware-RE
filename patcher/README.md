@@ -1,4 +1,6 @@
-# Make 1.0 from your own YS-4470 firmware
+# Historical 1.0 offline patcher — developer reference
+
+For current installation, use the [standalone Windows installer](https://github.com/NandorHU/YS4470-Firmware-RE/releases/tag/installer-v2.0.0-beta.6-v2v4). It embeds its firmware and needs no personal input image. The instructions below describe the older optional 1.0 developer tool only.
 
 **You do not need Beta3 or the author's personal flash backup.** This offline
 patcher accepts the two supported factory application images, either as a raw
