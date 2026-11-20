@@ -39,7 +39,7 @@
         "Success": false,
         "Phase": "Bajtegyezes ellenorzese",
         "Overall": 90,
-        "Error": "Visszaellenorzesi hiba: 0x7. Maradjon FEL modban; naplok megorzendoek.\r\nAt C:\\Users\\nandi\\Documents\\Codex\\2026-11-01\\telep-tsd-s-konfigur-ld-a\\outputs\\ys4470-v1.0-github\\out\\continuous\\simula\r\ntion\\readback-corrupt.ps1:112 char:18\r\n+ ... $bad -ge 0){throw ('Visszaellenorzesi hiba: 0x{0:x}. Maradjon FEL mod ...\r\n+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : OperationStopped: (Visszaellenorze...k megorzendoek.:String) [], RuntimeException\r\n    + FullyQualifiedErrorId : Visszaellenorzesi hiba: 0x7. Maradjon FEL modban; naplok megorzendoek.\r\n \r\n",
+        "Error": "Visszaellenorzesi hiba: 0x7. Maradjon FEL modban; naplok megorzendoek.\r\nAt <home>\\Documents\\Codex\\2026-11-01\\telep-tsd-s-konfigur-ld-a\\outputs\\ys4470-v1.0-github\\out\\continuous\\simula\r\ntion\\readback-corrupt.ps1:112 char:18\r\n+ ... $bad -ge 0){throw ('Visszaellenorzesi hiba: 0x{0:x}. Maradjon FEL mod ...\r\n+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : OperationStopped: (Visszaellenorze...k megorzendoek.:String) [], RuntimeException\r\n    + FullyQualifiedErrorId : Visszaellenorzesi hiba: 0x7. Maradjon FEL modban; naplok megorzendoek.\r\n \r\n",
         "BootIssued": false
       },
       "simulation_log": "SIMULATION-20261102-202553-719"

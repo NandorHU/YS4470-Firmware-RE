@@ -13,7 +13,7 @@ python patcher/ys4470_patch.py apply "my-backup.bin" --output "my-1.0.bin"
 
 A full-backup hash can differ between devices; this tool recognizes the supported application inside it. Unknown application hashes are rejected. Share only the inspect text when reporting a mismatch, never a personal flash backup.
 
-Firmware improvements for the Mr. Yang YS-4470. **I tested this build on the device and confirmed that version 1.0 works well. The complete 16 MiB flash readback matched the intended image byte for byte.** This confirms operation on the tested device; it is not a complete accuracy or reliability certification.
+Firmware improvements for the Mr. Yang YS-4470. **Version 1.0 was installed and tested on a device and works well. The complete 16 MiB flash readback matched the intended image byte for byte.** This confirms operation on the tested device; it is not a complete accuracy or reliability certification.
 
 **[Download version 1.0 from Releases](https://github.com/NandorHU/YS4470-Firmware-RE/releases/tag/v1.0).** Compiled firmware is distributed as Release assets only; it is not tracked in the source tree.
 
@@ -27,7 +27,7 @@ The original measurement hardware and factory measurement commands are retained.
 
 The target uses an F1C100s system controller and a Winbond 16 MiB SPI flash. Analysis used Ghidra, ARM disassembly, and function-level Unicorn emulation. The response-processing, display-update, sound-control, and firmware-loading paths have been investigated sufficiently for the targeted changes.
 
-I tested Beta2/Beta3 and observed faster response and correct display updates. Installation of version 1.0 continuous changed six 64 KiB sectors. A fresh full backup of the working Beta3 image was saved first, and the complete post-write flash readback matched the intended image. I then tested version 1.0 on the device and confirmed that it works well.
+Beta2/Beta3 testing showed faster response and correct display updates. Installation of version 1.0 continuous changed six 64 KiB sectors. A fresh full backup of the working Beta3 image was saved first, and the complete post-write flash readback matched the intended image. Version 1.0 was then tested on the device and works well.
 
 Remaining work includes objective contact-to-display and contact-to-sound latency measurements, extended testing of continuous sound and watchdog edge cases, regression testing of every measurement mode, measurement-accuracy checks, and further hardware investigation. The maximum achievable hardware speed and the benefit of additional optimization have not been established.
 
@@ -42,7 +42,7 @@ The sound uses PWM synthesis approximating the pitch of the supplied reference a
 
 ## Use and limitations
 
-Select diode mode and enable `highspeedv2`. Check the switch after restarting; this project does not add automatic persistent setting storage. I tested the build and confirmed improved responsiveness and working version 1.0 operation. Quantitative latency comparison, complete mode regression, and accuracy validation remain outstanding.
+Select diode mode and enable `highspeedv2`. Check the switch after restarting; this project does not add automatic persistent setting storage. Device testing confirmed improved responsiveness and working version 1.0 operation. Quantitative latency comparison, complete mode regression, and accuracy validation remain outstanding.
 
 Valid measurements refresh a finite sound watchdog while its counter is above three. The original KeyTask stops the tone after 13 cycles without a qualifying refresh: nominally about 650 ms, depending on actual scheduling. A mode change therefore does not leave an indefinitely sustained tone, but immediate stopping has not been established. Counters of three or less preserve a superseding short key beep. In unusual scheduling conditions, sound may remain until the watchdog expires after an invalid result. These edge cases require further physical testing.
 

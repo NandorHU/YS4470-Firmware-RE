@@ -6,10 +6,10 @@ Reduce the delay between probe contact, diode measurement updates, and the audib
 
 ## Progress
 
-- I preserved the original firmware and verified the initial full flash backups.
+- The original firmware was preserved and the initial full flash backups were verified.
 - Ghidra analysis, ARM disassembly, and function-level emulation established the relevant response-processing, diode-validity, sound-control, and firmware-loading paths.
-- I tested Beta2/Beta3 and observed faster response with correct display updates.
-- I installed and tested the 1.0 continuous build. The full 16 MiB flash readback matched the intended image byte for byte, and the build works well on the tested device.
+- Beta2/Beta3 testing showed faster response with correct display updates.
+- The 1.0 continuous build was installed and tested. The full 16 MiB flash readback matched the intended image byte for byte, and the build works well on the tested device.
 - Reproducible binary patches, installer preparation, rollback, tests, and verification records are available. Compiled builds are distributed as Release assets only; private full backups are excluded.
 
 ## Research addresses
@@ -25,6 +25,6 @@ Reduce the delay between probe contact, diode measurement updates, and the audib
 
 ## Limits and next steps
 
-My functional test is not a complete measurement-accuracy or reliability qualification. Objective contact-to-sound/display latency, extended watchdog edge cases, regression of all measurement modes, and analog accuracy still need testing. Function-level emulation does not establish actual ADC/UART/panel timing. The timed-tone fallback remains available.
+The functional device test is not a complete measurement-accuracy or reliability qualification. Objective contact-to-sound/display latency, extended watchdog edge cases, regression of all measurement modes, and analog accuracy still need testing. Function-level emulation does not establish actual ADC/UART/panel timing. The timed-tone fallback remains available.
 
 Further experimental firmware writing and physical tests require explicit approval. The current working 1.0 build is preserved while additional improvements are investigated.
