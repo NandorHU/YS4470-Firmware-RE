@@ -1,5 +1,9 @@
 # YS-4470 firmware 1.0 — highspeedv2
 
+## Latest test build: diode v2/v4 (2.0.0-beta.6, pre-release)
+
+**[Download YS4470-Installer-2.0.0-beta.6-v2v4.exe](https://github.com/NandorHU/YS4470-Firmware-RE/releases/tag/installer-v2.0.0-beta.6-v2v4)** — a standalone Windows installer with the firmware embedded. In diode mode the Beta Diode button alternates v2 and v4: diode fixed range, chip command `68 0a`, and in v4 a tone that starts at probe contact. Sources: branch `re/2026-11-20-diode-v2v4`. Emulation-validated; device-tested by the project owner.
+
 ## Patch your own factory firmware — no Beta3 required
 
 Use the new [offline factory-input patcher](patcher/README.md) with your own supported V3.6/V3.8 application file or16 MiB full flash backup. Download this repository ZIP, extract it, then drag the firmware file onto `patcher/PATCH-WINDOWS.cmd` (Python3.10+).
