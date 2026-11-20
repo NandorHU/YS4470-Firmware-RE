@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="340" viewBox="0 0 1200 340" role="img" aria-labelledby="title desc">
+  <title id="title">YS-4470 — Less waiting. Faster feedback.</title>
+  <desc id="desc">Firmware improvements for responsive diode measurement. Abstract diode circuit artwork; not a timing chart or device screenshot.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#101d31"/><stop offset="1" stop-color="#07101d"/></linearGradient>
+    <linearGradient id="line"><stop stop-color="#4de3bd"/><stop offset="1" stop-color="#75baff"/></linearGradient>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#7793ac" stroke-opacity=".07"/></pattern>
+  </defs>
+  <rect width="1200" height="340" rx="22" fill="url(#bg)"/>
+  <rect width="1200" height="340" rx="22" fill="url(#grid)"/>
+  <rect x="48" y="48" width="172" height="28" rx="14" fill="#4de3bd" fill-opacity=".12" stroke="#4de3bd" stroke-opacity=".4"/>
+  <text x="134" y="67" text-anchor="middle" fill="#79ebce" font-family="Segoe UI,Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="2">FIRMWARE / BETA</text>
+  <text x="48" y="146" fill="#f4f8ff" font-family="Segoe UI,Arial,sans-serif" font-size="66" font-weight="750" letter-spacing="-2">YS-4470</text>
+  <text x="50" y="195" fill="#b7cbdf" font-family="Segoe UI,Arial,sans-serif" font-size="28">Less waiting. Faster feedback.</text>
+  <path d="M50 223H100" stroke="#4de3bd" stroke-width="3" stroke-linecap="round"/>
+  <text x="50" y="262" fill="#9fb5cb" font-family="Segoe UI,Arial,sans-serif" font-size="17">Responsive diode measurement. Standalone Windows installer.</text>
+  <g transform="translate(800 52)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <rect width="332" height="236" rx="20" fill="#132338" stroke="#2b425c"/>
+    <path d="M0 70H56L84 98H120M212 98H254L281 70H332M0 168H59L88 139H120M212 139H257L286 168H332" stroke="#345872" stroke-width="2"/>
+    <path d="M38 118H126M192 118H294" stroke="url(#line)" stroke-width="5"/>
+    <path d="M126 87V149L182 118Z" stroke="#66e7c4" stroke-width="4"/>
+    <path d="M190 86V150" stroke="#75baff" stroke-width="5"/>
+    <circle cx="38" cy="118" r="7" fill="#66e7c4" stroke="#132338" stroke-width="3"/>
+    <circle cx="294" cy="118" r="7" fill="#75baff" stroke="#132338" stroke-width="3"/>
+    <circle cx="27" cy="25" r="4" fill="#66e7c4"/>
+    <text x="42" y="29" fill="#9fb5cb" stroke="none" font-family="Segoe UI,Arial,sans-serif" font-size="11" letter-spacing="2">DIODE RESPONSE</text>
+    <text x="166" y="205" text-anchor="middle" fill="#b7cbdf" stroke="none" font-family="Segoe UI,Arial,sans-serif" font-size="12" letter-spacing="2">MEASURE · LISTEN · REPEAT</text>
+  </g>
+</svg>

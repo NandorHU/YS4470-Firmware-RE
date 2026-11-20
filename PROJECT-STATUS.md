@@ -1,30 +1,29 @@
-# YS-4470 - project status
+# YS-4470 — project status
 
-## Goal
+Updated November 20, 2026.
 
-Reduce the delay between probe contact, diode measurement updates, and the audible indication while retaining the existing measurement hardware and factory commands. Version 1.0 includes the Beta3 responsiveness improvements, the highspeedv2 switch label, and continuous diode sound.
+## Current beta: practical responsiveness breakthrough
 
-## Progress
+The current release is **2.0.0-beta.6-v2v4**. The project owner reports substantially faster real-device operation than earlier builds, with near-instant audible feedback. This is an owner-observed improvement; no numerical latency or full accuracy qualification is claimed.
 
-- The original firmware was preserved and the initial full flash backups were verified.
-- Ghidra analysis, ARM disassembly, and function-level emulation established the relevant response-processing, diode-validity, sound-control, and firmware-loading paths.
-- Beta2/Beta3 testing showed faster response with correct display updates.
-- The 1.0 continuous build was installed and tested. The full 16 MiB flash readback matched the intended image byte for byte, and the build works well on the tested device.
-- Reproducible binary patches, installer preparation, rollback, tests, and verification records are available. Compiled builds are distributed as Release assets only; private full backups are excluded.
+The [standalone Windows EXE](https://github.com/NandorHU/YS4470-Firmware-RE/releases/tag/installer-v2.0.0-beta.6-v2v4) embeds its firmware. Installation does not require obtaining a factory image or building a personalized firmware file. It checks compatibility, confirms full automatic backups, guards application-sector writes and verifies complete readback.
 
-## Research addresses
+## What changed
 
-- 0x80003a0c: diode-validity branch; 0x80003a74: original sound-gate call.
-- 0x80006e4c: sound gate; 0x805abf06: measurement repeat-suppression latch.
-- 0x805ac764: sound-state/watchdog counter; 0x8000553c: original KeyTask countdown.
-- 0x80060928: 1.0 watchdog refresh; 0x80060950: post-start counter initialization.
-- 0x80010718: scoped stop handling for OPEN and invalid measurement paths.
-- 0x8000f568: Beta3 identical-label-text wrapper.
-- 0x80058750: Beta2 diode-response deadline helper.
-- 0x80051978: highspeedv2 English label, including its NUL terminator in 12 bytes.
+- ownprotocol-style polling reduces host-side waiting between requests.
+- Diode configuration uses `59 00` in place of `5a`, interpreted from firmware usage as a fixed-range request replacing autorange.
+- v2/v4 add measuring-chip configuration `68 0a`, derived from factory Fast CONT `68 07`. Its exact internal meaning is not documented. The F1C100s system clock is not increased.
+- v4 adds an early contact tone and evaluates subsequent reading trends. Early sound and a stable displayed measurement are different events.
+- Beta Diode selects v2 or v4; power-on defaults to v2.
 
-## Limits and next steps
+Source and replay evidence: [diode v2/v4 branch](https://github.com/NandorHU/YS4470-Firmware-RE/tree/re/2026-11-20-diode-v2v4). The release records ARM926 replays, simulated installation/update/restore and compiled Windows self-tests. Emulation does not establish the measuring chip's analog behavior.
 
-The functional device test is not a complete measurement-accuracy or reliability qualification. Objective contact-to-sound/display latency, extended watchdog edge cases, regression of all measurement modes, and analog accuracy still need testing. Function-level emulation does not establish actual ADC/UART/panel timing. The timed-tone fallback remains available.
+## Remaining work
 
-Further experimental firmware writing and physical tests require explicit approval. The current working 1.0 build is preserved while additional improvements are investigated.
+Measure contact-to-sound and contact-to-stable-display latency, verify diode and LED coverage, check analog accuracy and regress other modes. Isolate each configuration change's contribution. The observed speed-up does not establish new measurement ranges, improved accuracy or maximum hardware speed.
+
+## Historical 1.0 evidence
+
+Version 1.0 was installed and tested; its full 16 MiB readback matched the intended image. `evidence/physical-install-1.0.json` records that older installation. Root build scripts, patch manifests and earlier evidence retain their historical scope and do not describe the new beta's installation requirements.
+
+Earlier investigated addresses include diode validity `0x80003a0c`, sound gate `0x80006e4c`, sound/watchdog state `0x805ac764`, and the earlier continuous-tone watchdog refresh `0x80060928`. Use firmware-specific source and hashes when interpreting them.

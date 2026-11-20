@@ -1,4 +1,6 @@
-# YS-4470 patchelő – saját gyári firmware-ből
+# Korábbi 1.0 patchelő — fejlesztői referencia
+
+A jelenlegi telepítéshez a [közvetlen Windows-telepítőt](https://github.com/NandorHU/YS4470-Firmware-RE/releases/tag/installer-v2.0.0-beta.6-v2v4) használd: a firmware benne van, saját bemeneti firmware nem szükséges. Az alábbiak a régi, választható 1.0 fejlesztői eszköz leírása.
 
 Nem kell hozzá Beta3 vagy más készülék teljes mentése. Python3.10+ kell,
 egyéb csomagot nem kell telepíteni. A patchelő nem kommunikál a készülékkel.
