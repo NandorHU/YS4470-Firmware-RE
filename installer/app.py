@@ -1,4 +1,4 @@
-"""Windows GUI with a replaceable, external YS-4470 firmware package."""
+"""Windows GUI with embedded firmware and optional external package updates."""
 from __future__ import annotations
 import argparse,json,os,queue,subprocess,sys,threading
 from pathlib import Path
@@ -6,13 +6,19 @@ import tkinter as tk
 from tkinter import ttk,filedialog,messagebox
 from engine import Engine,FelTransport,save_bytes,save_json,patch
 from firmware_package import read_package
-VERSION='2.0.0-beta.1'
+VERSION='2.0.0-beta.6-v2v4'
 ZADIG_SHA='4ecaa95df3da3621486a043aef8b3050b8bafe7c901402871e816229ef82039b'
 def resources():return Path(getattr(sys,'_MEIPASS',Path(__file__).resolve().parents[1]/'work/easy-installer/resources'))
 def portable_folder():
     if getattr(sys, 'frozen', False):
         return Path(sys.executable).resolve().parent
     return Path(__file__).resolve().parents[1]
+
+def default_package():
+    external = portable_folder() / 'firmware' / 'firmware.ysfw'
+    # A present external package takes precedence, including invalid files that
+    # must be reported rather than silently replaced by the embedded default.
+    return external if external.exists() else resources() / 'firmware' / 'firmware.ysfw'
 
 def user_root():
     if os.name=='nt':return Path(os.environ.get('LOCALAPPDATA',str(Path.home())))/'YS4470 Installer'
@@ -25,23 +31,22 @@ def self_test(package_path=None):
     interpreter=tk.Tcl()
     result = {'version':VERSION,'resources_valid':True,'tcl_patchlevel':interpreter.eval('info patchlevel'),
               'device_access':False}
-    if package_path:
-        result['external_firmware'] = read_package(package_path).manifest()
+    result['external_firmware'] = read_package(package_path or default_package()).manifest()
     return result
 class App:
     def __init__(self,window):
         self.window=window;self.root=resources();self.data=patch.load_patch(self.root/'patch-data.json')
         self.events=queue.Queue();self.busy=False
-        self.firmware_path = portable_folder() / 'firmware' / 'firmware.ysfw'
+        self.firmware_path = default_package()
         window.title('YS-4470 Firmware Installer '+VERSION);window.geometry('700x490');window.minsize(640,460)
         frame=ttk.Frame(window,padding=22);frame.pack(fill='both',expand=True)
         ttk.Label(frame,text='YS-4470 Firmware Installer',font=('Segoe UI',18,'bold')).pack(anchor='w')
-        ttk.Label(frame,text='Replace firmware/firmware.ysfw beside the installer, or select another firmware package. No Python setup is required.',wraplength=630).pack(anchor='w',pady=(6,10))
+        ttk.Label(frame,text='The included firmware is selected automatically. Connect the meter in FEL mode, then choose Install. No Python setup is required.',wraplength=630).pack(anchor='w',pady=(6,10))
         self.firmware_label = tk.StringVar()
         self.describe_package()
         ttk.Label(frame,textvariable=self.firmware_label,wraplength=630).pack(anchor='w',pady=(0,10))
         self.buttons=[]
-        for label,command in [('1. Choose firmware package…',self.choose_package),('2. Install selected firmware in FEL mode',self.install),('USB driver setup (only if detection fails)',self.driver),('Restore from an automatic backup',self.restore)]:
+        for label,command in [('Install selected firmware in FEL mode',self.install),('Choose a different firmware package...',self.choose_package),('USB driver setup (only if detection fails)',self.driver),('Restore from an automatic backup',self.restore)]:
             b=ttk.Button(frame,text=label,command=command);b.pack(fill='x',pady=4);self.buttons.append(b)
         self.status=tk.StringVar(value='Ready. For installation: connect one YS-4470 in FEL mode using a USB data cable.')
         ttk.Label(frame,textvariable=self.status,wraplength=630).pack(anchor='w',pady=(18,8))

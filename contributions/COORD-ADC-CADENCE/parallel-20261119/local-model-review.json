@@ -1,0 +1,42 @@
+{
+  "task": "cold-tail-tag40-20261119",
+  "agent": "ollama",
+  "model": "qwen3.5:9b",
+  "status": "done",
+  "attempts": 2,
+  "result": {
+    "report": "## Report\n\n**Changed files:**\n- `contributions/COORD-ADC-CADENCE/local-drafts/cold-tail-tag40-20261119/index.json` (SHA256: 6e603c330dee1ca9fda5203f17384ca479480fee6d3e96c5d92a2942af142e90)\n\n**Corrections applied:**\n- `tag`: Changed from \"cold-tail-tag40-20261119\" to \"0x40\" (wrapper immediate hex string)\n- `limit`: Added final period to match assigned sentence exactly\n\n**Checks run:**\n- `quote-cold-tail-tag40-20261119` \u2192 passed\n\n**Messages sent:**\n- To codex confirming readiness",
+    "turns": 5,
+    "tool_calls": 4,
+    "tokens": 815,
+    "seconds": 13.859,
+    "verification": {
+      "passed": true,
+      "errors": [],
+      "files": {
+        "contributions/COORD-ADC-CADENCE/local-drafts/cold-tail-tag40-20261119/index.json": "6e603c330dee1ca9fda5203f17384ca479480fee6d3e96c5d92a2942af142e90"
+      },
+      "checks": [
+        {
+          "name": "quote-cold-tail-tag40-20261119",
+          "passed": true,
+          "seconds": 0.203,
+          "log": "<workspace>\\ai-re-coordinator\\state\\ys4470\\logs\\cold-tail-tag40-20261119\\attempt-2\\quote-cold-tail-tag40-20261119.log"
+        }
+      ],
+      "seconds": 0.422,
+      "semantic_review_required": true,
+      "hardware_tested": false
+    },
+    "workspace": "<workspace>\\ai-re-coordinator\\state\\ys4470\\worktrees\\cold-tail-tag40-20261119"
+  },
+  "artifact_sha256": "6e603c330dee1ca9fda5203f17384ca479480fee6d3e96c5d92a2942af142e90",
+  "semantic_firmware_finding": false,
+  "coordinator_intervention": "Explicit correction required for numeric tag field and exact limit; failing validator output was initially inaccessible. Tool feedback fixed with regression test.",
+  "opencode": {
+    "model": "opencode/deepseek-v4.1-flash-free",
+    "status": "blocked",
+    "reason": "Free usage limit reached; no paid fallback"
+  },
+  "mercury": "Installed, unconfigured, not an active worker"
+}

@@ -1,0 +1,15 @@
+{
+  "run": "<workspace>\\work\\claude-diode-fixedrange-20261120\\adapter\\runs\\20261120T182228Z-4site",
+  "candidate": "4site",
+  "regressions": {
+    "trace_control_gui_cfd0": true,
+    "trace_dynamic_type2": true,
+    "trace_deferred_measurement": true,
+    "trace_native_fast_cont": true,
+    "trace_control_producer_suffixes": true,
+    "trace_measurement_event_sources": true,
+    "test_ownprotocol_baseline": true
+  },
+  "adapter": true,
+  "all_pass": true
+}

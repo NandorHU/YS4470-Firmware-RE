@@ -1,0 +1,7 @@
+{
+  "report_sha256": "00657ebddef439e72a0c71dc3fc984b9f86a7b9f38e7fd57e9b6e86db5a17bf8",
+  "distinct_outcomes": 2,
+  "original_cases_in_report": 4,
+  "extra_native_runs": 0,
+  "independent_style_and_allocation_oracle": true
+}

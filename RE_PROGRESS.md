@@ -731,3 +731,45 @@ ARM926 replay checks original button registration and event dispatch,
 live PWM updates including mute, bitmap restoration, and the existing
 four profiles in eight modeled scenarios. See the
 [reproducible build and validation](contributions/COORD-DIODE-VOLUME/README.md).
+
+
+## 2026-11-20 — ownprotocol Beta Diode offline profile
+
+User requested a separate ownprotocol entry among the Beta Diode profiles.
+Bounded implementation and evidence: contributions/COORD-ADC-CADENCE/ownprotocol/README.md,
+build-receipt.json and validation.json. On public V3.8-derived E2, actual ARM
+profile callback cycles 0..4, displays ownprotocol and widens only its selected
+button. Profile 4 directly rearms one idle factory 0x1d/0x60 transaction with
+pending-control/mode/busy guards and inherited reply-driven sound. Existing
+profiles, volume controls/PWM and 95 font lookups pass regression checks. Eight
+new response scenarios, four independent GUI schedules, busy deferral and
+missing-then-valid recovery pass bounded ARM926 execution. Candidate SHA-256:
+b081860a2383e5c1251ea80abf25cb4f39bdf74a340a376975acf2b0ff6f9c8e.
+In one 250-counter-unit model, Ready had 41 accepted results and ownprotocol 49;
+this is not a measured physical improvement. ADC freshness/conversion behavior
+and late same-header correlation remain unproven. This is an offline application
+candidate, not a full-flash image or published installer. No device operations;
+paused background work/native GUI reconstruction remain paused. Separate local
+branch re/2026-11-20-ownprotocol starts at b3bb1dc9e350fafcd75f8fb305c3f0425ad8c5aa.
+
+
+## 2026-11-20 -- ownprotocol ready-to-run Windows installer
+
+Packaged the reviewed b081860a2383e5c1251ea80abf25cb4f39bdf74a340a376975acf2b0ff6f9c8e
+application as installer 2.0.0-beta.2-ownprotocol, automatically selected beside
+the portable EXE. Evidence: contributions/COORD-ADC-CADENCE/ownprotocol/installer-validation.json.
+All 27 installer tests, compiled resources, extracted-default-package discovery,
+simulated install/update and restore passed. Ready folder: workspace root
+YS4470-ownprotocol-telepito. No physical device access, driver installation,
+background automation change or remote publication.
+
+
+## 2026-11-20 -- standalone EXE missing-package fix
+
+User screenshot showed the beta.2 EXE running from Downloads without its adjacent
+firmware package. Beta.3 now embeds the same ownprotocol package and falls back
+to it only when no adjacent package exists. External updates retain priority;
+invalid external packages are refused. All 30 tests and compiled EXE-only
+Downloads-like and actual Downloads self-tests passed. Evidence:
+contributions/COORD-ADC-CADENCE/ownprotocol/standalone-installer-validation.json.
+Firmware unchanged; no device operations or background-work changes.

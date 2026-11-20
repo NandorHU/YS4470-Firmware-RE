@@ -1,0 +1,10 @@
+{
+  "report_sha256": "9227f39dd2ce33b48349267fdf3f035ca37ad3550eee29af73a08e8add58f9cc",
+  "distinct_schedules": 4,
+  "original_cases_in_report": 8,
+  "extra_native_runs": 0,
+  "independent_selection_serialization_passed": true,
+  "static_agent_original_commit": "85cda869addeb636ff8a65ea7c8699b893014fc1",
+  "static_agent_integrated_commit": "09fd558",
+  "original_static_words": 59
+}

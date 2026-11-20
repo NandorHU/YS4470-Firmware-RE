@@ -1,0 +1,616 @@
+{
+  "schema": "ys4470.independent-cold-palette-reference.v1",
+  "branch": "external/reference-cold-palette-20261119",
+  "base_commit": "4908c7a598dd48bb5372fa79eed793f2f9cf5542",
+  "original_image_identities_checked": {
+    "V3.6": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+    "V3.8": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290"
+  },
+  "original_ARM_cases_executed": 0,
+  "reference_unit_tests_passed": 7,
+  "synthetic_outcome_schedules": 16,
+  "raw_values_fixture": [
+    "0x12019cf3",
+    "0x2",
+    "0x7f",
+    "0x2"
+  ],
+  "raw_values_native_binding_confirmed": false,
+  "sources_inspected_read_only": {
+    "validate_native_cold_metric16_style.py": "e32d2cb2d83461df79bcb7ad0843b72b171eb2f687bf91b30bdeaa34a0432d22",
+    "validate_native_cold_a8_style.py": "21bf4b4d1924d54f88409bf0c81d8b288e49df3d5c62668e326868d6a135a8a3",
+    "validate_native_cold_compound_growth.py": "e3937606ea57eaf943b2673a5c9e38988f194fbfad85a4dc88706e5a1df761ad",
+    "validate_native_cold_reallocation_outcomes.py": "f0e801555266927d67d285a05bf78ea2f8e0bfd79c6492ed66955003efbebc58",
+    "validate_native_cold_configuration_prefix.py": "1e30676bb892dcf839373a0169ab5f5279ee4e32bc5be40f670d8947ea93499f",
+    "validate_native_display_initializer_prefix.py": "f35531e676a4c047706215db8ec81b4c8f2ab092589bbfe15f5ff843005f1851"
+  },
+  "artifact_sha256": {
+    "style_reference.py": "2c2c4235e05c2df2b277128ffdc7f67151e7dc628189175a169cb6ae85acd201",
+    "test_style_reference.py": "e10d4b88efccc2748c2c249b881305e25879624c138e4963fe9ff2c7b3ac7bc5",
+    "STATUS.md": "036561b4fa8d8dfe1546216e5211d8326d21baa7ba1cbaa6ba301623ca38930f"
+  },
+  "cases": [
+    {
+      "success_fixture": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "requested_bytes": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "style_hex_after_each": [
+        "008001120b000503",
+        "008001120b000503",
+        "008001120b000503",
+        "008001120b000503"
+      ],
+      "final_pointer": "0x12018000",
+      "final_values": [
+        "0xd",
+        "0xff",
+        "0x1201e71c"
+      ],
+      "final_tags": [
+        "0xb",
+        "0x21",
+        "0x20"
+      ],
+      "final_style_hex": "008001120b000503"
+    },
+    {
+      "success_fixture": [
+        false,
+        false,
+        false,
+        true
+      ],
+      "requested_bytes": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "style_hex_after_each": [
+        "008001120b000503",
+        "008001120b000503",
+        "008001120b000503",
+        "00c001120b001504"
+      ],
+      "final_pointer": "0x1201c000",
+      "final_values": [
+        "0xd",
+        "0xff",
+        "0x1201e71c",
+        "0x2"
+      ],
+      "final_tags": [
+        "0xb",
+        "0x21",
+        "0x20",
+        "0x42"
+      ],
+      "final_style_hex": "00c001120b001504"
+    },
+    {
+      "success_fixture": [
+        false,
+        false,
+        true,
+        false
+      ],
+      "requested_bytes": [
+        24,
+        24,
+        24,
+        30
+      ],
+      "style_hex_after_each": [
+        "008001120b000503",
+        "008001120b000503",
+        "00b001120b001504",
+        "00b001120b001504"
+      ],
+      "final_pointer": "0x1201b000",
+      "final_values": [
+        "0xd",
+        "0xff",
+        "0x1201e71c",
+        "0x7f"
+      ],
+      "final_tags": [
+        "0xb",
+        "0x21",
+        "0x20",
+        "0x45"
+      ],
+      "final_style_hex": "00b001120b001504"
+    },
+    {
+      "success_fixture": [
+        false,
+        false,
+        true,
+        true
+      ],
+      "requested_bytes": [
+        24,
+        24,
+        24,
+        30
+      ],
+      "style_hex_after_each": [
+        "008001120b000503",
+        "008001120b000503",
+        "00b001120b001504",
+        "00c001120b001505"
+      ],
+      "final_pointer": "0x1201c000",
+      "final_values": [
+        "0xd",
+        "0xff",
+        "0x1201e71c",
+        "0x7f",
+        "0x2"
+      ],
+      "final_tags": [
+        "0xb",
+        "0x21",
+        "0x20",
+        "0x45",
+        "0x42"
+      ],
+      "final_style_hex": "00c001120b001505"
+    },
+    {
+      "success_fixture": [
+        false,
+        true,
+        false,
+        false
+      ],
+      "requested_bytes": [
+        24,
+        24,
+        30,
+        30
+      ],
+      "style_hex_after_each": [
+        "008001120b000503",
+        "00a001120b001504",
+        "00a001120b001504",
+        "00a001120b001504"
+      ],
+      "final_pointer": "0x1201a000",
+      "final_values": [
+        "0xd",
+        "0xff",
+        "0x1201e71c",
+        "0x2"
+      ],
+      "final_tags": [
+        "0xb",
+        "0x21",
+        "0x20",
+        "0x40"
+      ],
+      "final_style_hex": "00a001120b001504"
+    },
+    {
+      "success_fixture": [
+        false,
+        true,
+        false,
+        true
+      ],
+      "requested_bytes": [
+        24,
+        24,
+        30,
+        30
+      ],
+      "style_hex_after_each": [
+        "008001120b000503",
+        "00a001120b001504",
+        "00a001120b001504",
+        "00c001120b001505"
+      ],
+      "final_pointer": "0x1201c000",
+      "final_values": [
+        "0xd",
+        "0xff",
+        "0x1201e71c",
+        "0x2",
+        "0x2"
+      ],
+      "final_tags": [
+        "0xb",
+        "0x21",
+        "0x20",
+        "0x40",
+        "0x42"
+      ],
+      "final_style_hex": "00c001120b001505"
+    },
+    {
+      "success_fixture": [
+        false,
+        true,
+        true,
+        false
+      ],
+      "requested_bytes": [
+        24,
+        24,
+        30,
+        36
+      ],
+      "style_hex_after_each": [
+        "008001120b000503",
+        "00a001120b001504",
+        "00b001120b001505",
+        "00b001120b001505"
+      ],
+      "final_pointer": "0x1201b000",
+      "final_values": [
+        "0xd",
+        "0xff",
+        "0x1201e71c",
+        "0x2",
+        "0x7f"
+      ],
+      "final_tags": [
+        "0xb",
+        "0x21",
+        "0x20",
+        "0x40",
+        "0x45"
+      ],
+      "final_style_hex": "00b001120b001505"
+    },
+    {
+      "success_fixture": [
+        false,
+        true,
+        true,
+        true
+      ],
+      "requested_bytes": [
+        24,
+        24,
+        30,
+        36
+      ],
+      "style_hex_after_each": [
+        "008001120b000503",
+        "00a001120b001504",
+        "00b001120b001505",
+        "00c001120b001506"
+      ],
+      "final_pointer": "0x1201c000",
+      "final_values": [
+        "0xd",
+        "0xff",
+        "0x1201e71c",
+        "0x2",
+        "0x7f",
+        "0x2"
+      ],
+      "final_tags": [
+        "0xb",
+        "0x21",
+        "0x20",
+        "0x40",
+        "0x45",
+        "0x42"
+      ],
+      "final_style_hex": "00c001120b001506"
+    },
+    {
+      "success_fixture": [
+        true,
+        false,
+        false,
+        false
+      ],
+      "requested_bytes": [
+        24,
+        30,
+        30,
+        30
+      ],
+      "style_hex_after_each": [
+        "009001120b001504",
+        "009001120b001504",
+        "009001120b001504",
+        "009001120b001504"
+      ],
+      "final_pointer": "0x12019000",
+      "final_values": [
+        "0xd",
+        "0xff",
+        "0x1201e71c",
+        "0x12019cf3"
+      ],
+      "final_tags": [
+        "0xb",
+        "0x21",
+        "0x20",
+        "0x44"
+      ],
+      "final_style_hex": "009001120b001504"
+    },
+    {
+      "success_fixture": [
+        true,
+        false,
+        false,
+        true
+      ],
+      "requested_bytes": [
+        24,
+        30,
+        30,
+        30
+      ],
+      "style_hex_after_each": [
+        "009001120b001504",
+        "009001120b001504",
+        "009001120b001504",
+        "00c001120b001505"
+      ],
+      "final_pointer": "0x1201c000",
+      "final_values": [
+        "0xd",
+        "0xff",
+        "0x1201e71c",
+        "0x12019cf3",
+        "0x2"
+      ],
+      "final_tags": [
+        "0xb",
+        "0x21",
+        "0x20",
+        "0x44",
+        "0x42"
+      ],
+      "final_style_hex": "00c001120b001505"
+    },
+    {
+      "success_fixture": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "requested_bytes": [
+        24,
+        30,
+        30,
+        36
+      ],
+      "style_hex_after_each": [
+        "009001120b001504",
+        "009001120b001504",
+        "00b001120b001505",
+        "00b001120b001505"
+      ],
+      "final_pointer": "0x1201b000",
+      "final_values": [
+        "0xd",
+        "0xff",
+        "0x1201e71c",
+        "0x12019cf3",
+        "0x7f"
+      ],
+      "final_tags": [
+        "0xb",
+        "0x21",
+        "0x20",
+        "0x44",
+        "0x45"
+      ],
+      "final_style_hex": "00b001120b001505"
+    },
+    {
+      "success_fixture": [
+        true,
+        false,
+        true,
+        true
+      ],
+      "requested_bytes": [
+        24,
+        30,
+        30,
+        36
+      ],
+      "style_hex_after_each": [
+        "009001120b001504",
+        "009001120b001504",
+        "00b001120b001505",
+        "00c001120b001506"
+      ],
+      "final_pointer": "0x1201c000",
+      "final_values": [
+        "0xd",
+        "0xff",
+        "0x1201e71c",
+        "0x12019cf3",
+        "0x7f",
+        "0x2"
+      ],
+      "final_tags": [
+        "0xb",
+        "0x21",
+        "0x20",
+        "0x44",
+        "0x45",
+        "0x42"
+      ],
+      "final_style_hex": "00c001120b001506"
+    },
+    {
+      "success_fixture": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "requested_bytes": [
+        24,
+        30,
+        36,
+        36
+      ],
+      "style_hex_after_each": [
+        "009001120b001504",
+        "00a001120b001505",
+        "00a001120b001505",
+        "00a001120b001505"
+      ],
+      "final_pointer": "0x1201a000",
+      "final_values": [
+        "0xd",
+        "0xff",
+        "0x1201e71c",
+        "0x12019cf3",
+        "0x2"
+      ],
+      "final_tags": [
+        "0xb",
+        "0x21",
+        "0x20",
+        "0x44",
+        "0x40"
+      ],
+      "final_style_hex": "00a001120b001505"
+    },
+    {
+      "success_fixture": [
+        true,
+        true,
+        false,
+        true
+      ],
+      "requested_bytes": [
+        24,
+        30,
+        36,
+        36
+      ],
+      "style_hex_after_each": [
+        "009001120b001504",
+        "00a001120b001505",
+        "00a001120b001505",
+        "00c001120b001506"
+      ],
+      "final_pointer": "0x1201c000",
+      "final_values": [
+        "0xd",
+        "0xff",
+        "0x1201e71c",
+        "0x12019cf3",
+        "0x2",
+        "0x2"
+      ],
+      "final_tags": [
+        "0xb",
+        "0x21",
+        "0x20",
+        "0x44",
+        "0x40",
+        "0x42"
+      ],
+      "final_style_hex": "00c001120b001506"
+    },
+    {
+      "success_fixture": [
+        true,
+        true,
+        true,
+        false
+      ],
+      "requested_bytes": [
+        24,
+        30,
+        36,
+        42
+      ],
+      "style_hex_after_each": [
+        "009001120b001504",
+        "00a001120b001505",
+        "00b001120b001506",
+        "00b001120b001506"
+      ],
+      "final_pointer": "0x1201b000",
+      "final_values": [
+        "0xd",
+        "0xff",
+        "0x1201e71c",
+        "0x12019cf3",
+        "0x2",
+        "0x7f"
+      ],
+      "final_tags": [
+        "0xb",
+        "0x21",
+        "0x20",
+        "0x44",
+        "0x40",
+        "0x45"
+      ],
+      "final_style_hex": "00b001120b001506"
+    },
+    {
+      "success_fixture": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "requested_bytes": [
+        24,
+        30,
+        36,
+        42
+      ],
+      "style_hex_after_each": [
+        "009001120b001504",
+        "00a001120b001505",
+        "00b001120b001506",
+        "00c001120b001507"
+      ],
+      "final_pointer": "0x1201c000",
+      "final_values": [
+        "0xd",
+        "0xff",
+        "0x1201e71c",
+        "0x12019cf3",
+        "0x2",
+        "0x7f",
+        "0x2"
+      ],
+      "final_tags": [
+        "0xb",
+        "0x21",
+        "0x20",
+        "0x44",
+        "0x40",
+        "0x45",
+        "0x42"
+      ],
+      "final_style_hex": "00c001120b001507"
+    }
+  ],
+  "limits": [
+    "Pure Python contract reference only; no replay imports and no native ARM execution.",
+    "Mandatory captured_values input must be confirmed by the coordinator against original wrapper entries before comparison.",
+    "Illustrative values are not a new firmware claim; opaque HIGH16 has no assigned physical meaning.",
+    "Allocator result/prefix-copy/poison-tail remain fixtures; no allocator/free/reuse, initializer return, callback or hardware/timing claim."
+  ]
+}

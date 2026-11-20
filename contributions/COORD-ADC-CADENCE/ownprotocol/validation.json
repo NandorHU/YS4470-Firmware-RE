@@ -1,0 +1,503 @@
+{
+  "application_sha256": "b081860a2383e5c1251ea80abf25cb4f39bdf74a340a376975acf2b0ff6f9c8e",
+  "physical_device_operations": 0,
+  "physical_time_units_established": false,
+  "controls": {
+    "positions": [
+      [
+        226,
+        74
+      ],
+      [
+        288,
+        66
+      ],
+      [
+        333,
+        74
+      ],
+      [
+        383,
+        66
+      ]
+    ],
+    "sizes": [
+      [
+        58,
+        24
+      ],
+      [
+        42,
+        38
+      ],
+      [
+        46,
+        24
+      ],
+      [
+        42,
+        38
+      ]
+    ],
+    "levels": [
+      [
+        40,
+        363
+      ],
+      [
+        30,
+        181
+      ],
+      [
+        20,
+        90
+      ],
+      [
+        10,
+        45
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        10,
+        45
+      ],
+      [
+        20,
+        90
+      ],
+      [
+        30,
+        181
+      ],
+      [
+        40,
+        363
+      ],
+      [
+        50,
+        635
+      ],
+      [
+        60,
+        999
+      ],
+      [
+        70,
+        1544
+      ],
+      [
+        80,
+        2270
+      ],
+      [
+        90,
+        3270
+      ],
+      [
+        100,
+        4541
+      ]
+    ],
+    "requested_pwm_duty_percent": {
+      "0": 0.0,
+      "10": 0.25,
+      "20": 0.5,
+      "30": 1.0,
+      "40": 2.0,
+      "50": 3.5,
+      "60": 5.5,
+      "70": 8.5,
+      "80": 12.5,
+      "90": 18.0,
+      "100": 25.0
+    },
+    "original_beta_and_profile_geometry_preserved": true,
+    "original_indirect_dispatches": 29,
+    "real_pwm_updates": 50
+  },
+  "font": {
+    "decoded_bitmap_sha256": "28eb1730e6aba9c6fcb6da0d135643d0498f6813cba4fed11be042c95911b3d6",
+    "lookup_cases": 95,
+    "allocation_bytes": 9612,
+    "truncated_bitmap_rejected": true,
+    "volume_label_glyph_advances_px": {
+      "Volume": 43,
+      "100%": 35,
+      "-": 9,
+      "+": 11
+    }
+  },
+  "existing_profiles": [
+    {
+      "profile": 0,
+      "scenario": "stable-low",
+      "events": 25
+    },
+    {
+      "profile": 0,
+      "scenario": "contact-open",
+      "events": 26
+    },
+    {
+      "profile": 1,
+      "scenario": "stable-low",
+      "events": 25
+    },
+    {
+      "profile": 1,
+      "scenario": "contact-open",
+      "events": 26
+    },
+    {
+      "profile": 2,
+      "scenario": "stable-low",
+      "events": 56
+    },
+    {
+      "profile": 2,
+      "scenario": "contact-open",
+      "events": 57
+    },
+    {
+      "profile": 3,
+      "scenario": "stable-low",
+      "events": 70
+    },
+    {
+      "profile": 3,
+      "scenario": "contact-open",
+      "events": 71
+    }
+  ],
+  "selection": {
+    "event_cycles": [
+      "Direct",
+      "Auto",
+      "Ready",
+      "ownprotocol",
+      "Base",
+      "Direct",
+      "Auto",
+      "Ready",
+      "ownprotocol",
+      "Base"
+    ],
+    "glyph_and_spacing_px": 131,
+    "own_button_px": 180
+  },
+  "own_scenarios": [
+    {
+      "profile": "ownprotocol",
+      "requested": 4,
+      "active": 4,
+      "highspeed": 1,
+      "scenario": "stable-low",
+      "counts": {
+        "request": 60,
+        "accepted": 59,
+        "parser": 59,
+        "display_dispatch": 12,
+        "renderer": 12,
+        "sound_control": 1,
+        "enqueue": 12,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 11,
+        "sleep_calls": 300
+      },
+      "queue_max": 1,
+      "instructions": 84368
+    },
+    {
+      "profile": "ownprotocol",
+      "requested": 4,
+      "active": 4,
+      "highspeed": 1,
+      "scenario": "open-contact",
+      "counts": {
+        "request": 60,
+        "accepted": 59,
+        "parser": 59,
+        "display_dispatch": 12,
+        "renderer": 12,
+        "sound_control": 1,
+        "enqueue": 12,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 11,
+        "sleep_calls": 300
+      },
+      "queue_max": 1,
+      "instructions": 83600
+    },
+    {
+      "profile": "ownprotocol",
+      "requested": 4,
+      "active": 4,
+      "highspeed": 1,
+      "scenario": "contact-open",
+      "counts": {
+        "request": 60,
+        "accepted": 59,
+        "parser": 59,
+        "display_dispatch": 12,
+        "renderer": 12,
+        "sound_control": 2,
+        "enqueue": 12,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 11,
+        "sleep_calls": 300
+      },
+      "queue_max": 1,
+      "instructions": 83093
+    },
+    {
+      "profile": "ownprotocol",
+      "requested": 4,
+      "active": 4,
+      "highspeed": 1,
+      "scenario": "short-contact",
+      "counts": {
+        "request": 60,
+        "accepted": 59,
+        "parser": 59,
+        "display_dispatch": 12,
+        "renderer": 12,
+        "sound_control": 2,
+        "enqueue": 12,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 11,
+        "sleep_calls": 300
+      },
+      "queue_max": 1,
+      "instructions": 82311
+    },
+    {
+      "profile": "ownprotocol",
+      "requested": 4,
+      "active": 4,
+      "highspeed": 1,
+      "scenario": "late",
+      "counts": {
+        "request": 8,
+        "accepted": 7,
+        "parser": 7,
+        "display_dispatch": 12,
+        "renderer": 12,
+        "sound_control": 1,
+        "enqueue": 12,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 11,
+        "sleep_calls": 300
+      },
+      "queue_max": 1,
+      "instructions": 58085
+    },
+    {
+      "profile": "ownprotocol",
+      "requested": 4,
+      "active": 4,
+      "highspeed": 1,
+      "scenario": "missing",
+      "counts": {
+        "request": 8,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 12,
+        "renderer": 12,
+        "sound_control": 0,
+        "enqueue": 12,
+        "incomplete_timeout": 7,
+        "header_reject": 0,
+        "state6_total": 7,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 11,
+        "sleep_calls": 300
+      },
+      "queue_max": 1,
+      "instructions": 53355
+    },
+    {
+      "profile": "ownprotocol",
+      "requested": 4,
+      "active": 4,
+      "highspeed": 1,
+      "scenario": "wrong-header",
+      "counts": {
+        "request": 43,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 12,
+        "renderer": 12,
+        "sound_control": 0,
+        "enqueue": 12,
+        "incomplete_timeout": 0,
+        "header_reject": 43,
+        "state6_total": 43,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 11,
+        "sleep_calls": 300
+      },
+      "queue_max": 1,
+      "instructions": 65256
+    },
+    {
+      "profile": "ownprotocol",
+      "requested": 4,
+      "active": 4,
+      "highspeed": 1,
+      "scenario": "truncated",
+      "counts": {
+        "request": 8,
+        "accepted": 0,
+        "parser": 0,
+        "display_dispatch": 12,
+        "renderer": 12,
+        "sound_control": 0,
+        "enqueue": 12,
+        "incomplete_timeout": 7,
+        "header_reject": 0,
+        "state6_total": 7,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 11,
+        "sleep_calls": 300
+      },
+      "queue_max": 1,
+      "instructions": 53787
+    }
+  ],
+  "independent_gui_schedules": [
+    {
+      "highspeed": 0,
+      "gui_period": 25,
+      "gui_phase": 0,
+      "sounds": [
+        105
+      ]
+    },
+    {
+      "highspeed": 1,
+      "gui_period": 25,
+      "gui_phase": 0,
+      "sounds": [
+        105
+      ]
+    },
+    {
+      "highspeed": 0,
+      "gui_period": 71,
+      "gui_phase": 13,
+      "sounds": [
+        105
+      ]
+    },
+    {
+      "highspeed": 1,
+      "gui_period": 71,
+      "gui_phase": 13,
+      "sounds": [
+        105
+      ]
+    }
+  ],
+  "missing_then_valid_recovery": {
+    "first_accepted": 173,
+    "accepted": 26
+  },
+  "synthetic_comparison": {
+    "Ready": {
+      "counts": {
+        "request": 42,
+        "accepted": 41,
+        "parser": 41,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 1,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 9,
+        "sleep_calls": 250
+      },
+      "first_requests": [
+        0,
+        6,
+        12,
+        18,
+        24,
+        30,
+        36,
+        42
+      ],
+      "first_low_accepted": 107,
+      "first_low_sound": 107
+    },
+    "ownprotocol": {
+      "counts": {
+        "request": 50,
+        "accepted": 49,
+        "parser": 49,
+        "display_dispatch": 10,
+        "renderer": 10,
+        "sound_control": 1,
+        "enqueue": 10,
+        "incomplete_timeout": 0,
+        "header_reject": 0,
+        "state6_total": 0,
+        "holdoff_discard": 0,
+        "busy_poll_discard": 9,
+        "sleep_calls": 250
+      },
+      "first_requests": [
+        0,
+        5,
+        10,
+        15,
+        20,
+        25,
+        30,
+        35
+      ],
+      "first_low_accepted": 105,
+      "first_low_sound": 105
+    }
+  },
+  "deferred_switches": 5,
+  "blocked_rearm_conditions": [
+    "0x805aae8c",
+    "0x805aae8d",
+    "0x805ac6c8",
+    "0x80060a91",
+    "0x805abefc",
+    "0x805abf03",
+    "0x805aae94",
+    "CTRL+8 full-width alias 0x10e"
+  ],
+  "invalid_font_backreferences_rejected": [
+    "800000",
+    "800100"
+  ],
+  "reproducible_and_corrupt_base_rejected": true
+}

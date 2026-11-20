@@ -1,14 +1,18 @@
 # YS-4470 reusable Windows installer
 
-Extract the Windows x64 ZIP, then open `YS4470-Installer.exe`. The ZIP
-includes the current V3.8 E2 diode-volume beta as
-`firmware/firmware.ysfw`. For another update, replace that single file or
-choose a new `.ysfw` in the app. The EXE contains the runtime and tools.
-It loads firmware from the selected external package each time.
+Open `YS4470-Installer.exe`. It contains the V3.8 E2 ownprotocol + diode-volume
++ diode fixed-range + Beta Diode v2/v4 (beta.6) firmware, Python runtime and tools. The EXE works on its own, including after
+copying only that file into Downloads. No extraction, Python setup or firmware
+selection is required. Connect the meter in FEL mode and choose Install.
+The Beta Diode button alternates v2 and v4 (see RELEASE-NOTES.md).
+
+An optional `firmware/firmware.ysfw` beside the EXE takes precedence for later
+updates. A present but invalid package is rejected; it never silently falls back
+to the embedded version. Another package can also be selected in the app.
 
 ## Install and restore
 
-1. Extract the complete ZIP. Run the EXE, and check the selected package.
+1. Run the EXE and check the automatically selected package.
 2. Connect one YS-4470 in FEL mode using a USB data cable. If the FEL
    device is missing, open the included driver helper and select WinUSB
    for the device with USB ID `1F3A:EFE8`. Driver setup requires approval.
@@ -37,7 +41,7 @@ It has not been exercised against a physical meter.
 
 Create a `.ysfw` from the reviewed, full-length application binary for
 the corresponding factory firmware family. Use a fresh output name.
-The EXE does not have to be rebuilt.
+An external package can override the embedded default without rebuilding the EXE.
 
 ```powershell
 python installer/pack_firmware.py new-firmware.bin --family V3.8 --label "New E2 build" --out new-firmware.ysfw
@@ -52,8 +56,8 @@ application.
 
 Use 64-bit Python 3.12.10 with the pinned build dependencies. Run
 `python installer/prepare.py` to verify the public build inputs. Build
-the E2 diode-volume application as documented in
-`contributions/COORD-DIODE-VOLUME`, then package it.
+the ownprotocol application as documented in
+`contributions/COORD-ADC-CADENCE/ownprotocol`, then package it.
 
 ```powershell
 python installer/build.py --firmware-package path/to/firmware.ysfw

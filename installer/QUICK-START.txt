@@ -1,18 +1,15 @@
-YS-4470 Windows telepítő — gyors útmutató
+YS-4470 beta.6 (v2/v4) — gyors útmutató
 
-1. Csomagold ki a teljes ZIP-et, és indítsd el a YS4470-Installer.exe-t.
-2. Ellenőrizd a kiválasztott csomagot. A mellékelt dióda-hangerős béta V3.8 alapú.
-3. Csatlakoztass egy YS-4470-et FEL módban adatátvitelre alkalmas USB-kábellel.
-4. Válaszd az Install selected firmware in FEL mode gombot, majd erősítsd meg.
-5. Várd meg a Verified successfully jelzést. Ezután újraindíthatod a műszert.
+1. Indítsd el a YS4470-Installer.exe-t. A firmware már előre ki van választva.
+2. Csatlakoztass egy YS-4470-et FEL módban adatátvitelre alkalmas USB-kábellel.
+3. Install selected firmware in FEL mode, megerősítés, majd várd meg a Verified successfully jelzést.
+4. Indítsd újra a műszert. Dióda módban a Beta Diode gomb: v2 ↔ v4 (bekapcsoláskor v2).
 
-Következő verziónál cseréld ki a firmware/firmware.ysfw fájlt,
-vagy válaszd ki az új .ysfw fájlt a Choose firmware package gombbal.
-Ugyanaz az EXE marad.
+  v2    fix méréshatár + a chip gyors módja (68 0a) + gyors lekérdezés
+  v4    v2 + "hang előbb": rövidzárnál a hang érintéskor indul; diódánál/LED-nél rövid csippanás
 
-Ha a számítógép nem érzékeli a FEL eszközt, a USB driver setup
-gombbal nyisd meg a Zadigot. Csak az 1F3A:EFE8 azonosítójú FEL
-eszközhöz válaszd a WinUSB illesztőt.
+Ha rossz értéket vagy OL-t látsz, lépj ki a dióda módból és vissza, vagy telepítsd vissza a
+beta.5-öt / beta.4-et / az automatikus mentést.
 
-Az automatikus biztonsági mentés és a naplók a helyi gépen maradnak.
-A telepítőt szimulált eszközzel ellenőriztük. Fizikai műszeren még nem teszteltük.
+Az EXE önmagában is működik (a firmware benne van). FEL eszköz nem látszik: USB driver setup,
+majd az 1F3A:EFE8 eszközhöz WinUSB. A mentések a helyi gépen maradnak.

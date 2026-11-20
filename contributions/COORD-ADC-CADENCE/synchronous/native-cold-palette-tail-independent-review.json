@@ -1,0 +1,11 @@
+{
+  "native_report_sha256": "93e28e415a036712674b444cccc2ab7baf3047eb610594e343c10c806030ebec",
+  "independent_reference_sha256": "8cb70e9949d0935e49c550cfcfdc1cdc1aaecb98b15f7f8bc2b7dda365703a8f",
+  "review_source_sha256": "38dd4d7c4fe22047b5054f99ba172cf2f7b92ca36bba3f40ba79b208a15857f8",
+  "distinct_schedules_checked": 16,
+  "original_runs_already_in_report": 32,
+  "native_runs_repeated": 0,
+  "captured_inputs_bound": true,
+  "all_stage_arguments_headers_vectors_match": true,
+  "caller_frame_preserved_in_native_report": true
+}

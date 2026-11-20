@@ -1,0 +1,624 @@
+{
+  "schema": "ys4470.diodefixed-candidate-adapter.v1",
+  "candidate": "4site",
+  "baseline_sha256": "b081860a2383e5c1251ea80abf25cb4f39bdf74a340a376975acf2b0ff6f9c8e",
+  "candidate_sha256": "934a2557f7b069645ca3484a70e64e4e33844bf0b0892d2f3583078cadae9417",
+  "factory_v38_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+  "sites": [
+    "0x8000d000",
+    "0x8000d0bc",
+    "0x80045044",
+    "0x800450c4"
+  ],
+  "physical_device_operations": 0,
+  "physical_timing_established": false,
+  "checks": {
+    "integrity": {
+      "result": "PASS",
+      "detail": {
+        "changed_sites": [
+          "0x8000d000",
+          "0x8000d0bc",
+          "0x80045044",
+          "0x800450c4"
+        ],
+        "size": 5943296,
+        "first32_equal": true,
+        "factory_equal_windows": [
+          [
+            "0x8000cfd0",
+            "0x8000d1c0"
+          ],
+          [
+            "0x80044e54",
+            "0x80045180"
+          ],
+          [
+            "0x80006778",
+            "0x800067c8"
+          ]
+        ],
+        "cloud_file_identical": false
+      }
+    },
+    "register_uses": {
+      "result": "PASS",
+      "detail": {
+        "0x8000d000": {
+          "register": "r8",
+          "stores": [
+            "0x8000d0d4"
+          ]
+        },
+        "0x8000d0bc": {
+          "register": "r2",
+          "consumer": "producer bl 0x8000d0c8"
+        },
+        "0x80044ec0": {
+          "register": "r8",
+          "stores": [
+            "0x80044f3c",
+            "0x80044f94",
+            "0x80044fec",
+            "0x8004505c",
+            "0x800450dc"
+          ]
+        },
+        "0x80045044": {
+          "register": "r2",
+          "consumer": "producer bl 0x80045050"
+        },
+        "0x800450c4": {
+          "register": "r2",
+          "consumer": "producer bl 0x800450d0"
+        }
+      }
+    },
+    "selector_all_modes": {
+      "result": "PASS",
+      "detail": {
+        "cases": 21,
+        "rows": [
+          {
+            "index": 0,
+            "setting": 0,
+            "primary": 9,
+            "byte5": [
+              25,
+              25
+            ],
+            "ui8": [
+              "19",
+              "19"
+            ],
+            "changed": false
+          },
+          {
+            "index": 0,
+            "setting": 1,
+            "primary": 9,
+            "byte5": [
+              25,
+              25
+            ],
+            "ui8": [
+              "19",
+              "19"
+            ],
+            "changed": false
+          },
+          {
+            "index": 0,
+            "setting": 2,
+            "primary": 9,
+            "byte5": [
+              25,
+              25
+            ],
+            "ui8": [
+              "19",
+              "19"
+            ],
+            "changed": false
+          },
+          {
+            "index": 1,
+            "setting": 0,
+            "primary": 12,
+            "byte5": [
+              25,
+              25
+            ],
+            "ui8": [
+              "19",
+              "19"
+            ],
+            "changed": false
+          },
+          {
+            "index": 1,
+            "setting": 1,
+            "primary": 12,
+            "byte5": [
+              25,
+              25
+            ],
+            "ui8": [
+              "19",
+              "19"
+            ],
+            "changed": false
+          },
+          {
+            "index": 1,
+            "setting": 2,
+            "primary": 12,
+            "byte5": [
+              25,
+              25
+            ],
+            "ui8": [
+              "19",
+              "19"
+            ],
+            "changed": false
+          },
+          {
+            "index": 2,
+            "setting": 0,
+            "primary": 15,
+            "byte5": [
+              25,
+              25
+            ],
+            "ui8": [
+              "19",
+              "19"
+            ],
+            "changed": false
+          },
+          {
+            "index": 2,
+            "setting": 1,
+            "primary": 15,
+            "byte5": [
+              25,
+              25
+            ],
+            "ui8": [
+              "19",
+              "19"
+            ],
+            "changed": false
+          },
+          {
+            "index": 2,
+            "setting": 2,
+            "primary": 15,
+            "byte5": [
+              25,
+              25
+            ],
+            "ui8": [
+              "19",
+              "19"
+            ],
+            "changed": false
+          },
+          {
+            "index": 3,
+            "setting": 0,
+            "primary": 14,
+            "byte5": [
+              25,
+              19
+            ],
+            "ui8": [
+              "19",
+              "19"
+            ],
+            "changed": true
+          },
+          {
+            "index": 3,
+            "setting": 1,
+            "primary": 14,
+            "byte5": [
+              25,
+              19
+            ],
+            "ui8": [
+              "19",
+              "19"
+            ],
+            "changed": true
+          },
+          {
+            "index": 3,
+            "setting": 2,
+            "primary": 14,
+            "byte5": [
+              25,
+              19
+            ],
+            "ui8": [
+              "19",
+              "19"
+            ],
+            "changed": true
+          },
+          {
+            "index": 4,
+            "setting": 0,
+            "primary": 14,
+            "byte5": [
+              25,
+              19
+            ],
+            "ui8": [
+              "19",
+              "19"
+            ],
+            "changed": true
+          },
+          {
+            "index": 4,
+            "setting": 1,
+            "primary": 34,
+            "byte5": [
+              19,
+              19
+            ],
+            "ui8": [
+              "13",
+              "13"
+            ],
+            "changed": false
+          },
+          {
+            "index": 4,
+            "setting": 2,
+            "primary": 14,
+            "byte5": [
+              25,
+              19
+            ],
+            "ui8": [
+              "19",
+              "19"
+            ],
+            "changed": true
+          },
+          {
+            "index": 5,
+            "setting": 0,
+            "primary": null,
+            "byte5": null,
+            "ui8": [
+              "a5",
+              "a5"
+            ],
+            "changed": false
+          },
+          {
+            "index": 5,
+            "setting": 1,
+            "primary": null,
+            "byte5": null,
+            "ui8": [
+              "a5",
+              "a5"
+            ],
+            "changed": false
+          },
+          {
+            "index": 5,
+            "setting": 2,
+            "primary": null,
+            "byte5": null,
+            "ui8": [
+              "a5",
+              "a5"
+            ],
+            "changed": false
+          },
+          {
+            "index": 6,
+            "setting": 0,
+            "primary": null,
+            "byte5": null,
+            "ui8": [
+              "a5",
+              "a5"
+            ],
+            "changed": false
+          },
+          {
+            "index": 6,
+            "setting": 1,
+            "primary": null,
+            "byte5": null,
+            "ui8": [
+              "a5",
+              "a5"
+            ],
+            "changed": false
+          },
+          {
+            "index": 6,
+            "setting": 2,
+            "primary": null,
+            "byte5": null,
+            "ui8": [
+              "a5",
+              "a5"
+            ],
+            "changed": false
+          }
+        ],
+        "non_diode_mode_changes": []
+      }
+    },
+    "cfd0_callback": {
+      "result": "PASS",
+      "detail": {
+        "cases": 12,
+        "type2_records": [
+          "020000000e13",
+          "050000002213"
+        ],
+        "differences_vs_baseline": [
+          "/cases[0]/mode_bytes_after",
+          "/cases[0]/producer_args[0][2]",
+          "/cases[0]/record_prefix",
+          "/cases[4]/mode_bytes_after",
+          "/cases[4]/producer_args[0][2]",
+          "/cases[4]/record_prefix",
+          "/cases[6]/mode_bytes_after",
+          "/cases[6]/producer_args[0][2]",
+          "/cases[6]/record_prefix",
+          "/cases[8]/mode_bytes_after",
+          "/cases[8]/producer_args[0][2]",
+          "/cases[8]/record_prefix",
+          "/cases[10]/mode_bytes_after",
+          "/cases[10]/producer_args[0][2]",
+          "/cases[10]/record_prefix",
+          "/ib/0x8000d000",
+          "/ib/0x8000d0bc"
+        ],
+        "unexpected_differences": []
+      }
+    },
+    "deferred_measurement": {
+      "result": "PASS",
+      "detail": {
+        "V3.8": {
+          "base_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+          "patched_sha256": "2b48fdff2b595dda27d96397dd635c938e48a068b53aeeaae5d85dc598121eb5",
+          "result": {
+            "cases": 10,
+            "wire_with_replies": [
+              "58075f68076f5900596060",
+              "580a625900596060"
+            ]
+          }
+        },
+        "V3.6": {
+          "base_sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+          "patched_sha256": "7deb3786a05bfb5a3ab4e536b4a7d3349875fdc4c15d14ddb79553804f830e84",
+          "result": {
+            "cases": 10,
+            "wire_with_replies": [
+              "58075f68076f5900596060",
+              "580a625900596060"
+            ]
+          }
+        }
+      }
+    },
+    "native_fast_cont": {
+      "result": "PASS",
+      "detail": {
+        "V3.8": {
+          "base_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+          "patched_sha256": "2b48fdff2b595dda27d96397dd635c938e48a068b53aeeaae5d85dc598121eb5",
+          "result": {
+            "cases": 8,
+            "countdown_cases": 6,
+            "fast1_cases_identical": 2,
+            "type2_wire": [
+              "580a625900596060"
+            ]
+          }
+        },
+        "V3.6": {
+          "base_sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+          "patched_sha256": "7deb3786a05bfb5a3ab4e536b4a7d3349875fdc4c15d14ddb79553804f830e84",
+          "result": {
+            "cases": 8,
+            "countdown_cases": 6,
+            "fast1_cases_identical": 2,
+            "type2_wire": [
+              "580a625900596060"
+            ]
+          }
+        }
+      }
+    },
+    "dynamic_type2": {
+      "result": "PASS",
+      "detail": {
+        "V3.8": {
+          "base_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+          "patched_sha256": "2b48fdff2b595dda27d96397dd635c938e48a068b53aeeaae5d85dc598121eb5",
+          "result": {
+            "native": 18,
+            "clamp": 256,
+            "adjacent": 10,
+            "identical_to_baseline": true,
+            "clamp_0x13_row": [
+              19,
+              19,
+              "590059"
+            ],
+            "clamp_0x19_row": [
+              25,
+              25,
+              "5a5a"
+            ]
+          }
+        },
+        "V3.6": {
+          "base_sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+          "patched_sha256": "7deb3786a05bfb5a3ab4e536b4a7d3349875fdc4c15d14ddb79553804f830e84",
+          "result": {
+            "native": 18,
+            "clamp": 256,
+            "adjacent": 10,
+            "identical_to_baseline": true,
+            "clamp_0x13_row": [
+              19,
+              19,
+              "590059"
+            ],
+            "clamp_0x19_row": [
+              25,
+              25,
+              "5a5a"
+            ]
+          }
+        }
+      }
+    },
+    "producer_suffixes": {
+      "result": "PASS",
+      "detail": {
+        "direct_sites": 31,
+        "cases": 33,
+        "changed_sites": [
+          "0x8000d0c8",
+          "0x80045050",
+          "0x800450d0"
+        ],
+        "unchanged_0x19_sites_still_0x19": [
+          "0x8000ce54",
+          "0x8000cf00",
+          "0x8000d39c",
+          "0x8000d5c0",
+          "0x8000d7c8",
+          "0x8000e2dc",
+          "0x8000e36c",
+          "0x8000e3f4",
+          "0x8000e480",
+          "0x8000f414",
+          "0x8000f49c",
+          "0x80044f2c",
+          "0x80044f80",
+          "0x80044fdc",
+          "0x800519e0"
+        ]
+      }
+    },
+    "event_sources": {
+      "result": "PASS",
+      "detail": {
+        "V3.8": {
+          "base_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+          "patched_sha256": "2b48fdff2b595dda27d96397dd635c938e48a068b53aeeaae5d85dc598121eb5",
+          "result": {
+            "gui_branch_cases": 32,
+            "candidate_commands": [
+              [
+                12,
+                34,
+                19,
+                29
+              ],
+              [
+                14,
+                19,
+                29
+              ]
+            ]
+          }
+        },
+        "V3.6": {
+          "base_sha256": "7523b2e91dd8627ffebfc7ac0525c0607a56df4cece04028a9c3a8ee558f6eb9",
+          "patched_sha256": "7deb3786a05bfb5a3ab4e536b4a7d3349875fdc4c15d14ddb79553804f830e84",
+          "result": {
+            "gui_branch_cases": 32,
+            "candidate_commands": [
+              [
+                12,
+                34,
+                19,
+                29
+              ],
+              [
+                14,
+                19,
+                29
+              ]
+            ]
+          }
+        }
+      }
+    },
+    "ownprotocol_integrated_dispatch": {
+      "result": "PASS",
+      "detail": {
+        "Base": {
+          "baseline_setup": [
+            "580a",
+            "5a"
+          ],
+          "candidate_setup": [
+            "580a",
+            "5900"
+          ],
+          "ctrl8": "0xe",
+          "discard_after": 0,
+          "polls": 4,
+          "accepted": 2,
+          "setup_times": [
+            0,
+            102
+          ],
+          "first_poll_tick": 104,
+          "timeline_identical": true
+        },
+        "ownprotocol": {
+          "baseline_setup": [
+            "580a",
+            "5a"
+          ],
+          "candidate_setup": [
+            "580a",
+            "5900"
+          ],
+          "ctrl8": "0xe",
+          "discard_after": 0,
+          "polls": 16,
+          "accepted": 13,
+          "setup_times": [
+            0,
+            102
+          ],
+          "first_poll_tick": 104,
+          "timeline_identical": true
+        }
+      }
+    },
+    "test_ownprotocol_on_candidate": {
+      "result": "PASS",
+      "stdout": "PASS: ownprotocol selection, ARM scheduler, errors, guards, volume/font and existing profiles\n{\n  \"Ready\": {\n    \"counts\": {\n      \"request\": 42,\n      \"accepted\": 41,\n      \"parser\": 41,\n      \"display_dispatch\": 10,\n      \"renderer\": 10,\n      \"sound_control\": 1,\n      \"enqueue\": 10,\n      \"incomplete_timeout\": 0,\n      \"header_reject\": 0,\n      \"state6_total\": 0,\n      \"holdoff_discard\": 0,\n      \"busy_poll_discard\": 9,\n      \"sleep_calls\": 250\n    },\n    \"first_requests\": [\n      0,\n      6,\n      12,\n      18,\n      24,\n      30,\n      36,\n      42\n    ],\n    \"first_low_accepted\": 107,\n    \"first_low_sound\": 107\n  },\n  \"ownprotocol\": {\n    \"counts\": {\n      \"request\": 50,\n      \"accepted\": 49,\n      \"parser\": 49,\n      \"display_dispatch\": 10,\n      \"renderer\": 10,\n      \"sound_control\": 1,\n      \"enqueue\": 10,\n      \"incomplete_timeout\": 0,\n      \"header_reject\": 0,\n      \"state6_total\": 0,\n      \"holdoff_discard\": 0,\n      \"busy_poll_discard\": 9,\n      \"sleep_calls\": 250\n    },\n    \"first_requests\": [\n      0,\n      5,\n      10,\n      15,\n      20,\n      25,\n      30,\n      35\n    ],\n    \"first_low_accepted\": 105,\n    \"first_low_sound\": 105\n  }\n}\nOWNPROTOCOL-CANDIDATE-PASS 934a2557f7b069645ca3484a70e64e4e33844bf0b0892d2f3583078cadae9417\n",
+      "stderr": ""
+    }
+  },
+  "verdict": "PASS",
+  "failed": [],
+  "limits": [
+    "Bounded ARM926 replays of original code with modelled leaves, queue fixtures and synthetic replies.",
+    "Proves which command bytes the firmware emits and which RAM state it writes; it does NOT prove the meter chip's electrical behaviour for 59 00 in diode mode, conversion latency, or physical speed-up."
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "version": "2.0.0-beta.3-ownprotocol",
+  "compiled_self_test": {
+    "version": "2.0.0-beta.3-ownprotocol",
+    "resources_valid": true,
+    "tcl_patchlevel": "8.6.15",
+    "device_access": false,
+    "external_firmware": {
+      "schema": "ys4470.firmware-package.v1",
+      "device": "YS-4470",
+      "family": "V3.8",
+      "factory_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+      "label": "YS4470 V3.8 E2 ownprotocol + Diode Volume beta",
+      "image_sha256": "b081860a2383e5c1251ea80abf25cb4f39bdf74a340a376975acf2b0ff6f9c8e",
+      "image_bytes": 5943296
+    }
+  },
+  "exe_sha256": "94a02592797dd60cfc7ab82ac0aab8b625bdb66eaaaa1557ece9c5fbd8783be2",
+  "assets": [
+    {
+      "name": "SHA256SUMS.txt",
+      "sha256": "571ce2626ffaa8401f1c015cfb94cb93822407c394dc80ebcfac6b239b16046e",
+      "bytes": 345
+    },
+    {
+      "name": "YS4470-E2-V3.8-ownprotocol.ysfw",
+      "sha256": "d81d8fc9eeee1b2a92b5fd84afd67e79831b71366f7f2331b460c58bbb0d5814",
+      "bytes": 890710
+    },
+    {
+      "name": "YS4470-Installer-2.0.0-beta.3-ownprotocol-Sources.zip",
+      "sha256": "385357b2e72aa7dec20fcbd2a2dab19e623717c94fa4e1918f33dd405cfb946a",
+      "bytes": 17124479
+    },
+    {
+      "name": "YS4470-Installer-2.0.0-beta.3-ownprotocol-Windows-x64.zip",
+      "sha256": "efbaaeafe1e07a27f0b2ff7929584ade56b3f575eef844cf16a262f4f041e461",
+      "bytes": 18644281
+    }
+  ],
+  "physical_device_operations": 0,
+  "validation_scope": "Simulated transport, source regression, packaged EXE resource self-test; not a physical install test.",
+  "simulated_transport_tests_passed": 30,
+  "simulation_test_log": "test_corrupt_adjacent_package_is_refused_without_fallback (test_default_package.DefaultPackageTests.test_corrupt_adjacent_package_is_refused_without_fallback) ... ok\ntest_exe_alone_finds_embedded_package (test_default_package.DefaultPackageTests.test_exe_alone_finds_embedded_package) ... ok\ntest_existing_adjacent_package_has_priority (test_default_package.DefaultPackageTests.test_existing_adjacent_package_has_priority) ... ok\ntest_bad_helper_is_never_started (test_driver_ui.DriverTests.test_bad_helper_is_never_started) ... ok\ntest_cancel_does_not_run_helper (test_driver_ui.DriverTests.test_cancel_does_not_run_helper) ... ok\ntest_explicit_driver_action_requests_windows_elevation (test_driver_ui.DriverTests.test_explicit_driver_action_requests_windows_elevation) ... ok\ntest_active_lock_prevents_concurrent_session (test_engine.EngineTests.test_active_lock_prevents_concurrent_session) ... ok\ntest_already_installed_does_not_rewrite (test_engine.EngineTests.test_already_installed_does_not_rewrite) ... ok\ntest_bundled_factory_has_strict_identity (test_engine.EngineTests.test_bundled_factory_has_strict_identity) ... ok\ntest_corrupt_backup_cannot_restore (test_engine.EngineTests.test_corrupt_backup_cannot_restore) ... ok\ntest_explicit_approval_required (test_engine.EngineTests.test_explicit_approval_required) ... ok\ntest_external_package_rejects_header_change_and_partial_sector (test_engine.EngineTests.test_external_package_rejects_header_change_and_partial_sector) ... ok\ntest_future_image_with_unrecorded_identity_is_not_enrolled (test_engine.EngineTests.test_future_image_with_unrecorded_identity_is_not_enrolled) ... ok\ntest_inconsistent_double_read_never_writes (test_engine.EngineTests.test_inconsistent_double_read_never_writes) ... ok\ntest_install_preserves_all_other_regions_and_verifies (test_engine.EngineTests.test_install_preserves_all_other_regions_and_verifies) ... ok\ntest_interrupted_write_can_restore_only_prior_plan (test_engine.EngineTests.test_interrupted_write_can_restore_only_prior_plan) ... ok\ntest_package_needs_explicit_approval (test_engine.EngineTests.test_package_needs_explicit_approval) ... ok\ntest_package_rejects_bad_digest_and_full_flash (test_engine.EngineTests.test_package_rejects_bad_digest_and_full_flash) ... ok\ntest_package_rejects_extraneous_members (test_engine.EngineTests.test_package_rejects_extraneous_members) ... ok\ntest_package_with_wrong_family_leaves_verified_device_unchanged (test_engine.EngineTests.test_package_with_wrong_family_leaves_verified_device_unchanged) ... ok\ntest_probe_rejects_multiple_or_wrong_devices (test_engine.EngineTests.test_probe_rejects_multiple_or_wrong_devices) ... ok\ntest_readback_failure_never_reports_complete (test_engine.EngineTests.test_readback_failure_never_reports_complete) ... ok\ntest_replacement_package_upgrades_with_same_engine_and_restore (test_engine.EngineTests.test_replacement_package_upgrades_with_same_engine_and_restore) ... ok\ntest_restore_rejects_changed_calibration_or_other_device (test_engine.EngineTests.test_restore_rejects_changed_calibration_or_other_device) ... ok\ntest_restore_verified_backup (test_engine.EngineTests.test_restore_verified_backup) ... ok\ntest_same_external_package_does_not_rewrite (test_engine.EngineTests.test_same_external_package_does_not_rewrite) ... ok\ntest_unknown_application_saves_backup_but_never_writes (test_engine.EngineTests.test_unknown_application_saves_backup_but_never_writes) ... ok\ntest_unknown_device_never_reads_or_writes (test_engine.EngineTests.test_unknown_device_never_reads_or_writes) ... ok\ntest_v36_preserves_its_version_data (test_engine.EngineTests.test_v36_preserves_its_version_data) ... ok\ntest_wrong_native_tool_hash_is_rejected (test_engine.EngineTests.test_wrong_native_tool_hash_is_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 30 tests in 20.104s\n\nOK\n",
+  "extracted_exe_auto_selects_bundled_firmware_from_unrelated_cwd": true,
+  "exe_alone_without_adjacent_firmware_uses_embedded_package": true,
+  "same_exe_verified_with_two_external_packages": true,
+  "released_firmware_simulated_install_and_restore": true,
+  "ownprotocol_update_from_fresh_backup_store_and_restore": true,
+  "runtime_components_checked": [
+    "python312.dll",
+    "_tkinter.pyd",
+    "tcl86t.dll",
+    "tk86t.dll",
+    "VCRUNTIME140.dll",
+    "patch-data.json",
+    "tools\\sunxi-fel.exe",
+    "tools\\zadig-2.9.exe"
+  ],
+  "release_has_no_personal_backup": true,
+  "gui_visual_check": "Not established by automated desktop control; compiled resource/Tcl checks and source inspection only.",
+  "actual_downloads_exe": "<home>\\Downloads\\YS4470-ownprotocol-beta3.exe",
+  "actual_downloads_self_test": {
+    "version": "2.0.0-beta.3-ownprotocol",
+    "resources_valid": true,
+    "tcl_patchlevel": "8.6.15",
+    "device_access": false,
+    "external_firmware": {
+      "schema": "ys4470.firmware-package.v1",
+      "device": "YS-4470",
+      "family": "V3.8",
+      "factory_sha256": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
+      "label": "YS4470 V3.8 E2 ownprotocol + Diode Volume beta",
+      "image_sha256": "b081860a2383e5c1251ea80abf25cb4f39bdf74a340a376975acf2b0ff6f9c8e",
+      "image_bytes": 5943296
+    }
+  },
+  "delivered_exe_sha256": "94a02592797dd60cfc7ab82ac0aab8b625bdb66eaaaa1557ece9c5fbd8783be2"
+}

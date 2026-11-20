@@ -1,0 +1,8 @@
+{
+  "report_sha256": "e2a5228137ed8a5ca0d04e2f60d85e181ffe6e83dec0f8bd48f577a28341b452",
+  "distinct_outcomes": 2,
+  "original_cases_in_report": 4,
+  "extra_native_runs": 0,
+  "independent_style_and_allocation_oracle": true,
+  "prior_static_audit": "parallel-20261119/static-review/metric14-pair/static-audit.json"
+}

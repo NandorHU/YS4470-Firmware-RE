@@ -19,6 +19,15 @@ FAMILIES = {
     "V3.8": "7e7d7230155fe0790eb48531de2ef463bb122c0ae1a820ab6d10cf2e60f50290",
 }
 EXPERIMENTAL_V38 = frozenset({
+    # Reviewed local diode-volume and ownprotocol candidates (ARM-tested).
+    "d2c0556fe02e47771746f83e38d5860a2146e4a620a6e3fc46b354bd61273bb6",
+    "b081860a2383e5c1251ea80abf25cb4f39bdf74a340a376975acf2b0ff6f9c8e",
+    # ownprotocol + diode fixed range (4 sites, ARM-adapter tested 2026-11-20).
+    "934a2557f7b069645ca3484a70e64e4e33844bf0b0892d2f3583078cadae9417",
+    # Beta Diode profiles Base, v1..v4 (beta.5, ARM-tested 2026-11-20).
+    "f477c1acf54704817410c165f495d7c48db007e14160bda08aff9c5e0d57b497",
+    # Beta Diode v2/v4 only (beta.6, ARM-tested 2026-11-20).
+    "da35f4968038801ddfe5d3528fb45d59df644ee80350a940e8c76a9e8d264c01",
     "884c39524942cf42580b52c0ce3ed8b33dab8d8fc4d3addd6266d1c9831c551e",
     "9890a3c671987b0aa75a505e4f389532ca102f9dcf306394daa45a9328bc91e1",
     "b04fb5bca7a052abfc5b1621bf50e03fd4f8116bf5cef849f1994e44d4b603b1",

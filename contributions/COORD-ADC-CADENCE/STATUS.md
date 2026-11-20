@@ -1,5 +1,150 @@
 # COORD-ADC-CADENCE — continuation, 2026-11-09
 
+## Second cold metric5/tag14 (2026-11-19, automatic continuation)
+
+`validate_native_cold_state_metric5_second.py` passes4 new original-image
+cases: second25958(DISPLAY,5)->4, actual3ddcc/tag14 through5911c, NULL and
+moving-success realloc84. Success style004002120b00370e/count14/summary37;
+NULL preserves old count13/vector and targetpoison. ExactAPIargs precede
+fixtures; completeheap/allvectors/guards,BSS/DATA/display/timer,SP/savedframe
+and R4/R5/R9 pass. Independent byte-serialization oracle agrees, no ARM rerun.
+[Evidence](synchronous/native-cold-state-metric5-second-validation.json).
+
+Next SecondMetric5Replay(success=True) at5911c. Static V3.6 PC-relative literal59a04 holds800111d8,59a08 holds
+805abc7c,59a0c holds8001e0b8. Verify both originals before following stores
+59124->805abc7c and59130->805abc84 (DATA region), then native5a334 zero of
+HEAP+58 through59140. Exact two-word DATA delta, wholeDATA/BSS/heap/vector/
+guard/SP/savedframe references; no invocation or callback-role claim for the
+stored code addresses. Later HEAP+58 setters, fullconfiguration/initializer/
+roots/callbacks/nativeallocatorfree/reuse/physicaltiming remain open.
+Registry67/issue1/PR3 and OpenCode quota-block unchanged.
+
+
+## Cold metric5/tag15 (2026-11-19, automatic continuation)
+
+`validate_native_cold_state_metric5.py` passes4 new original-image cases:
+native25958(DISPLAY,5)->4 and wrapper3dda8/tag15 through59100, NULL and
+moving-success realloc78. Success style003002120b00370d/count13/summary37;
+NULL preserves the count12 header/vector and new allocation poison. ExactAPI
+arguments precede fixtures; fullheap/allvectors/guards/BSS/DATA/display/timer,
+SP/savedcallerframe plus callerR4/R5/R9 preserved. A pure serialization oracle
+agrees without repeating ARM. The previous separate agent audit already
+covered these instruction words. [Evidence](synchronous/native-cold-state-metric5-validation.json).
+
+Next StateMetric5Replay(success=True) at59100: another25958(DISPLAY,5),
+wrapper3ddcc through5911c. Capture rawtag (expected14 from adjacent wrapper
+family, not yet dynamically admitted), value4 and exact realloc request
+(expected84 only aftercapture), twoNULL/success schedules per original.
+Newguard12024000 in existing12020000 arena. Stop before the literal-fed
+global stores59124/59130, which need new fullDATA references separately.
+Fullconfiguration/initializer/roots/callbacks/nativeallocatorfree/reuse and
+physicalunits/LCD/timing remain open. Registry67/issue1/PR3 unchanged.
+
+
+## Second selector metric14 pair (2026-11-19, automatic continuation)
+
+`validate_native_cold_state_metric14_pair.py` passes8 new original-image
+cases: fourNULL/moving-success schedules through590e4. Actual STATE byte1=1
+and CPSR.Z prove590b0->59c60; original25958(DISPLAY,14) returns11. Wrappers
+3ddd8/tag10 and3dd9c/tag11 receive the same cached11. Fresh12020000 arena
+with targets12021000/22000; all-success66/72-byte reallocs and finalstyle
+002002120b00370c/count12/summary37. ExactAPIargs precede fixtures; complete
+heap, every prior/newvector/guard,BSS/DATA/display/timer,SP/savedframe pass.
+Separate pure selection/serialization oracle agrees with4 schedules.
+[Evidence](synchronous/native-cold-state-metric14-pair-validation.json).
+
+A fresh isolated reviewer checked59 matching originalARM words, both hashes,
+selector/metrics/tags and the following metric5 wrapper; locally integrated
+as09fd558. Prior audit files unchanged. Native allocator/free/reuse, alternate
+selector values, fullconfiguration/initializer/roots/callbacks and physical
+units/LCD/timing remain open.
+
+Next StateMetric14PairReplay all-success at590e4: original25958(DISPLAY,5)
+expectedraw4, then3dda8/tag15 at590fc through59100. TwoNULL/moving-success
+outcomes per original; guard12023000 (expected78 bytes onlyaftercapture),
+all oldbuffers/heap/globals/SP/savedframe references. Later59100 path remains
+separate. Registry67/issue1/PR3 and OpenCode quota-block unchanged.
+
+
+## Actual selector1 metric24 pair (2026-11-19, automatic continuation)
+
+`validate_native_cold_state_metric24_pair.py` passes8 new original-image
+cases: fourNULL/moving-success schedules for HEAP+20 tags12/13 through590a0.
+Actual STATE byte1=1 and CPSR.Z prove5906c->59c50; original25958(DISPLAY,24)
+returns20, both scalar wrappers receive20. Exact realloc arguments precede
+fixtures; all-success sizes54/60, style00f001120b00370a/count10/summary37.
+Entire504-byteheap, all prior/newvectors/guards,BSS/DATA/display/timer,SP
+and saved callerframe match. A separate selection/serialization oracle agrees
+with all4 captured schedules without repeating ARM. No physicalunit, native
+allocator/free/reuse, complete configuration/initializer/roots/callback claim.
+[Evidence](synchronous/native-cold-state-metric24-pair-validation.json).
+
+Next StateMetric24PairReplay all-success at590a0. Actual STATE byte1=1 should
+take590b0->59c60, native25958(DISPLAY,14) expected11, then wrappers3ddd8
+and3dd9c through590e4. Capture each raw wrapper tag before assigning it;
+validate4 NULL/moving-success schedules on both originals with exactAPIargs.
+The12010000 arena is now used through1201f000: map a fresh guarded arena
+for the next vectors, never use active STACK1100f000. Preserve all oldbuffers,
+fullheap/globals/SP/savedframe. Registry67/issue1/PR3 and modelblocks unchanged.
+
+
+## Actual STATE halfword/tag55 (2026-11-19, automatic continuation)
+
+`validate_native_cold_state_halfword.py` passes4 new original-image cases:
+NULL/moving-success realloc48 through5905c. Actual R4=STATE805abc6c,
+R5=OBJECT807b52f8; the source is STATE+4 halfword2104, not OBJECT+4 as
+the earlier continuation label suggested. Original wrapper3e004/tag55 retains
+opaque incomingR2 HIGH16=1201; payload12012104. All-success style
+00d001120b003508/count8/summary35; NULL leaves the previous header/vector
+unchanged. Whole504-byteheap, all old/newvectors/guards,BSS/DATA/display/timer,
+SP and saved callerframe checked. Original allocator/free/reuse and hardware
+remain fixtures; no fullconfiguration/initializer-return/root/callback claim.
+[Evidence](synchronous/native-cold-state-halfword-validation.json).
+
+Next StateHalfwordReplay(success=True) at5905c. Captured STATE byte1=1,
+so prove its actual branch5906c->59c50 and metric25958(DISPLAY,24) (raw20
+expected, not yet executed here), then3ddb4/tag12 and3ddc0/tag13 through590a0.
+Four NULL/moving-success schedules on both originals; guard1201e000/f000,
+expected all-success sizes54/60 only after actual capture. Record exact inputs
+before fixtures and full memory/savedframe references. Noncold byte1 variants
+and later selector590a8 remain separate. Registry67/issue1/PR3 unchanged;
+new coordinator healthy, OpenCode still quota-blocked, completed jobs not rerun.
+
+
+## Multi-agent cold palette tail (2026-11-19; local verified continuation)
+
+User resumed RE with the other agents. Existing upstream registry67 and open
+issue1/PR3 were checked; same coordinator/scope retained. New
+`validate_native_cold_palette_tail.py` passes32 original-image runs: all16
+NULL/moving-success schedules for HEAP+20 tags44/40/45/42 through5904c.
+Actual default805abd60=DISPLAY (not NULL fallback), flags413c gives six
+returns130; raw payloads12019cf3/2/7f/2. All-success sizes24/30/36/42,
+style00c001120b001507/count7/summary15. Exact allocator arguments precede
+fixtures; whole heap, old/new vectors/guards, BSS/DATA/display/timer, SP and
+saved caller-frame bytes match. Allocator/free/reuse, fullinitializer,
+roots/callbacks and physicaltiming remain open.
+
+Two isolated agents supplied147-word static audit and an independent pure
+reference with7 tests. All16 captured schedules agree with that reference,
+without ARM reruns. Their commits are integrated locally; no remote push.
+A30-file source capsule freezes inherited local helpers for a separate-checkout
+reproduction without changing prior untracked work. See
+[handoff](parallel-20261119/COORDINATOR-HANDOFF.md),
+[native evidence](synchronous/native-cold-palette-tail-validation.json),
+[independent comparison](synchronous/native-cold-palette-tail-independent-review.json).
+
+Qwen3.5 completed one new quotation index after coordinator correction; it is
+not a semantic finding. OpenCode DeepSeek Free remains quota-blocked; Mercury
+is installed but unconfigured. New coordinator owns model jobs on11435; legacy
+queue remains held to avoid two GPU consumers. Empty queues are not load tasks.
+
+Next: from PaletteTailReplay all-success at5904c, capture OBJECT+4 halfword
+and incomingR2 at3e004/tag55 through5905c. Then prove actual OBJECT byte1
+branch59068/59070:1->59c50;2 selectsmetric20;other selectsmetric16 before
+wrappers3ddb4/3ddc0. Independent complete-memory references, exactAPIargs and
+NULL/success schedules before any fullconfiguration/physical-unit claim.
+
+
 ## Original display object traversal and ancestor post-draw events (2026-11-12)
 
 Original traversal `0x80044378` renders the requested node, then walks its parents. At each parent it calls renderer `0x80043eb0` for siblings after the current child and sends parent events `0x17`, `0x18` and `0x19` in order. The original parent getter `0x80035eb4`, child count `0x80035abc` and default-root getter `0x80025d84` execute. Thirty-two V3.6/V3.8 schedules cover both child orders, six node selections and populated or empty default roots. The tree, child arrays and active display are fixtures. Renderer and event dispatch bodies are modeled. Recursive painting and native label integration remain open. Execute renderer 0x80043eb0 with verified AC numeric/unit label objects, styles, geometry and native dirty context. Follow its hidden, opacity and clip gates into the actual label draw event before connecting the tested glyph/rotation/flush chain. Preserve sibling and ancestor-event ordering. Keep physical LCD timing and native type-6 producer provenance open. [Original ARM926 evidence](synchronous/display-object-traversal-validation.json).

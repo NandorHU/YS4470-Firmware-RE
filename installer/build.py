@@ -1,4 +1,4 @@
-"""Build a reusable Windows EXE, its external firmware package and sources."""
+"""Build a reusable Windows EXE, its embedded firmware and optional external package and sources."""
 from pathlib import Path
 import argparse,hashlib,json,os,shutil,subprocess,sys,zipfile
 ROOT=Path(__file__).resolve().parents[1];HERE=Path(__file__).resolve().parent;WORK=ROOT/'work/easy-installer'
@@ -13,14 +13,18 @@ def main():
     firmware = a.firmware_package.resolve()
     package = read_package(firmware)
     out=WORK/'release';out.mkdir(parents=True,exist_ok=True);resources=WORK/'resources'
+    embedded = resources / 'firmware'
+    embedded.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(firmware, embedded / 'firmware.ysfw')
     if not a.skip_compile:
         subprocess.run([sys.executable,'-m','PyInstaller','--noconfirm','--clean','--onefile','--windowed','--name','YS4470-Installer',
           '--distpath',str(WORK/'dist'),'--workpath',str(WORK/'pyinstaller'),'--specpath',str(WORK),
           '--paths',str(ROOT/'patcher'),'--add-data',str(resources/'tools')+os.pathsep+'tools',
-          '--add-data',str(resources/'patch-data.json')+os.pathsep+'.',str(HERE/'app.py')],check=True)
+          '--add-data',str(resources/'patch-data.json')+os.pathsep+'.',
+          '--add-data',str(embedded)+os.pathsep+'firmware',str(HERE/'app.py')],check=True)
     exe=WORK/'dist/YS4470-Installer.exe';report=WORK/'compiled-self-test.json'
     if report.exists():raise FileExistsError('Compiled self-test already exists; do not overwrite results')
-    subprocess.run([str(exe),'--self-test-report',str(report),'--firmware-package',str(firmware)],check=True,timeout=45)
+    subprocess.run([str(exe),'--self-test-report',str(report)],check=True,timeout=45)
     result=json.loads(report.read_text());assert result['resources_valid']and not result['device_access']
     assert result['external_firmware'] == package.manifest()
     notices=HERE/'THIRD-PARTY-NOTICES.txt'
@@ -48,9 +52,12 @@ def main():
     for p in (ROOT/'contributions/COORD-DIODE-VOLUME').iterdir():
         if p.is_file() and p.suffix in ('.py','.s','.md','.json'):
             source_files.append((p, 'source/'+p.relative_to(ROOT).as_posix()))
+    for p in [*(ROOT/'contributions/COORD-ADC-CADENCE/ownprotocol').iterdir(), *(ROOT/'contributions/COORD-ADC-CADENCE/diodefixed').iterdir(), *(ROOT/'contributions/COORD-ADC-CADENCE/vprofiles').iterdir()]:
+        if p.is_file() and p.suffix in ('.py','.s','.md','.json','.txt'):
+            source_files.append((p, 'source/'+p.relative_to(ROOT).as_posix()))
     lock=json.loads((HERE/'dependencies.lock.json').read_text());source_files.extend((WORK/'downloads'/r['name'],'third-party-sources/'+r['name'])for r in lock['sources'])
     archive(out/f'YS4470-Installer-{VERSION}-Sources.zip',source_files)
-    with (out/'YS4470-E2-V3.8-Diode-Volume.ysfw').open('xb') as stream:
+    with (out/'YS4470-E2-V3.8-v2v4.ysfw').open('xb') as stream:
         stream.write(firmware.read_bytes())
     checks=[]
     for p in sorted(out.iterdir()):

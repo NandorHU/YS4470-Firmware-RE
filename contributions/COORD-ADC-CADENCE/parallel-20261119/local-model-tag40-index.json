@@ -1,0 +1,16 @@
+{
+  "call_address": "0x80058fe4",
+  "target": "0x8003dfec",
+  "tag": "0x40",
+  "quoted": [
+    {
+      "address": "0x80058fe4",
+      "instruction": "bl #0x8003dfec"
+    },
+    {
+      "address": "0x8003dff0",
+      "instruction": "mov r1, #0x40"
+    }
+  ],
+  "limit": "Instruction index only; no physical meaning or complete firmware claim."
+}
