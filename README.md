@@ -1,98 +1,68 @@
-# YS-4470 firmware 1.0 — highspeedv2
+<p align="center">
+  <img src="assets/ys4470-banner.svg" alt="YS-4470 — Less waiting. Faster feedback." width="1200">
+</p>
 
-## Latest test build: diode v2/v4 (2.0.0-beta.6, pre-release)
+<p align="center">
+  <a href="https://github.com/NandorHU/YS4470-Firmware-RE/releases/tag/installer-v2.0.0-beta.6-v2v4"><img alt="Current release: beta.6" src="https://img.shields.io/badge/release-2.0.0--beta.6-4de3bd?style=flat-square"></a>
+  <img alt="Windows: standalone installer" src="https://img.shields.io/badge/Windows-standalone_EXE-75baff?style=flat-square">
+  <img alt="Hardware: owner tested" src="https://img.shields.io/badge/hardware-owner--tested-4de3bd?style=flat-square">
+</p>
 
-**[Download YS4470-Installer-2.0.0-beta.6-v2v4.exe](https://github.com/NandorHU/YS4470-Firmware-RE/releases/tag/installer-v2.0.0-beta.6-v2v4)** — a standalone Windows installer with the firmware embedded. In diode mode the Beta Diode button alternates v2 and v4: diode fixed range, chip command `68 0a`, and in v4 a tone that starts at probe contact. Sources: branch `re/2026-11-20-diode-v2v4`. Emulation-validated; device-tested by the project owner.
+<p align="center">
+  <a href="#install">Quick start</a> · <a href="#how-the-speed-up-works">How it works</a> · <a href="#validation-and-remaining-work">Validation</a> · <a href="#magyarul">Magyarul</a>
+</p>
 
-## Patch your own factory firmware — no Beta3 required
+# YS-4470 firmware improvements
 
-Use the new [offline factory-input patcher](patcher/README.md) with your own supported V3.6/V3.8 application file or16 MiB full flash backup. Download this repository ZIP, extract it, then drag the firmware file onto `patcher/PATCH-WINDOWS.cmd` (Python3.10+).
+## New beta: a breakthrough in diode responsiveness
 
-The patcher creates a new1.0 application/full-backup file, verifies hashes, and supports reversal. It preserves your input, bootloader, logo and every byte outside the application edits. V3.8 continuous matches the published1.0 application; the V3.6 port preserves its own version-specific bytes and is offline-tested only. It does not access or flash a device, and the historical Beta3 installer is not compatible with its personalized outputs. [English instructions](patcher/README.md) · [Magyar útmutató](patcher/OLVASS-EL.md).
+**Near-instant diode measurement response and audible feedback — reported by the project owner on a physical YS-4470, with a significant improvement over earlier builds.** This is a practical breakthrough for the project's main goal: reducing the delay between probe contact and feedback. It is a qualitative hardware result, not a measured latency specification or a complete accuracy qualification.
 
-```text
-python patcher/ys4470_patch.py inspect "my-backup.bin"
-python patcher/ys4470_patch.py apply "my-backup.bin" --output "my-1.0.bin"
-```
+**[Download the standalone Windows installer](https://github.com/NandorHU/YS4470-Firmware-RE/releases/download/installer-v2.0.0-beta.6-v2v4/YS4470-Installer-2.0.0-beta.6-v2v4.exe)** · [Release notes and checksums](https://github.com/NandorHU/YS4470-Firmware-RE/releases/tag/installer-v2.0.0-beta.6-v2v4)
 
-A full-backup hash can differ between devices; this tool recognizes the supported application inside it. Unknown application hashes are rejected. Share only the inspect text when reporting a mismatch, never a personal flash backup.
+The current release is **2.0.0-beta.6-v2v4**, a pre-release. Firmware is embedded in the EXE: **no separate factory firmware download, personal firmware input, Python setup or source build is needed to install it.**
 
-Firmware improvements for the Mr. Yang YS-4470. **Version 1.0 was installed and tested on a device and works well. The complete 16 MiB flash readback matched the intended image byte for byte.** This confirms operation on the tested device; it is not a complete accuracy or reliability certification.
+| Faster feedback | Simple installation | Recovery built in |
+|---|---|---|
+| Owner-reported near-instant diode response and sound | One Windows EXE with embedded firmware | Verified automatic backup and full readback |
 
-**[Download version 1.0 from Releases](https://github.com/NandorHU/YS4470-Firmware-RE/releases/tag/v1.0).** Compiled firmware is distributed as Release assets only; it is not tracked in the source tree.
+## Install
 
-## Project goal
+1. Download the EXE linked above and run it on Windows.
+2. Connect one compatible YS-4470 in FEL mode using a USB data cable.
+3. Choose **Install**. The installer checks the firmware family, confirms a full backup with two matching reads, writes only guarded application sectors, and verifies the complete flash readback.
+4. Keep the automatic backup. The installer's restore function can restore it.
 
-Reverse engineer and improve the existing firmware, primarily to reduce the delay between probe contact, the displayed diode measurement, and the audible indication. The project also provides reproducible offline patches, input-hash and original-byte validation, a verified Windows FEL installation process, and rollback support.
+In diode mode, **Beta Diode** switches between **v2** and **v4**. The power-on default is **v2**. Choose USB driver setup only if device detection fails. An unrecognized firmware family is rejected.
 
-The original measurement hardware and factory measurement commands are retained. New measurement ranges and improved measurement accuracy have not been demonstrated. This is a binary patch project: the manufacturer's complete firmware source code is not available.
+## How the speed-up works
 
-## Current status — November 2, 2026
+The changes target the measurement-command path and sound response. **They do not overclock the F1C100s system processor.** The builder changes application instructions, its overlay and the command descriptor table; it introduces no system-clock adjustment.
 
-The target uses an F1C100s system controller and a Winbond 16 MiB SPI flash. Analysis used Ghidra, ARM disassembly, and function-level Unicorn emulation. The response-processing, display-update, sound-control, and firmware-loading paths have been investigated sufficiently for the targeted changes.
+- **Less host-side waiting:** ownprotocol-style polling rearms the next measurement request sooner, with the existing idle, busy and mode guards.
+- **A fixed-range request:** diode configuration sends `59 00` instead of `5a`. The interpretation as fixed range versus autorange follows reverse-engineered command usage; the measuring chip's internal algorithm is not documented here.
+- **An additional measuring-chip command:** v2 and v4 send `68 0a` when configuring diode mode, derived from the factory Fast CONT path's `68 07`. This is the experimental "fast chip mode" change. It configures the measuring chip, rather than raising the main CPU clock. Its exact internal effect and each change's individual contribution have not been isolated by hardware measurements.
+- **Earlier audible feedback in v4:** v4 adds "tone first" to v2. It starts a short tone at detected contact while the reading falls, then uses the reading trend to decide whether to sustain or stop it. A brief contact chirp is not proof that a diode is a short circuit or that a stable voltage measurement is already available.
 
-Beta2/Beta3 testing showed faster response and correct display updates. Installation of version 1.0 continuous changed six 64 KiB sectors. A fresh full backup of the working Beta3 image was saved first, and the complete post-write flash readback matched the intended image. Version 1.0 was then tested on the device and works well.
+| Profile | Behavior |
+|---|---|
+| v2 | Faster polling, fixed-range request and additional chip configuration; default after power-on |
+| v4 | v2 plus early contact-tone logic |
 
-Remaining work includes objective contact-to-display and contact-to-sound latency measurements, extended testing of continuous sound and watchdog edge cases, regression testing of every measurement mode, measurement-accuracy checks, and further hardware investigation. The maximum achievable hardware speed and the benefit of additional optimization have not been established.
+Source and reproducible tests are on [the diode v2/v4 development branch](https://github.com/NandorHU/YS4470-Firmware-RE/tree/re/2026-11-20-diode-v2v4/contributions/COORD-ADC-CADENCE/vprofiles). That branch contains the beta's source; the root's older 1.0 builder is historical.
 
-## Features
+## Validation and remaining work
 
-- Retains Beta3's faster diode polling, corrected complete-response deadline, and suppression of redundant updates when measurement-label text is unchanged.
-- Renames the English switch label to `highspeedv2`. The text and terminating NUL fit the original 12-byte allocation. Labels in other languages are unchanged.
-- `continuous`: a continuous 1321 Hz diode tone while the original valid-measurement condition holds. Open or invalid input requests a stop. The patch adds no sleep or extra measurement command to the measurement cycle.
-- `timed`: a fallback build retaining Beta3's nominal 420-tick one-shot tone, with the same updated switch label.
+The release records ARM926 replays for profile selection, command dispatch, profile-change reconfiguration, synthetic reading decays and guards, plus simulated installer/update/restore tests and compiled Windows self-tests. The owner additionally reports substantially faster real-device operation, near-instant measurement response and sound. Emulation itself cannot establish analog behavior or physical latency.
 
-The sound uses PWM synthesis approximating the pitch of the supplied reference audio. It does not play the MP3 waveform. Continuous sound implements the latest requested behavior and replaces the earlier one-shot duration requirement.
+Objective contact-to-sound and contact-to-stable-display timing, diode/LED range coverage, measurement accuracy and complete regression of other modes remain to be measured. Near-instant sound describes the owner's observed response, not a guaranteed millisecond value or an instantaneous stable reading. This is beta firmware, not a manufacturer-certified update.
 
-## Use and limitations
+## Project and historical work
 
-Select diode mode and enable `highspeedv2`. Check the switch after restarting; this project does not add automatic persistent setting storage. Device testing confirmed improved responsiveness and working version 1.0 operation. Quantitative latency comparison, complete mode regression, and accuracy validation remain outstanding.
+This project reverse engineers and improves the YS-4470's existing firmware. The manufacturer's complete source code is unavailable. [Project status](PROJECT-STATUS.md), [changelog](CHANGELOG.md) and [provenance](NOTICE.md) provide context. Version 1.0, the offline patcher and the older Beta3-based build scripts remain historical developer tools; they are not prerequisites for the current installer.
 
-Valid measurements refresh a finite sound watchdog while its counter is above three. The original KeyTask stops the tone after 13 cycles without a qualifying refresh: nominally about 650 ms, depending on actual scheduling. A mode change therefore does not leave an indefinitely sustained tone, but immediate stopping has not been established. Counters of three or less preserve a superseding short key beep. In unusual scheduling conditions, sound may remain until the watchdog expires after an invalid result. These edge cases require further physical testing.
+Public files must not contain personal full-flash backups, calibration/device dumps, credentials or machine-specific workspace paths. Keep automatic backups and device logs private.
 
-## Historical Beta3-based Windows build
+## Magyarul
 
-Python 3.12 and its standard library are sufficient for the portable patch build. It requires your own verified **full 16 MiB Beta3 flash backup**, with this SHA-256:
-
-`2ce9c1693a9726a2fe042620debd7705e77cfec58d98e8729bb6ec1ade4a9d0f`
-
-```powershell
-python build.py --backup C:/my-backups/current-beta3.bin --fel C:/tools/sunxi-fel.exe
-```
-
-This produces standalone local installation bundles in `out/continuous` and `out/timed`. The `--fel` argument can be omitted for an offline build; native installation requires the pinned executable. The build verifies input hashes, original patch bytes, and final output hashes.
-
-`patches/*.json` contains applicable binary deltas, not the manufacturer's source code. Full personal flash backups and external executable tools are excluded from the public source package. See `NOTICE.md` for provenance and scope.
-
-## Installation and rollback
-
-The Release ZIP contains the compiled firmware components in `firmware/`, plus the reproducible installer project in `project/`. Read `OLVASS-EL.txt` before installation. Preparing the tested installer requires the exact matching Beta3 backup and `sunxi-fel.exe`; an unknown device state is not automatically supported. Installation through the factory updater has not been verified.
-
-This build **also modifies the bootloader**. Interrupted writing may require FEL recovery. Each physical installation requires explicit approval for that build.
-
-1. Connect one F1C100s device with the expected Winbond 16 MiB flash in FEL mode, with stable power and USB.
-2. After approving the specific installation, run `Install-V1-APPROVAL-REQUIRED.cmd` in the chosen generated bundle.
-3. The installer creates a fresh complete backup, checks known state and hashes, writes only changed 64 KiB blocks, then reads back all 16 MiB and verifies byte-for-byte equality.
-4. Progress uses actual completed blocks and Hungarian stage names. It reaches 100% only after successful verification. There is no automatic reset.
-5. `Restore-Beta3-APPROVAL-REQUIRED.cmd` restores the previous working Beta3 firmware. Rollback also requires explicit approval.
-
-The installer accepts only the known Beta3 state or its own target variant. To move between the two 1.0 variants, first restore Beta3 using the current variant's rollback tool. If an error occurs, keep the device in FEL mode and preserve all logs and backups.
-
-## Tests and evidence
-
-Portable build and virtual installer tests, without USB access:
-
-```powershell
-python tests/test_build.py --backup C:/my-backups/current-beta3.bin
-python tests/simulate_installer.py out/continuous
-python tests/simulate_installer.py out/timed
-```
-
-The simulator replaces device enumeration and all native FEL calls in a temporary copy; the original installer is unchanged. It tests installation, rollback, and rejection of corrupted readback.
-
-`evidence/` contains function-level ARM emulation results for firmware loading and sound, virtual-flash installer tests, and the independently verified physical installation record in `physical-install-1.0.json`. Hardware endpoints are stubbed in emulation; those tests do not establish full cold-boot behavior, analog accuracy, or real hardware latency.
-
-Research scripts under `src/` are archived from the original workspace. The portable build entry point is the root `build.py`. Archived emulation tests require Unicorn and the original local firmware inputs.
-
-See `PROJECT-STATUS.md` for research addresses and next steps. Older manifests retain their status at the time they were created; the physical installation record documents the later successful installation. Keep full flash backups, USB logs, and local `out/`, `inputs/`, and `tools/` directories private.
-
+**Az új béta a készülék tulajdonosának tesztje alapján jelentősen gyorsabb a korábbi verzióknál: a diódamérés reakciója és a hangvisszajelzés közel azonnali — ez áttörés a projektben.** A fenti EXE-t kell letölteni és elindítani; a firmware benne van, külön gyári firmware beszerzése nem szükséges. A Beta Diode gomb v2 és v4 között vált, bekapcsoláskor v2 aktív. A v4 a gyorsabb mérési konfiguráció mellett korai érintkezési hangot is ad. A hang kezdete nem jelenti, hogy a végleges mérési érték már beállt. A pontos késleltetés és a teljes mérési pontosság ellenőrzése még hátravan.
